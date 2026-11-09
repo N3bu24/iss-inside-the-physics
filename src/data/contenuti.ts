@@ -1,4 +1,5 @@
-import hotspotJson from '@content/hotspot-v3.json'
+import hotspotJsonGrezzo from '@content/hotspot-v3.json'
+import { pulisciDati } from '../lib/pulisci'
 import { nodi, type NodoId } from './stazione'
 import { posizioni } from './posizioni'
 import { hotspotEsempio, luoghiEsempio, type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './esempio-hotspot'
@@ -92,6 +93,7 @@ function normalizzaLuogo(g: Grezzo): Luogo | null {
   }
 }
 
+const hotspotJson = pulisciDati(hotspotJsonGrezzo)
 const hotspotReali = comeLista(hotspotJson)
 const nuovoFormato = hotspotReali.some((h) => 'categoria' in h)
 const hotspotNuovi = nuovoFormato ? hotspotReali.map(normalizzaHotspot).filter((h): h is HotspotScheda => !!h) : []
@@ -100,7 +102,7 @@ const listaHotspot: HotspotScheda[] = [...hotspotNuovi, ...hotspotEsempio.filter
 
 // luoghi.json è opzionale: la glob non fallisce se il file non esiste ancora
 const luoghiFile = import.meta.glob('/content/luoghi-v3.json', { eager: true, import: 'default' })
-const luoghiReali = comeLista(Object.values(luoghiFile)[0])
+const luoghiReali = comeLista(pulisciDati(Object.values(luoghiFile)[0]))
 const luoghiNuovi = luoghiReali.some((l) => 'punti' in l || 'scheda' in l) ? luoghiReali.map(normalizzaLuogo).filter((l): l is Luogo => !!l) : []
 const listaLuoghi: Luogo[] = [...luoghiNuovi, ...luoghiEsempio.filter((e) => !luoghiNuovi.some((l) => l.id === e.id))]
 

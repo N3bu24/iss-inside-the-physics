@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import SimulazioneShell from './SimulazioneShell'
 import { Cursore, Pulsante } from './controlli'
 import { passiSimulazione } from './passi'
-import type { Passo } from './contenuto'
+import { metaSimulazione, type Passo } from './contenuto'
 import type { HotspotSim } from './SimulazioneShell'
 import Etichetta from '../ambienti/Etichetta'
 import { helixGeometry } from '../ambienti/geo'
@@ -283,8 +283,8 @@ export default function Autoinduzione({ onClose }: { onClose: () => void }) {
       intro="Una bobina si oppone alle variazioni di corrente: chiudendo o aprendo un circuito, la corrente non cambia all'istante. L'energia ½Li² resta immagazzinata nel campo magnetico."
       formula={String.raw`\varepsilon=-L\frac{di}{dt}\qquad E=\tfrac12 L i^{2}`}
       formulaNota="L: induttanza in henry. Nella chiusura i(t) = (ε/R)(1 − e^{−Rt/L}), con costante di tempo τ = L/R."
-      agenda="Agenda 2030, Obiettivo 9 · Costituzione, Art. 9"
-      slide="Slide 13-15 (autoinduzione)"
+      agenda={metaSimulazione('autoinduzione').agenda}
+      slide={metaSimulazione('autoinduzione').slide}
       didascalia={did}
       passi={passi}
       onPasso={onPasso}

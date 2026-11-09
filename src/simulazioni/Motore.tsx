@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import SimulazioneShell from './SimulazioneShell'
 import { Cursore, Pulsante, Scope, Trace } from './controlli'
 import { passiSimulazione } from './passi'
-import type { Passo } from './contenuto'
+import { metaSimulazione, type Passo } from './contenuto'
 import type { HotspotSim } from './SimulazioneShell'
 import Etichetta from '../ambienti/Etichetta'
 
@@ -274,8 +274,8 @@ export default function Motore({ onClose }: { onClose: () => void }) {
       intro="Una spira in un campo magnetico può produrre corrente se la si fa girare (alternatore) oppure girare se le si fornisce corrente (motore). È la stessa macchina usata nei due versi."
       formula={String.raw`\varepsilon(t)=N\,B\,S\,\omega\sin(\omega t)`}
       formulaNota="N: spire, B: campo, S: superficie, ω: velocità angolare. Nel motore la fem indotta si oppone alla corrente della batteria (legge di Lenz)."
-      agenda="Agenda 2030, Obiettivo 9 · Costituzione, Art. 9"
-      slide="Slide 8 (Faraday-Neumann) e 11 (Lenz)"
+      agenda={metaSimulazione('motore').agenda}
+      slide={metaSimulazione('motore').slide}
       didascalia={did}
       passi={passi}
       onPasso={onPasso}
