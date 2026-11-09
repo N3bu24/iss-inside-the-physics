@@ -112,3 +112,11 @@ Formato: data, decisione, motivo, alternative scartate.
 ## 9/11/2026 — Panorami ESA
 - **Decisione (autore):** usare i panorami ESA "Space Station 360" (2016, S. Cristoforetti) per Columbus, Harmony (nodo), Kibo (materiali) e Tranquility (cupola). Foto NASA per intro e Cupola. Il credito deve essere visibile ma discreto.
 - **Licenza:** ESA Standard Licence (uso educativo non commerciale con credito); NASA pubblico dominio. Crediti in `public/panorami/CREDITI.md`.
+
+## 9/11/2026 sera — Feedback dell'autore sulla v0.8.0
+- **Movimento:** un unico gesto. La camera si allinea alla vista del primo fotogramma del volo (FOV orizzontale 80°), poi il video subentra con una dissolvenza brevissima. Niente video al contrario: ↓ si gira e usa il volo in avanti dell'arco inverso.
+- **Cupola:** niente volo IA né cornice delle finestre. Zoom dal portello "To CUP" che sfocia nel video NASA reale della Terra.
+- **Interfaccia:** indicatori dei punti di interesse ai bordi dello schermo e lista laterale (il clic ruota piano la visuale e apre la scheda). Icone più grandi e senza sovrapposizioni. Niente barre di scorrimento predefinite.
+- **Intestazione** "Alessandro Bettinelli" su ogni schermata. L'intro ha un solo pulsante, "Inizia l'esplorazione", e in alto compaiono le "Tappe suggerite".
+- **Contenuti:** schede più corpose, con paragrafi, formule e immagini. Voce più ricca (fino a circa 16k caratteri) che spiega anche le simulazioni. Sottotitoli più lunghi e più lenti.
+- **Simulazioni:** una per ogni punto che la merita, tutte nello stile della scena EML. L'EML ha il pulsante "Avvia esperimento" con la sequenza a passi in una finestra centrale. Il campo magnetico usa la Terra NASA vera e il modello NASA della ISS, con proporzioni più realistiche.
