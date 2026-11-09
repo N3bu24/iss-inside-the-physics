@@ -1,0 +1,119 @@
+[
+  {
+    "id": "amb-campo",
+    "titolo": "La ISS nel campo magnetico terrestre",
+    "intro": "La stazione corre a circa 7,7 chilometri al secondo dentro il campo magnetico della Terra. Per la legge di Faraday-Neumann, la sua struttura conduttrice è attraversata da una fem indotta.",
+    "controlli": [
+      "Trascina la velocità (da 0 a 8 km/s, predefinita 7,7): la freccia della fem cresce o si riduce e il valore in volt si aggiorna.",
+      "Trascina il campo magnetico (da 20 a 50 microtesla, predefinito 30) e la lunghezza della struttura (da 10 a 110 m, predefinita 100): il valore in volt cambia di conseguenza.",
+      "Inclina la struttura rispetto al moto: la fem è massima con struttura, velocità e campo perpendicolari tra loro e si azzera quando la struttura è parallela alla velocità.",
+      "Attiva o spegni i plasma contactor: senza di essi la struttura galleggerebbe a un potenziale lontano dal plasma; con essi resta entro ±40 V."
+    ],
+    "didascalie_dinamiche": {
+      "velocita_zero": "A stazione ferma il flusso non varia: nessuna fem.",
+      "velocita_alta": "Più veloce la stazione, più flusso spazza ogni secondo: la fem cresce in proporzione.",
+      "valore_predefinito": "Con circa 30 microtesla, 100 metri e 7,7 km/s si ottengono circa 23 volt: lo stesso ordine di grandezza stimato dalla NASA, circa 20 V.",
+      "campo_cambia": "Il campo terrestre varia lungo l'orbita: più è intenso, più cresce la fem.",
+      "angolo_zero": "Struttura parallela al moto: la superficie spazzata è nulla, quindi la fem è nulla.",
+      "contactor_spenti": "Senza scarica, la struttura si carica rispetto al plasma: nei progetti NASA si prevedevano potenziali negativi di circa 120-140 volt.",
+      "contactor_accesi": "Due plasma contactor emettono xeno ionizzato: collegano la struttura al plasma e la tengono entro ±40 volt."
+    },
+    "formula": "$\\varepsilon = B\\,l\\,v \\quad\\text{(da } \\varepsilon = -\\tfrac{d\\Phi_B}{dt},\\; d\\Phi_B = B\\,l\\,v\\,dt\\text{)}$",
+    "collegamento_agenda": "Gli stessi principi che qui producono una tensione indesiderata sono quelli di ogni conduttore in moto in un campo. Ricordano che infrastrutture complesse, come la stazione, vanno progettate in modo resiliente anche contro effetti fisici invisibili (Obiettivo 9).",
+    "slide_pptx": [2, 7, 8, 9, 10],
+    "fonti": [
+      "NASA NTRS, plasma contactor ISS (es. documenti 19980201237, 20020068812): requisito di ±40 V e contributo di circa 20 V dovuto al campo terrestre [DA VERIFICARE]",
+      "NASA, ISS facts: velocità orbitale e inclinazione 51,6 gradi",
+      "Campo magnetico a 400 km: ordine di 30 microtesla (da riscontrare con modello IGRF/NOAA)",
+      "Teoria pptx 5LSA, slide 2, 7, 8, 9"
+    ],
+    "note": "Il valore di 23 V è un massimo teorico per struttura perpendicolare a v e B. La lunghezza di 100 m è l'ordine di grandezza della struttura (apertura circa 109 m, da verificare). Il segno di ε dipende dall'orientamento."
+  },
+  {
+    "id": "amb-energia",
+    "titolo": "Energia di bordo",
+    "intro": "L'energia elettrica non si usa dove nasce: va trasformata e distribuita. Dal pannello solare della ISS alla centrale a terra, i principi sono gli stessi: induzione, trasformatori, perdite Joule.",
+    "controlli": [
+      "Scegli la sorgente: pannello fotovoltaico (corrente continua, nessuna parte in movimento) oppure una centrale con turbina (idroelettrica, eolica, geotermica, termoelettrica, nucleare). Si illumina il percorso fino all'alternatore.",
+      "Trascina la velocità di rotazione dell'alternatore: l'onda sinusoidale della tensione si fa più alta e più fitta.",
+      "Trascina il rapporto spire del trasformatore, N2/N1: le due bobine cambiano numero di spire e la tensione di uscita si aggiorna.",
+      "Seleziona la tensione della linea (10 kV, 100 kV, 380 kV) con potenza fissa: la corrente nel cavo e la potenza persa per effetto Joule cambiano e la linea si illumina di arancione dove si scalda.",
+      "Passa alla vista ISS: pannelli a circa 160 V in corrente continua, convertitori DDCU con trasformatore ad alta frequenza, rete secondaria a circa 124,5 V verso i rack."
+    ],
+    "didascalie_dinamiche": {
+      "alternatore_veloce": "Rotazione più rapida: il flusso varia più in fretta, quindi fem più alta e frequenza più alta.",
+      "trasformatore_step_up": "Più spire sul secondario: la tensione sale e, a potenza costante, la corrente scende.",
+      "trasformatore_step_down": "Meno spire sul secondario: la tensione scende e la corrente sale.",
+      "linea_10kv": "A bassa tensione la corrente è enorme e metà della potenza si disperde in calore (esempio: 10 MW su una linea di 5 ohm).",
+      "linea_380kv": "Ad alta tensione la corrente è piccola e le perdite diventano trascurabili.",
+      "fonte_fotovoltaica": "Il fotovoltaico non ha turbina né alternatore: produce direttamente corrente continua.",
+      "fonte_turbina": "Acqua, vento o vapore fanno girare una turbina collegata a un alternatore: la fonte cambia, il principio no.",
+      "vista_iss": "I DDCU sono convertitori isolati: la corrente continua viene spezzettata ad alta frequenza, trasformata e raddrizzata. Un trasformatore piccolo basta perché la frequenza è alta."
+    },
+    "formula": "$\\varepsilon(t) = N B S \\omega \\sin(\\omega t), \\qquad \\dfrac{V_1}{V_2} = \\dfrac{N_1}{N_2}, \\qquad P_J = R\\,i^2 = R\\left(\\dfrac{P}{V}\\right)^2$",
+    "collegamento_agenda": "Obiettivo 7: energia pulita e accessibile. Quasi tutte le fonti rinnovabili, tranne il fotovoltaico, trasformano energia cinetica in elettrica con un alternatore; i trasformatori la portano dove serve riducendo gli sprechi.",
+    "slide_pptx": [3, 5, 18, 19, 20, 21, 22, 23],
+    "fonti": [
+      "Teoria pptx 5LSA, slide 18-23",
+      "NASA NTRS, ISS electric power system e design del DDCU (160 V primario, 124,5 V nominale secondario, circa 95 per cento di efficienza) [da riscontrare]",
+      "Trasformatori ad alta frequenza nei DDCU: affermazione dell'autore del sito [DA VERIFICARE su documento NASA]",
+      "Esempio linea 10 MW, 5 ohm: simulazione concettuale"
+    ]
+  },
+  {
+    "id": "amb-levitazione",
+    "titolo": "Levitazione: dall'EML al Maglev",
+    "intro": "Un campo magnetico che varia induce correnti in un conduttore e, per la legge di Lenz, quelle correnti si oppongono alla variazione. Il risultato è una forza repulsiva: sostiene un campione nell'EML e un treno su una guida.",
+    "controlli": [
+      "Scena 1, magnete e lastra: trascina un magnete sopra una lastra di rame. Mentre si muove, sulla lastra compaiono anelli di corrente e il magnete è respinto o frenato.",
+      "Scena 2, EML: trascina la potenza del campo alternato. Il campione sale verso il centro della bobina e, aumentando la potenza, si scalda e diventa incandescente.",
+      "Scena 3, Maglev: trascina la velocità del treno. Sotto la soglia di sollevamento il treno appoggia sulle ruote; sopra la soglia si solleva e le correnti nella guida diventano visibili."
+    ],
+    "didascalie_dinamiche": {
+      "magnete_fermo": "Magnete fermo: il flusso non varia, nessuna corrente indotta, nessuna forza.",
+      "magnete_veloce": "Più veloce il magnete, più rapida la variazione di flusso, più forti le correnti e la repulsione.",
+      "lastra_calda": "Le correnti trovano resistenza e scaldano la lastra per effetto Joule.",
+      "eml_potenza_bassa": "Campo debole: il campione non è ancora tenuto stabilmente al centro.",
+      "eml_potenza_alta": "Campo forte: le correnti parassite respingono il campione verso il centro, e il riscaldamento Joule lo porta all'incandescenza.",
+      "eml_orbita": "In orbita bastano campi molto più deboli che a terra: il campione non deve vincere il proprio peso.",
+      "maglev_ruote": "Sotto la velocità di sollevamento il treno poggia sulle ruote: la variazione di flusso è troppo lenta.",
+      "maglev_levita": "Oltre la soglia le correnti indotte nelle bobine della guida respingono i magneti del treno: nessun contatto, nessun attrito di rotolamento."
+    },
+    "formula": "$\\varepsilon = -\\dfrac{d\\Phi_B}{dt}, \\qquad i = \\dfrac{\\varepsilon}{R}$",
+    "collegamento_agenda": "Obiettivo 9: la stessa fisica che sostiene un campione nell'EML sostiene un treno senza ruote a contatto. Il Maglev è un'infrastruttura innovativa, a basso impatto locale e senza attrito di contatto; la ricerca sui materiali in orbita porta innovazione nell'industria.",
+    "slide_pptx": [4, 8, 9, 11],
+    "fonti": [
+      "DLR, ESA, Airbus: EML (docs/research/eml.md)",
+      "JR Central / RTRI, SCMaglev: soglia di sollevamento circa 150 km/h e record di 603 km/h del 2015 [DA VERIFICARE]",
+      "Consegna scolastica, Obiettivo 9; teoria pptx slide 4, 8, 9, 11"
+    ]
+  },
+  {
+    "id": "amb-rmn",
+    "titolo": "Salute: RMN e medicina spaziale",
+    "intro": "Nel corpo i nuclei di idrogeno si comportano come piccoli magneti. In un campo intenso ruotano a una frequenza precisa; un impulso radio li disturba e, tornando all'equilibrio, inducono un segnale in una bobina.",
+    "controlli": [
+      "Trascina l'intensità del campo del magnete (da 0,5 a 3 tesla, predefinita 1,5): la frequenza di precessione degli spin e la frequenza dell'impulso aumentano.",
+      "Premi «Impulso radio»: gli spin si inclinano rispetto al campo e cominciano a precedere.",
+      "Osserva la bobina ricevente: mentre gli spin tornano all'equilibrio, nella bobina compare un segnale oscillante che si smorza.",
+      "Scegli il tessuto (grasso, muscolo, liquido): cambia la rapidità con cui il segnale si smorza e quindi il contrasto dell'immagine."
+    ],
+    "didascalie_dinamiche": {
+      "campo_alto": "Campo più intenso: precessione più rapida, segnale più forte. A 1,5 tesla i protoni ruotano a circa 64 MHz, a 3 tesla a circa 128 MHz.",
+      "impulso": "L'impulso radio, alla frequenza giusta, inclina gli spin: il flusso del loro campo attraverso la bobina ora varia.",
+      "segnale": "Il flusso che varia nella bobina induce una fem: è Faraday-Neumann. Il segnale si spegne mentre gli spin tornano all'equilibrio.",
+      "tessuto": "Tessuti diversi si rilassano con rapidità diverse: la differenza dei segnali costruisce l'immagine.",
+      "magnete": "Il magnete è un grande solenoide percorso da corrente: per l'autoinduzione la corrente si porta a regime con gradualità e nel campo è immagazzinata energia.",
+      "iss": "Sulla ISS non c'è una risonanza magnetica: gli astronauti sono esaminati a terra, prima e dopo il volo, e a bordo si usano altri strumenti come l'ecografia [DA VERIFICARE]."
+    },
+    "formula": "$f = \\dfrac{\\gamma}{2\\pi}\\,B_0 \\;(\\approx 42{,}58\\ \\text{MHz/T per il protone}), \\qquad \\varepsilon = -\\dfrac{d\\Phi_B}{dt}$",
+    "collegamento_agenda": "Obiettivo 3 e Articolo 32: la RMN diagnostica i tessuti molli senza radiazioni ionizzanti e porta il diritto alla salute, individuale e collettivo, sul piano della prevenzione. Gli studi sul corpo in orbita aiutano a capire invecchiamento, ossa e muscoli, con ricadute sulla medicina a terra.",
+    "slide_pptx": [8, 12, 13, 14, 15, 16, 17],
+    "fonti": [
+      "Consegna scolastica, Obiettivo 3 (RMN) e Art. 32",
+      "Costante giromagnetica del protone: CODATA (42,577 MHz/T)",
+      "NASA, ESA: ricerca sul corpo umano in orbita; studi con risonanza magnetica pre e post volo [DA VERIFICARE]",
+      "Teoria pptx 5LSA, slide 8, 12-17"
+    ]
+  }
+]

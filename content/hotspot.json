@@ -1,230 +1,510 @@
 [
   {
-    "id": "intro-iss",
-    "tappa": "intro",
-    "titolo": "La Stazione Spaziale Internazionale",
-    "testo": "La ISS è un laboratorio abitato in orbita bassa, a circa quattrocento chilometri di quota. È stata costruita assemblando moduli lanciati in più anni da diversi Paesi e gestita da cinque agenzie spaziali: NASA, Roscosmos, ESA, JAXA e CSA. Compie un'orbita in circa novanta minuti, e dal 2000 è abitata senza interruzioni. Il suo scopo principale è la ricerca scientifica in condizioni che sulla Terra non si possono riprodurre a lungo.",
+    "id": "harmony-cavi",
+    "luogo": "harmony",
+    "categoria": "energia",
+    "titolo": "Cavi lungo il soffitto",
+    "breve": "I fasci di cavi portano energia e dati: più la tensione è alta, meno corrente serve e meno si disperde.",
+    "punti": [
+      "Un cavo percorso da corrente si scalda per effetto Joule: la potenza persa è R·i².",
+      "A parità di potenza trasportata, tensione più alta significa corrente più bassa e perdite minori.",
+      "È lo stesso ragionamento delle linee elettriche a terra, in scala ridotta."
+    ],
+    "formula": "$P_J = R\\,i^2$",
+    "slide_pptx": [23],
     "badge": "Foto reale",
-    "fonte": "NASA, ESA (schede ufficiali sulla ISS)"
+    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 23",
+    "oggetto_reale": "Fasci di cavi blu e bianchi che corrono in alto sul lato destro del panorama.",
+    "yaw_stimato": 58,
+    "pitch_stimato": 60
   },
   {
-    "id": "intro-microgravita",
-    "tappa": "intro",
-    "titolo": "Non è assenza di gravità",
-    "testo": "A quattrocento chilometri la gravità terrestre è ancora circa il novanta per cento di quella al suolo. La stazione e i suoi astronauti non \"sfuggono\" alla Terra: ci cadono attorno. Si muovono così veloci in orizzontale che, mentre cadono, la superficie curva del pianeta si allontana sotto di loro. Per questo tutto fluttua. Questa condizione si chiama microgravità, ed è ciò che rende la stazione un laboratorio unico.",
-    "badge": "Simulazione concettuale",
-    "fonte": "NASA (Educational resources su microgravità e orbita)"
-  },
-  {
-    "id": "intro-pannelli",
-    "tappa": "intro",
-    "titolo": "Le ali solari",
-    "testo": "Le grandi ali dorate sono pannelli fotovoltaici: trasformano la luce del Sole in elettricità, che alimenta strumenti, computer e sistemi di bordo. Ogni orbita comprende un tramonto e un'alba, quindi la stazione passa metà del tempo in ombra, e le batterie coprono quei periodi. È un piccolo esempio di sistema energetico completo, costruito per funzionare lontano da qualsiasi rete elettrica.",
+    "id": "harmony-comunicazioni",
+    "luogo": "harmony",
+    "categoria": "fisica",
+    "titolo": "Il display delle comunicazioni",
+    "breve": "Lo schermo mostra i collegamenti radio con la Terra: onde elettromagnetiche che inducono tensioni nelle antenne.",
+    "punti": [
+      "Un campo elettromagnetico che varia nel tempo attraversa un'antenna ricevente e vi induce una fem.",
+      "È la stessa legge di Faraday-Neumann, a frequenze radio molto più alte.",
+      "Sullo schermo si leggono le sigle di bande usate per i collegamenti, come S-Band e Ku-Band."
+    ],
+    "formula": "$\\varepsilon = -\\dfrac{d\\Phi_B}{dt}$",
+    "slide_pptx": [8],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS electrical power system) [DA VERIFICARE i dettagli sulle batterie]"
+    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 8",
+    "oggetto_reale": "Schermo luminoso in alto a sinistra, con diagrammi e le scritte 'Ku-Band' e 'S-Band'.",
+    "yaw_stimato": -134,
+    "pitch_stimato": 75
   },
   {
-    "id": "nodo-vita",
-    "tappa": "nodo",
-    "titolo": "Vivere senza peso",
-    "testo": "A bordo non esiste un sopra e un sotto: i cavi, gli attrezzi e perfino il cibo vanno fissati. Senza il carico della gravità, muscoli e ossa si indeboliscono, perciò gli astronauti si allenano ogni giorno con attrezzi speciali. Lo studio di questi effetti è esso stesso ricerca: aiuta a capire come il corpo umano reagisce, e fornisce dati utili anche per la medicina sulla Terra.",
+    "id": "harmony-attrezzi",
+    "luogo": "harmony",
+    "categoria": "energia",
+    "titolo": "Attrezzi: energia da conservare",
+    "breve": "Una batteria conserva energia in forma chimica; una bobina la conserva nel campo magnetico.",
+    "punti": [
+      "Nel campo magnetico di una bobina percorsa da corrente è immagazzinata l'energia ½·L·i².",
+      "L'energia si accumula mentre la corrente cresce da zero al suo valore finale.",
+      "Due modi diversi di conservare energia: chimico e magnetico."
+    ],
+    "formula": "$U = \\tfrac{1}{2}\\,L\\,i^2$",
+    "slide_pptx": [16, 17],
     "badge": "Foto reale",
-    "fonte": "NASA, ESA (human research on ISS)"
+    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 16-17",
+    "oggetto_reale": "Pannello blu con attrezzi appesi (chiavi, pinze, impugnature rosse) sul lato sinistro.",
+    "yaw_stimato": -93,
+    "pitch_stimato": 12
   },
   {
-    "id": "nodo-moduli",
-    "tappa": "nodo",
-    "titolo": "I nodi: crocevia della stazione",
-    "testo": "I moduli della ISS non sono in fila: sono collegati da nodi, moduli di raccordo con più portelli. Da qui si accede ai laboratori, agli alloggi e ai moduli di servizio. Il modulo Harmony, per esempio, è il nodo a cui è collegato Columbus. Muoversi tra un modulo e l'altro significa passare attraverso questi crocevia, in un percorso che ricorda più un sottomarino che una casa.",
+    "id": "harmony-laptop",
+    "luogo": "harmony",
+    "categoria": "terra",
+    "titolo": "Il laptop con la Terra",
+    "breve": "Il primo esperimento di Faraday è un conduttore in moto in un campo: la ISS lo fa a 7,7 km/s.",
+    "punti": [
+      "La stazione orbita a circa 400 km di quota con velocità di circa 7,7 km/s.",
+      "Muovendosi nel campo magnetico terrestre, la sua struttura vede una fem di moto.",
+      "Nell'ambiente «La ISS nel campo magnetico» si può variare velocità e campo."
+    ],
+    "formula": "$\\varepsilon = B\\,l\\,v$",
+    "slide_pptx": [2],
     "badge": "Foto reale",
-    "fonte": "NASA, ESA (ISS modules overview) [DA VERIFICARE il nome del nodo ripreso nel panorama]"
+    "fonte": "Panorama ESA (Harmony); NASA, ISS facts; teoria pptx slide 2",
+    "oggetto_reale": "Laptop aperto a sinistra, sotto il cartello 'To COL'; lo schermo sembra mostrare un'immagine della Terra [verificare con zoom].",
+    "yaw_stimato": -134,
+    "pitch_stimato": 14
   },
+
   {
-    "id": "nodo-ricerca",
-    "tappa": "nodo",
-    "titolo": "Laboratori dentro la casa",
-    "testo": "Sulla ISS la ricerca non è confinata in una stanza: attraversa tutta la stazione. Si studiano biologia, medicina, fisica dei fluidi, combustione, materiali, osservazione della Terra. Molti esperimenti sono montati in rack standardizzati, che si possono sostituire e aggiornare senza ricostruire il laboratorio. Per questo la stazione, in oltre vent'anni, ha potuto ospitare esperimenti molto diversi tra loro.",
+    "id": "columbus-rack-eml",
+    "luogo": "columbus",
+    "categoria": "eml",
+    "titolo": "Il rack dell'EML",
+    "breve": "Qui lavora l'EML: oltre cinquanta campioni e più di duemila cicli sperimentali dal 2014.",
+    "punti": [
+      "L'EML occupa un European Drawer Rack: quattro moduli per circa 360 chilogrammi.",
+      "Una sola bobina in rame porta due campi alternati: uno posiziona il campione, l'altro lo scalda.",
+      "Gli esperimenti sono comandati dal centro utenti del DLR a Colonia."
+    ],
+    "slide_pptx": [4, 5],
     "badge": "Foto reale",
-    "fonte": "NASA, ESA (ISS research overview)"
+    "fonte": "DLR (EML onboard the ISS); Airbus Defence and Space; docs/research/eml.md",
+    "oggetto_reale": "Rack bianco al centro del panorama con quattro tappi/valvole circolari metalliche in colonna; posizione da grafo: yaw +8, pitch +20. Clic: apre la scena 3D dell'EML.",
+    "yaw_stimato": 8,
+    "pitch_stimato": 20
   },
   {
-    "id": "columbus-lab",
-    "tappa": "columbus",
-    "titolo": "Columbus, il laboratorio europeo",
-    "testo": "Columbus è il contributo principale dell'ESA alla ISS. È un modulo pressurizzato, in cui gli astronauti possono lavorare in maniche di camicia. Fu portato in orbita nel febbraio 2008 dallo Space Shuttle Atlantis e collegato alla stazione. Ospita esperimenti di fisica dei fluidi, biologia, scienza dei materiali e altro ancora. È il punto in cui l'Europa fa ricerca in orbita, con il supporto di centri di controllo a Terra.",
+    "id": "columbus-laptop",
+    "luogo": "columbus",
+    "categoria": "energia",
+    "titolo": "Laptop e alimentatori",
+    "breve": "Ogni computer riceve energia da un convertitore: dentro c'è un trasformatore.",
+    "punti": [
+      "Un trasformatore cambia la tensione sfruttando la mutua induzione tra due bobine.",
+      "Nei convertitori compatti si usano frequenze alte: più è rapida la variazione di flusso, più piccolo può essere il trasformatore.",
+      "La rete di bordo è in corrente continua: i convertitori la adattano a ciò che serve."
+    ],
+    "formula": "$\\dfrac{V_1}{V_2} = \\dfrac{N_1}{N_2}$",
+    "slide_pptx": [20],
     "badge": "Foto reale",
-    "fonte": "ESA (Columbus laboratory), NASA (STS-122)"
+    "fonte": "Panorama ESA (Columbus); NASA NTRS (ISS electrical power system); teoria pptx slide 20",
+    "oggetto_reale": "Laptop aperto sul pannello centrale-sinistro, con cavi collegati.",
+    "yaw_stimato": -42,
+    "pitch_stimato": 6
   },
   {
-    "id": "columbus-rack",
-    "tappa": "columbus",
-    "titolo": "I rack: laboratori a scomparti",
-    "testo": "Le pareti di Columbus sono occupate da rack: strutture standardizzate delle dimensioni di un grande armadio. Ognuno contiene uno strumento, con alimentazione, raffreddamento e collegamenti dati forniti dal modulo. I rack si possono sostituire nel tempo. Uno di questi ospita l'Electromagnetic Levitator, EML, il forno senza contatto che racconteremo nella prossima tappa.",
+    "id": "columbus-cavi",
+    "luogo": "columbus",
+    "categoria": "fisica",
+    "titolo": "Cavi intrecciati",
+    "breve": "Cavi vicini si influenzano: un campo variabile in uno induce tensioni disturbanti negli altri.",
+    "punti": [
+      "È una mutua induzione non voluta, come nel quarto esperimento di Faraday.",
+      "Intrecciando i due fili di una coppia, i disturbi indotti si compensano a vicenda.",
+      "Schermature e ordine dei cavi servono anche a questo."
+    ],
+    "slide_pptx": [5],
     "badge": "Foto reale",
-    "fonte": "ESA (Columbus racks, EML) [DA VERIFICARE ubicazione esatta del rack EML]"
+    "fonte": "Panorama ESA (Columbus); teoria pptx slide 5",
+    "oggetto_reale": "Cavi blu a spirale e fili bianchi vicino al pannello con i laptop, circa al centro-sinistra.",
+    "yaw_stimato": -26,
+    "pitch_stimato": 17
   },
+
   {
-    "id": "columbus-controllo",
-    "tappa": "columbus",
-    "titolo": "Un laboratorio guidato da Terra",
-    "testo": "Gli esperimenti di Columbus non dipendono solo dagli astronauti. Molti sono comandati e seguiti da centri di controllo a Terra, che inviano istruzioni e ricevono dati in tempo reale. Per l'EML il supporto operativo coinvolge il centro utenti MUSC del DLR, l'agenzia spaziale tedesca, a Colonia. Il lavoro è condiviso: l'equipaggio interviene sull'hardware, la squadra a Terra gestisce le sequenze sperimentali.",
-    "badge": "Ricostruzione IA",
-    "fonte": "DLR, ESA [DA VERIFICARE il ruolo di MUSC per EML e la ripartizione dei compiti]"
-  },
-  {
-    "id": "eml-modello",
-    "tappa": "eml",
-    "titolo": "L'Electromagnetic Levitator",
-    "testo": "L'EML è uno strumento sviluppato da ESA e DLR per studiare i metalli fusi senza contatto. Al centro c'è una camera di processo, circondata da una bobina di induzione. Il campione metallico, di pochi millimetri, viene portato al centro, sostenuto dal campo magnetico e scaldato. Il modello 3D mostra la struttura dello strumento e permette di avvicinarsi ai suoi componenti, ruotarlo e osservarlo da ogni lato.",
-    "approfondimento": "Il principio si basa su una bobina percorsa da corrente alternata, che crea un campo magnetico variabile $\\vec{B}(t)$. Per la legge di Faraday-Neumann, in un conduttore immerso in questo campo si genera una f.e.m. indotta $\\varepsilon = -\\frac{\\Delta\\Phi_B}{\\Delta t}$. Le correnti indotte producono forza (levitazione) e calore (effetto Joule). Le specifiche dello strumento (frequenza, potenza, temperature massime) sono riportate nelle schede ESA e DLR [DA VERIFICARE prima di citare numeri].",
+    "id": "eml-bobina",
+    "luogo": "eml",
+    "categoria": "eml",
+    "titolo": "La bobina in rame",
+    "breve": "Una corrente alternata crea un campo magnetico che cambia nel tempo, senza muovere nulla.",
+    "punti": [
+      "Il flusso del campo attraverso il campione varia di continuo: è la condizione di Faraday per le correnti indotte.",
+      "Due correnti sovrapposte: circa 140 kHz per posizionare e circa 380 kHz per scaldare (fonti secondarie, da verificare).",
+      "Un'apertura laterale di circa 8 mm permette alla telecamera di vedere il campione."
+    ],
+    "formula": "$\\Phi_B = B\\,S\\cos\\theta$",
+    "slide_pptx": [4, 7],
     "badge": "Modello 3D",
-    "fonte": "ESA, DLR (documentazione EML); modello 3D ricostruito dall'autore"
+    "fonte": "DLR; arXiv 1605.03511 (review); Spaceflight101; docs/research/eml.md",
+    "oggetto_reale": "Avvolgimento in rame attorno al campione nella camera di processo (modello 3D)."
   },
   {
-    "id": "eml-campo-variabile",
-    "tappa": "eml",
-    "titolo": "Il campo magnetico variabile",
-    "testo": "Tutto parte da un campo magnetico che cambia nel tempo. Nell'EML la bobina è alimentata a corrente alternata: il campo che ne esce oscilla continuamente. Nessuna parte si muove, e il campione resta fermo al centro. Quello che conta è che il flusso del campo attraverso il metallo non è mai costante. È esattamente la condizione che Faraday aveva individuato per generare correnti indotte, anche senza muovere né magneti né spire.",
-    "approfondimento": "Il flusso del campo magnetico attraverso una superficie $S$ è $\\Phi_B = B\\,S\\cos\\theta$, e si misura in weber (Wb). Secondo il principio di induzione, una corrente indotta compare quando $\\Phi_B$ varia nel tempo: si può cambiare $B$, la superficie $S$ o l'angolo $\\theta$. I quattro esperimenti di Faraday mostrano proprio queste possibilità. Nell'EML varia $B$, perché la corrente nella bobina è alternata: $i(t) = I_0 \\sin(\\omega t)$.",
+    "id": "eml-correnti",
+    "luogo": "eml",
+    "categoria": "eml",
+    "titolo": "Correnti parassite e Lenz",
+    "breve": "Nel campione nascono correnti che si chiudono su se stesse e respingono la bobina.",
+    "punti": [
+      "Per la legge di Lenz il campo indotto si oppone alla variazione di flusso che lo crea.",
+      "La repulsione spinge il campione verso il centro, dove il campo del quadrupolo si annulla.",
+      "Il campione resta sospeso senza toccare nulla."
+    ],
+    "formula": "$\\varepsilon = -\\dfrac{d\\Phi_B}{dt}, \\quad i = \\dfrac{\\varepsilon}{R}$",
+    "slide_pptx": [8, 9, 11],
     "badge": "Simulazione concettuale",
-    "fonte": "Teoria di Faraday (slide 2-7 del pptx 5LSA); ESA, DLR per il funzionamento dell'EML"
-  },
-  {
-    "id": "eml-correnti-indotte",
-    "tappa": "eml",
-    "titolo": "Correnti parassite e legge di Lenz",
-    "testo": "Nel campione il campo variabile induce correnti che si chiudono su se stesse, come piccoli vortici: sono le correnti parassite, o di Foucault. Per la legge di Lenz, creano un campo magnetico che si oppone alla variazione che le ha generate. Il risultato è una repulsione tra la bobina e il metallo. Con una geometria di bobina adeguata, il campione viene spinto verso una zona centrale più stabile e resta sospeso.",
-    "approfondimento": "Legge di Faraday-Neumann-Lenz: $\\varepsilon = -\\frac{\\Delta\\Phi_B}{\\Delta t}$. Il segno meno esprime la legge di Lenz: il verso della corrente indotta è tale da generare un campo che si oppone alla variazione di flusso che l'ha prodotta. Nel limite di intervalli molto brevi, $\\varepsilon = -\\frac{d\\Phi_B}{dt}$. Con la prima legge di Ohm, l'intensità della corrente indotta è $i = \\frac{\\varepsilon}{R}$, dove $R$ è la resistenza del percorso chiuso nel metallo.",
-    "badge": "Simulazione concettuale",
-    "fonte": "Teoria di Faraday-Neumann-Lenz (slide 8-11 del pptx 5LSA); ESA, DLR"
+    "fonte": "DLR; teoria pptx slide 8-11; docs/research/eml.md",
+    "oggetto_reale": "Campione sferico al centro della bobina, con anelli di corrente animati (render Blender)."
   },
   {
     "id": "eml-joule",
-    "tappa": "eml",
-    "titolo": "Il calore dell'effetto Joule",
-    "testo": "Le correnti indotte incontrano la resistenza del metallo, e l'energia elettrica si trasforma in calore. È l'effetto Joule, lo stesso che scalda il filo di un tostapane. Qui avviene dentro il campione, che si scalda dall'interno e senza contatto, tanto da diventare incandescente. Un solo campo, quindi, ha due funzioni: sostenere e scaldare. In orbita, dove il campione pesa pochissimo, basta un campo molto più debole per tenerlo in posizione.",
-    "approfondimento": "La potenza dissipata per effetto Joule in un conduttore di resistenza $R$ percorso da corrente $i$ è $P = R\\,i^2$. Poiché $i = \\varepsilon / R$, si può scrivere anche $P = \\frac{\\varepsilon^2}{R}$. Più rapidamente varia il flusso, maggiore è la f.e.m. indotta e più calore si sviluppa: per questo il riscaldamento a induzione usa frequenze elevate. Il riscaldamento e la sospensione si regolano distinguendo l'intensità del campo che serve a sostenere da quella che serve a scaldare [DA VERIFICARE con la documentazione ESA/DLR].",
+    "luogo": "eml",
+    "categoria": "eml",
+    "titolo": "Il calore dall'interno",
+    "breve": "Le stesse correnti scaldano il metallo per effetto Joule, fino a oltre duemila gradi.",
+    "punti": [
+      "La potenza dissipata è R·i²: più forti le correnti, più calore.",
+      "Un campo a frequenza diversa scalda, l'altro posiziona: le due funzioni sono separate.",
+      "Il campione può superare i 2000 °C; l'ESA indica fino a 2200 °C."
+    ],
+    "formula": "$P = R\\,i^2 = \\dfrac{\\varepsilon^2}{R}$",
+    "slide_pptx": [9],
     "badge": "Simulazione concettuale",
-    "fonte": "Teoria su effetto Joule e correnti indotte (pptx 5LSA); ESA, DLR"
+    "fonte": "Airbus Defence and Space; ESA (2024); DLR",
+    "oggetto_reale": "Campione che diventa incandescente (render Blender)."
   },
   {
-    "id": "eml-fusione",
-    "tappa": "eml",
-    "titolo": "La fusione: una goccia sospesa",
-    "testo": "Aumentando la potenza, il campione supera la temperatura di fusione e diventa una goccia liquida, senza pareti e senza recipiente. Sospesa e quasi sferica, tenuta insieme dalla sua tensione superficiale, la goccia oscilla leggermente. Osservando queste oscillazioni con le telecamere si possono misurare proprietà come la tensione superficiale e la viscosità. Nessun contenitore contamina il metallo, quindi i dati riguardano davvero il materiale, non il materiale più il suo vaso.",
-    "approfondimento": "Nelle misure a goccia oscillante, la frequenza di oscillazione della goccia è legata alla tensione superficiale, mentre lo smorzamento delle oscillazioni è legato alla viscosità. Sono relazioni classiche di fluidodinamica, che richiedono una goccia quasi sferica: per questo la microgravità è un vantaggio. L'EML permette anche di misurare altre proprietà termofisiche, come la densità e il calore specifico [DA VERIFICARE l'elenco ufficiale delle grandezze misurate].",
-    "badge": "Simulazione concettuale",
-    "fonte": "ESA, DLR (EML, proprietà termofisiche)"
+    "id": "eml-induttore",
+    "luogo": "eml",
+    "categoria": "fisica",
+    "titolo": "La bobina è un induttore",
+    "breve": "Quando la corrente cambia, la bobina genera una fem che si oppone: è l'autoinduzione.",
+    "punti": [
+      "L'induttanza L dipende dalla geometria della bobina, non dalla corrente.",
+      "Alla chiusura la corrente cresce gradualmente: è l'extracorrente di chiusura.",
+      "Nel campo della bobina è immagazzinata l'energia ½·L·i².",
+      "La bobina è alimentata da un generatore in corrente alternata."
+    ],
+    "formula": "$\\varepsilon = -L\\,\\dfrac{di}{dt}$",
+    "slide_pptx": [12, 13, 14, 15, 16, 17, 19],
+    "badge": "Modello 3D",
+    "fonte": "Teoria pptx slide 12-19; DLR",
+    "oggetto_reale": "La bobina in rame del modello 3D, con simbolo di induttore sovrapposto."
   },
   {
-    "id": "eml-solidificazione",
-    "tappa": "eml",
-    "titolo": "La solidificazione",
-    "testo": "Quando il riscaldamento si riduce, la goccia si raffredda. In assenza di pareti, a cui i cristalli possono agganciarsi, il liquido può scendere sotto la temperatura di solidificazione senza solidificare: questo si chiama sottoraffreddamento. A un certo punto, la cristallizzazione parte e il fronte solido attraversa la goccia in un istante. Le telecamere ad alta velocità e i sensori di temperatura registrano questo momento, che racconta come nasce la struttura interna di una lega.",
-    "approfondimento": "Il sottoraffreddamento è la differenza tra la temperatura di solidificazione e la temperatura a cui il liquido, rimasto liquido, comincia a solidificare. Senza pareti, la nucleazione dei cristalli può partire solo dall'interno o da impurezze rare, perciò è possibile raggiungere sottoraffreddamenti elevati. La velocità del fronte di solidificazione dipende dal grado di sottoraffreddamento e dalla lega, ed è una grandezza centrale per i modelli di crescita dei cristalli [DA VERIFICARE con le pubblicazioni ESA/DLR sull'EML].",
-    "badge": "Simulazione concettuale",
-    "fonte": "ESA, DLR (esperimenti di solidificazione con EML)"
-  },
-  {
-    "id": "eml-autoinduzione",
-    "tappa": "eml",
-    "titolo": "La bobina come induttore",
-    "testo": "La bobina dell'EML non è solo uno strumento: è un induttore. Quando la corrente varia, la bobina stessa genera una f.e.m. che si oppone alla variazione, e il campo magnetico immagazzina energia. Questo fenomeno, l'autoinduzione, è una conseguenza diretta della legge di Faraday-Neumann-Lenz applicata allo stesso circuito. È facoltativo per seguire la storia, ma spiega perché occorre un circuito elettrico progettato con cura per alimentare la bobina.",
-    "approfondimento": "L'induttanza $L$ lega il flusso autoconcatenato alla corrente: $\\Phi_B = L\\,i$. La f.e.m. autoindotta è $\\varepsilon = -L\\frac{\\Delta i}{\\Delta t}$, e l'unità di misura dell'induttanza è l'henry (H). Per un solenoide $L = \\mu_0 \\frac{N^2 S}{\\ell}$. L'energia immagazzinata nel campo magnetico è $U = \\frac{1}{2}L\\,i^2$. In un circuito RL, alla chiusura, la corrente non sale subito al valore di regime: l'extracorrente di chiusura ritarda la crescita.",
-    "badge": "Simulazione concettuale",
-    "fonte": "Teoria sull'autoinduzione (slide 12-17 del pptx 5LSA)"
-  },
-  {
-    "id": "eml-quattro-esperimenti",
-    "tappa": "eml",
+    "id": "eml-faraday",
+    "luogo": "eml",
+    "categoria": "fisica",
     "titolo": "Da Faraday all'EML",
-    "testo": "Nel 1831 Faraday scoprì che una corrente può nascere senza batteria, ogni volta che cambia il campo magnetico attraverso un circuito. Lo mostrò in quattro modi: spira in moto in un campo, spira che ruota, magnete che si avvicina a una bobina, due bobine su un anello di ferro. L'EML è un parente stretto dell'ultimo esperimento: un campo variabile prodotto da una bobina fa nascere correnti in un conduttore vicino.",
-    "approfondimento": "In tutti e quattro gli esperimenti, il filo conduttore è la variazione del flusso: cambia la superficie attraversata, oppure l'orientamento della spira, oppure il campo $B$, oppure la corrente primaria in un circuito accoppiato (mutua induzione). La conclusione generale è il principio di induzione: una corrente indotta compare quando $\\Phi_B$ varia nel tempo.",
+    "breve": "Il campione è l'ultimo anello dei quattro esperimenti di Faraday: una bobina induce correnti in un conduttore vicino.",
+    "punti": [
+      "Spira in moto, spira che ruota, magnete in moto, due bobine su un anello di ferro.",
+      "In tutti vale la stessa regola: la corrente indotta nasce se il flusso varia.",
+      "Nell'EML varia il campo nel tempo, come nel quarto esperimento."
+    ],
+    "slide_pptx": [2, 3, 4, 5, 6],
     "badge": "Simulazione concettuale",
-    "fonte": "Slide 2-7 del pptx 5LSA (esperimenti di Faraday)"
+    "fonte": "Teoria pptx 5LSA, slide 2-6",
+    "oggetto_reale": "Quattro piccole animazioni schematiche accanto al modello 3D."
   },
   {
-    "id": "materiali-convezione",
-    "tappa": "materiali",
-    "titolo": "Senza convezione, senza sedimentazione",
-    "testo": "Sulla Terra, in un liquido le parti più calde e leggere salgono, quelle più fredde e dense scendono: si creano correnti di convezione che mescolano tutto. In microgravità questi movimenti quasi spariscono. Il liquido resta tranquillo, e si possono osservare processi come la crescita dei cristalli o la diffusione degli elementi senza questo disturbo. È uno dei motivi per cui i materiali vengono studiati in orbita.",
+    "id": "eml-campione",
+    "luogo": "eml",
+    "categoria": "eml",
+    "titolo": "La goccia di metallo",
+    "breve": "Un campione sferico fonde, oscilla e si solidifica senza pareti: da qui si misurano proprietà dei metalli.",
+    "punti": [
+      "I campioni sono sfere di 5-8 mm; 18 per ogni magazzino a revolver (diametro da fonti secondarie).",
+      "Senza pareti il liquido può restare sotto la temperatura di fusione: è il sottoraffreddamento.",
+      "Una telecamera veloce registra il fronte solido che attraversa la goccia.",
+      "Dalle oscillazioni si ricavano tensione superficiale e viscosità."
+    ],
+    "slide_pptx": [9],
     "badge": "Simulazione concettuale",
-    "fonte": "ESA, NASA (materials science in microgravity)"
+    "fonte": "DLR; Airbus; ESA (clip lega Al-Ni, 2024); docs/research/eml.md",
+    "oggetto_reale": "Sfera di lega nella camera; video di fusione e solidificazione."
   },
+
   {
-    "id": "materiali-leghe",
-    "tappa": "materiali",
-    "titolo": "Leghe migliori, giù sulla Terra",
-    "testo": "I metalli usati nell'industria sono quasi sempre leghe: miscele di più elementi. Le loro proprietà dipendono da come si solidificano. Conoscere con precisione proprietà come viscosità, tensione superficiale e comportamento in solidificazione permette di migliorare i processi di fusione e colata, e di costruire modelli più affidabili per leghe usate, ad esempio, nei settori aeronautico e automobilistico.",
-    "badge": "Simulazione concettuale",
-    "fonte": "ESA, DLR [DA VERIFICARE leghe e applicazioni specifiche degli esperimenti EML]"
-  },
-  {
-    "id": "cupola-finestre",
-    "tappa": "cupola",
-    "titolo": "La Cupola",
-    "testo": "La Cupola è un modulo con sette finestre: sei attorno e una al centro. Fu aggiunta alla stazione nel 2010. Serve per osservare la Terra e lo spazio, e per seguire le operazioni con il braccio robotico esterno. Per molti astronauti è il posto più amato della stazione. Da qui la Terra appare come una sfera luminosa che scorre sotto i piedi.",
+    "id": "kibo-elf",
+    "luogo": "kibo",
+    "categoria": "eml",
+    "titolo": "ELF: levitare con l'elettricità",
+    "breve": "Anche Kibo ha una fornace a levitazione, ma usa la forza elettrostatica, non l'induzione.",
+    "punti": [
+      "La fornace ELF (JAXA) tiene il campione con forze elettriche e lo scalda con laser.",
+      "Funziona anche con ossidi e vetri, che non conducono: l'induzione non basterebbe.",
+      "Sta nel Multi-Purpose Small Payload Rack ed è comandata da Terra."
+    ],
+    "slide_pptx": [11],
     "badge": "Foto reale",
-    "fonte": "ESA, NASA (Cupola) [DA VERIFICARE anno e dettagli]"
+    "fonte": "JAXA (Electrostatic Levitation Furnace, Kibo Utilization); iafastro.directory IAC-11/A2/5/9976",
+    "oggetto_reale": "Vassoio nero con la scritta 'MSPR Laptop JAXA' a sinistra del portello centrale. L'ELF stessa non è identificabile nel panorama: indicare il rack MSPR.",
+    "yaw_stimato": -79,
+    "pitch_stimato": -12
   },
+  {
+    "id": "kibo-joystick",
+    "luogo": "kibo",
+    "categoria": "strumento",
+    "titolo": "Il joystick di comando",
+    "breve": "Un joystick comanda bracci robotici: i giunti usano motori elettrici, l'inverso di un alternatore.",
+    "punti": [
+      "Un motore sfrutta la forza di Lorentz sul filo percorso da corrente in un campo magnetico.",
+      "Se lo si fa girare diventa un generatore: stesso principio, verso opposto.",
+      "Mentre il motore gira nasce una fem che si oppone alla corrente di alimentazione."
+    ],
+    "slide_pptx": [18],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Kibo); consegna scolastica (Obiettivo 9, motori); teoria pptx slide 18",
+    "oggetto_reale": "Console con joystick e due piccoli schermi sul lato sinistro del portello [identificazione come postazione del braccio robotico da verificare].",
+    "yaw_stimato": -96,
+    "pitch_stimato": 6
+  },
+  {
+    "id": "kibo-ricadute",
+    "luogo": "kibo",
+    "categoria": "terra",
+    "titolo": "Materiali senza crogiolo",
+    "breve": "Misure su materiali ad altissima temperatura servono all'industria di vetri e componenti.",
+    "punti": [
+      "JAXA indica temperature fino a circa 3000 °C e misure di densità, tensione superficiale e viscosità.",
+      "Senza crogiolo il campione non si contamina.",
+      "Esempio pubblicato: le proprietà dell'ossido Ga2O3 fuso, studiate da AGC."
+    ],
+    "slide_pptx": [11],
+    "badge": "Foto reale",
+    "fonte": "JAXA Kibo Utilization; AGC (comunicato del 24 marzo 2022)",
+    "oggetto_reale": "Laptop con griglia di stati sul lato destro del portello centrale.",
+    "yaw_stimato": 112,
+    "pitch_stimato": 8
+  },
+
+  {
+    "id": "destiny-interruttori",
+    "luogo": "destiny",
+    "categoria": "fisica",
+    "titolo": "Interruttori e autoinduzione",
+    "breve": "Chiudendo un interruttore su una bobina, la corrente non sale subito: la fem autoindotta la rallenta.",
+    "punti": [
+      "La fem autoindotta si oppone all'aumento della corrente: è l'extracorrente di chiusura.",
+      "Il tempo di crescita dipende dal rapporto L/R del circuito.",
+      "Aprire un circuito induttivo può produrre scintille: per questo si usano protezioni."
+    ],
+    "formula": "$i(t) = \\dfrac{\\varepsilon}{R}\\left(1 - e^{-Rt/L}\\right)$",
+    "slide_pptx": [12, 15],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Destiny); teoria pptx slide 12-15",
+    "oggetto_reale": "Pannello nero con interruttori e connettori a destra del portello centrale.",
+    "yaw_stimato": 37,
+    "pitch_stimato": 2
+  },
+  {
+    "id": "destiny-alimentazione",
+    "luogo": "destiny",
+    "categoria": "energia",
+    "titolo": "Dai pannelli ai rack",
+    "breve": "I convertitori DDCU abbassano la tensione dei pannelli per la rete secondaria che alimenta i rack.",
+    "punti": [
+      "I pannelli lavorano attorno a 160 V in corrente continua; la rete secondaria è nominalmente 124,5 V.",
+      "Il DDCU è un convertitore isolato: separa le due reti con un trasformatore ad alta frequenza [DA VERIFICARE].",
+      "Efficienza dichiarata nel progetto NASA: circa 95 per cento."
+    ],
+    "formula": "$\\dfrac{V_2}{V_1} = \\dfrac{N_2}{N_1}$",
+    "slide_pptx": [20],
+    "badge": "Foto reale",
+    "fonte": "NASA NTRS (DDCU design, ISS EPS) [da riscontrare]; teoria pptx slide 20",
+    "oggetto_reale": "Rack a destra con fasci di cavi grigi e verdi e tubi rossi.",
+    "yaw_stimato": 106,
+    "pitch_stimato": -19
+  },
+  {
+    "id": "destiny-cavi-cc",
+    "luogo": "destiny",
+    "categoria": "energia",
+    "titolo": "Corrente continua a bordo",
+    "breve": "L'energia principale non viene da un alternatore: i pannelli producono già corrente continua.",
+    "punti": [
+      "Un generatore di corrente alternata è un alternatore; uno di corrente continua è una dinamo.",
+      "I pannelli fotovoltaici non hanno parti in movimento: trasformano luce in elettricità direttamente.",
+      "A terra la rete è alternata perché i trasformatori ne cambiano facilmente la tensione."
+    ],
+    "slide_pptx": [21],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS electrical power system); teoria pptx slide 21",
+    "oggetto_reale": "Cavi spessi grigio-verdi che scendono sul lato destro del panorama.",
+    "yaw_stimato": 80,
+    "pitch_stimato": -26
+  },
+
+  {
+    "id": "unity-zarya",
+    "luogo": "unity",
+    "categoria": "energia",
+    "titolo": "Verso Zarya",
+    "breve": "Questo portello porta a Zarya, il primo modulo, che all'inizio produceva energia con i propri pannelli.",
+    "punti": [
+      "Zarya fu lanciato nel novembre 1998; Unity vi fu collegato il mese dopo.",
+      "Nei primi anni l'energia veniva dai pannelli: nessuna centrale, nessuna rete esterna.",
+      "Anche il fotovoltaico trasforma energia senza turbine né alternatori."
+    ],
+    "slide_pptx": [22],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS assembly history) [data da riscontrare]",
+    "oggetto_reale": "Portello centrale con scritta 'To FGB' e cuscinetti rosa.",
+    "yaw_stimato": 0,
+    "pitch_stimato": 0
+  },
+  {
+    "id": "unity-airlock",
+    "luogo": "unity",
+    "categoria": "fisica",
+    "titolo": "Il portello di Quest",
+    "breve": "Per uscire si passa da qui: la struttura si carica elettricamente e va tenuta sotto controllo.",
+    "punti": [
+      "La struttura si muove nel campo terrestre e può caricarsi rispetto al plasma che la circonda.",
+      "I plasma contactor limitano questo potenziale entro ±40 volt.",
+      "Il controllo del potenziale riguarda la sicurezza di chi lavora fuori [DA VERIFICARE]."
+    ],
+    "formula": "$\\varepsilon = B\\,l\\,v$",
+    "slide_pptx": [8],
+    "badge": "Foto reale",
+    "fonte": "NASA NTRS (ISS plasma contactor), documento 19980201237 [da riscontrare]",
+    "oggetto_reale": "Portello sinistro 'To A/L' con due tute spaziali bianche visibili all'interno.",
+    "yaw_stimato": -89,
+    "pitch_stimato": -1
+  },
+  {
+    "id": "unity-ventole",
+    "luogo": "unity",
+    "categoria": "vita",
+    "titolo": "Ventole senza gravità",
+    "breve": "Senza gravità l'aria calda non sale: motori elettrici fanno circolare l'aria.",
+    "punti": [
+      "Senza convezione naturale, l'aria si muove solo se spinta.",
+      "Un motore elettrico trasforma energia elettrica in meccanica con la forza di Lorentz.",
+      "È il principio inverso dell'alternatore."
+    ],
+    "slide_pptx": [18],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS life support); teoria pptx slide 18",
+    "oggetto_reale": "Griglia metallica quadrata a pavimento, a sinistra del portello centrale.",
+    "yaw_stimato": -37,
+    "pitch_stimato": -33
+  },
+
+  {
+    "id": "tranquility-ared",
+    "luogo": "tranquility",
+    "categoria": "vita",
+    "titolo": "Allenarsi contro la perdita",
+    "breve": "Senza peso muscoli e ossa si indeboliscono: ogni giorno gli astronauti si allenano con l'ARED.",
+    "punti": [
+      "ARED sta per Advanced Resistive Exercise Device.",
+      "Studiare gli effetti del volo sul corpo aiuta anche la medicina a terra.",
+      "Prima e dopo il volo gli astronauti vengono esaminati, anche con la risonanza magnetica [DA VERIFICARE]."
+    ],
+    "slide_pptx": [],
+    "badge": "Foto reale",
+    "fonte": "NASA, ESA (human research on ISS)",
+    "oggetto_reale": "Attrezzo con piastra nera e dorata al centro, con la scritta 'ARED' sul braccio superiore. Rimanda all'ambiente RMN.",
+    "yaw_stimato": 2,
+    "pitch_stimato": 27
+  },
+  {
+    "id": "tranquility-eclss",
+    "luogo": "tranquility",
+    "categoria": "energia",
+    "titolo": "Ossigeno dall'acqua",
+    "breve": "A bordo l'ossigeno si ricava dall'acqua con la corrente elettrica: energia elettrica in energia chimica.",
+    "punti": [
+      "L'elettrolisi scinde l'acqua in idrogeno e ossigeno.",
+      "L'elettricità viene dai pannelli solari.",
+      "Il generatore di ossigeno è ospitato in Tranquility [DA VERIFICARE]."
+    ],
+    "slide_pptx": [21],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS Environmental Control and Life Support System)",
+    "oggetto_reale": "Nessun rack ECLSS identificabile nel panorama: usare la parete bianca sinistra come ancoraggio.",
+    "yaw_stimato": -96,
+    "pitch_stimato": 6
+  },
+  {
+    "id": "tranquility-portello-cupola",
+    "luogo": "tranquility",
+    "categoria": "terra",
+    "titolo": "Verso la Cupola",
+    "breve": "Il portello sul pavimento porta alla Cupola, da cui si vede la Terra scorrere a 7,7 chilometri al secondo.",
+    "punti": [
+      "La ISS compie un'orbita in circa novanta minuti.",
+      "Ogni punto della struttura è un conduttore in moto in un campo magnetico, come nel primo esperimento di Faraday.",
+      "Nell'ambiente dedicato si può vedere quale tensione ne risulta."
+    ],
+    "slide_pptx": [2],
+    "badge": "Foto reale",
+    "fonte": "NASA, ESA (ISS orbit facts); teoria pptx slide 2",
+    "oggetto_reale": "Portello circolare con vetro azzurro in basso al centro, scritta 'To CUP'.",
+    "yaw_stimato": 0,
+    "pitch_stimato": -70
+  },
+
   {
     "id": "cupola-terra",
-    "tappa": "cupola",
-    "titolo": "Sedici albe al giorno",
-    "testo": "Un'orbita dura circa novanta minuti: la stazione vede così sorgere il Sole circa sedici volte ogni ventiquattro ore. L'atmosfera appare come una pellicola sottile, azzurra, sul bordo del pianeta. È una prospettiva che molti astronauti descrivono con il nome di \"Overview effect\", l'effetto della visione d'insieme. E ricorda che gli esperimenti nati quassù trovano applicazione laggiù.",
+    "luogo": "cupola",
+    "categoria": "terra",
+    "titolo": "La Terra in movimento",
+    "breve": "La stazione fa un'orbita in circa novanta minuti e vede sorgere il Sole circa sedici volte al giorno.",
+    "punti": [
+      "A 400 km di quota la velocità è circa 7,7 km/s.",
+      "Il campo magnetico terrestre vale lì dell'ordine di 30 microtesla [DA VERIFICARE].",
+      "Muoversi in un campo magnetico è il primo esperimento di Faraday."
+    ],
+    "formula": "$\\varepsilon = B\\,l\\,v$",
+    "slide_pptx": [2],
     "badge": "Foto reale",
-    "fonte": "NASA, ESA (ISS orbit facts)"
+    "fonte": "NASA, ESA (ISS orbit facts)",
+    "oggetto_reale": "Finestre della Cupola con la Terra; da posizionare su cupola-foto.jpg."
   },
   {
-    "id": "finale-maglev",
-    "tappa": "finale",
-    "titolo": "Maglev: levitare per correre",
-    "testo": "Il treno giapponese SCMaglev usa potenti magneti superconduttori a bordo. Quando il treno corre, il suo campo fa variare il flusso nelle bobine laterali della guida. Per la legge di Lenz nascono correnti indotte che generano un campo opposto: il treno si solleva e non tocca più il binario. Le ruote servono solo alle basse velocità. Senza attrito di contatto, il Maglev può raggiungere velocità altissime con emissioni locali nulle. Un sistema di infrastruttura, come chiede l'Obiettivo 9.",
-    "approfondimento": "Si parla di sospensione elettrodinamica: il moto relativo tra magnete e conduttore fa variare $\\Phi_B$, e per la legge di Lenz la f.e.m. indotta $\\varepsilon = -\\frac{d\\Phi_B}{dt}$ produce correnti che si oppongono a quella variazione, quindi una forza repulsiva. Poiché la variazione di flusso dipende dalla velocità, la levitazione si innesca solo oltre una certa velocità. Nota: altri Maglev, come quello di Shanghai, usano un principio diverso (attrazione di elettromagneti). Il record di velocità del SCMaglev supera i 600 km/h [DA VERIFICARE il valore esatto e l'anno prima di citarlo].",
-    "badge": "Ricostruzione IA",
-    "fonte": "Teoria dal pptx 5LSA e dalla consegna (Obiettivo 9); JR Central, Railway Technical Research Institute [DA VERIFICARE]"
+    "id": "cupola-pannelli",
+    "luogo": "cupola",
+    "categoria": "energia",
+    "titolo": "Le ali solari",
+    "breve": "Dai finestrini si vedono i pannelli: luce che diventa elettricità senza alternatore.",
+    "punti": [
+      "Il fotovoltaico produce direttamente corrente continua.",
+      "Centrali idroelettriche, eoliche, geotermiche e termiche usano turbina e alternatore.",
+      "Fonti rinnovabili e Obiettivo 7: energia pulita e accessibile."
+    ],
+    "slide_pptx": [22],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS electrical power system); teoria pptx slide 22",
+    "oggetto_reale": "Pannelli solari dorati visibili all'esterno [verificare su cupola-foto.jpg]."
   },
   {
-    "id": "finale-correnti-parassite",
-    "tappa": "finale",
-    "titolo": "Le correnti parassite nella vita quotidiana",
-    "testo": "Le stesse correnti che sostengono il campione nell'EML lavorano ogni giorno intorno a noi. Nel piano a induzione scaldano direttamente il fondo della pentola. Nei forni a induzione fondono metalli senza fiamma. Nei freni elettromagnetici dei treni frenano senza attrito. In altri casi, come nei nuclei dei trasformatori, sono perdite da ridurre, per questo si usano nuclei laminati. Capirle permette di sfruttarle o di limitarle.",
-    "approfondimento": "In un conduttore massiccio un flusso variabile induce correnti circolari (correnti di Foucault) che dissipano potenza per effetto Joule, $P = R\\,i^2$. Il verso delle correnti è fissato dalla legge di Lenz, che spiega anche l'azione frenante di un magnete che si muove vicino a una lastra metallica. Laminare il nucleo, cioè dividerlo in lamine isolate, riduce l'area dei percorsi chiusi, quindi la f.e.m. e le perdite.",
-    "badge": "Simulazione concettuale",
-    "fonte": "Teoria su correnti indotte e legge di Lenz (pptx 5LSA)"
-  },
-  {
-    "id": "finale-motori",
-    "tappa": "finale",
-    "titolo": "Motori elettrici per l'industria",
-    "testo": "La transizione industriale passa anche dai motori elettrici, che stanno sostituendo i motori a combustione in sempre più macchine e processi produttivi. Funzionano grazie alla forza di Lorentz: un conduttore percorso da corrente in un campo magnetico riceve una forza. È il principio inverso del generatore: il motore trasforma energia elettrica in energia meccanica, e il generatore fa l'opposto. Motori più efficienti significano meno consumi e meno emissioni nelle fabbriche.",
-    "approfondimento": "Forza di Lorentz su un tratto di filo di lunghezza $\\ell$ percorso da corrente $i$ in un campo $B$: $F = i\\,\\ell\\,B\\sin\\theta$. In un motore, una spira percorsa da corrente ruota nel campo; mentre ruota, il flusso varia e, per Faraday-Neumann-Lenz, nasce una f.e.m. indotta (forza controelettromotrice) che si oppone alla corrente di alimentazione.",
-    "badge": "Simulazione concettuale",
-    "fonte": "Consegna scolastica (Obiettivo 9); teoria di Faraday-Neumann-Lenz (pptx 5LSA)"
-  },
-  {
-    "id": "finale-trasformatore",
-    "tappa": "finale",
-    "titolo": "Trasformatori e alternatori",
-    "testo": "L'induzione non serve solo a far levitare. Un alternatore trasforma energia meccanica in elettrica: una bobina ruota in un campo magnetico e produce corrente alternata. Un trasformatore, grazie alla mutua induzione tra due bobine, alza o abbassa la tensione. Elevando la tensione nelle linee, la corrente diminuisce e si disperde meno energia per effetto Joule. È così che l'elettricità arriva dalle centrali alle città. È un'altra storia, ma nasce dalla stessa legge.",
-    "approfondimento": "Alternatore: una spira che ruota con velocità angolare $\\omega$ in un campo $B$ genera $\\varepsilon(t) = \\varepsilon_0 \\sin(\\omega t)$. Trasformatore ideale: $\\frac{V_1}{V_2} = \\frac{N_1}{N_2}$, con $N_1$ e $N_2$ spire di primario e secondario. A potenza trasportata costante $P = V i$, alzare $V$ abbassa $i$, e la potenza dissipata nella linea, $P_J = R\\,i^2$, diminuisce.",
-    "badge": "Simulazione concettuale",
-    "fonte": "Teoria su alternatore, trasformatore e trasporto (slide 18-23 del pptx 5LSA)"
-  },
-  {
-    "id": "finale-obiettivo9",
-    "tappa": "finale",
-    "titolo": "Obiettivo 9: imprese, innovazione, infrastrutture",
-    "testo": "L'Obiettivo 9 dell'Agenda 2030 chiede di costruire infrastrutture resilienti e di promuovere un'industrializzazione equa, responsabile e sostenibile, con l'innovazione al centro. Qui il filo è chiaro: una legge fisica scoperta nel 1831 sostiene un treno senza attrito, motori più efficienti e leghe migliori studiate in orbita. La ricerca di base non ha un'applicazione dichiarata in partenza, ma spesso la trova.",
-    "badge": "Ricostruzione IA",
-    "fonte": "Agenda 2030 delle Nazioni Unite, Obiettivo 9; consegna scolastica"
-  },
-  {
-    "id": "finale-art32",
-    "tappa": "finale",
-    "titolo": "Articolo 32: la salute come diritto",
-    "testo": "\"La Repubblica tutela la salute come fondamentale diritto dell'individuo e interesse della collettività, e garantisce cure gratuite agli indigenti.\" La salute non riguarda solo l'ospedale. Riguarda la sicurezza dei materiali, delle macchine, dei luoghi di lavoro, e la prevenzione. La ricerca scientifica, anche quella spaziale, contribuisce a questo: macchine più sicure e materiali più affidabili. Con lo stesso principio di induzione si arriva anche alla risonanza magnetica e ai pacemaker: la fisica al servizio della salute.",
-    "badge": "Ricostruzione IA",
-    "fonte": "Costituzione della Repubblica Italiana, art. 32; consegna scolastica"
+    "id": "cupola-aurora",
+    "luogo": "cupola",
+    "categoria": "fisica",
+    "titolo": "Aurore dall'alto",
+    "breve": "Le aurore nascono dove particelle cariche seguono le linee del campo magnetico terrestre.",
+    "punti": [
+      "Una carica in moto in un campo magnetico subisce la forza di Lorentz.",
+      "Per questo spiraleggia lungo le linee del campo, verso i poli.",
+      "Dalla Cupola le aurore si osservano dall'alto."
+    ],
+    "slide_pptx": [],
+    "badge": "Foto reale",
+    "fonte": "NASA (aurore dalla ISS)",
+    "oggetto_reale": "Banda verde sul bordo del pianeta, se presente in cupola-foto.jpg; altrimenti immagine NASA dedicata."
   }
 ]
