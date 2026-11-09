@@ -56,7 +56,8 @@ body { background: var(--color-ink); color: #e8ecf5; font-family: var(--font-san
 .psv-navbar { display: none !important; }
 .psv-marker { overflow: visible; }
 
-.katex-display { overflow-x: auto; overflow-y: hidden; }
+.katex-display { overflow: visible; margin: .7em 0; }
+.katex-display > .katex { white-space: normal; max-width: 100%; }
 
 /* immagine a schermo intero con lento Ken Burns */
 @keyframes kenburns { from { transform: scale(1.02) translate(0, 0); } to { transform: scale(1.14) translate(-1.5%, -1%); } }
@@ -72,37 +73,67 @@ body { background: var(--color-ink); color: #e8ecf5; font-family: var(--font-san
 
 /* ---------- esplorazione fluttuante ---------- */
 @keyframes entraZoom { from { opacity: 0; transform: scale(1.18); } to { opacity: 1; transform: none; } }
-.hs2 {
-  position: relative; width: 48px; height: 48px; border-radius: 9999px; display: grid; place-items: center; cursor: pointer;
-  color: var(--c, #35e0ff); background: rgba(6, 10, 22, .66); border: 1.5px solid var(--c, #35e0ff);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .55), 0 0 18px color-mix(in srgb, var(--c, #35e0ff) 55%, transparent), inset 0 0 12px rgba(0, 0, 0, .4);
-  transition: transform .2s ease, background .2s ease;
-}
-.hs2.grande { width: 64px; height: 64px; }
-.hs2:hover, .hs2:focus-visible, .hs2.attivo { transform: scale(1.12); background: rgba(6, 10, 22, .86); outline: none; }
-.hs2::after {
-  content: ''; position: absolute; inset: -7px; border-radius: inherit; border: 1.5px solid var(--c, #35e0ff);
-  opacity: 0; animation: hs2ring 3s ease-out infinite; pointer-events: none;
-}
-.hs2.attivo::after { animation-duration: 1.6s; }
-@keyframes hs2ring { 0% { transform: scale(.82); opacity: .75; } 100% { transform: scale(1.4); opacity: 0; } }
-.hs2-tip {
-  position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(4px); white-space: nowrap;
-  padding: 5px 12px; border-radius: 9999px; font-size: 13px; font-weight: 500; color: #fff;
-  background: rgba(4, 8, 20, .9); border: 1px solid rgba(255, 255, 255, .35); box-shadow: 0 4px 18px rgba(0, 0, 0, .6);
-  opacity: 0; pointer-events: none; transition: opacity .18s, transform .18s; text-shadow: none;
-}
-.hs2:hover .hs2-tip, .hs2:focus-visible .hs2-tip, .hs2.attivo .hs2-tip { opacity: 1; transform: translateX(-50%); }
-.hs2.chiuso { opacity: .55; cursor: default; }
-.hs2.chiuso::after { display: none; }
 
 .kbd {
   display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, .4); background: rgba(255, 255, 255, .08); font-size: 12px; line-height: 1;
 }
-.scroll-sottile::-webkit-scrollbar { width: 6px; }
-.scroll-sottile::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .2); border-radius: 3px; }
+
+.hs2 {
+  position: relative; width: 58px; height: 58px; border-radius: 9999px; display: grid; place-items: center; cursor: pointer;
+  color: #fff; background: rgba(5, 8, 18, .94); border: 4px solid var(--c, #35e0ff);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .55), 0 0 26px color-mix(in srgb, var(--c, #35e0ff) 70%, transparent), 0 8px 20px rgba(0, 0, 0, .8);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.hs2 svg { filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .9)); }
+.hs2.grande { width: 64px; height: 64px; }
+.hs2:hover, .hs2:focus-visible, .hs2.attivo { transform: scale(1.1); outline: none; box-shadow: 0 0 0 2px rgba(0, 0, 0, .55), 0 0 36px var(--c, #35e0ff), 0 8px 20px rgba(0, 0, 0, .8); }
+.hs2.visto { border-color: color-mix(in srgb, var(--c, #35e0ff) 45%, #1b2235); }
+.hs2::after {
+  content: ''; position: absolute; inset: -9px; border-radius: inherit; border: 1.5px solid var(--c, #35e0ff);
+  opacity: 0; animation: hs2ring 3s ease-out infinite; pointer-events: none;
+}
+.hs2.attivo::after { animation-duration: 1.6s; }
+@keyframes hs2ring { 0% { transform: scale(.82); opacity: .75; } 100% { transform: scale(1.4); opacity: 0; } }
+.hs2-tip {
+  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); white-space: nowrap;
+  max-width: 190px; overflow: hidden; text-overflow: ellipsis;
+  padding: 4px 11px; border-radius: 9999px; font-size: 12.5px; font-weight: 500; color: #fff;
+  background: rgba(4, 8, 20, .9); border: 1px solid rgba(255, 255, 255, .3); box-shadow: 0 4px 16px rgba(0, 0, 0, .7);
+  opacity: 1; pointer-events: none; transition: opacity .18s; text-shadow: none;
+}
+[data-label="0"] .hs2-tip { opacity: 0; }
+.hs2:hover .hs2-tip, .hs2:focus-visible .hs2-tip { opacity: 1 !important; max-width: none; z-index: 5; }
+.hs2.chiuso { opacity: .6; cursor: default; }
+.hs2.chiuso::after { display: none; }
+
+/* barre di scorrimento: sempre sottili e coi colori del tema, mai orizzontali */
+* { scrollbar-width: thin; scrollbar-color: rgba(120, 190, 230, .35) transparent; }
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-thumb { background: rgba(120, 190, 230, .35); border-radius: 3px; }
+*::-webkit-scrollbar-track { background: transparent; }
+.scroll-sottile { overflow-x: hidden; }
+
+/* indicatori ai bordi dello schermo */
+.ind-bordo {
+  position: relative; width: 40px; height: 40px; border-radius: 9999px; display: grid; place-items: center; cursor: pointer;
+  background: rgba(5, 8, 18, .88); border: 2.5px solid var(--c, #35e0ff); opacity: .88;
+  box-shadow: 0 0 14px color-mix(in srgb, var(--c, #35e0ff) 55%, transparent), 0 4px 12px rgba(0, 0, 0, .7);
+  transition: opacity .2s, transform .2s;
+}
+.ind-bordo:hover { opacity: 1; transform: scale(1.12); }
+.ind-freccia {
+  position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none;
+  transform: rotate(var(--a, 0deg)) translateX(31px) translate(-50%, -50%);
+  border-left: 9px solid var(--c, #35e0ff); border-top: 6px solid transparent; border-bottom: 6px solid transparent;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, .9));
+}
+
+/* Cupola: zoom lentissimo e continuo sulla Terra, dissolvenze */
+@keyframes zoomLento { from { transform: scale(1); } to { transform: scale(1.09); } }
+.zoom-lento { animation: zoomLento 34s ease-in-out infinite alternate; transform-origin: 50% 50%; }
+@keyframes entraFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes esceFade { from { opacity: 1; } to { opacity: 0; } }
 
 /* crediti discreti */
 .credito-linea { font-size: 11.5px; line-height: 1.2; color: rgba(255,255,255,.55); text-shadow: 0 0 3px rgba(0,0,0,.9), 0 1px 6px rgba(0,0,0,.8); }

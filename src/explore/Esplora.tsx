@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Home } from 'lucide-react'
-import { nodi, percorsoGuidato, portelli, portelloVerso, rotta, urlVolo, type AmbienteId, type NodoId, type Portello } from '../data/stazione'
+import { nodi, portelli, portelloVerso, rotta, urlVolo, type AmbienteId, type Nodo, type NodoId, type Portello } from '../data/stazione'
 import { hotspotDi, luogoDi } from '../data/contenuti'
 import type { Hotspot } from '../data/types'
 import { assetExists } from '../lib/assets'
@@ -8,19 +8,21 @@ import { caloreFenomeno } from '../components/FenomeniPanel'
 import FenomeniPanel from '../components/FenomeniPanel'
 import Crediti from '../components/Crediti'
 import Badge from '../components/Badge'
-import HotspotMarker from '../ui/Hotspot'
+import HotspotMarker, { IndicatoreBordo } from '../ui/Hotspot'
 import HotspotCard from '../ui/HotspotCard'
 import SchedaLuogo from '../ui/SchedaLuogo'
+import ListaPunti from '../ui/ListaPunti'
 import MiniMappa from '../ui/MiniMappa'
-import PercorsoBar from '../ui/PercorsoBar'
+import TappeBar from '../ui/TappeBar'
 import Voce from '../ui/Voce'
 import AmbienteOverlay from '../ui/Ambienti'
+import SimulazioneOverlay from '../ui/Simulazioni'
 import PanoStage, { ZOOM_BASE, ZOOM_MAX, type Marcatore, type PanoApi } from './PanoStage'
 import VoloFx, { type FxApi } from './VoloFx'
 import ImmagineNodo from './ImmagineNodo'
 import Legenda from './Legenda'
 import Indicatore from './Indicatore'
-import { attendi, distanzaAngolare, inCubic, inQuad, outCubic, portelloInquadrato, rad, tween } from './geometria'
+import { attendi, distanzaAngolare, inQuad, outCubic, portelloInquadrato, rad, tween } from './geometria'
 import { useVista, vista } from './vista'
 
 const EmlScene = lazy(() => import('../components/EmlScene'))
@@ -28,10 +30,16 @@ const EmlScene = lazy(() => import('../components/EmlScene'))
 const CREDITO_VOLO = 'Volo: ricostruzione IA (Higgsfield) da panorami ESA'
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x))
 
+/** FOV orizzontale dei voli: il primo e l'ultimo fotogramma sono viste prospettiche a 80 gradi su 16:9 (scripts/pano-view.py) */
+const HFOV_VOLO = 80
+/** spinta in avanti prima dello scambio: FOV orizzontale 80 -> 77 gradi */
+const HFOV_SPINTA = 77
+/** punto di vista sul nadir di Tranquility (portello "To CUP") */
+const NADIR = { yaw: 0, pitch: -70 }
+
 interface Props {
   /** la visita è in corso (l'introduzione non copre più la scena) */
   attivo: boolean
-  guidataIniziale: boolean
   audioOn: boolean
   onAudio: () => void
   onHome: () => void
@@ -48,23 +56,44 @@ function portelloAvantiImmagine(nodo: NodoId, precedente: NodoId | null): Portel
   return portelli[nodo].find((p) => p.x !== undefined && p.verso !== precedente) ?? null
 }
 
+/** Video di volo caricato fino al primo fotogramma (o null se manca). */
+function preparaVideo(url: string): Promise<HTMLVideoElement | null> {
+  return new Promise((ok) => {
+    const v = document.createElement('video')
+    v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = url
+    v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%'
+    v.addEventListener('loadeddata', () => ok(v), { once: true })
+    v.onerror = () => ok(null)
+    setTimeout(() => ok(v.readyState >= 2 ? v : null), 7000)
+    v.load()
+  })
+}
+
 /**
- * Motore dell'esplorazione: nodo corrente, storia (per ↓), voli tra i nodi (video se presente, altrimenti transizione procedurale),
- * visita guidata come percorso nel grafo.
+ * Motore dell'esplorazione: nodo corrente, storia (per ↓), voli tra i nodi, tappe suggerite come percorso nel grafo.
+ *
+ * Volo con video (panorama -> panorama), un unico gesto continuo:
+ *  1. la camera ruota (easing) verso il portello e porta lo zoom al FOV che corrisponde a 80 gradi orizzontali del video (object-fit: cover);
+ *  2. leggera spinta in avanti (80 -> 77 gradi);
+ *  3. dissolvenza brevissima (200 ms) nel video, la cui scala iniziale compensa i 3 gradi di spinta, cosi l'immagine combacia;
+ *  4. a fine video il nuovo panorama e` gia` orientato/zoomato come l'ultimo fotogramma: dissolvenza breve e zoom morbido al FOV normale.
+ * ↓ = vola verso il modulo precedente usando il video IN AVANTI dell'arco inverso.
+ * Cupola: zoom progressivo nel panorama verso il nadir + dissolvenza nel video NASA della Terra (nessun video di volo).
  */
-export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onHome }: Props) {
+export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
   const [nodoId, setNodoId] = useState<NodoId>('harmony')
   const [storia, setStoria] = useState<NodoId[]>([])
   const [visitati, setVisitati] = useState<Set<NodoId>>(() => new Set(['harmony']))
+  const [viste, setViste] = useState<Set<string>>(() => new Set())
   const [volando, setVolando] = useState(false)
   const [voloIA, setVoloIA] = useState(false)
   const [apri, setApri] = useState<string | null>(null)
   const [ambiente, setAmbiente] = useState<AmbienteId | null>(null)
-  const [guidata, setGuidata] = useState(guidataIniziale)
-  const [idx, setIdx] = useState(0)
+  const [simulazione, setSimulazione] = useState<string | null>(null)
   const [pronto, setPronto] = useState(false)
   const [fenomeno, setFenomeno] = useState<string | null>(null)
   const [suggerimento, setSuggerimento] = useState<string | null>(null)
+  const [fantasma, setFantasma] = useState<Nodo | null>(null)
 
   const pano = useRef<PanoApi>(null)
   const fx = useRef<FxApi>(null)
@@ -72,8 +101,8 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
   const inVolo = useRef(false)
   const annulla = useRef(false)
   const entrato = useRef(false)
-  const st = useRef({ nodoId, storia, guidata, idx, ambiente, attivo })
-  st.current = { nodoId, storia, guidata, idx, ambiente, attivo }
+  const st = useRef({ nodoId, storia, ambiente, simulazione, attivo })
+  st.current = { nodoId, storia, ambiente, simulazione, attivo }
 
   const nodo = nodi[nodoId]
   const luogo = useMemo(() => luogoDi(nodoId), [nodoId])
@@ -89,7 +118,7 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
   const blur = (px: number) => { const el = pano.current?.elemento(); if (el) el.style.filter = px > 0.05 ? `blur(${px}px) brightness(${1 - px * 0.04})` : '' }
   const ripulisci = () => { fx.current?.imposta({ vignetta: 0, scie: 0, copertura: 0, video: 0 }); blur(0) }
 
-  /** Zoom-in verso il portello con vignettatura/scie/blur, poi copertura. `fin` = quota di tempo in cui sale la copertura. */
+  /** Zoom-in verso il portello con vignettatura/scie/blur, poi copertura (solo per i passaggi senza video). */
   const entraNelPortello = async (api: PanoApi, ms: number, daPano: boolean) => {
     const zoom = daPano ? api.zoomTo(ZOOM_MAX, ms, 'inCubic') : Promise.resolve()
     await Promise.all([zoom, tween(ms, (t) => {
@@ -107,74 +136,17 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
     ripulisci()
   }
 
-  const sceltaVideo = async (p: Portello, indietro: boolean): Promise<{ url: string; rev: boolean } | null> => {
-    const cand: { url: string; rev: boolean }[] = []
-    if (p.video) cand.push({ url: p.video, rev: false })
-    if (indietro) cand.push({ url: `/voli/${p.verso}__${p.da}_rev.mp4`, rev: true })
-    cand.push({ url: urlVolo(p.da, p.verso), rev: false })
-    for (const c of cand) if (await assetExists(c.url)) return c
+  /** Video in avanti dell'arco (mai `_rev`): quello dichiarato nell'arco o la convenzione public/voli/<da>__<a>.mp4. */
+  const sceltaVideo = async (p: Portello): Promise<string | null> => {
+    for (const url of [p.video, urlVolo(p.da, p.verso)]) if (url && await assetExists(url)) return url
     return null
   }
 
-  const riproduciVideo = async (url: string) => {
-    const host = fx.current?.videoHost()
-    if (!host) return
-    const v = document.createElement('video')
-    v.src = url; v.muted = true; v.playsInline = true; v.preload = 'auto'
-    v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover'
-    host.replaceChildren(v)
-    const fine = new Promise<void>((ok) => {
-      v.onended = () => ok(); v.onerror = () => ok()
-      v.play().catch(() => ok())
-      setTimeout(ok, 20000)
-    })
-    setVoloIA(true)
-    await tween(450, (t) => fx.current?.imposta({ video: t }))
-    await fine
-  }
-
-  // ---------- volo tra due nodi ----------
-  const attraversa = async (p: Portello, indietro: boolean, veloce: boolean) => {
-    const api = pano.current
-    if (!api) return
-    const da = nodi[p.da], a = nodi[p.verso]
-    const scelto = await sceltaVideo(p, indietro)
-    const k = veloce ? 0.75 : 1
-    let rev = false
-    if (da.tipo === 'panorama') {
-      const cur = api.posizione()
-      const delta = distanzaAngolare(cur.yaw, cur.pitch, rad(p.yaw), rad(p.pitch))
-      if (delta > 0.02) await api.rotateTo(rad(p.yaw), rad(p.pitch), (420 + 700 * (delta / Math.PI)) * k)
-    }
-    let zoomArrivo = ZOOM_MAX
-    if (scelto) {
-      rev = scelto.rev
-      if (da.tipo === 'panorama') {
-        await Promise.all([api.zoomTo(40, 650, 'inQuad'), tween(650, (t) => { fx.current?.imposta({ vignetta: t * 0.6, scie: t * 0.3 }); blur(t * 1.5) }, inQuad)])
-      }
-      await riproduciVideo(scelto.url)
-      zoomArrivo = 30
-    } else if (da.tipo === 'panorama') {
-      await entraNelPortello(api, 1400 * k, true)
-    } else {
-      await tween(550 * k, (t) => fx.current?.imposta({ copertura: t }))
-    }
-
-    // sguardo all'arrivo
-    let yaw: number, pitch: number
-    if (rev) { yaw = p.yawArrivo; pitch = p.pitchArrivo * 0.3 }
-    else if (p.arrivo) { yaw = p.arrivo.yaw; pitch = p.arrivo.pitch }
-    else if (da.tipo !== 'panorama') { yaw = p.yawArrivo; pitch = p.pitchArrivo * 0.3 }
-    else { yaw = p.yawArrivo + 180; pitch = 0 }
-
-    // scambio (sotto copertura)
-    if (a.tipo === 'panorama') {
-      if (caricato.current !== a.id) { await api.show(a.panorama!, rad(yaw), rad(pitch), zoomArrivo); caricato.current = a.id }
-      else api.orienta(rad(yaw), rad(pitch), zoomArrivo)
-    }
+  /** Registra l'arrivo in `a`: stato React, storia, vista (per l'indicatore ↑/↓). */
+  const registraArrivo = (p: Portello, a: Nodo, yaw: number, pitch: number) => {
     const s = st.current
     const top = s.storia[s.storia.length - 1]
-    const nuovaStoria = top === a.id ? s.storia.slice(0, -1) : [...s.storia, da.id]
+    const nuovaStoria = top === a.id ? s.storia.slice(0, -1) : [...s.storia, p.da]
     st.current = { ...s, nodoId: a.id, storia: nuovaStoria }
     setStoria(nuovaStoria); setNodoId(a.id); setFenomeno(null)
     setVisitati((v) => new Set(v).add(a.id))
@@ -182,43 +154,144 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
       yaw: rad(yaw), pitch: rad(pitch),
       portello: a.tipo === 'panorama' ? (portelloInquadrato(a.id, rad(yaw), rad(pitch))?.verso ?? null) : (portelloAvantiImmagine(a.id, nuovaStoria[nuovaStoria.length - 1] ?? null)?.verso ?? null),
     })
-    await attendi(a.tipo === 'panorama' ? 60 : 160)
-
-    // dissolvenza nel nuovo luogo
-    if (scelto) {
-      setVoloIA(false)
-      await Promise.all([a.tipo === 'panorama' ? api.zoomTo(ZOOM_BASE, 900, 'outCubic') : Promise.resolve(), tween(800, (t) => { fx.current?.imposta({ video: 1 - t, vignetta: (1 - t) * 0.6, scie: (1 - t) * 0.3 }); blur((1 - t) * 1.5) })])
-      fx.current?.videoHost()?.replaceChildren()
-      ripulisci()
-    } else {
-      await esciDalPortello(api, 1200 * k, a.tipo === 'panorama')
-    }
   }
 
-  /** Vola fino a `meta` passando per i nodi intermedi. `guida` = indice del percorso guidato a cui si arriva. */
-  const vaiA = useCallback(async (meta: NodoId, guida?: number) => {
+  /** Sguardo all'arrivo (gradi): coerente con l'ultimo fotogramma dei video (di spalle al portello d'arrivo). */
+  const sguardoArrivo = (p: Portello, daPanorama: boolean) => {
+    if (p.arrivo) return p.arrivo
+    if (!daPanorama) return { yaw: p.yawArrivo, pitch: p.pitchArrivo * 0.3 }
+    return { yaw: p.yawArrivo + 180, pitch: 0 }
+  }
+
+  const mostraPanorama = async (api: PanoApi, a: Nodo, yaw: number, pitch: number, zoom: number) => {
+    if (caricato.current !== a.id) { await api.show(a.panorama!, rad(yaw), rad(pitch), zoom); caricato.current = a.id }
+    else api.orienta(rad(yaw), rad(pitch), zoom)
+  }
+
+  // ---------- volo con video, panorama -> panorama ----------
+  const voloVideo = async (api: PanoApi, p: Portello, url: string, ultimo: boolean) => {
+    const a = nodi[p.verso]
+    const z80 = api.zoomPerVideo(HFOV_VOLO)
+    const zSpinta = api.zoomPerVideo(HFOV_SPINTA)
+    const yaw = rad(p.yaw), pitch = rad(p.pitch)
+    const videoPronto = preparaVideo(url)
+    // 1. la camera si gira verso il portello e porta lo zoom a 80 gradi (stesso FOV della prima immagine del video)
+    const cur = api.posizione()
+    const delta = distanzaAngolare(cur.yaw, cur.pitch, yaw, pitch)
+    const dZoom = Math.abs(api.zoom() - z80) / 100
+    await api.anima({ yaw, pitch, zoom: z80, ms: 500 + 900 * (delta / Math.PI) + 500 * dZoom, easing: 'inOutQuad' })
+    // 2. leggera spinta in avanti
+    await api.anima({ yaw, pitch, zoom: zSpinta, ms: 480, easing: 'inQuad' })
+    const v = await videoPronto
+    if (!v) { await api.anima({ yaw, pitch, zoom: ZOOM_MAX, ms: 700, easing: 'inQuad' }); return false }
+    // 3. scambio: la scala iniziale del video compensa la spinta (tan 40 / tan 38.5), cosi le immagini combaciano
+    const s0 = Math.tan(rad(HFOV_VOLO / 2)) / Math.tan(rad(HFOV_SPINTA / 2))
+    v.currentTime = 0
+    v.style.transform = `scale(${s0})`
+    const host = fx.current?.videoHost()
+    host?.replaceChildren(v)
+    fx.current?.imposta({ video: 0 })
+    const fine = new Promise<void>((ok) => { v.onended = () => ok(); v.onerror = () => ok(); setTimeout(ok, 14000) })
+    await v.play().catch(() => {})
+    setVoloIA(true)
+    tween(700, (t) => { v.style.transform = `scale(${s0 + (1 - s0) * t})` }, outCubic)
+    await tween(200, (t) => fx.current?.imposta({ video: t }))
+    // 4. sotto il video il nuovo panorama si prepara all'orientamento d'arrivo, con lo stesso FOV dell'ultimo fotogramma
+    const g = sguardoArrivo(p, true)
+    await mostraPanorama(api, a, g.yaw, g.pitch, z80)
+    await fine
+    registraArrivo(p, a, g.yaw, g.pitch)
+    await attendi(60)
+    setVoloIA(false)
+    await tween(220, (t) => fx.current?.imposta({ video: 1 - t }))
+    host?.replaceChildren()
+    ripulisci()
+    if (ultimo) await api.anima({ yaw: rad(g.yaw), pitch: rad(g.pitch), zoom: ZOOM_BASE, ms: 1100, easing: 'outCubic' })
+    return true
+  }
+
+  // ---------- Cupola: zoom nel panorama + dissolvenza nella Terra, e viceversa ----------
+  const entraCupola = async (api: PanoApi, p: Portello) => {
+    const a = nodi.cupola
+    const cur = api.posizione()
+    if (distanzaAngolare(cur.yaw, cur.pitch, rad(NADIR.yaw), rad(NADIR.pitch)) > 0.03) await api.anima({ yaw: rad(NADIR.yaw), pitch: rad(NADIR.pitch), ms: 800, easing: 'inOutQuad' })
+    const zoom = api.anima({ yaw: rad(NADIR.yaw), pitch: rad(NADIR.pitch), zoom: ZOOM_MAX, ms: 2600, easing: 'inCubic' })
+    const vign = tween(2600, (t) => fx.current?.imposta({ vignetta: t * 0.7 }), inQuad)
+    await attendi(1500)
+    registraArrivo(p, a, 0, 0) // monta la Cupola, che entra in dissolvenza sopra il panorama
+    await Promise.all([zoom, vign])
+    await attendi(500)
+    api.orienta(rad(NADIR.yaw), rad(NADIR.pitch), ZOOM_BASE) // sotto la Cupola, invisibile
+    ripulisci()
+  }
+
+  const esciCupola = async (api: PanoApi, p: Portello) => {
+    const a = nodi.tranquility
+    await mostraPanorama(api, a, NADIR.yaw, NADIR.pitch, ZOOM_MAX)
+    setFantasma(nodi.cupola) // la Cupola resta un attimo per dissolversi
+    registraArrivo(p, a, NADIR.yaw, NADIR.pitch)
+    setTimeout(() => setFantasma(null), 900)
+    await attendi(500)
+    fx.current?.imposta({ vignetta: 0.7 })
+    await Promise.all([
+      api.anima({ yaw: rad(NADIR.yaw), pitch: rad(-48), zoom: ZOOM_BASE, ms: 2200, easing: 'outCubic' }),
+      tween(2200, (t) => fx.current?.imposta({ vignetta: 0.7 * (1 - t) }), outCubic),
+    ])
+    ripulisci()
+  }
+
+  // ---------- volo tra due nodi ----------
+  const attraversa = async (p: Portello, ultimo: boolean) => {
+    const api = pano.current
+    if (!api) return
+    const da = nodi[p.da], a = nodi[p.verso]
+    if (da.id === 'tranquility' && a.id === 'cupola') return entraCupola(api, p)
+    if (da.id === 'cupola' && a.id === 'tranquility') return esciCupola(api, p)
+
+    if (da.tipo === 'panorama' && a.tipo === 'panorama') {
+      const url = await sceltaVideo(p)
+      if (url && await voloVideo(api, p, url, ultimo)) return
+    }
+
+    // passaggio senza video: transizione procedurale (EML, finale, ritorni dalle scene non panoramiche)
+    const k = ultimo ? 1 : 0.75
+    if (da.tipo === 'panorama') {
+      const cur = api.posizione()
+      const delta = distanzaAngolare(cur.yaw, cur.pitch, rad(p.yaw), rad(p.pitch))
+      if (delta > 0.02) await api.rotateTo(rad(p.yaw), rad(p.pitch), (420 + 700 * (delta / Math.PI)) * k)
+      await entraNelPortello(api, 1400 * k, true)
+    } else {
+      await tween(550 * k, (t) => fx.current?.imposta({ copertura: t }))
+    }
+    const g = sguardoArrivo(p, false)
+    if (a.tipo === 'panorama') await mostraPanorama(api, a, g.yaw, g.pitch, ZOOM_MAX)
+    registraArrivo(p, a, g.yaw, g.pitch)
+    await attendi(a.tipo === 'panorama' ? 60 : 160)
+    await esciDalPortello(api, 1200 * k, a.tipo === 'panorama')
+  }
+
+  /** Vola fino a `meta` passando per i nodi intermedi. */
+  const vaiA = useCallback(async (meta: NodoId) => {
     if (inVolo.current) return
     const s = st.current
     const r = rotta(s.nodoId, meta)
     if (!r || r.length < 2) return
-    if (guida === undefined && s.guidata) {
-      const dir = r.length === 2 ? (meta === percorsoGuidato[s.idx + 1] ? 1 : meta === percorsoGuidato[s.idx - 1] ? -1 : 0) : 0
-      if (dir) setIdx(s.idx + dir); else setGuidata(false)
-    }
     inVolo.current = true; annulla.current = false
     setVolando(true); setApri(null)
     try {
       for (let i = 0; i < r.length - 1; i++) {
         if (annulla.current) break
-        const p = portelloVerso(r[i], r[i + 1])!
-        const cur = st.current
-        await attraversa(p, cur.storia[cur.storia.length - 1] === r[i + 1], r.length > 2)
+        await attraversa(portelloVerso(r[i], r[i + 1])!, i === r.length - 2 || annulla.current)
       }
-      if (guida !== undefined && !annulla.current) { setGuidata(true); setIdx(guida) }
     } finally {
       inVolo.current = false
       setVolando(false)
+      setVoloIA(false)
+      fx.current?.videoHost()?.replaceChildren()
       ripulisci()
+      // se si e` annullato a meta`, riporta lo zoom al valore normale
+      const api = pano.current
+      if (api && nodi[st.current.nodoId].tipo === 'panorama' && api.zoom() > ZOOM_BASE + 1 && api.zoom() < ZOOM_MAX - 1) api.zoomTo(ZOOM_BASE, 800, 'outCubic')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -236,6 +309,7 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
     else suggerisci(n.tipo === 'panorama' ? 'Guarda un portello (il cerchio con la porta) e premi ↑' : 'Da qui si torna indietro con ↓')
   }, [vaiA, suggerisci])
 
+  /** ↓ = vola verso il modulo precedente, guardando avanti (video in avanti dell'arco inverso). */
   const indietro = useCallback(() => {
     const top = st.current.storia[st.current.storia.length - 1]
     if (top) vaiA(top)
@@ -245,7 +319,7 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       const s = st.current
-      if (!s.attivo || s.ambiente) return
+      if (!s.attivo || s.ambiente || s.simulazione) return
       const t = e.target as HTMLElement | null
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return
       if (e.key === 'Escape') { setApri(null); return }
@@ -261,16 +335,23 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
     return () => window.removeEventListener('keydown', k)
   }, [avanti, indietro])
 
-  // ---------- visita guidata ----------
-  const tot = percorsoGuidato.length
-  const prossimo = () => idx + 1 < tot && vaiA(percorsoGuidato[idx + 1], idx + 1)
-  const precedenteGuida = () => idx > 0 && vaiA(percorsoGuidato[idx - 1], idx - 1)
-  const riprendi = () => {
-    const vicini = percorsoGuidato.map((n, i) => ({ n, i })).filter((x) => x.n === nodoId)
-    if (!vicini.length) { vaiA(percorsoGuidato[idx], idx); return }
-    const j = vicini.reduce((b, x) => (Math.abs(x.i - idx) < Math.abs(b.i - idx) ? x : b)).i
-    setIdx(j); setGuidata(true)
-  }
+  // ---------- punti di interesse ----------
+  const segnaVisto = useCallback((id: string) => setViste((v) => (v.has(id) ? v : new Set(v).add(id))), [])
+  const ruotando = useRef(false)
+
+  /** Ruota lentamente (1,2 s, easing) fino a centrare il punto; poi, se richiesto, apre la scheda. */
+  const vaiAlPunto = useCallback(async (id: string, apriScheda: boolean) => {
+    const h = hotspotDi(st.current.nodoId).find((x) => x.id === id)
+    if (!h || inVolo.current || ruotando.current) return
+    const api = pano.current
+    if (h.pos?.tipo === 'sfera' && nodi[st.current.nodoId].tipo === 'panorama' && api) {
+      ruotando.current = true
+      try { await api.rotateTo(rad(h.pos.yaw), rad(h.pos.pitch), 1200) } finally { ruotando.current = false }
+    }
+    if (apriScheda) { setApri(id); segnaVisto(id) }
+  }, [segnaVisto])
+
+  const apriScheda = useCallback((id: string) => { setApri(id); segnaVisto(id) }, [segnaVisto])
 
   // ---------- ingresso nella stazione ----------
   const iniziaIngresso = async () => {
@@ -286,7 +367,6 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
     ])
     ripulisci()
   }
-  useEffect(() => { if (attivo) setGuidata(guidataIniziale) }, [attivo, guidataIniziale])
   useEffect(() => { if (pronto && attivo) iniziaIngresso() }, [pronto, attivo]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // ---------- precarico dei vicini ----------
@@ -296,7 +376,7 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
       for (const p of portelli[nodoId]) {
         const v = nodi[p.verso]
         if (v.tipo === 'panorama' && v.panorama && caricato.current !== v.id) { const i = new Image(); i.src = v.panorama }
-        assetExists(urlVolo(p.da, p.verso)).then((ok) => { if (ok) fetch(urlVolo(p.da, p.verso)).catch(() => {}) })
+        assetExists(urlVolo(p.da, p.verso)).then((ok) => { if (ok && v.tipo === 'panorama') fetch(urlVolo(p.da, p.verso)).catch(() => {}) })
       }
     }, 1500)
     return () => clearTimeout(id)
@@ -306,21 +386,32 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
   const marcatori: Marcatore[] = useMemo(() => {
     if (nodo.tipo !== 'panorama') return []
     const out: Marcatore[] = []
-    for (const h of hotspot) if (h.pos?.tipo === 'sfera') out.push({ key: `h:${h.id}`, yaw: h.pos.yaw, pitch: h.pos.pitch, nodo: <HotspotMarker tipo={h.categoria} titolo={h.titolo} onClick={() => setApri(h.id)} /> })
+    for (const h of hotspot) if (h.pos?.tipo === 'sfera') {
+      out.push({
+        key: `h:${h.id}`, yaw: h.pos.yaw, pitch: h.pos.pitch,
+        nodo: <HotspotMarker tipo={h.categoria} titolo={h.titolo} visto={viste.has(h.id)} onClick={() => apriScheda(h.id)} />,
+        bordo: <IndicatoreBordo tipo={h.categoria} titolo={h.titolo} onClick={() => vaiAlPunto(h.id, false)} />,
+      })
+    }
     for (const p of portelli[nodo.id]) out.push({ key: `p:${p.verso}`, yaw: p.yaw, pitch: p.pitch, nodo: <PortelloMarker p={p} onGo={() => vaiA(p.verso)} /> })
     for (const c of nodo.chiusi ?? []) out.push({ key: `c:${c.etichetta}`, yaw: c.yaw, pitch: c.pitch, nodo: <HotspotMarker tipo="chiuso" titolo={`${c.etichetta}: non percorribile`} /> })
     for (const a of nodo.porte ?? []) if (a.yaw !== undefined) out.push({ key: `a:${a.ambiente}`, yaw: a.yaw, pitch: a.pitch ?? 0, nodo: <HotspotMarker tipo="ambiente" titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /> })
     return out
-  }, [nodo, hotspot, vaiA])
+  }, [nodo, hotspot, vaiA, viste, apriScheda, vaiAlPunto])
 
   const hotspotEml: Hotspot[] = useMemo(() => hotspot.filter((h) => h.pos?.tipo === 'oggetto3d').map((h) => ({
     id: h.id, titolo: h.titolo, testo: h.breve, badge: h.badge, categoria: h.categoria,
     oggetto3d: h.pos?.tipo === 'oggetto3d' ? h.pos.oggetto : undefined, spostamento3d: h.pos?.tipo === 'oggetto3d' ? h.pos.spostamento : undefined,
   })), [hotspot])
 
+  const voci = useMemo(() => hotspot.map((h) => ({ id: h.id, titolo: h.titolo, categoria: h.categoria, visto: viste.has(h.id) })), [hotspot, viste])
   const scheda = hotspot.find((h) => h.id === apri) ?? null
+  useEffect(() => { if (apri) segnaVisto(apri) }, [apri, segnaVisto])
   const panoramico = nodo.tipo === 'panorama'
   const principale = nodi.harmony
+
+  // aggancio per le prove automatiche (solo in sviluppo)
+  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__iss = { vaiA, avanti, indietro, vaiAlPunto, pano, st }
 
   return (
     <div className="absolute inset-0 isolate overflow-hidden bg-[#05070f]">
@@ -337,7 +428,7 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
       {nodo.tipo === 'eml' && (
         <div className="absolute inset-0 z-20">
           <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center bg-[#05070f] text-sm text-white/40">Caricamento…</div>}>
-            <EmlScene hotspot={hotspotEml} attivo={apri} fenomeno={fenomeno} calore={fenomeno ? caloreFenomeno[fenomeno] : null} onHotspot={setApri} />
+            <EmlScene hotspot={hotspotEml} attivo={apri} fenomeno={fenomeno} calore={fenomeno ? caloreFenomeno[fenomeno] : null} onHotspot={apriScheda} />
           </Suspense>
           <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />
           {nodo.porte?.map((a) => (
@@ -348,28 +439,29 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
       {(nodo.tipo === 'cupola' || nodo.tipo === 'finale') && (
         <ImmagineNodo
           key={nodo.id} nodo={nodo} hotspot={hotspot} portelli={portelli[nodo.id]} porte={nodo.porte ?? []}
-          onHotspot={setApri} onPortello={(p) => vaiA(p.verso)} onAmbiente={setAmbiente} nomeNodo={(id) => nodi[id].nome}
+          onHotspot={apriScheda} onPortello={(p) => vaiA(p.verso)} onAmbiente={setAmbiente} nomeNodo={(id) => nodi[id].nome}
         />
       )}
+      {fantasma && <ImmagineNodo key={`f-${fantasma.id}`} uscendo nodo={fantasma} hotspot={[]} portelli={[]} porte={[]} onHotspot={() => {}} onPortello={() => {}} onAmbiente={() => {}} nomeNodo={(id) => nodi[id].nome} />}
 
       {attivo && (
         <>
           <div className={`transition-opacity duration-300 ${volando ? 'pointer-events-none opacity-0' : 'opacity-100'}`}>
-            <SchedaLuogo key={nodo.id} luogo={luogo} iniziaChiusa={nodo.tipo === 'eml'} />
-            {scheda && <HotspotCard scheda={scheda} onClose={() => setApri(null)} />}
+            <div className="absolute left-4 top-[4.75rem] z-30 flex max-h-[calc(100vh-12rem)] flex-col gap-3">
+              <SchedaLuogo key={nodo.id} luogo={luogo} iniziaChiusa={nodo.tipo === 'eml'} />
+              <ListaPunti key={`l-${nodo.id}`} punti={voci} onScegli={(id) => vaiAlPunto(id, true)} />
+            </div>
+            {scheda && <HotspotCard scheda={scheda} audioOn={audioOn} onClose={() => setApri(null)} onSimulazione={setSimulazione} />}
             <Indicatore precedente={precedente} />
             {suggerimento && (
-              <div className="fade-in pointer-events-none absolute bottom-[9.2rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
+              <div className="fade-in pointer-events-none absolute bottom-[11.5rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
             )}
             {nodo.id === 'finale' && (
               <button onClick={onHome} className="btn-ghost absolute bottom-40 left-1/2 z-30 -translate-x-1/2 !py-2 text-sm">Ricomincia dall'inizio</button>
             )}
           </div>
           <MiniMappa corrente={nodoId} visitati={visitati} onVaiA={(n) => vaiA(n)} occupato={volando} />
-          <PercorsoBar
-            guidata={guidata} indice={idx} totale={tot} titolo={nodo.nome} occupato={volando}
-            onPrev={precedenteGuida} onNext={prossimo} onLibero={() => setGuidata(false)} onRiprendi={riprendi}
-          />
+          <TappeBar corrente={nodoId} visitati={visitati} occupato={volando} onVai={(n) => vaiA(n)} />
           <Legenda />
           <Voce key={nodo.id} luogo={luogo} audioOn={audioOn} onAudio={onAudio} />
           <button onClick={onHome} title="Torna all'introduzione" aria-label="Torna all'introduzione" className="glass absolute bottom-5 right-[17.5rem] z-30 hidden rounded-full p-2.5 text-white/70 hover:text-white xl:block">
@@ -388,6 +480,7 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
       )}
       {volando && <div className="absolute inset-0 z-[38] cursor-progress" />}
       {ambiente && <AmbienteOverlay id={ambiente} onClose={() => setAmbiente(null)} />}
+      {simulazione && <SimulazioneOverlay id={simulazione} onClose={() => setSimulazione(null)} />}
       {!pronto && <div className="absolute inset-0 z-[39] flex items-center justify-center bg-[#05070f] text-xs uppercase tracking-[0.35em] text-white/40">Caricamento della stazione…</div>}
     </div>
   )

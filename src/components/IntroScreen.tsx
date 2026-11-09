@@ -6,9 +6,9 @@ import { assetExists } from '../lib/assets'
 
 const VIDEO_SFONDO = '/video/intro-bg.mp4' // segnaposto: se esiste viene usato come sfondo
 
-interface Props { audioOn: boolean; onAudio: () => void; onGuided: () => void; onFree: () => void }
+interface Props { audioOn: boolean; onAudio: () => void; onStart: () => void }
 
-export default function IntroScreen({ audioOn, onAudio, onGuided, onFree }: Props) {
+export default function IntroScreen({ audioOn, onAudio, onStart }: Props) {
   const root = useRef<HTMLDivElement>(null)
   const [video, setVideo] = useState(false)
   const [foto, setFoto] = useState(false)
@@ -36,7 +36,7 @@ export default function IntroScreen({ audioOn, onAudio, onGuided, onFree }: Prop
       )}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(2,3,10,.85)_100%)]" />
       <span className="credito-linea absolute bottom-1 right-4">Foto: NASA</span>
-      <AudioToggle on={audioOn} onToggle={onAudio} className="absolute right-5 top-5" />
+      <AudioToggle on={audioOn} onToggle={onAudio} className="absolute right-5 top-9" />
       <div className="relative flex h-full flex-col items-center justify-center px-6 text-center">
         <p className="intro-a mb-5 text-xs uppercase tracking-[0.45em] text-cyan-200/80">Un'esperienza immersiva</p>
         <h1 className="intro-a text-5xl font-light tracking-tight md:text-7xl">
@@ -46,8 +46,7 @@ export default function IntroScreen({ audioOn, onAudio, onGuided, onFree }: Prop
           Dentro la Stazione Spaziale Internazionale, fino all'EML: il levitatore elettromagnetico dove l'induzione fa fondere un metallo nel vuoto.
         </p>
         <div className="intro-a mt-12 flex flex-wrap justify-center gap-4">
-          <button className="btn-primary" onClick={onGuided}>Inizia la visita guidata</button>
-          <button className="btn-ghost" onClick={onFree}>Esplora liberamente</button>
+          <button className="btn-primary !px-10 !py-4 text-lg" onClick={onStart}>Inizia l'esplorazione</button>
         </div>
         <p className="intro-a absolute bottom-6 text-xs text-white/35">Consigliato su desktop o tablet · con audio per la voce narrante</p>
       </div>

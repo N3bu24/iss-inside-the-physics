@@ -44,7 +44,7 @@ export default function VoloFx({ ref }: { ref?: Ref<FxApi> }) {
         }}
       />
       <div ref={cop} className="absolute inset-0 opacity-0" style={{ background: 'radial-gradient(circle at center, #16233d 0%, #03060e 75%)' }} />
-      <div ref={vid} className="absolute inset-0 bg-black opacity-0" />
+      <div ref={vid} className="absolute inset-0 opacity-0" />
     </div>
   )
 }
