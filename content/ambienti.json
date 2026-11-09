@@ -12,22 +12,22 @@
     "didascalie_dinamiche": {
       "velocita_zero": "A stazione ferma il flusso non varia: nessuna fem.",
       "velocita_alta": "Più veloce la stazione, più flusso spazza ogni secondo: la fem cresce in proporzione.",
-      "valore_predefinito": "Con circa 30 microtesla, 100 metri e 7,7 km/s si ottengono circa 23 volt: lo stesso ordine di grandezza stimato dalla NASA, circa 20 V.",
+      "valore_predefinito": "Con circa 30 microtesla, 100 metri e 7,7 km/s si ottengono circa 23 volt: lo stesso ordine di grandezza citato dalla NASA: fino a circa 30 V su un traliccio di 100 m.",
       "campo_cambia": "Il campo terrestre varia lungo l'orbita: più è intenso, più cresce la fem.",
       "angolo_zero": "Struttura parallela al moto: la superficie spazzata è nulla, quindi la fem è nulla.",
-      "contactor_spenti": "Senza scarica, la struttura si carica rispetto al plasma: nei progetti NASA si prevedevano potenziali negativi di circa 120-140 volt.",
+      "contactor_spenti": "Senza scarica, la struttura si carica rispetto al plasma: i modelli NASA prevedevano, per le configurazioni iniziali, un potenziale negativo di circa 140 volt (una previsione, non una misura).",
       "contactor_accesi": "Due plasma contactor emettono xeno ionizzato: collegano la struttura al plasma e la tengono entro ±40 volt."
     },
     "formula": "$\\varepsilon = B\\,l\\,v \\quad\\text{(da } \\varepsilon = -\\tfrac{d\\Phi_B}{dt},\\; d\\Phi_B = B\\,l\\,v\\,dt\\text{)}$",
     "collegamento_agenda": "Gli stessi principi che qui producono una tensione indesiderata sono quelli di ogni conduttore in moto in un campo. Ricordano che infrastrutture complesse, come la stazione, vanno progettate in modo resiliente anche contro effetti fisici invisibili (Obiettivo 9).",
     "slide_pptx": [2, 7, 8, 9, 10],
     "fonti": [
-      "NASA NTRS, plasma contactor ISS (es. documenti 19980201237, 20020068812): requisito di ±40 V e contributo di circa 20 V dovuto al campo terrestre [DA VERIFICARE]",
+      "NASA NTRS, plasma contactor ISS (documenti 20090028688 e 19980201237): requisito di ±40 V rispetto al plasma; fem di moto fino a circa 30 V su un traliccio di 100 m; budget di circa ±20 V",
       "NASA, ISS facts: velocità orbitale e inclinazione 51,6 gradi",
-      "Campo magnetico a 400 km: ordine di 30 microtesla (da riscontrare con modello IGRF/NOAA)",
+      "Campo magnetico a 400 km: 25-45 microtesla lungo l'orbita, 30 microtesla come valore tipico (modello IGRF, NOAA NCEI)",
       "Teoria pptx 5LSA, slide 2, 7, 8, 9"
     ],
-    "note": "Il valore di 23 V è un massimo teorico per struttura perpendicolare a v e B. La lunghezza di 100 m è l'ordine di grandezza della struttura (apertura circa 109 m, da verificare). Il segno di ε dipende dall'orientamento."
+    "note": "Il valore di 23 V è un massimo teorico per struttura perpendicolare a v e B. La lunghezza di 100 m è l'ordine di grandezza della struttura (apertura circa 109 m). Il segno di ε dipende dall'orientamento."
   },
   {
     "id": "amb-energia",
@@ -37,8 +37,8 @@
       "Scegli la sorgente: pannello fotovoltaico (corrente continua, nessuna parte in movimento) oppure una centrale con turbina (idroelettrica, eolica, geotermica, termoelettrica, nucleare). Si illumina il percorso fino all'alternatore.",
       "Trascina la velocità di rotazione dell'alternatore: l'onda sinusoidale della tensione si fa più alta e più fitta.",
       "Trascina il rapporto spire del trasformatore, N2/N1: le due bobine cambiano numero di spire e la tensione di uscita si aggiorna.",
-      "Seleziona la tensione della linea (10 kV, 100 kV, 380 kV) con potenza fissa: la corrente nel cavo e la potenza persa per effetto Joule cambiano e la linea si illumina di arancione dove si scalda.",
-      "Passa alla vista ISS: pannelli a circa 160 V in corrente continua, convertitori DDCU con trasformatore ad alta frequenza, rete secondaria a circa 124,5 V verso i rack."
+      "Seleziona la tensione della linea (esempi a 10 kV, 100 kV, 380 kV; la slide 23 mostra 10 kV in centrale, 220-380 kV in linea e 20-132 kV nelle sottostazioni) con potenza fissa: la corrente nel cavo e la potenza persa per effetto Joule cambiano e la linea si illumina di arancione dove si scalda.",
+      "Passa alla vista ISS: pannelli a circa 160 V in corrente continua, convertitori DDCU a commutazione con trasformatore di isolamento, rete secondaria a circa 124,5 V verso i rack."
     ],
     "didascalie_dinamiche": {
       "alternatore_veloce": "Rotazione più rapida: il flusso varia più in fretta, quindi fem più alta e frequenza più alta.",
@@ -55,8 +55,7 @@
     "slide_pptx": [3, 5, 18, 19, 20, 21, 22, 23],
     "fonti": [
       "Teoria pptx 5LSA, slide 18-23",
-      "NASA NTRS, ISS electric power system e design del DDCU (160 V primario, 124,5 V nominale secondario, circa 95 per cento di efficienza) [da riscontrare]",
-      "Trasformatori ad alta frequenza nei DDCU: affermazione dell'autore del sito [DA VERIFICARE su documento NASA]",
+      "NASA NTRS 20020083039 (DDCU, IECEC 2002): 160 V primario, 124,5 V nominale secondario, circa 95 per cento di efficienza, trasformatore di isolamento in un convertitore a commutazione",
       "Esempio linea 10 MW, 5 ohm: simulazione concettuale"
     ]
   },
@@ -83,8 +82,9 @@
     "collegamento_agenda": "Obiettivo 9: la stessa fisica che sostiene un campione nell'EML sostiene un treno senza ruote a contatto. Il Maglev è un'infrastruttura innovativa, a basso impatto locale e senza attrito di contatto; la ricerca sui materiali in orbita porta innovazione nell'industria.",
     "slide_pptx": [4, 8, 9, 11],
     "fonti": [
-      "DLR, ESA, Airbus: EML (docs/research/eml.md)",
-      "JR Central / RTRI, SCMaglev: soglia di sollevamento circa 150 km/h e record di 603 km/h del 2015 [DA VERIFICARE]",
+      "DLR, ESA, Airbus: EML",
+      "SCMaglev (JR Central, RTRI): sollevamento attorno ai 150 km/h; record di 603 km/h il 21 aprile 2015",
+      "DLR, EML: una sola bobina, 135-155 kHz per il posizionamento e 365-390 kHz per il riscaldamento; temperature fino a 2000-2200 °C; magazzino da 18 campioni",
       "Consegna scolastica, Obiettivo 9; teoria pptx slide 4, 8, 9, 11"
     ]
   },
@@ -104,15 +104,16 @@
       "segnale": "Il flusso che varia nella bobina induce una fem: è Faraday-Neumann. Il segnale si spegne mentre gli spin tornano all'equilibrio.",
       "tessuto": "Tessuti diversi si rilassano con rapidità diverse: la differenza dei segnali costruisce l'immagine.",
       "magnete": "Il magnete è un grande solenoide percorso da corrente: per l'autoinduzione la corrente si porta a regime con gradualità e nel campo è immagazzinata energia.",
-      "iss": "Sulla ISS non c'è una risonanza magnetica: gli astronauti sono esaminati a terra, prima e dopo il volo, e a bordo si usano altri strumenti come l'ecografia [DA VERIFICARE]."
+      "iss": "Sulla ISS non c'è una risonanza magnetica: gli astronauti sono esaminati a terra, prima e dopo il volo. Uno studio NASA su 34 astronauti (Roberts et al., NEJM 2017) ha usato risonanze del cervello per osservare i cambiamenti dopo le missioni lunghe."
     },
     "formula": "$f = \\dfrac{\\gamma}{2\\pi}\\,B_0 \\;(\\approx 42{,}58\\ \\text{MHz/T per il protone}), \\qquad \\varepsilon = -\\dfrac{d\\Phi_B}{dt}$",
-    "collegamento_agenda": "Obiettivo 3 e Articolo 32: la RMN diagnostica i tessuti molli senza radiazioni ionizzanti e porta il diritto alla salute, individuale e collettivo, sul piano della prevenzione. Gli studi sul corpo in orbita aiutano a capire invecchiamento, ossa e muscoli, con ricadute sulla medicina a terra.",
+    "collegamento_agenda": "Obiettivo 3 e Articolo 32: la RMN diagnostica i tessuti molli senza radiazioni ionizzanti e porta il diritto alla salute, individuale e collettivo, sul piano della prevenzione. Gli studi sul corpo in orbita aiutano a capire gli effetti dell'assenza di peso, con ricadute sulla medicina a terra.",
     "slide_pptx": [8, 12, 13, 14, 15, 16, 17],
     "fonti": [
       "Consegna scolastica, Obiettivo 3 (RMN) e Art. 32",
       "Costante giromagnetica del protone: CODATA (42,577 MHz/T)",
-      "NASA, ESA: ricerca sul corpo umano in orbita; studi con risonanza magnetica pre e post volo [DA VERIFICARE]",
+      "Roberts et al., New England Journal of Medicine, 2017: risonanze magnetiche cerebrali di astronauti prima e dopo il volo (NASA, MUSC)",
+      "NASA, ESA: ricerca sul corpo umano in orbita",
       "Teoria pptx 5LSA, slide 8, 12-17"
     ]
   }

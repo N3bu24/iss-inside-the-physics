@@ -9,7 +9,7 @@ Sigle: ambienti = `amb-campo`, `amb-energia`, `amb-levitazione`, `amb-rmn`. Gli 
 | 3 | Esperimento 2: spira che ruota | `amb-energia` (alternatore); `eml-faraday` | Spira che ruota in un campo con onda sinusoidale della fem |
 | 4 | Esperimento 3: magnete e bobina | `amb-levitazione` scena 1; `eml-bobina`; `columbus-rack-eml`; `eml-faraday` | Magnete trascinato sopra una lastra: anelli di corrente e repulsione |
 | 5 | Esperimento 4: due bobine su un anello di ferro | `amb-energia` (trasformatore); `columbus-cavi`; `columbus-rack-eml`; `eml-faraday` | Primaria e secondaria su un nucleo; linee di campo che si chiudono nel ferro; cavi intrecciati nel panorama |
-| 6 | Conclusione dei quattro esperimenti | `eml-faraday` | Quattro mini-animazioni con la stessa etichetta: il flusso varia |
+| 6 | Conclusione dei quattro esperimenti | `eml-faraday` | Sintesi nella scheda `eml-faraday`: in tutti e quattro i casi il flusso varia (le mini-animazioni non sono nella scena) |
 | 7 | Flusso del campo magnetico e principio di induzione | `amb-campo`; `eml-bobina` | Superficie spazzata dalla struttura; linee di campo che attraversano il campione |
 | 8 | Legge di Faraday-Neumann | `amb-campo`; `amb-rmn`; hotspot `harmony-comunicazioni`, `unity-airlock`, `eml-correnti` | Valore di fem in volt in tempo reale; antenna che riceve; segnale nella bobina RMN |
 | 9 | Corrente indotta e prima legge di Ohm | `amb-campo`; `amb-levitazione`; `eml-joule`, `eml-correnti`, `eml-campione` | Correnti nella lastra e nel campione; calore Joule che arancia il materiale |
@@ -25,8 +25,8 @@ Sigle: ambienti = `amb-campo`, `amb-energia`, `amb-levitazione`, `amb-rmn`. Gli 
 | 19 | Circuiti in corrente alternata | `amb-energia`; `eml-induttore` | Onda v(t) = V0 sin ωt; bobina EML alimentata in alternata |
 | 20 | Trasformatore statico | `amb-energia`; `destiny-alimentazione`; `columbus-laptop` | Rapporto spire con tensioni aggiornate; DDCU della ISS; alimentatore del laptop |
 | 21 | Energia elettrica: generatore, alternatore, dinamo | `amb-energia`; `destiny-cavi-cc`; `tranquility-eclss` | Sorgente a scelta: pannello (continua) o turbina+alternatore; cavi a bordo |
-| 22 | Centrali elettriche: rinnovabili e non | `amb-energia`; `unity-zarya`; `cupola-pannelli` | Selettore delle sei tipologie, con indicata la parte comune: turbina e alternatore, eccetto il fotovoltaico |
-| 23 | Trasporto dell'energia elettrica | `amb-energia`; `harmony-cavi` | Linea a 10, 100 e 380 kV: corrente e perdite Joule cambiano; cavo che si scalda |
+| 22 | Centrali elettriche: rinnovabili e non | `amb-energia`; `unity-zarya`; `cupola-pannelli` | Le sei tipologie (fotovoltaica, idroelettrica, eolica, geotermica, termoelettrica, nucleare) sono elencate nel passo 1 della simulazione `energia`; il selettore interattivo copre pannello e turbina, con la parte comune: turbina e alternatore, eccetto il fotovoltaico |
+| 23 | Trasporto dell'energia elettrica | `amb-energia`; `harmony-cavi` | Esempio didattico con linea a 10, 100 e 380 kV (la slide mostra 10 kV in centrale, 220-380 kV in linea, 20-132 kV nelle sottostazioni): corrente e perdite Joule cambiano; cavo che si scalda |
 
 ## Copertura
 - 23 slide su 23 compaiono almeno una volta.
@@ -52,3 +52,12 @@ Hotspot senza simulazione: `harmony-comunicazioni`, `columbus-cavi`, `tranquilit
 | Totale | 51 | circa 15.100 |
 
 Il conteggio è una stima manuale (non c'era modo di eseguire uno script): va verificato con un `wc` sul campo `voce` prima di generare l'audio.
+
+## Voci da rigenerare (fix QA)
+
+Campo `voce` modificato perché conteneva un'imprecisione (QA I4, "onde radio ... campo magnetico che varia" senza distinguere l'antenna a spira):
+- hotspot: `harmony-comunicazioni`
+- luoghi: nessuno
+- simulazioni: nessuna
+
+Tutte le altre voci (hotspot, luoghi, simulazioni) sono invariate e non vanno rigenerate: non contenevano tag né errori. Le correzioni M1 (27.600 km/h) e le altre sono nel testo scritto delle schede, non nella voce.
