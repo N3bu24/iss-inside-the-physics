@@ -5,6 +5,10 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.9.1] — 2026-11-10
+### Corretto
+- Campo magnetico: la Terra NASA Blue Marble ora si vede bene (lo shader che la nascondeva è stato tolto, l'atmosfera è sottile). La camera "segui ISS" mostra la stazione con la superficie terrestre sotto.
+
 ## [0.9.0] — 2026-11-10
 ### Aggiunto
 - Movimento in un unico gesto: la camera si allinea al primo fotogramma del volo (FOV orizzontale 80°) e il video subentra in circa 200 ms. ↓ vola in avanti lungo l'arco inverso; niente più video al contrario.
