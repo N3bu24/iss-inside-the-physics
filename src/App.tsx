@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { tappe } from './data/tour'
-import { caricaContenuti } from './data/loader'
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
+import { tappe, fenomeni } from './data/tour'
+import './data/loader'
 import IntroScreen from './components/IntroScreen'
-import PanoViewer from './components/PanoViewer'
-import EmlScene from './components/EmlScene'
+const PanoViewer = lazy(() => import('./components/PanoViewer'))
+const EmlScene = lazy(() => import('./components/EmlScene'))
 import FenomeniPanel, { caloreFenomeno } from './components/FenomeniPanel'
 import HotspotPanel from './components/HotspotPanel'
 import MiniMap from './components/MiniMap'
@@ -11,6 +11,8 @@ import TourBar from './components/TourBar'
 import AudioToggle from './components/AudioToggle'
 import Narrator from './components/Narrator'
 import { assetExists } from './lib/assets'
+
+const Caricamento = () => <div className="absolute inset-0 flex items-center justify-center bg-[#05070f] text-sm text-white/40">Caricamento…</div>
 
 type Fase = 'intro' | 'visita'
 
@@ -22,10 +24,8 @@ export default function App() {
   const [fenomeno, setFenomeno] = useState<string | null>(null)
   const [audioOn, setAudioOn] = useState(true)
   const [dissolvenza, setDissolvenza] = useState(false)
-  const [, setTick] = useState(0)
   const ambient = useRef<HTMLAudioElement | null>(null)
 
-  useEffect(() => { caricaContenuti().then(() => setTick((n) => n + 1)) }, [])
 
   // ambient: public/audio/ambient.mp3 (opzionale)
   useEffect(() => {
@@ -66,14 +66,19 @@ export default function App() {
       {fase === 'visita' && (
         <>
           {is3d ? (
-            <EmlScene
-              hotspot={tappa.hotspot}
-              attivo={hotspotId}
-              calore={fenomeno ? caloreFenomeno[fenomeno] : null}
-              onHotspot={setHotspotId}
-            />
+            <Suspense key="s3d" fallback={<Caricamento />}>
+              <EmlScene
+                hotspot={tappa.hotspot}
+                attivo={hotspotId}
+                fenomeno={fenomeno}
+                calore={fenomeno ? caloreFenomeno[fenomeno] : null}
+                onHotspot={setHotspotId}
+              />
+            </Suspense>
           ) : (
-            <PanoViewer tappa={tappa} onHotspot={setHotspotId} onNavigate={vaiAId} />
+            <Suspense key="spano" fallback={<Caricamento />}>
+              <PanoViewer tappa={tappa} onHotspot={setHotspotId} onNavigate={vaiAId} />
+            </Suspense>
           )}
 
           {is3d && <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />}
@@ -85,7 +90,7 @@ export default function App() {
             {tappa.sottotitolo && <p className="mt-1 text-sm text-white/55">{tappa.sottotitolo}</p>}
           </div>
 
-          <Narrator tappa={tappa} audioOn={audioOn} />
+          <Narrator key={`narr-${tappa.id}`} tappa={tappa} audioOn={audioOn} clipId={fenomeni.find((f) => f.id === fenomeno)?.clip ?? null} />
           <TourBar
             indice={indice}
             guidata={guidata}
