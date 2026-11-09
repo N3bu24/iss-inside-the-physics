@@ -44,7 +44,7 @@ def mat(name, base, metal=0.0, rough=0.5, emis=None, es=0.0, alpha=1.0, aniso=0.
     return m
 
 M_COPPER = mat("copper", (0.95, 0.45, 0.28, 1), 1, 0.22)
-M_STEEL = mat("steel_brushed", (0.62, 0.64, 0.68, 1), 1, 0.38, aniso=0.6)
+M_STEEL = mat("steel_brushed", (0.30, 0.32, 0.36, 1), 1, 0.38, aniso=0.6)
 M_GRAPH = mat("graphite", (0.04, 0.045, 0.055, 1), 0.6, 0.45)
 M_GLASS = mat("glass", (0.8, 0.9, 1, 1), 0, 0.03, alpha=0.18)
 M_GLASS.node_tree.nodes["Principled BSDF"].inputs["Transmission Weight"].default_value = 1.0
@@ -152,39 +152,73 @@ for ang in (20, 90, 160):
 parent(ports, "ports")
 
 
-# ---- Bobine: spirale conica a due fili intrecciati ----
-def twisted_coil(name, sign, turns):
+# ---- Bobina SUPOS: tubo di rame raffreddato ad acqua, spirale conica, 3 spire sopra e 3 sotto ----
+TUBE_R = 0.22          # raggio esterno del tubo (cm)
+R_IN_C = 1.8           # raggio interno (spira piu' vicina al campione)
+DR_TURN = 0.62         # incremento radiale per spira
+DZ_TURN = 0.45         # incremento verticale per spira
+TURNS = 3
+LEAD_ANG = {+1: 195, -1: 345}   # gradi: uscita radiale degli adduttori
+M_WATER = mat("water_fitting", (0.0, 0.45, 0.8, 1), 0.2, 0.3, emis=(0.0, 0.6, 1, 1), es=1.0)
+
+
+def tube(name, pts, r, m, cap=True, res=12):
+    cu = bpy.data.curves.new(name, 'CURVE')
+    cu.dimensions = '3D'
+    cu.bevel_depth = r
+    cu.bevel_resolution = 8
+    cu.use_fill_caps = cap
+    cu.resolution_u = res
+    sp = cu.splines.new('POLY')
+    sp.points.add(len(pts) - 1)
+    for i, p in enumerate(pts):
+        sp.points[i].co = (p[0], p[1], p[2], 1)
+    o = bpy.data.objects.new(name, cu)
+    bpy.context.collection.objects.link(o)
+    o.data.materials.append(m)
+    return o
+
+
+def coil_half(name, sign):
     objs = []
-    N = turns * 72
-    for strand in (0, 1):
-        cu = bpy.data.curves.new("%s_s%d" % (name, strand), 'CURVE')
-        cu.dimensions = '3D'
-        cu.bevel_depth = WIRE_R * 0.55
-        cu.bevel_resolution = 4
-        cu.resolution_u = 2
-        sp = cu.splines.new('POLY')
-        sp.points.add(N)
-        for i in range(N + 1):
-            t = i / N
-            ang = t * turns * 2 * pi
-            r = COIL_R_OUT + (COIL_R_IN - COIL_R_OUT) * t
-            z0 = sign * (COIL_GAP + 0.25 * t * turns)
-            tw = ang * 6 + strand * pi
-            dr, dz = 0.15 * cos(tw), 0.15 * sin(tw)
-            sp.points[i].co = ((r + dr) * cos(ang), (r + dr) * sin(ang), z0 + dz, 1)
-        o = bpy.data.objects.new("%s_s%d" % (name, strand), cu)
-        bpy.context.collection.objects.link(o)
-        o.data.materials.append(M_COPPER)
-        objs.append(o)
-    h = CHAMBER_H / 2 - COIL_GAP - 1
-    feed = cyl(name + "_feed", 0.28, h, (COIL_R_OUT + 0.1, 0, sign * (COIL_GAP + 1 + h / 2)), M_COPPER, v=16)
-    objs.append(feed)
+    N = TURNS * 96
+    lead = LEAD_ANG[sign] * pi / 180
+    a0 = lead - TURNS * 2 * pi
+    pts = []
+    for i in range(N + 1):
+        t = i / N
+        ang = a0 + t * TURNS * 2 * pi
+        r = R_IN_C + DR_TURN * TURNS * t
+        z = sign * (COIL_GAP + DZ_TURN * TURNS * t)
+        pts.append((r * cos(ang), r * sin(ang), z))
+    objs.append(tube(name + "_spiral", pts, TUBE_R, M_COPPER, res=2))
+    # adduttore radiale che attraversa la parete
+    pe = pts[-1]
+    xe = 9.2
+    ld = [pe, (pe[0] + 0.5 * cos(lead), pe[1] + 0.5 * sin(lead), pe[2]),
+          (xe * cos(lead), xe * sin(lead), pe[2])]
+    objs.append(tube(name + "_feed", ld, 0.3, M_COPPER, res=4))
+    # passante in parete + attacco acqua
+    fd = cyl(name + "_feedthrough", 0.75, 1.6, (0, 0, 0), M_STEEL, rot=(0, pi / 2, lead), v=32)
+    fd.location = ((CHAMBER_R + 0.3) * cos(lead), (CHAMBER_R + 0.3) * sin(lead), pe[2])
+    objs.append(fd)
+    wr = cyl(name + "_water_ring", 0.55, 0.35, (0, 0, 0), M_WATER, rot=(0, pi / 2, lead), v=24)
+    wr.location = ((xe + 0.5) * cos(lead), (xe + 0.5) * sin(lead), pe[2])
+    objs.append(wr)
+    # supporti ceramici (solo bobina superiore: scendono dalla flangia)
+    if sign > 0:
+        for k, pa in enumerate((60, 300, 120 + 120)):
+            pa = pa * pi / 180
+            rr = R_IN_C + DR_TURN * TURNS + 0.1
+            z1 = COIL_GAP + DZ_TURN * TURNS + 0.2
+            objs.append(tube("%s_post%d" % (name, k), [(rr * cos(pa), rr * sin(pa), z1),
+                                                      (rr * cos(pa), rr * sin(pa), CHAMBER_H / 2)], 0.2, M_CERAMIC, res=2))
     return parent(objs, name)
 
 
 # SUPOS: un'unica bobina (avvolgimento superiore + inferiore) con correnti RF sovrapposte 140 kHz (quadrupolo) e 380 kHz (dipolo)
-cu_u = twisted_coil("coil_upper", +1, COIL_TURNS_UP)
-cu_l = twisted_coil("coil_lower", -1, COIL_TURNS_LO)
+cu_u = coil_half("coil_upper", +1)
+cu_l = coil_half("coil_lower", -1)
 parent([cu_u, cu_l], "coil_supos")
 
 # ---- Campione ----
@@ -239,8 +273,8 @@ assign(named(bpy.context.object, "floor"), M_FLOOR, False)
 wd = bpy.data.worlds.new("w")
 scene.world = wd
 wd.use_nodes = True
-wd.node_tree.nodes["Background"].inputs[0].default_value = (0.02, 0.035, 0.07, 1)
-wd.node_tree.nodes["Background"].inputs[1].default_value = 0.8
+wd.node_tree.nodes["Background"].inputs[0].default_value = (0.02, 0.04, 0.09, 1)
+wd.node_tree.nodes["Background"].inputs[1].default_value = 0.5
 
 
 def area(n, loc, e, col, size):
@@ -254,9 +288,19 @@ def area(n, loc, e, col, size):
     o.rotation_euler = (Vector((0, 0, 0)) - Vector(loc)).to_track_quat('-Z', 'Y').to_euler()
 
 
-area("key", (30, -35, 30), 60000, (1, 0.95, 0.9), 20)
-area("rim", (-35, 25, 20), 40000, (0.5, 0.75, 1), 20)
-area("fill_top", (0, -10, 45), 20000, (0.85, 0.92, 1), 25)
+area("key", (30, -35, 30), 30000, (1, 0.95, 0.88), 14)       # key light caldo
+area("rim", (-30, 28, 12), 80000, (0.2, 0.7, 1), 10)       # rim light ciano
+area("rim2", (28, 30, 18), 40000, (0.2, 0.7, 1), 10)
+area("fill_top", (0, -10, 45), 5000, (0.85, 0.92, 1), 25)
+area("sample_light", (6, -14, 6), 5000, (1, 0.97, 0.92), 4)  # mette in risalto il campione
+
+# atmosfera leggera (volume scatter nel mondo)
+wnt = wd.node_tree
+vs_ = wnt.nodes.new("ShaderNodeVolumeScatter")
+vs_.inputs["Density"].default_value = 0.0006
+vs_.inputs["Anisotropy"].default_value = 0.35
+vs_.inputs["Color"].default_value = (0.6, 0.8, 1, 1)
+wnt.links.new(vs_.outputs[0], wnt.nodes["World Output"].inputs["Volume"])
 
 
 def make_cam(n, loc, target, lens):
@@ -270,7 +314,7 @@ def make_cam(n, loc, target, lens):
 
 
 cam_over = make_cam("cam_overview", (26, -40, 14), (0, 0, 1), 40)
-cam_close = make_cam("cam_closeup", (7.0, -11.5, 3.0), (0, 0, 0.1), 55)
+cam_close = make_cam("cam_closeup", (9.5, -19.0, 4.5), (0, 0, 0.2), 60)
 cam_close.data.dof.use_dof = False
 cam_close.data.dof.focus_object = smp
 cam_close.data.dof.aperture_fstop = 4
@@ -278,10 +322,23 @@ cam_close.data.dof.aperture_fstop = 4
 scene.render.engine = 'BLENDER_EEVEE'
 scene.render.resolution_x, scene.render.resolution_y = 1600, 900
 scene.render.image_settings.file_format = 'PNG'
-try:
-    scene.eevee.taa_render_samples = 48
-except Exception:
-    pass
+def eevee_quality(sc, samples=160):
+    ev = sc.eevee
+    ev.taa_render_samples = samples
+    for k, v in (("use_shadows", True), ("shadow_ray_count", 3), ("shadow_step_count", 12),
+                 ("use_raytracing", True), ("volumetric_samples", 96), ("volumetric_tile_size", '2'),
+                 ("use_volumetric_shadows", True), ("volumetric_shadow_samples", 32)):
+        try:
+            setattr(ev, k, v)
+        except Exception as e:
+            print("eevee opt", k, e)
+    try:
+        ev.ray_tracing_options.use_denoise = True
+    except Exception as e:
+        print("denoise opt", e)
+
+
+eevee_quality(scene)
 scene.view_settings.view_transform = 'AgX'
 
 bpy.ops.wm.save_as_mainfile(filepath=OUT_BLEND)
@@ -302,7 +359,7 @@ print("GLB MB:", os.path.getsize(OUT_GLB) / 1e6)
 
 if DO_RENDER:
     import time
-    for cam, fn in ((cam_over, "eml_overview.png"), (cam_close, "eml_closeup.png")):
+    for cam, fn in ((cam_over, "eml_overview_v2.png"), (cam_close, "eml_closeup_v2.png")):
         t = time.time()
         scene.camera = cam
         scene.render.filepath = os.path.join(PREV, fn)
