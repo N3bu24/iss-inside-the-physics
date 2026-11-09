@@ -11,5 +11,7 @@ Aggiornare a ogni generazione. Non scrivere mai chiavi API in questo file.
 | 9/11/2026 | Higgsfield (Kling 3.0 std) | Volo di prova Harmony→Columbus | 1 clip × 5 s | ~0,42 $ | `public/voli/harmony__columbus.mp4` | Riuscito |
 | 9/11/2026 | ElevenLabs (eleven_v4) | 12 clip brevi dei luoghi, voce Thomas A. | 1.393 caratteri, ~91 s | 0 € (dentro il piano Starter) | `assets/audio/luoghi/` | Sostituiscono le clip lunghe |
 
-**Totale speso:** 0 € extra (ElevenLabs: piano Starter già pagato; Higgsfield: 0)
-**Budget residuo:** circa 20-30 €
+| 9/11/2026 | Higgsfield (Kling 3.0 std) | 10 voli tra moduli (lotto approvato dall'autore su Telegram) | 10 clip × 5 s | ~4,20 $ | `public/voli/` (originali in `assets/voli/originali/`, fuori da git) | Tutti riusciti, nessun errore |
+
+**Totale speso:** circa 4,62 $ (~4,3 €) su Higgsfield; ElevenLabs dentro il piano Starter già pagato
+**Budget residuo:** circa 16-26 €

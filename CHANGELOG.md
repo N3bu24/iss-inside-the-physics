@@ -5,6 +5,10 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.8.0] — 2026-11-09
+### Aggiunto
+- 11 voli reali tra i moduli, generati con Higgsfield Kling 3.0 dai panorami ESA: Harmony↔Columbus, Harmony↔Kibo, Harmony↔Destiny, Destiny↔Unity, Unity↔Tranquility, Tranquility→Cupola. Più le versioni `_rev` per ↓ (41 MB in tutto).
+
 ## [0.7.0] — 2026-11-09
 ### Aggiunto
 - **Esplorazione fluttuante:** grafo di 6 moduli ESA reali (Harmony, Columbus, Kibo, Destiny, Unity, Tranquility) più la Cupola. ↑/W vola verso il portello inquadrato, ↓/S torna indietro, rotella = zoom, trascinamento = rotazione. Legenda dei comandi discreta.
