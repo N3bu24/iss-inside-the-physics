@@ -11,3 +11,4 @@ _duplicati/
 assets/renders/test/
 *.tsbuildinfo
 .claude/worktrees/
+.claude/state/

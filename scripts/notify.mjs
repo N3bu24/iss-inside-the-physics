@@ -165,6 +165,15 @@ function throttled(name, seconds) {
   return false;
 }
 
+// Numero di subagent attivi, da .claude/state/agents.json (array di nomi, aggiornato dall'orchestratore).
+function subagentAttivi() {
+  try {
+    const f = new URL('../.claude/state/agents.json', import.meta.url);
+    const a = JSON.parse(fs.readFileSync(f, 'utf8'));
+    return Array.isArray(a) ? a.length : 0;
+  } catch { return 0; }
+}
+
 // Gli hook non devono mai far fallire o rallentare Claude Code: esce sempre con codice 0.
 async function runHook(event) {
   try {
@@ -172,13 +181,13 @@ async function runHook(event) {
     const raw = await readStdin();
     let payload = {};
     try { payload = JSON.parse(raw); } catch { /* nessun JSON */ }
+    // Richiesta dell'autore (9/11): nessun avviso "ho finito" (Stop). L'avviso di attesa
+    // (Notification) parte solo se nessun subagent sta lavorando, cioè quando serve davvero l'autore.
     if (event === 'Notification') {
-      if (throttled('notification', 20)) return;
+      if (subagentAttivi() > 0) return;
+      if (throttled('notification', 120)) return;
       const msg = typeof payload.message === 'string' && payload.message ? payload.message : 'Claude Code ha bisogno di te.';
-      await send(clip(msg, 300), 'warn');
-    } else if (event === 'Stop') {
-      if (throttled('stop', 90)) return;
-      await send('Claude Code ha finito e aspetta il tuo prossimo messaggio.', 'ok');
+      await send('⏸ Serve il tuo input in Claude Code: ' + clip(msg, 250), 'warn');
     }
   } catch { /* silenzio */ }
 }
