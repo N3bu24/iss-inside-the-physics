@@ -1,8 +1,11 @@
 import { useMemo, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Line, OrbitControls, Stars } from '@react-three/drei'
+import { Line, Stars } from '@react-three/drei'
 import * as THREE from 'three'
-import { Shell, Cursore, Pulsante } from './ui'
+import SimulazioneShell from '../simulazioni/SimulazioneShell'
+import { Cursore, Pulsante } from '../simulazioni/controlli'
+import { passiSimulazione } from '../simulazioni/passi'
+import type { Passo } from '../simulazioni/contenuto'
 import { TESTI } from './testi'
 import Etichetta from './Etichetta'
 import { helixGeometry } from './geo'
@@ -273,10 +276,27 @@ export default function AmbienteLevitazione({ onClose }: { onClose: () => void }
   const T = TESTI.levitazione.didascalie
   const did = eml && v > 0.1 ? T.eml : v < 0.04 ? T.fermo : quota(v) < 0.5 * H_MAX ? T.medio : T.veloce
   const kmh = Math.round((v * 480) / 10) * 10
+  const passi = useMemo(() => passiSimulazione('levitazione'), [])
+  const onPasso = (i: number | null, p?: Passo) => {
+    if (i === null || !p) return
+    if (p.stato === 'fermo') { setV(0); setEml(false) }
+    else if (p.stato === 'medio') { setV(0.45); setEml(false) }
+    else if (p.stato === 'veloce') { setV(1); setEml(false) }
+    else if (p.stato === 'eml') { setV(0.9); setEml(true) }
+  }
   return (
-    <Shell
+    <SimulazioneShell
       id="levitazione"
       onClose={onClose}
+      titolo={TESTI.levitazione.titolo}
+      intro={TESTI.levitazione.intro}
+      formula={TESTI.levitazione.formula}
+      formulaNota={TESTI.levitazione.formulaNota}
+      agenda={TESTI.levitazione.agenda}
+      slide={TESTI.levitazione.slide}
+      passi={passi}
+      onPasso={onPasso}
+      orbit={{ target: [0, 0.8, 0], maxPolarAngle: Math.PI * 0.55, minDistance: 5, maxDistance: 20 }}
       didascalia={did}
       camera={{ position: [0, 4.2, 11.5], fov: 45 }}
       controlli={
@@ -303,7 +323,6 @@ export default function AmbienteLevitazione({ onClose }: { onClose: () => void }
       <Stars radius={60} depth={30} count={800} factor={3} fade speed={0} />
       <Maglev st={st} />
       <EML st={st} />
-      <OrbitControls enablePan={false} target={[0, 0.8, 0]} maxPolarAngle={Math.PI * 0.55} minDistance={5} maxDistance={20} />
-    </Shell>
+    </SimulazioneShell>
   )
 }

@@ -1,17 +1,18 @@
-import { lazy, type ComponentType } from 'react'
-import { TESTI, type IdAmbiente } from './testi'
+// Compatibilita': il registro vero e' in src/simulazioni/index.ts.
+import type { ComponentType } from 'react'
+import { SIMULAZIONI, componenteSimulazione, type PropsSimulazione } from '../simulazioni'
 
-export type PropsAmbiente = { onClose: () => void }
+export type PropsAmbiente = PropsSimulazione
 
-/** Registro degli ambienti: per aggiungerne uno basta una riga (file + testi). */
-export const AMBIENTI: { id: IdAmbiente; titolo: string; Componente: ComponentType<PropsAmbiente> }[] = [
-  { id: 'campo', titolo: TESTI.campo.titolo, Componente: lazy(() => import('./AmbienteCampo')) },
-  { id: 'energia', titolo: TESTI.energia.titolo, Componente: lazy(() => import('./AmbienteEnergia')) },
-  { id: 'levitazione', titolo: TESTI.levitazione.titolo, Componente: lazy(() => import('./AmbienteLevitazione')) },
-  { id: 'rmn', titolo: TESTI.rmn.titolo, Componente: lazy(() => import('./AmbienteRmn')) },
-]
+export const AMBIENTI: { id: string; titolo: string; Componente: ComponentType<PropsAmbiente> }[] = SIMULAZIONI.map((s) => ({
+  id: s.id,
+  titolo: s.titolo,
+  Componente: componenteSimulazione(s.id)!,
+}))
 
-export const AmbienteCampo = AMBIENTI[0].Componente
-export const AmbienteEnergia = AMBIENTI[1].Componente
-export const AmbienteLevitazione = AMBIENTI[2].Componente
-export const AmbienteRmn = AMBIENTI[3].Componente
+const per = (id: string) => AMBIENTI.find((a) => a.id === id)!.Componente
+export const AmbienteCampo = per('campo')
+export const AmbienteEnergia = per('energia')
+export const AmbienteLevitazione = per('levitazione')
+export const AmbienteRmn = per('rmn')
+export const SimFaraday = per('faraday')
