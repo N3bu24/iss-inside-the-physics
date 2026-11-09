@@ -23,7 +23,8 @@ interface HotspotJson { id: string; tappa: string; titolo: string; testo: string
 interface ClipJson { id: string; tappa: string; testo: string; durata_stimata_s?: number }
 
 function applica() {
-  const hs = hotspotJson as HotspotJson[]
+  // Formato v1 (tappa/testo). Il formato v2 (luogo/categoria) è gestito dal nuovo motore di esplorazione.
+  const hs = (hotspotJson as unknown as HotspotJson[]).filter((h) => 'tappa' in h)
   const clip = copioniJson as ClipJson[]
   for (const t of tappe) {
     t.hotspot = hs
