@@ -12,13 +12,14 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 
 ## Lunedì 9 — Fattibilità, piano, prototipo
 
-- [ ] P1 Leggere `CLAUDE.md` e il pptx; riassumere vincoli della consegna
-- [ ] P1 Verificare Street View della ISS (panorami disponibili, embed, API, policy)
-- [ ] P1 Verificare che Blender si avvii da terminale
-- [ ] P1 Verificare che le chiavi in `.env` funzionino (prova minima Higgsfield ed ElevenLabs)
-- [ ] P1 Provare il bot Telegram: `node scripts/notify.mjs "Test"` e `node scripts/notify.mjs --ask "Test approvazione?"`
-- [ ] P1 Presentare il piano di una pagina e ottenere l'approvazione
-- [ ] P1 Scaffold del progetto (frontend, struttura cartelle, `.gitignore` con `.env`)
+- [x] P1 Leggere `CLAUDE.md` e il pptx (testo estratto in `docs/pptx-teoria.md`); riassunto vincoli → `content-writer` in corso
+- [ ] P1 Verificare Street View della ISS (panorami disponibili, embed, API, policy) → `researcher` in corso
+- [x] P1 Verificare che Blender si avvii da terminale (5.2.3 LTS, percorso completo in `BLENDER_PATH`, non nel PATH)
+- [x] P1 Verificare che le chiavi in `.env` funzionino (ElevenLabs Starter OK, Higgsfield auth OK senza spesa)
+- [x] P1 Provare il bot Telegram: messaggio di prova inviato (`--ask` da provare)
+- [x] P1 Presentare il piano di una pagina e ottenere l'approvazione (9/11)
+- [ ] P1 Scaffold del progetto (frontend, struttura cartelle, `.gitignore` con `.env`) → git inizializzato, `web-developer` in corso
+- [ ] P1 Modello EML prima versione → `blender-artist` in corso
 - [ ] P1 Prototipo: schermata iniziale + 1-2 ambienti + hotspot + prima versione dell'EML
 
 ## Martedì 10 — Produzione degli asset

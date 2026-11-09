@@ -93,3 +93,7 @@ Formato: data, decisione, motivo, alternative scartate.
 - **Decisione:** bot Telegram dell'autore tramite `scripts/notify.mjs` (token e chat id nel `.env`). Avvisi su crediti esauriti, errori di API, blocchi, fine fase e chiusura sessione; approvazioni con bottoni Approva/Rifiuta per le decisioni non urgenti; hook di Claude Code che avvisano quando serve l'autore o la sessione è finita (spegnibili con `NOTIFY_HOOKS=off`).
 - **Sicurezza:** solo il chat id dell'autore può rispondere ai bottoni; il token non viene mai stampato; nessun segreto nei messaggi; l'approvazione vale solo per la singola domanda e non cambia le regole di budget.
 - **Scartato:** approvare i permessi degli strumenti di Claude Code da Telegram (restano in Claude Code); accettare testo libero da Telegram come istruzione.
+
+## 9/11/2026 — Street View: si usa il fallback
+- **Decisione:** non usare Google Street View. I panorami saranno collegati a mano in Photo Sphere Viewer. Le fonti sono, in ordine: fotogrammi equirettangolari dai video 360 ESA (Columbus, Cupola, Node 2), se la licenza lo permette; altrimenti ambienti ricostruiti in Blender o foto reali NASA (pubblico dominio).
+- **Motivo:** l'iframe Embed non permette hotspot né navigazione controllata. Scaricare le immagini viola i ToS di Google (vedi `docs/research/street-view.md`).
