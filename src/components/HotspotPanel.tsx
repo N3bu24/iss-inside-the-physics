@@ -20,8 +20,9 @@ export default function HotspotPanel({ hotspot, onClose }: { hotspot: Hotspot; o
           {hotspot.media.tipo === 'video' ? (
             <video src={hotspot.media.src} controls preload="metadata" className="w-full" />
           ) : (
-            <img src={hotspot.media.src} alt={hotspot.media.didascalia ?? hotspot.titolo} className="w-full" loading="lazy" />
+            <img src={hotspot.media.src} alt={hotspot.media.didascalia ?? hotspot.titolo} className="aspect-[3/2] w-full object-cover object-top" loading="lazy" />
           )}
+          {hotspot.media.credito && <p className="credito-linea px-3 pt-1.5 text-[11px]">{hotspot.media.credito}</p>}
           {hotspot.media.didascalia && (
             <figcaption className="flex items-center justify-between gap-2 px-3 py-2 text-xs text-white/60">
               {hotspot.media.didascalia}

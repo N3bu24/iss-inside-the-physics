@@ -7,59 +7,77 @@ import type { Tappa, ModuloMappa, Fenomeno } from './types'
  * Asset: panorami in public/panorami/<id>.jpg, audio in public/audio/<id-clip>.mp3.
  * Se un file manca, il sito usa un segnaposto.
  */
+const PANO_CREDITO = 'Panorama: ESA/NASA – S. Cristoforetti'
 const pano = (id: string) => ({ panorama: `/panorami/${id}.jpg` })
 
 export const tappe: Tappa[] = [
   {
+    // Foto NASA a schermo intero con lento Ken Burns (non è un panorama)
     id: 'intro', titolo: 'La Stazione Spaziale Internazionale', sottotitolo: 'Un laboratorio a 400 km di quota',
-    tipo: 'panorama', ...pano('intro'), modulo: 'esterno', tinta: '#0b2a6b', badge: 'ia', yawIniziale: 0,
+    tipo: 'immagine', immagine: '/panorami/intro.jpg', velo: 0.15, aspetto: 1.5, modulo: 'esterno', badge: 'foto',
+    credito: 'Foto: NASA',
     hotspot: [], clip: [],
-    collegamenti: [{ a: 'nodo', yaw: 3.0, pitch: -0.05, etichetta: 'Entra nella stazione' }],
+    collegamenti: [{ a: 'nodo', yaw: 0, pitch: 0, x: 0.5, y: 0.5, etichetta: 'Entra nella stazione' }],
   },
   {
+    // Harmony (Node 2). Portello centrale = corridoio; "To COL" a yaw -157, "To JEM" a yaw +148
     id: 'nodo', titolo: 'Nodo di collegamento', sottotitolo: 'Il passaggio verso i laboratori',
-    tipo: 'panorama', ...pano('nodo'), modulo: 'nodo', tinta: '#1d2a44', badge: 'foto', yawIniziale: 0,
+    tipo: 'panorama', ...pano('nodo'), modulo: 'nodo', tinta: '#1d2a44', badge: 'foto', yawIniziale: 0, pitchIniziale: 0.05,
+    credito: PANO_CREDITO,
     hotspot: [], clip: [],
     collegamenti: [
-      { a: 'intro', yaw: 3.14, pitch: -0.05, etichetta: 'Indietro' },
-      { a: 'columbus', yaw: 0, pitch: -0.05, etichetta: 'Verso Columbus' },
+      { a: 'intro', yaw: 1.0, pitch: -0.75, etichetta: "Torna all'esterno" },
+      { a: 'columbus', yaw: -2.74, pitch: 0.03, etichetta: 'Verso Columbus' },
+      { a: 'materiali', yaw: 2.58, pitch: 0.08, etichetta: 'Verso Kibo' },
     ],
   },
   {
+    // Columbus. Il portello verso Harmony ("FWD") è a yaw +90; il rack scelto per l'EML è a yaw ~+10
     id: 'columbus', titolo: 'Modulo Columbus', sottotitolo: 'Il laboratorio europeo (ESA)',
-    tipo: 'panorama', ...pano('columbus'), modulo: 'columbus', tinta: '#12324a', badge: 'foto', yawIniziale: 0,
+    tipo: 'panorama', ...pano('columbus'), modulo: 'columbus', tinta: '#12324a', badge: 'foto', yawIniziale: 0.15, pitchIniziale: 0.05,
+    credito: PANO_CREDITO,
     hotspot: [], clip: [],
     collegamenti: [
-      { a: 'nodo', yaw: 3.14, pitch: -0.05, etichetta: 'Indietro' },
-      { a: 'eml', yaw: -0.8, pitch: -0.25, etichetta: "Guarda dentro l'EML" },
+      { a: 'nodo', yaw: 1.57, pitch: 0.1, etichetta: 'Verso Harmony' },
+      { a: 'eml', yaw: 0.45, pitch: -0.2, etichetta: "Guarda dentro l'EML" },
     ],
   },
   {
     id: 'eml', titolo: 'EML — Electromagnetic Levitator', sottotitolo: 'Levitare, fondere, solidificare',
     tipo: 'scena3d', modulo: 'columbus', badge: 'modello3d',
+    credito: "Modello 3D concettuale dell'EML",
     hotspot: [], clip: [],
     collegamenti: [{ a: 'columbus', yaw: 0, pitch: 0, etichetta: 'Torna a Columbus' }],
   },
   {
+    // Kibo (JAXA). Portello verso Harmony al centro (yaw 0)
     id: 'materiali', titolo: 'Materiali dallo spazio', sottotitolo: 'Leghe e proprietà senza gravità',
-    tipo: 'panorama', ...pano('materiali'), modulo: 'columbus', tinta: '#2a1a12', badge: 'simulazione',
-    hotspot: [], clip: [],
-    collegamenti: [{ a: 'cupola', yaw: 0, pitch: -0.05, etichetta: 'Verso la Cupola' }],
-  },
-  {
-    id: 'cupola', titolo: 'Cupola', sottotitolo: 'Lo sguardo sulla Terra',
-    tipo: 'panorama', ...pano('cupola'), modulo: 'cupola', tinta: '#0a3a5a', badge: 'foto', yawIniziale: 0,
+    tipo: 'panorama', ...pano('materiali'), modulo: 'columbus', tinta: '#2a1a12', badge: 'foto', yawIniziale: 0, pitchIniziale: 0.05,
+    credito: PANO_CREDITO,
     hotspot: [], clip: [],
     collegamenti: [
-      { a: 'materiali', yaw: 3.14, pitch: -0.05, etichetta: 'Indietro' },
-      { a: 'finale', yaw: 0, pitch: -0.05, etichetta: 'Dallo spazio alla Terra' },
+      { a: 'nodo', yaw: -0.28, pitch: 0.04, etichetta: 'Torna a Harmony' },
+      { a: 'cupola', yaw: 0.28, pitch: 0.04, etichetta: 'Verso la Cupola' },
     ],
   },
   {
-    id: 'finale', titolo: 'Dallo spazio alla Terra', sottotitolo: 'Innovazione, infrastrutture, salute',
-    tipo: 'panorama', ...pano('finale'), modulo: 'cupola', tinta: '#0b3b2e', badge: 'ia', yawIniziale: 0,
+    // Tranquility (Node 3): la Cupola si apre dal nadir (cartelli "To CUP" a yaw -125 e +110)
+    id: 'cupola', titolo: 'Cupola', sottotitolo: 'Lo sguardo sulla Terra',
+    tipo: 'panorama', ...pano('cupola'), modulo: 'cupola', tinta: '#0a3a5a', badge: 'foto', yawIniziale: -2.1, pitchIniziale: -0.45,
+    credito: PANO_CREDITO,
     hotspot: [], clip: [],
-    collegamenti: [{ a: 'intro', yaw: 3.14, pitch: -0.05, etichetta: 'Ricomincia' }],
+    collegamenti: [
+      { a: 'materiali', yaw: -1.75, pitch: 0.05, etichetta: 'Indietro' },
+      { a: 'finale', yaw: 1.2, pitch: -1.25, etichetta: 'Dallo spazio alla Terra' },
+    ],
+  },
+  {
+    // Foto NASA notturna dalla Cupola con velo scuro e lento Ken Burns
+    id: 'finale', titolo: 'Dallo spazio alla Terra', sottotitolo: 'Innovazione, infrastrutture, salute',
+    tipo: 'immagine', immagine: '/panorami/cupola-foto.jpg', velo: 0.45, aspetto: 3840 / 2520, modulo: 'cupola', badge: 'foto',
+    credito: 'Foto: NASA',
+    hotspot: [], clip: [],
+    collegamenti: [{ a: 'intro', yaw: 0, pitch: 0, x: 0.86, y: 0.76, etichetta: 'Ricomincia' }],
   },
 ]
 

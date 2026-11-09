@@ -1,11 +1,13 @@
 export type Provenienza = 'foto' | 'ia' | 'modello3d' | 'simulazione'
-export type TipoTappa = 'panorama' | 'scena3d' | 'documentario'
+export type TipoTappa = 'panorama' | 'scena3d' | 'documentario' | 'immagine'
 
 export interface Media {
   tipo: 'immagine' | 'video'
   src: string
   didascalia?: string
   badge?: Provenienza
+  /** credito mostrato sotto il media (es. "NASA") */
+  credito?: string
 }
 
 export interface Hotspot {
@@ -13,6 +15,9 @@ export interface Hotspot {
   /** posizione nel panorama (radianti) */
   yaw?: number
   pitch?: number
+  /** posizione su tappe di tipo 'immagine' (0..1 sull'immagine, origine in alto a sinistra) */
+  x?: number
+  y?: number
   /** oggetto nominato del modello 3D a cui agganciare il punto (+ spostamento in unità scena) */
   oggetto3d?: string
   spostamento3d?: [number, number, number]
@@ -46,6 +51,9 @@ export interface Collegamento {
   a: string // id tappa di destinazione
   yaw: number
   pitch: number
+  /** su tappe 'immagine' (0..1) al posto di yaw/pitch */
+  x?: number
+  y?: number
   etichetta?: string
 }
 
@@ -57,6 +65,15 @@ export interface Tappa {
   panorama?: string
   /** vista iniziale (rad) */
   yawIniziale?: number
+  pitchIniziale?: number
+  /** immagine a schermo intero (tipo 'immagine') con lento Ken Burns */
+  immagine?: string
+  /** larghezza/altezza della parte visibile dell'immagine (ritaglia in basso) */
+  aspetto?: number
+  /** velo scuro sopra l'immagine, 0..1 */
+  velo?: number
+  /** credito breve mostrato in basso a destra */
+  credito?: string
   hotspot: Hotspot[]
   collegamenti: Collegamento[]
   /** clip di voce in ordine di riproduzione (audio in public/audio/<id-clip>.mp3) */
