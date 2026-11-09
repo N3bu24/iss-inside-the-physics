@@ -1,0 +1,50 @@
+[
+  {
+    "id": "eml",
+    "file": "eml.mp3",
+    "durata_s": 24.2,
+    "testo": "Questa è la scena dell'EML. Premi Avvia e seguirai un esperimento in sei passi. Prima il campione viene portato nella bobina. Poi il campo di quadrupolo lo sospende, perché le correnti parassite respingono la bobina. Il campo di dipolo lo scalda per effetto Joule, fino a fonderlo. Poi la goccia oscilla e si misura, infine si raffredda e solidifica."
+  },
+  {
+    "id": "campo",
+    "file": "campo.mp3",
+    "durata_s": 22.6,
+    "testo": "Qui la stazione è un conduttore che si muove dentro il campo magnetico della Terra. Premi Avvia e segui i passaggi: il nastro che si allunga dietro la struttura è la superficie spazzata, e il flusso che cambia fa nascere la tensione. Poi gioca con velocità, campo e lunghezza e guarda i volt cambiare. Con i valori predefiniti si arriva a circa ventitré volt."
+  },
+  {
+    "id": "energia",
+    "file": "energia.mp3",
+    "durata_s": 22.3,
+    "testo": "In questa simulazione segui l'energia dal pannello solare fino al rack. Premi Avvia: vedrai prima la corrente continua dei pannelli, poi un alternatore che produce un'onda sinusoidale e un trasformatore che cambia la tensione. Poi scopri perché le linee elettriche usano alte tensioni: il cavo che si scalda è il calore perso per effetto Joule."
+  },
+  {
+    "id": "levitazione",
+    "file": "levitazione.mp3",
+    "durata_s": 21.3,
+    "testo": "Qui vedi la legge di Lenz in tre versioni. Premi Avvia: un magnete in moto sopra una lastra di rame induce correnti che lo respingono. Poi lo stesso principio sostiene il campione nell'EML e solleva un treno Maglev. Alla fine vedrai l'ELF di Kibo, che usa forze elettriche: la levitazione ha più strade."
+  },
+  {
+    "id": "rmn",
+    "file": "rmn.mp3",
+    "durata_s": 23.8,
+    "testo": "Qui entri in una risonanza magnetica. Premi Avvia e segui cinque passi: un campo intenso allinea i nuclei di idrogeno, un impulso radio li inclina, e mentre precedono inducono un segnale nella bobina, secondo Faraday-Neumann. Muovi il cursore del campo e guarda come cambia la frequenza. Tessuti diversi producono segnali diversi: è così che nasce l'immagine."
+  },
+  {
+    "id": "motore",
+    "file": "motore.mp3",
+    "durata_s": 22.4,
+    "testo": "Qui vedi che motore e alternatore sono la stessa macchina usata in due versi. Premi Avvia: prima giri la spira con la manovella e produci corrente. Poi la alimenti con una batteria, e la forza di Lorentz la fa girare. Osserva la fem opposta che nasce mentre il motore gira: è la legge di Lenz. È ciò che muove le ventole e i bracci della stazione."
+  },
+  {
+    "id": "autoinduzione",
+    "file": "autoinduzione.mp3",
+    "durata_s": 22.3,
+    "testo": "Questo è un circuito con un interruttore e una bobina. Premi Avvia e chiudi l'interruttore: la corrente non sale subito, perché la bobina si oppone con una fem autoindotta. Guarda la curva e il tempo caratteristico L diviso R. L'area sotto la curva è l'energia accumulata nel campo magnetico: la stessa idea che troviamo nella bobina dell'EML."
+  },
+  {
+    "id": "aurora",
+    "file": "aurora.mp3",
+    "durata_s": 21.5,
+    "testo": "Qui vedi perché esistono le aurore. Premi Avvia e osserva una particella carica entrare in un campo magnetico: non va dritta, curva per la forza di Lorentz, e spiraleggia lungo le linee del campo. Le linee portano ai poli, e lì le particelle accendono l'atmosfera. Puoi cambiare il campo e la particella per vedere come cambia la spirale."
+  }
+]

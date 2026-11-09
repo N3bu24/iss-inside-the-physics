@@ -7,13 +7,42 @@ import AudioToggle from '../components/AudioToggle'
 const urlAudio = (id: string) => `/audio/luoghi/${id}.mp3`
 const ascoltati = new Set<string>()
 
-interface Cue { start: number; end: number; text: string }
-function cuesDi(testo: string, durata: number): Cue[] {
+export interface Cue { start: number; end: number; text: string }
+const PAROLE_AL_SEC = 2.8
+const MIN_CUE = 2.5
+const MAX_PAROLE = 20
+const MIN_PAROLE = 12
+
+/** Blocchi da 1-2 righe (circa 12-20 parole), durata nominale ~2,8 parole/s (min 2,5 s), poi scalata sulla durata reale dell'audio. */
+export function cuesDi(testo: string, durata: number): Cue[] {
   const frasi = testo.match(/[^.!?…]+[.!?…]+["»”]?\s*|[^.!?…]+$/g)?.map((s) => s.trim()).filter(Boolean) ?? [testo]
-  const tot = frasi.reduce((n, f) => n + f.length, 0) || 1
+  // 1) spezza le frasi lunghe in pezzi bilanciati, preferendo le virgole
+  const pezzi: string[][] = []
+  for (const f of frasi) {
+    const w = f.split(/\s+/)
+    if (w.length <= MAX_PAROLE) { pezzi.push(w); continue }
+    const n = Math.ceil(w.length / MAX_PAROLE), dim = w.length / n
+    let da = 0
+    for (let k = 1; k <= n; k++) {
+      let fine = k === n ? w.length : Math.round(dim * k)
+      if (k < n) for (let d = 0; d <= 3; d++) { const c = [fine + d, fine - d].find((i) => i > da + 4 && i < w.length && /[,;:]$/.test(w[i - 1])); if (c) { fine = c; break } }
+      pezzi.push(w.slice(da, fine)); da = fine
+    }
+  }
+  // 2) unisce i pezzi troppo corti fino a ~20 parole
+  const blocchi: string[][] = []
+  for (const p of pezzi) {
+    const u = blocchi[blocchi.length - 1]
+    if (u && u.length < MIN_PAROLE && u.length + p.length <= MAX_PAROLE) u.push(...p); else blocchi.push([...p])
+  }
+  // 3) durate proporzionali al testo, adattate all'audio reale
+  const nominali = blocchi.map((b) => Math.max(MIN_CUE, b.length / PAROLE_AL_SEC))
+  const tot = nominali.reduce((a, b) => a + b, 0) || 1
+  const k = durata > 0 ? durata / tot : 1
   let t = 0
-  return frasi.map((f) => { const d = (f.length / tot) * durata; const c = { start: t, end: t + d, text: f }; t += d; return c })
+  return blocchi.map((b, i) => { const d = nominali[i] * k; const c = { start: t, end: t + d, text: b.join(' ') }; t += d; return c })
 }
+
 
 /**
  * Una sola clip breve per luogo (public/audio/luoghi/<id>.mp3), riprodotta una volta per visita; se il file non esiste tace.
@@ -53,7 +82,7 @@ export default function Voce({ luogo, audioOn, onAudio }: { luogo: Luogo; audioO
         />
       )}
       {cc && corrente && (
-        <div className="fade-in pointer-events-none absolute bottom-[11rem] left-1/2 z-30 w-[min(720px,90vw)] -translate-x-1/2 rounded-lg bg-black/60 px-4 py-2 text-center text-base backdrop-blur">
+        <div className="fade-in pointer-events-none absolute bottom-[7.6rem] left-1/2 z-30 w-[min(760px,90vw)] -translate-x-1/2 rounded-lg bg-black/80 px-5 py-2.5 text-center text-[17px] font-medium leading-snug text-white shadow-lg">
           {corrente}
         </div>
       )}

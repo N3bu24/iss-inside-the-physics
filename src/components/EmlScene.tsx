@@ -218,11 +218,13 @@ interface Props {
   fenomeno: string | null
   calore: Calore
   onHotspot: (id: string) => void
+  /** apre subito la sequenza a passi */
+  avviaSubito?: boolean
 }
 
-export default function EmlScene({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: caloreEsterno, onHotspot }: Props) {
+export default function EmlScene({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: caloreEsterno, onHotspot, avviaSubito }: Props) {
   const passi = useMemo(() => PASSI_EML(), [])
-  const [seq, setSeq] = useState<number | null>(null)
+  const [seq, setSeq] = useState<number | null>(avviaSubito ? 0 : null)
   const passo = seq !== null ? (passi[seq] ?? null) : null
   const sc = passo?.stato ? STATO_SCENA[passo.stato] : undefined
   const fenomeno = sc ? sc.fenomeno : fenomenoEsterno
@@ -274,7 +276,7 @@ export default function EmlScene({ hotspot, attivo, fenomeno: fenomenoEsterno, c
         })}
         <OrbitControls enableDamping minDistance={1.5} maxDistance={14} target={[0, 0, 0]} makeDefault />
         <CameraPasso passo={passo} ancore={ancore} />
-        <OffsetVista attivo={seq !== null} sinistraPx={176} />
+        <OffsetVista attivo={seq !== null} sinistraPx={-176} />
       </Canvas>
       <Stile />
       {seq === null && (

@@ -13,7 +13,7 @@ export default function Crediti({ credito }: { credito?: string }) {
       </div>
       {aperto && (
         <div className="absolute inset-0 z-[60] flex items-center justify-center bg-black/50 p-6" onClick={() => setAperto(false)}>
-          <aside className="glass fade-in relative max-h-[85vh] w-[min(760px,94vw)] overflow-y-auto rounded-2xl p-7" onClick={(e) => e.stopPropagation()}>
+          <aside className="glass fade-in relative max-h-[85vh] w-[min(760px,94vw)] scroll-sottile overflow-y-auto rounded-2xl p-7" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setAperto(false)} aria-label="Chiudi" className="absolute right-4 top-3 text-xl text-white/60 hover:text-white">×</button>
             <h2 className="text-xl font-semibold">Crediti</h2>
             <p className="mt-1 text-sm text-white/55">Panorami e fotografie</p>

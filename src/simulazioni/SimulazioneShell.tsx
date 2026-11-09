@@ -7,7 +7,6 @@ import 'katex/dist/katex.min.css'
 import { Play, X } from 'lucide-react'
 import Badge from '../components/Badge'
 import Stile from './Stile'
-import Intestazione from './Intestazione'
 import Marcatore, { type CategoriaSim } from './Marcatore'
 import FinestraSequenza from './FinestraSequenza'
 import Voce from './Voce'
@@ -154,8 +153,8 @@ export default function SimulazioneShell(p: PropsShell) {
       )}
 
       {/* barra superiore */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-5 py-4">
-        <Intestazione />
+      <div className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-5 pt-14 pb-0">
+        <span />
         <div className="flex items-center gap-3">
           <Voce id={p.id} />
           <Badge tipo="simulazione" />
@@ -166,7 +165,7 @@ export default function SimulazioneShell(p: PropsShell) {
       </div>
 
       {/* pannello di spiegazione */}
-      <aside className="glass sim-scroll absolute bottom-28 left-5 top-16 z-10 flex w-[360px] flex-col gap-3 rounded-2xl p-5 text-[13px] leading-relaxed">
+      <aside className="glass sim-scroll absolute bottom-28 left-5 top-28 z-10 flex w-[360px] flex-col gap-3 rounded-2xl p-5 text-[13px] leading-relaxed">
         <h2 className="text-xl font-semibold leading-tight">{p.titolo}</h2>
         <p className="text-white/75">{p.intro}</p>
         {hsAttivo ? (
@@ -197,7 +196,7 @@ export default function SimulazioneShell(p: PropsShell) {
         </div>
       </aside>
 
-      {p.scope && <div className="absolute right-5 top-16">{p.scope}</div>}
+      {p.scope && <div className="absolute right-5 top-28">{p.scope}</div>}
 
       {/* controlli */}
       <div className="glass absolute bottom-5 flex max-w-[calc(100%-420px)] items-center gap-8 rounded-2xl px-6 py-3" style={{ left: 'calc(50% + 190px)', transform: 'translateX(-50%)' }}>
