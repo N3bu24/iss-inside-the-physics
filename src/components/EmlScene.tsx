@@ -24,7 +24,7 @@ type Ancore = Record<string, THREE.Vector3>
 /** Grigio -> rosso -> arancione -> bianco. */
 const RAMPA = ['#9aa3b2', '#ff2a10', '#ff8a1a', '#ffffff'].map((c) => new THREE.Color(c))
 function coloreCalore(h: number, out: THREE.Color) {
-  const x = Math.min(1, Math.max(0, h)) * (RAMPA.length - 1)
+  const x = Math.min(1, Math.max(0, Number.isFinite(h) ? h : 0)) * (RAMPA.length - 1)
   const i = Math.min(RAMPA.length - 2, Math.floor(x))
   return out.copy(RAMPA[i]).lerp(RAMPA[i + 1], x - i)
 }
@@ -128,6 +128,7 @@ function ModelloGlb({ calore, fenomeno, onPronto }: { calore: Calore; fenomeno: 
     const t = clock.elapsedTime
     const target = calore ?? Math.sin(t * 0.25) * 0.5 + 0.5
     heat.current += (target - heat.current) * Math.min(1, d * 1.5)
+    if (!Number.isFinite(heat.current)) heat.current = 0
     const h = heat.current
     coloreCalore(h, col)
     for (const m of mats) {

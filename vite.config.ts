@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: { '@content': '/content' },
+    dedupe: ['three'],
   },
   build: { chunkSizeWarningLimit: 900 },
 })

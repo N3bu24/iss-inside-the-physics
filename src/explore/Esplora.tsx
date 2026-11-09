@@ -432,7 +432,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
           </Suspense>
           <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />
           {nodo.porte?.map((a) => (
-            <div key={a.ambiente} className="absolute right-[7%] top-[52%] z-30"><HotspotMarker tipo="ambiente" titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
+            <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30"><HotspotMarker tipo="ambiente" titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
           ))}
         </div>
       )}
@@ -457,13 +457,13 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
               <div className="fade-in pointer-events-none absolute bottom-[11.5rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
             )}
             {nodo.id === 'finale' && (
-              <button onClick={onHome} className="btn-ghost absolute bottom-40 left-1/2 z-30 -translate-x-1/2 !py-2 text-sm">Ricomincia dall'inizio</button>
+              <button onClick={onHome} className="btn-ghost absolute bottom-[8.5rem] left-5 z-30 !py-2 text-sm">Ricomincia dall'inizio</button>
             )}
           </div>
           <MiniMappa corrente={nodoId} visitati={visitati} onVaiA={(n) => vaiA(n)} occupato={volando} />
           <TappeBar corrente={nodoId} visitati={visitati} occupato={volando} onVai={(n) => vaiA(n)} />
           <Legenda />
-          <Voce key={nodo.id} luogo={luogo} audioOn={audioOn} onAudio={onAudio} />
+          <Voce key={nodo.id} luogo={luogo} audioOn={audioOn} onAudio={onAudio} schedaAperta={!!scheda} />
           <button onClick={onHome} title="Torna all'introduzione" aria-label="Torna all'introduzione" className="glass absolute bottom-5 right-[17.5rem] z-30 hidden rounded-full p-2.5 text-white/70 hover:text-white xl:block">
             <Home size={16} />
           </button>

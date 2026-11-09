@@ -14,7 +14,7 @@ export default function SchedaLuogo({ luogo, iniziaChiusa = false }: { luogo: Lu
       <button onClick={() => setAperta(!aperta)} className="flex w-full items-center gap-3 px-5 py-3 text-left" aria-expanded={aperta}>
         <MapPin size={16} className="shrink-0 text-cyan-200" />
         <span className="min-w-0 flex-1">
-          <span className="block truncate text-lg font-semibold leading-tight">{luogo.nome}</span>
+          <span className="block text-lg font-semibold leading-tight">{luogo.nome}</span>
           {!aperta && <span className="block truncate text-xs text-white/50">{luogo.sottotitolo}</span>}
         </span>
         <ChevronUp size={18} className={`shrink-0 text-white/60 transition-transform ${aperta ? '' : 'rotate-180'}`} />
