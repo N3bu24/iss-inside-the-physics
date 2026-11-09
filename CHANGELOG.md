@@ -5,6 +5,14 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.9.2] — 2026-11-10
+### Corretto (QA v0.9.0)
+- Le simulazioni si aprono tutte dalle schede (niente più errore React #306 da doppio lazy): 8 simulazioni, 21 punti verificati.
+- Layout delle simulazioni senza sovrapposizioni a 1280, 1440 e 1920: finestra a passi in colonna, marcatori 3D nascosti sotto i pannelli, titoli EML a capo.
+- Testi solo da `content/` v3 (hotspot, luoghi, simulazioni, ambienti); tolti i testi provvisori, Art. 9/41 e i dati di esempio.
+- Filtro `src/lib/pulisci.ts` contro note interne rimaste; voce di harmony-comunicazioni rigenerata.
+- Errore in console della scena EML eliminato; `dedupe: ['three']`.
+
 ## [0.9.1] — 2026-11-10
 ### Corretto
 - Campo magnetico: la Terra NASA Blue Marble ora si vede bene (lo shader che la nascondeva è stato tolto, l'atmosfera è sottile). La camera "segui ISS" mostra la stazione con la superficie terrestre sotto.
