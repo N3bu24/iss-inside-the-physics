@@ -120,3 +120,7 @@ Formato: data, decisione, motivo, alternative scartate.
 - **Intestazione** "Alessandro Bettinelli" su ogni schermata. L'intro ha un solo pulsante, "Inizia l'esplorazione", e in alto compaiono le "Tappe suggerite".
 - **Contenuti:** schede più corpose, con paragrafi, formule e immagini. Voce più ricca (fino a circa 16k caratteri) che spiega anche le simulazioni. Sottotitoli più lunghi e più lenti.
 - **Simulazioni:** una per ogni punto che la merita, tutte nello stile della scena EML. L'EML ha il pulsante "Avvia esperimento" con la sequenza a passi in una finestra centrale. Il campo magnetico usa la Terra NASA vera e il modello NASA della ISS, con proporzioni più realistiche.
+
+## 10/11/2026 (notte) — Voli v2 e test con Opus
+- Decisione dell'autore: rifare il volo Unity→Tranquility e gli altri voli difettosi con un modello Higgsfield migliore (scelto Seedance 2.0 std 1080p con prima e ultima immagine). L'autore ha detto che il saldo non è un problema: lotto autorizzato senza bottone, sempre con max 2 tentativi per volo.
+- Decisione dell'autore: per il test delle 7:00 un qa-reviewer usa Opus (solo navigazione ed esperienza), in deroga al §19; dopo l'esito, team di correzione in parallelo.
