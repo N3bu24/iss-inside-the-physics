@@ -104,3 +104,11 @@ Formato: data, decisione, motivo, alternative scartate.
 - Il decoder Draco è locale in `public/draco/`. Il modello EML è normalizzato sulla camera di processo.
 - Le posizioni degli hotspot stanno in `src/data/posizioni.ts`, separate dai testi.
 - Code-splitting: il chunk iniziale pesa 115 KB gzip. PSV, la scena 3D e KaTeX si caricano solo quando servono.
+
+## 9/11/2026 — Voce narrante
+- **Decisione:** voce ElevenLabs "Thomas A. - Italian PRO Narrator Voice" (CITWdMEsnRduEUkNWXQv), modello eleven_v4.
+- **Motivo:** approvata dall'autore con il bottone su Telegram dopo l'ascolto delle 3 prove.
+
+## 9/11/2026 — Panorami ESA
+- **Decisione (autore):** usare i panorami ESA "Space Station 360" (2016, S. Cristoforetti) per Columbus, Harmony (nodo), Kibo (materiali) e Tranquility (cupola). Foto NASA per intro e Cupola. Il credito deve essere visibile ma discreto.
+- **Licenza:** ESA Standard Licence (uso educativo non commerciale con credito); NASA pubblico dominio. Crediti in `public/panorami/CREDITI.md`.
