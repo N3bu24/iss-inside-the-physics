@@ -1,0 +1,170 @@
+[
+  {
+    "id": "harmony-cavi",
+    "file": "harmony-cavi.mp3",
+    "durata_s": 15.5,
+    "testo": "Questi cavi portano energia in tutto il modulo. Hanno una piccola resistenza, quindi si scaldano: le perdite crescono con il quadrato della corrente. Nella simulazione sull'energia di bordo puoi alzare la tensione della linea e vedere il calore diminuire."
+  },
+  {
+    "id": "harmony-comunicazioni",
+    "file": "harmony-comunicazioni.mp3",
+    "durata_s": 14.2,
+    "testo": "Questo schermo mostra i collegamenti radio con la Terra. Un'onda radio è un campo magnetico che varia nel tempo: attraversando un'antenna induce una piccola tensione alternata. È la legge di Faraday-Neumann, a frequenze altissime."
+  },
+  {
+    "id": "harmony-attrezzi",
+    "file": "harmony-attrezzi.mp3",
+    "durata_s": 15.1,
+    "testo": "Una batteria conserva energia in forma chimica. Una bobina la conserva in un altro modo: nel campo magnetico creato dalla corrente. Nella simulazione sull'autoinduzione puoi vedere la corrente crescere e l'energia accumularsi sotto la curva."
+  },
+  {
+    "id": "harmony-laptop",
+    "file": "harmony-laptop.mp3",
+    "durata_s": 17.3,
+    "testo": "Sullo schermo c'è la Terra, ma la Terra è anche un grande magnete. La stazione lo attraversa a circa sette virgola sette chilometri al secondo: una struttura conduttrice in moto in un campo magnetico. Nella simulazione puoi cambiare velocità e campo e vedere la tensione indotta."
+  },
+  {
+    "id": "columbus-rack-eml",
+    "file": "columbus-rack-eml.mp3",
+    "durata_s": 18.9,
+    "testo": "Questo è il rack dell'EML, il forno elettromagnetico dell'ESA. Una sola bobina porta due campi alternati: uno tiene il campione al centro, l'altro lo scalda. Clicca per aprire la scena tridimensionale e premi Avvia per seguire un esperimento dal caricamento alla solidificazione."
+  },
+  {
+    "id": "columbus-laptop",
+    "file": "columbus-laptop.mp3",
+    "durata_s": 14,
+    "testo": "Ogni computer riceve energia da un alimentatore, e dentro c'è un trasformatore: due bobine che sfruttano la mutua induzione. Cambiando il numero di spire cambia la tensione. Puoi provarlo nella simulazione sull'energia di bordo."
+  },
+  {
+    "id": "columbus-cavi",
+    "file": "columbus-cavi.mp3",
+    "durata_s": 12.6,
+    "testo": "Questi cavi corrono molto vicini. Una corrente che varia in uno crea un campo che attraversa gli altri e vi induce tensioni indesiderate. Intrecciare i fili fa sì che i disturbi si compensino a vicenda."
+  },
+  {
+    "id": "eml-bobina",
+    "file": "eml-bobina.mp3",
+    "durata_s": 17.3,
+    "testo": "Questa è la bobina in rame. Una corrente alternata crea un campo magnetico che cambia nel tempo, senza muovere nulla, ed è esattamente ciò che serve a Faraday per indurre correnti. Due frequenze sovrapposte svolgono due compiti diversi: posizionare e scaldare."
+  },
+  {
+    "id": "eml-correnti",
+    "file": "eml-correnti.mp3",
+    "durata_s": 16.5,
+    "testo": "Nel campione nascono correnti che girano su se stesse, le correnti parassite. Per la legge di Lenz creano un campo che respinge la bobina. Dove il campo è più debole, al centro, la repulsione si annulla: lì il campione si ferma e resta sospeso."
+  },
+  {
+    "id": "eml-joule",
+    "file": "eml-joule.mp3",
+    "durata_s": 15.9,
+    "testo": "Le correnti indotte incontrano la resistenza del metallo e lo scaldano dall'interno, per effetto Joule. Nessuna fiamma, nessun contenitore. Il campione supera i duemila gradi e diventa incandescente, e il campo di posizionamento continua a tenerlo fermo."
+  },
+  {
+    "id": "eml-induttore",
+    "file": "eml-induttore.mp3",
+    "durata_s": 17.3,
+    "testo": "La bobina dell'EML è anche un induttore. Se la corrente cambia, nasce una fem che si oppone al cambiamento: è l'autoinduzione. Nel campo della bobina è accumulata energia. La simulazione sull'autoinduzione mostra la corrente che sale lentamente."
+  },
+  {
+    "id": "eml-faraday",
+    "file": "eml-faraday.mp3",
+    "durata_s": 18.5,
+    "testo": "I quattro esperimenti di Faraday dicono tutti la stessa cosa: se il flusso del campo magnetico cambia, nasce una corrente indotta. Nell'EML cambia il campo nel tempo, come nell'esperimento delle due bobine. Nella simulazione sulla levitazione puoi muovere un magnete e vedere le correnti."
+  },
+  {
+    "id": "eml-campione",
+    "file": "eml-campione.mp3",
+    "durata_s": 19.9,
+    "testo": "Questa è la goccia di metallo: una sfera di pochi millimetri che fonde, oscilla e solidifica senza toccare nulla. Dalle sue oscillazioni si ricavano tensione superficiale e viscosità, dal raffreddamento si osserva il fronte di solidificazione. Premi Avvia nella scena dell'EML per vedere la sequenza."
+  },
+  {
+    "id": "kibo-elf",
+    "file": "kibo-elf.mp3",
+    "durata_s": 16.5,
+    "testo": "Anche Kibo ha una fornace a levitazione, ma usa forze elettriche invece dell'induzione. Funziona anche con vetri e ossidi, che non conducono. Nella simulazione sulla levitazione puoi confrontare le due soluzioni e vedere perché Lenz non basta per tutti i materiali."
+  },
+  {
+    "id": "kibo-joystick",
+    "file": "kibo-joystick.mp3",
+    "durata_s": 16.2,
+    "testo": "Il joystick comanda un braccio robotico, i cui giunti sono motori elettrici. Un motore usa la forza di Lorentz su una spira percorsa da corrente: è un alternatore che lavora al contrario. Nella simulazione puoi far girare la spira e osservare la fem che si oppone."
+  },
+  {
+    "id": "kibo-ricadute",
+    "file": "kibo-ricadute.mp3",
+    "durata_s": 16.3,
+    "testo": "Un metallo fuso a temperature altissime reagisce con il crogiolo che lo contiene. Levitando, il campione resta isolato e si misurano densità, tensione superficiale e viscosità. Sono dati che servono all'industria dei vetri e dei componenti, qui sulla Terra."
+  },
+  {
+    "id": "destiny-interruttori",
+    "file": "destiny-interruttori.mp3",
+    "durata_s": 15.2,
+    "testo": "Quando si chiude un interruttore su una bobina, la corrente non sale subito: la fem autoindotta si oppone all'aumento. È l'extracorrente di chiusura. Nella simulazione sull'autoinduzione chiudi tu l'interruttore e guardi la curva della corrente."
+  },
+  {
+    "id": "destiny-alimentazione",
+    "file": "destiny-alimentazione.mp3",
+    "durata_s": 17.9,
+    "testo": "I pannelli solari lavorano a circa centosessanta volt in corrente continua, i rack a un valore più basso. A fare la conversione sono i DDCU, che dentro hanno trasformatori. Nella simulazione sull'energia puoi scegliere la vista ISS e seguire il percorso dell'energia."
+  },
+  {
+    "id": "destiny-cavi-cc",
+    "file": "destiny-cavi-cc.mp3",
+    "durata_s": 17.2,
+    "testo": "Questi cavi portano corrente continua. Un alternatore la produrrebbe alternata, facendo ruotare una spira in un campo. I pannelli solari invece non hanno parti in movimento: trasformano la luce direttamente in elettricità. Nella simulazione puoi confrontare le due sorgenti."
+  },
+  {
+    "id": "unity-zarya",
+    "file": "unity-zarya.mp3",
+    "durata_s": 14.9,
+    "testo": "Questo portello porta a Zarya, il primo modulo della stazione. All'inizio l'energia arrivava dai suoi pannelli solari: una rete piccola, senza centrali. Il fotovoltaico non usa alternatori, a differenza di quasi tutte le altre fonti."
+  },
+  {
+    "id": "unity-airlock",
+    "file": "unity-airlock.mp3",
+    "durata_s": 17.7,
+    "testo": "Da qui si va all'airlock Quest, da cui si esce nello spazio. All'esterno la struttura si muove nel campo magnetico terrestre e si carica elettricamente rispetto al plasma. Due plasma contactor la tengono entro limiti sicuri. Nella simulazione sul campo puoi accenderli e spegnerli."
+  },
+  {
+    "id": "unity-ventole",
+    "file": "unity-ventole.mp3",
+    "durata_s": 17,
+    "testo": "Senza gravità l'aria calda non sale e l'aria ristagna. Per questo motori elettrici fanno circolare l'aria di continuo. Un motore usa la forza di Lorentz su una spira con corrente: è l'inverso di un alternatore. Puoi vedere come funziona nella simulazione sui motori."
+  },
+  {
+    "id": "tranquility-ared",
+    "file": "tranquility-ared.mp3",
+    "durata_s": 19.4,
+    "testo": "Senza gravità muscoli e ossa si indeboliscono, quindi ogni giorno gli astronauti si allenano con l'ARED. Lo studio del corpo in volo aiuta anche la medicina a terra, dove la risonanza magnetica è uno strumento fondamentale. Nella simulazione sulla RMN puoi vedere il segnale indotto."
+  },
+  {
+    "id": "tranquility-eclss",
+    "file": "tranquility-eclss.mp3",
+    "durata_s": 13.6,
+    "testo": "A bordo l'ossigeno si ricava anche dall'acqua, con l'elettrolisi: una corrente scinde l'acqua in idrogeno e ossigeno. L'elettricità viene dai pannelli solari. È energia elettrica che diventa energia chimica."
+  },
+  {
+    "id": "tranquility-portello-cupola",
+    "file": "tranquility-portello-cupola.mp3",
+    "durata_s": 14.7,
+    "testo": "Il portello sul pavimento porta alla Cupola. La stazione compie un'orbita in circa novanta minuti, muovendosi a sette virgola sette chilometri al secondo nel campo magnetico terrestre. Nella simulazione puoi vedere quale tensione ne risulta."
+  },
+  {
+    "id": "cupola-terra",
+    "file": "cupola-terra.mp3",
+    "durata_s": 15.2,
+    "testo": "Dalla Cupola la Terra scorre sotto di noi a circa sette virgola sette chilometri al secondo. Un'orbita dura circa novanta minuti. Ci muoviamo dentro il campo magnetico terrestre: nella simulazione puoi vedere quale tensione nasce nella struttura."
+  },
+  {
+    "id": "cupola-pannelli",
+    "file": "cupola-pannelli.mp3",
+    "durata_s": 15.7,
+    "testo": "Le ali dorate che si vedono fuori sono i pannelli solari. Trasformano la luce direttamente in corrente continua, senza turbine né alternatori. È un'eccezione: quasi tutte le altre fonti di energia, rinnovabili e no, usano l'induzione di Faraday."
+  },
+  {
+    "id": "cupola-aurora",
+    "file": "cupola-aurora.mp3",
+    "durata_s": 16.2,
+    "testo": "Le aurore nascono dalla forza di Lorentz. Una particella carica in un campo magnetico non va dritta: spiraleggia lungo le linee del campo, e qui le linee portano ai poli. Nella simulazione puoi lanciare le particelle e vedere dove si accende l'aurora."
+  }
+]
