@@ -71,6 +71,7 @@ body { background: var(--color-ink); color: #e8ecf5; font-family: var(--font-san
 .hs-btn:hover .tip, .hs-btn:focus-visible .tip { opacity: 1; }
 
 /* ---------- esplorazione fluttuante ---------- */
+@keyframes entraZoom { from { opacity: 0; transform: scale(1.18); } to { opacity: 1; transform: none; } }
 .hs2 {
   position: relative; width: 48px; height: 48px; border-radius: 9999px; display: grid; place-items: center; cursor: pointer;
   color: var(--c, #35e0ff); background: rgba(6, 10, 22, .66); border: 1.5px solid var(--c, #35e0ff);

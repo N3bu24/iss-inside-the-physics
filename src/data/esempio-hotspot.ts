@@ -1,4 +1,5 @@
-import type { Provenienza } from './types'
+import type { Provenienza, Categoria } from './types'
+export type { Categoria }
 import type { NodoId } from './stazione'
 
 /**
@@ -7,7 +8,6 @@ import type { NodoId } from './stazione'
  * Facoltativi: `yaw`/`pitch` (gradi, panorami), `x`/`y` (0..1, immagini), `oggetto3d` (scena EML).
  * Senza coordinate il sito sceglie una posizione libera del luogo (src/data/stazione.ts, `slot`).
  */
-export type Categoria = 'fisica' | 'eml' | 'strumento' | 'vita' | 'terra' | 'energia'
 
 export interface HotspotScheda {
   id: string

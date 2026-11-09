@@ -39,10 +39,10 @@ function normalizzaHotspot(g: Grezzo): HotspotScheda | null {
     id: g.id, luogo, categoria: categoriaDa(g.categoria),
     titolo: String(g.titolo ?? ''), breve: String(g.breve ?? ''),
     punti: Array.isArray(g.punti) ? g.punti.map(String) : [],
-    formula: typeof g.formula === 'string' && g.formula ? g.formula : undefined,
+    formula: typeof g.formula === 'string' && g.formula ? g.formula.replace(/^\s*\$+|\$+\s*$/g, '') : undefined,
     slide_pptx: Array.isArray(g.slide_pptx) ? g.slide_pptx.map(Number).filter((n) => !Number.isNaN(n)) : [],
     badge: badgeDa(g.badge), fonte: String(g.fonte ?? ''),
-    yaw: num(g.yaw), pitch: num(g.pitch), x: num(g.x), y: num(g.y),
+    yaw: num(g.yaw) ?? num(g.yaw_stimato), pitch: num(g.pitch) ?? num(g.pitch_stimato), x: num(g.x), y: num(g.y),
     oggetto3d: typeof g.oggetto3d === 'string' ? g.oggetto3d : undefined,
     spostamento3d: Array.isArray(g.spostamento3d) ? (g.spostamento3d as [number, number, number]) : undefined,
   }
@@ -51,25 +51,27 @@ function normalizzaHotspot(g: Grezzo): HotspotScheda | null {
 function normalizzaLuogo(g: Grezzo): Luogo | null {
   const id = luogoDa(g.id)
   if (!id) return null
+  const scheda = (g.scheda ?? {}) as Grezzo
+  const punti = Array.isArray(g.punti) ? g.punti : Array.isArray(scheda.punti) ? scheda.punti : []
   return {
     id, nome: String(g.nome ?? nodi[id].nome), sottotitolo: String(g.sottotitolo ?? nodi[id].sottotitolo),
-    punti: Array.isArray(g.punti) ? g.punti.map(String) : [],
+    punti: punti.map(String),
     voce: typeof g.voce === 'string' ? g.voce : typeof g.narrazione === 'string' ? g.narrazione : undefined,
     badge: badgeDa(g.badge ?? 'foto'), fonte: typeof g.fonte === 'string' ? g.fonte : undefined,
-    slide_pptx: Array.isArray(g.slide_pptx) ? g.slide_pptx.map(Number) : undefined,
+    slide_pptx: Array.isArray(g.slide_pptx) ? g.slide_pptx.map(Number) : Array.isArray(scheda.slide_pptx) ? scheda.slide_pptx.map(Number) : undefined,
   }
 }
 
 const hotspotReali = comeLista(hotspotJson)
 const nuovoFormato = hotspotReali.some((h) => 'categoria' in h)
-const listaHotspot: HotspotScheda[] = nuovoFormato
-  ? hotspotReali.map(normalizzaHotspot).filter((h): h is HotspotScheda => !!h)
-  : hotspotEsempio
+const hotspotNuovi = nuovoFormato ? hotspotReali.map(normalizzaHotspot).filter((h): h is HotspotScheda => !!h) : []
+// i luoghi senza hotspot reali (es. il finale) ricadono sugli esempi
+const listaHotspot: HotspotScheda[] = [...hotspotNuovi, ...hotspotEsempio.filter((e) => !hotspotNuovi.some((h) => h.luogo === e.luogo))]
 
 // luoghi.json è opzionale: la glob non fallisce se il file non esiste ancora
 const luoghiFile = import.meta.glob('/content/luoghi.json', { eager: true, import: 'default' })
 const luoghiReali = comeLista(Object.values(luoghiFile)[0])
-const luoghiNuovi = luoghiReali.some((l) => 'punti' in l) ? luoghiReali.map(normalizzaLuogo).filter((l): l is Luogo => !!l) : []
+const luoghiNuovi = luoghiReali.some((l) => 'punti' in l || 'scheda' in l) ? luoghiReali.map(normalizzaLuogo).filter((l): l is Luogo => !!l) : []
 const listaLuoghi: Luogo[] = [...luoghiNuovi, ...luoghiEsempio.filter((e) => !luoghiNuovi.some((l) => l.id === e.id))]
 
 export const luogoDi = (id: NodoId): Luogo =>
@@ -82,6 +84,13 @@ export type Posizione =
 
 export interface HotspotPosizionato extends HotspotScheda { pos: Posizione | null }
 
+/** oggetti del modello EML, assegnati in ordine agli hotspot senza `oggetto3d` */
+const OGGETTI_EML: { oggetto: string; spostamento?: [number, number, number] }[] = [
+  { oggetto: 'coil_upper' }, { oggetto: 'sample', spostamento: [0.35, 0.25, 0] }, { oggetto: 'sample', spostamento: [-0.35, 0.25, 0] },
+  { oggetto: 'coil_lower' }, { oggetto: 'chamber_assembly', spostamento: [0.9, 0.6, 0] }, { oggetto: 'camera_axial' }, { oggetto: 'pyrometer' }, { oggetto: 'carousel' },
+]
+/** centri delle finestre della Cupola (frazioni dello schermo 16:9) */
+const FINESTRE_CUPOLA: [number, number][] = [[0.69, 0.5], [0.594, 0.79], [0.406, 0.79], [0.31, 0.5], [0.406, 0.21], [0.594, 0.21]]
 const GRIGLIA_IMMAGINE: [number, number][] = [[0.2, 0.4], [0.8, 0.4], [0.35, 0.68], [0.65, 0.68], [0.12, 0.6], [0.88, 0.62]]
 const deg = (r: number) => (r * 180) / Math.PI
 
@@ -90,10 +99,13 @@ function posizioneDi(h: HotspotScheda, i: number): Posizione | null {
   const legacy = posizioni[h.id]
   if (tipo === 'eml') {
     const oggetto = h.oggetto3d ?? legacy?.oggetto3d
-    return oggetto ? { tipo: 'oggetto3d', oggetto, spostamento: h.spostamento3d ?? legacy?.spostamento3d } : null
+    if (oggetto) return { tipo: 'oggetto3d', oggetto, spostamento: h.spostamento3d ?? legacy?.spostamento3d }
+    const o = OGGETTI_EML[i % OGGETTI_EML.length]
+    return { tipo: 'oggetto3d', oggetto: o.oggetto, spostamento: o.spostamento }
   }
   if (tipo === 'cupola' || tipo === 'finale') {
-    const [gx, gy] = GRIGLIA_IMMAGINE[i % GRIGLIA_IMMAGINE.length]
+    const griglia = tipo === 'cupola' ? FINESTRE_CUPOLA : GRIGLIA_IMMAGINE
+    const [gx, gy] = griglia[i % griglia.length]
     return { tipo: 'immagine', x: h.x ?? legacy?.x ?? gx, y: h.y ?? legacy?.y ?? gy }
   }
   if (h.yaw !== undefined && h.pitch !== undefined) return { tipo: 'sfera', yaw: h.yaw, pitch: h.pitch }

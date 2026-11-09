@@ -74,7 +74,7 @@ export const nodi: Record<NodoId, Nodo> = {
   },
   tranquility: {
     id: 'tranquility', nome: 'Tranquility', sottotitolo: "Node 3: l'accesso alla Cupola", tipo: 'panorama', panorama: '/panorami/cupola.jpg',
-    yawIniziale: -100, pitchIniziale: 0, modulo: 'tranquility', credito: PANO, badge: 'foto', tinta: '#0a3a5a',
+    yawIniziale: -92, pitchIniziale: 0, modulo: 'tranquility', credito: PANO, badge: 'foto', tinta: '#0a3a5a',
     slot: [{ yaw: 90, pitch: 10 }, { yaw: 150, pitch: 10 }, { yaw: -30, pitch: 10 }, { yaw: 60, pitch: 45 }, { yaw: -150, pitch: 25 }],
   },
   eml: {
@@ -83,13 +83,13 @@ export const nodi: Record<NodoId, Nodo> = {
     porte: [{ ambiente: 'levitazione', titolo: 'Levitazione magnetica', breve: "Entra nell'ambiente interattivo sulla levitazione" }],
   },
   cupola: {
-    id: 'cupola', nome: 'Cupola', sottotitolo: 'Lo sguardo sulla Terra', tipo: 'cupola', panorama: '/panorami/cupola-foto.jpg',
-    yawIniziale: 0, pitchIniziale: 0, modulo: 'cupola', credito: FOTO, badge: 'foto', tinta: '#0a3a5a', slot: [],
+    id: 'cupola', nome: 'Cupola', sottotitolo: 'Lo sguardo sulla Terra', tipo: 'cupola', panorama: '/video/terra-cupola-poster.jpg',
+    yawIniziale: 0, pitchIniziale: 0, modulo: 'cupola', credito: 'Video: NASA Johnson – ISS View of Planet Earth', badge: 'foto', tinta: '#0a3a5a', slot: [],
     porte: [{ ambiente: 'campo', titolo: 'Il campo magnetico terrestre', breve: "Entra nell'ambiente interattivo sul campo magnetico", x: 0.5, y: 0.5 }],
   },
   finale: {
-    id: 'finale', nome: 'Dallo spazio alla Terra', sottotitolo: 'Innovazione, infrastrutture, salute', tipo: 'finale', panorama: '/panorami/cupola-foto.jpg',
-    yawIniziale: 0, pitchIniziale: 0, modulo: 'cupola', credito: FOTO, badge: 'foto', tinta: '#05070f', slot: [],
+    id: 'finale', nome: 'Dallo spazio alla Terra', sottotitolo: 'Innovazione, infrastrutture, salute', tipo: 'finale', panorama: '/video/terra-cupola-poster.jpg',
+    yawIniziale: 0, pitchIniziale: 0, modulo: 'cupola', credito: 'Video: NASA Johnson – ISS View of Planet Earth', badge: 'foto', tinta: '#05070f', slot: [],
   },
 }
 
@@ -98,14 +98,18 @@ export interface Estremo { nodo: NodoId; yaw: number; pitch: number }
  * Un arco = un portello visto dai due lati. `voloAvanti` (a -> b) e `voloIndietro` (b -> a) sono i video del volo;
  * se omessi vale la convenzione public/voli/<da>__<a>.mp4 (usato solo se il file esiste).
  */
-export interface Arco { a: Estremo; b: Estremo; voloAvanti?: string; voloIndietro?: string }
+export interface Arco {
+  a: Estremo; b: Estremo; voloAvanti?: string; voloIndietro?: string
+  /** sguardo all'arrivo (gradi) se diverso da "di spalle al portello": a->b e b->a */
+  arrivoAvanti?: { yaw: number; pitch: number }; arrivoIndietro?: { yaw: number; pitch: number }
+}
 
 export const archi: Arco[] = [
   { a: { nodo: 'harmony', yaw: 0, pitch: 0 }, b: { nodo: 'destiny', yaw: 180, pitch: 0 } },
-  { a: { nodo: 'harmony', yaw: -155, pitch: 0 }, b: { nodo: 'columbus', yaw: 90, pitch: 0 } },
+  { a: { nodo: 'harmony', yaw: -150, pitch: 0 }, b: { nodo: 'columbus', yaw: 90, pitch: 0 } },
   { a: { nodo: 'harmony', yaw: 150, pitch: 0 }, b: { nodo: 'kibo', yaw: 180, pitch: 0 } },
   { a: { nodo: 'destiny', yaw: 0, pitch: 0 }, b: { nodo: 'unity', yaw: 180, pitch: 0 } },
-  { a: { nodo: 'unity', yaw: 90, pitch: 0 }, b: { nodo: 'tranquility', yaw: -100, pitch: 0 } },
+  { a: { nodo: 'unity', yaw: 90, pitch: 0 }, b: { nodo: 'tranquility', yaw: -92, pitch: 0 }, arrivoAvanti: { yaw: 20, pitch: -30 } },
   // passaggi verso scene non panoramiche
   { a: { nodo: 'columbus', yaw: 8, pitch: 20 }, b: { nodo: 'eml', yaw: 0, pitch: 0 } },
   { a: { nodo: 'tranquility', yaw: 0, pitch: -70 }, b: { nodo: 'cupola', yaw: 0, pitch: 0 } },
@@ -123,6 +127,8 @@ export interface Portello {
   pitchArrivo: number
   /** URL del video di volo se dichiarato nell'arco (altrimenti vale la convenzione) */
   video?: string
+  /** sguardo all'arrivo (gradi), se dichiarato nell'arco */
+  arrivo?: { yaw: number; pitch: number }
   /** posizione sull'immagine (0..1) per i nodi non panoramici */
   x?: number; y?: number
 }
@@ -132,12 +138,12 @@ export const urlVolo = (da: NodoId, a: NodoId) => `/voli/${da}__${a}.mp4`
 export const portelli: Record<NodoId, Portello[]> = (() => {
   const out = Object.fromEntries((Object.keys(nodi) as NodoId[]).map((k) => [k, [] as Portello[]])) as Record<NodoId, Portello[]>
   for (const arco of archi) {
-    out[arco.a.nodo].push({ da: arco.a.nodo, verso: arco.b.nodo, yaw: arco.a.yaw, pitch: arco.a.pitch, yawArrivo: arco.b.yaw, pitchArrivo: arco.b.pitch, video: arco.voloAvanti })
-    out[arco.b.nodo].push({ da: arco.b.nodo, verso: arco.a.nodo, yaw: arco.b.yaw, pitch: arco.b.pitch, yawArrivo: arco.a.yaw, pitchArrivo: arco.a.pitch, video: arco.voloIndietro })
+    out[arco.a.nodo].push({ da: arco.a.nodo, verso: arco.b.nodo, yaw: arco.a.yaw, pitch: arco.a.pitch, yawArrivo: arco.b.yaw, pitchArrivo: arco.b.pitch, video: arco.voloAvanti, arrivo: arco.arrivoAvanti })
+    out[arco.b.nodo].push({ da: arco.b.nodo, verso: arco.a.nodo, yaw: arco.b.yaw, pitch: arco.b.pitch, yawArrivo: arco.a.yaw, pitchArrivo: arco.a.pitch, video: arco.voloIndietro, arrivo: arco.arrivoIndietro })
   }
   // portelli dei nodi non panoramici: posizione sull'immagine
-  for (const p of out.cupola) { if (p.verso === 'finale') { p.x = 0.5; p.y = 0.26 } else { p.x = 0.5; p.y = 0.92 } }
-  for (const p of out.finale) { p.x = 0.5; p.y = 0.92 }
+  for (const p of out.cupola) { if (p.verso === 'finale') { p.x = 0.5; p.y = 0.08 } else { p.x = 0.5; p.y = 0.93 } }
+  for (const p of out.finale) { p.x = 0.5; p.y = 0.93 }
   return out
 })()
 

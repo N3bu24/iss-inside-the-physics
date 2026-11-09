@@ -17,6 +17,8 @@ export interface PanoApi {
   zoomTo(livello: number, ms: number, easing?: AnimateOptions['easing']): Promise<void>
   /** Sostituisce il panorama senza transizione e orienta lo sguardo (rad). */
   show(url: string, yaw: number, pitch: number, zoom: number): Promise<void>
+  /** Orienta subito lo sguardo (rad) e lo zoom, senza cambiare panorama. */
+  orienta(yaw: number, pitch: number, zoom: number): void
   /** elemento su cui applicare filtri CSS (blur) durante il volo */
   elemento(): HTMLElement | null
   zoom(): number
@@ -80,6 +82,7 @@ export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, o
       await viewer.current?.setPanorama(u, { transition: false, showLoader: false, position: { yaw: y, pitch: p }, zoom: z })
       proietta()
     },
+    orienta: (y, p, z) => { viewer.current?.rotate({ yaw: y, pitch: p }); viewer.current?.zoom(z); proietta() },
     elemento: () => radice.current,
     zoom: () => viewer.current?.getZoomLevel() ?? ZOOM_BASE,
   }), [])
