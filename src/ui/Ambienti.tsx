@@ -1,5 +1,4 @@
 import { Component, lazy, Suspense, useEffect, type ComponentType, type LazyExoticComponent, type ReactNode } from 'react'
-import { X } from 'lucide-react'
 import type { AmbienteId } from '../data/stazione'
 
 type Props = { onClose: () => void }
@@ -54,9 +53,6 @@ export default function AmbienteOverlay({ id, onClose }: { id: AmbienteId; onClo
           <Comp onClose={onClose} />
         </Suspense>
       </Barriera>
-      <button onClick={onClose} aria-label="Chiudi" className="glass absolute left-4 top-4 z-[56] flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-white/75 hover:text-white">
-        <X size={14} /> Torna alla stazione
-      </button>
     </div>
   )
 }

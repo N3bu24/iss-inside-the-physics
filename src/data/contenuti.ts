@@ -90,7 +90,7 @@ const OGGETTI_EML: { oggetto: string; spostamento?: [number, number, number] }[]
   { oggetto: 'coil_lower' }, { oggetto: 'chamber_assembly', spostamento: [0.9, 0.6, 0] }, { oggetto: 'camera_axial' }, { oggetto: 'pyrometer' }, { oggetto: 'carousel' },
 ]
 /** centri delle finestre della Cupola (frazioni dello schermo 16:9) */
-const FINESTRE_CUPOLA: [number, number][] = [[0.69, 0.5], [0.594, 0.79], [0.406, 0.79], [0.31, 0.5], [0.406, 0.21], [0.594, 0.21]]
+const FINESTRE_CUPOLA: [number, number][] = [[0.69, 0.5], [0.594, 0.72], [0.406, 0.72], [0.31, 0.5], [0.406, 0.21], [0.594, 0.21]]
 const GRIGLIA_IMMAGINE: [number, number][] = [[0.2, 0.4], [0.8, 0.4], [0.35, 0.68], [0.65, 0.68], [0.12, 0.6], [0.88, 0.62]]
 const deg = (r: number) => (r * 180) / Math.PI
 

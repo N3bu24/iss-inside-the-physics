@@ -359,7 +359,7 @@ export default function Esplora({ attivo, guidataIniziale, audioOn, onAudio, onH
             {scheda && <HotspotCard scheda={scheda} onClose={() => setApri(null)} />}
             <Indicatore precedente={precedente} />
             {suggerimento && (
-              <div className="fade-in pointer-events-none absolute bottom-[9rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
+              <div className="fade-in pointer-events-none absolute bottom-[9.2rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
             )}
             {nodo.id === 'finale' && (
               <button onClick={onHome} className="btn-ghost absolute bottom-40 left-1/2 z-30 -translate-x-1/2 !py-2 text-sm">Ricomincia dall'inizio</button>

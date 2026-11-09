@@ -15,7 +15,7 @@ export interface ModuloMappa {
   et: { x: number; y: number; ancora: 'start' | 'middle' | 'end' }
 }
 
-export const VIEWBOX = { w: 280, h: 220 }
+export const VIEWBOX = { w: 296, h: 220 }
 
 export const moduliMappa: ModuloMappa[] = [
   { id: 'zvezda', nome: 'Zvezda', x: 12, y: 98, w: 56, h: 24, et: { x: 40, y: 138, ancora: 'middle' } },

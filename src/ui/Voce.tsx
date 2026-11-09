@@ -53,7 +53,7 @@ export default function Voce({ luogo, audioOn, onAudio }: { luogo: Luogo; audioO
         />
       )}
       {cc && corrente && (
-        <div className="fade-in pointer-events-none absolute bottom-[9.5rem] left-1/2 z-30 w-[min(720px,90vw)] -translate-x-1/2 rounded-lg bg-black/60 px-4 py-2 text-center text-base backdrop-blur">
+        <div className="fade-in pointer-events-none absolute bottom-[11rem] left-1/2 z-30 w-[min(720px,90vw)] -translate-x-1/2 rounded-lg bg-black/60 px-4 py-2 text-center text-base backdrop-blur">
           {corrente}
         </div>
       )}
