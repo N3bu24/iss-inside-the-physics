@@ -34,3 +34,21 @@ Sigle: ambienti = `amb-campo`, `amb-energia`, `amb-levitazione`, `amb-rmn`. Gli 
 - Slide senza appiglio spaziale diretto, collocate in `amb-energia` o `amb-rmn`: 12-17 (autoinduzione, solenoide, extracorrente, energia del campo), 18-23.
 - Hotspot senza slide: `tranquility-ared` (collegato a `amb-rmn`) e `cupola-aurora` (forza di Lorentz, citata nella consegna ma non nelle slide).
 - Video EML (Blender): campo variabile = slide 4, 7; correnti indotte = slide 8, 9, 11; effetto Joule = slide 9; fusione e solidificazione = slide 9.
+
+## v3 (hotspot corposi, simulazioni, voce più ricca)
+
+File: `content/hotspot-v3.json` (28 hotspot), `content/luoghi-v3.json` (15 voci: 8 luoghi + 7 ambienti), `content/simulazioni.json` (8 simulazioni). I file v1/v2 restano.
+
+Simulazioni e slide: `eml` (2-9, 11-17, 19), `campo` (2, 7-10), `energia` (3, 5, 18-23), `levitazione` (4, 8, 9, 11), `rmn` (8, 12-17), `motore` (3, 18), `autoinduzione` (12-17, 19), `aurora` (nessuna slide: forza di Lorentz, citata nella consegna).
+
+Hotspot senza simulazione: `harmony-comunicazioni`, `columbus-cavi`, `tranquility-eclss`.
+
+### Budget voce (limite 16.000 caratteri), stima per parole x 6,2 caratteri
+| Gruppo | Voci | Caratteri stimati |
+|---|---|---|
+| Hotspot | 28 | circa 7.500 |
+| Luoghi e ambienti | 15 | circa 4.400 |
+| Simulazioni | 8 | circa 3.200 |
+| Totale | 51 | circa 15.100 |
+
+Il conteggio è una stima manuale (non c'era modo di eseguire uno script): va verificato con un `wc` sul campo `voce` prima di generare l'audio.
