@@ -6,9 +6,9 @@
     "hotspot": ["columbus-rack-eml", "eml-bobina", "eml-correnti", "eml-joule", "eml-campione", "eml-induttore", "eml-faraday"],
     "scena": "Sezione tridimensionale semi-trasparente della camera di processo dell'EML, su fondo grigio scuro (stile laboratorio). Al centro una bobina in rame (colore rame #B87333, spire visibili, apertura laterale verso la telecamera) attorno a una sfera di metallo grigio chiaro di circa 5-8 mm, scalata per leggibilità. Intorno: portacampioni in ceramica (bianco avorio) con fessure, magazzino a revolver con 18 posizioni sul lato, telecamera veloce, pirometro con piccolo cono di luce, SCE come piccola scatola. Si animano: (1) linee di campo del quadrupolo (azzurro) e del dipolo (arancione), con intensità pulsante alla frequenza (rallentata); (2) anelli di corrente parassita (giallo) sulla sfera, in senso opposto al campo; (3) colore della sfera da grigio a rosso, giallo, bianco incandescente, con alone (bloom); (4) superficie della goccia che oscilla (deformazione sferica); (5) fronte di solidificazione come zona chiara che si espande dall'esterno, con rilascio di calore (ricalescenza) mostrato da un lampo di luminosità. Una piccola finestra centrale in sovraimpressione mostra il passo corrente con titolo, testo e, se presente, la formula; un indicatore di temperatura a barra.",
     "componenti": [
-      { "nome": "Bobina in rame", "icona_categoria": "eml", "spiegazione": "Un solo avvolgimento con due correnti alternate sovrapposte: quadrupolo (circa 140 kHz) per posizionare e dipolo (circa 380 kHz) per scaldare [da fonti secondarie, DA VERIFICARE]." },
+      { "nome": "Bobina in rame", "icona_categoria": "eml", "spiegazione": "Un solo avvolgimento con due correnti alternate sovrapposte: quadrupolo (circa 135-155 kHz) per posizionare e dipolo (circa 365-390 kHz) per scaldare." },
       { "nome": "Campione sferico", "icona_categoria": "eml", "spiegazione": "Sfera di lega di alluminio, rame o nichel, di circa 5-8 mm: dentro nascono le correnti parassite." },
-      { "nome": "Portacampioni e magazzino", "icona_categoria": "strumento", "spiegazione": "Ogni campione sta in un portacampioni di ceramica e renio; un magazzino a revolver ne contiene 18, cambiati dall'equipaggio." },
+      { "nome": "Portacampioni e magazzino", "icona_categoria": "strumento", "spiegazione": "Ogni campione sta in un portacampioni di ceramica e renio; un magazzino ne contiene 18." },
       { "nome": "Telecamera veloce e pirometro", "icona_categoria": "strumento", "spiegazione": "La telecamera arriva fino a 30 000 fotogrammi al secondo (Airbus); il pirometro misura la temperatura senza contatto." },
       { "nome": "Gas inerte e vuoto", "icona_categoria": "fisica", "spiegazione": "La camera è sotto vuoto e riempita con gas inerte (argon nelle prove ESA 2021): evita che il metallo caldo si ossidi." },
       { "nome": "Generatore in corrente alternata", "icona_categoria": "energia", "spiegazione": "Alimenta la bobina, che è un induttore: la sua autoinduzione limita la crescita della corrente." }
@@ -16,7 +16,7 @@
     "passi": [
       {
         "titolo": "Carico del campione",
-        "testo": "Un magazzino a revolver contiene 18 campioni sferici di leghe metalliche, ognuno in un portacampioni di ceramica e renio. Un meccanismo sceglie il campione e lo porta al centro della bobina, nella camera sotto vuoto. Il magazzino è sostituito dall'equipaggio; l'esperimento è comandato dal centro utenti DLR di Colonia.",
+        "testo": "Un magazzino a revolver contiene 18 campioni sferici di leghe metalliche, ognuno in un portacampioni di ceramica e renio. Un meccanismo sceglie il campione e lo porta al centro della bobina, nella camera sotto vuoto. L'esperimento è comandato dal centro utenti DLR di Colonia.",
         "cosa_si_vede": "Il revolver ruota, un campione scivola verso il centro della bobina; l'atmosfera nella camera si colora di azzurro tenue (gas inerte).",
         "formula": null
       },
@@ -28,7 +28,7 @@
       },
       {
         "titolo": "Riscaldamento con il campo di dipolo",
-        "testo": "Un secondo campo, a frequenza più alta, induce nel campione correnti che incontrano la resistenza del metallo. L'energia elettrica diventa calore per effetto Joule, dall'interno e senza contatto. Più è rapida la variazione di flusso, più sono intense le correnti, e più cresce la temperatura: oltre 2000 °C, secondo ESA e Airbus.",
+        "testo": "Un secondo campo, a frequenza più alta, induce nel campione correnti che incontrano la resistenza del metallo. L'energia elettrica diventa calore per effetto Joule, dall'interno e senza contatto. Più è rapida la variazione di flusso, più sono intense le correnti, e più cresce la temperatura: fino a 2000-2200 °C, secondo Airbus ed ESA.",
         "cosa_si_vede": "Il campione passa da grigio a rosso, giallo e bianco; la barra della temperatura sale; il pirometro mostra un cono luminoso.",
         "formula": "P = R\\,i^2 = \\frac{\\varepsilon^2}{R}"
       },
@@ -67,10 +67,10 @@
     "scena": "Globo terrestre stilizzato blu scuro con linee di campo di un dipolo (azzurro chiaro) che escono al polo sud e rientrano al polo nord. La ISS è un modello semplice (traliccio grigio con pannelli dorati) in orbita su un cerchio inclinato di 51,6 gradi, in movimento continuo. Sulla ISS si anima una freccia di fem (giallo) la cui lunghezza è proporzionale a ε e un valore in volt in sovraimpressione. Due piccoli simboli di plasma contactor (viola) emettono uno sbuffo di plasma. Il vettore velocità è verde, il campo B azzurro, la struttura (l) arancione; si evidenzia la superficie spazzata come un nastro semitrasparente dietro la struttura. Piccola finestra centrale con il passo.",
     "componenti": [
       { "nome": "Struttura della ISS", "icona_categoria": "fisica", "spiegazione": "Conduttore di lunghezza l (ordine di 100 m) in moto: ai suoi estremi si separano le cariche." },
-      { "nome": "Linee del campo terrestre", "icona_categoria": "fisica", "spiegazione": "Campo magnetico di dipolo; a 400 km vale circa 30 microtesla [DA VERIFICARE con IGRF]." },
+      { "nome": "Linee del campo terrestre", "icona_categoria": "fisica", "spiegazione": "Campo magnetico di dipolo; a 400 km vale tra circa 25 e 45 microtesla lungo l'orbita (30 è un valore tipico, modello IGRF)." },
       { "nome": "Vettore velocità", "icona_categoria": "fisica", "spiegazione": "Circa 7,7 km/s lungo l'orbita." },
       { "nome": "Nastro di superficie spazzata", "icona_categoria": "fisica", "spiegazione": "L'area l·v·dt tagliata ogni istante: è ciò che fa variare il flusso." },
-      { "nome": "Plasma contactor", "icona_categoria": "strumento", "spiegazione": "Emettono plasma di xeno e collegano la struttura all'ambiente, tenendola entro ±40 volt [DA VERIFICARE]." }
+      { "nome": "Plasma contactor", "icona_categoria": "strumento", "spiegazione": "Emettono plasma di xeno e collegano la struttura all'ambiente, tenendola entro ±40 volt (requisito di progetto)." }
     ],
     "passi": [
       {
@@ -87,7 +87,7 @@
       },
       {
         "titolo": "La fem di moto",
-        "testo": "Dividendo per dt si ottiene ε = B l v. Con B di 30 microtesla, l di 100 metri e v di 7,7 km/s si ottengono circa 23 volt, un valore dello stesso ordine di quello stimato dalla NASA. È un massimo, con struttura, velocità e campo perpendicolari; con altre orientazioni la fem si riduce, fino ad annullarsi.",
+        "testo": "Dividendo per dt si ottiene ε = B l v. Con B di 30 microtesla, l di 100 metri e v di 7,7 km/s si ottengono circa 23 volt, un valore dello stesso ordine di quelli citati dalla NASA: fino a circa 30 volt su un traliccio di 100 metri. È un massimo, con struttura, velocità e campo perpendicolari; con altre orientazioni la fem si riduce, fino ad annullarsi.",
         "cosa_si_vede": "La freccia gialla sulla struttura si allunga, con il valore in volt che compare.",
         "formula": "\\varepsilon = B\\,l\\,v"
       },
@@ -99,7 +99,7 @@
       },
       {
         "titolo": "I plasma contactor",
-        "testo": "La ISS è immersa in un plasma rarefatto e, oltre alla fem di moto, la sua struttura tende a caricarsi. Due plasma contactor emettono plasma di xeno e la collegano elettricamente all'ambiente, mantenendone il potenziale entro ±40 volt: serve a proteggere strumenti e astronauti [da verificare su documenti NASA].",
+        "testo": "La ISS è immersa in un plasma rarefatto e, oltre alla fem di moto, la sua struttura tende a caricarsi. Due plasma contactor emettono plasma di xeno e la collegano elettricamente all'ambiente, mantenendone il potenziale entro ±40 volt, come richiesto dal progetto. Senza contactor, i modelli NASA prevedevano per le configurazioni iniziali circa -140 volt: una previsione, non una misura.",
         "cosa_si_vede": "Sbuffi viola dai due contactor; un indicatore di potenziale resta nella fascia verde.",
         "formula": null
       }
@@ -123,18 +123,18 @@
       { "nome": "Alternatore", "icona_categoria": "energia", "spiegazione": "Una spira che ruota in un campo: fem sinusoidale, N B S ω sin(ωt)." },
       { "nome": "Trasformatore", "icona_categoria": "energia", "spiegazione": "Due bobine su un nucleo di ferro: V₁/V₂ = N₁/N₂ per grandezze che variano nel tempo." },
       { "nome": "Linea di trasmissione", "icona_categoria": "energia", "spiegazione": "Perdite Joule P = R i²: alta tensione, bassa corrente, poche perdite." },
-      { "nome": "Convertitore DDCU", "icona_categoria": "energia", "spiegazione": "Porta circa 160 V dei pannelli a circa 124,5 V per i rack, con trasformatore ad alta frequenza [DA VERIFICARE]." }
+      { "nome": "Convertitore DDCU", "icona_categoria": "energia", "spiegazione": "Porta circa 160 V dei pannelli a circa 124,5 V per i rack, con un convertitore a commutazione e un trasformatore di isolamento, con efficienza di circa il 95%." }
     ],
     "passi": [
       {
         "titolo": "Dalla luce alla corrente continua",
-        "testo": "Sulla ISS la fonte principale sono i pannelli solari. Le celle fotovoltaiche trasformano direttamente la luce in corrente continua, senza turbine né alternatori. È un'eccezione tra le fonti elencate nella teoria: tutte le altre, dall'idroelettrico al nucleare, usano un alternatore.",
+        "testo": "Sulla ISS la fonte principale sono i pannelli solari. Le celle fotovoltaiche trasformano direttamente la luce in corrente continua, senza turbine né alternatori. È un'eccezione tra le sei tipologie di centrali della slide 22 (fotovoltaica, idroelettrica, eolica, geotermica, termoelettrica, nucleare): le altre cinque usano un alternatore.",
         "cosa_si_vede": "Fotoni gialli colpiscono il pannello; frecce blu continue escono verso il resto della catena.",
         "formula": null
       },
       {
         "titolo": "L'alternatore",
-        "testo": "Nelle altre centrali una turbina fa ruotare una spira in un campo magnetico. L'angolo tra campo e superficie cambia, il flusso varia e, per Faraday-Neumann-Lenz, nasce una fem sinusoidale. Più rapida è la rotazione, più alta la fem e più alta la frequenza.",
+        "testo": "Nelle altre centrali una turbina fa ruotare una spira in un campo magnetico. L'angolo tra campo e superficie cambia, il flusso varia e, per Faraday-Neumann-Lenz, nasce una fem sinusoidale. Più rapida è la rotazione, più alta la fem e più alta la frequenza. È la forma v = V₀ sin ωt dei circuiti in corrente alternata (slide 19).",
         "cosa_si_vede": "Il rotore gira; sull'oscilloscopio un'onda sinusoidale cresce in altezza e si infittisce.",
         "formula": "\\varepsilon(t) = N\\,B\\,S\\,\\omega\\sin(\\omega t)"
       },
@@ -146,13 +146,13 @@
       },
       {
         "titolo": "Perché alta tensione",
-        "testo": "Un cavo ha una resistenza: la corrente lo scalda con potenza R i². A parità di potenza trasportata P = V i, alzando la tensione si abbassa la corrente e le perdite diminuiscono con il quadrato. Con l'esempio concettuale di 10 MW su una linea di 5 ohm a 10 kV si perderebbe metà della potenza; a 380 kV quasi nulla.",
+        "testo": "Un cavo ha una resistenza: la corrente lo scalda con potenza R i². A parità di potenza trasportata P = V i, alzando la tensione si abbassa la corrente e le perdite diminuiscono con il quadrato. Con l'esempio concettuale di 10 MW su una linea di 5 ohm a 10 kV si perderebbe metà della potenza; a 380 kV quasi nulla. Sono valori didattici: sulla slide 23 la tensione parte da 10 kV in centrale, sale a 220-380 kV in linea e scende a 20-132 kV nelle sottostazioni.",
         "cosa_si_vede": "Selezionando 10, 100, 380 kV la linea passa da arancione acceso a grigia; la corrente e le perdite si aggiornano.",
         "formula": "P_J = R\\left(\\frac{P}{V}\\right)^2"
       },
       {
         "titolo": "La rete della ISS",
-        "testo": "A bordo i pannelli danno circa 160 V in continua, mentre i rack usano circa 124,5 V. I convertitori DDCU spezzettano la corrente ad alta frequenza, la trasformano e la raddrizzano. Con la frequenza alta, la variazione di flusso è rapida e il trasformatore può essere piccolo e leggero.",
+        "testo": "A bordo i pannelli danno circa 160 V in continua, mentre i rack usano circa 124,5 V. I convertitori DDCU, a commutazione, spezzettano la corrente ad alta frequenza, la trasformano con un trasformatore di isolamento e la raddrizzano, con un'efficienza di circa il 95%. Con la frequenza alta, la variazione di flusso è rapida e il trasformatore può essere piccolo e leggero.",
         "cosa_si_vede": "La vista passa alla ISS: pannelli, DDCU e rack, con le due tensioni indicate.",
         "formula": "\\frac{V_2}{V_1} = \\frac{N_2}{N_1}"
       }
@@ -175,7 +175,7 @@
       { "nome": "Magnete e lastra", "icona_categoria": "fisica", "spiegazione": "Il terzo esperimento di Faraday: un magnete in moto induce correnti parassite in un conduttore." },
       { "nome": "Anelli di corrente", "icona_categoria": "fisica", "spiegazione": "Correnti indotte che producono un campo opposto alla variazione (Lenz)." },
       { "nome": "Campione EML", "icona_categoria": "eml", "spiegazione": "Il metallo levita perché la bobina fa variare il flusso nel campione." },
-      { "nome": "Treno Maglev", "icona_categoria": "terra", "spiegazione": "I magneti del treno inducono correnti nelle bobine della guida; oltre una soglia di velocità si solleva (circa 150 km/h [DA VERIFICARE])." },
+      { "nome": "Treno Maglev", "icona_categoria": "terra", "spiegazione": "I magneti del treno inducono correnti nelle bobine della guida; oltre una soglia di velocità si solleva (attorno ai 150 km/h; il record è di 603 km/h, nel 2015)." },
       { "nome": "ELF di Kibo", "icona_categoria": "eml", "spiegazione": "Levitazione elettrostatica: F = qE, funziona anche con isolanti." }
     ],
     "passi": [
@@ -199,7 +199,7 @@
       },
       {
         "titolo": "Il treno Maglev",
-        "testo": "Nel Maglev giapponese i magneti del treno, passando davanti alle bobine della guida, vi inducono correnti. Sotto la soglia di velocità il flusso varia troppo lentamente e il treno poggia sulle ruote; oltre, la repulsione lo solleva. Nessun contatto, nessun attrito di rotolamento: infrastruttura innovativa, Obiettivo 9.",
+        "testo": "Nel Maglev giapponese i magneti del treno, passando davanti alle bobine della guida, vi inducono correnti. Sotto la soglia di velocità (attorno ai 150 km/h) il flusso varia troppo lentamente e il treno poggia sulle ruote; oltre, la repulsione lo solleva. Nessun contatto, nessun attrito di rotolamento: infrastruttura innovativa, Obiettivo 9.",
         "cosa_si_vede": "Il treno accelera; superata la soglia le ruote si staccano e gli anelli di corrente si accendono nella guida.",
         "formula": null
       },
@@ -257,7 +257,7 @@
       },
       {
         "titolo": "Dal segnale all'immagine",
-        "testo": "Tessuti diversi, come grasso, muscolo o liquido, tornano all'equilibrio con rapidità diverse. La differenza dei segnali costruisce l'immagine, senza radiazioni ionizzanti. Sulla ISS non c'è una risonanza: gli astronauti sono esaminati a terra, prima e dopo il volo [DA VERIFICARE].",
+        "testo": "Tessuti diversi, come grasso, muscolo o liquido, tornano all'equilibrio con rapidità diverse. La differenza dei segnali costruisce l'immagine, senza radiazioni ionizzanti. Sulla ISS non c'è una risonanza: gli astronauti sono esaminati a terra, prima e dopo il volo. Uno studio NASA su 34 astronauti (Roberts et al., New England Journal of Medicine, 2017) ha confrontato le risonanze del cervello prima e dopo le missioni lunghe.",
         "cosa_si_vede": "Tre curve di smorzamento diverse (grasso, muscolo, liquido) e un'immagine a toni di grigio.",
         "formula": null
       }
@@ -275,13 +275,13 @@
     "titolo": "Motori e alternatori: lo stesso principio",
     "luogo": "amb-motore",
     "hotspot": ["kibo-joystick", "unity-ventole"],
-    "scena": "Una spira rettangolare in rame tra due magneti (polo N rosso, polo S blu) con un collettore (due semianelli) e due spazzole. A sinistra una manovella dorata (modalità alternatore) collegata a una lampadina; a destra una batteria (modalità motore). La spira ruota; frecce di forza (verdi) sui lati; un oscilloscopio mostra l'onda sinusoidale di ε(t) e, nel motore, la fem opposta. Piccoli modelli vicino: un braccio robotico con giunti e una ventola. Opzionalmente in un secondo pannello un giroscopio di controllo (CMG) con rotore e motore di inclinazione [DA VERIFICARE la posizione e il numero dei CMG sulla ISS]. Finestra centrale con il passo.",
+    "scena": "Una spira rettangolare in rame tra due magneti (polo N rosso, polo S blu) con un collettore (due semianelli) e due spazzole. A sinistra una manovella dorata (modalità alternatore) collegata a una lampadina; a destra una batteria (modalità motore). La spira ruota; frecce di forza (verdi) sui lati; un oscilloscopio mostra l'onda sinusoidale di ε(t) e, nel motore, la fem opposta. Piccoli modelli vicino: un braccio robotico con giunti e una ventola. Opzionalmente in un secondo pannello un giroscopio di controllo (CMG) con rotore e motore di inclinazione. Finestra centrale con il passo.",
     "componenti": [
       { "nome": "Spira in rame", "icona_categoria": "strumento", "spiegazione": "Il conduttore che ruota nel campo magnetico." },
       { "nome": "Magneti", "icona_categoria": "fisica", "spiegazione": "Creano il campo B in cui ruota la spira." },
       { "nome": "Collettore e spazzole", "icona_categoria": "strumento", "spiegazione": "Invertono il verso della corrente a ogni mezzo giro, nel motore a corrente continua." },
       { "nome": "Braccio robotico e ventola", "icona_categoria": "vita", "spiegazione": "Applicazioni a bordo: i giunti del braccio e le ventole di Unity sono mossi da motori elettrici." },
-      { "nome": "Giroscopio CMG", "icona_categoria": "strumento", "spiegazione": "Un volano motorizzato per orientare la stazione senza propellente [DA VERIFICARE]." }
+      { "nome": "Giroscopio CMG", "icona_categoria": "strumento", "spiegazione": "Un volano motorizzato per orientare la stazione senza propellente." }
     ],
     "passi": [
       {
@@ -310,7 +310,7 @@
       },
       {
         "titolo": "Sulla stazione",
-        "testo": "I giunti del braccio robotico e le ventole che fanno circolare l'aria sono motori elettrici. I giroscopi di controllo orientano la stazione con volani motorizzati, senza usare propellente [da verificare]. Senza gravità l'aria calda non sale: senza ventilazione forzata l'aria ristagnerebbe.",
+        "testo": "I giunti del braccio robotico e le ventole che fanno circolare l'aria sono motori elettrici. I giroscopi di controllo orientano la stazione con volani motorizzati, senza usare propellente. Senza gravità l'aria calda non sale: senza ventilazione forzata l'aria ristagnerebbe.",
         "cosa_si_vede": "Si accendono i modelli del braccio e della ventola; il braccio si muove, le pale girano.",
         "formula": null
       }

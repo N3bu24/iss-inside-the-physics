@@ -132,8 +132,8 @@
       "titolo": "Fem di moto sulla ISS",
       "punti": [
         "Una struttura conduttrice di lunghezza l che si muove con velocità v in un campo B vede nascere una fem indotta.",
-        "Con circa 30 microtesla, 100 metri e 7,7 km/s si arriva a circa 23 volt: lo stesso ordine di grandezza stimato dalla NASA.",
-        "I plasma contactor emettono plasma di xeno e scaricano la struttura, tenendola vicina al potenziale dell'ambiente."
+        "Con circa 30 microtesla, 100 metri e 7,7 km/s si arriva a circa 23 volt: lo stesso ordine di grandezza citato dalla NASA, fino a circa 30 volt su 100 metri.",
+        "I plasma contactor emettono plasma di xeno e scaricano la struttura, tenendola entro ±40 volt dal potenziale dell'ambiente."
       ],
       "formula": "$\\varepsilon = B\\,l\\,v$",
       "slide_pptx": [2, 7, 8, 9]
@@ -149,8 +149,8 @@
       "punti": [
         "Un alternatore trasforma energia meccanica in elettrica: una spira ruota in un campo magnetico e produce corrente alternata.",
         "Un trasformatore, grazie alla mutua induzione, alza o abbassa la tensione. Alta tensione significa meno corrente e meno perdite per effetto Joule.",
-        "Sulla ISS i pannelli danno corrente continua e i convertitori DDCU la adattano, con trasformatori ad alta frequenza.",
-        "Obiettivo 7: la maggior parte delle fonti rinnovabili sfrutta Faraday-Neumann-Lenz."
+        "Sulla ISS i pannelli danno corrente continua e i convertitori DDCU la adattano con convertitori a commutazione, che contengono un trasformatore di isolamento.",
+        "Obiettivo 7: tra le rinnovabili della teoria, tutte tranne il fotovoltaico sfruttano Faraday-Neumann-Lenz."
       ],
       "formula": "$\\dfrac{V_1}{V_2} = \\dfrac{N_1}{N_2}, \\quad P_J = R\\,i^2$",
       "slide_pptx": [3, 5, 18, 19, 20, 21, 22, 23]
@@ -166,7 +166,7 @@
       "punti": [
         "Quando il flusso attraverso un conduttore varia, nascono correnti che generano un campo opposto alla variazione.",
         "Nell'EML la bobina fa variare il flusso nel campione, e le correnti parassite lo respingono verso il centro.",
-        "Nel Maglev giapponese, il moto dei magneti del treno induce correnti nelle bobine della guida: oltre una certa velocità il treno si solleva.",
+        "Nel Maglev giapponese, il moto dei magneti del treno induce correnti nelle bobine della guida: oltre una certa velocità, attorno ai 150 km/h, il treno si solleva. Il record è di 603 km/h, nel 2015.",
         "Obiettivo 9: infrastrutture innovative, senza attrito di contatto e senza emissioni locali."
       ],
       "formula": "$\\varepsilon = -\\dfrac{d\\Phi_B}{dt}$",
@@ -184,7 +184,7 @@
         "I nuclei di idrogeno, in un campo intenso, precedono attorno alla direzione del campo a una frequenza precisa.",
         "Un impulso a radiofrequenza li inclina; mentre tornano all'equilibrio, il loro campo variabile induce una fem nella bobina ricevente.",
         "Il magnete è un grande solenoide con energia immagazzinata nel campo; non usa radiazioni ionizzanti.",
-        "In orbita muscoli, ossa e circolazione cambiano: la ricerca spaziale sul corpo umano ricade sulla medicina a terra."
+        "Sulla ISS non c'è una risonanza: gli astronauti sono esaminati a terra. Uno studio NASA su 34 astronauti (Roberts et al., NEJM 2017) ha confrontato risonanze cerebrali prima e dopo il volo."
       ],
       "formula": "$f = \\dfrac{\\gamma}{2\\pi}\\,B_0$",
       "slide_pptx": [8, 12, 13, 14, 15, 16, 17]
