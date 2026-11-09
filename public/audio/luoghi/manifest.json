@@ -2,73 +2,91 @@
   {
     "id": "harmony",
     "file": "harmony.mp3",
-    "durata_s": 6.9,
-    "testo": "Harmony è il nodo da cui si raggiungono i laboratori. Da qui partiamo verso Columbus, il laboratorio europeo."
+    "durata_s": 18.5,
+    "testo": "Benvenuto a bordo. Siamo in Harmony, un nodo: un incrocio di portelli da cui si raggiunge Columbus, Kibo e Destiny. Guarda i cavi sul soffitto, lo schermo delle comunicazioni e il laptop con la Terra: sono i primi indizi di una fisica che qui lavora ovunque. Tocca i punti luminosi."
   },
   {
     "id": "columbus",
     "file": "columbus.mp3",
-    "durata_s": 8.3,
-    "testo": "Columbus è il laboratorio europeo. In uno dei suoi rack lavora l'EML, un forno che scalda il metallo senza toccarlo."
+    "durata_s": 21.1,
+    "testo": "Questo è Columbus, il laboratorio europeo, portato in orbita nel febbraio duemilaotto. I rack lungo le pareti sono armadi standard, ognuno con il suo strumento. In uno di questi lavora l'EML, che fonde i metalli senza toccarli: cliccalo per entrare nella scena tridimensionale. Guarda anche i laptop e i cavi intrecciati."
   },
   {
     "id": "eml",
     "file": "eml.mp3",
-    "durata_s": 8.6,
-    "testo": "Un campo magnetico che cambia nel tempo fa nascere correnti nel metallo. Quelle correnti lo sostengono e lo scaldano, senza contatto."
+    "durata_s": 17.7,
+    "testo": "Eccoci dentro l'EML. Una bobina in rame, percorsa da corrente alternata, crea un campo magnetico che cambia nel tempo. Nel campione nascono correnti che lo sostengono e lo scaldano, senza contatto. Esplora i componenti con i punti luminosi, poi premi Avvia."
   },
   {
     "id": "kibo",
     "file": "kibo.mp3",
-    "durata_s": 7.3,
-    "testo": "Kibo è il modulo giapponese. Anche qui un campione può levitare, ma con forze elettriche e non magnetiche."
+    "durata_s": 18.5,
+    "testo": "Questo è Kibo, il modulo giapponese, il cui nome significa speranza. Anche qui un campione può levitare, ma con forze elettriche e non magnetiche, e si studiano anche vetri e ossidi. La postazione con il joystick comanda bracci mossi da motori, alternatori usati al contrario."
   },
   {
     "id": "destiny",
     "file": "destiny.mp3",
-    "durata_s": 6.7,
-    "testo": "Destiny è il laboratorio americano. L'energia arriva ai suoi rack dopo essere stata trasformata più volte."
+    "durata_s": 19.5,
+    "testo": "Siamo in Destiny, il laboratorio principale del segmento americano, in orbita dal duemilauno. Qui l'energia dei pannelli arriva ai rack dopo essere stata trasformata. Guarda il pannello con gli interruttori, i cavi in corrente continua e i convertitori. Puoi provare la simulazione sull'autoinduzione, con un interruttore e una bobina."
   },
   {
     "id": "unity",
     "file": "unity.mp3",
-    "durata_s": 6.4,
-    "testo": "Unity è il primo nodo americano. Da qui si va verso Tranquility, e da Tranquility alla Cupola."
+    "durata_s": 20.6,
+    "testo": "Questo è Unity, il primo nodo americano, collegato a Zarya nel dicembre del millenovecentonovantotto. Da qui si va a Destiny, a Tranquility e all'airlock Quest, da cui gli astronauti escono nello spazio. Osserva il portello verso Zarya, quello dell'airlock e le ventole: ognuno nasconde un pezzo di elettromagnetismo."
   },
   {
     "id": "tranquility",
     "file": "tranquility.mp3",
-    "durata_s": 7,
-    "testo": "Questo è Tranquility. Sotto di noi si apre il portello della Cupola, la finestra della stazione sulla Terra."
+    "durata_s": 20.2,
+    "testo": "Questo è Tranquility, il nodo che ospita i sistemi per la vita a bordo. Qui c'è l'attrezzo ARED con cui gli astronauti si allenano ogni giorno contro la perdita di muscoli e ossa. Sul pavimento si apre il portello della Cupola, la finestra sulla Terra. Nel percorso, la salute porta alla simulazione sulla risonanza magnetica."
   },
   {
     "id": "cupola",
     "file": "cupola.mp3",
-    "durata_s": 7.9,
-    "testo": "Dalla Cupola vediamo la Terra scorrere a circa sette virgola sette chilometri al secondo. Ci muoviamo dentro il suo campo magnetico."
+    "durata_s": 20.4,
+    "testo": "Dalla Cupola vediamo la Terra scorrere a circa sette virgola sette chilometri al secondo, con un'orbita ogni novanta minuti. Ci muoviamo dentro il suo campo magnetico, e questo è un esperimento di Faraday in grande. Fuori si vedono i pannelli solari e, a volte, le aurore. Cerca i punti luminosi e prova le simulazioni."
   },
   {
     "id": "amb-campo",
     "file": "amb-campo.mp3",
-    "durata_s": 7.8,
-    "testo": "La stazione attraversa il campo magnetico terrestre a velocità enorme. Nella sua struttura nasce una tensione indotta."
+    "durata_s": 16,
+    "testo": "Qui la stazione diventa un conduttore che attraversa il campo magnetico terrestre. Premi Avvia per seguire i passaggi: dal flusso che cambia alla tensione indotta, fino ai plasma contactor. Poi gioca con velocità, campo e lunghezza e osserva i volt."
   },
   {
     "id": "amb-energia",
     "file": "amb-energia.mp3",
-    "durata_s": 8,
-    "testo": "Dal pannello solare al rack, l'energia viene trasformata e distribuita. Sulla Terra accade lo stesso, ma in grande."
+    "durata_s": 15.8,
+    "testo": "In questo ambiente segui l'energia dal pannello solare fino al rack. Premi Avvia: vedrai un alternatore, un trasformatore e una linea che si scalda. Poi scegli la sorgente e la tensione, e confronta la ISS con una rete a terra."
   },
   {
     "id": "amb-levitazione",
     "file": "amb-levitazione.mp3",
-    "durata_s": 8.3,
-    "testo": "Un magnete in moto vicino a un metallo vi induce correnti che lo respingono. Così levitano il campione dell'EML e i treni Maglev."
+    "durata_s": 19,
+    "testo": "Un magnete in moto vicino a un metallo vi induce correnti che lo respingono. Questa è la legge di Lenz, ed è anche il segreto del treno Maglev. Premi Avvia per vedere la lastra di rame, il campione dell'EML e il treno. È il ponte tra lo spazio e le infrastrutture della Terra, Obiettivo nove."
   },
   {
     "id": "amb-rmn",
     "file": "amb-rmn.mp3",
-    "durata_s": 8.2,
-    "testo": "Nel corpo umano i nuclei rispondono a un campo magnetico e a un impulso radio. Il segnale che emettono si rileva per induzione."
+    "durata_s": 19.6,
+    "testo": "Nel corpo umano i nuclei di idrogeno si comportano come piccoli magneti. Premi Avvia: un campo intenso li allinea, un impulso radio li inclina, e il segnale che emettono si rileva per induzione. È la fisica della risonanza magnetica, al servizio del diritto alla salute, Articolo trentadue."
+  },
+  {
+    "id": "amb-motore",
+    "file": "amb-motore.mp3",
+    "durata_s": 17.4,
+    "testo": "Una spira in un campo magnetico può produrre corrente, se la fai girare, o girare, se le dai corrente. Premi Avvia: prima ruoti la spira e ottieni un alternatore, poi inverti il verso e ottieni un motore, come quelli dei bracci robotici e delle ventole della stazione."
+  },
+  {
+    "id": "amb-autoinduzione",
+    "file": "amb-autoinduzione.mp3",
+    "durata_s": 14.4,
+    "testo": "Chiudi l'interruttore e guarda: la corrente non sale di colpo. La bobina si oppone con una fem autoindotta, e nel suo campo si accumula energia. Premi Avvia per seguire la curva, poi cambia induttanza e resistenza."
+  },
+  {
+    "id": "amb-aurora",
+    "file": "amb-aurora.mp3",
+    "durata_s": 16.6,
+    "testo": "Le particelle cariche del vento solare non vanno dritte: il campo magnetico terrestre le curva. Premi Avvia per vederle spiraleggiare lungo le linee del campo fino ai poli, dove incontrano l'atmosfera e la accendono di verde. Poi cambia energia e carica."
   }
 ]
