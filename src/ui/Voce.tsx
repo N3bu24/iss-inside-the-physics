@@ -82,7 +82,7 @@ export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false }: 
         />
       )}
       {cc && corrente && (
-        <div className="pointer-events-none absolute bottom-[6.2rem] left-[23rem] z-30 flex justify-center" style={{ right: schedaAperta ? '31.5rem' : '23rem' }}>
+        <div className="pointer-events-none absolute bottom-[5.6rem] left-[23rem] z-30 flex justify-center" style={{ right: schedaAperta ? '31.5rem' : '23rem' }}>
           <div className="fade-in max-w-[760px] rounded-lg bg-black/80 px-5 py-2.5 text-center text-[16px] font-medium leading-snug text-white shadow-lg">{corrente}</div>
         </div>
       )}

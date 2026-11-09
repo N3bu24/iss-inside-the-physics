@@ -132,6 +132,7 @@ function ModelloGlb({ calore, fenomeno, onPronto }: { calore: Calore; fenomeno: 
     const h = heat.current
     coloreCalore(h, col)
     for (const m of mats) {
+      if (!m.color || !m.emissive) continue
       m.color.copy(col)
       m.emissive.copy(col)
       m.emissiveIntensity = h < 0.05 ? 0 : 0.4 + h * 2.2
