@@ -5,6 +5,11 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.5.0] — 2026-11-09
+### Aggiunto
+- EML v2: la bobina SUPOS è un tubo di rame a spirale conica (3+3 spire), con adduttori, passanti e supporti ceramici. Render senza rumore (AgX, denoise). Nuovo `eml.glb` (0,28 MB) nel sito.
+- 5 video dei fenomeni (7 s, 1280x720), "Simulazione concettuale": campo variabile, correnti indotte, Joule, fusione, solidificazione. Sono in `public/video/fenomeni/`.
+
 ## [0.4.0] — 2026-11-09
 ### Aggiunto
 - Voce narrante: 14 clip ElevenLabs (voce Thomas A., eleven_v4), 5 min 46 s in totale, in `assets/audio/clip/` e copiate in `public/audio/`.
