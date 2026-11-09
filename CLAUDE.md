@@ -417,7 +417,14 @@ L'autore non è sempre davanti al computer. Per questo c'è uno script, `scripts
 - **Crediti e API (urgente, livello `error` o `warn`):** appena un'API risponde con errore di credito, quota, limite o autenticazione (es. Higgsfield o ElevenLabs senza crediti), **ferma le generazioni, non riprovare in loop** e manda subito un messaggio che dica quale servizio, cosa stava facendo e cosa serve. Avvisa anche quando il credito residuo scende sotto circa 5 € (se il saldo è consultabile).
 - **Approvazioni:** usa `--ask` per le decisioni che richiedono l'ok dell'autore e che non sono urgenti da tenere in chat: piano pronto, generazione sopra circa 5 € o in lotto, scelta architetturale importante, pubblicazione su Vercel. Se la risposta è `TIMEOUT`, non procedere: riprova una volta e poi fermati su quel punto e lavora su altro.
 - **Informazioni utili (livello `ok` o `info`):** fine di una fase o del giorno, sessione chiusa con `/close-session`, sito pubblicato (con il link), blocco che richiede l'autore (Blender non parte, account mancante, file mancante).
-- Non usarlo per commenti di avanzamento ordinari: massimo qualche messaggio all'ora.
+- **Aggiornamenti in tempo reale (richiesta dell'autore, 9/11):** mandare un messaggio dettagliato a ogni evento rilevante: lancio di un subagent (cosa fa), fine di un subagent (risultato in breve), commit/merge/push con versione, decisioni prese, problemi. Ogni messaggio dice anche lo stato di tutti i subagent attivi (⏳ in corso / ✅ finito / ❌ bloccato).
+
+### Git, GitHub e versioni (richiesta dell'autore, 9/11)
+- Repository GitHub privato `iss-inside-the-physics`, branch principale `main`.
+- Ogni subagent che scrive file lavora su un **branch proprio** (`web/...`, `blender/...`, `content/...`, `research/...`, `media/...`, `qa/...`), lanciato con isolamento `worktree` quando possibile. L'orchestratore verifica e unisce in `main` con `--no-ff`.
+- Commit piccoli e frequenti. **Push su GitHub almeno a ogni merge** e comunque a fine fase.
+- Versioni SemVer in `CHANGELOG.md`, `package.json` e tag git `vX.Y.Z`: MINOR per ogni blocco completato, PATCH per correzioni, `1.0.0` alla consegna.
+- Mai committare `.env`, `.env.local` o chiavi: controllare `git ls-files` prima di ogni push.
 
 ### Regole
 1. **Messaggi brevi, in italiano**, con una cosa sola per messaggio: cosa è successo e cosa serve all'autore.
