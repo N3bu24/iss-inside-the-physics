@@ -5,6 +5,11 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.4.0] — 2026-11-09
+### Aggiunto
+- Voce narrante: 14 clip ElevenLabs (voce Thomas A., eleven_v4), 5 min 46 s in totale, in `assets/audio/clip/` e copiate in `public/audio/`.
+- `scripts/send-media.mjs`: invio di render, video e audio su Telegram.
+
 ## [0.3.0] — 2026-11-09
 ### Aggiunto
 - Contenuti veri nel sito: 27 hotspot con badge e fonte, 14 clip con sottotitoli e trascrizione.

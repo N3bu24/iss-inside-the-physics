@@ -7,6 +7,7 @@ Aggiornare a ogni generazione. Non scrivere mai chiavi API in questo file.
 | Data | Servizio | Cosa | Quantità | Costo stimato | Percorso del file | Note |
 |---|---|---|---|---|---|---|
 | 9/11/2026 | ElevenLabs (eleven_v4) | Prova voce: 3 voci, prime frasi di eml-01 | 3 × 144 = 432 caratteri | 0 € (dentro il piano Starter, 40k caratteri/mese) | `assets/audio/prove/` | Voci: Thomas A., Igor, George |
+| 9/11/2026 | ElevenLabs (eleven_v4) | 14 clip voce narrante, voce Thomas A. | 5.195 caratteri, 345,6 s | 0 € (dentro il piano Starter) | `assets/audio/clip/` | Contatore ElevenLabs in ritardo: verificare il saldo sul sito |
 
 **Totale speso:** 0 € extra (ElevenLabs: piano Starter già pagato; Higgsfield: 0)
 **Budget residuo:** circa 20-30 €
