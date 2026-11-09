@@ -1,0 +1,100 @@
+[
+  {
+    "id": "intro-01",
+    "tappa": "intro",
+    "file": "intro-01.mp3",
+    "durata_s": 25,
+    "caratteri": 386
+  },
+  {
+    "id": "nodo-01",
+    "tappa": "nodo",
+    "file": "nodo-01.mp3",
+    "durata_s": 23.9,
+    "caratteri": 346
+  },
+  {
+    "id": "columbus-01",
+    "tappa": "columbus",
+    "file": "columbus-01.mp3",
+    "durata_s": 23.4,
+    "caratteri": 357
+  },
+  {
+    "id": "eml-01",
+    "tappa": "eml",
+    "file": "eml-01.mp3",
+    "durata_s": 27.7,
+    "caratteri": 402
+  },
+  {
+    "id": "eml-02",
+    "tappa": "eml",
+    "file": "eml-02.mp3",
+    "durata_s": 24.6,
+    "caratteri": 367
+  },
+  {
+    "id": "eml-03",
+    "tappa": "eml",
+    "file": "eml-03.mp3",
+    "durata_s": 25.3,
+    "caratteri": 392
+  },
+  {
+    "id": "eml-04",
+    "tappa": "eml",
+    "file": "eml-04.mp3",
+    "durata_s": 25.1,
+    "caratteri": 367
+  },
+  {
+    "id": "eml-05",
+    "tappa": "eml",
+    "file": "eml-05.mp3",
+    "durata_s": 28.9,
+    "caratteri": 440
+  },
+  {
+    "id": "eml-06",
+    "tappa": "eml",
+    "file": "eml-06.mp3",
+    "durata_s": 21.4,
+    "caratteri": 315
+  },
+  {
+    "id": "materiali-01",
+    "tappa": "materiali",
+    "file": "materiali-01.mp3",
+    "durata_s": 21.6,
+    "caratteri": 360
+  },
+  {
+    "id": "cupola-01",
+    "tappa": "cupola",
+    "file": "cupola-01.mp3",
+    "durata_s": 21.1,
+    "caratteri": 287
+  },
+  {
+    "id": "finale-01",
+    "tappa": "finale",
+    "file": "finale-01.mp3",
+    "durata_s": 29.8,
+    "caratteri": 469
+  },
+  {
+    "id": "finale-02",
+    "tappa": "finale",
+    "file": "finale-02.mp3",
+    "durata_s": 24,
+    "caratteri": 349
+  },
+  {
+    "id": "finale-03",
+    "tappa": "finale",
+    "file": "finale-03.mp3",
+    "durata_s": 23.8,
+    "caratteri": 358
+  }
+]
