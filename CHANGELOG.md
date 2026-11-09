@@ -5,6 +5,12 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.9.3] — 2026-11-10
+### Cambiato
+- 5 voli rifatti con Seedance 2.0 a 1080p (unity→tranquility, columbus→harmony, destiny→harmony, destiny→unity, harmony→columbus); gli altri 5 restano Kling 3.0 (crediti API esauriti).
+- Arrivo in Tranquility corretto (yaw 180, pitch 0): il panorama è ruotato di circa 90°, il vecchio arrivo inquadrava un rack di sbieco.
+- Crediti dei voli aggiornati.
+
 ## [0.9.2] — 2026-11-10
 ### Corretto (QA v0.9.0)
 - Le simulazioni si aprono tutte dalle schede (niente più errore React #306 da doppio lazy): 8 simulazioni, 21 punti verificati.

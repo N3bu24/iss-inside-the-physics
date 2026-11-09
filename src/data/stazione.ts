@@ -109,7 +109,7 @@ export const archi: Arco[] = [
   { a: { nodo: 'harmony', yaw: -150, pitch: 0 }, b: { nodo: 'columbus', yaw: 90, pitch: 0 } },
   { a: { nodo: 'harmony', yaw: 150, pitch: 0 }, b: { nodo: 'kibo', yaw: 180, pitch: 0 } },
   { a: { nodo: 'destiny', yaw: 0, pitch: 0 }, b: { nodo: 'unity', yaw: 180, pitch: 0 } },
-  { a: { nodo: 'unity', yaw: 90, pitch: 0 }, b: { nodo: 'tranquility', yaw: -92, pitch: 0 }, arrivoAvanti: { yaw: 20, pitch: -30 } },
+  { a: { nodo: 'unity', yaw: 90, pitch: 0 }, b: { nodo: 'tranquility', yaw: -92, pitch: 0 }, arrivoAvanti: { yaw: 180, pitch: 0 } },
   // passaggi verso scene non panoramiche
   { a: { nodo: 'columbus', yaw: 8, pitch: 20 }, b: { nodo: 'eml', yaw: 0, pitch: 0 } },
   // Cupola: nessun video di volo, ma zoom nel panorama verso il nadir e dissolvenza nella Terra (vedi Esplora)

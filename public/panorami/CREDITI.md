@@ -16,3 +16,6 @@ Originali ridimensionati a 8192×4096 (panorami) e lato massimo 3840 px (foto).
 | ambienti/terra-bluemarble.jpg | Terra, mosaico Blue Marble | Wikimedia Commons: Whole world - land and oceans 12000.jpg | NASA Earth Observatory (Blue Marble) | Pubblico dominio (credito NASA) |
 | ambienti/iss.glb | Modello 3D della ISS | science.nasa.gov/3d-resources/international-space-station-iss-b | NASA | NASA 3D Resources, uso libero con credito |
 | video/terra-cupola.mp4 | La Terra dalla ISS (4K) | svs.gsfc.nasa.gov/30771 | NASA Johnson | Linee guida NASA, uso educativo con credito |
+
+## Voli tra i moduli (Ricostruzione IA)
+Video illustrativi generati con Higgsfield a partire da viste dei panorami ESA (prima e ultima immagine), non riprese reali. Seedance 2.0: unity→tranquility, columbus→harmony, destiny→harmony, destiny→unity, harmony→columbus. Kling 3.0: gli altri voli.
