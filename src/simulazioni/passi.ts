@@ -9,7 +9,7 @@ const EML: Passo[] = [
     titolo: 'Carico del campione',
     stato: 'carico',
     ancora: 'carousel',
-    distanza: 3.4,
+    distanza: 5.2,
     testo:
       "Un magazzino a revolver porta 18 campioni sferici di 5-8 mm (alluminio, rame, leghe di nichel). Un meccanismo ne preleva uno e lo porta nella camera di processo, riempita di gas inerte.",
     cosaSiVede: 'Il carosello dei campioni e la camera di processo al centro.',
@@ -18,7 +18,7 @@ const EML: Passo[] = [
     titolo: 'Posizionamento: campo quadrupolare',
     stato: 'posizionamento',
     ancora: 'sample',
-    distanza: 2.6,
+    distanza: 4.2,
     video: V + 'campo-variabile.mp4',
     testo:
       "Le bobine di rame portano una corrente alternata a circa 140 kHz e generano un campo quadrupolare, nullo al centro. Le correnti indotte nel campione spingono verso il punto in cui il campo si annulla: il campione galleggia senza contatto.",
@@ -29,7 +29,7 @@ const EML: Passo[] = [
     titolo: 'Riscaldamento: campo dipolare',
     stato: 'riscaldamento',
     ancora: 'sample',
-    distanza: 2.2,
+    distanza: 3.6,
     video: V + 'joule.mp4',
     testo:
       "Una seconda corrente, a circa 380 kHz, produce un campo dipolare che induce nel metallo correnti parassite (di Foucault). Incontrando la resistenza del materiale dissipano energia per effetto Joule e il campione si scalda, fino a oltre 2000 °C.",
@@ -40,7 +40,7 @@ const EML: Passo[] = [
     titolo: 'Fusione',
     stato: 'fusione',
     ancora: 'sample',
-    distanza: 1.9,
+    distanza: 3.2,
     video: V + 'fusione.mp4',
     testo:
       "Raggiunta la temperatura di fusione il solido diventa una goccia liquida. In microgravità nulla la schiaccia sul fondo e nessun contenitore la inquina: la tensione superficiale la mantiene quasi sferica.",
@@ -50,7 +50,7 @@ const EML: Passo[] = [
     titolo: 'Oscillazione della goccia e misure',
     stato: 'misure',
     ancora: 'camera_radial',
-    distanza: 2.6,
+    distanza: 4.2,
     testo:
       "Una piccola perturbazione fa vibrare la goccia: dalla frequenza delle oscillazioni si ricava la tensione superficiale, dallo smorzamento la viscosità. Una telecamera ad alta velocità riprende la forma, un pirometro misura la temperatura dalla luce emessa.",
     cosaSiVede: 'La goccia che pulsa leggermente e le due ottiche puntate su di essa.',
@@ -60,7 +60,7 @@ const EML: Passo[] = [
     titolo: 'Raffreddamento e solidificazione',
     stato: 'raffreddamento',
     ancora: 'sample',
-    distanza: 2.2,
+    distanza: 3.6,
     video: V + 'solidificazione.mp4',
     testo:
       "Spegnendo il riscaldamento il liquido si raffredda anche sotto la temperatura di fusione, perché senza pareti non ha dove iniziare a cristallizzare. Quando parte la solidificazione il calore latente fa risalire di colpo la temperatura: è la ricalescenza.",
@@ -231,11 +231,11 @@ const FARADAY: Passo[] = [
 const P = (stato: string, titolo: string, testo: string, camera?: Passo['camera']): Passo => ({ stato, titolo, testo, camera })
 
 const MOTORE: Passo[] = [
-  P('alternatore', 'Facciamo girare la spira', 'Una spira che ruota in un campo magnetico produce una fem alternata.', { pos: [0, 2.2, 9], target: [0, 0, 0] }),
-  P('motore', 'Lo stesso, al contrario', 'Una batteria fa passare corrente nella spira: la forza di Lorentz la fa girare.', { pos: [0, 2.2, 9], target: [0, 0, 0] }),
+  P('alternatore', 'Facciamo girare la spira', 'Una spira che ruota in un campo magnetico produce una fem alternata.', { pos: [0, 2.5, 14], target: [0, 0, 0] }),
+  P('motore', 'Lo stesso, al contrario', 'Una batteria fa passare corrente nella spira: la forza di Lorentz la fa girare.', { pos: [0, 2.5, 14], target: [0, 0, 0] }),
   P('collettore', 'Il collettore', 'I semianelli invertono il verso della corrente a ogni mezzo giro.', { pos: [2.5, -0.8, 5], target: [0, -1.2, 0] }),
-  P('fem', 'La fem opposta', 'Il motore in rotazione genera una fem che si oppone alla corrente.', { pos: [0, 2.2, 9], target: [0, 0, 0] }),
-  P('stazione', 'Sulla stazione', 'Braccio robotico e ventole sono mossi da motori elettrici.', { pos: [0, 0.5, 9], target: [0, -1, -2] }),
+  P('fem', 'La fem opposta', 'Il motore in rotazione genera una fem che si oppone alla corrente.', { pos: [0, 2.5, 14], target: [0, 0, 0] }),
+  P('stazione', 'Sulla stazione', 'Braccio robotico e ventole sono mossi da motori elettrici.', { pos: [0, 0.5, 12], target: [0, -1, -2] }),
 ]
 const AUTOINDUZIONE: Passo[] = [
   P('chiudi', "Chiudiamo l'interruttore", 'Chiudendo il circuito la bobina si oppone al passaggio della corrente.'),
@@ -248,7 +248,7 @@ const AURORA: Passo[] = [
   P('campo', 'Una carica in un campo', 'La forza di Lorentz curva la traiettoria senza cambiare la velocità.', { pos: [0, 1.5, 9.5], target: [0, 0, 0] }),
   P('spirale', 'Raggio e spirale', "Con una componente lungo il campo la traiettoria è un'elica.", { pos: [5, 2, 8], target: [0, 0, 0] }),
   P('vento', 'Il vento solare e la Terra', 'Il campo terrestre devia le particelle e le guida verso i poli.', { pos: [2, 5, 21], target: [0, 0, 0] }),
-  P('aurora', "Si accende l'aurora", "Le particelle eccitano gli atomi dell'alta atmosfera, che emettono luce.", { pos: [5.5, 6.5, 7.5], target: [0, 2.6, 0] }),
+  P('aurora', "Si accende l'aurora", "Le particelle eccitano gli atomi dell'alta atmosfera, che emettono luce.", { pos: [4, 6.2, 6.5], target: [0, 2.9, 0] }),
   P('cupola', 'Dalla Cupola', 'La ISS orbita sopra la regione aurorale.', { pos: [3.4, 5.2, 4.2], target: [0, 3.2, 0] }),
 ]
 

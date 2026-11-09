@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Html, Line, Stars } from '@react-three/drei'
+import { Line, Stars } from '@react-three/drei'
 import * as THREE from 'three'
 import SimulazioneShell from './SimulazioneShell'
 import { Cursore, Pulsante } from './controlli'
@@ -93,11 +93,7 @@ function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
         </group>
       ))}
       <Etichetta p={[4.3, 3.4, -4.2]}>B uscente</Etichetta>
-      <Html position={[0, 0, 0]} style={{ pointerEvents: 'none' }}>
-        <span className="ml-16 -mt-4 block w-60 text-[12px] text-white/70">
-          <span style={{ color: '#ffd23c' }}>● v</span> velocità · <span style={{ color: '#ff5a5a' }}>● F</span> forza di Lorentz
-        </span>
-      </Html>
+
     </group>
   )
 }
@@ -142,7 +138,7 @@ void main(){
   vec3 verde = vec3(0.15, 1.0, 0.5);
   vec3 rosso = vec3(0.95, 0.15, 0.35);
   vec3 col = mix(verde, rosso, smoothstep(0.6, 1.0, y));
-  gl_FragColor = vec4(col * a * 1.4, a);
+  gl_FragColor = vec4(col * 2.2, a);
 }`
 
 function Tendaggio({ nord, ctl }: { nord: boolean; ctl: React.RefObject<Ctl> }) {
@@ -156,7 +152,7 @@ function Tendaggio({ nord, ctl }: { nord: boolean; ctl: React.RefObject<Ctl> }) 
   const rr = R * Math.cos(lat) + 0.05
   return (
     <mesh position={[0, nord ? y + 0.5 : -(y + 0.5), 0]} scale={[1, nord ? 1 : -1, 1]}>
-      <cylinderGeometry args={[rr + 0.28, rr, 1.1, 128, 1, true]} />
+      <cylinderGeometry args={[rr + 0.28, rr, 1.5, 128, 1, true]} />
       <shaderMaterial uniforms={uni} vertexShader={AURORA_VERT} fragmentShader={AURORA_FRAG} transparent depthWrite={false} blending={THREE.AdditiveBlending} side={THREE.DoubleSide} />
     </mesh>
   )
@@ -226,7 +222,7 @@ function Particelle({ ctl }: { ctl: React.RefObject<Ctl> }) {
   return (
     <>
       <instancedMesh ref={sw} args={[undefined, undefined, NS]} frustumCulled={false}>
-        <sphereGeometry args={[0.09, 8, 6]} />
+        <sphereGeometry args={[0.06, 8, 6]} />
         <meshBasicMaterial toneMapped={false} />
       </instancedMesh>
       <instancedMesh ref={gd} args={[undefined, undefined, NG]} frustumCulled={false}>
@@ -258,9 +254,7 @@ function IssIcona() {
           <meshStandardMaterial color="#16337f" emissive="#0a1d52" emissiveIntensity={0.6} />
         </mesh>
       ))}
-      <Html position={[0, 0.28, 0]} center style={{ pointerEvents: 'none' }}>
-        <span className="whitespace-nowrap rounded-full border border-white/30 bg-[rgba(4,8,20,.85)] px-2.5 py-0.5 text-[11px] text-white">ISS (ingrandita)</span>
-      </Html>
+      <Etichetta p={[0, 0, 0]} fisso size={0.024}>ISS (ingrandita)</Etichetta>
     </group>
   )
 }
@@ -336,7 +330,7 @@ export default function Aurora({ onClose }: { onClose: () => void }) {
         <Tendaggio nord ctl={ctl} />
         <Tendaggio nord={false} ctl={ctl} />
         <IssIcona />
-        <Etichetta p={[-12, 4.2, 0]} size={0.7}>Vento solare</Etichetta>
+        <Etichetta p={[-11, 2, 0]} size={0.42}>Vento solare</Etichetta>
       </group>
     </SimulazioneShell>
   )

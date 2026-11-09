@@ -3,6 +3,7 @@ import { fenomeni } from '../data/tour'
 import { assetExists } from '../lib/assets'
 import Badge from './Badge'
 import Latex from './Latex'
+import Stile from '../simulazioni/Stile'
 
 const videoUrl = (id: string) => `/video/fenomeni/${id}.mp4` // slot video Blender
 
@@ -24,6 +25,7 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
 
   return (
     <aside className="glass slide-in absolute left-4 top-20 bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5">
+      <Stile />
       <div className="text-[10px] uppercase tracking-[0.2em] text-white/45">Cosa succede nel campione</div>
       <ol className="mt-3 space-y-1">
         {fenomeni.map((x, i) => (
@@ -39,7 +41,7 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
         ))}
       </ol>
       {f ? (
-        <div key={f.id} className="fade-in mt-4 flex-1 overflow-y-auto border-t border-white/10 pt-4">
+        <div key={f.id} className="fade-in mt-4 sim-scroll flex-1 border-t border-white/10 pt-4">
           <div className="aspect-video overflow-hidden rounded-xl border border-white/10 bg-black/40">
             {hasVideo ? (
               <video src={videoUrl(f.id)} controls autoPlay loop muted playsInline preload="metadata" className="h-full w-full object-cover" />

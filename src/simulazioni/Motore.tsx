@@ -280,7 +280,7 @@ export default function Motore({ onClose }: { onClose: () => void }) {
       passi={passi}
       onPasso={onPasso}
       hotspot={HOTSPOT}
-      camera={{ position: [0, 2.2, 9], fov: 45 }}
+      camera={{ position: [0, 2.5, 14], fov: 45 }}
       orbit={{ minDistance: 3, maxDistance: 18 }}
       scope={<Scope titolo={motore ? 'tensione e fem opposta' : 'fem della spira'} traces={[trE, trB]} />}
       controlli={

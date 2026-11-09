@@ -1,6 +1,6 @@
-import { Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Html, OrbitControls } from '@react-three/drei'
+import { OrbitControls, useProgress } from '@react-three/drei'
 import * as THREE from 'three'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
@@ -17,6 +17,23 @@ import type { Passo } from './contenuto'
 export type HotspotSim = { id: string; categoria: CategoriaSim; titolo: string; testo: string; pos: [number, number, number] }
 
 export type OrbitaSim = { target?: [number, number, number]; minDistance?: number; maxDistance?: number; maxPolarAngle?: number }
+
+/** Proietta gli hotspot 3D sullo schermo ad ogni frame. */
+function Proietta({ hs, els }: { hs: HotspotSim[]; els: React.RefObject<Record<string, HTMLElement | null>> }) {
+  const { camera, size } = useThree()
+  const v = useMemo(() => new THREE.Vector3(), [])
+  useFrame(() => {
+    for (const h of hs) {
+      const el = els.current[h.id]
+      if (!el) continue
+      v.set(...h.pos).project(camera)
+      const visibile = v.z > -1 && v.z < 1
+      el.style.display = visibile ? '' : 'none'
+      if (visibile) el.style.transform = `translate(${(v.x * 0.5 + 0.5) * size.width}px,${(-v.y * 0.5 + 0.5) * size.height}px) translate(-50%,-50%)`
+    }
+  })
+  return null
+}
 
 /** Sposta la camera (con easing) quando il passo attivo ha una `camera`; poi lascia i comandi all'utente. */
 function CameraRig({ passo }: { passo: Passo | null }) {
@@ -78,6 +95,8 @@ export type PropsShell = {
 export default function SimulazioneShell(p: PropsShell) {
   const [seq, setSeq] = useState<number | null>(null)
   const [hs, setHs] = useState<string | null>(null)
+  const els = useRef<Record<string, HTMLElement | null>>({})
+  const { active: inCaricamento } = useProgress()
   const seqRef = useRef(seq)
   seqRef.current = seq
   const passi = p.passi ?? []
@@ -114,16 +133,25 @@ export default function SimulazioneShell(p: PropsShell) {
         <Canvas camera={{ position: p.camera?.position ?? [0, 3, 12], fov: p.camera?.fov ?? 45 }} dpr={[1, 1.5]}>
           <color attach="background" args={['#05070f']} />
           <Suspense fallback={null}>{p.children}</Suspense>
-          {p.hotspot?.map((h) => (
-            <Html key={h.id} position={h.pos} center zIndexRange={[20, 0]}>
-              <Marcatore categoria={h.categoria} titolo={h.titolo} attivo={hs === h.id} onClick={() => setHs(hs === h.id ? null : h.id)} />
-            </Html>
-          ))}
+          <Proietta hs={p.hotspot ?? []} els={els} />
           <OrbitControls makeDefault enablePan={false} target={o.target ?? [0, 0, 0]} minDistance={o.minDistance} maxDistance={o.maxDistance} maxPolarAngle={o.maxPolarAngle} />
           <CameraRig passo={passo} />
-          <OffsetVista attivo={seq !== null} />
+          <OffsetVista attivo={seq !== null} sinistraPx={190} />
         </Canvas>
       </div>
+
+      {/* hotspot: elementi DOM posizionati proiettando il punto 3D (niente radici React aggiuntive) */}
+      <div className="pointer-events-none absolute inset-0 z-[5] overflow-hidden">
+        {p.hotspot?.map((h) => (
+          <div key={h.id} ref={(e) => { els.current[h.id] = e }} className="pointer-events-auto absolute left-0 top-0" style={{ display: 'none' }}>
+            <Marcatore categoria={h.categoria} titolo={h.titolo} attivo={hs === h.id} onClick={() => setHs(hs === h.id ? null : h.id)} />
+          </div>
+        ))}
+      </div>
+
+      {inCaricamento && (
+        <div className="pointer-events-none absolute inset-0 z-[6] grid place-items-center text-xs uppercase tracking-[0.35em] text-white/45">Caricamento della simulazione…</div>
+      )}
 
       {/* barra superiore */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-5 py-4">

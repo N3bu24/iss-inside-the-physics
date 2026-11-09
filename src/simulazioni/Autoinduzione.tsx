@@ -289,8 +289,8 @@ export default function Autoinduzione({ onClose }: { onClose: () => void }) {
       passi={passi}
       onPasso={onPasso}
       hotspot={HOTSPOT}
-      camera={{ position: [0.5, 1.2, 12.5], fov: 45 }}
-      orbit={{ target: [0.5, 0.8, 0], minDistance: 6, maxDistance: 20, maxPolarAngle: Math.PI * 0.62 }}
+      camera={{ position: [0.5, 1.2, 15], fov: 45 }}
+      orbit={{ target: [0.5, 0.8, 0], minDistance: 6, maxDistance: 24, maxPolarAngle: Math.PI * 0.62 }}
       scope={<Grafico sim={sim} />}
       controlli={
         <>

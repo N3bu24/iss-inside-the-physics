@@ -1,11 +1,17 @@
 import { Component, Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { Canvas, createPortal, useFrame } from '@react-three/fiber'
+import { Canvas, createPortal, useFrame, useThree } from '@react-three/fiber'
 import { Html, OrbitControls, useGLTF, Environment } from '@react-three/drei'
 import * as THREE from 'three'
 import type { Hotspot } from '../data/types'
 import HotspotMarker from '../ui/Hotspot'
 import { assetExists } from '../lib/assets'
 import { FieldLines, GLB_URL, Placeholder, type Calore } from './EmlPlaceholder'
+import { FlaskConical } from 'lucide-react'
+import FinestraSequenza from '../simulazioni/FinestraSequenza'
+import OffsetVista from '../simulazioni/OffsetVista'
+import Stile from '../simulazioni/Stile'
+import { PASSI_EML } from '../simulazioni/passi'
+import type { Passo } from '../simulazioni/contenuto'
 
 /** Posizioni degli oggetti nel segnaposto (stessi nomi del GLB). */
 const ANCORE_SEGNAPOSTO: Record<string, [number, number, number]> = {
@@ -77,7 +83,8 @@ function ModelloGlb({ calore, fenomeno, onPronto }: { calore: Calore; fenomeno: 
     scene.getObjectByName('sample')?.traverse((o) => {
       const m = o as THREE.Mesh
       if (m.isMesh && !Array.isArray(m.material)) {
-        m.material = (m.material as THREE.MeshStandardMaterial).clone()
+        // idempotente (StrictMode esegue due volte useMemo): il materiale si clona una sola volta
+        if (!m.userData.matClonato) { m.material = (m.material as THREE.MeshStandardMaterial).clone(); m.userData.matClonato = true }
         out.push(m.material as THREE.MeshStandardMaterial)
       }
     })
@@ -134,7 +141,8 @@ function ModelloGlb({ calore, fenomeno, onPronto }: { calore: Calore; fenomeno: 
       const base = (campione.mesh.userData.baseY ??= campione.mesh.position.y) as number
       campione.mesh.position.y = base + Math.sin(t * 1.6) * campione.r * 0.12
       // goccia liquida: leggera oscillazione di forma
-      campione.mesh.scale.setScalar(calore !== null && calore > 0.9 ? 1 + 0.05 * Math.sin(t * 7) : 1)
+      const osc = fenomeno === 'oscillazione'
+      campione.mesh.scale.setScalar(calore !== null && calore > 0.9 ? 1 + (osc ? 0.1 : 0.05) * Math.sin(t * (osc ? 9 : 7)) : 1)
     }
   })
 
@@ -144,7 +152,7 @@ function ModelloGlb({ calore, fenomeno, onPronto }: { calore: Calore; fenomeno: 
       {campione &&
         createPortal(
           <group position={campione.centroLocale}>
-            <AnelliCorrente r={campione.r} attivi={fenomeno === 'correnti-indotte' || fenomeno === 'joule'} />
+            <AnelliCorrente r={campione.r} attivi={fenomeno === 'correnti-indotte' || fenomeno === 'joule' || fenomeno === 'posizionamento'} />
           </group>,
           campione.mesh,
         )}
@@ -166,6 +174,43 @@ function Hotspot3D({ h, pos, onSelect, active }: { h: Hotspot; pos: THREE.Vector
   )
 }
 
+/** Stato della scena (fenomeno, calore) per ogni passo della sequenza "Avvia esperimento". */
+const STATO_SCENA: Record<string, { fenomeno: string | null; calore: Calore }> = {
+  carico: { fenomeno: null, calore: 0 },
+  posizionamento: { fenomeno: 'posizionamento', calore: 0.05 },
+  riscaldamento: { fenomeno: 'joule', calore: 0.7 },
+  fusione: { fenomeno: 'fusione', calore: 1 },
+  misure: { fenomeno: 'oscillazione', calore: 1 },
+  raffreddamento: { fenomeno: 'solidificazione', calore: 0.3 },
+}
+/** Da quale direzione si guarda ciascun componente. */
+const DIREZIONE: Record<string, [number, number, number]> = { camera_radial: [-0.9, 0.2, 0.55], pyrometer: [-0.8, -0.1, 0.8], carousel: [0.3, 0.55, 0.8] }
+
+/** Porta la camera sul componente del passo attivo (con easing); poi lascia i comandi all'utente. */
+function CameraPasso({ passo, ancore }: { passo: Passo | null; ancore: Ancore | null }) {
+  const { camera, controls } = useThree()
+  const tw = useRef<{ t: number; p0: THREE.Vector3; t0: THREE.Vector3; p1: THREE.Vector3; t1: THREE.Vector3 } | null>(null)
+  useEffect(() => {
+    const c = controls as unknown as { target: THREE.Vector3 } | null
+    if (!passo || !c || !passo.ancora || !ancore?.[passo.ancora]) { tw.current = null; return }
+    const a = ancore[passo.ancora]
+    const dir = new THREE.Vector3(...(DIREZIONE[passo.ancora] ?? [0.55, 0.3, 0.78])).normalize()
+    tw.current = { t: 0, p0: camera.position.clone(), t0: c.target.clone(), p1: a.clone().addScaledVector(dir, passo.distanza ?? 2.6), t1: a.clone() }
+  }, [passo, ancore, camera, controls])
+  useFrame((_, dt) => {
+    const w = tw.current
+    const c = controls as unknown as { target: THREE.Vector3; update: () => void } | null
+    if (!w || !c) return
+    w.t = Math.min(1, w.t + dt / 1.5)
+    const k = w.t * w.t * (3 - 2 * w.t)
+    camera.position.lerpVectors(w.p0, w.p1, k)
+    c.target.lerpVectors(w.t0, w.t1, k)
+    c.update()
+    if (w.t >= 1) tw.current = null
+  })
+  return null
+}
+
 interface Props {
   hotspot: Hotspot[]
   attivo: string | null
@@ -175,7 +220,19 @@ interface Props {
   onHotspot: (id: string) => void
 }
 
-export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot }: Props) {
+export default function EmlScene({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: caloreEsterno, onHotspot }: Props) {
+  const passi = useMemo(() => PASSI_EML(), [])
+  const [seq, setSeq] = useState<number | null>(null)
+  const passo = seq !== null ? (passi[seq] ?? null) : null
+  const sc = passo?.stato ? STATO_SCENA[passo.stato] : undefined
+  const fenomeno = sc ? sc.fenomeno : fenomenoEsterno
+  const calore: Calore = sc ? sc.calore : caloreEsterno
+  useEffect(() => {
+    if (seq === null) return
+    const k = (e: KeyboardEvent) => e.key === 'Escape' && setSeq(null)
+    window.addEventListener('keydown', k)
+    return () => window.removeEventListener('keydown', k)
+  }, [seq])
   const [glb, setGlb] = useState<boolean | null>(null)
   const [geo, setGeo] = useState<Geometria | null>(null)
   useEffect(() => { assetExists(GLB_URL).then(setGlb) }, [])
@@ -207,7 +264,7 @@ export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot 
         </Suspense>
         {usaGlb && geo && (
           <group position={centro}>
-            <FieldLines k={kCampo} forte={fenomeno === 'campo-variabile'} />
+            <FieldLines k={kCampo} forte={fenomeno === 'campo-variabile' || fenomeno === 'posizionamento'} />
           </group>
         )}
         {ancore && hotspot.filter((h) => h.oggetto3d && ancore[h.oggetto3d]).map((h) => {
@@ -216,7 +273,20 @@ export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot 
           return <Hotspot3D key={h.id} h={h} pos={p} onSelect={onHotspot} active={attivo === h.id} />
         })}
         <OrbitControls enableDamping minDistance={1.5} maxDistance={14} target={[0, 0, 0]} makeDefault />
+        <CameraPasso passo={passo} ancore={ancore} />
+        <OffsetVista attivo={seq !== null} sinistraPx={176} />
       </Canvas>
+      <Stile />
+      {seq === null && (
+        <div className="absolute bottom-8 left-1/2 z-[25] -translate-x-1/2">
+          <button className="sim-avvia" onClick={() => setSeq(0)}>
+            <FlaskConical size={18} /> Avvia esperimento
+          </button>
+        </div>
+      )}
+      {seq !== null && passo && (
+        <FinestraSequenza titolo="Esperimento EML" passi={passi} indice={seq} onIndice={setSeq} onChiudi={() => setSeq(null)} />
+      )}
     </div>
   )
 }

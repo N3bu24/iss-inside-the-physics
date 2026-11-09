@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
-import { Html, Line, Stars, useGLTF } from '@react-three/drei'
+import { Line, Stars, useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import SimulazioneShell from '../simulazioni/SimulazioneShell'
 import { Cursore, Pulsante, Scope, Trace } from '../simulazioni/controlli'
 import { passiSimulazione } from '../simulazioni/passi'
 import type { Passo } from '../simulazioni/contenuto'
 import { TESTI } from './testi'
+import Etichetta from './Etichetta'
 import TerraNasa from '../simulazioni/TerraNasa'
 
 const R_E = 2
@@ -167,9 +168,7 @@ function ISS({ vel, incl, tr, frame }: { vel: number; incl: number; tr: Trace; f
         <sphereGeometry args={[ISS_L * 0.018, 8, 8]} />
         <meshBasicMaterial toneMapped={false} />
       </instancedMesh>
-      <Html position={[0, ISS_L * 0.9, 0]} center zIndexRange={[10, 0]} style={{ pointerEvents: 'none' }}>
-        <span className="whitespace-nowrap rounded-full border border-white/30 bg-[rgba(4,8,20,.85)] px-3 py-1 text-[12px] font-medium text-white">ISS (ingrandita)</span>
-      </Html>
+      <Etichetta p={[0, 0, 0]} fisso size={0.026}>ISS (ingrandita)</Etichetta>
     </group>
   )
 }
@@ -184,7 +183,7 @@ function Segui({ frame, segui }: { frame: React.RefObject<Frame>; segui: boolean
     const f = frame.current
     if (segui) {
       // dietro e sopra la ISS, con la Terra sullo sfondo
-      camera.position.copy(f.p).addScaledVector(f.rh, ISS_L * 3.2).addScaledVector(f.vh, -ISS_L * 4.6).addScaledVector(f.zh, ISS_L * 2.4)
+      camera.position.copy(f.p).addScaledVector(f.rh, ISS_L * 3.4).addScaledVector(f.vh, -ISS_L * 3.2).addScaledVector(f.zh, ISS_L * 0.6)
       c.target.copy(f.p)
       prec.current = f.p.clone()
     } else {
@@ -268,7 +267,7 @@ export default function AmbienteCampo({ onClose }: { onClose: () => void }) {
       orbit={{ minDistance: 0.12, maxDistance: 16 }}
       hotspot={[
         { id: 'dipolo', categoria: 'terra', titolo: 'Il campo geomagnetico', pos: [0.3, 2.9, 0], testo: 'La Terra si comporta come un grande magnete a dipolo: le linee di campo escono da un polo, si chiudono attorno al pianeta e rientrano dall\'altro. A 400 km di quota il campo vale circa 30 microtesla.' },
-        { id: 'traliccio', categoria: 'fisica', titolo: 'Perché serve il moto', pos: [-3.3, 0.7, 0.5], testo: 'Una fem di moto richiede che il conduttore tagli le linee di campo: con la ISS ferma il flusso non cambia e ε = Blv si annulla.' },
+        { id: 'traliccio', categoria: 'fisica', titolo: 'Perché serve il moto', pos: [3.4, 0.9, 0.5], testo: 'Una fem di moto richiede che il conduttore tagli le linee di campo: con la ISS ferma il flusso non cambia e ε = Blv si annulla.' },
       ]}
       scope={<Scope titolo="fem lungo il traliccio" traces={[tr]} />}
       controlli={

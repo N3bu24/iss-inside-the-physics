@@ -28,8 +28,8 @@ void main(){
   vec3 col = mix(notte, luce, giorno);
   float crep = exp(-pow((d - 0.03) / 0.14, 2.0));
   col += crep * c * vec3(0.22, 0.09, 0.03);
-  float f = pow(1.0 - max(dot(n, normalize(vV)), 0.0), 3.0);
-  col += vec3(0.22, 0.5, 1.0) * f * (0.18 + 0.7 * giorno);
+  float f = pow(1.0 - max(dot(n, normalize(vV)), 0.0), 4.0);
+  col += vec3(0.22, 0.5, 1.0) * f * (0.08 + 0.3 * giorno);
   gl_FragColor = vec4(col, 1.0);
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
@@ -38,7 +38,7 @@ const ATM_FRAG = /* glsl */ `
 varying vec3 vNv;
 void main(){
   float i = pow(max(0.0, 0.72 - dot(vNv, vec3(0.0, 0.0, 1.0))), 3.0);
-  gl_FragColor = vec4(0.25, 0.55, 1.0, 1.0) * i * 1.5;
+  gl_FragColor = vec4(0.25, 0.55, 1.0, 1.0) * i * 0.9;
 }`
 const ATM_VERT = /* glsl */ `
 varying vec3 vNv;
