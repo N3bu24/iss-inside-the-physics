@@ -1,8 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Line, OrbitControls, Stars } from '@react-three/drei'
+import { Line, Stars } from '@react-three/drei'
 import * as THREE from 'three'
-import { Shell, Cursore, Pulsante, Scope, Trace } from './ui'
+import SimulazioneShell from '../simulazioni/SimulazioneShell'
+import { Cursore, Pulsante, Scope, Trace } from '../simulazioni/controlli'
+import { passiSimulazione } from '../simulazioni/passi'
+import type { Passo } from '../simulazioni/contenuto'
 import { TESTI } from './testi'
 import Etichetta from './Etichetta'
 
@@ -203,10 +206,24 @@ export default function AmbienteRmn({ onClose }: { onClose: () => void }) {
   const trS = useMemo(() => new Trace(CYAN, 'fem indotta'), [])
   const trM = useMemo(() => new Trace('#fff2c4aa', 'magnetizzazione trasversale'), [])
   useEffect(() => () => void 0, [])
+  const passi = useMemo(() => passiSimulazione('rmn'), [])
+  const onPasso = (i: number | null, p?: Passo) => {
+    if (i === null || !p) return
+    if (p.stato === 'impulso') ctl.current.trig = true
+  }
   return (
-    <Shell
+    <SimulazioneShell
       id="rmn"
       onClose={onClose}
+      titolo={TESTI.rmn.titolo}
+      intro={TESTI.rmn.intro}
+      formula={TESTI.rmn.formula}
+      formulaNota={TESTI.rmn.formulaNota}
+      agenda={TESTI.rmn.agenda}
+      slide={TESTI.rmn.slide}
+      passi={passi}
+      onPasso={onPasso}
+      orbit={{ minDistance: 6, maxDistance: 18 }}
       didascalia={TESTI.rmn.didascalie[label]}
       camera={{ position: [4, 3, 13.5], fov: 45 }}
       scope={<Scope titolo="segnale FID" traces={[trM, trS]} />}
@@ -222,7 +239,6 @@ export default function AmbienteRmn({ onClose }: { onClose: () => void }) {
       <Stars radius={60} depth={30} count={600} factor={3} fade speed={0} />
       <Magnete />
       <Spins ctl={ctl} trS={trS} trM={trM} setLabel={setLabel} />
-      <OrbitControls enablePan={false} minDistance={6} maxDistance={18} />
-    </Shell>
+    </SimulazioneShell>
   )
 }

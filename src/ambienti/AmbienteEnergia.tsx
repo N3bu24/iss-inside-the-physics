@@ -1,8 +1,11 @@
 import { useMemo, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Line, OrbitControls, Stars } from '@react-three/drei'
+import { Line, Stars } from '@react-three/drei'
 import * as THREE from 'three'
-import { Shell, Cursore, Pulsante, Scope, Trace } from './ui'
+import SimulazioneShell from '../simulazioni/SimulazioneShell'
+import { Cursore, Pulsante, Scope, Trace } from '../simulazioni/controlli'
+import { passiSimulazione } from '../simulazioni/passi'
+import type { Passo } from '../simulazioni/contenuto'
 import { TESTI } from './testi'
 import Etichetta from './Etichetta'
 import { helixGeometry } from './geo'
@@ -248,10 +251,26 @@ export default function AmbienteEnergia({ onClose }: { onClose: () => void }) {
   const T = TESTI.energia.didascalie
   const did = ratio < 0.8 ? T.abbassa : ratio > 1.6 ? T.eleva : T.pari
   const testo = Math.abs(ratio - 1) < 0.02 ? 'N₂ / N₁ = 1' : ratio > 1 ? `N₂ / N₁ = ${ratio.toFixed(1).replace('.', ',')} (eleva)` : `N₂ / N₁ = ${ratio.toFixed(2).replace('.', ',')} (abbassa)`
+  const passi = useMemo(() => passiSimulazione('energia'), [])
+  const onPasso = (i: number | null, p?: Passo) => {
+    if (i === null || !p) return
+    if (p.stato === 'ruota' || p.stato === 'pari') { setRatio(1); setRuota(true) }
+    else if (p.stato === 'eleva') setRatio(3)
+    else if (p.stato === 'abbassa') setRatio(0.4)
+  }
   return (
-    <Shell
+    <SimulazioneShell
       id="energia"
       onClose={onClose}
+      titolo={TESTI.energia.titolo}
+      intro={TESTI.energia.intro}
+      formula={TESTI.energia.formula}
+      formulaNota={TESTI.energia.formulaNota}
+      agenda={TESTI.energia.agenda}
+      slide={TESTI.energia.slide}
+      passi={passi}
+      onPasso={onPasso}
+      orbit={{ target: [2.2, 0, 0], maxPolarAngle: Math.PI * 0.62, minDistance: 8, maxDistance: 24 }}
       didascalia={did}
       camera={{ position: [2.2, 3.2, 23], fov: 45 }}
       scope={<Scope titolo="corrente alternata" traces={[trF, trE]} />}
@@ -286,7 +305,6 @@ export default function AmbienteEnergia({ onClose }: { onClose: () => void }) {
       <Line points={[[-5.4, -0.9, 0.6], [-5.4, -2.2, 0.6], [-2.5, -2.2, 0.6], [-1.9, -0.4, 0.6]]} color={CYAN} lineWidth={1.5} transparent opacity={0.6} />
       <Trasformatore st={st} />
       <Linea st={st} />
-      <OrbitControls enablePan={false} target={[2.2, 0, 0]} maxPolarAngle={Math.PI * 0.62} minDistance={8} maxDistance={24} />
-    </Shell>
+    </SimulazioneShell>
   )
 }

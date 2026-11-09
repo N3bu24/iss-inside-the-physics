@@ -1,92 +1,29 @@
-import { useMemo, useRef, useState } from 'react'
-import { useFrame } from '@react-three/fiber'
-import { Line, OrbitControls, Stars } from '@react-three/drei'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useFrame, useThree } from '@react-three/fiber'
+import { Line, Stars, useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
-import { Shell, Cursore, Scope, Trace } from './ui'
+import SimulazioneShell from '../simulazioni/SimulazioneShell'
+import { Cursore, Pulsante, Scope, Trace } from '../simulazioni/controlli'
+import { passiSimulazione } from '../simulazioni/passi'
+import type { Passo } from '../simulazioni/contenuto'
 import { TESTI } from './testi'
-import { hash2 } from './geo'
+import Etichetta from './Etichetta'
+import TerraNasa from '../simulazioni/TerraNasa'
 
 const R_E = 2
-const R_ORB = 3.3
-const W0 = 0.55 // rad/s alla "velocita reale" (scala didattica)
+const R_ORB = 2.35 // orbita didattica (in realta' sarebbe 1,06 R_T: qui un po' piu' alta per leggibilita')
+const W0 = 0.25 // rad/s alla "velocita reale" (scala didattica)
 const TILT = (11 * Math.PI) / 180
 const M = new THREE.Vector3(Math.sin(TILT), Math.cos(TILT), 0) // asse dipolo
+const ISS_L = R_E * 0.037 // lunghezza ISS ~3,7% del raggio terrestre (NON in scala reale: ingrandita)
+const SOLE = new THREE.Vector3(8, 4, 6).normalize()
+const ISS_URL = '/ambienti/iss.glb'
 
 function dipole(p: THREE.Vector3, out: THREE.Vector3) {
   const r = p.length()
   const rh = p.clone().divideScalar(r)
   const k = Math.pow(R_E / r, 3)
   return out.copy(rh).multiplyScalar(3 * M.dot(rh)).sub(M).multiplyScalar(k)
-}
-
-function terraTexture() {
-  const c = document.createElement('canvas')
-  c.width = 512
-  c.height = 256
-  const g = c.getContext('2d')!
-  const img = g.createImageData(512, 256)
-  const noise = (x: number, y: number) => {
-    const xi = Math.floor(x),
-      yi = Math.floor(y)
-    const xf = x - xi,
-      yf = y - yi
-    const u = xf * xf * (3 - 2 * xf),
-      v = yf * yf * (3 - 2 * yf)
-    const a = hash2(xi, yi),
-      b = hash2(xi + 1, yi),
-      c2 = hash2(xi, yi + 1),
-      d = hash2(xi + 1, yi + 1)
-    return a + (b - a) * u + (c2 - a) * v + (a - b - c2 + d) * u * v
-  }
-  for (let y = 0; y < 256; y++)
-    for (let x = 0; x < 512; x++) {
-      let n = 0,
-        amp = 0.5,
-        f = 3
-      for (let o = 0; o < 5; o++) {
-        const th = (x / 512) * Math.PI * 2 // periodico in longitudine
-        n += amp * noise(Math.cos(th) * f + 20 + o * 7, Math.sin(th) * f + (y / 256) * f * 0.5 + o * 3)
-        amp *= 0.5
-        f *= 2
-      }
-      const lat = Math.abs(y / 256 - 0.5) * 2
-      const i = (y * 512 + x) * 4
-      let r: number, gg: number, b: number
-      if (lat > 0.88) [r, gg, b] = [235, 242, 250]
-      else if (n > 0.55) {
-        const h = Math.min(1, (n - 0.55) * 4)
-        ;[r, gg, b] = lat < 0.35 && n > 0.64 ? [150 - h * 30, 120, 70] : [40 + h * 60, 95 + h * 30, 55 + h * 20]
-      } else {
-        const d = Math.max(0, 1 - (0.55 - n) * 3)
-        ;[r, gg, b] = [8 + d * 10, 40 + d * 40, 95 + d * 70]
-      }
-      img.data[i] = r
-      img.data[i + 1] = gg
-      img.data[i + 2] = b
-      img.data[i + 3] = 255
-    }
-  g.putImageData(img, 0, 0)
-  const t = new THREE.CanvasTexture(c)
-  t.colorSpace = THREE.SRGBColorSpace
-  return t
-}
-
-function Terra() {
-  const tex = useMemo(terraTexture, [])
-  const ref = useRef<THREE.Mesh>(null)
-  useFrame((_, dt) => ref.current && (ref.current.rotation.y += dt * 0.05))
-  return (
-    <group>
-      <mesh ref={ref}>
-        <sphereGeometry args={[R_E, 64, 48]} />
-        <meshStandardMaterial map={tex} roughness={0.85} />
-      </mesh>
-      <mesh scale={1.045}>
-        <sphereGeometry args={[R_E, 48, 32]} />
-        <meshBasicMaterial color="#4aa8ff" transparent opacity={0.13} side={THREE.BackSide} depthWrite={false} blending={THREE.AdditiveBlending} />
-      </mesh>
-    </group>
-  )
 }
 
 function LineeCampo() {
@@ -109,24 +46,64 @@ function LineeCampo() {
   return (
     <group rotation={[0, 0, -TILT]}>
       {linee.map((p, i) => (
-        <Line key={i} points={p} color="#35e0ff" lineWidth={1.3} transparent opacity={0.55} />
+        <Line key={i} points={p} color="#35e0ff" lineWidth={1.1} transparent opacity={0.4} />
       ))}
     </group>
   )
 }
 
-const NP = 16
-const TRUSS = 0.9
+/* ---------- ISS: modello NASA, centrato e orientato (traliccio = z, moduli lungo la velocita' = x) ---------- */
+function ModelloIss() {
+  const { scene } = useGLTF(ISS_URL, '/draco/')
+  const { oggetto, centro, scala } = useMemo(() => {
+    const o = scene.clone(true)
+    // pezzi isolati del file (tralicci "piegati" a parte, lontani dall'assemblaggio): si nascondono
+    const scartati: THREE.Object3D[] = []
+    o.traverse((n) => {
+      if (/^(bendedtru|pCylinder)/i.test(n.name)) scartati.push(n)
+    })
+    scartati.forEach((n) => (n.visible = false))
+    const argento = new THREE.MeshStandardMaterial({ color: '#d7dce4', metalness: 0.55, roughness: 0.42 })
+    const pannello = new THREE.MeshStandardMaterial({ color: '#16337f', emissive: '#0a1d52', emissiveIntensity: 0.5, metalness: 0.75, roughness: 0.28, side: THREE.DoubleSide })
+    const oro = new THREE.MeshStandardMaterial({ color: '#c9a063', metalness: 0.7, roughness: 0.4 })
+    o.updateMatrixWorld(true)
+    o.traverse((n) => {
+      const m = n as THREE.Mesh
+      if (!m.isMesh || !m.visible) return
+      const g = m.geometry
+      g.computeBoundingBox()
+      const s = g.boundingBox!.getSize(new THREE.Vector3()).toArray().sort((a, b) => a - b)
+      const sottile = s[0] / s[2] < 0.06 && s[2] > 3
+      m.material = sottile && s[1] > 3 ? pannello : s[2] < 4 && s[0] > 0.5 ? oro : argento
+    })
+    const box = new THREE.Box3()
+    o.traverse((n) => {
+      const m = n as THREE.Mesh
+      if (m.isMesh && m.visible) box.union(new THREE.Box3().setFromObject(m))
+    })
+    const size = box.getSize(new THREE.Vector3())
+    return { oggetto: o, centro: box.getCenter(new THREE.Vector3()), scala: ISS_L / Math.max(size.x, size.y, size.z) }
+  }, [scene])
+  return (
+    // asse dei moduli (y del file) -> x (direzione del moto); asse del traliccio (z del file) resta z
+    <group scale={scala} rotation={[0, 0, -Math.PI / 2]}>
+      <primitive object={oggetto} position={[-centro.x, -centro.y, -centro.z]} />
+    </group>
+  )
+}
 
-function ISS({ vel, incl, tr }: { vel: number; incl: number; tr: Trace }) {
+const NP = 16
+
+type Frame = { p: THREE.Vector3; rh: THREE.Vector3; vh: THREE.Vector3; zh: THREE.Vector3 }
+
+function ISS({ vel, incl, tr, frame }: { vel: number; incl: number; tr: Trace; frame: React.RefObject<Frame> }) {
   const g = useRef<THREE.Group>(null)
-  const trussMat = useRef<THREE.MeshStandardMaterial>(null)
+  const trussMat = useRef<THREE.MeshBasicMaterial>(null)
   const inst = useRef<THREE.InstancedMesh>(null)
   const u = useRef(0)
   const fase = useRef(Array.from({ length: NP }, (_, i) => i / NP))
   const tmp = useMemo(
     () => ({
-      p: new THREE.Vector3(),
       q: new THREE.Vector3(),
       v: new THREE.Vector3(),
       B: new THREE.Vector3(),
@@ -142,34 +119,35 @@ function ISS({ vel, incl, tr }: { vel: number; incl: number; tr: Trace }) {
     const w = W0 * vel
     u.current += w * dt
     const i = (incl * Math.PI) / 180
+    const f = frame.current
     const ex = new THREE.Vector3(1, 0, 0),
       e2 = new THREE.Vector3(0, Math.sin(i), Math.cos(i))
-    const rh = ex.clone().multiplyScalar(Math.cos(u.current)).addScaledVector(e2, Math.sin(u.current))
-    const vh = ex.clone().multiplyScalar(-Math.sin(u.current)).addScaledVector(e2, Math.cos(u.current))
-    const zh = new THREE.Vector3().crossVectors(vh, rh) // direzione del traliccio
-    const { p, q, v, B, c, d, cross } = tmp
-    p.copy(rh).multiplyScalar(R_ORB)
-    v.copy(vh).multiplyScalar(w * R_ORB)
+    f.rh.copy(ex).multiplyScalar(Math.cos(u.current)).addScaledVector(e2, Math.sin(u.current))
+    f.vh.copy(ex).multiplyScalar(-Math.sin(u.current)).addScaledVector(e2, Math.cos(u.current))
+    f.zh.crossVectors(f.vh, f.rh) // direzione del traliccio
+    const { q, v, B, c, d, cross } = tmp
+    f.p.copy(f.rh).multiplyScalar(R_ORB)
+    v.copy(f.vh).multiplyScalar(w * R_ORB)
     const g0 = g.current!
-    g0.position.copy(p)
-    tmp.m.makeBasis(vh, rh, zh)
+    g0.position.copy(f.p)
+    tmp.m.makeBasis(f.vh, f.rh, f.zh)
     g0.quaternion.setFromRotationMatrix(tmp.m)
-    dipole(p, B)
-    const eps0 = cross.crossVectors(v, B).dot(zh)
-    const lv0 = Math.min(1, Math.abs(eps0) * 1.3)
-    tr.push(Math.max(-1, Math.min(1, eps0 * 1.1)))
-    trussMat.current!.emissiveIntensity = 0.2 + 2.2 * lv0
+    dipole(f.p, B)
+    const eps0 = cross.crossVectors(v, B).dot(f.zh)
+    const lv0 = Math.min(1, Math.abs(eps0) * 2)
+    tr.push(Math.max(-1, Math.min(1, eps0 * 1.6)))
+    trussMat.current!.opacity = 0.12 + 0.75 * lv0
     const im = inst.current!
     for (let k = 0; k < NP; k++) {
       const s = fase.current[k]
-      const x = (s - 0.5) * TRUSS * 2
-      q.copy(p).addScaledVector(zh, x * 0.3)
+      const x = (s - 0.5) * ISS_L * 1.05
+      q.copy(f.p).addScaledVector(f.zh, x)
       dipole(q, B)
-      const e = cross.crossVectors(v, B).dot(zh)
-      const lv = Math.min(1, Math.abs(e) * 1.3)
+      const e = cross.crossVectors(v, B).dot(f.zh)
+      const lv = Math.min(1, Math.abs(e) * 2)
       fase.current[k] = (s + Math.sign(e) * dt * (0.25 + 0.9 * lv) + 1) % 1
-      d.position.set(0, 0.03, x)
-      d.scale.setScalar(lv < 0.01 ? 0.0001 : 0.35 + 1.0 * lv)
+      d.position.set(0, 0, x)
+      d.scale.setScalar(lv < 0.01 ? 0.0001 : 0.5 + 1.0 * lv)
       d.updateMatrix()
       im.setMatrixAt(k, d.matrix)
       c.set(e > 0 ? '#35e0ff' : '#b8f3ff')
@@ -178,35 +156,53 @@ function ISS({ vel, incl, tr }: { vel: number; incl: number; tr: Trace }) {
     im.instanceMatrix.needsUpdate = true
     if (im.instanceColor) im.instanceColor.needsUpdate = true
   })
-  const pann = [-0.55, -0.2, 0.2, 0.55]
   return (
-    <group ref={g} scale={0.42}>
-      <mesh>
-        <boxGeometry args={[0.06, 0.06, TRUSS * 2.1]} />
-        <meshStandardMaterial ref={trussMat} color="#c8d2e0" emissive="#35e0ff" metalness={0.6} roughness={0.35} />
+    <group ref={g}>
+      <ModelloIss />
+      {/* traliccio che si illumina quando la fem e' attiva */}
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[ISS_L * 0.012, ISS_L * 0.012, ISS_L * 1.08, 8]} />
+        <meshBasicMaterial ref={trussMat} color="#35e0ff" transparent toneMapped={false} depthWrite={false} />
       </mesh>
-      <mesh rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.1, 0.1, 1.3, 14]} />
-        <meshStandardMaterial color="#dfe5ee" metalness={0.5} roughness={0.4} />
-      </mesh>
-      <mesh position={[0.5, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.13, 0.13, 0.4, 14]} />
-        <meshStandardMaterial color="#aab4c4" metalness={0.5} roughness={0.4} />
-      </mesh>
-      {[-1, 1].map((sgn) =>
-        pann.map((x, i) => (
-          <mesh key={`${sgn}-${i}`} position={[x * 0.45, 0, sgn * (TRUSS - 0.34)]}>
-            <boxGeometry args={[0.22, 0.015, 0.66]} />
-            <meshStandardMaterial color="#12337a" emissive="#0a2a66" emissiveIntensity={0.6} metalness={0.7} roughness={0.3} />
-          </mesh>
-        )),
-      )}
       <instancedMesh ref={inst} args={[undefined, undefined, NP]}>
-        <sphereGeometry args={[0.055, 8, 8]} />
+        <sphereGeometry args={[ISS_L * 0.018, 8, 8]} />
         <meshBasicMaterial toneMapped={false} />
       </instancedMesh>
+      <Etichetta p={[0, 0, 0]} fisso size={0.026}>ISS (ingrandita)</Etichetta>
     </group>
   )
+}
+
+/** Camera che segue la ISS (stesso scostamento) oppure vista d'insieme fissa. */
+function Segui({ frame, segui }: { frame: React.RefObject<Frame>; segui: boolean }) {
+  const { camera, controls } = useThree()
+  const prec = useRef<THREE.Vector3 | null>(null)
+  useEffect(() => {
+    const c = controls as unknown as { target: THREE.Vector3; update: () => void } | null
+    if (!c) return
+    const f = frame.current
+    if (segui) {
+      // dietro e sopra la ISS, con la Terra sullo sfondo
+      camera.position.copy(f.p).addScaledVector(f.rh, ISS_L * 3.4).addScaledVector(f.vh, -ISS_L * 3.2).addScaledVector(f.zh, ISS_L * 0.6)
+      c.target.copy(f.p)
+      prec.current = f.p.clone()
+    } else {
+      prec.current = null
+      camera.position.set(0, 3.8, 9.5)
+      c.target.set(0, 0, 0)
+    }
+    c.update()
+  }, [segui, camera, controls, frame])
+  useFrame(() => {
+    const c = controls as unknown as { target: THREE.Vector3; update: () => void } | null
+    if (!segui || !c || !prec.current) return
+    const delta = frame.current.p.clone().sub(prec.current)
+    camera.position.add(delta)
+    c.target.add(delta)
+    prec.current.copy(frame.current.p)
+    c.update()
+  })
+  return null
 }
 
 function Orbita({ incl }: { incl: number }) {
@@ -229,17 +225,50 @@ function Orbita({ incl }: { incl: number }) {
 export default function AmbienteCampo({ onClose }: { onClose: () => void }) {
   const [vel, setVel] = useState(1)
   const [incl, setIncl] = useState(51.6)
+  const [segui, setSegui] = useState(true)
   const tr = useMemo(() => new Trace('#35e0ff', 'fem'), [])
+  const frame = useRef<Frame>({ p: new THREE.Vector3(R_ORB, 0, 0), rh: new THREE.Vector3(1, 0, 0), vh: new THREE.Vector3(0, 0, 1), zh: new THREE.Vector3(0, 1, 0) })
+  const passi = useMemo(() => passiSimulazione('campo'), [])
   const T = TESTI.campo.didascalie
   const did = vel < 0.02 ? T.ferma : vel > 1.6 ? T.esagerata : T.reale
   const km =
     vel < 0.02 ? 'ferma' : vel > 1.6 ? 'esagerata' : Math.abs(vel - 1) < 0.06 ? '7,7 km/s' : `${(vel * 7.7).toFixed(1).replace('.', ',')} km/s`
+
+  const onPasso = (i: number | null, p?: Passo) => {
+    if (i === null || !p) return
+    switch (p.stato) {
+      case 'insieme':
+        setSegui(false); setVel(1); setIncl(51.6); break
+      case 'ferma':
+        setSegui(true); setVel(0); break
+      case 'reale':
+        setSegui(true); setVel(1); setIncl(51.6); break
+      case 'polare':
+        setSegui(true); setVel(1); setIncl(85); break
+      case 'esagerata':
+        setSegui(true); setVel(2.5); setIncl(51.6); break
+    }
+  }
+
   return (
-    <Shell
+    <SimulazioneShell
       id="campo"
       onClose={onClose}
+      titolo={TESTI.campo.titolo}
+      intro={TESTI.campo.intro}
+      formula={TESTI.campo.formula}
+      formulaNota={TESTI.campo.formulaNota}
+      agenda={TESTI.campo.agenda}
+      slide={TESTI.campo.slide}
       didascalia={did}
-      camera={{ position: [0, 3.5, 9.5], fov: 45 }}
+      passi={passi}
+      onPasso={onPasso}
+      camera={{ position: [0, 3.8, 9.5], fov: 45 }}
+      orbit={{ minDistance: 0.12, maxDistance: 16 }}
+      hotspot={[
+        { id: 'dipolo', categoria: 'terra', titolo: 'Il campo geomagnetico', pos: [0.3, 2.9, 0], testo: 'La Terra si comporta come un grande magnete a dipolo: le linee di campo escono da un polo, si chiudono attorno al pianeta e rientrano dall\'altro. A 400 km di quota il campo vale circa 30 microtesla.' },
+        { id: 'traliccio', categoria: 'fisica', titolo: 'Perché serve il moto', pos: [3.4, 0.9, 0.5], testo: 'Una fem di moto richiede che il conduttore tagli le linee di campo: con la ISS ferma il flusso non cambia e ε = Blv si annulla.' },
+      ]}
       scope={<Scope titolo="fem lungo il traliccio" traces={[tr]} />}
       controlli={
         <>
@@ -264,17 +293,20 @@ export default function AmbienteCampo({ onClose }: { onClose: () => void }) {
             sinistra="equatoriale"
             destra="polare"
           />
+          <Pulsante onClick={() => setSegui(!segui)} attivo={segui}>
+            {segui ? 'Vista d\'insieme' : 'Segui la ISS'}
+          </Pulsante>
         </>
       }
     >
-      <ambientLight intensity={0.35} />
-      <directionalLight position={[8, 4, 6]} intensity={2.2} />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[8, 4, 6]} intensity={2.6} />
       <Stars radius={60} depth={30} count={1200} factor={3} fade speed={0} />
-      <Terra />
+      <TerraNasa raggio={R_E} sole={SOLE} />
       <LineeCampo />
       <Orbita incl={incl} />
-      <ISS vel={vel} incl={incl} tr={tr} />
-      <OrbitControls enablePan={false} minDistance={5} maxDistance={16} />
-    </Shell>
+      <ISS vel={vel} incl={incl} tr={tr} frame={frame} />
+      <Segui frame={frame} segui={segui} />
+    </SimulazioneShell>
   )
 }

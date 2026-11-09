@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import * as THREE from 'three'
 
-/** Etichetta 3D come sprite (evita drei/Html, che crea una root React per ogni etichetta). */
-export default function Etichetta({ p, children, size = 0.3 }: { p: [number, number, number]; children: string; size?: number }) {
+/** Etichetta 3D come sprite (con `fisso` ha dimensione costante sullo schermo e sta sopra il punto) (evita drei/Html, che crea una root React per ogni etichetta). */
+export default function Etichetta({ p, children, size = 0.3, fisso }: { p: [number, number, number]; children: string; size?: number; fisso?: boolean }) {
   const { tex, ratio } = useMemo(() => {
     const c = document.createElement('canvas')
     const g = c.getContext('2d')!
@@ -25,8 +25,8 @@ export default function Etichetta({ p, children, size = 0.3 }: { p: [number, num
     return { tex: t, ratio: w / 52 }
   }, [children])
   return (
-    <sprite position={p} scale={[size * ratio, size, 1]} renderOrder={10}>
-      <spriteMaterial map={tex} depthTest={false} transparent />
+    <sprite position={p} scale={[size * ratio, size, 1]} renderOrder={10} center={new THREE.Vector2(0.5, fisso ? -0.9 : 0.5)}>
+      <spriteMaterial map={tex} depthTest={false} transparent sizeAttenuation={!fisso} />
     </sprite>
   )
 }
