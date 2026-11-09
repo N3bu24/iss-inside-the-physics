@@ -1,0 +1,86 @@
+[
+  {
+    "id": "intro-01",
+    "tappa": "intro",
+    "testo": "Quattrocento chilometri sopra la Terra, una stazione corre a più di ventisettemila chilometri all'ora. Si chiama Stazione Spaziale Internazionale. Ogni novanta minuti compie un giro completo del pianeta. Da più di vent'anni c'è sempre qualcuno a bordo. Non è un monumento. È un laboratorio. Qui il peso sembra sparire, e la fisica mostra cose che sulla Terra restano nascoste. Entriamo.",
+    "durata_stimata_s": 27
+  },
+  {
+    "id": "nodo-01",
+    "tappa": "nodo",
+    "testo": "Questo è un nodo: uno snodo che collega i moduli tra loro. Qui non esiste un sopra né un sotto. Gli astronauti si muovono fluttuando, e ogni oggetto va fissato, altrimenti se ne va per conto suo. Si mangia, si dorme, ci si allena ogni giorno, perché senza peso muscoli e ossa si indeboliscono. Ma soprattutto si fa ricerca. Seguiamo il corridoio.",
+    "durata_stimata_s": 25
+  },
+  {
+    "id": "columbus-01",
+    "tappa": "columbus",
+    "testo": "Questo è Columbus, il laboratorio europeo. Lo ha realizzato l'Agenzia Spaziale Europea, ed è arrivato sulla stazione nel duemilaotto. Dentro ci sono i rack: grandi armadi attrezzati, ciascuno per un tipo di esperimento. Fluidi, biologia, scienza dei materiali. In uno di questi rack c'è lo strumento che cerchiamo. Un forno che non tocca mai ciò che scalda.",
+    "durata_stimata_s": 25
+  },
+  {
+    "id": "eml-01",
+    "tappa": "eml",
+    "testo": "Electromagnetic Levitator. In breve, EML. Il nome dice già quasi tutto: un dispositivo che fa levitare un oggetto con un campo elettromagnetico. L'oggetto è un piccolo campione di metallo, di pochi millimetri. Sospeso al centro di una camera, senza toccare nulla. Perché è importante? Perché un metallo fuso, a contatto con un recipiente, si sporca e cambia. Sospeso nel vuoto, invece, resta se stesso.",
+    "durata_stimata_s": 32
+  },
+  {
+    "id": "eml-02",
+    "tappa": "eml",
+    "testo": "Attorno al campione ci sono delle bobine. Vengono percorse da una corrente alternata, che cambia verso moltissime volte al secondo. Il campo magnetico che nasce non è mai fermo: cresce, si annulla, si inverte. E un campo che cambia è proprio ciò che serviva a Faraday. Attraverso il metallo, il flusso del campo magnetico varia nel tempo. Ed è qui che comincia tutto.",
+    "durata_stimata_s": 29
+  },
+  {
+    "id": "eml-03",
+    "tappa": "eml",
+    "testo": "Dentro il metallo, quel campo che varia genera delle correnti indotte. Sono vortici di cariche che girano su se stessi: le correnti parassite, o correnti di Foucault. Ora entra in gioco la legge di Lenz. Queste correnti producono un campo magnetico che si oppone a quello che le ha create. Due campi che si respingono. Il campione viene spinto lontano dalle zone più intense, e resta sospeso.",
+    "durata_stimata_s": 30
+  },
+  {
+    "id": "eml-04",
+    "tappa": "eml",
+    "testo": "Ma quelle correnti hanno anche un secondo effetto. Il metallo oppone resistenza al loro passaggio, e si scalda. È l'effetto Joule. Il campione si riscalda dall'interno, senza fiamme e senza contatto, fino a diventare incandescente. Lo stesso campo, quindi, sostiene e scalda. In orbita, dove il campione quasi non pesa, per sostenerlo basta un campo molto più debole.",
+    "durata_stimata_s": 27
+  },
+  {
+    "id": "eml-05",
+    "tappa": "eml",
+    "testo": "Aumentando la potenza, il metallo fonde. Diventa una goccia liquida, sospesa e leggermente tremolante, tenuta insieme dalla sua tensione superficiale. Dal modo in cui oscilla, si possono ricavare proprietà come la viscosità e la tensione superficiale. Poi si riduce il riscaldamento. La goccia si raffredda, anche sotto la temperatura di solidificazione, finché a un certo punto cristallizza di colpo. Le telecamere registrano ogni istante.",
+    "durata_stimata_s": 33
+  },
+  {
+    "id": "eml-06",
+    "tappa": "eml",
+    "testo": "Perché farlo in orbita? Sulla Terra, per far levitare un metallo servono campi molto intensi, che agitano e deformano il liquido. In microgravità bastano campi deboli: il liquido resta calmo, quasi sferico. Le misure diventano più pulite, e i risultati aiutano a progettare nuove leghe e nuovi processi industriali.",
+    "durata_stimata_s": 22
+  },
+  {
+    "id": "materiali-01",
+    "tappa": "materiali",
+    "testo": "Il campione non è l'unica cosa che galleggia. In assenza di peso, i liquidi non si stratificano e non si muovono per differenze di densità. Per questo la stazione è il posto ideale per osservare come crescono i cristalli di una lega, e come si mescolano i metalli mentre solidificano. Ciò che si impara qui serve a produrre materiali migliori, giù sulla Terra.",
+    "durata_stimata_s": 27
+  },
+  {
+    "id": "cupola-01",
+    "tappa": "cupola",
+    "testo": "Sette finestre, rivolte verso il basso. Questa è la Cupola. Da qui la Terra scorre lenta: oceani, nuvole, le luci delle città di notte. Una linea sottilissima di atmosfera la separa dal buio. Dall'alto sembra un'unica cosa. Ed è proprio laggiù che le idee nate quassù tornano a lavorare.",
+    "durata_stimata_s": 20
+  },
+  {
+    "id": "finale-01",
+    "tappa": "finale",
+    "testo": "Lo spazio è meno lontano di quanto sembri. Lo stesso principio che sostiene un campione in Columbus può sostenere un treno. In Giappone si sperimentano treni a levitazione magnetica, i Maglev. Quando il treno corre, i suoi magneti fanno variare il flusso nelle bobine della guida. Vi nascono correnti indotte, e la legge di Lenz fa il resto: il campo indotto respinge. A velocità sufficiente il treno si solleva di alcuni centimetri e scivola senza attrito di contatto.",
+    "durata_stimata_s": 36
+  },
+  {
+    "id": "finale-02",
+    "tappa": "finale",
+    "testo": "È il cuore dell'Obiettivo nove dell'Agenda duemilatrenta: imprese, innovazione, infrastrutture. Capire le correnti parassite significa progettare macchine migliori. Nei forni a induzione servono a fondere i metalli. Nei motori elettrici industriali sono perdite da ridurre. In un treno diventano sostegno e freno. Una stessa fisica, tre usi diversi.",
+    "durata_stimata_s": 27
+  },
+  {
+    "id": "finale-03",
+    "tappa": "finale",
+    "testo": "E poi c'è la salute. L'articolo trentadue della Costituzione tutela la salute come diritto dell'individuo e interesse della collettività. Significa anche sicurezza: materiali più affidabili, macchine più efficienti, luoghi di lavoro meno rischiosi. La ricerca è uno degli strumenti con cui questo diritto diventa concreto. Dalla Terra allo spazio, e ritorno.",
+    "durata_stimata_s": 26
+  }
+]
