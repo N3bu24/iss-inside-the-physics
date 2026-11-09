@@ -5,6 +5,18 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.7.0] — 2026-11-09
+### Aggiunto
+- **Esplorazione fluttuante:** grafo di 6 moduli ESA reali (Harmony, Columbus, Kibo, Destiny, Unity, Tranquility) più la Cupola. ↑/W vola verso il portello inquadrato, ↓/S torna indietro, rotella = zoom, trascinamento = rotazione. Legenda dei comandi discreta.
+- Voli tra moduli generati con Higgsfield (Kling 3.0, prima e ultima immagine dai panorami veri) e transizione procedurale di riserva.
+- Cupola: video NASA reale 4K della Terra in loop, con la cornice delle 7 finestre.
+- Hotspot grandi, con icone diverse per categoria; schede luogo e schede hotspot leggibili.
+- Mini-mappa SVG di tutta la ISS, con cono di sguardo, moduli visitati e volo con un clic.
+- 4 ambienti 3D interattivi: campo magnetico terrestre, energia di bordo, levitazione EML→Maglev, RMN.
+- Contenuti v2 centrati sul pptx (23 slide mappate) e voce ridotta a una clip breve per luogo (12 clip, ~91 s).
+### Da migliorare
+- Chunk iniziale salito a 294 KB gzip.
+
 ## [0.6.0] — 2026-11-09
 ### Aggiunto
 - Panorami ESA reali (Columbus, Harmony, Kibo, Tranquility), con hotspot sugli oggetti veri e collegamenti sui portelli.
