@@ -47,18 +47,19 @@ export function pulisciFormula(f?: string): string | undefined {
 }
 
 /** Unisce i passi provvisori (con camera/stato) ai testi definitivi del file, se presenti. */
-export function passiDi(id: string, provvisori: Passo[]): Passo[] {
+export function passiDi(id: string, provvisori: Passo[], stati?: string[]): Passo[] {
   const file = passiDaFile(id)
   if (!file) return provvisori
   const n = file.length
   return file.map((f, i) => {
     const j = n === 1 ? 0 : Math.round((i * (provvisori.length - 1)) / (n - 1))
-    const base = provvisori[Math.min(j, provvisori.length - 1)]
+    const base = (stati?.[i] && provvisori.find((q) => q.stato === stati[i])) || provvisori[Math.min(j, provvisori.length - 1)]
     return {
       ...base,
       titolo: f.titolo ?? base.titolo,
       testo: f.testo ?? base.testo,
       cosaSiVede: f.cosa_si_vede ?? undefined,
+      stato: stati?.[i] ?? base.stato,
       formula: f.formula !== undefined ? pulisciFormula(f.formula) : base.formula,
     }
   })

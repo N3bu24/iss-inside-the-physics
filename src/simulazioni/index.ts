@@ -13,7 +13,9 @@ export const SIMULAZIONI: VoceSimulazione[] = [
   { id: 'energia', titolo: "L'energia di bordo: alternatore e trasformatore", load: () => import('../ambienti/AmbienteEnergia') },
   { id: 'levitazione', titolo: "Dall'EML al Maglev", load: () => import('../ambienti/AmbienteLevitazione') },
   { id: 'rmn', titolo: 'Risonanza magnetica e medicina spaziale', load: () => import('../ambienti/AmbienteRmn') },
-  { id: 'faraday', titolo: "L'esperimento di Faraday", load: () => import('./Faraday') },
+  { id: 'motore', titolo: 'Motori e alternatori: lo stesso principio', load: () => import('./Motore') },
+  { id: 'autoinduzione', titolo: 'Autoinduzione: interruttore e bobina', load: () => import('./Autoinduzione') },
+  { id: 'aurora', titolo: 'Aurora: la forza di Lorentz', load: () => import('./Aurora') },
 ]
 
 const cache = new Map<string, ComponentType<PropsSimulazione>>()

@@ -228,7 +228,43 @@ const FARADAY: Passo[] = [
   },
 ]
 
-export const PASSI_EML = () => passiDi('eml', EML)
-export const PASSI_PROVVISORI: Record<string, Passo[]> = { eml: EML, campo: CAMPO, energia: ENERGIA, levitazione: LEVITAZIONE, rmn: RMN, faraday: FARADAY }
-/** Passi della simulazione `id` (testi dal file di contenuto se esiste). */
-export const passiSimulazione = (id: string): Passo[] => passiDi(id, PASSI_PROVVISORI[id] ?? [])
+const P = (stato: string, titolo: string, testo: string, camera?: Passo['camera']): Passo => ({ stato, titolo, testo, camera })
+
+const MOTORE: Passo[] = [
+  P('alternatore', 'Facciamo girare la spira', 'Una spira che ruota in un campo magnetico produce una fem alternata.', { pos: [0, 2.2, 9], target: [0, 0, 0] }),
+  P('motore', 'Lo stesso, al contrario', 'Una batteria fa passare corrente nella spira: la forza di Lorentz la fa girare.', { pos: [0, 2.2, 9], target: [0, 0, 0] }),
+  P('collettore', 'Il collettore', 'I semianelli invertono il verso della corrente a ogni mezzo giro.', { pos: [2.5, -0.8, 5], target: [0, -1.2, 0] }),
+  P('fem', 'La fem opposta', 'Il motore in rotazione genera una fem che si oppone alla corrente.', { pos: [0, 2.2, 9], target: [0, 0, 0] }),
+  P('stazione', 'Sulla stazione', 'Braccio robotico e ventole sono mossi da motori elettrici.', { pos: [0, 0.5, 9], target: [0, -1, -2] }),
+]
+const AUTOINDUZIONE: Passo[] = [
+  P('chiudi', "Chiudiamo l'interruttore", 'Chiudendo il circuito la bobina si oppone al passaggio della corrente.'),
+  P('sale', "L'extracorrente di chiusura", 'La corrente sale con andamento esponenziale e costante di tempo L/R.'),
+  P('L', "Cos'è L", "L'induttanza dipende dalla geometria della bobina."),
+  P('energia', "L'energia nel campo", "Nel campo magnetico della bobina è immagazzinata l'energia ½Li²."),
+  P('apri', 'Aprire il circuito', "All'apertura la corrente crolla e la fem autoindotta può essere molto alta."),
+]
+const AURORA: Passo[] = [
+  P('campo', 'Una carica in un campo', 'La forza di Lorentz curva la traiettoria senza cambiare la velocità.', { pos: [0, 1.5, 9.5], target: [0, 0, 0] }),
+  P('spirale', 'Raggio e spirale', "Con una componente lungo il campo la traiettoria è un'elica.", { pos: [5, 2, 8], target: [0, 0, 0] }),
+  P('vento', 'Il vento solare e la Terra', 'Il campo terrestre devia le particelle e le guida verso i poli.', { pos: [2, 5, 21], target: [0, 0, 0] }),
+  P('aurora', "Si accende l'aurora", "Le particelle eccitano gli atomi dell'alta atmosfera, che emettono luce.", { pos: [5.5, 6.5, 7.5], target: [0, 2.6, 0] }),
+  P('cupola', 'Dalla Cupola', 'La ISS orbita sopra la regione aurorale.', { pos: [3.4, 5.2, 4.2], target: [0, 3.2, 0] }),
+]
+
+/** Stato di scena per ogni passo del file di contenuto (stesso numero e ordine dei passi in content/simulazioni.json). */
+const STATI: Record<string, string[]> = {
+  eml: ['carico', 'posizionamento', 'riscaldamento', 'fusione', 'misure', 'raffreddamento'],
+  campo: ['insieme', 'ferma', 'reale', 'polare', 'esagerata'],
+  energia: ['ruota', 'ruota', 'pari', 'eleva', 'eleva'],
+  levitazione: ['medio', 'medio', 'eml', 'veloce', 'fermo'],
+  rmn: ['riposo', 'riposo', 'impulso', 'fid', 'rilassa'],
+  motore: ['alternatore', 'motore', 'collettore', 'fem', 'stazione'],
+  autoinduzione: ['chiudi', 'sale', 'L', 'energia', 'apri'],
+  aurora: ['campo', 'spirale', 'vento', 'aurora', 'cupola'],
+}
+
+export const PASSI_PROVVISORI: Record<string, Passo[]> = { eml: EML, campo: CAMPO, energia: ENERGIA, levitazione: LEVITAZIONE, rmn: RMN, faraday: FARADAY, motore: MOTORE, autoinduzione: AUTOINDUZIONE, aurora: AURORA }
+/** Passi della simulazione `id` (testi dal file di contenuto se esiste, altrimenti provvisori). */
+export const passiSimulazione = (id: string): Passo[] => passiDi(id, PASSI_PROVVISORI[id] ?? [], STATI[id])
+export const PASSI_EML = () => passiSimulazione('eml')

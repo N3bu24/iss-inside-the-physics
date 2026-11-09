@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
-import { Atom, Cpu, Globe, Magnet, Zap, type LucideIcon } from 'lucide-react'
+import { Atom, Cpu, Globe, Magnet, User, Zap, type LucideIcon } from 'lucide-react'
 
-export type CategoriaSim = 'fisica' | 'eml' | 'strumento' | 'terra' | 'energia'
+export type CategoriaSim = 'fisica' | 'eml' | 'strumento' | 'terra' | 'energia' | 'vita'
 
 export const CATEGORIE_SIM: Record<CategoriaSim, { Icon: LucideIcon; colore: string }> = {
   fisica: { Icon: Magnet, colore: '#35e0ff' },
@@ -9,6 +9,7 @@ export const CATEGORIE_SIM: Record<CategoriaSim, { Icon: LucideIcon; colore: str
   strumento: { Icon: Cpu, colore: '#ffffff' },
   terra: { Icon: Globe, colore: '#5ea6ff' },
   energia: { Icon: Zap, colore: '#ff9a3c' },
+  vita: { Icon: User, colore: '#86d6a0' },
 }
 
 /** Marcatore da 56 px: disco scuro, bordo colorato, icona per categoria. Lo stile e' in <Stile/>. */

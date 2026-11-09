@@ -11,6 +11,7 @@ import Intestazione from './Intestazione'
 import Marcatore, { type CategoriaSim } from './Marcatore'
 import FinestraSequenza from './FinestraSequenza'
 import Voce from './Voce'
+import OffsetVista from './OffsetVista'
 import type { Passo } from './contenuto'
 
 export type HotspotSim = { id: string; categoria: CategoriaSim; titolo: string; testo: string; pos: [number, number, number] }
@@ -120,6 +121,7 @@ export default function SimulazioneShell(p: PropsShell) {
           ))}
           <OrbitControls makeDefault enablePan={false} target={o.target ?? [0, 0, 0]} minDistance={o.minDistance} maxDistance={o.maxDistance} maxPolarAngle={o.maxPolarAngle} />
           <CameraRig passo={passo} />
+          <OffsetVista attivo={seq !== null} />
         </Canvas>
       </div>
 
@@ -136,7 +138,7 @@ export default function SimulazioneShell(p: PropsShell) {
       </div>
 
       {/* pannello di spiegazione */}
-      <aside className="glass sim-scroll absolute bottom-28 left-5 top-16 flex w-[360px] flex-col gap-3 rounded-2xl p-5 text-[13px] leading-relaxed">
+      <aside className="glass sim-scroll absolute bottom-28 left-5 top-16 z-10 flex w-[360px] flex-col gap-3 rounded-2xl p-5 text-[13px] leading-relaxed">
         <h2 className="text-xl font-semibold leading-tight">{p.titolo}</h2>
         <p className="text-white/75">{p.intro}</p>
         {hsAttivo ? (
