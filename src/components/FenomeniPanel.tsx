@@ -23,7 +23,7 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
   const col = (c: string) => (c === 'heat' ? '#ff8a2a' : '#35e0ff')
 
   return (
-    <aside className="glass slide-in absolute left-4 top-20 bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5">
+    <aside className="glass slide-in absolute right-4 top-[15.5rem] bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5">
       <div className="text-[10px] uppercase tracking-[0.2em] text-white/45">Cosa succede nel campione</div>
       <ol className="mt-3 space-y-1">
         {fenomeni.map((x, i) => (
@@ -39,7 +39,7 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
         ))}
       </ol>
       {f ? (
-        <div key={f.id} className="fade-in mt-4 flex-1 overflow-y-auto border-t border-white/10 pt-4">
+        <div key={f.id} className="fade-in mt-4 scroll-sottile flex-1 overflow-y-auto border-t border-white/10 pt-4">
           <div className="aspect-video overflow-hidden rounded-xl border border-white/10 bg-black/40">
             {hasVideo ? (
               <video src={videoUrl(f.id)} controls autoPlay loop muted playsInline preload="metadata" className="h-full w-full object-cover" />

@@ -7,7 +7,7 @@ export default function Indicatore({ precedente }: { precedente: NodoId | null }
   const avanti = useVista((v) => v.portello) as NodoId | null
   if (!avanti && !precedente) return null
   return (
-    <div className="pointer-events-none absolute bottom-[5.6rem] left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-1.5 text-sm">
+    <div className="pointer-events-none absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-1.5 text-sm">
       {avanti && (
         <div key={avanti} className="fade-in flex items-center gap-2 rounded-full border border-white/25 bg-[rgba(4,8,20,.82)] px-4 py-1.5 text-white shadow-lg">
           <span className="kbd"><ArrowUp size={12} /></span>

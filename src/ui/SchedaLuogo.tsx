@@ -10,7 +10,7 @@ export default function SchedaLuogo({ luogo, iniziaChiusa = false }: { luogo: Lu
   const [aperta, setAperta] = useState(() => !iniziaChiusa && !viste.has(luogo.id))
   useEffect(() => { viste.add(luogo.id) }, [luogo.id])
   return (
-    <div key={luogo.id} className="fade-in glass absolute left-4 top-4 z-30 w-[21rem] max-w-[92vw] rounded-2xl">
+    <div key={luogo.id} className="fade-in glass w-[21rem] max-w-[92vw] rounded-2xl">
       <button onClick={() => setAperta(!aperta)} className="flex w-full items-center gap-3 px-5 py-3 text-left" aria-expanded={aperta}>
         <MapPin size={16} className="shrink-0 text-cyan-200" />
         <span className="min-w-0 flex-1">
@@ -20,7 +20,7 @@ export default function SchedaLuogo({ luogo, iniziaChiusa = false }: { luogo: Lu
         <ChevronUp size={18} className={`shrink-0 text-white/60 transition-transform ${aperta ? '' : 'rotate-180'}`} />
       </button>
       {aperta && (
-        <div className="px-5 pb-5">
+        <div className="scroll-sottile max-h-[34vh] overflow-y-auto px-5 pb-5">
           <p className="text-sm text-white/65">{luogo.sottotitolo}</p>
           <ul className="mt-3 space-y-2">
             {luogo.punti.map((p, i) => (

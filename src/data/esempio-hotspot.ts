@@ -26,6 +26,8 @@ export interface HotspotScheda {
   immagini?: ImmagineScheda[]
   /** id di una simulazione da aprire con "Avvia simulazione" */
   simulazione?: string
+  /** testo della voce (audio in public/audio/poi/<id>.mp3) */
+  voce?: string
   slide_pptx: number[]
   badge: Provenienza
   fonte: string

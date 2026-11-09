@@ -1,4 +1,4 @@
-import hotspotJson from '@content/hotspot.json'
+import hotspotJson from '@content/hotspot-v3.json'
 import { nodi, type NodoId } from './stazione'
 import { posizioni } from './posizioni'
 import { hotspotEsempio, luoghiEsempio, type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './esempio-hotspot'
@@ -70,6 +70,7 @@ function normalizzaHotspot(g: Grezzo): HotspotScheda | null {
     badge: badgeDa(g.badge), fonte: String(g.fonte ?? ''),
     paragrafi: comeStringhe(g.paragrafi).length ? comeStringhe(g.paragrafi) : undefined,
     formule: formuleDa(g.formule), immagini: immaginiDa(g.immagini),
+    voce: typeof g.voce === 'string' && g.voce ? g.voce : undefined,
     simulazione: typeof g.simulazione === 'string' && g.simulazione ? g.simulazione : undefined,
     yaw: RIPOSIZIONA[g.id]?.yaw ?? num(g.yaw) ?? num(g.yaw_stimato), pitch: RIPOSIZIONA[g.id]?.pitch ?? num(g.pitch) ?? num(g.pitch_stimato), x: num(g.x), y: num(g.y),
     oggetto3d: typeof g.oggetto3d === 'string' ? g.oggetto3d : undefined,
@@ -98,7 +99,7 @@ const hotspotNuovi = nuovoFormato ? hotspotReali.map(normalizzaHotspot).filter((
 const listaHotspot: HotspotScheda[] = [...hotspotNuovi, ...hotspotEsempio.filter((e) => !hotspotNuovi.some((h) => h.luogo === e.luogo))]
 
 // luoghi.json è opzionale: la glob non fallisce se il file non esiste ancora
-const luoghiFile = import.meta.glob('/content/luoghi.json', { eager: true, import: 'default' })
+const luoghiFile = import.meta.glob('/content/luoghi-v3.json', { eager: true, import: 'default' })
 const luoghiReali = comeLista(Object.values(luoghiFile)[0])
 const luoghiNuovi = luoghiReali.some((l) => 'punti' in l || 'scheda' in l) ? luoghiReali.map(normalizzaLuogo).filter((l): l is Luogo => !!l) : []
 const listaLuoghi: Luogo[] = [...luoghiNuovi, ...luoghiEsempio.filter((e) => !luoghiNuovi.some((l) => l.id === e.id))]
@@ -149,4 +150,4 @@ export function hotspotDi(luogo: NodoId): HotspotPosizionato[] {
 }
 
 export const schedaPerId = (id: string) => listaHotspot.find((h) => h.id === id) ?? null
-export const fonteContenuti = nuovoFormato ? 'content/hotspot.json' : 'esempio-hotspot.ts'
+export const fonteContenuti = nuovoFormato ? 'content/hotspot-v3.json' : 'esempio-hotspot.ts'
