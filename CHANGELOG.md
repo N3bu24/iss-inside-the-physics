@@ -5,6 +5,13 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.6.0] — 2026-11-09
+### Aggiunto
+- Panorami ESA reali (Columbus, Harmony, Kibo, Tranquility), con hotspot sugli oggetti veri e collegamenti sui portelli.
+- Intro e finale come foto NASA a schermo intero con effetto Ken Burns.
+- Credito discreto in basso a destra, diverso per ogni tappa, e pannello "Crediti" completo.
+- Precaricamento della tappa successiva e caricamento con dissolvenza.
+
 ## [0.5.0] — 2026-11-09
 ### Aggiunto
 - EML v2: la bobina SUPOS è un tubo di rame a spirale conica (3+3 spire), con adduttori, passanti e supporti ceramici. Render senza rumore (AgX, denoise). Nuovo `eml.glb` (0,28 MB) nel sito.
