@@ -5,6 +5,13 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.3.0] — 2026-11-09
+### Aggiunto
+- Contenuti veri nel sito: 27 hotspot con badge e fonte, 14 clip con sottotitoli e trascrizione.
+- Modello EML reale (glb Draco locale), con hotspot 3D sui componenti. I fenomeni cambiano il materiale del campione e mostrano linee di campo e anelli di corrente.
+### Migliorato
+- Code-splitting: chunk iniziale da 2,3 MB a 344 KB (115 KB gzip).
+
 ## [0.2.0] — 2026-11-09
 ### Aggiunto
 - Prototipo del sito (Vite + React + TS + Tailwind 4): intro cinematografica con stelle, viewer 360° (Photo Sphere Viewer) con hotspot e transizioni, scena 3D dell'EML (React Three Fiber), pannello dei 5 fenomeni, pannello hotspot con KaTeX, mini-mappa, barra visita guidata/esplorazione libera, narrazione con sottotitoli. Testi e panorami ancora segnaposto.

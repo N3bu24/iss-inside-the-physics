@@ -97,3 +97,10 @@ Formato: data, decisione, motivo, alternative scartate.
 ## 9/11/2026 — Street View: si usa il fallback
 - **Decisione:** non usare Google Street View. I panorami saranno collegati a mano in Photo Sphere Viewer. Le fonti sono, in ordine: fotogrammi equirettangolari dai video 360 ESA (Columbus, Cupola, Node 2), se la licenza lo permette; altrimenti ambienti ricostruiti in Blender o foto reali NASA (pubblico dominio).
 - **Motivo:** l'iframe Embed non permette hotspot né navigazione controllata. Scaricare le immagini viola i ToS di Google (vedi `docs/research/street-view.md`).
+
+## 9/11/2026 — Integrazione contenuti e modello (v0.3.0)
+- I contenuti si importano a build time da `content/*.json`, con l'alias Vite `@content` e senza fetch.
+- L'audio è organizzato per id di clip: `public/audio/<id-clip>.mp3`. I sottotitoli si generano dal copione invece che da file VTT.
+- Il decoder Draco è locale in `public/draco/`. Il modello EML è normalizzato sulla camera di processo.
+- Le posizioni degli hotspot stanno in `src/data/posizioni.ts`, separate dai testi.
+- Code-splitting: il chunk iniziale pesa 115 KB gzip. PSV, la scena 3D e KaTeX si caricano solo quando servono.

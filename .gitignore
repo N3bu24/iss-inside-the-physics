@@ -10,3 +10,4 @@ _duplicati/
 *.blend1
 assets/renders/test/
 *.tsbuildinfo
+.claude/worktrees/
