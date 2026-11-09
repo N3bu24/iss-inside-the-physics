@@ -70,5 +70,39 @@ body { background: var(--color-ink); color: #e8ecf5; font-family: var(--font-san
 }
 .hs-btn:hover .tip, .hs-btn:focus-visible .tip { opacity: 1; }
 
+/* ---------- esplorazione fluttuante ---------- */
+@keyframes entraZoom { from { opacity: 0; transform: scale(1.18); } to { opacity: 1; transform: none; } }
+.hs2 {
+  position: relative; width: 48px; height: 48px; border-radius: 9999px; display: grid; place-items: center; cursor: pointer;
+  color: var(--c, #35e0ff); background: rgba(6, 10, 22, .66); border: 1.5px solid var(--c, #35e0ff);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .55), 0 0 18px color-mix(in srgb, var(--c, #35e0ff) 55%, transparent), inset 0 0 12px rgba(0, 0, 0, .4);
+  transition: transform .2s ease, background .2s ease;
+}
+.hs2.grande { width: 64px; height: 64px; }
+.hs2:hover, .hs2:focus-visible, .hs2.attivo { transform: scale(1.12); background: rgba(6, 10, 22, .86); outline: none; }
+.hs2::after {
+  content: ''; position: absolute; inset: -7px; border-radius: inherit; border: 1.5px solid var(--c, #35e0ff);
+  opacity: 0; animation: hs2ring 3s ease-out infinite; pointer-events: none;
+}
+.hs2.attivo::after { animation-duration: 1.6s; }
+@keyframes hs2ring { 0% { transform: scale(.82); opacity: .75; } 100% { transform: scale(1.4); opacity: 0; } }
+.hs2-tip {
+  position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(4px); white-space: nowrap;
+  padding: 5px 12px; border-radius: 9999px; font-size: 13px; font-weight: 500; color: #fff;
+  background: rgba(4, 8, 20, .9); border: 1px solid rgba(255, 255, 255, .35); box-shadow: 0 4px 18px rgba(0, 0, 0, .6);
+  opacity: 0; pointer-events: none; transition: opacity .18s, transform .18s; text-shadow: none;
+}
+.hs2:hover .hs2-tip, .hs2:focus-visible .hs2-tip, .hs2.attivo .hs2-tip { opacity: 1; transform: translateX(-50%); }
+.hs2.chiuso { opacity: .55; cursor: default; }
+.hs2.chiuso::after { display: none; }
+
+.kbd {
+  display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, .4); background: rgba(255, 255, 255, .08); font-size: 12px; line-height: 1;
+}
+.scroll-sottile::-webkit-scrollbar { width: 6px; }
+.scroll-sottile::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .2); border-radius: 3px; }
+
 /* crediti discreti */
 .credito-linea { font-size: 11.5px; line-height: 1.2; color: rgba(255,255,255,.55); text-shadow: 0 0 3px rgba(0,0,0,.9), 0 1px 6px rgba(0,0,0,.8); }

@@ -14,6 +14,8 @@ export const crediti: VoceCredito[] = [
 ]
 
 export const creditiAltri: { titolo: string; testo: string }[] = [
+  { titolo: 'Voli tra i moduli', testo: 'Volo: ricostruzione IA (Higgsfield) da panorami ESA. Non sono riprese reali.' },
+  { titolo: 'Video della Cupola', testo: 'Video: NASA Johnson – ISS View of Planet Earth.' },
   { titolo: 'Voce narrante', testo: 'Sintesi vocale ElevenLabs (voce generata con intelligenza artificiale).' },
   { titolo: 'Video e animazioni', testo: 'Simulazione concettuale – render Blender. Non sono riprese reali.' },
   { titolo: "Modello 3D dell'EML", testo: 'Modello concettuale realizzato per questo progetto, a scopo didattico.' },

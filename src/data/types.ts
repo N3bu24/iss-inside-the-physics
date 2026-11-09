@@ -10,7 +10,10 @@ export interface Media {
   credito?: string
 }
 
+export type Categoria = 'fisica' | 'eml' | 'strumento' | 'vita' | 'terra' | 'energia'
+
 export interface Hotspot {
+  categoria?: Categoria
   id: string
   /** posizione nel panorama (radianti) */
   yaw?: number

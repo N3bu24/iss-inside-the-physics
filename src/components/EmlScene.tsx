@@ -3,6 +3,7 @@ import { Canvas, createPortal, useFrame } from '@react-three/fiber'
 import { Html, OrbitControls, useGLTF, Environment } from '@react-three/drei'
 import * as THREE from 'three'
 import type { Hotspot } from '../data/types'
+import HotspotMarker from '../ui/Hotspot'
 import { assetExists } from '../lib/assets'
 import { FieldLines, GLB_URL, Placeholder, type Calore } from './EmlPlaceholder'
 
@@ -160,10 +161,7 @@ class ErroreModello extends Component<{ children: ReactNode; fallback: ReactNode
 function Hotspot3D({ h, pos, onSelect, active }: { h: Hotspot; pos: THREE.Vector3; onSelect: (id: string) => void; active: boolean }) {
   return (
     <Html position={pos} center zIndexRange={[20, 0]}>
-      <button onClick={() => onSelect(h.id)} className="group relative" aria-label={h.titolo}>
-        <div className="hs-dot" style={active ? { transform: 'scale(1.4)' } : undefined} />
-        <span className="glass pointer-events-none absolute left-7 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full px-3 py-1 text-xs opacity-0 transition group-hover:opacity-100">{h.titolo}</span>
-      </button>
+      <HotspotMarker tipo={h.categoria ?? 'eml'} titolo={h.titolo} attivo={active} onClick={() => onSelect(h.id)} />
     </Html>
   )
 }
