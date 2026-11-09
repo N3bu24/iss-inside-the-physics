@@ -46,7 +46,7 @@ function LineeCampo() {
   return (
     <group rotation={[0, 0, -TILT]}>
       {linee.map((p, i) => (
-        <Line key={i} points={p} color="#35e0ff" lineWidth={1.1} transparent opacity={0.4} />
+        <Line key={i} points={p} color="#35e0ff" lineWidth={1.1} transparent opacity={0.5} />
       ))}
     </group>
   )
@@ -173,36 +173,54 @@ function ISS({ vel, incl, tr, frame }: { vel: number; incl: number; tr: Trace; f
   )
 }
 
-/** Camera che segue la ISS (stesso scostamento) oppure vista d'insieme fissa. */
+/** Camera che segue la ISS (l'offset ruota con la base orbitale: la Terra resta sotto la stazione) oppure vista d'insieme fissa. */
 function Segui({ frame, segui }: { frame: React.RefObject<Frame>; segui: boolean }) {
   const { camera, controls } = useThree()
-  const prec = useRef<THREE.Vector3 | null>(null)
+  const prec = useRef<{ p: THREE.Vector3; m: THREE.Matrix4 } | null>(null)
+  const pronto = useRef(false)
+  const base = (f: Frame, m: THREE.Matrix4) => m.makeBasis(f.vh, f.rh, f.zh)
   useEffect(() => {
     const c = controls as unknown as { target: THREE.Vector3; update: () => void } | null
     if (!c) return
-    const f = frame.current
-    if (segui) {
-      // dietro e sopra la ISS, con la Terra sullo sfondo
-      camera.position.copy(f.p).addScaledVector(f.rh, ISS_L * 3.4).addScaledVector(f.vh, -ISS_L * 3.2).addScaledVector(f.zh, ISS_L * 0.6)
-      c.target.copy(f.p)
-      prec.current = f.p.clone()
-    } else {
+    pronto.current = false
+    if (!segui) {
       prec.current = null
       camera.position.set(0, 3.8, 9.5)
       c.target.set(0, 0, 0)
+      c.update()
     }
-    c.update()
-  }, [segui, camera, controls, frame])
+  }, [segui, camera, controls])
   useFrame(() => {
     const c = controls as unknown as { target: THREE.Vector3; update: () => void } | null
-    if (!segui || !c || !prec.current) return
-    const delta = frame.current.p.clone().sub(prec.current)
-    camera.position.add(delta)
-    c.target.add(delta)
-    prec.current.copy(frame.current.p)
+    if (!segui || !c) return
+    const f = frame.current
+    if (!pronto.current) {
+      // primo fotogramma dopo l'attivazione: dietro e sopra la ISS, con la Terra ampia sotto
+      camera.position.copy(f.p).addScaledVector(f.rh, ISS_L * 3.2).addScaledVector(f.vh, -ISS_L * 6.5).addScaledVector(f.zh, ISS_L * 1.2)
+      c.target.copy(f.p).addScaledVector(f.rh, -ISS_L * 2.5)
+      prec.current = { p: f.p.clone(), m: base(f, new THREE.Matrix4()) }
+      pronto.current = true
+      c.update()
+      return
+    }
+    const pr = prec.current!
+    const mNuova = base(f, new THREE.Matrix4())
+    // rotazione dalla base precedente alla nuova
+    const rot = mNuova.clone().multiply(pr.m.clone().transpose())
+    camera.position.sub(pr.p).applyMatrix4(rot).add(f.p)
+    c.target.sub(pr.p).applyMatrix4(rot).add(f.p)
+    pr.p.copy(f.p)
+    pr.m.copy(mNuova)
     c.update()
   })
   return null
+}
+
+/** Luce solare didattica: segue la ISS (resta sul lato illuminato) con una componente fissa dal Sole. */
+function LuceSole({ frame }: { frame: React.RefObject<Frame> }) {
+  const l = useRef<THREE.DirectionalLight>(null)
+  useFrame(() => l.current?.position.copy(frame.current.p).multiplyScalar(8).addScaledVector(SOLE, 3))
+  return <directionalLight ref={l} position={[8, 4, 6]} intensity={3.2} />
 }
 
 function Orbita({ incl }: { incl: number }) {
@@ -299,8 +317,8 @@ export default function AmbienteCampo({ onClose }: { onClose: () => void }) {
         </>
       }
     >
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[8, 4, 6]} intensity={2.6} />
+      <ambientLight intensity={0.15} />
+      <LuceSole frame={frame} />
       <Stars radius={60} depth={30} count={1200} factor={3} fade speed={0} />
       <TerraNasa raggio={R_E} sole={SOLE} />
       <LineeCampo />
