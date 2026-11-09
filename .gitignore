@@ -12,3 +12,4 @@ assets/renders/test/
 *.tsbuildinfo
 .claude/worktrees/
 .claude/state/
+__pycache__/
