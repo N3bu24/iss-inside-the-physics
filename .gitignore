@@ -9,3 +9,4 @@ dist/
 _duplicati/
 *.blend1
 assets/renders/test/
+*.tsbuildinfo
