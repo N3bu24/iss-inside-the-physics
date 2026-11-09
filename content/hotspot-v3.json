@@ -1,0 +1,963 @@
+[
+  {
+    "id": "harmony-cavi",
+    "luogo": "harmony",
+    "categoria": "energia",
+    "titolo": "Cavi lungo il soffitto",
+    "breve": "Più alta è la tensione di una linea, meno corrente serve e meno energia si disperde in calore.",
+    "paragrafi": [
+      "Lungo il soffitto di Harmony corrono fasci di cavi blu e bianchi. Portano energia elettrica e dati verso i laboratori. Un cavo non è un conduttore perfetto: ha una resistenza R, piccola ma mai nulla. Quando la corrente i lo attraversa, gli elettroni urtano gli ioni del metallo e cedono energia sotto forma di calore.",
+      "La potenza dissipata è P = R i²: cresce con il quadrato della corrente. Raddoppiare la corrente significa quadruplicare le perdite. Per questo, volendo trasportare una potenza fissa P = V i, conviene alzare la tensione: se V sale, i scende e il calore sprecato crolla. È il ragionamento della slide sul trasporto dell'energia, con linee a 10, 100 e 380 kV.",
+      "A bordo i cavi sono corti e la tensione è contenuta, ma le perdite contano lo stesso: il calore va smaltito dal sistema di raffreddamento, in un ambiente dove l'aria calda non sale da sola. Nella simulazione «Energia di bordo» puoi cambiare la tensione della linea e osservare il cavo che si scalda o resta freddo."
+    ],
+    "formule": [
+      {
+        "latex": "P_J = R\\,i^2",
+        "spiegazione": "P_J è la potenza persa in calore (watt), R la resistenza del cavo (ohm), i la corrente (ampere). Dice che le perdite crescono con il quadrato della corrente."
+      },
+      {
+        "latex": "P = V\\,i \\;\\Rightarrow\\; P_J = R\\left(\\frac{P}{V}\\right)^2",
+        "spiegazione": "A potenza trasportata P fissata, la corrente è i = P/V. Raddoppiando la tensione V le perdite diventano un quarto."
+      }
+    ],
+    "immagini": [
+      {
+        "url_origine": "https://images-assets.nasa.gov/image/iss042e136109/iss042e136109~medium.jpg",
+        "pagina": "https://images.nasa.gov/details/iss042e136109",
+        "didascalia": "Interno del Node 2 (Harmony): pareti con cavi e pannelli. Titolo NASA: «Interior View in Node 2».",
+        "credito": "NASA",
+        "licenza": "Pubblico dominio (NASA)",
+        "src": "/img/poi/harmony-cavi-1.jpg"
+      }
+    ],
+    "simulazione": "energia",
+    "voce": "Questi cavi portano energia in tutto il modulo. Hanno una piccola resistenza, quindi si scaldano: le perdite crescono con il quadrato della corrente. Nella simulazione sull'energia di bordo puoi alzare la tensione della linea e vedere il calore diminuire.",
+    "slide_pptx": [
+      23
+    ],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 23",
+    "oggetto_reale": "Fasci di cavi blu e bianchi che corrono in alto sul lato destro del panorama.",
+    "yaw_stimato": 58,
+    "pitch_stimato": 60
+  },
+  {
+    "id": "harmony-comunicazioni",
+    "luogo": "harmony",
+    "categoria": "fisica",
+    "titolo": "Il display delle comunicazioni",
+    "breve": "Le onde radio che collegano la stazione alla Terra funzionano per induzione, come i fenomeni di Faraday a frequenza altissima.",
+    "paragrafi": [
+      "Lo schermo mostra i collegamenti radio della stazione, con le sigle S-Band e Ku-Band. Sono due bande di frequenza: la S usa pochi gigahertz, la Ku frequenze più alte, utili per trasferire molti dati. Voce, video e telemetria viaggiano come onde elettromagnetiche tra la ISS, i satelliti di rilancio e le stazioni a terra.",
+      "Un'onda elettromagnetica è un campo elettrico e magnetico che oscillano insieme. Quando il campo magnetico attraversa una spira o un'antenna, il suo flusso varia nel tempo e, per la legge di Faraday-Neumann, induce una fem alternata alla stessa frequenza dell'onda. Quella piccolissima tensione è il segnale che il ricevitore amplifica.",
+      "La frequenza f dell'onda è legata alla pulsazione ω da f = ω/2π ed è la stessa della tensione indotta. Per questo ogni antenna è calibrata su una banda precisa: è lo stesso principio della bobina e del generatore, ma con variazioni di flusso milioni di volte più rapide."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon = -\\frac{d\\Phi_B}{dt}",
+        "spiegazione": "ε è la fem indotta nell'antenna, Φ_B il flusso del campo magnetico dell'onda attraverso di essa. Il segno meno è la legge di Lenz."
+      },
+      {
+        "latex": "f = \\frac{\\omega}{2\\pi}",
+        "spiegazione": "f è la frequenza in hertz, ω la pulsazione in rad/s. La tensione indotta oscilla alla frequenza dell'onda ricevuta."
+      }
+    ],
+    "immagini": [],
+    "simulazione": null,
+    "voce": "Questo schermo mostra i collegamenti radio con la Terra. Un'onda radio è un campo magnetico che varia nel tempo: attraversando un'antenna induce una piccola tensione alternata. È la legge di Faraday-Neumann, a frequenze altissime.",
+    "slide_pptx": [
+      8
+    ],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 8",
+    "oggetto_reale": "Schermo luminoso in alto a sinistra, con diagrammi e le scritte 'Ku-Band' e 'S-Band'.",
+    "yaw_stimato": -134,
+    "pitch_stimato": 75
+  },
+  {
+    "id": "harmony-attrezzi",
+    "luogo": "harmony",
+    "categoria": "energia",
+    "titolo": "Attrezzi: energia da conservare",
+    "breve": "Una batteria conserva energia in forma chimica, una bobina la conserva nel campo magnetico.",
+    "paragrafi": [
+      "Sul pannello blu sono appesi gli attrezzi di bordo. Un utensile portatile a batteria porta con sé la propria energia: è chimica, nascosta nei legami delle sostanze della batteria, e si trasforma in elettrica solo quando serve. È un modo di immagazzinare energia familiare a tutti.",
+      "C'è un secondo modo, meno intuitivo: conservare energia in un campo magnetico. Quando la corrente cresce in una bobina, la fem autoindotta si oppone e il generatore deve compiere lavoro. Quel lavoro non si perde: resta nel campo della bobina e vale E = ½ L i². Quando la corrente cala, l'energia ritorna al circuito.",
+      "L'induttanza L dipende solo dalla forma della bobina: per un solenoide L = μ₀ N² S / l, con N spire, sezione S e lunghezza l. Più spire, più energia a parità di corrente. È il bilancio energetico delle slide 16 e 17, ed è lo stesso schema che incontreremo nella bobina dell'EML e nel magnete della risonanza."
+    ],
+    "formule": [
+      {
+        "latex": "E = \\tfrac{1}{2}\\,L\\,i^2",
+        "spiegazione": "E è l'energia nel campo magnetico (joule), L l'induttanza (henry), i la corrente (ampere). Raddoppiando la corrente l'energia quadruplica."
+      },
+      {
+        "latex": "L = \\mu_0\\,\\frac{N^2 S}{l}",
+        "spiegazione": "Induttanza di un solenoide: μ₀ è la permeabilità del vuoto, N il numero di spire, S la sezione, l la lunghezza. Dipende solo dalla geometria."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "autoinduzione",
+    "voce": "Una batteria conserva energia in forma chimica. Una bobina la conserva in un altro modo: nel campo magnetico creato dalla corrente. Nella simulazione sull'autoinduzione puoi vedere la corrente crescere e l'energia accumularsi sotto la curva.",
+    "slide_pptx": [
+      16,
+      17
+    ],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 13-17",
+    "oggetto_reale": "Pannello blu con attrezzi appesi (chiavi, pinze, impugnature rosse) sul lato sinistro.",
+    "yaw_stimato": -93,
+    "pitch_stimato": 12
+  },
+  {
+    "id": "harmony-laptop",
+    "luogo": "harmony",
+    "categoria": "terra",
+    "titolo": "Il laptop con la Terra",
+    "breve": "La stazione è un conduttore che si muove a circa 7,7 km/s nel campo magnetico terrestre: il primo esperimento di Faraday in grande.",
+    "paragrafi": [
+      "Il laptop mostra la Terra, e la Terra è anche un grande magnete. La ISS orbita a circa 400 km di quota con una velocità di circa 7,7 km/s: in quella regione il campo magnetico terrestre vale, come ordine di grandezza, trenta microtesla [DA VERIFICARE con il modello IGRF].",
+      "Il primo esperimento di Faraday è proprio questo: un conduttore che si muove in un campo magnetico. Gli elettroni del metallo sono trascinati con la struttura e subiscono la forza di Lorentz; ai due estremi si separano le cariche e nasce una fem di moto ε = B l v, se struttura, velocità e campo sono perpendicolari.",
+      "Con B = 30 µT, l = 100 m e v = 7,7 km/s si ottengono circa 23 volt. La NASA, nei documenti sui plasma contactor, parla di un contributo dell'ordine di venti volt [DA VERIFICARE]. È una tensione verso il plasma circostante, non una batteria: nell'ambiente dedicato puoi variare B, l e v e vedere come cambia."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon = B\\,l\\,v",
+        "spiegazione": "ε è la fem di moto (volt), B il campo magnetico (tesla), l la lunghezza del conduttore (metri), v la velocità (m/s). Vale con B, l e v perpendicolari."
+      },
+      {
+        "latex": "\\varepsilon = -\\frac{d\\Phi_B}{dt}, \\quad d\\Phi_B = B\\,l\\,v\\,dt",
+        "spiegazione": "Origine della formula precedente: in un tempo dt la struttura spazza una superficie l·v·dt e il flusso cambia di B·l·v·dt."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "campo",
+    "voce": "Sullo schermo c'è la Terra, ma la Terra è anche un grande magnete. La stazione lo attraversa a circa sette virgola sette chilometri al secondo: una struttura conduttrice in moto in un campo magnetico. Nella simulazione puoi cambiare velocità e campo e vedere la tensione indotta.",
+    "slide_pptx": [
+      2
+    ],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Harmony); NASA, ISS facts; NASA NTRS plasma contactor [da riscontrare]; teoria pptx slide 2",
+    "oggetto_reale": "Laptop aperto a sinistra, sotto il cartello 'To COL'; lo schermo sembra mostrare un'immagine della Terra [verificare con zoom].",
+    "yaw_stimato": -134,
+    "pitch_stimato": 14
+  },
+  {
+    "id": "columbus-rack-eml",
+    "luogo": "columbus",
+    "categoria": "eml",
+    "titolo": "Il rack dell'EML",
+    "breve": "Nel laboratorio europeo un forno elettromagnetico fonde i metalli senza toccarli: più di cinquanta campioni dal 2014.",
+    "paragrafi": [
+      "L'EML, Electromagnetic Levitator, è una facility multiutente per studiare metalli liquidi senza contenitore. È stata costruita da un consorzio guidato da Airbus Defence and Space con ESA e DLR, e installata in Columbus nel 2014 da Alexander Gerst. Occupa un European Drawer Rack: quattro moduli per circa 360 chilogrammi.",
+      "Il cuore dello strumento è una sola bobina in rame percorsa da due correnti alternate sovrapposte. Una crea un campo di quadrupolo che tiene il campione al centro; l'altra, un campo di dipolo, lo scalda. Sono due applicazioni della stessa legge: un campo magnetico variabile induce correnti in un conduttore, per Faraday-Neumann-Lenz.",
+      "Il campione è una sfera di pochi millimetri, in una camera con gas inerte. Telecamere veloci e un pirometro registrano fusione e solidificazione. Finora sono stati lavorati oltre cinquanta campioni in più di duemila cicli sperimentali, comandati a distanza dal centro utenti DLR di Colonia. Cliccando si apre la scena 3D dell'EML."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon = -\\frac{d\\Phi_B}{dt}",
+        "spiegazione": "ε è la fem indotta nel campione, Φ_B il flusso del campo della bobina attraverso di esso: se il campo alternato fa variare il flusso, nel metallo nascono correnti."
+      }
+    ],
+    "immagini": [
+      {
+        "url_origine": "https://images-assets.nasa.gov/image/iss041e000184/iss041e000184~medium.jpg",
+        "pagina": "https://images.nasa.gov/details/iss041e000184",
+        "didascalia": "Alexander Gerst lavora sull'hardware dell'EML nel modulo Columbus (2014).",
+        "credito": "NASA",
+        "licenza": "Pubblico dominio (NASA)",
+        "src": "/img/poi/columbus-rack-eml-1.jpg"
+      },
+      {
+        "url_origine": "https://images-assets.nasa.gov/image/iss040e108044/iss040e108044~medium.jpg",
+        "pagina": "https://images.nasa.gov/details/iss040e108044",
+        "didascalia": "Installazione dell'EML (time-lapse), 2014.",
+        "credito": "NASA",
+        "licenza": "Pubblico dominio (NASA)",
+        "src": "/img/poi/columbus-rack-eml-2.jpg"
+      }
+    ],
+    "simulazione": "eml",
+    "voce": "Questo è il rack dell'EML, il forno elettromagnetico dell'ESA. Una sola bobina porta due campi alternati: uno tiene il campione al centro, l'altro lo scalda. Clicca per aprire la scena tridimensionale e premi Avvia per seguire un esperimento dal caricamento alla solidificazione.",
+    "slide_pptx": [
+      4,
+      5
+    ],
+    "badge": "Foto reale",
+    "fonte": "DLR (EML onboard the ISS); Airbus Defence and Space; docs/research/eml.md",
+    "oggetto_reale": "Rack bianco al centro del panorama con quattro tappi/valvole circolari metalliche in colonna; posizione da grafo: yaw +8, pitch +20. Clic: apre la scena 3D dell'EML.",
+    "yaw_stimato": 8,
+    "pitch_stimato": 20
+  },
+  {
+    "id": "columbus-laptop",
+    "luogo": "columbus",
+    "categoria": "energia",
+    "titolo": "Laptop e alimentatori",
+    "breve": "Ogni computer di bordo riceve energia da un convertitore che contiene un trasformatore.",
+    "paragrafi": [
+      "I laptop non funzionano alla tensione della rete di bordo: serve un alimentatore che la adatti. Dentro c'è un trasformatore, cioè due bobine avvolte attorno a un nucleo, il quarto esperimento di Faraday trasformato in componente. Una corrente variabile nella bobina primaria crea un flusso variabile, che attraversa anche la secondaria.",
+      "Nella secondaria nasce una fem indotta proporzionale al numero di spire. Per un trasformatore ideale il rapporto tra le tensioni è uguale al rapporto tra le spire, V₁/V₂ = N₁/N₂, e la potenza si conserva: se la tensione scende, la corrente sale. Il trasformatore funziona solo con grandezze che variano nel tempo, perché serve un flusso variabile.",
+      "Nei convertitori compatti la corrente viene spezzettata a frequenza alta: più rapida è la variazione del flusso, più piccola può essere la bobina, quindi più leggero l'alimentatore. In un veicolo spaziale, dove ogni chilogrammo costa, è un vantaggio decisivo. La rete a bordo è in corrente continua: i convertitori la adattano alle esigenze di ogni apparecchio."
+    ],
+    "formule": [
+      {
+        "latex": "\\frac{V_1}{V_2} = \\frac{N_1}{N_2}",
+        "spiegazione": "V₁ e N₁ sono tensione e spire del primario, V₂ e N₂ quelle del secondario. Più spire sul secondario, più alta la tensione in uscita."
+      },
+      {
+        "latex": "V_1\\,i_1 = V_2\\,i_2",
+        "spiegazione": "Trasformatore ideale: la potenza in ingresso eguaglia quella in uscita. Se la tensione si riduce, la corrente aumenta in proporzione."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "energia",
+    "voce": "Ogni computer riceve energia da un alimentatore, e dentro c'è un trasformatore: due bobine che sfruttano la mutua induzione. Cambiando il numero di spire cambia la tensione. Puoi provarlo nella simulazione sull'energia di bordo.",
+    "slide_pptx": [
+      20
+    ],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Columbus); NASA NTRS (ISS electrical power system); teoria pptx slide 5 e 20",
+    "oggetto_reale": "Laptop aperto sul pannello centrale-sinistro, con cavi collegati.",
+    "yaw_stimato": -42,
+    "pitch_stimato": 6
+  },
+  {
+    "id": "columbus-cavi",
+    "luogo": "columbus",
+    "categoria": "fisica",
+    "titolo": "Cavi intrecciati",
+    "breve": "Cavi vicini si influenzano per mutua induzione: intrecciare i fili serve a compensare i disturbi.",
+    "paragrafi": [
+      "Vicino ai laptop i cavi sono tanti e stretti tra loro. Quando in un filo passa una corrente variabile, crea un campo magnetico variabile, e questo attraversa i fili vicini. Per la legge di Faraday-Neumann vi induce una fem indesiderata: è la stessa mutua induzione del quarto esperimento, ma qui è un disturbo, non un risultato.",
+      "L'effetto cresce con la frequenza del segnale e con l'area della spira che i due fili formano. Intrecciare i fili di una coppia rende l'area di ogni piccola spira alternata nel verso: il flusso del disturbo attraversa le spire successive con segno opposto e le fem indotte si compensano a vicenda.",
+      "Per questo i cavi per i dati sono spesso a coppie intrecciate e schermati. In una stazione, dove molti apparecchi sensibili lavorano a pochi centimetri da cavi di potenza, l'ordine dei cavi fa parte della progettazione elettrica, non è una questione estetica."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon_2 = -\\frac{d\\Phi_{1\\to 2}}{dt}",
+        "spiegazione": "ε₂ è il disturbo indotto nel filo 2, Φ(1→2) il flusso del campo creato dal filo 1 attraverso la spira del filo 2. Se la corrente del filo 1 è costante, non c'è disturbo."
+      }
+    ],
+    "immagini": [],
+    "simulazione": null,
+    "voce": "Questi cavi corrono molto vicini. Una corrente che varia in uno crea un campo che attraversa gli altri e vi induce tensioni indesiderate. Intrecciare i fili fa sì che i disturbi si compensino a vicenda.",
+    "slide_pptx": [
+      5
+    ],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Columbus); teoria pptx slide 5",
+    "oggetto_reale": "Cavi blu a spirale e fili bianchi vicino al pannello con i laptop, circa al centro-sinistra.",
+    "yaw_stimato": -26,
+    "pitch_stimato": 17
+  },
+  {
+    "id": "eml-bobina",
+    "luogo": "eml",
+    "categoria": "eml",
+    "titolo": "La bobina in rame",
+    "breve": "Una corrente alternata crea un campo che cambia nel tempo senza muovere nulla: è la condizione di Faraday.",
+    "paragrafi": [
+      "La bobina in rame avvolge la camera di processo. In una bobina percorsa da corrente alternata il campo magnetico oscilla: cambia intensità e verso a ogni periodo, senza che nulla si muova. Il flusso Φ_B = B·S attraverso il campione varia di continuo, ed è la condizione che la legge di Faraday-Neumann richiede per indurre correnti.",
+      "Un solo avvolgimento porta due correnti sovrapposte, a due frequenze diverse. Secondo le fonti secondarie, circa 140 kHz per il campo di quadrupolo che posiziona e circa 380 kHz per il campo di dipolo che scalda [DA VERIFICARE, review arXiv e Spaceflight101]. Il predecessore TEMPUS usava due bobine separate.",
+      "La frequenza è f = ω/2π: 140 kHz significa 140 000 oscillazioni del campo al secondo. La bobina ha un'apertura laterale di circa 8 mm, sempre secondo fonti secondarie, per permettere alla telecamera di vedere il campione. Le dimensioni esatte della camera non sono pubbliche: nel modello 3D sono una stima dalle foto."
+    ],
+    "formule": [
+      {
+        "latex": "\\Phi_B = \\vec B\\cdot\\vec S = B\\,S\\cos\\theta",
+        "spiegazione": "Flusso del campo magnetico attraverso una superficie S: B è l'intensità del campo, θ l'angolo tra campo e perpendicolare alla superficie. Il flusso varia se cambia B, S o θ."
+      },
+      {
+        "latex": "f = \\frac{\\omega}{2\\pi}",
+        "spiegazione": "f è la frequenza del campo alternato, ω la pulsazione. Il campo si inverte 2f volte al secondo."
+      }
+    ],
+    "immagini": [
+      {
+        "url_origine": "https://images-assets.nasa.gov/image/iss041e096097/iss041e096097~medium.jpg",
+        "pagina": "https://images.nasa.gov/details/iss041e096097",
+        "didascalia": "Hardware dell'EML in Columbus, collegamento dei cavi (titolo NASA: «EML Cable Install Closeout»).",
+        "credito": "NASA",
+        "licenza": "Pubblico dominio (NASA)",
+        "src": "/img/poi/eml-bobina-1.jpg"
+      }
+    ],
+    "simulazione": "eml",
+    "voce": "Questa è la bobina in rame. Una corrente alternata crea un campo magnetico che cambia nel tempo, senza muovere nulla, ed è esattamente ciò che serve a Faraday per indurre correnti. Due frequenze sovrapposte svolgono due compiti diversi: posizionare e scaldare.",
+    "slide_pptx": [
+      4,
+      7
+    ],
+    "badge": "Modello 3D",
+    "fonte": "DLR; arXiv 1605.03511 (review); Spaceflight101; docs/research/eml.md",
+    "oggetto_reale": "Avvolgimento in rame attorno al campione nella camera di processo (modello 3D)."
+  },
+  {
+    "id": "eml-correnti",
+    "luogo": "eml",
+    "categoria": "eml",
+    "titolo": "Correnti parassite e legge di Lenz",
+    "breve": "Nel campione nascono correnti che si chiudono su se stesse e respingono la bobina: così resta sospeso.",
+    "paragrafi": [
+      "Il campo alternato attraversa la sfera di metallo e il suo flusso varia. Nasce una fem indotta ε = −dΦ_B/dt e, essendo il metallo un conduttore, una corrente i = ε/R, la prima legge di Ohm. Poiché non c'è un circuito esterno, le correnti si chiudono su se stesse in anelli dentro il campione: sono le correnti parassite, dette anche di Foucault.",
+      "Il segno meno è la legge di Lenz: il campo magnetico creato dalle correnti indotte si oppone alla variazione di flusso che le ha generate. Il risultato è una repulsione tra campione e bobina, come tra due magneti con poli uguali affacciati. Più rapida è la variazione, più intense sono le correnti e la repulsione.",
+      "Nel campo di quadrupolo l'intensità è nulla al centro e cresce verso l'esterno. La repulsione è più forte dove il campo è più intenso: spinge quindi il campione verso il punto dove il campo si annulla. Per questo resta fermo al centro, sospeso senza toccare nulla, anche se è disturbato."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon = -\\frac{d\\Phi_B}{dt}",
+        "spiegazione": "Legge di Faraday-Neumann-Lenz: ε è la fem indotta; il segno meno indica che gli effetti si oppongono alla variazione di flusso."
+      },
+      {
+        "latex": "i = \\frac{\\varepsilon}{R}",
+        "spiegazione": "Prima legge di Ohm applicata agli anelli di corrente: R è la resistenza del percorso nel metallo; più è bassa, più è intensa la corrente indotta."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "eml",
+    "voce": "Nel campione nascono correnti che girano su se stesse, le correnti parassite. Per la legge di Lenz creano un campo che respinge la bobina. Dove il campo è più debole, al centro, la repulsione si annulla: lì il campione si ferma e resta sospeso.",
+    "slide_pptx": [
+      8,
+      9,
+      11
+    ],
+    "badge": "Simulazione concettuale",
+    "fonte": "DLR; teoria pptx slide 8-11; docs/research/eml.md",
+    "oggetto_reale": "Campione sferico al centro della bobina, con anelli di corrente animati (render Blender)."
+  },
+  {
+    "id": "eml-joule",
+    "luogo": "eml",
+    "categoria": "eml",
+    "titolo": "Il calore dall'interno",
+    "breve": "Le stesse correnti indotte scaldano il metallo per effetto Joule, fino a oltre 2000 gradi.",
+    "paragrafi": [
+      "Le correnti parassite non incontrano un conduttore perfetto: il metallo ha una resistenza. Gli elettroni in moto cedono energia agli ioni del reticolo, che vibrano di più: il campione si scalda. È l'effetto Joule, con potenza dissipata P = R i² = ε²/R, legato alla prima legge di Ohm che la teoria affianca alla legge di Faraday.",
+      "Il riscaldamento avviene dall'interno e senza alcun contatto: nessun crogiolo, nessuna fiamma, nessuna contaminazione. Nell'EML la funzione è separata da quella di posizionamento grazie alla frequenza: il campo di dipolo, a frequenza più alta, scalda; il quadrupolo, a frequenza più bassa, tiene il campione al centro.",
+      "Le temperature raggiungono oltre 2000 °C: Airbus indica fino a 2000 °C, l'ESA fino a 2200 °C. In microgravità servono campi più deboli che a terra, dove il campione dovrebbe anche vincere il proprio peso. Meno campo significa meno riscaldamento non voluto e meno agitazione del liquido."
+    ],
+    "formule": [
+      {
+        "latex": "P = R\\,i^2",
+        "spiegazione": "Potenza dissipata per effetto Joule (watt): R è la resistenza del percorso delle correnti, i la loro intensità."
+      },
+      {
+        "latex": "P = \\frac{\\varepsilon^2}{R}",
+        "spiegazione": "Combinando P = R i² e i = ε/R: a parità di resistenza, raddoppiare la fem indotta quadruplica il calore. Più rapida la variazione di flusso, più calore."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "eml",
+    "voce": "Le correnti indotte incontrano la resistenza del metallo e lo scaldano dall'interno, per effetto Joule. Nessuna fiamma, nessun contenitore. Il campione supera i duemila gradi e diventa incandescente, e il campo di posizionamento continua a tenerlo fermo.",
+    "slide_pptx": [
+      9
+    ],
+    "badge": "Simulazione concettuale",
+    "fonte": "Airbus Defence and Space; ESA (2024); DLR; teoria pptx slide 9",
+    "oggetto_reale": "Campione che diventa incandescente (render Blender)."
+  },
+  {
+    "id": "eml-induttore",
+    "luogo": "eml",
+    "categoria": "fisica",
+    "titolo": "La bobina è un induttore",
+    "breve": "Quando la corrente cambia, la bobina genera una fem che si oppone: è l'autoinduzione.",
+    "paragrafi": [
+      "La bobina non subisce solo il campo dei circuiti: è essa stessa un componente elettrico, un induttore. Se la corrente che la percorre varia, varia il flusso del suo stesso campo e nasce una fem autoindotta ε = −L di/dt, che si oppone alla variazione. È un effetto di inerzia elettrica.",
+      "L'induttanza L, in henry, dipende solo dalla geometria: per un solenoide L = μ₀ N² S / l. Alla chiusura di un circuito la corrente non sale subito al valore finale: cresce con costante di tempo L/R, l'extracorrente di chiusura. Perciò il generatore dell'EML deve fornire correnti alternate controllate, non brusche.",
+      "Nel campo della bobina è immagazzinata l'energia E = ½ L i². Nell'EML le correnti sono alternate ad alta frequenza, cosa che si studia nei circuiti in corrente alternata: la bobina presenta una reattanza che cresce con la frequenza, e il generatore deve tenerne conto. Nel modello 3D il simbolo dell'induttore è sovrapposto alla bobina."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon = -L\\,\\frac{di}{dt}",
+        "spiegazione": "ε è la fem autoindotta (volt), L l'induttanza (henry), di/dt la rapidità con cui cambia la corrente. Il segno meno indica opposizione alla variazione."
+      },
+      {
+        "latex": "L = \\mu_0\\,\\frac{N^2 S}{l}",
+        "spiegazione": "Induttanza del solenoide: dipende da numero di spire N, sezione S e lunghezza l, non dalla corrente."
+      },
+      {
+        "latex": "E = \\tfrac{1}{2}\\,L\\,i^2",
+        "spiegazione": "Energia immagazzinata nel campo magnetico (joule) quando la corrente vale i."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "autoinduzione",
+    "voce": "La bobina dell'EML è anche un induttore. Se la corrente cambia, nasce una fem che si oppone al cambiamento: è l'autoinduzione. Nel campo della bobina è accumulata energia. La simulazione sull'autoinduzione mostra la corrente che sale lentamente.",
+    "slide_pptx": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      19
+    ],
+    "badge": "Modello 3D",
+    "fonte": "Teoria pptx slide 12-19; DLR",
+    "oggetto_reale": "La bobina in rame del modello 3D, con simbolo di induttore sovrapposto."
+  },
+  {
+    "id": "eml-faraday",
+    "luogo": "eml",
+    "categoria": "fisica",
+    "titolo": "Da Faraday all'EML",
+    "breve": "I quattro esperimenti di Faraday dicono tutti la stessa cosa: se il flusso varia, nasce una corrente indotta.",
+    "paragrafi": [
+      "Faraday studiò l'induzione con quattro esperimenti: una spira che si muove in un campo, una spira che ruota, un magnete che si muove vicino a una bobina, due bobine avvolte su un anello di ferro. Sembrano diversi, ma in ogni caso a cambiare nel tempo è il flusso del campo magnetico attraverso il circuito.",
+      "Il flusso Φ_B = B·S può cambiare per tre motivi: varia il campo B, varia la superficie S, varia l'angolo tra campo e superficie. La legge di Faraday-Neumann ε = −dΦ_B/dt vale per tutti. La spira in moto e la spira che ruota giocano su S e sull'angolo; il magnete e l'anello di ferro giocano sul campo B.",
+      "L'EML riunisce gli ultimi due casi. La bobina fa variare B nel tempo, come nell'esperimento dell'anello di ferro; il campione è la «seconda bobina», un conduttore dove nascono correnti. Non si muove nulla di meccanico: il lavoro lo fa la variazione del campo. Nella simulazione sulla levitazione vedi il magnete in moto sopra la lastra."
+    ],
+    "formule": [
+      {
+        "latex": "\\Phi_B = \\vec B\\cdot\\vec S = B\\,S\\cos\\theta",
+        "spiegazione": "Il flusso dipende da tre cose: B (campo), S (area), θ (angolo). Cambiarne una qualsiasi fa nascere una fem."
+      },
+      {
+        "latex": "\\varepsilon = -\\frac{d\\Phi_B}{dt}",
+        "spiegazione": "Legge di Faraday-Neumann-Lenz: la fem indotta è pari alla rapidità con cui cambia il flusso, con il segno che indica l'opposizione."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "levitazione",
+    "voce": "I quattro esperimenti di Faraday dicono tutti la stessa cosa: se il flusso del campo magnetico cambia, nasce una corrente indotta. Nell'EML cambia il campo nel tempo, come nell'esperimento delle due bobine. Nella simulazione sulla levitazione puoi muovere un magnete e vedere le correnti.",
+    "slide_pptx": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "badge": "Simulazione concettuale",
+    "fonte": "Teoria pptx 5LSA, slide 2-6",
+    "oggetto_reale": "Quattro piccole animazioni schematiche accanto al modello 3D."
+  },
+  {
+    "id": "eml-campione",
+    "luogo": "eml",
+    "categoria": "eml",
+    "titolo": "La goccia di metallo",
+    "breve": "Un campione sferico fonde, oscilla e si solidifica senza pareti: da qui si misurano proprietà dei metalli.",
+    "paragrafi": [
+      "I campioni sono sfere di leghe di alluminio, rame o nichel, di circa 5-8 mm di diametro (dato da fonti secondarie), conservate in un magazzino a revolver da 18. Ogni campione è alloggiato in un portacampioni in ceramica e renio; i magazzini li cambia l'equipaggio. Durante l'esperimento il campo lo tiene sospeso, libero da ogni parete.",
+      "Senza pareti non ci sono punti dove il cristallo possa cominciare a formarsi: il liquido può restare sotto la temperatura di fusione, in sottoraffreddamento. Quando la solidificazione parte, il fronte solido attraversa la goccia in pochi istanti, e una telecamera veloce, fino a 30 000 fotogrammi al secondo secondo Airbus, ne misura la velocità.",
+      "Con il campo di posizionamento si fa anche oscillare la goccia: dalla frequenza di oscillazione si ricava la tensione superficiale, dallo smorzamento la viscosità. Sono dati che a terra, con il metallo in un crogiolo, sarebbero falsati dalle pareti: servono alle simulazioni industriali di colata e solidificazione delle leghe."
+    ],
+    "formule": [
+      {
+        "latex": "\\omega^2 = \\frac{8\\,\\sigma}{\\rho\\,r^3}",
+        "spiegazione": "Frequenza di Rayleigh per le oscillazioni di una goccia sferica [relazione di fluidodinamica, non nel pptx]: σ è la tensione superficiale, ρ la densità, r il raggio. Misurando ω si ricava σ."
+      },
+      {
+        "latex": "\\tau = \\frac{\\rho\\,r^2}{5\\,\\eta}",
+        "spiegazione": "Tempo di smorzamento delle oscillazioni (relazione di Lamb [da verificare per l'EML]): η è la viscosità. Più il liquido è viscoso, prima le oscillazioni si spengono."
+      }
+    ],
+    "immagini": [
+      {
+        "url_origine": "https://media.esa.int/legacy/web/images/esa_multimedia/images/2024/05/aluminium_and_nickel_alloy_solidifying_in_the_electromagnetic_levitator/26082150-1-eng-GB/Aluminium_and_nickel_alloy_solidifying_in_the_Electromagnetic_Levitator.gif",
+        "pagina": "https://esa.int/ESA_Multimedia/Images/2024/05/Aluminium_and_nickel_alloy_solidifying_in_the_Electromagnetic_Levitator",
+        "didascalia": "Una lega alluminio-nichel che solidifica nell'EML (animazione accelerata). URL preso da docs/research/eml.md, non riverificato in questa sessione.",
+        "credito": "ESA/DLR",
+        "licenza": "ESA Standard Licence (uso con credito)",
+        "src": "/img/poi/eml-campione-1.gif"
+      }
+    ],
+    "simulazione": "eml",
+    "voce": "Questa è la goccia di metallo: una sfera di pochi millimetri che fonde, oscilla e solidifica senza toccare nulla. Dalle sue oscillazioni si ricavano tensione superficiale e viscosità, dal raffreddamento si osserva il fronte di solidificazione. Premi Avvia nella scena dell'EML per vedere la sequenza.",
+    "slide_pptx": [
+      9
+    ],
+    "badge": "Simulazione concettuale",
+    "fonte": "DLR; Airbus; ESA (clip lega Al-Ni, 2024); docs/research/eml.md",
+    "oggetto_reale": "Sfera di lega nella camera; video di fusione e solidificazione."
+  },
+  {
+    "id": "kibo-elf",
+    "luogo": "kibo",
+    "categoria": "eml",
+    "titolo": "ELF: levitare con l'elettricità",
+    "breve": "La fornace giapponese ELF fa levitare il campione con forze elettrostatiche, non con l'induzione.",
+    "paragrafi": [
+      "Anche Kibo ospita una fornace a levitazione, l'ELF, Electrostatic Levitation Furnace, della JAXA. Il principio è diverso da quello dell'EML: il campione, carico elettricamente, è tenuto tra elettrodi da forze elettriche, e viene scaldato con laser. Non servono correnti indotte, e quindi non serve che il materiale conduca.",
+      "Per questo la ELF funziona con ossidi e vetri, isolanti che l'induzione non potrebbe sostenere. Una carica q in un campo elettrico E subisce la forza F = q E; regolando le tensioni sugli elettrodi in base alla posizione del campione, misurata da sistemi ottici, si mantiene la sfera ferma al centro. È un sistema in retroazione.",
+      "Il confronto è istruttivo, e rimanda alla legge di Lenz: nell'EML la forza nasce da un campo che varia e dal suo effetto sulle correnti indotte; nella ELF da un campo statico su una carica. La ELF sta nel Multi-Purpose Small Payload Rack di Kibo ed è comandata da Terra. Qui l'oggetto fotografato è il rack MSPR, non la fornace."
+    ],
+    "formule": [
+      {
+        "latex": "\\vec F = q\\,\\vec E",
+        "spiegazione": "Forza elettrica su una carica q in un campo elettrico E. Nella ELF bilancia il peso residuo e centra il campione tra gli elettrodi."
+      },
+      {
+        "latex": "\\varepsilon = -\\frac{d\\Phi_B}{dt}",
+        "spiegazione": "Per confronto: nell'EML la forza nasce da questa legge (induzione), non da un campo elettrico statico."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "levitazione",
+    "voce": "Anche Kibo ha una fornace a levitazione, ma usa forze elettriche invece dell'induzione. Funziona anche con vetri e ossidi, che non conducono. Nella simulazione sulla levitazione puoi confrontare le due soluzioni e vedere perché Lenz non basta per tutti i materiali.",
+    "slide_pptx": [
+      11
+    ],
+    "badge": "Foto reale",
+    "fonte": "JAXA (Electrostatic Levitation Furnace, Kibo Utilization); iafastro.directory IAC-11/A2/5/9976",
+    "oggetto_reale": "Vassoio nero con la scritta 'MSPR Laptop JAXA' a sinistra del portello centrale. L'ELF stessa non è identificabile nel panorama: indicare il rack MSPR.",
+    "yaw_stimato": -79,
+    "pitch_stimato": -12
+  },
+  {
+    "id": "kibo-joystick",
+    "luogo": "kibo",
+    "categoria": "strumento",
+    "titolo": "Il joystick di comando",
+    "breve": "I giunti dei bracci robotici sono motori elettrici: l'inverso esatto di un alternatore.",
+    "paragrafi": [
+      "Una postazione con joystick comanda un braccio robotico. I giunti si muovono grazie a motori elettrici. Un motore sfrutta la forza di Lorentz sul filo percorso da corrente in un campo magnetico: F = i l B sin θ. Un filo a spira immerso in un campo, attraversato da corrente, subisce una coppia che lo fa ruotare.",
+      "Il motore è un alternatore usato al contrario. L'alternatore trasforma energia meccanica in elettrica facendo ruotare una spira in un campo; il motore trasforma energia elettrica in meccanica facendo passare corrente nella spira. Il principio fisico è lo stesso, solo il verso del trasferimento di energia è opposto.",
+      "Mentre il motore gira, la spira ruota in un campo magnetico: il flusso varia e nasce una fem indotta che si oppone alla corrente di alimentazione, la forza controelettromotrice. Se è troppo bassa il motore assorbe corrente eccessiva. Nella simulazione sui motori puoi vedere insieme coppia, rotazione e fem indotta [identificazione della console da verificare]."
+    ],
+    "formule": [
+      {
+        "latex": "F = i\\,l\\,B\\sin\\theta",
+        "spiegazione": "Forza di Lorentz su un tratto di filo di lunghezza l percorso da corrente i in un campo B; θ è l'angolo tra filo e campo. È la forza che fa girare il motore."
+      },
+      {
+        "latex": "\\varepsilon = N\\,B\\,S\\,\\omega\\sin(\\omega t)",
+        "spiegazione": "Fem della spira rotante (alternatore, e fem opposta nel motore): N spire, S area, ω velocità angolare. Più il motore gira veloce, più la fem opposta è grande."
+      }
+    ],
+    "immagini": [
+      {
+        "url_origine": "https://images-assets.nasa.gov/image/s110e5182/s110e5182~medium.jpg",
+        "pagina": "https://images.nasa.gov/details/s110e5182",
+        "didascalia": "Postazione di comando del braccio robotico (SSRMS) nel laboratorio Destiny, 2002; immagine di repertorio, non della console di Kibo.",
+        "credito": "NASA",
+        "licenza": "Pubblico dominio (NASA)",
+        "src": "/img/poi/kibo-joystick-1.jpg"
+      }
+    ],
+    "simulazione": "motore",
+    "voce": "Il joystick comanda un braccio robotico, i cui giunti sono motori elettrici. Un motore usa la forza di Lorentz su una spira percorsa da corrente: è un alternatore che lavora al contrario. Nella simulazione puoi far girare la spira e osservare la fem che si oppone.",
+    "slide_pptx": [
+      18
+    ],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Kibo); consegna scolastica (Obiettivo 9, motori); teoria pptx slide 18",
+    "oggetto_reale": "Console con joystick e due piccoli schermi sul lato sinistro del portello [identificazione come postazione del braccio robotico da verificare].",
+    "yaw_stimato": -96,
+    "pitch_stimato": 6
+  },
+  {
+    "id": "kibo-ricadute",
+    "luogo": "kibo",
+    "categoria": "terra",
+    "titolo": "Materiali senza crogiolo",
+    "breve": "Misure su materiali ad altissima temperatura, senza contenitore, servono alle industrie di vetri e componenti.",
+    "paragrafi": [
+      "Un materiale fuso a temperature altissime reagisce con quasi tutto ciò che lo contiene. Un crogiolo lo contamina e influenza le misure. La levitazione elimina il contenitore: il campione resta isolato, e si può misurare cosa fa il materiale, non cosa fa il materiale a contatto con le pareti. JAXA indica per la ELF temperature fino a circa 3000 °C [dato JAXA da riverificare].",
+      "Le misure principali sono densità, tensione superficiale e viscosità del liquido. La densità è ρ = m/V: si ricava dal volume della goccia osservata con una telecamera, conoscendo la massa. Sono proprietà che servono a simulare al calcolatore processi come la fusione del vetro o la colata di componenti, prima di costruire un impianto vero.",
+      "Un esempio pubblicato riguarda l'ossido di gallio fuso, Ga₂O₃, studiato con la ELF in collaborazione con AGC, azienda del vetro (comunicato del 24 marzo 2022). È il tipo di ricaduta che unisce ricerca spaziale e industria: l'innovazione dei materiali, legata all'Obiettivo 9, nasce da esperimenti fatti dove la gravità non disturba."
+    ],
+    "formule": [
+      {
+        "latex": "\\rho = \\frac{m}{V}",
+        "spiegazione": "Densità del liquido: massa m (nota) diviso volume V della goccia, ricavato dalle immagini. Non è una formula dell'induzione, ma una delle grandezze che la levitazione permette di misurare."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "levitazione",
+    "voce": "Un metallo fuso a temperature altissime reagisce con il crogiolo che lo contiene. Levitando, il campione resta isolato e si misurano densità, tensione superficiale e viscosità. Sono dati che servono all'industria dei vetri e dei componenti, qui sulla Terra.",
+    "slide_pptx": [
+      11
+    ],
+    "badge": "Foto reale",
+    "fonte": "JAXA Kibo Utilization; AGC (comunicato del 24 marzo 2022)",
+    "oggetto_reale": "Laptop con griglia di stati sul lato destro del portello centrale.",
+    "yaw_stimato": 112,
+    "pitch_stimato": 8
+  },
+  {
+    "id": "destiny-interruttori",
+    "luogo": "destiny",
+    "categoria": "fisica",
+    "titolo": "Interruttori e autoinduzione",
+    "breve": "Chiudendo un interruttore su una bobina la corrente non sale subito: la fem autoindotta la rallenta.",
+    "paragrafi": [
+      "Quando si chiude un interruttore su un circuito con una bobina, la corrente passa da zero al valore finale. Ma nell'istante in cui cresce, il flusso del campo della bobina aumenta, e la legge di Faraday-Neumann-Lenz fa nascere una fem autoindotta che si oppone all'aumento. La corrente sale quindi con gradualità: è l'extracorrente di chiusura.",
+      "Il circuito RL obbedisce a i(t) = (ε/R)(1 − e^(−Rt/L)). La corrente tende al valore ε/R, ma impiega un tempo caratteristico τ = L/R: dopo τ ha raggiunto il 63% del valore finale. Più grande è l'induttanza L, più lenta è la salita; più grande è la resistenza R, più rapida.",
+      "Aprendo il circuito il flusso collassa e la fem autoindotta può diventare molto alta: sugli interruttori di potenza possono comparire scintille. Per questo in un impianto elettrico si usano protezioni. La simulazione «Autoinduzione» mostra la crescita della corrente e l'area sotto la curva, cioè l'energia accumulata."
+    ],
+    "formule": [
+      {
+        "latex": "i(t) = \\frac{\\varepsilon}{R}\\left(1 - e^{-Rt/L}\\right)",
+        "spiegazione": "Corrente nel circuito RL dopo la chiusura: ε è la fem del generatore, R la resistenza, L l'induttanza, t il tempo. Parte da zero e tende a ε/R."
+      },
+      {
+        "latex": "\\tau = \\frac{L}{R}",
+        "spiegazione": "Costante di tempo del circuito: dopo un tempo τ la corrente ha raggiunto circa il 63% del valore finale."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "autoinduzione",
+    "voce": "Quando si chiude un interruttore su una bobina, la corrente non sale subito: la fem autoindotta si oppone all'aumento. È l'extracorrente di chiusura. Nella simulazione sull'autoinduzione chiudi tu l'interruttore e guardi la curva della corrente.",
+    "slide_pptx": [
+      12,
+      15
+    ],
+    "badge": "Foto reale",
+    "fonte": "Panorama ESA (Destiny); teoria pptx slide 12-15",
+    "oggetto_reale": "Pannello nero con interruttori e connettori a destra del portello centrale.",
+    "yaw_stimato": 37,
+    "pitch_stimato": 2
+  },
+  {
+    "id": "destiny-alimentazione",
+    "luogo": "destiny",
+    "categoria": "energia",
+    "titolo": "Dai pannelli ai rack",
+    "breve": "I convertitori DDCU abbassano la tensione dei pannelli per la rete che alimenta i rack.",
+    "paragrafi": [
+      "L'energia raccolta dai pannelli solari arriva a una tensione di circa 160 V in corrente continua. Ma i rack di Destiny lavorano a una tensione nominale di 124,5 V: serve un convertitore. I DDCU, DC-to-DC Converter Units, riducono la tensione e separano elettricamente le due reti, la primaria dei pannelli e la secondaria dei rack [dati NASA da riscontrare].",
+      "Per cambiare la tensione in un trasformatore ci vuole un flusso variabile, ma la corrente continua è costante. Il convertitore la «spezzetta» ad alta frequenza, la manda in un trasformatore, e poi la raddrizza di nuovo. Il rapporto tra le tensioni è V₂/V₁ = N₂/N₁ [funzionamento dei DDCU da verificare su documento NASA].",
+      "L'efficienza η = P_out/P_in dichiarata nel progetto NASA è di circa il 95%: il resto diventa calore, che va smaltito. Più alta è la frequenza, più piccolo e leggero può essere il trasformatore, perché la variazione di flusso è più rapida: ancora Faraday, ancora un vantaggio concreto per un veicolo spaziale."
+    ],
+    "formule": [
+      {
+        "latex": "\\frac{V_2}{V_1} = \\frac{N_2}{N_1}",
+        "spiegazione": "Trasformatore ideale: il rapporto tra tensione di uscita e di ingresso è uguale al rapporto tra le spire. Con N₂ < N₁ la tensione diminuisce."
+      },
+      {
+        "latex": "\\eta = \\frac{P_{\\text{out}}}{P_{\\text{in}}}",
+        "spiegazione": "Efficienza del convertitore: potenza utile in uscita diviso potenza in ingresso. Il resto è calore dissipato."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "energia",
+    "voce": "I pannelli solari lavorano a circa centosessanta volt in corrente continua, i rack a un valore più basso. A fare la conversione sono i DDCU, che dentro hanno trasformatori. Nella simulazione sull'energia puoi scegliere la vista ISS e seguire il percorso dell'energia.",
+    "slide_pptx": [
+      20
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA NTRS (DDCU design, ISS EPS) [da riscontrare]; teoria pptx slide 20",
+    "oggetto_reale": "Rack a destra con fasci di cavi grigi e verdi e tubi rossi.",
+    "yaw_stimato": 106,
+    "pitch_stimato": -19
+  },
+  {
+    "id": "destiny-cavi-cc",
+    "luogo": "destiny",
+    "categoria": "energia",
+    "titolo": "Corrente continua a bordo",
+    "breve": "L'energia principale non viene da un alternatore: i pannelli producono già corrente continua.",
+    "paragrafi": [
+      "Un generatore di corrente alternata si chiama alternatore; uno di corrente continua, dinamo. In un alternatore una spira ruota in un campo magnetico: il flusso varia e nasce una fem ε(t) = N B S ω sin(ωt), sinusoidale. La corrente cambia verso ogni mezzo giro, ed è la forma della corrente nelle nostre case.",
+      "Sulla ISS la fonte principale è diversa. I pannelli fotovoltaici non hanno parti in movimento: trasformano direttamente la luce in elettricità, in corrente continua. Per questo i cavi di Destiny sono linee in continua. È uno dei pochi casi, tra le fonti della slide sulle centrali, in cui non servono né turbina né alternatore.",
+      "A terra la rete è alternata per una ragione pratica: i trasformatori ne cambiano facilmente la tensione, e come abbiamo visto alta tensione vuol dire minori perdite sul trasporto. A bordo, dove le distanze sono pochi metri, la continua è più semplice, e i convertitori bastano ad adattare i livelli."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon(t) = N\\,B\\,S\\,\\omega\\sin(\\omega t)",
+        "spiegazione": "Fem di un alternatore con N spire di area S che ruotano con velocità angolare ω in un campo B. Il valore massimo è N B S ω."
+      },
+      {
+        "latex": "P = V\\,i",
+        "spiegazione": "Potenza elettrica di una linea: tensione per corrente. Nella rete in continua si ragiona in modo semplice, senza fase."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "energia",
+    "voce": "Questi cavi portano corrente continua. Un alternatore la produrrebbe alternata, facendo ruotare una spira in un campo. I pannelli solari invece non hanno parti in movimento: trasformano la luce direttamente in elettricità. Nella simulazione puoi confrontare le due sorgenti.",
+    "slide_pptx": [
+      21
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS electrical power system); teoria pptx slide 18 e 21",
+    "oggetto_reale": "Cavi spessi grigio-verdi che scendono sul lato destro del panorama.",
+    "yaw_stimato": 80,
+    "pitch_stimato": -26
+  },
+  {
+    "id": "unity-zarya",
+    "luogo": "unity",
+    "categoria": "energia",
+    "titolo": "Verso Zarya",
+    "breve": "Questo portello porta a Zarya, il primo modulo, che all'inizio produceva energia con i propri pannelli.",
+    "paragrafi": [
+      "Il portello con la scritta «To FGB» porta a Zarya, il Functional Cargo Block, primo modulo della stazione. Fu lanciato nel novembre 1998; Unity, il primo nodo americano, vi fu collegato il mese dopo [date da riscontrare nel rapporto NASA]. Da quel momento la ISS cominciò a crescere come un edificio, un modulo alla volta.",
+      "Nei primi anni l'energia veniva dai pannelli solari di Zarya e dei moduli seguenti: una piccola rete in orbita, senza centrali e senza collegamento con l'esterno. È un esempio estremo di rete autonoma: tutta l'energia prodotta è consumata a bordo, quindi produzione e consumo devono essere in equilibrio.",
+      "Il fotovoltaico trasforma energia senza turbine né alternatori, a differenza di quasi tutte le altre fonti elencate nella teoria: idroelettrica, eolica, geotermica, termoelettrica, nucleare. Quelle usano una turbina che fa ruotare un alternatore, e quindi la legge di Faraday-Neumann-Lenz. La sorgente cambia, il principio resta lo stesso."
+    ],
+    "formule": [
+      {
+        "latex": "P = V\\,i",
+        "spiegazione": "Potenza elettrica prodotta o consumata da un apparecchio: tensione per corrente. Per i primi pannelli di bordo, la somma dei consumi doveva restare sotto la potenza prodotta."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "energia",
+    "voce": "Questo portello porta a Zarya, il primo modulo della stazione. All'inizio l'energia arrivava dai suoi pannelli solari: una rete piccola, senza centrali. Il fotovoltaico non usa alternatori, a differenza di quasi tutte le altre fonti.",
+    "slide_pptx": [
+      22
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS assembly history) [date da riscontrare]; teoria pptx slide 22",
+    "oggetto_reale": "Portello centrale con scritta 'To FGB' e cuscinetti rosa.",
+    "yaw_stimato": 0,
+    "pitch_stimato": 0
+  },
+  {
+    "id": "unity-airlock",
+    "luogo": "unity",
+    "categoria": "fisica",
+    "titolo": "Il portello di Quest",
+    "breve": "Per uscire nello spazio si passa da qui: la struttura si carica elettricamente e va tenuta sotto controllo.",
+    "paragrafi": [
+      "Dal portello «To A/L» si raggiunge l'airlock Quest, da cui gli astronauti escono in tuta. Fuori, la struttura della ISS si muove nel campo magnetico terrestre a circa 7,7 km/s, immersa in un plasma rarefatto: ioni ed elettroni liberi dell'alta atmosfera. Per Faraday la struttura vede una fem di moto, ε = B l v.",
+      "Con B di circa trenta microtesla e lunghezze di molte decine di metri si arriva a tensioni dell'ordine di venti volt rispetto al plasma [DA VERIFICARE su documenti NASA NTRS]. Inoltre i pannelli solari ad alta tensione tendono a far assumere alla struttura un potenziale negativo: nei progetti NASA, senza protezione, si prevedevano potenziali negativi di circa 120-140 volt [DA VERIFICARE].",
+      "Per questo la ISS ha due plasma contactor, che emettono plasma di xeno e collegano la struttura all'ambiente, mantenendone il potenziale entro ±40 volt. Il controllo di questo potenziale è importante per la sicurezza di chi lavora all'esterno [DA VERIFICARE]. Nella simulazione «La ISS nel campo magnetico» si possono accendere e spegnere i plasma contactor."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon = B\\,l\\,v",
+        "spiegazione": "Fem di moto: B è il campo terrestre (tesla), l la lunghezza della struttura (m), v la velocità (m/s)."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "campo",
+    "voce": "Da qui si va all'airlock Quest, da cui si esce nello spazio. All'esterno la struttura si muove nel campo magnetico terrestre e si carica elettricamente rispetto al plasma. Due plasma contactor la tengono entro limiti sicuri. Nella simulazione sul campo puoi accenderli e spegnerli.",
+    "slide_pptx": [
+      8
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA NTRS (ISS plasma contactor), documento 19980201237 [da riscontrare]",
+    "oggetto_reale": "Portello sinistro 'To A/L' con due tute spaziali bianche visibili all'interno.",
+    "yaw_stimato": -89,
+    "pitch_stimato": -1
+  },
+  {
+    "id": "unity-ventole",
+    "luogo": "unity",
+    "categoria": "vita",
+    "titolo": "Ventole senza gravità",
+    "breve": "Senza gravità l'aria calda non sale: motori elettrici fanno circolare l'aria.",
+    "paragrafi": [
+      "Sulla Terra l'aria calda sale e quella fredda scende: la convezione rimescola da sola l'aria di una stanza. In orbita non c'è un «su» e un «giù», e senza ventilazione l'aria attorno a una persona che respira ristagnerebbe e si arricchirebbe di anidride carbonica. Per questo a bordo ventole elettriche fanno circolare l'aria di continuo.",
+      "Il motore di una ventola funziona con la forza di Lorentz: un filo percorso da corrente in un campo magnetico subisce una forza F = i l B sin θ. Avvolgendo il filo in una spira e invertendo la corrente al momento giusto, la forza fa ruotare la spira in modo continuo, e con lei le pale.",
+      "È il principio inverso dell'alternatore. Nell'alternatore l'energia meccanica diventa elettrica; nel motore l'energia elettrica diventa meccanica. Ogni volta che il motore gira, nella spira nasce anche una fem indotta che si oppone alla corrente: è l'effetto di Lenz. Nella simulazione sui motori puoi seguire tutto il processo."
+    ],
+    "formule": [
+      {
+        "latex": "F = i\\,l\\,B\\sin\\theta",
+        "spiegazione": "Forza di Lorentz su un filo di lunghezza l con corrente i in un campo B; θ è l'angolo tra filo e campo. È la forza che mette in moto le pale."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "motore",
+    "voce": "Senza gravità l'aria calda non sale e l'aria ristagna. Per questo motori elettrici fanno circolare l'aria di continuo. Un motore usa la forza di Lorentz su una spira con corrente: è l'inverso di un alternatore. Puoi vedere come funziona nella simulazione sui motori.",
+    "slide_pptx": [
+      18
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS life support); teoria pptx slide 18",
+    "oggetto_reale": "Griglia metallica quadrata a pavimento, a sinistra del portello centrale.",
+    "yaw_stimato": -37,
+    "pitch_stimato": -33
+  },
+  {
+    "id": "tranquility-ared",
+    "luogo": "tranquility",
+    "categoria": "vita",
+    "titolo": "Allenarsi contro la perdita",
+    "breve": "Senza peso muscoli e ossa si indeboliscono: ogni giorno gli astronauti si allenano con l'ARED.",
+    "paragrafi": [
+      "L'ARED, Advanced Resistive Exercise Device, è l'attrezzo con cui gli astronauti simulano il sollevamento pesi. In assenza di peso muscoli e ossa non lavorano più contro la gravità, e si indeboliscono: per questo l'equipaggio si allena ogni giorno. La ricerca spaziale studia questi effetti, e le conoscenze ricadono sulla medicina a terra, per esempio sull'invecchiamento.",
+      "Prima e dopo il volo gli astronauti vengono esaminati a terra, con molte tecniche; tra queste, secondo le fonti NASA e ESA, la risonanza magnetica nucleare [DA VERIFICARE per quali protocolli]. La RMN fornisce immagini dei tessuti molli senza usare radiazioni ionizzanti, tanto che è stata scelta dalla consegna come esempio di diritto alla salute.",
+      "La fisica della RMN è collegata a Faraday. I protoni del corpo, in un campo B₀ molto intenso, precedono con frequenza f = γB₀/2π; un impulso radio li inclina, e il loro campo che varia nel tempo induce una fem in una bobina. Nella simulazione «Salute: RMN» puoi vedere il segnale nascere."
+    ],
+    "formule": [
+      {
+        "latex": "f = \\frac{\\gamma}{2\\pi}\\,B_0",
+        "spiegazione": "Frequenza di precessione dei nuclei: γ è il rapporto giromagnetico (per il protone circa 42,58 MHz/T dopo la divisione per 2π), B₀ il campo del magnete."
+      },
+      {
+        "latex": "\\varepsilon = -\\frac{d\\Phi_B}{dt}",
+        "spiegazione": "Il segnale della RMN è una fem indotta nella bobina ricevente dalla variazione del flusso dei nuclei in precessione."
+      }
+    ],
+    "immagini": [
+      {
+        "url_origine": "https://images-assets.nasa.gov/image/iss030e148403/iss030e148403~medium.jpg",
+        "pagina": "https://images.nasa.gov/details/iss030e148403",
+        "didascalia": "Un astronauta si allena sull'ARED nel Node 3 (Tranquility). Titolo NASA: «Kuipers exercises on the ARED in the Node 3».",
+        "credito": "NASA",
+        "licenza": "Pubblico dominio (NASA)",
+        "src": "/img/poi/tranquility-ared-1.jpg"
+      }
+    ],
+    "simulazione": "rmn",
+    "voce": "Senza gravità muscoli e ossa si indeboliscono, quindi ogni giorno gli astronauti si allenano con l'ARED. Lo studio del corpo in volo aiuta anche la medicina a terra, dove la risonanza magnetica è uno strumento fondamentale. Nella simulazione sulla RMN puoi vedere il segnale indotto.",
+    "slide_pptx": [],
+    "badge": "Foto reale",
+    "fonte": "NASA, ESA (human research on ISS); consegna scolastica (Obiettivo 3, Art. 32)",
+    "oggetto_reale": "Attrezzo con piastra nera e dorata al centro, con la scritta 'ARED' sul braccio superiore. Rimanda all'ambiente RMN.",
+    "yaw_stimato": 2,
+    "pitch_stimato": 27
+  },
+  {
+    "id": "tranquility-eclss",
+    "luogo": "tranquility",
+    "categoria": "energia",
+    "titolo": "Ossigeno dall'acqua",
+    "breve": "A bordo l'ossigeno si ricava dall'acqua con la corrente elettrica: energia elettrica che diventa energia chimica.",
+    "paragrafi": [
+      "Per respirare, l'equipaggio ha bisogno di ossigeno. A bordo una parte si ottiene dall'acqua per elettrolisi: una corrente elettrica scinde le molecole di H₂O in idrogeno e ossigeno. È la trasformazione inversa di quella di una batteria: energia elettrica convertita in energia chimica, immagazzinata nei prodotti della reazione.",
+      "L'elettricità viene dai pannelli solari, quindi la catena è: luce, elettricità, ossigeno. Il generatore di ossigeno fa parte del sistema ECLSS, Environmental Control and Life Support System, ed è ospitato in Tranquility [DA VERIFICARE su fonte NASA]. La potenza elettrica spesa è P = V i, e l'energia in un tempo t è E = P t.",
+      "Un curioso omaggio al nostro protagonista: anche le leggi dell'elettrolisi portano il nome di Faraday, ma sono un'altra scoperta, sulla massa depositata da una corrente. Qui non serve calcolarla: conta l'idea che l'energia elettrica è una forma versatile, che si può trasformare in moto, calore, luce o legami chimici."
+    ],
+    "formule": [
+      {
+        "latex": "2\\,\\mathrm{H_2O} \\;\\longrightarrow\\; 2\\,\\mathrm{H_2} + \\mathrm{O_2}",
+        "spiegazione": "Reazione di elettrolisi dell'acqua: due molecole di acqua danno due di idrogeno e una di ossigeno, grazie all'energia elettrica fornita."
+      },
+      {
+        "latex": "E = P\\,t = V\\,i\\,t",
+        "spiegazione": "Energia elettrica spesa in un tempo t da un apparecchio con tensione V e corrente i."
+      }
+    ],
+    "immagini": [],
+    "simulazione": null,
+    "voce": "A bordo l'ossigeno si ricava anche dall'acqua, con l'elettrolisi: una corrente scinde l'acqua in idrogeno e ossigeno. L'elettricità viene dai pannelli solari. È energia elettrica che diventa energia chimica.",
+    "slide_pptx": [
+      21
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS Environmental Control and Life Support System); teoria pptx slide 21",
+    "oggetto_reale": "Nessun rack ECLSS identificabile nel panorama: usare la parete bianca sinistra come ancoraggio.",
+    "yaw_stimato": -96,
+    "pitch_stimato": 6
+  },
+  {
+    "id": "tranquility-portello-cupola",
+    "luogo": "tranquility",
+    "categoria": "terra",
+    "titolo": "Verso la Cupola",
+    "breve": "Il portello sul pavimento porta alla Cupola, da cui si vede la Terra scorrere a 7,7 chilometri al secondo.",
+    "paragrafi": [
+      "Il portello circolare con il vetro azzurro, «To CUP», porta alla Cupola. Per percorrere un'orbita a quota 400 km, cioè su un cerchio di raggio di circa 6770 km (6371 km del raggio terrestre più la quota), la stazione impiega circa 92 minuti: T = 2πr/v, con v di circa 7,7 km/s. In un giorno fa circa sedici orbite.",
+      "Ogni punto della struttura è un conduttore in moto nel campo magnetico terrestre, come nel primo esperimento di Faraday. Una struttura lunga l che si muove a velocità v perpendicolare a un campo B vede una fem ε = B l v. Il campo cambia da punto a punto dell'orbita, quindi anche la fem varia durante il giro.",
+      "Nell'ambiente «La ISS nel campo magnetico» si possono cambiare velocità, campo e lunghezza e osservare come si modifica la tensione. Il valore è un ordine di grandezza per una struttura ideale perpendicolare a v e B: la vera ISS è un insieme di moduli con geometria complessa, e l'orientamento cambia nel tempo."
+    ],
+    "formule": [
+      {
+        "latex": "T = \\frac{2\\pi r}{v}",
+        "spiegazione": "Periodo di un'orbita circolare: r raggio dell'orbita dal centro della Terra, v velocità. Con r ≈ 6770 km e v ≈ 7,7 km/s si ottengono circa 92 minuti."
+      },
+      {
+        "latex": "\\varepsilon = B\\,l\\,v",
+        "spiegazione": "Fem di moto sulla struttura, con campo B, lunghezza l e velocità v perpendicolari."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "campo",
+    "voce": "Il portello sul pavimento porta alla Cupola. La stazione compie un'orbita in circa novanta minuti, muovendosi a sette virgola sette chilometri al secondo nel campo magnetico terrestre. Nella simulazione puoi vedere quale tensione ne risulta.",
+    "slide_pptx": [
+      2
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA, ESA (ISS orbit facts); teoria pptx slide 2",
+    "oggetto_reale": "Portello circolare con vetro azzurro in basso al centro, scritta 'To CUP'.",
+    "yaw_stimato": 0,
+    "pitch_stimato": -70
+  },
+  {
+    "id": "cupola-terra",
+    "luogo": "cupola",
+    "categoria": "terra",
+    "titolo": "La Terra in movimento",
+    "breve": "La stazione fa un'orbita in circa novanta minuti e vede sorgere il Sole circa sedici volte al giorno.",
+    "paragrafi": [
+      "Dalle finestre della Cupola la Terra scorre sotto i piedi. A circa 400 km di quota la velocità è di circa 7,7 km/s, quasi ventisettemila chilometri all'ora: abbastanza per compiere un'orbita in circa novanta minuti. Per questo gli astronauti vedono circa sedici albe e sedici tramonti ogni giorno.",
+      "In quel tragitto, la stazione attraversa il campo magnetico terrestre, che a quella quota vale dell'ordine di 30 microtesla [DA VERIFICARE]. È un campo debole rispetto a quello di un magnete, ma la velocità è enorme: il prodotto B l v, con una struttura lunga circa 100 m, dà circa 23 volt. È il primo esperimento di Faraday, in versione orbitale.",
+      "La Terra è il motivo per cui il campo c'è: il suo nucleo di ferro e nichel liquido genera un campo che si estende nello spazio, la magnetosfera. È anche ciò che devia le particelle cariche del Sole e dà origine alle aurore. Dalla Cupola si vedono insieme il pianeta che fa da magnete e il laboratorio che gli si muove dentro."
+    ],
+    "formule": [
+      {
+        "latex": "\\varepsilon = B\\,l\\,v",
+        "spiegazione": "B campo terrestre (≈ 30 µT), l lunghezza della struttura (≈ 100 m), v velocità (≈ 7,7 km/s): ε ≈ 23 V per una struttura ideale perpendicolare a v e B."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "campo",
+    "voce": "Dalla Cupola la Terra scorre sotto di noi a circa sette virgola sette chilometri al secondo. Un'orbita dura circa novanta minuti. Ci muoviamo dentro il campo magnetico terrestre: nella simulazione puoi vedere quale tensione nasce nella struttura.",
+    "slide_pptx": [
+      2
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA, ESA (ISS orbit facts); teoria pptx slide 2",
+    "oggetto_reale": "Finestre della Cupola con la Terra; da posizionare su cupola-foto.jpg."
+  },
+  {
+    "id": "cupola-pannelli",
+    "luogo": "cupola",
+    "categoria": "energia",
+    "titolo": "Le ali solari",
+    "breve": "Dai finestrini si vedono i pannelli: luce che diventa elettricità senza alternatore.",
+    "paragrafi": [
+      "Le grandi ali dorate che si vedono all'esterno sono i pannelli solari della stazione. Sono celle fotovoltaiche: la luce del Sole libera cariche in un semiconduttore e le spinge in un circuito, producendo corrente continua. Non c'è nessuna parte in movimento, nessuna turbina, nessun alternatore.",
+      "È un'eccezione rispetto alle altre fonti che la teoria elenca: centrali idroelettriche, eoliche, geotermiche, termiche e nucleari usano una turbina che fa ruotare un alternatore. In tutti quei casi l'energia cinetica si trasforma in elettrica per Faraday-Neumann-Lenz. Il fotovoltaico usa un principio diverso, e per questo è un caso a parte.",
+      "Fonti rinnovabili e Obiettivo 7 dell'Agenda 2030: energia pulita e accessibile. Quasi ogni fonte rinnovabile, eccetto il solare fotovoltaico, si basa sull'induzione. Sulla ISS i pannelli seguono il Sole con giunti motorizzati, quindi anche qui compaiono motori elettrici [dettaglio da verificare]. Nell'ambiente energia le sorgenti sono confrontabili."
+    ],
+    "formule": [
+      {
+        "latex": "P = V\\,i",
+        "spiegazione": "Potenza prodotta da un pannello: tensione per corrente. Per ottenere più potenza si collegano più celle in serie e in parallelo."
+      }
+    ],
+    "immagini": [],
+    "simulazione": "energia",
+    "voce": "Le ali dorate che si vedono fuori sono i pannelli solari. Trasformano la luce direttamente in corrente continua, senza turbine né alternatori. È un'eccezione: quasi tutte le altre fonti di energia, rinnovabili e no, usano l'induzione di Faraday.",
+    "slide_pptx": [
+      22
+    ],
+    "badge": "Foto reale",
+    "fonte": "NASA (ISS electrical power system); teoria pptx slide 22",
+    "oggetto_reale": "Pannelli solari dorati visibili all'esterno [verificare su cupola-foto.jpg]."
+  },
+  {
+    "id": "cupola-aurora",
+    "luogo": "cupola",
+    "categoria": "fisica",
+    "titolo": "Aurore dall'alto",
+    "breve": "Le aurore nascono dove le particelle cariche seguono le linee del campo magnetico terrestre.",
+    "paragrafi": [
+      "Una carica q in moto con velocità v in un campo magnetico B subisce la forza di Lorentz F = q v × B, sempre perpendicolare alla velocità. Questa forza non cambia l'energia della particella: ne curva la traiettoria. Se la particella ha una componente di velocità lungo il campo, non spiraleggia in cerchio ma avanza lungo la linea di campo, come una molla.",
+      "Il vento solare porta verso la Terra elettroni e protoni. Il campo magnetico terrestre li guida lungo le sue linee, che si chiudono verso i poli. Lì le particelle entrano nell'alta atmosfera, urtano atomi di ossigeno e azoto, che si eccitano e poi emettono luce: verde e rossa dall'ossigeno, bluastra dall'azoto. È un'aurora.",
+      "La ISS, a circa 400 km, orbita al di sopra della maggior parte dell'emissione, che avviene a quote inferiori. Dalla Cupola l'aurora appare come una banda luminosa sul bordo del pianeta o come un velo sotto di noi. Il raggio della spirale è r = m v / (q B): più forte è il campo, più stretta è la spirale."
+    ],
+    "formule": [
+      {
+        "latex": "\\vec F = q\\,\\vec v\\times\\vec B",
+        "spiegazione": "Forza di Lorentz su una carica q con velocità v in un campo B. È perpendicolare a v e a B e non compie lavoro."
+      },
+      {
+        "latex": "r = \\frac{m\\,v}{q\\,B}",
+        "spiegazione": "Raggio della traiettoria circolare di una particella di massa m e carica q con velocità v perpendicolare al campo B."
+      }
+    ],
+    "immagini": [
+      {
+        "url_origine": "https://images-assets.nasa.gov/image/iss073e0293986/iss073e0293986~medium.jpg",
+        "pagina": "https://images.nasa.gov/details/iss073e0293986",
+        "didascalia": "Un'aurora sull'orizzonte della Terra, vista dalla ISS. Titolo NASA: «An aurora streams across Earth's horizon».",
+        "credito": "NASA",
+        "licenza": "Pubblico dominio (NASA)",
+        "src": "/img/poi/cupola-aurora-1.jpg"
+      }
+    ],
+    "simulazione": "aurora",
+    "voce": "Le aurore nascono dalla forza di Lorentz. Una particella carica in un campo magnetico non va dritta: spiraleggia lungo le linee del campo, e qui le linee portano ai poli. Nella simulazione puoi lanciare le particelle e vedere dove si accende l'aurora.",
+    "slide_pptx": [],
+    "badge": "Foto reale",
+    "fonte": "NASA (aurore dalla ISS); consegna scolastica (forza di Lorentz)",
+    "oggetto_reale": "Banda verde sul bordo del pianeta, se presente in cupola-foto.jpg; altrimenti immagine NASA dedicata."
+  }
+]
