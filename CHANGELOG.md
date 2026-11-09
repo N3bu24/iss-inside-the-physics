@@ -5,6 +5,20 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.9.0] — 2026-11-10
+### Aggiunto
+- Movimento in un unico gesto: la camera si allinea al primo fotogramma del volo (FOV orizzontale 80°) e il video subentra in circa 200 ms. ↓ vola in avanti lungo l'arco inverso; niente più video al contrario.
+- Cupola: zoom dal portello che sfocia nella Terra NASA, senza cornice.
+- Indicatori dei punti di interesse ai bordi e lista laterale (il clic ruota piano la vista e apre la scheda). Marker da 58 px senza sovrapposizioni.
+- Schede estese: paragrafi, formule KaTeX con spiegazione, immagini NASA/ESA, voce, pulsante "Avvia simulazione".
+- Intestazione "ISS — Inside the Physics · Alessandro Bettinelli" su ogni schermata. Intro con il solo pulsante "Inizia l'esplorazione" e Tappe suggerite in alto.
+- Voce v3: 51 clip, circa 15 minuti. Sottotitoli da 12-20 parole, più lenti.
+- EML: "Avvia esperimento" con una sequenza di 6 passi in una finestra centrale; la camera si sposta in sincrono.
+- Guscio comune per le simulazioni e 8 simulazioni: eml, campo, energia, levitazione, rmn, motore, autoinduzione, aurora.
+- Campo magnetico con la Terra NASA Blue Marble e il modello NASA della ISS (ingrandito, 3,7% del raggio terrestre).
+### Rimosso
+- Video al contrario, volo IA verso la Cupola, cornice poligonale, scelta tra visita guidata e libera.
+
 ## [0.8.0] — 2026-11-09
 ### Aggiunto
 - 11 voli reali tra i moduli, generati con Higgsfield Kling 3.0 dai panorami ESA: Harmony↔Columbus, Harmony↔Kibo, Harmony↔Destiny, Destiny↔Unity, Unity↔Tranquility, Tranquility→Cupola. Più le versioni `_rev` per ↓ (41 MB in tutto).
