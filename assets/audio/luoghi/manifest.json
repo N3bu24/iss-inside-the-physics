@@ -1,0 +1,74 @@
+[
+  {
+    "id": "harmony",
+    "file": "harmony.mp3",
+    "durata_s": 6.9,
+    "testo": "Harmony è il nodo da cui si raggiungono i laboratori. Da qui partiamo verso Columbus, il laboratorio europeo."
+  },
+  {
+    "id": "columbus",
+    "file": "columbus.mp3",
+    "durata_s": 8.3,
+    "testo": "Columbus è il laboratorio europeo. In uno dei suoi rack lavora l'EML, un forno che scalda il metallo senza toccarlo."
+  },
+  {
+    "id": "eml",
+    "file": "eml.mp3",
+    "durata_s": 8.6,
+    "testo": "Un campo magnetico che cambia nel tempo fa nascere correnti nel metallo. Quelle correnti lo sostengono e lo scaldano, senza contatto."
+  },
+  {
+    "id": "kibo",
+    "file": "kibo.mp3",
+    "durata_s": 7.3,
+    "testo": "Kibo è il modulo giapponese. Anche qui un campione può levitare, ma con forze elettriche e non magnetiche."
+  },
+  {
+    "id": "destiny",
+    "file": "destiny.mp3",
+    "durata_s": 6.7,
+    "testo": "Destiny è il laboratorio americano. L'energia arriva ai suoi rack dopo essere stata trasformata più volte."
+  },
+  {
+    "id": "unity",
+    "file": "unity.mp3",
+    "durata_s": 6.4,
+    "testo": "Unity è il primo nodo americano. Da qui si va verso Tranquility, e da Tranquility alla Cupola."
+  },
+  {
+    "id": "tranquility",
+    "file": "tranquility.mp3",
+    "durata_s": 7,
+    "testo": "Questo è Tranquility. Sotto di noi si apre il portello della Cupola, la finestra della stazione sulla Terra."
+  },
+  {
+    "id": "cupola",
+    "file": "cupola.mp3",
+    "durata_s": 7.9,
+    "testo": "Dalla Cupola vediamo la Terra scorrere a circa sette virgola sette chilometri al secondo. Ci muoviamo dentro il suo campo magnetico."
+  },
+  {
+    "id": "amb-campo",
+    "file": "amb-campo.mp3",
+    "durata_s": 7.8,
+    "testo": "La stazione attraversa il campo magnetico terrestre a velocità enorme. Nella sua struttura nasce una tensione indotta."
+  },
+  {
+    "id": "amb-energia",
+    "file": "amb-energia.mp3",
+    "durata_s": 8,
+    "testo": "Dal pannello solare al rack, l'energia viene trasformata e distribuita. Sulla Terra accade lo stesso, ma in grande."
+  },
+  {
+    "id": "amb-levitazione",
+    "file": "amb-levitazione.mp3",
+    "durata_s": 8.3,
+    "testo": "Un magnete in moto vicino a un metallo vi induce correnti che lo respingono. Così levitano il campione dell'EML e i treni Maglev."
+  },
+  {
+    "id": "amb-rmn",
+    "file": "amb-rmn.mp3",
+    "durata_s": 8.2,
+    "testo": "Nel corpo umano i nuclei rispondono a un campo magnetico e a un impulso radio. Il segnale che emettono si rileva per induzione."
+  }
+]
