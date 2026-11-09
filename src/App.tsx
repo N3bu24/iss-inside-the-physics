@@ -3,11 +3,13 @@ import { tappe, fenomeni } from './data/tour'
 import './data/loader'
 import IntroScreen from './components/IntroScreen'
 const PanoViewer = lazy(() => import('./components/PanoViewer'))
+const ImmagineViewer = lazy(() => import('./components/ImmagineViewer'))
 const EmlScene = lazy(() => import('./components/EmlScene'))
 import FenomeniPanel, { caloreFenomeno } from './components/FenomeniPanel'
 import HotspotPanel from './components/HotspotPanel'
 import MiniMap from './components/MiniMap'
 import TourBar from './components/TourBar'
+import Crediti from './components/Crediti'
 import AudioToggle from './components/AudioToggle'
 import Narrator from './components/Narrator'
 import { assetExists } from './lib/assets'
@@ -43,6 +45,18 @@ export default function App() {
 
   const tappa = tappe[indice]
 
+  // precarica in background le immagini della tappa successiva (e della precedente)
+  useEffect(() => {
+    if (fase !== 'visita') return
+    const t = setTimeout(() => {
+      for (const n of [tappe[indice + 1], tappe[indice - 1]]) {
+        const src = n?.panorama ?? n?.immagine
+        if (src) { const i = new Image(); i.src = src }
+      }
+    }, 1200)
+    return () => clearTimeout(t)
+  }, [indice, fase])
+
   const vaiA = useCallback((i: number) => {
     if (i < 0 || i >= tappe.length || i === indice) return
     setHotspotId(null)
@@ -75,6 +89,10 @@ export default function App() {
                 onHotspot={setHotspotId}
               />
             </Suspense>
+          ) : tappa.tipo === 'immagine' ? (
+            <Suspense key="simg" fallback={<Caricamento />}>
+              <ImmagineViewer tappa={tappa} onHotspot={setHotspotId} onNavigate={vaiAId} />
+            </Suspense>
           ) : (
             <Suspense key="spano" fallback={<Caricamento />}>
               <PanoViewer tappa={tappa} onHotspot={setHotspotId} onNavigate={vaiAId} />
@@ -99,6 +117,7 @@ export default function App() {
             onFree={() => setGuidata(false)}
             onResume={() => setGuidata(true)}
           />
+          <Crediti credito={tappa.credito} />
           <div className="absolute bottom-5 right-4 z-30">
             <AudioToggle on={audioOn} onToggle={() => setAudioOn(!audioOn)} />
           </div>

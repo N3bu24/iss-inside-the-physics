@@ -4,21 +4,23 @@ import type { Hotspot } from './types'
  * Posizione di ogni hotspot (per id, come in content/hotspot.json).
  * Panorami: yaw/pitch in radianti. Scena 3D: nome dell'oggetto del GLB (+ spostamento opzionale in unità scena).
  * Un hotspot senza posizione qui non compare nel mondo (resta nei dati).
+ * Tappe 'immagine' (intro, finale): x/y in 0..1 sull'immagine. Panorami reali ESA/NASA: yaw 0 = centro immagine,
+ * yaw +90 = a destra di 90 gradi; le posizioni sono state scelte guardando i panorami.
  * Gli yaw evitano quelli dei collegamenti tra tappe (vedi tour.ts).
  */
-export const posizioni: Record<string, Pick<Hotspot, 'yaw' | 'pitch' | 'oggetto3d' | 'spostamento3d'>> = {
+export const posizioni: Record<string, Pick<Hotspot, 'yaw' | 'pitch' | 'x' | 'y' | 'media' | 'oggetto3d' | 'spostamento3d'>> = {
   // intro
-  'intro-iss': { yaw: 0.6, pitch: 0.1 },
-  'intro-microgravita': { yaw: -0.9, pitch: 0.2 },
-  'intro-pannelli': { yaw: 1.8, pitch: 0.15 },
+  'intro-iss': { x: 0.63, y: 0.37 },
+  'intro-microgravita': { x: 0.5, y: 0.82 },
+  'intro-pannelli': { x: 0.88, y: 0.6 },
   // nodo
-  'nodo-vita': { yaw: 1.2, pitch: 0.05 },
-  'nodo-moduli': { yaw: -1.2, pitch: 0.1 },
-  'nodo-ricerca': { yaw: 2.2, pitch: 0.2 },
+  'nodo-vita': { yaw: -1.6, pitch: 0.1 },
+  'nodo-moduli': { yaw: 0, pitch: 0.12 },
+  'nodo-ricerca': { yaw: 2.3, pitch: 0.65 },
   // columbus (il rack dell'EML è vicino al collegamento verso la tappa eml)
-  'columbus-lab': { yaw: 1.0, pitch: 0.1 },
-  'columbus-rack': { yaw: -0.8, pitch: 0.12 },
-  'columbus-controllo': { yaw: 2.0, pitch: 0.3 },
+  'columbus-lab': { yaw: -1.57, pitch: 0.05 },
+  'columbus-rack': { yaw: 0.15, pitch: 0.4 },
+  'columbus-controllo': { yaw: -0.73, pitch: 0.12 },
   // eml (oggetti del GLB)
   'eml-modello': { oggetto3d: 'chamber_assembly', spostamento3d: [0.9, 0.6, 0] },
   'eml-campo-variabile': { oggetto3d: 'coil_upper' },
@@ -29,16 +31,19 @@ export const posizioni: Record<string, Pick<Hotspot, 'yaw' | 'pitch' | 'oggetto3
   'eml-autoinduzione': { oggetto3d: 'coil_lower' },
   'eml-quattro-esperimenti': { oggetto3d: 'carousel' },
   // materiali
-  'materiali-convezione': { yaw: 0.8, pitch: 0.05 },
-  'materiali-leghe': { yaw: -0.8, pitch: 0.1 },
+  'materiali-convezione': { yaw: 1.95, pitch: 0.38 },
+  'materiali-leghe': { yaw: -1.8, pitch: 0.3 },
   // cupola
-  'cupola-finestre': { yaw: 1.0, pitch: 0.35 },
-  'cupola-terra': { yaw: -0.7, pitch: 0.2 },
+  'cupola-finestre': {
+    yaw: -0.5, pitch: -1.2,
+    media: { tipo: 'immagine', src: '/panorami/cupola-foto.jpg', didascalia: 'Vista dalla Cupola: la Terra di notte', badge: 'foto', credito: 'Foto: NASA' },
+  },
+  'cupola-terra': { yaw: -2.18, pitch: -0.78 },
   // finale
-  'finale-maglev': { yaw: 0.7, pitch: 0.05 },
-  'finale-correnti-parassite': { yaw: 1.5, pitch: 0.1 },
-  'finale-motori': { yaw: -0.7, pitch: 0.1 },
-  'finale-trasformatore': { yaw: 2.3, pitch: 0.1 },
-  'finale-obiettivo9': { yaw: -1.5, pitch: 0.15 },
-  'finale-art32': { yaw: -2.3, pitch: 0.1 },
+  'finale-maglev': { x: 0.45, y: 0.47 },
+  'finale-correnti-parassite': { x: 0.27, y: 0.4 },
+  'finale-motori': { x: 0.17, y: 0.62 },
+  'finale-trasformatore': { x: 0.72, y: 0.4 },
+  'finale-obiettivo9': { x: 0.55, y: 0.68 },
+  'finale-art32': { x: 0.37, y: 0.58 },
 }
