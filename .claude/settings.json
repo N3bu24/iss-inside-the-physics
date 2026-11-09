@@ -1,0 +1,30 @@
+{
+  "model": "opus",
+  "permissions": {
+    "deny": ["Read(./.env)", "Read(./.env.local)"]
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/notify.mjs\" --hook Notification",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/notify.mjs\" --hook Stop",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
