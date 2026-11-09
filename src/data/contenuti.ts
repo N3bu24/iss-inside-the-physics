@@ -1,7 +1,7 @@
 import hotspotJson from '@content/hotspot.json'
 import { nodi, type NodoId } from './stazione'
 import { posizioni } from './posizioni'
-import { hotspotEsempio, luoghiEsempio, type Categoria, type HotspotScheda, type Luogo } from './esempio-hotspot'
+import { hotspotEsempio, luoghiEsempio, type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './esempio-hotspot'
 import type { Provenienza } from './types'
 
 /**
@@ -28,7 +28,33 @@ const luogoDa = (s: unknown): NodoId | null => {
 const CATEGORIE: Categoria[] = ['fisica', 'eml', 'strumento', 'vita', 'terra', 'energia']
 const categoriaDa = (s: unknown): Categoria => (CATEGORIE.includes(s as Categoria) ? (s as Categoria) : 'fisica')
 
+/**
+ * Correzioni di posizione (gradi) per gli hotspot che, nei dati di content/hotspot.json (`yaw_stimato`/`pitch_stimato`),
+ * cadono a meno di ~15° da un portello, da un passaggio chiuso o da un altro punto: si sovrapporrebbero sullo schermo.
+ * content/ non si modifica da qui: la correzione vive nel codice.
+ */
+const RIPOSIZIONA: Record<string, { yaw: number; pitch: number }> = {
+  'columbus-rack-eml': { yaw: 30, pitch: 3 },     // era sul portello verso l'EML
+  'columbus-laptop': { yaw: -48, pitch: 4 },      // troppo vicino a columbus-cavi
+  'unity-airlock': { yaw: -89, pitch: 22 },       // era sul portello chiuso della Quest
+  'unity-zarya': { yaw: 0, pitch: 22 },           // era sul portello chiuso di Zarya
+  'tranquility-eclss': { yaw: -124, pitch: 12 },  // era sul portello verso Unity
+  'tranquility-portello-cupola': { yaw: 36, pitch: -52 }, // era sul portello della Cupola
+}
+
 type Grezzo = Record<string, unknown>
+const comeStringhe = (v: unknown): string[] => (Array.isArray(v) ? v.map(String).filter(Boolean) : [])
+const toglidollari = (s: string) => s.replace(/^\s*\$+|\$+\s*$/g, '')
+function formuleDa(v: unknown): FormulaScheda[] | undefined {
+  if (!Array.isArray(v)) return undefined
+  const out = (v as Grezzo[]).map((f) => (typeof f === 'string' ? { latex: toglidollari(f) } : { latex: toglidollari(String(f.latex ?? '')), spiegazione: f.spiegazione ? String(f.spiegazione) : undefined })).filter((f) => f.latex)
+  return out.length ? out : undefined
+}
+function immaginiDa(v: unknown): ImmagineScheda[] | undefined {
+  if (!Array.isArray(v)) return undefined
+  const out = (v as Grezzo[]).filter((i) => i && typeof i.src === 'string').map((i) => ({ src: String(i.src), didascalia: i.didascalia ? String(i.didascalia) : undefined, credito: i.credito ? String(i.credito) : undefined }))
+  return out.length ? out : undefined
+}
 const comeLista = (v: unknown): Grezzo[] => (Array.isArray(v) ? (v as Grezzo[]) : [])
 
 function normalizzaHotspot(g: Grezzo): HotspotScheda | null {
@@ -42,7 +68,10 @@ function normalizzaHotspot(g: Grezzo): HotspotScheda | null {
     formula: typeof g.formula === 'string' && g.formula ? g.formula.replace(/^\s*\$+|\$+\s*$/g, '') : undefined,
     slide_pptx: Array.isArray(g.slide_pptx) ? g.slide_pptx.map(Number).filter((n) => !Number.isNaN(n)) : [],
     badge: badgeDa(g.badge), fonte: String(g.fonte ?? ''),
-    yaw: num(g.yaw) ?? num(g.yaw_stimato), pitch: num(g.pitch) ?? num(g.pitch_stimato), x: num(g.x), y: num(g.y),
+    paragrafi: comeStringhe(g.paragrafi).length ? comeStringhe(g.paragrafi) : undefined,
+    formule: formuleDa(g.formule), immagini: immaginiDa(g.immagini),
+    simulazione: typeof g.simulazione === 'string' && g.simulazione ? g.simulazione : undefined,
+    yaw: RIPOSIZIONA[g.id]?.yaw ?? num(g.yaw) ?? num(g.yaw_stimato), pitch: RIPOSIZIONA[g.id]?.pitch ?? num(g.pitch) ?? num(g.pitch_stimato), x: num(g.x), y: num(g.y),
     oggetto3d: typeof g.oggetto3d === 'string' ? g.oggetto3d : undefined,
     spostamento3d: Array.isArray(g.spostamento3d) ? (g.spostamento3d as [number, number, number]) : undefined,
   }

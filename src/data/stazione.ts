@@ -112,6 +112,7 @@ export const archi: Arco[] = [
   { a: { nodo: 'unity', yaw: 90, pitch: 0 }, b: { nodo: 'tranquility', yaw: -92, pitch: 0 }, arrivoAvanti: { yaw: 20, pitch: -30 } },
   // passaggi verso scene non panoramiche
   { a: { nodo: 'columbus', yaw: 8, pitch: 20 }, b: { nodo: 'eml', yaw: 0, pitch: 0 } },
+  // Cupola: nessun video di volo, ma zoom nel panorama verso il nadir e dissolvenza nella Terra (vedi Esplora)
   { a: { nodo: 'tranquility', yaw: 0, pitch: -70 }, b: { nodo: 'cupola', yaw: 0, pitch: 0 } },
   { a: { nodo: 'cupola', yaw: 0, pitch: 0 }, b: { nodo: 'finale', yaw: 0, pitch: 0 } },
 ]
@@ -173,4 +174,17 @@ export function rotta(da: NodoId, a: NodoId): NodoId[] | null {
 /** Visita guidata = cammino nel grafo (ogni coppia consecutiva è un portello). */
 export const percorsoGuidato: NodoId[] = [
   'harmony', 'columbus', 'eml', 'columbus', 'harmony', 'kibo', 'harmony', 'destiny', 'unity', 'tranquility', 'cupola', 'finale',
+]
+
+/** Tappe suggerite: barra discreta in alto, in sequenza. Il clic vola fin lì passando per i moduli intermedi. */
+export const tappeSuggerite: { nodo: NodoId; etichetta: string }[] = [
+  { nodo: 'harmony', etichetta: 'Harmony' },
+  { nodo: 'columbus', etichetta: 'Columbus' },
+  { nodo: 'eml', etichetta: 'EML' },
+  { nodo: 'kibo', etichetta: 'Kibo' },
+  { nodo: 'destiny', etichetta: 'Destiny' },
+  { nodo: 'unity', etichetta: 'Unity' },
+  { nodo: 'tranquility', etichetta: 'Tranquility' },
+  { nodo: 'cupola', etichetta: 'Cupola' },
+  { nodo: 'finale', etichetta: 'Finale' },
 ]

@@ -9,6 +9,9 @@ import type { NodoId } from './stazione'
  * Senza coordinate il sito sceglie una posizione libera del luogo (src/data/stazione.ts, `slot`).
  */
 
+export interface FormulaScheda { latex: string; spiegazione?: string }
+export interface ImmagineScheda { src: string; didascalia?: string; credito?: string }
+
 export interface HotspotScheda {
   id: string
   luogo: NodoId
@@ -17,6 +20,12 @@ export interface HotspotScheda {
   breve: string
   punti: string[]
   formula?: string
+  /** formato esteso (opzionale, compatibile con i campi sopra) */
+  paragrafi?: string[]
+  formule?: FormulaScheda[]
+  immagini?: ImmagineScheda[]
+  /** id di una simulazione da aprire con "Avvia simulazione" */
+  simulazione?: string
   slide_pptx: number[]
   badge: Provenienza
   fonte: string
