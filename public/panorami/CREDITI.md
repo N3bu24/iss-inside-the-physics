@@ -12,3 +12,7 @@
 | cupola-foto.jpg | Vista dalla Cupola | images.nasa.gov iss025e011750 | NASA | Pubblico dominio (credito NASA) |
 
 Originali ridimensionati a 8192×4096 (panorami) e lato massimo 3840 px (foto).
+
+| ambienti/terra-bluemarble.jpg | Terra, mosaico Blue Marble | Wikimedia Commons: Whole world - land and oceans 12000.jpg | NASA Earth Observatory (Blue Marble) | Pubblico dominio (credito NASA) |
+| ambienti/iss.glb | Modello 3D della ISS | science.nasa.gov/3d-resources/international-space-station-iss-b | NASA | NASA 3D Resources, uso libero con credito |
+| video/terra-cupola.mp4 | La Terra dalla ISS (4K) | svs.gsfc.nasa.gov/30771 | NASA Johnson | Linee guida NASA, uso educativo con credito |
