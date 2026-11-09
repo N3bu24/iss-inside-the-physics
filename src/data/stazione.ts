@@ -143,8 +143,8 @@ export const portelli: Record<NodoId, Portello[]> = (() => {
     out[arco.b.nodo].push({ da: arco.b.nodo, verso: arco.a.nodo, yaw: arco.b.yaw, pitch: arco.b.pitch, yawArrivo: arco.a.yaw, pitchArrivo: arco.a.pitch, video: arco.voloIndietro, arrivo: arco.arrivoIndietro })
   }
   // portelli dei nodi non panoramici: posizione sull'immagine
-  for (const p of out.cupola) { if (p.verso === 'finale') { p.x = 0.5; p.y = 0.15 } else { p.x = 0.5; p.y = 0.86 } }
-  for (const p of out.finale) { p.x = 0.5; p.y = 0.86 }
+  for (const p of out.cupola) { if (p.verso === 'finale') { p.x = 0.5; p.y = 0.15 } else { p.x = 0.5; p.y = 0.74 } }
+  for (const p of out.finale) { p.x = 0.5; p.y = 0.74 }
   return out
 })()
 

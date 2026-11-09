@@ -49,7 +49,7 @@ export const ZOOM_MAX = 100
 const MIN_FOV = 24
 const MAX_FOV = 90
 export const ASPETTO_VIDEO = 16 / 9
-const MARGINE = { x: 64, su: 130, giu: 150 }
+const MARGINE = { sx: 384, dx: 72, su: 112, giu: 150 }
 const DIST_MIN = 74
 
 /**
@@ -142,21 +142,34 @@ export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, o
       el.style.opacity = '1'; el.style.visibility = 'visible'
       el.style.transform = `translate(${pos[i].x}px, ${pos[i].y}px) translate(-50%, -50%)`
     })
-    // indicatori sul bordo (dentro un rettangolo che evita intestazione, barra delle tappe e comandi in basso)
-    const hw = W / 2 - MARGINE.x
-    const hh = Math.max(40, H / 2 - (MARGINE.su + MARGINE.giu) / 2)
-    const cy = H / 2 + (MARGINE.su - MARGINE.giu) / 2
+    // indicatori sul bordo: rettangolo che evita intestazione, colonna a sinistra, minimappa e comandi in basso
+    const x0 = Math.min(MARGINE.sx, W * 0.3), x1 = W - MARGINE.dx, y0b = MARGINE.su, y1 = Math.max(y0b + 60, H - MARGINE.giu)
+    const cx = (x0 + x1) / 2, cyb = (y0b + y1) / 2, hw = (x1 - x0) / 2, hh = (y1 - y0b) / 2
+    const ind: { p: P; el: HTMLElement; x: number; y: number }[] = []
     for (const p of pts) {
       if (p.el && !p.dentro) { p.el.style.opacity = '0'; p.el.style.visibility = 'hidden' }
-      const ind = indEls.current.get(p.m.key)
-      if (!ind) continue
-      if (p.dentro) { ind.style.opacity = '0'; ind.style.visibility = 'hidden'; continue }
+      const e = indEls.current.get(p.m.key)
+      if (!e) continue
+      if (p.dentro) { e.style.opacity = '0'; e.style.visibility = 'hidden'; continue }
       let { dx, dy } = p
       if (Math.abs(dx) < 1e-3 && Math.abs(dy) < 1e-3) dx = 1
       const t = Math.min(hw / Math.max(Math.abs(dx), 1e-6), hh / Math.max(Math.abs(dy), 1e-6))
-      ind.style.opacity = '1'; ind.style.visibility = 'visible'
-      ind.style.setProperty('--a', `${(Math.atan2(dy, dx) * 180) / Math.PI}deg`)
-      ind.style.transform = `translate(${W / 2 + dx * t}px, ${cy + dy * t}px) translate(-50%, -50%)`
+      ind.push({ p, el: e, x: cx + dx * t, y: cyb + dy * t })
+    }
+    // gli indicatori non si sovrappongono tra loro ne` alla minimappa
+    for (let it = 0; it < 8; it++) {
+      for (let i = 0; i < ind.length; i++) for (let j = i + 1; j < ind.length; j++) {
+        const ddx = ind[j].x - ind[i].x, ddy = ind[j].y - ind[i].y, d = Math.hypot(ddx, ddy) || 1
+        if (d >= 50) continue
+        const s = (50 - d) / 2 / d
+        ind[i].x -= ddx * s; ind[i].y -= ddy * s; ind[j].x += ddx * s; ind[j].y += ddy * s
+      }
+      for (const q of ind) { q.x = Math.min(x1, Math.max(x0, q.x)); q.y = Math.min(y1, Math.max(y0b, q.y)); if (q.x > W - 290 && q.y < 270) q.y = 270 }
+    }
+    for (const q of ind) {
+      q.el.style.opacity = '1'; q.el.style.visibility = 'visible'
+      q.el.style.setProperty('--a', `${(Math.atan2(q.p.dy, q.p.dx) * 180) / Math.PI}deg`)
+      q.el.style.transform = `translate(${q.x}px, ${q.y}px) translate(-50%, -50%)`
     }
   }
 

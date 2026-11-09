@@ -116,8 +116,8 @@ export interface HotspotPosizionato extends HotspotScheda { pos: Posizione | nul
 
 /** oggetti del modello EML, assegnati in ordine agli hotspot senza `oggetto3d` */
 const OGGETTI_EML: { oggetto: string; spostamento?: [number, number, number] }[] = [
-  { oggetto: 'coil_upper' }, { oggetto: 'sample', spostamento: [0.35, 0.25, 0] }, { oggetto: 'sample', spostamento: [-0.35, 0.25, 0] },
-  { oggetto: 'coil_lower' }, { oggetto: 'chamber_assembly', spostamento: [0.9, 0.6, 0] }, { oggetto: 'camera_axial' }, { oggetto: 'pyrometer' }, { oggetto: 'carousel' },
+  { oggetto: 'coil_upper', spostamento: [-1.5, 0.35, 0.4] }, { oggetto: 'sample', spostamento: [1.5, 1.0, 0.4] }, { oggetto: 'sample', spostamento: [-1.6, -0.55, 0.4] },
+  { oggetto: 'coil_lower', spostamento: [1.5, -0.55, 0.4] }, { oggetto: 'chamber_assembly', spostamento: [-1.5, -1.5, 0.2] }, { oggetto: 'camera_axial', spostamento: [0.2, 0.5, 0] }, { oggetto: 'pyrometer' }, { oggetto: 'carousel' },
 ]
 /** centri delle finestre della Cupola (frazioni dello schermo 16:9) */
 const FINESTRE_CUPOLA: [number, number][] = [[0.69, 0.5], [0.594, 0.72], [0.406, 0.72], [0.31, 0.5], [0.406, 0.21], [0.594, 0.21]]

@@ -21,7 +21,7 @@ export default function TappeBar({ corrente, visitati, occupato, onVai }: Props)
             {i > 0 && <span className="h-px w-2 bg-white/20" />}
             <button
               onClick={() => onVai(t.nodo)} disabled={occupato || att} aria-current={att ? 'step' : undefined}
-              className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[12px] leading-none transition-colors ${att ? 'bg-cyan-300/20 font-semibold text-cyan-100 ring-1 ring-cyan-300/60' : 'text-white/70 hover:bg-white/10 hover:text-white'} disabled:cursor-default`}
+              className={`flex items-center gap-1 rounded-full px-2 py-1 text-[11.5px] leading-none transition-colors ${att ? 'bg-cyan-300/20 font-semibold text-cyan-100 ring-1 ring-cyan-300/60' : 'text-white/70 hover:bg-white/10 hover:text-white'} disabled:cursor-default`}
             >
               {visto && <Check size={12} className="text-emerald-300" strokeWidth={3} />}
               {t.etichetta}
