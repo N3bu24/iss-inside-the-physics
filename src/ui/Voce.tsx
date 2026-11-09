@@ -48,7 +48,7 @@ export function cuesDi(testo: string, durata: number): Cue[] {
  * Una sola clip breve per luogo (public/audio/luoghi/<id>.mp3), riprodotta una volta per visita; se il file non esiste tace.
  * Sottotitoli (dal testo `voce` del luogo) e trascrizione sempre disponibili. Va montato con key={luogo.id}.
  */
-export default function Voce({ luogo, audioOn, onAudio }: { luogo: Luogo; audioOn: boolean; onAudio: () => void }) {
+export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false }: { luogo: Luogo; audioOn: boolean; onAudio: () => void; schedaAperta?: boolean }) {
   const audio = useRef<HTMLAudioElement>(null)
   const [esiste, setEsiste] = useState(false)
   const [suona, setSuona] = useState(false)
@@ -82,8 +82,8 @@ export default function Voce({ luogo, audioOn, onAudio }: { luogo: Luogo; audioO
         />
       )}
       {cc && corrente && (
-        <div className="fade-in pointer-events-none absolute bottom-[7.6rem] left-1/2 z-30 w-[min(760px,90vw)] -translate-x-1/2 rounded-lg bg-black/80 px-5 py-2.5 text-center text-[17px] font-medium leading-snug text-white shadow-lg">
-          {corrente}
+        <div className="pointer-events-none absolute bottom-[5.6rem] left-[23rem] z-30 flex justify-center" style={{ right: schedaAperta ? '31.5rem' : '23rem' }}>
+          <div className="fade-in max-w-[760px] rounded-lg bg-black/80 px-5 py-2.5 text-center text-[16px] font-medium leading-snug text-white shadow-lg">{corrente}</div>
         </div>
       )}
       {trans && (

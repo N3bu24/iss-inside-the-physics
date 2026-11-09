@@ -23,6 +23,8 @@ const CSS = `
 .sim-hs-tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);white-space:nowrap;padding:5px 12px;border-radius:9999px;font-size:13px;color:#fff;background:rgba(4,8,20,.92);border:1px solid rgba(255,255,255,.35);opacity:0;pointer-events:none;transition:opacity .18s}
 .sim-hs:hover .sim-hs-tip,.sim-hs:focus-visible .sim-hs-tip,.sim-hs.attivo .sim-hs-tip{opacity:1}
 .sim-win{animation:simwin .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes simwin2{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.sim-win.sim-flusso{animation-name:simwin2}
 @keyframes simwin{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
 .sim-avvia{background:linear-gradient(135deg,rgba(53,224,255,.95),rgba(40,150,255,.9));color:#04101c;font-weight:600;border-radius:999px;padding:.8rem 1.7rem;box-shadow:0 0 30px rgba(53,224,255,.4);transition:transform .25s,box-shadow .25s;display:inline-flex;gap:.55rem;align-items:center}
 .sim-avvia:hover{transform:translateY(-2px);box-shadow:0 0 46px rgba(53,224,255,.6)}

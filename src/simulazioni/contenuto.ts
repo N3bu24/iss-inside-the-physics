@@ -21,11 +21,12 @@ export type Passo = {
 
 type PassoFile = { titolo?: string; testo?: string; cosa_si_vede?: string; formula?: string }
 
+import { pulisciDati } from '../lib/pulisci'
 const moduli = import.meta.glob('/content/simulazioni.json', { eager: true, import: 'default' }) as Record<string, unknown>
 
 function passiDaFile(id: string): PassoFile[] | null {
   try {
-    const raw = Object.values(moduli)[0] as unknown
+    const raw = pulisciDati(Object.values(moduli)[0] as unknown)
     if (!raw) return null
     const lista: unknown[] = Array.isArray(raw)
       ? raw
@@ -44,6 +45,31 @@ export function pulisciFormula(f?: string): string | undefined {
   if (!f) return undefined
   const s = f.trim().replace(/^\$\$?/, '').replace(/\$\$?$/, '').trim()
   return s || undefined
+}
+
+/** "Slide 2, 7-10" a partire dall'elenco dei numeri di slide. */
+export function slideTesto(n?: number[]): string {
+  if (!n || !n.length) return ''
+  const s = [...n].sort((a, b) => a - b)
+  const parti: string[] = []
+  for (let i = 0; i < s.length; ) {
+    let j = i
+    while (j + 1 < s.length && s[j + 1] === s[j] + 1) j++
+    parti.push(j > i ? `${s[i]}-${s[j]}` : `${s[i]}`)
+    i = j + 1
+  }
+  return 'Slide ' + parti.join(', ')
+}
+
+/** Collegamento civico e slide di una simulazione, dal file approvato content/simulazioni.json. */
+export function metaSimulazione(id: string): { agenda: string; slide: string } {
+  try {
+    const raw = pulisciDati(Object.values(moduli)[0] as unknown) as { id?: string; agenda?: string; slide_pptx?: number[] }[]
+    const v = Array.isArray(raw) ? raw.find((x) => x?.id === id) : undefined
+    return { agenda: v?.agenda ?? '', slide: slideTesto(v?.slide_pptx) }
+  } catch {
+    return { agenda: '', slide: '' }
+  }
 }
 
 /** Unisce i passi provvisori (con camera/stato) ai testi definitivi del file, se presenti. */

@@ -97,7 +97,7 @@ body { background: var(--color-ink); color: #e8ecf5; font-family: var(--font-san
 @keyframes hs2ring { 0% { transform: scale(.82); opacity: .75; } 100% { transform: scale(1.4); opacity: 0; } }
 .hs2-tip {
   position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); white-space: nowrap;
-  max-width: 190px; overflow: hidden; text-overflow: ellipsis;
+  max-width: 250px; overflow: hidden; text-overflow: ellipsis;
   padding: 4px 11px; border-radius: 9999px; font-size: 12.5px; font-weight: 500; color: #fff;
   background: rgba(4, 8, 20, .9); border: 1px solid rgba(255, 255, 255, .3); box-shadow: 0 4px 16px rgba(0, 0, 0, .7);
   opacity: 1; pointer-events: none; transition: opacity .18s; text-shadow: none;

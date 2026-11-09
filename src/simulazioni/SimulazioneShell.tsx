@@ -21,13 +21,23 @@ export type OrbitaSim = { target?: [number, number, number]; minDistance?: numbe
 function Proietta({ hs, els }: { hs: HotspotSim[]; els: React.RefObject<Record<string, HTMLElement | null>> }) {
   const { camera, size } = useThree()
   const v = useMemo(() => new THREE.Vector3(), [])
+  const rects = useRef<DOMRect[]>([])
+  const n = useRef(0)
   useFrame(() => {
+    // i pannelli (data-sim-ui) non devono mai coprire un marcatore: se il punto cade sotto un pannello il marcatore si nasconde
+    if (n.current++ % 6 === 0) rects.current = [...document.querySelectorAll('[data-sim-ui]')].map((e) => e.getBoundingClientRect())
     for (const h of hs) {
       const el = els.current[h.id]
       if (!el) continue
       v.set(...h.pos).project(camera)
       const visibile = v.z > -1 && v.z < 1
       el.style.display = visibile ? '' : 'none'
+      if (visibile) {
+        const x = (v.x * 0.5 + 0.5) * size.width, y = (-v.y * 0.5 + 0.5) * size.height
+        const coperto = rects.current.some((r) => x > r.left - 30 && x < r.right + 30 && y > r.top - 30 && y < r.bottom + 30)
+        el.style.opacity = coperto ? '0' : ''
+        el.style.pointerEvents = coperto ? 'none' : ''
+      }
       if (visibile) el.style.transform = `translate(${(v.x * 0.5 + 0.5) * size.width}px,${(-v.y * 0.5 + 0.5) * size.height}px) translate(-50%,-50%)`
     }
   })
@@ -155,7 +165,7 @@ export default function SimulazioneShell(p: PropsShell) {
       {/* barra superiore */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-5 pt-14 pb-0">
         <span />
-        <div className="flex items-center gap-3">
+        <div data-sim-ui className="flex items-center gap-3">
           <Voce id={p.id} />
           <Badge tipo="simulazione" />
           <button onClick={p.onClose} className="glass pointer-events-auto flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs text-white hover:bg-white/15" aria-label="Chiudi (Esc)">
@@ -165,7 +175,7 @@ export default function SimulazioneShell(p: PropsShell) {
       </div>
 
       {/* pannello di spiegazione */}
-      <aside className="glass sim-scroll absolute bottom-28 left-5 top-28 z-10 flex w-[360px] flex-col gap-3 rounded-2xl p-5 text-[13px] leading-relaxed">
+      <aside data-sim-ui className="glass sim-scroll absolute bottom-28 left-5 top-28 z-10 flex w-[360px] flex-col gap-3 rounded-2xl p-5 text-[13px] leading-relaxed">
         <h2 className="text-xl font-semibold leading-tight">{p.titolo}</h2>
         <p className="text-white/75">{p.intro}</p>
         {hsAttivo ? (
@@ -196,21 +206,24 @@ export default function SimulazioneShell(p: PropsShell) {
         </div>
       </aside>
 
-      {p.scope && <div className="absolute right-5 top-28">{p.scope}</div>}
-
-      {/* controlli */}
-      <div className="glass absolute bottom-5 flex max-w-[calc(100%-420px)] items-center gap-8 rounded-2xl px-6 py-3" style={{ left: 'calc(50% + 190px)', transform: 'translateX(-50%)' }}>
-        {p.controlli}
-      </div>
-
-      {passi.length > 0 && seq === null && (
-        <div className="absolute bottom-6 right-6">
-          <button className="sim-avvia" onClick={() => vai(0)}>
-            <Play size={18} fill="currentColor" /> Avvia
-          </button>
+      {p.scope && (
+        <div data-sim-ui className="absolute right-5 top-28 origin-top-right transition-transform duration-300" style={{ transform: seq !== null ? 'scale(.62)' : undefined }}>
+          {p.scope}
         </div>
       )}
-      {seq !== null && passo && <FinestraSequenza titolo={p.titolo} passi={passi} indice={seq} onIndice={vai} onChiudi={() => vai(null)} />}
+
+      {/* zona in basso, a destra del pannello: finestra a passi (se aperta) sopra i controlli, mai sovrapposti */}
+      <div className="pointer-events-none absolute bottom-5 left-[400px] right-5 z-30 flex flex-col items-center gap-3">
+        {seq !== null && passo && <FinestraSequenza inFlusso titolo={p.titolo} passi={passi} indice={seq} onIndice={vai} onChiudi={() => vai(null)} />}
+        <div data-sim-ui className="pointer-events-auto flex max-w-full flex-wrap items-center justify-center gap-x-8 gap-y-2 rounded-2xl glass px-6 py-3">
+          {p.controlli}
+          {passi.length > 0 && seq === null && (
+            <button className="sim-avvia" onClick={() => vai(0)}>
+              <Play size={18} fill="currentColor" /> Avvia
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

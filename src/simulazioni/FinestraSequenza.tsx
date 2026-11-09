@@ -25,7 +25,7 @@ function Video({ src }: { src: string }) {
   if (!ok) return null
   return (
     <div className="overflow-hidden rounded-xl border border-white/10 bg-black/50">
-      <video key={src} src={src} autoPlay loop muted playsInline preload="metadata" className="block h-[22vh] max-h-[260px] w-full object-cover" />
+      <video key={src} src={src} autoPlay loop muted playsInline preload="metadata" className="block h-[18vh] max-h-[200px] w-full object-cover" />
     </div>
   )
 }
@@ -40,6 +40,8 @@ export default function FinestraSequenza(p: {
   indice: number
   onIndice: (i: number) => void
   onChiudi: () => void
+  /** true: la finestra sta nel flusso del contenitore (non assoluta) */
+  inFlusso?: boolean
 }) {
   const { passi, indice, onIndice } = p
   const passo = passi[indice]
@@ -65,8 +67,9 @@ export default function FinestraSequenza(p: {
   if (!passo) return null
   return (
     <div
-      className="sim-win glass absolute bottom-5 left-1/2 z-40 flex w-[46%] min-w-[500px] max-w-[760px] flex-col overflow-hidden rounded-2xl text-white"
+      className={'sim-win glass pointer-events-auto z-40 flex flex-col overflow-hidden rounded-2xl text-white ' + (p.inFlusso ? 'sim-flusso w-full max-w-[760px]' : 'absolute bottom-5 left-1/2 w-[46%] min-w-[500px] max-w-[760px]')}
       role="dialog"
+      data-sim-ui
       aria-label={p.titolo}
     >
       <Stile />
@@ -88,7 +91,7 @@ export default function FinestraSequenza(p: {
       </div>
       {!ridotta && (
         <>
-          <div key={indice} className="fade-in sim-scroll flex max-h-[48vh] flex-col gap-3 px-6 py-5">
+          <div key={indice} className="fade-in sim-scroll flex max-h-[32vh] flex-col gap-3 px-6 py-5">
             <h3 className="text-xl font-semibold leading-tight">
               <span className="mr-2 text-cyan-300">{indice + 1}.</span>
               {passo.titolo}

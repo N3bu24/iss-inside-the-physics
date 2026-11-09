@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import SimulazioneShell from './SimulazioneShell'
 import { Cursore, Pulsante } from './controlli'
 import { passiSimulazione } from './passi'
-import type { Passo } from './contenuto'
+import { metaSimulazione, type Passo } from './contenuto'
 import type { HotspotSim } from './SimulazioneShell'
 import TerraNasa from './TerraNasa'
 import Etichetta from '../ambienti/Etichetta'
@@ -301,8 +301,8 @@ export default function Aurora({ onClose }: { onClose: () => void }) {
       intro="Una carica in moto in un campo magnetico subisce una forza perpendicolare alla velocità. Il campo terrestre guida così le particelle del vento solare verso i poli, dove accendono l'aurora."
       formula={String.raw`\vec F = q\,\vec v\times\vec B \qquad r=\frac{m\,v}{q\,B}`}
       formulaNota="La forza di Lorentz non compie lavoro: cambia la direzione della velocità, non l'energia della particella. Il raggio r della traiettoria è inversamente proporzionale al campo."
-      agenda="Agenda 2030, Obiettivo 13 · Costituzione, Art. 9"
-      slide="Slide 5 (forza di Lorentz)"
+      agenda={metaSimulazione('aurora').agenda}
+      slide={metaSimulazione('aurora').slide}
       didascalia={did}
       passi={passi}
       onPasso={onPasso}

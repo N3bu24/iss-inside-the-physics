@@ -1,7 +1,7 @@
 import type { Hotspot } from './types'
 
 /**
- * Posizione di ogni hotspot (per id, come in content/hotspot.json).
+ * Posizione di ogni hotspot (per id, come in content/hotspot-v3.json (solo posizioni)).
  * Panorami: yaw/pitch in radianti. Scena 3D: nome dell'oggetto del GLB (+ spostamento opzionale in unità scena).
  * Un hotspot senza posizione qui non compare nel mondo (resta nei dati).
  * Tappe 'immagine' (intro, finale): x/y in 0..1 sull'immagine. Panorami reali ESA/NASA: yaw 0 = centro immagine,

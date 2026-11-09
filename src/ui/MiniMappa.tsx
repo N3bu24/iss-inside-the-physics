@@ -39,7 +39,7 @@ export default function MiniMappa({ corrente, visitati, onVaiA, occupato }: Prop
     <div className={`glass absolute right-4 top-4 z-30 rounded-2xl p-3 transition-[width] duration-300 ${grande ? 'w-[460px]' : 'w-[240px]'} max-w-[94vw]`}>
       <div className="mb-1 flex items-center justify-between gap-2 text-[10px] uppercase tracking-[0.18em] text-white/50">
         <span>La stazione</span>
-        <span className="flex-1 truncate text-right text-cyan-200">{nodi[corrente].nome}</span>
+        <span className="min-w-0 flex-1 text-right normal-case leading-tight tracking-normal text-[11px] text-cyan-200">{nodi[corrente].nome.split(/\s*[—,]\s*/)[0]}</span>
         <button onClick={() => setGrande(!grande)} aria-label={grande ? 'Riduci la mappa' : 'Ingrandisci la mappa'} title={grande ? 'Riduci' : 'Ingrandisci'}
           className="rounded-md p-1 text-white/60 hover:bg-white/10 hover:text-white">
           {grande ? <Minimize2 size={14} /> : <Maximize2 size={14} />}

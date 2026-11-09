@@ -1,11 +1,12 @@
-import hotspotJson from '@content/hotspot-v3.json'
+import hotspotJsonGrezzo from '@content/hotspot-v3.json'
+import { pulisciDati } from '../lib/pulisci'
 import { nodi, type NodoId } from './stazione'
 import { posizioni } from './posizioni'
-import { hotspotEsempio, luoghiEsempio, type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './esempio-hotspot'
+import { type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './esempio-hotspot'
 import type { Provenienza } from './types'
 
 /**
- * Loader dei contenuti. Usa content/hotspot.json (e content/luoghi.json, se c'è) solo quando sono nel nuovo formato
+ * Loader dei contenuti. Usa content/hotspot-v3.json (e content/luoghi-v3.json, se c'è) solo quando sono nel nuovo formato
  * (campo `categoria`); altrimenti ricade sui dati di esempio di esempio-hotspot.ts.
  */
 
@@ -29,7 +30,7 @@ const CATEGORIE: Categoria[] = ['fisica', 'eml', 'strumento', 'vita', 'terra', '
 const categoriaDa = (s: unknown): Categoria => (CATEGORIE.includes(s as Categoria) ? (s as Categoria) : 'fisica')
 
 /**
- * Correzioni di posizione (gradi) per gli hotspot che, nei dati di content/hotspot.json (`yaw_stimato`/`pitch_stimato`),
+ * Correzioni di posizione (gradi) per gli hotspot che, nei dati di content/hotspot-v3.json (`yaw_stimato`/`pitch_stimato`),
  * cadono a meno di ~15° da un portello, da un passaggio chiuso o da un altro punto: si sovrapporrebbero sullo schermo.
  * content/ non si modifica da qui: la correzione vive nel codice.
  */
@@ -92,17 +93,18 @@ function normalizzaLuogo(g: Grezzo): Luogo | null {
   }
 }
 
+const hotspotJson = pulisciDati(hotspotJsonGrezzo)
 const hotspotReali = comeLista(hotspotJson)
 const nuovoFormato = hotspotReali.some((h) => 'categoria' in h)
 const hotspotNuovi = nuovoFormato ? hotspotReali.map(normalizzaHotspot).filter((h): h is HotspotScheda => !!h) : []
 // i luoghi senza hotspot reali (es. il finale) ricadono sugli esempi
-const listaHotspot: HotspotScheda[] = [...hotspotNuovi, ...hotspotEsempio.filter((e) => !hotspotNuovi.some((h) => h.luogo === e.luogo))]
+const listaHotspot: HotspotScheda[] = hotspotNuovi // solo content/hotspot-v3.json (niente testi di esempio/v2)
 
 // luoghi.json è opzionale: la glob non fallisce se il file non esiste ancora
 const luoghiFile = import.meta.glob('/content/luoghi-v3.json', { eager: true, import: 'default' })
-const luoghiReali = comeLista(Object.values(luoghiFile)[0])
+const luoghiReali = comeLista(pulisciDati(Object.values(luoghiFile)[0]))
 const luoghiNuovi = luoghiReali.some((l) => 'punti' in l || 'scheda' in l) ? luoghiReali.map(normalizzaLuogo).filter((l): l is Luogo => !!l) : []
-const listaLuoghi: Luogo[] = [...luoghiNuovi, ...luoghiEsempio.filter((e) => !luoghiNuovi.some((l) => l.id === e.id))]
+const listaLuoghi: Luogo[] = luoghiNuovi // solo content/luoghi-v3.json
 
 export const luogoDi = (id: NodoId): Luogo =>
   listaLuoghi.find((l) => l.id === id) ?? { id, nome: nodi[id].nome, sottotitolo: nodi[id].sottotitolo, punti: [], badge: nodi[id].badge }
@@ -116,11 +118,11 @@ export interface HotspotPosizionato extends HotspotScheda { pos: Posizione | nul
 
 /** oggetti del modello EML, assegnati in ordine agli hotspot senza `oggetto3d` */
 const OGGETTI_EML: { oggetto: string; spostamento?: [number, number, number] }[] = [
-  { oggetto: 'coil_upper', spostamento: [-1.5, 0.35, 0.4] }, { oggetto: 'sample', spostamento: [1.5, 1.0, 0.4] }, { oggetto: 'sample', spostamento: [-1.6, -0.55, 0.4] },
-  { oggetto: 'coil_lower', spostamento: [1.5, -0.55, 0.4] }, { oggetto: 'chamber_assembly', spostamento: [-1.5, -1.5, 0.2] }, { oggetto: 'camera_axial', spostamento: [0.2, 0.5, 0] }, { oggetto: 'pyrometer' }, { oggetto: 'carousel' },
+  { oggetto: 'coil_upper', spostamento: [-0.6, 0.5, 0.4] }, { oggetto: 'sample', spostamento: [1.1, 1.25, 0.4] }, { oggetto: 'sample', spostamento: [-0.55, -0.5, 0.4] },
+  { oggetto: 'coil_lower', spostamento: [0.93, -0.55, 0.4] }, { oggetto: 'chamber_assembly', spostamento: [-0.93, -1.5, 0.2] }, { oggetto: 'camera_axial', spostamento: [0.12, 0.5, 0] }, { oggetto: 'pyrometer' }, { oggetto: 'carousel' },
 ]
 /** centri delle finestre della Cupola (frazioni dello schermo 16:9) */
-const FINESTRE_CUPOLA: [number, number][] = [[0.69, 0.5], [0.594, 0.72], [0.406, 0.72], [0.31, 0.5], [0.406, 0.21], [0.594, 0.21]]
+const FINESTRE_CUPOLA: [number, number][] = [[0.69, 0.5], [0.594, 0.68], [0.406, 0.68], [0.31, 0.5], [0.406, 0.21], [0.594, 0.21]]
 const GRIGLIA_IMMAGINE: [number, number][] = [[0.2, 0.4], [0.8, 0.4], [0.35, 0.68], [0.65, 0.68], [0.12, 0.6], [0.88, 0.62]]
 const deg = (r: number) => (r * 180) / Math.PI
 
