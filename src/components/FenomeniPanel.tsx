@@ -53,12 +53,12 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
           </div>
           <div className="mt-2"><Badge tipo="simulazione" /></div>
           <p className="mt-3 text-sm leading-relaxed text-white/80">{f.testo}</p>
-          {f.latex && (
+          {(f.approfondimento ?? f.latex) && (
             <div className="mt-3 rounded-xl border border-cyan-300/20 bg-cyan-300/5">
               <button onClick={() => setFormula(!formula)} className="flex w-full items-center justify-between px-4 py-2.5 text-sm text-cyan-200">
-                Mostra la formula <span className={formula ? 'rotate-180' : ''}>⌄</span>
+                Approfondimento <span className={formula ? 'rotate-180' : ''}>⌄</span>
               </button>
-              {formula && <div className="fade-in border-t border-cyan-300/15 px-4 py-2"><Latex tex={f.latex} /></div>}
+              {formula && <div className="fade-in border-t border-cyan-300/15 px-4 py-2">{f.approfondimento ? <Latex tex={f.approfondimento} misto /> : <Latex tex={f.latex!} />}</div>}
             </div>
           )}
         </div>
