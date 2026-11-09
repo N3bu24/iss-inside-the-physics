@@ -13,8 +13,11 @@ export interface Hotspot {
   /** posizione nel panorama (radianti) */
   yaw?: number
   pitch?: number
-  /** posizione nella scena 3D */
-  pos3d?: [number, number, number]
+  /** oggetto nominato del modello 3D a cui agganciare il punto (+ spostamento in unità scena) */
+  oggetto3d?: string
+  spostamento3d?: [number, number, number]
+  /** fonte citata nel contenuto */
+  fonte?: string
   titolo: string
   testo: string
   /** LaTeX opzionale, mostrato in un pannello espandibile */
@@ -22,6 +25,21 @@ export interface Hotspot {
   approfondimentoTitolo?: string
   media?: Media
   badge: Provenienza
+}
+
+export interface Clip {
+  id: string
+  testo: string
+  durata: number // secondi (stima dal copione)
+  audio: string
+}
+
+export interface Clip {
+  id: string
+  testo: string
+  /** secondi, stimati dal copione */
+  durata: number
+  audio: string
 }
 
 export interface Collegamento {
@@ -41,9 +59,8 @@ export interface Tappa {
   yawIniziale?: number
   hotspot: Hotspot[]
   collegamenti: Collegamento[]
-  audio?: string
-  sottotitoli?: string // URL .vtt
-  trascrizione?: string
+  /** clip di voce in ordine di riproduzione (audio in public/audio/<id-clip>.mp3) */
+  clip: Clip[]
   /** id del modulo ISS sulla mini-mappa */
   modulo: string
   /** colore dominante del segnaposto panorama */
@@ -65,5 +82,9 @@ export interface Fenomeno {
   titolo: string
   testo: string
   latex?: string
+  /** testo con formule inline $...$, in pannello espandibile */
+  approfondimento?: string
+  /** id della clip di voce associata */
+  clip?: string
   colore: 'cyan' | 'heat'
 }

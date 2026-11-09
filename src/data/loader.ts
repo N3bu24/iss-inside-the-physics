@@ -1,38 +1,52 @@
+import hotspotJson from '@content/hotspot.json'
+import copioniJson from '@content/copioni.json'
 import { tappe, fenomeni } from './tour'
-import type { Hotspot } from './types'
+import { posizioni } from './posizioni'
+import type { Provenienza } from './types'
 
 /**
- * Punto di integrazione dei contenuti scritti dall'altro agente.
- * Formati attesi (da adattare quando i file esisteranno):
- *  - /content/hotspot.json: { [tappaId]: { [hotspotId]: Partial<Hotspot> }, fenomeni: { [id]: Partial<Fenomeno> } }
- *  - /content/copioni.json: { [tappaId]: { testo | trascrizione: string } }
- * Copiare i file in public/content/. Se mancano, restano i segnaposto.
+ * Integra a build time i contenuti reali:
+ *  - content/hotspot.json: [{ id, tappa, titolo, testo, approfondimento?, badge, fonte }]
+ *  - content/copioni.json: [{ id, tappa, testo, durata_stimata_s }]   (un id per clip, audio = public/audio/<id>.mp3)
+ * Si applica una volta sola all'import (effetto collaterale voluto: i dati sono pronti prima del render).
  */
-export async function caricaContenuti(): Promise<void> {
-  try {
-    const [h, c] = await Promise.all([fetchJson('/content/hotspot.json'), fetchJson('/content/copioni.json')])
-    if (h) {
-      for (const t of tappe) {
-        const ov = h[t.id] as Record<string, Partial<Hotspot>> | undefined
-        if (!ov) continue
-        t.hotspot = t.hotspot.map((x) => ({ ...x, ...(ov[x.id] ?? {}) }))
-      }
-      const fen = h['fenomeni'] as Record<string, Partial<(typeof fenomeni)[number]>> | undefined
-      if (fen) fenomeni.forEach((f, i) => (fenomeni[i] = { ...f, ...(fen[f.id] ?? {}) }))
-    }
-    if (c) {
-      for (const t of tappe) {
-        const s = c[t.id] as { trascrizione?: string; testo?: string } | undefined
-        if (s) t.trascrizione = s.trascrizione ?? s.testo
-      }
-    }
-  } catch {
-    /* restano i segnaposto */
+
+const BADGE: Record<string, Provenienza> = {
+  'foto reale': 'foto',
+  'ricostruzione ia': 'ia',
+  'modello 3d': 'modello3d',
+  'simulazione concettuale': 'simulazione',
+}
+const badgeDa = (s: string): Provenienza => BADGE[s.trim().toLowerCase()] ?? 'ia'
+
+interface HotspotJson { id: string; tappa: string; titolo: string; testo: string; approfondimento?: string; badge: string; fonte?: string }
+interface ClipJson { id: string; tappa: string; testo: string; durata_stimata_s?: number }
+
+function applica() {
+  const hs = hotspotJson as HotspotJson[]
+  const clip = copioniJson as ClipJson[]
+  for (const t of tappe) {
+    t.hotspot = hs
+      .filter((h) => h.tappa === t.id)
+      .map((h) => ({
+        id: h.id,
+        titolo: h.titolo,
+        testo: h.testo,
+        approfondimento: h.approfondimento,
+        badge: badgeDa(h.badge),
+        fonte: h.fonte,
+        ...posizioni[h.id],
+      }))
+    t.clip = clip
+      .filter((c) => c.tappa === t.id)
+      .map((c) => ({ id: c.id, testo: c.testo, durata: c.durata_stimata_s ?? Math.max(8, c.testo.length / 14), audio: `/audio/${c.id}.mp3` }))
+  }
+  // i fenomeni riprendono testo e approfondimento dal rispettivo hotspot
+  for (const f of fenomeni) {
+    const h = hs.find((x) => x.id === f.hotspot)
+    if (!h) continue
+    f.testo = h.testo
+    f.approfondimento = h.approfondimento
   }
 }
-
-async function fetchJson(url: string): Promise<Record<string, unknown> | null> {
-  const r = await fetch(url)
-  if (!r.ok || !(r.headers.get('content-type') ?? '').includes('json')) return null
-  return r.json()
-}
+applica()

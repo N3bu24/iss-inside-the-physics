@@ -45,8 +45,12 @@ export default function PanoViewer({ tappa, onHotspot, onNavigate }: Props) {
       if (cancelled || !el.current) return
       const opts = { yaw: tappa.yawIniziale ?? 0, pitch: 0 }
       if (!viewer.current) {
+        // host creato a mano: PSV rimuove il proprio container in destroy(), React non deve possederlo
+        const host = document.createElement('div')
+        host.style.cssText = 'position:absolute;inset:0'
+        el.current.appendChild(host)
         const v = new Viewer({
-          container: el.current,
+          container: host,
           panorama: url,
           navbar: false,
           defaultYaw: opts.yaw,
@@ -79,7 +83,14 @@ export default function PanoViewer({ tappa, onHotspot, onNavigate }: Props) {
     return () => { cancelled = true }
   }, [tappa])
 
-  useEffect(() => () => { viewer.current?.destroy(); viewer.current = null }, [])
+  useEffect(() => () => {
+    const v = viewer.current
+    viewer.current = null
+    if (!v) return
+    const host = v.container.parentElement
+    v.destroy()
+    host?.remove()
+  }, [])
 
   return <div ref={el} className="absolute inset-0" />
 }

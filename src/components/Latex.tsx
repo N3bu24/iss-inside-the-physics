@@ -1,6 +1,12 @@
-import katex from 'katex'
+import { lazy, Suspense } from 'react'
 
-export default function Latex({ tex }: { tex: string }) {
-  const html = katex.renderToString(tex, { displayMode: true, throwOnError: false })
-  return <div className="text-white" dangerouslySetInnerHTML={{ __html: html }} />
+const KatexView = lazy(() => import('./KatexView'))
+
+/** `tex` = formula in display; con `misto` = testo con formule inline $...$ (come negli approfondimenti). */
+export default function Latex({ tex, misto }: { tex: string; misto?: boolean }) {
+  return (
+    <Suspense fallback={<div className="py-2 text-sm text-white/40">…</div>}>
+      <KatexView tex={tex} misto={misto} />
+    </Suspense>
+  )
 }

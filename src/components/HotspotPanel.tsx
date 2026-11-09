@@ -38,12 +38,13 @@ export default function HotspotPanel({ hotspot, onClose }: { hotspot: Hotspot; o
             <span className={`transition-transform ${open ? 'rotate-180' : ''}`}>⌄</span>
           </button>
           {open && (
-            <div className="fade-in border-t border-cyan-300/15 px-4 py-3 text-lg">
-              <Latex tex={hotspot.approfondimento} />
+            <div className="fade-in border-t border-cyan-300/15 px-4 py-3">
+              <Latex tex={hotspot.approfondimento} misto />
             </div>
           )}
         </div>
       )}
+      {hotspot.fonte && <p className="mt-5 text-[11px] leading-snug text-white/40">Fonte: {hotspot.fonte}</p>}
     </aside>
   )
 }
