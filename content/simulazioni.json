@@ -1,0 +1,430 @@
+[
+  {
+    "id": "eml",
+    "titolo": "EML: levitare e fondere un metallo",
+    "luogo": "eml",
+    "hotspot": ["columbus-rack-eml", "eml-bobina", "eml-correnti", "eml-joule", "eml-campione", "eml-induttore", "eml-faraday"],
+    "scena": "Sezione tridimensionale semi-trasparente della camera di processo dell'EML, su fondo grigio scuro (stile laboratorio). Al centro una bobina in rame (colore rame #B87333, spire visibili, apertura laterale verso la telecamera) attorno a una sfera di metallo grigio chiaro di circa 5-8 mm, scalata per leggibilità. Intorno: portacampioni in ceramica (bianco avorio) con fessure, magazzino a revolver con 18 posizioni sul lato, telecamera veloce, pirometro con piccolo cono di luce, SCE come piccola scatola. Si animano: (1) linee di campo del quadrupolo (azzurro) e del dipolo (arancione), con intensità pulsante alla frequenza (rallentata); (2) anelli di corrente parassita (giallo) sulla sfera, in senso opposto al campo; (3) colore della sfera da grigio a rosso, giallo, bianco incandescente, con alone (bloom); (4) superficie della goccia che oscilla (deformazione sferica); (5) fronte di solidificazione come zona chiara che si espande dall'esterno, con rilascio di calore (ricalescenza) mostrato da un lampo di luminosità. Una piccola finestra centrale in sovraimpressione mostra il passo corrente con titolo, testo e, se presente, la formula; un indicatore di temperatura a barra.",
+    "componenti": [
+      { "nome": "Bobina in rame", "icona_categoria": "eml", "spiegazione": "Un solo avvolgimento con due correnti alternate sovrapposte: quadrupolo (circa 140 kHz) per posizionare e dipolo (circa 380 kHz) per scaldare [da fonti secondarie, DA VERIFICARE]." },
+      { "nome": "Campione sferico", "icona_categoria": "eml", "spiegazione": "Sfera di lega di alluminio, rame o nichel, di circa 5-8 mm: dentro nascono le correnti parassite." },
+      { "nome": "Portacampioni e magazzino", "icona_categoria": "strumento", "spiegazione": "Ogni campione sta in un portacampioni di ceramica e renio; un magazzino a revolver ne contiene 18, cambiati dall'equipaggio." },
+      { "nome": "Telecamera veloce e pirometro", "icona_categoria": "strumento", "spiegazione": "La telecamera arriva fino a 30 000 fotogrammi al secondo (Airbus); il pirometro misura la temperatura senza contatto." },
+      { "nome": "Gas inerte e vuoto", "icona_categoria": "fisica", "spiegazione": "La camera è sotto vuoto e riempita con gas inerte (argon nelle prove ESA 2021): evita che il metallo caldo si ossidi." },
+      { "nome": "Generatore in corrente alternata", "icona_categoria": "energia", "spiegazione": "Alimenta la bobina, che è un induttore: la sua autoinduzione limita la crescita della corrente." }
+    ],
+    "passi": [
+      {
+        "titolo": "Carico del campione",
+        "testo": "Un magazzino a revolver contiene 18 campioni sferici di leghe metalliche, ognuno in un portacampioni di ceramica e renio. Un meccanismo sceglie il campione e lo porta al centro della bobina, nella camera sotto vuoto. Il magazzino è sostituito dall'equipaggio; l'esperimento è comandato dal centro utenti DLR di Colonia.",
+        "cosa_si_vede": "Il revolver ruota, un campione scivola verso il centro della bobina; l'atmosfera nella camera si colora di azzurro tenue (gas inerte).",
+        "formula": null
+      },
+      {
+        "titolo": "Posizionamento con il campo di quadrupolo",
+        "testo": "Una corrente alternata nella bobina crea un campo magnetico che varia nel tempo. Il flusso attraverso il campione cambia e, per Faraday-Neumann, vi nascono correnti parassite. Per la legge di Lenz si oppongono alla variazione: il campione è respinto dalle zone di campo forte verso il centro, dove il campo di quadrupolo si annulla.",
+        "cosa_si_vede": "Il campione si stacca dal portacampioni e si ferma al centro; linee di campo azzurre pulsano, anelli gialli girano sulla sfera.",
+        "formula": "\\varepsilon = -\\frac{d\\Phi_B}{dt}"
+      },
+      {
+        "titolo": "Riscaldamento con il campo di dipolo",
+        "testo": "Un secondo campo, a frequenza più alta, induce nel campione correnti che incontrano la resistenza del metallo. L'energia elettrica diventa calore per effetto Joule, dall'interno e senza contatto. Più è rapida la variazione di flusso, più sono intense le correnti, e più cresce la temperatura: oltre 2000 °C, secondo ESA e Airbus.",
+        "cosa_si_vede": "Il campione passa da grigio a rosso, giallo e bianco; la barra della temperatura sale; il pirometro mostra un cono luminoso.",
+        "formula": "P = R\\,i^2 = \\frac{\\varepsilon^2}{R}"
+      },
+      {
+        "titolo": "Fusione",
+        "testo": "Raggiunta la temperatura di fusione, il metallo diventa liquido, ma la goccia non cade né si appoggia: il campo la tiene al centro. In microgravità basta un campo molto più debole che a terra, quindi la goccia resta quasi sferica e il liquido non è agitato da forze intense. Senza pareti non si contamina.",
+        "cosa_si_vede": "La superficie diventa lucida e liscia come uno specchio incandescente; la sfera si stabilizza.",
+        "formula": null
+      },
+      {
+        "titolo": "Oscillazione della goccia e misure",
+        "testo": "Con un breve impulso di campo la goccia viene fatta oscillare. La frequenza di oscillazione dipende dalla tensione superficiale, e il modo in cui le oscillazioni si spengono dalla viscosità. Una telecamera ne registra la forma. Le relazioni di Rayleigh e Lamb vengono dalla fluidodinamica: non fanno parte del programma di teoria.",
+        "cosa_si_vede": "La sfera si deforma ritmicamente in ellissoide e torna sferica; un grafico mostra l'oscillazione che si smorza.",
+        "formula": "\\omega^2 = \\frac{8\\,\\sigma}{\\rho\\,r^3}"
+      },
+      {
+        "titolo": "Raffreddamento e solidificazione",
+        "testo": "Si riduce la potenza di riscaldamento. Senza pareti, la goccia può scendere sotto la temperatura di fusione restando liquida: è il sottoraffreddamento. Quando parte la cristallizzazione, un fronte solido attraversa la goccia; il calore latente liberato la fa risalire di temperatura per un istante, la ricalescenza. Una camera veloce ne misura la velocità.",
+        "cosa_si_vede": "La sfera si scurisce; poi un fronte chiaro attraversa la superficie e un lampo di luminosità segnala la ricalescenza; il metallo si spegne in grigio.",
+        "formula": null
+      }
+    ],
+    "controlli": [
+      "Cursore «Potenza di riscaldamento»: cambia la luminosità e la temperatura della sfera (solo scena)",
+      "Interruttore «Mostra le linee di campo»: accende o spegne quadrupolo e dipolo"
+    ],
+    "voce": "Questa è la scena dell'EML. Premi Avvia e seguirai un esperimento in sei passi. Prima il campione viene portato nella bobina. Poi il campo di quadrupolo lo sospende, perché le correnti parassite respingono la bobina. Il campo di dipolo lo scalda per effetto Joule, fino a fonderlo. Poi la goccia oscilla e si misura, infine si raffredda e solidifica.",
+    "slide_pptx": [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 19],
+    "agenda": "Obiettivo 9: la ricerca sui materiali senza contenitore dà dati per l'industria di leghe, turbine e componenti; la stessa fisica di Lenz sostiene i treni Maglev."
+  },
+  {
+    "id": "campo",
+    "titolo": "La ISS nel campo magnetico terrestre",
+    "luogo": "amb-campo",
+    "hotspot": ["harmony-laptop", "unity-airlock", "tranquility-portello-cupola", "cupola-terra"],
+    "scena": "Globo terrestre stilizzato blu scuro con linee di campo di un dipolo (azzurro chiaro) che escono al polo sud e rientrano al polo nord. La ISS è un modello semplice (traliccio grigio con pannelli dorati) in orbita su un cerchio inclinato di 51,6 gradi, in movimento continuo. Sulla ISS si anima una freccia di fem (giallo) la cui lunghezza è proporzionale a ε e un valore in volt in sovraimpressione. Due piccoli simboli di plasma contactor (viola) emettono uno sbuffo di plasma. Il vettore velocità è verde, il campo B azzurro, la struttura (l) arancione; si evidenzia la superficie spazzata come un nastro semitrasparente dietro la struttura. Piccola finestra centrale con il passo.",
+    "componenti": [
+      { "nome": "Struttura della ISS", "icona_categoria": "fisica", "spiegazione": "Conduttore di lunghezza l (ordine di 100 m) in moto: ai suoi estremi si separano le cariche." },
+      { "nome": "Linee del campo terrestre", "icona_categoria": "fisica", "spiegazione": "Campo magnetico di dipolo; a 400 km vale circa 30 microtesla [DA VERIFICARE con IGRF]." },
+      { "nome": "Vettore velocità", "icona_categoria": "fisica", "spiegazione": "Circa 7,7 km/s lungo l'orbita." },
+      { "nome": "Nastro di superficie spazzata", "icona_categoria": "fisica", "spiegazione": "L'area l·v·dt tagliata ogni istante: è ciò che fa variare il flusso." },
+      { "nome": "Plasma contactor", "icona_categoria": "strumento", "spiegazione": "Emettono plasma di xeno e collegano la struttura all'ambiente, tenendola entro ±40 volt [DA VERIFICARE]." }
+    ],
+    "passi": [
+      {
+        "titolo": "Un conduttore in moto",
+        "testo": "La ISS orbita a circa 400 km di quota con velocità di circa 7,7 km/s. È una struttura in gran parte metallica, quindi un conduttore. Intorno a lei c'è il campo magnetico terrestre. È la situazione del primo esperimento di Faraday: un conduttore che si muove in un campo magnetico.",
+        "cosa_si_vede": "La ISS percorre l'orbita; le linee del campo azzurre la attraversano.",
+        "formula": null
+      },
+      {
+        "titolo": "Il flusso varia",
+        "testo": "Muovendosi, la struttura spazza ogni secondo una superficie l per v. Il flusso del campo magnetico attraverso quella superficie aumenta nel tempo. Basta una variazione di flusso perché, per la legge di Faraday-Neumann, nasca una fem indotta: non serve alcun circuito chiuso per avere la tensione.",
+        "cosa_si_vede": "Dietro la struttura si forma un nastro semitrasparente che si allunga.",
+        "formula": "d\\Phi_B = B\\,l\\,v\\,dt"
+      },
+      {
+        "titolo": "La fem di moto",
+        "testo": "Dividendo per dt si ottiene ε = B l v. Con B di 30 microtesla, l di 100 metri e v di 7,7 km/s si ottengono circa 23 volt, un valore dello stesso ordine di quello stimato dalla NASA. È un massimo, con struttura, velocità e campo perpendicolari; con altre orientazioni la fem si riduce, fino ad annullarsi.",
+        "cosa_si_vede": "La freccia gialla sulla struttura si allunga, con il valore in volt che compare.",
+        "formula": "\\varepsilon = B\\,l\\,v"
+      },
+      {
+        "titolo": "Inclinare la struttura",
+        "testo": "Se la struttura si inclina fino a diventare parallela alla velocità, l'area spazzata si annulla, e con lei la fem. Conta solo la componente perpendicolare a v e a B. È lo stesso ragionamento del flusso con l'angolo θ: ciò che varia nel tempo determina la tensione.",
+        "cosa_si_vede": "La struttura ruota; il nastro si assottiglia fino a sparire e la freccia si annulla.",
+        "formula": null
+      },
+      {
+        "titolo": "I plasma contactor",
+        "testo": "La ISS è immersa in un plasma rarefatto e, oltre alla fem di moto, la sua struttura tende a caricarsi. Due plasma contactor emettono plasma di xeno e la collegano elettricamente all'ambiente, mantenendone il potenziale entro ±40 volt: serve a proteggere strumenti e astronauti [da verificare su documenti NASA].",
+        "cosa_si_vede": "Sbuffi viola dai due contactor; un indicatore di potenziale resta nella fascia verde.",
+        "formula": null
+      }
+    ],
+    "controlli": [
+      "Cursore «Velocità» (0-8 km/s): la freccia della fem e il valore in volt si aggiornano",
+      "Cursori «Campo B» (20-50 µT) e «Lunghezza» (10-110 m); interruttore per accendere o spegnere i plasma contactor"
+    ],
+    "voce": "Qui la stazione è un conduttore che si muove dentro il campo magnetico della Terra. Premi Avvia e segui i passaggi: il nastro che si allunga dietro la struttura è la superficie spazzata, e il flusso che cambia fa nascere la tensione. Poi gioca con velocità, campo e lunghezza e guarda i volt cambiare. Con i valori predefiniti si arriva a circa ventitré volt.",
+    "slide_pptx": [2, 7, 8, 9, 10],
+    "agenda": "Infrastrutture complesse come la ISS vanno progettate anche contro effetti fisici invisibili: è una forma di resilienza (Obiettivo 9)."
+  },
+  {
+    "id": "energia",
+    "titolo": "Energia di bordo: dal pannello al rack",
+    "luogo": "amb-energia",
+    "hotspot": ["harmony-cavi", "columbus-laptop", "destiny-alimentazione", "destiny-cavi-cc", "unity-zarya", "cupola-pannelli"],
+    "scena": "Diagramma 3D a isole su griglia scura. A sinistra un'ala solare dorata con Sole stilizzato (corrente continua, frecce blu piene). Al centro un alternatore (rotore con magnete NS rosso-blu che ruota in uno statore con bobine in rame) con piccolo oscilloscopio che mostra l'onda sinusoidale. Segue un trasformatore (due bobine su nucleo di ferro grigio, linee di campo che si chiudono nel ferro, numero di spire N1 e N2 regolabili). A destra una linea di trasmissione (cavo con alette) che cambia colore da grigio a arancione dove si scalda, e un rack finale con un laptop. Un commutatore «ISS / Terra» sposta la vista tra DDCU (160 V a 124,5 V) e centrale con turbina. Finestra centrale con il passo.",
+    "componenti": [
+      { "nome": "Pannello solare", "icona_categoria": "energia", "spiegazione": "Luce in corrente continua, senza parti in movimento, né alternatore." },
+      { "nome": "Alternatore", "icona_categoria": "energia", "spiegazione": "Una spira che ruota in un campo: fem sinusoidale, N B S ω sin(ωt)." },
+      { "nome": "Trasformatore", "icona_categoria": "energia", "spiegazione": "Due bobine su un nucleo di ferro: V₁/V₂ = N₁/N₂ per grandezze che variano nel tempo." },
+      { "nome": "Linea di trasmissione", "icona_categoria": "energia", "spiegazione": "Perdite Joule P = R i²: alta tensione, bassa corrente, poche perdite." },
+      { "nome": "Convertitore DDCU", "icona_categoria": "energia", "spiegazione": "Porta circa 160 V dei pannelli a circa 124,5 V per i rack, con trasformatore ad alta frequenza [DA VERIFICARE]." }
+    ],
+    "passi": [
+      {
+        "titolo": "Dalla luce alla corrente continua",
+        "testo": "Sulla ISS la fonte principale sono i pannelli solari. Le celle fotovoltaiche trasformano direttamente la luce in corrente continua, senza turbine né alternatori. È un'eccezione tra le fonti elencate nella teoria: tutte le altre, dall'idroelettrico al nucleare, usano un alternatore.",
+        "cosa_si_vede": "Fotoni gialli colpiscono il pannello; frecce blu continue escono verso il resto della catena.",
+        "formula": null
+      },
+      {
+        "titolo": "L'alternatore",
+        "testo": "Nelle altre centrali una turbina fa ruotare una spira in un campo magnetico. L'angolo tra campo e superficie cambia, il flusso varia e, per Faraday-Neumann-Lenz, nasce una fem sinusoidale. Più rapida è la rotazione, più alta la fem e più alta la frequenza.",
+        "cosa_si_vede": "Il rotore gira; sull'oscilloscopio un'onda sinusoidale cresce in altezza e si infittisce.",
+        "formula": "\\varepsilon(t) = N\\,B\\,S\\,\\omega\\sin(\\omega t)"
+      },
+      {
+        "titolo": "Il trasformatore",
+        "testo": "Una corrente alternata nel primario crea un flusso variabile nel nucleo, che attraversa il secondario. Il rapporto tra le tensioni è pari al rapporto tra le spire. Con più spire nel secondario la tensione sale e, a potenza costante, la corrente scende.",
+        "cosa_si_vede": "Il numero di spire del secondario cambia; le linee di campo si chiudono nel ferro; le tensioni si aggiornano.",
+        "formula": "\\frac{V_1}{V_2} = \\frac{N_1}{N_2}"
+      },
+      {
+        "titolo": "Perché alta tensione",
+        "testo": "Un cavo ha una resistenza: la corrente lo scalda con potenza R i². A parità di potenza trasportata P = V i, alzando la tensione si abbassa la corrente e le perdite diminuiscono con il quadrato. Con l'esempio concettuale di 10 MW su una linea di 5 ohm a 10 kV si perderebbe metà della potenza; a 380 kV quasi nulla.",
+        "cosa_si_vede": "Selezionando 10, 100, 380 kV la linea passa da arancione acceso a grigia; la corrente e le perdite si aggiornano.",
+        "formula": "P_J = R\\left(\\frac{P}{V}\\right)^2"
+      },
+      {
+        "titolo": "La rete della ISS",
+        "testo": "A bordo i pannelli danno circa 160 V in continua, mentre i rack usano circa 124,5 V. I convertitori DDCU spezzettano la corrente ad alta frequenza, la trasformano e la raddrizzano. Con la frequenza alta, la variazione di flusso è rapida e il trasformatore può essere piccolo e leggero.",
+        "cosa_si_vede": "La vista passa alla ISS: pannelli, DDCU e rack, con le due tensioni indicate.",
+        "formula": "\\frac{V_2}{V_1} = \\frac{N_2}{N_1}"
+      }
+    ],
+    "controlli": [
+      "Selettore «Sorgente»: pannello fotovoltaico o centrale con turbina; cursore «Velocità di rotazione»",
+      "Cursore «Spire del secondario» e selettore «Tensione della linea» (10, 100, 380 kV)"
+    ],
+    "voce": "In questa simulazione segui l'energia dal pannello solare fino al rack. Premi Avvia: vedrai prima la corrente continua dei pannelli, poi un alternatore che produce un'onda sinusoidale e un trasformatore che cambia la tensione. Poi scopri perché le linee elettriche usano alte tensioni: il cavo che si scalda è il calore perso per effetto Joule.",
+    "slide_pptx": [3, 5, 18, 19, 20, 21, 22, 23],
+    "agenda": "Obiettivo 7: energia pulita e accessibile. Quasi tutte le fonti rinnovabili, tranne il fotovoltaico, trasformano energia cinetica in elettrica con un alternatore."
+  },
+  {
+    "id": "levitazione",
+    "titolo": "Levitazione: dall'EML al Maglev",
+    "luogo": "amb-levitazione",
+    "hotspot": ["kibo-elf", "kibo-ricadute", "eml-faraday"],
+    "scena": "Tre scene collegate da schede. (1) Lastra di rame (colore rame) con magnete a barra rosso-blu trascinabile; sulla lastra anelli di corrente gialli che compaiono sotto il magnete, in verso opposto alla variazione; frecce di repulsione verso l'alto; lastra che si scalda (arancia). (2) Mini-EML: bobina in rame con sfera che sale verso il centro e brilla. (3) Treno Maglev stilizzato (bianco e blu) su guida a U con bobine a 8 sulle pareti; ruote a contatto sotto la soglia, poi treno sollevato di pochi centimetri con anelli di corrente visibili nelle bobine. Confronto: cartellino «ELF (JAXA): forza elettrostatica» con campione carico tra due elettrodi. Finestra centrale con il passo.",
+    "componenti": [
+      { "nome": "Magnete e lastra", "icona_categoria": "fisica", "spiegazione": "Il terzo esperimento di Faraday: un magnete in moto induce correnti parassite in un conduttore." },
+      { "nome": "Anelli di corrente", "icona_categoria": "fisica", "spiegazione": "Correnti indotte che producono un campo opposto alla variazione (Lenz)." },
+      { "nome": "Campione EML", "icona_categoria": "eml", "spiegazione": "Il metallo levita perché la bobina fa variare il flusso nel campione." },
+      { "nome": "Treno Maglev", "icona_categoria": "terra", "spiegazione": "I magneti del treno inducono correnti nelle bobine della guida; oltre una soglia di velocità si solleva (circa 150 km/h [DA VERIFICARE])." },
+      { "nome": "ELF di Kibo", "icona_categoria": "eml", "spiegazione": "Levitazione elettrostatica: F = qE, funziona anche con isolanti." }
+    ],
+    "passi": [
+      {
+        "titolo": "Un magnete in moto sul rame",
+        "testo": "Un magnete che si muove sopra una lastra di rame fa variare il flusso del campo attraverso ogni punto della lastra. Per Faraday-Neumann nascono fem e, per la prima legge di Ohm, correnti: sono le correnti parassite. Se il magnete è fermo non succede nulla.",
+        "cosa_si_vede": "Il magnete scorre; sotto di lui compaiono anelli gialli che seguono il suo moto.",
+        "formula": "i = \\frac{\\varepsilon}{R}"
+      },
+      {
+        "titolo": "La legge di Lenz",
+        "testo": "Le correnti indotte generano un campo che si oppone alla variazione di flusso che le ha create. Il magnete è quindi respinto o frenato: tanto più, quanto più veloce è il suo moto. Nella lastra una parte dell'energia diventa calore per effetto Joule.",
+        "cosa_si_vede": "Frecce di repulsione verso l'alto; la lastra si scalda leggermente (arancia).",
+        "formula": "\\varepsilon = -\\frac{d\\Phi_B}{dt}"
+      },
+      {
+        "titolo": "Dall'esperimento all'EML",
+        "testo": "Nell'EML non si muove il magnete: è la corrente alternata a far variare il campo. Il campione sferico è la «lastra». Le correnti parassite lo respingono dalla bobina verso il centro, dove il campo si annulla. In orbita bastano campi deboli, perché il campione non deve vincere il proprio peso.",
+        "cosa_si_vede": "La sfera sale e si ferma al centro della bobina; più potenza è data, più brilla.",
+        "formula": null
+      },
+      {
+        "titolo": "Il treno Maglev",
+        "testo": "Nel Maglev giapponese i magneti del treno, passando davanti alle bobine della guida, vi inducono correnti. Sotto la soglia di velocità il flusso varia troppo lentamente e il treno poggia sulle ruote; oltre, la repulsione lo solleva. Nessun contatto, nessun attrito di rotolamento: infrastruttura innovativa, Obiettivo 9.",
+        "cosa_si_vede": "Il treno accelera; superata la soglia le ruote si staccano e gli anelli di corrente si accendono nella guida.",
+        "formula": null
+      },
+      {
+        "titolo": "Quando l'induzione non basta",
+        "testo": "L'induzione funziona solo con conduttori. Vetri e ossidi sono isolanti, e per levitarli l'ELF di Kibo usa la forza elettrica su un campione carico, F = qE, regolata da elettrodi. Due strade diverse per lo stesso scopo: studiare un materiale caldo senza contenitore.",
+        "cosa_si_vede": "Un campione carico fra due elettrodi viene centrato da piccole frecce elettriche.",
+        "formula": "\\vec F = q\\,\\vec E"
+      }
+    ],
+    "controlli": [
+      "Cursore «Velocità del magnete / del treno»: intensità delle correnti e della repulsione",
+      "Cursore «Potenza del campo» nella scena EML: il campione sale e si scalda"
+    ],
+    "voce": "Qui vedi la legge di Lenz in tre versioni. Premi Avvia: un magnete in moto sopra una lastra di rame induce correnti che lo respingono. Poi lo stesso principio sostiene il campione nell'EML e solleva un treno Maglev. Alla fine vedrai l'ELF di Kibo, che usa forze elettriche: la levitazione ha più strade.",
+    "slide_pptx": [4, 8, 9, 11],
+    "agenda": "Obiettivo 9: infrastrutture innovative, senza attrito di contatto; la ricerca sui materiali in orbita porta innovazione nell'industria."
+  },
+  {
+    "id": "rmn",
+    "titolo": "Salute: la risonanza magnetica",
+    "luogo": "amb-rmn",
+    "hotspot": ["tranquility-ared"],
+    "scena": "Sezione di un magnete RMN a solenoide (anello grigio con bobine in rame visibili in trasparenza) con un paziente stilizzato (sagoma neutra) nel foro. Dentro la sagoma, a ingrandimento, un piccolo gruppo di spin come frecce rosse che precedono attorno a un asse B0 azzurro (verticale). Una bobina ricevente a sella (giallo) appare vicino al torace; segnale oscillante smorzato su un oscilloscopio. Un pulsante «Impulso radio» emette un'onda arancione. Finestra centrale con il passo.",
+    "componenti": [
+      { "nome": "Magnete a solenoide", "icona_categoria": "strumento", "spiegazione": "Genera il campo B₀ (da 0,5 a 3 T); l'energia è immagazzinata nel campo, E = ½ L i²." },
+      { "nome": "Spin dei protoni", "icona_categoria": "fisica", "spiegazione": "I nuclei di idrogeno si comportano come piccoli magneti che precedono attorno a B₀." },
+      { "nome": "Impulso a radiofrequenza", "icona_categoria": "fisica", "spiegazione": "Alla frequenza giusta inclina gli spin rispetto al campo." },
+      { "nome": "Bobina ricevente", "icona_categoria": "strumento", "spiegazione": "Rileva per induzione il campo variabile degli spin: legge di Faraday-Neumann." }
+    ],
+    "passi": [
+      {
+        "titolo": "Il campo intenso",
+        "testo": "Il paziente è in un campo magnetico molto intenso e uniforme, creato da un solenoide: da 0,5 a 3 tesla. I nuclei di idrogeno dell'acqua e dei grassi, che si comportano come piccoli magneti, si orientano in prevalenza lungo il campo. Per l'autoinduzione, il campo cresce con gradualità.",
+        "cosa_si_vede": "Le frecce rosse degli spin si allineano a B₀ (azzurro).",
+        "formula": "E = \\tfrac{1}{2}\\,L\\,i^2"
+      },
+      {
+        "titolo": "La precessione",
+        "testo": "Un nucleo inclinato non resta fermo: ruota attorno alla direzione del campo come una trottola. Questa precessione ha una frequenza precisa, proporzionale al campo: per il protone circa 42,58 MHz per tesla. A 1,5 tesla sono circa 64 MHz, a 3 tesla circa 128 MHz.",
+        "cosa_si_vede": "Gli spin ruotano attorno all'asse; la frequenza indicata cambia con il cursore del campo.",
+        "formula": "f = \\frac{\\gamma}{2\\pi}\\,B_0"
+      },
+      {
+        "titolo": "L'impulso radio",
+        "testo": "Un breve impulso a radiofrequenza, alla frequenza di precessione, inclina gli spin. Fuori risonanza non succede nulla: da qui il nome «risonanza». Ora il campo magnetico complessivo degli spin ruota e il suo flusso attraverso la bobina varia.",
+        "cosa_si_vede": "Un'onda arancione attraversa il corpo; gli spin si inclinano e girano in fase.",
+        "formula": null
+      },
+      {
+        "titolo": "Il segnale per induzione",
+        "testo": "Mentre gli spin precedono, il flusso attraverso la bobina ricevente varia nel tempo e vi induce una fem: è la legge di Faraday-Neumann. Il segnale oscilla e si smorza mentre gli spin tornano all'equilibrio.",
+        "cosa_si_vede": "Sull'oscilloscopio compare una sinusoide che si spegne.",
+        "formula": "\\varepsilon = -\\frac{d\\Phi_B}{dt}"
+      },
+      {
+        "titolo": "Dal segnale all'immagine",
+        "testo": "Tessuti diversi, come grasso, muscolo o liquido, tornano all'equilibrio con rapidità diverse. La differenza dei segnali costruisce l'immagine, senza radiazioni ionizzanti. Sulla ISS non c'è una risonanza: gli astronauti sono esaminati a terra, prima e dopo il volo [DA VERIFICARE].",
+        "cosa_si_vede": "Tre curve di smorzamento diverse (grasso, muscolo, liquido) e un'immagine a toni di grigio.",
+        "formula": null
+      }
+    ],
+    "controlli": [
+      "Cursore «Campo B₀» (0,5-3 T): aggiorna frequenza di precessione e dell'impulso",
+      "Pulsante «Impulso radio» e selettore «Tessuto» (grasso, muscolo, liquido)"
+    ],
+    "voce": "Qui entri in una risonanza magnetica. Premi Avvia e segui cinque passi: un campo intenso allinea i nuclei di idrogeno, un impulso radio li inclina, e mentre precedono inducono un segnale nella bobina, secondo Faraday-Neumann. Muovi il cursore del campo e guarda come cambia la frequenza. Tessuti diversi producono segnali diversi: è così che nasce l'immagine.",
+    "slide_pptx": [8, 12, 13, 14, 15, 16, 17],
+    "agenda": "Obiettivo 3 e Articolo 32: la RMN diagnostica i tessuti molli senza radiazioni ionizzanti; il diritto alla salute è individuale e collettivo."
+  },
+  {
+    "id": "motore",
+    "titolo": "Motori e alternatori: lo stesso principio",
+    "luogo": "amb-motore",
+    "hotspot": ["kibo-joystick", "unity-ventole"],
+    "scena": "Una spira rettangolare in rame tra due magneti (polo N rosso, polo S blu) con un collettore (due semianelli) e due spazzole. A sinistra una manovella dorata (modalità alternatore) collegata a una lampadina; a destra una batteria (modalità motore). La spira ruota; frecce di forza (verdi) sui lati; un oscilloscopio mostra l'onda sinusoidale di ε(t) e, nel motore, la fem opposta. Piccoli modelli vicino: un braccio robotico con giunti e una ventola. Opzionalmente in un secondo pannello un giroscopio di controllo (CMG) con rotore e motore di inclinazione [DA VERIFICARE la posizione e il numero dei CMG sulla ISS]. Finestra centrale con il passo.",
+    "componenti": [
+      { "nome": "Spira in rame", "icona_categoria": "strumento", "spiegazione": "Il conduttore che ruota nel campo magnetico." },
+      { "nome": "Magneti", "icona_categoria": "fisica", "spiegazione": "Creano il campo B in cui ruota la spira." },
+      { "nome": "Collettore e spazzole", "icona_categoria": "strumento", "spiegazione": "Invertono il verso della corrente a ogni mezzo giro, nel motore a corrente continua." },
+      { "nome": "Braccio robotico e ventola", "icona_categoria": "vita", "spiegazione": "Applicazioni a bordo: i giunti del braccio e le ventole di Unity sono mossi da motori elettrici." },
+      { "nome": "Giroscopio CMG", "icona_categoria": "strumento", "spiegazione": "Un volano motorizzato per orientare la stazione senza propellente [DA VERIFICARE]." }
+    ],
+    "passi": [
+      {
+        "titolo": "Facciamo girare la spira",
+        "testo": "Una spira ruota in un campo magnetico: l'angolo tra campo e superficie cambia, quindi il flusso cambia. Per Faraday-Neumann nasce una fem che cambia verso a ogni mezzo giro. Più veloce si gira, più alta è la fem e più rapida l'oscillazione.",
+        "cosa_si_vede": "La manovella fa girare la spira; la lampadina si accende e sull'oscilloscopio compare un'onda sinusoidale.",
+        "formula": "\\varepsilon(t) = N\\,B\\,S\\,\\omega\\sin(\\omega t)"
+      },
+      {
+        "titolo": "Lo stesso, al contrario",
+        "testo": "Sostituendo la manovella con una batteria, si fa passare una corrente nella spira. Su ogni lato del filo, immerso nel campo, agisce la forza di Lorentz. Le forze sui due lati opposti sono contrarie e formano una coppia che mette in rotazione la spira: è un motore elettrico.",
+        "cosa_si_vede": "Frecce verdi sui lati della spira; la spira ruota da sola.",
+        "formula": "F = i\\,l\\,B\\sin\\theta"
+      },
+      {
+        "titolo": "Il collettore",
+        "testo": "Se la corrente avesse sempre lo stesso verso, la spira si fermerebbe a metà giro. Il collettore, con i due semianelli, inverte il verso della corrente al momento giusto, così la coppia continua a spingere nello stesso senso. Nei motori moderni lo fa un'elettronica di controllo.",
+        "cosa_si_vede": "Le spazzole passano da un semianello all'altro; la freccia di corrente cambia verso.",
+        "formula": null
+      },
+      {
+        "titolo": "La fem opposta",
+        "testo": "Mentre il motore gira, la spira si muove nel campo: il flusso varia e nasce una fem indotta. Per la legge di Lenz si oppone alla corrente che alimenta il motore. Più il motore gira veloce, più la fem opposta cresce e la corrente assorbita cala: è un meccanismo di autoregolazione.",
+        "cosa_si_vede": "Sull'oscilloscopio una seconda curva, opposta alla tensione della batteria, cresce con la velocità.",
+        "formula": "\\varepsilon = -\\frac{d\\Phi_B}{dt}"
+      },
+      {
+        "titolo": "Sulla stazione",
+        "testo": "I giunti del braccio robotico e le ventole che fanno circolare l'aria sono motori elettrici. I giroscopi di controllo orientano la stazione con volani motorizzati, senza usare propellente [da verificare]. Senza gravità l'aria calda non sale: senza ventilazione forzata l'aria ristagnerebbe.",
+        "cosa_si_vede": "Si accendono i modelli del braccio e della ventola; il braccio si muove, le pale girano.",
+        "formula": null
+      }
+    ],
+    "controlli": [
+      "Interruttore «Alternatore / Motore»: passa da manovella a batteria",
+      "Cursore «Velocità»: cambia l'onda e la fem opposta"
+    ],
+    "voce": "Qui vedi che motore e alternatore sono la stessa macchina usata in due versi. Premi Avvia: prima giri la spira con la manovella e produci corrente. Poi la alimenti con una batteria, e la forza di Lorentz la fa girare. Osserva la fem opposta che nasce mentre il motore gira: è la legge di Lenz. È ciò che muove le ventole e i bracci della stazione.",
+    "slide_pptx": [3, 18],
+    "agenda": "Obiettivo 9: motori e generatori sono alla base di industria e trasporti; sistemi efficienti riducono energia e rumore."
+  },
+  {
+    "id": "autoinduzione",
+    "titolo": "Autoinduzione: interruttore e bobina",
+    "luogo": "amb-autoinduzione",
+    "hotspot": ["destiny-interruttori", "harmony-attrezzi", "eml-induttore"],
+    "scena": "Pannello nero in stile Destiny con un circuito: batteria (generatore), resistore R, bobina L (rame, con linee di campo che crescono) e interruttore a leva. Sopra, un grafico i(t) con la curva esponenziale che si disegna in tempo reale; una linea tratteggiata per il valore finale ε/R e un'area colorata sotto la curva che rappresenta l'energia. Una piccola lampadina in parallelo che lampeggia all'apertura. Finestra centrale con il passo.",
+    "componenti": [
+      { "nome": "Interruttore", "icona_categoria": "fisica", "spiegazione": "Alla chiusura la corrente non sale subito." },
+      { "nome": "Bobina", "icona_categoria": "fisica", "spiegazione": "Induttore con L = μ₀ N² S / l: la fem autoindotta si oppone alla variazione." },
+      { "nome": "Resistore", "icona_categoria": "energia", "spiegazione": "Fissa il valore finale ε/R e la costante di tempo τ = L/R." },
+      { "nome": "Grafico i(t)", "icona_categoria": "strumento", "spiegazione": "L'area sotto la curva è legata all'energia immagazzinata." }
+    ],
+    "passi": [
+      {
+        "titolo": "Chiudiamo l'interruttore",
+        "testo": "Un generatore, un resistore e una bobina sono in serie. Chiudendo l'interruttore, la corrente comincia a crescere. Ma il campo magnetico della bobina cresce con essa: il flusso varia e, per la legge di Faraday-Neumann-Lenz, nasce una fem autoindotta che si oppone all'aumento di corrente.",
+        "cosa_si_vede": "La leva scatta; le linee di campo nella bobina iniziano a crescere; la curva parte da zero.",
+        "formula": "\\varepsilon = -L\\,\\frac{di}{dt}"
+      },
+      {
+        "titolo": "L'extracorrente di chiusura",
+        "testo": "La corrente sale in modo graduale verso il valore ε/R, con una curva esponenziale. Il tempo caratteristico è τ = L/R: dopo τ la corrente raggiunge circa il 63% del valore finale. Con più induttanza la salita è più lenta, con più resistenza più rapida.",
+        "cosa_si_vede": "La curva si disegna; un marcatore indica τ e il 63%.",
+        "formula": "i(t) = \\frac{\\varepsilon}{R}\\left(1 - e^{-Rt/L}\\right)"
+      },
+      {
+        "titolo": "Cos'è L",
+        "testo": "L'induttanza dipende solo dalla geometria della bobina: per un solenoide con N spire, sezione S e lunghezza l vale μ₀ N² S / l. Si misura in henry. Un nucleo di ferro la aumenterebbe molto. Più spire e più sezione, più «inerzia elettrica».",
+        "cosa_si_vede": "Cambiando il numero di spire, la bobina si allunga o si accorcia e il valore di L si aggiorna.",
+        "formula": "L = \\mu_0\\,\\frac{N^2 S}{l}"
+      },
+      {
+        "titolo": "L'energia nel campo",
+        "testo": "Per portare la corrente a i, il generatore deve compiere lavoro contro la fem autoindotta. Quel lavoro resta nel campo magnetico: E = ½ L i². È un'energia come quella chimica di una batteria, ma immagazzinata in un campo. Quando si apre il circuito, la restituisce.",
+        "cosa_si_vede": "L'area sotto la curva si colora e un contatore mostra l'energia in joule.",
+        "formula": "E = \\tfrac{1}{2}\\,L\\,i^2"
+      },
+      {
+        "titolo": "Aprire il circuito",
+        "testo": "Aprendo l'interruttore la corrente deve crollare in fretta: di/dt è molto grande, e la fem autoindotta può diventare molto alta, anche oltre la tensione del generatore. Sugli interruttori di potenza possono comparire scintille: per questo si usano protezioni.",
+        "cosa_si_vede": "La leva si apre; una piccola scintilla azzurra appare sui contatti e la lampadina lampeggia.",
+        "formula": null
+      }
+    ],
+    "controlli": [
+      "Cursore «Induttanza L» e cursore «Resistenza R»: cambiano τ e la forma della curva",
+      "Interruttore a leva: chiude e apre il circuito"
+    ],
+    "voce": "Questo è un circuito con un interruttore e una bobina. Premi Avvia e chiudi l'interruttore: la corrente non sale subito, perché la bobina si oppone con una fem autoindotta. Guarda la curva e il tempo caratteristico L diviso R. L'area sotto la curva è l'energia accumulata nel campo magnetico: la stessa idea che troviamo nella bobina dell'EML.",
+    "slide_pptx": [12, 13, 14, 15, 16, 17, 19],
+    "agenda": "Obiettivo 9: capire le perdite e i transitori è il primo passo per progettare impianti elettrici sicuri."
+  },
+  {
+    "id": "aurora",
+    "titolo": "Aurora: la forza di Lorentz",
+    "luogo": "amb-aurora",
+    "hotspot": ["cupola-aurora"],
+    "scena": "Vista dalla Cupola: arco del pianeta blu scuro con atmosfera sottile azzurra. Linee del campo di dipolo che emergono ai poli. Particelle cariche (puntini gialli per protoni, bianchi per elettroni) partono dal Sole, a sinistra, e spiraleggiano attorno alle linee di campo (elica verde chiaro), scendendo verso la regione polare. Quando entrano nell'atmosfera, a circa 100 km, si accende una banda verde (con zone rosse in alto) animata a tendaggio. Una piccola icona ISS in alto orbita sopra l'aurora. Finestra centrale con il passo.",
+    "componenti": [
+      { "nome": "Particella carica", "icona_categoria": "fisica", "spiegazione": "Un elettrone o un protone del vento solare." },
+      { "nome": "Linee del campo terrestre", "icona_categoria": "fisica", "spiegazione": "Guidano le particelle verso i poli." },
+      { "nome": "Atmosfera e aurora", "icona_categoria": "terra", "spiegazione": "Gli atomi di ossigeno e azoto eccitati emettono luce verde, rossa o blu." },
+      { "nome": "La ISS sopra l'aurora", "icona_categoria": "terra", "spiegazione": "A circa 400 km orbita sopra la regione dove si accende l'aurora." }
+    ],
+    "passi": [
+      {
+        "titolo": "Una carica in un campo",
+        "testo": "Una carica q che si muove con velocità v in un campo magnetico B subisce la forza di Lorentz, perpendicolare alla velocità. Questa forza cambia la direzione della particella, non il modulo della sua velocità: non ne cambia l'energia. È la stessa forza che agisce nei motori.",
+        "cosa_si_vede": "Una particella entra in un campo uniforme e percorre un arco di cerchio.",
+        "formula": "\\vec F = q\\,\\vec v\\times\\vec B"
+      },
+      {
+        "titolo": "Raggio e spirale",
+        "testo": "Il raggio della traiettoria è r = m v/(q B): più forte è il campo, più stretta è la curva. Se la particella ha anche una componente di velocità lungo il campo, la sua traiettoria è un'elica, e la particella avanza lungo la linea di campo come una molla.",
+        "cosa_si_vede": "Variando il campo la spirale si stringe o si allarga.",
+        "formula": "r = \\frac{m\\,v}{q\\,B}"
+      },
+      {
+        "titolo": "Il vento solare e la Terra",
+        "testo": "Il Sole emette particelle cariche. Quelle che incontrano il campo magnetico terrestre ne sono deviate e guidate lungo le linee di campo verso i poli. Il campo funziona da scudo: solo vicino ai poli le particelle possono penetrare nell'alta atmosfera.",
+        "cosa_si_vede": "Dalle particelle gialle che arrivano da sinistra, la maggior parte viene deviata; alcune seguono le linee verso il polo.",
+        "formula": null
+      },
+      {
+        "titolo": "Si accende l'aurora",
+        "testo": "Nell'alta atmosfera le particelle urtano atomi di ossigeno e di azoto e li eccitano. Tornando allo stato normale, gli atomi emettono luce: verde e rossa l'ossigeno, tonalità blu e viola l'azoto. L'aurora è la luce di questi atomi, non una luce portata dal Sole.",
+        "cosa_si_vede": "Una banda verde a tendaggio si accende sul bordo del pianeta; in alto zone rosse.",
+        "formula": null
+      },
+      {
+        "titolo": "Dalla Cupola",
+        "testo": "La ISS orbita a circa 400 km, al di sopra della maggior parte della luce aurorale. Dalla Cupola l'aurora si vede come una banda sul bordo del pianeta o come un velo luminoso sotto la stazione. La stessa Terra che ci mostra l'aurora è anche il magnete in cui si muove la ISS.",
+        "cosa_si_vede": "L'icona della ISS passa sopra la banda verde.",
+        "formula": null
+      }
+    ],
+    "controlli": [
+      "Cursore «Intensità del campo B»: cambia il raggio della spirale",
+      "Selettore «Particella» (protone o elettrone): cambia il verso di rotazione e il raggio"
+    ],
+    "voce": "Qui vedi perché esistono le aurore. Premi Avvia e osserva una particella carica entrare in un campo magnetico: non va dritta, curva per la forza di Lorentz, e spiraleggia lungo le linee del campo. Le linee portano ai poli, e lì le particelle accendono l'atmosfera. Puoi cambiare il campo e la particella per vedere come cambia la spirale.",
+    "slide_pptx": [],
+    "agenda": "La forza di Lorentz è anche quella che fa funzionare i motori: dallo spazio ai trasporti elettrici, tema dell'Obiettivo 9."
+  }
+]
