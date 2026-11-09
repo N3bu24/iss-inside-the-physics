@@ -2,11 +2,11 @@ import hotspotJsonGrezzo from '@content/hotspot-v3.json'
 import { pulisciDati } from '../lib/pulisci'
 import { nodi, type NodoId } from './stazione'
 import { posizioni } from './posizioni'
-import { hotspotEsempio, luoghiEsempio, type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './esempio-hotspot'
+import { type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './esempio-hotspot'
 import type { Provenienza } from './types'
 
 /**
- * Loader dei contenuti. Usa content/hotspot.json (e content/luoghi.json, se c'è) solo quando sono nel nuovo formato
+ * Loader dei contenuti. Usa content/hotspot-v3.json (e content/luoghi-v3.json, se c'è) solo quando sono nel nuovo formato
  * (campo `categoria`); altrimenti ricade sui dati di esempio di esempio-hotspot.ts.
  */
 
@@ -30,7 +30,7 @@ const CATEGORIE: Categoria[] = ['fisica', 'eml', 'strumento', 'vita', 'terra', '
 const categoriaDa = (s: unknown): Categoria => (CATEGORIE.includes(s as Categoria) ? (s as Categoria) : 'fisica')
 
 /**
- * Correzioni di posizione (gradi) per gli hotspot che, nei dati di content/hotspot.json (`yaw_stimato`/`pitch_stimato`),
+ * Correzioni di posizione (gradi) per gli hotspot che, nei dati di content/hotspot-v3.json (`yaw_stimato`/`pitch_stimato`),
  * cadono a meno di ~15° da un portello, da un passaggio chiuso o da un altro punto: si sovrapporrebbero sullo schermo.
  * content/ non si modifica da qui: la correzione vive nel codice.
  */
@@ -98,13 +98,13 @@ const hotspotReali = comeLista(hotspotJson)
 const nuovoFormato = hotspotReali.some((h) => 'categoria' in h)
 const hotspotNuovi = nuovoFormato ? hotspotReali.map(normalizzaHotspot).filter((h): h is HotspotScheda => !!h) : []
 // i luoghi senza hotspot reali (es. il finale) ricadono sugli esempi
-const listaHotspot: HotspotScheda[] = [...hotspotNuovi, ...hotspotEsempio.filter((e) => !hotspotNuovi.some((h) => h.luogo === e.luogo))]
+const listaHotspot: HotspotScheda[] = hotspotNuovi // solo content/hotspot-v3.json (niente testi di esempio/v2)
 
 // luoghi.json è opzionale: la glob non fallisce se il file non esiste ancora
 const luoghiFile = import.meta.glob('/content/luoghi-v3.json', { eager: true, import: 'default' })
 const luoghiReali = comeLista(pulisciDati(Object.values(luoghiFile)[0]))
 const luoghiNuovi = luoghiReali.some((l) => 'punti' in l || 'scheda' in l) ? luoghiReali.map(normalizzaLuogo).filter((l): l is Luogo => !!l) : []
-const listaLuoghi: Luogo[] = [...luoghiNuovi, ...luoghiEsempio.filter((e) => !luoghiNuovi.some((l) => l.id === e.id))]
+const listaLuoghi: Luogo[] = luoghiNuovi // solo content/luoghi-v3.json
 
 export const luogoDi = (id: NodoId): Luogo =>
   listaLuoghi.find((l) => l.id === id) ?? { id, nome: nodi[id].nome, sottotitolo: nodi[id].sottotitolo, punti: [], badge: nodi[id].badge }
