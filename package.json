@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@photo-sphere-viewer/core": "^5.15.1",
-    "@photo-sphere-viewer/equirectangular-tiles-adapter": "^5.15.1",
-    "@photo-sphere-viewer/markers-plugin": "^5.15.1",
-    "@photo-sphere-viewer/virtual-tour-plugin": "^5.15.1",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.2",
     "gsap": "^3.15.1",

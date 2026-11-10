@@ -54,7 +54,6 @@ body { background: var(--color-ink); color: #e8ecf5; font-family: var(--font-san
 }
 .psv-container { background: #05070f; }
 .psv-navbar { display: none !important; }
-.psv-marker { overflow: visible; }
 
 .katex-display { overflow: visible; margin: .7em 0; }
 .katex-display > .katex { white-space: normal; max-width: 100%; }
