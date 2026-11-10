@@ -63,3 +63,11 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 ## Tagli e problemi
 
 (Claude Code scrive qui cosa è stato tagliato o non è riuscito, con data e motivo.)
+
+### 10/11 notte (orchestratore)
+- [x] Voli v2: 5 voli Seedance + 5 Kling a 24 fps; arrivo in Tranquility corretto (v0.9.3)
+- [x] Test notturno: Opus (navigazione, voli: tutti corretti) + Sonnet (scienza, fonti, sicurezza)
+- [x] Correzioni: finale completo, EML senza sovrapposizioni, badge, crediti, finestra a passi a 720 (v0.9.4)
+- [x] Test di conferma e ultime correzioni: fonti senza "pptx", finale a 1280, etichette, voce finale-trasformatore (v0.9.5)
+- [ ] Vercel (serve l'account dell'autore), relazione scritta, peso del bundle, prova tablet
+- Problema 10/11: crediti Higgsfield esauriti dai voli Seedance 1080p (~3,40 $/volo, 8× Kling). Rifacimenti futuri solo dei voli difettosi e previa conferma.

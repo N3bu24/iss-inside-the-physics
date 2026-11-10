@@ -1,56 +1,36 @@
 # STATE — ISS: Inside the Physics
 
-**Ultimo aggiornamento:** lunedì 9 novembre 2026, ore 12:50 (sessione 1, fase di pianificazione)
+**Ultimo aggiornamento:** martedì 10 novembre 2026, notte (dopo test notturno e correzioni)
+**Versione:** v0.9.5 su `main` (GitHub privato N3bu24/iss-inside-the-physics)
 **Scadenza:** giovedì 12 novembre 2026, sera
-**Fase attuale:** Lunedì 9, preparazione del progetto. Nessun codice scritto, nessun asset generato, nessuna spesa API.
 
 ## Fatto
-- Brief del progetto scritto e completo in `CLAUDE.md` (sezioni 1-16).
-- Consegna scolastica (Fisica ed Educazione Civica, 5 LSA, primo quadrimestre) inserita alla lettera in `CLAUDE.md`, sezione 0.
-- Decisioni dell'autore raccolte con domande chiuse e registrate in `CLAUDE.md` (sezione 17) e in `docs/DECISIONS.md`.
-- Modo di lavorare, calendario, regola sui crediti e regola di taglio in `CLAUDE.md` (sezione 18).
-- Orchestratore e subagent definiti (`CLAUDE.md` sezione 19, definizioni in `.claude/agents/`).
-- Skill `/close-session` creata in `.claude/skills/close-session/SKILL.md`.
-- `TASKS.md` creato con la lista dei lavori per giorno e priorità.
-- Notifiche Telegram: script `scripts/notify.mjs` (messaggi, approvazioni con bottoni, hook di Claude Code), provato con un server finto; **non ancora provato con il bot vero** (serve il token dell'autore). Regole in `CLAUDE.md` sezione 21.
-
-## In corso / a metà
-- Niente di avviato.
+- Esplorazione "fluttuante": 6 panorami ESA reali (Harmony, Columbus, Kibo, Destiny, Unity, Tranquility) + Cupola (video NASA della Terra) + scena 3D EML + finale; ↑/↓ verso i portelli, rotella zoom, trascinamento; legenda comandi a schermo.
+- 10 voli IA tra moduli senza stacchi (prima/ultima immagine dai panorami): 5 Seedance 2.0, 5 Kling 3.0 a 24 fps nativi. Test notturno: tutti corretti.
+- Punti di interesse: 28 + 4 nel finale, icone per categoria, indicatori ai bordi, lista laterale con rotazione lenta, schede con testi, immagini e formule KaTeX, badge di provenienza.
+- Mini-mappa SVG, "Tappe suggerite" in alto, unico bottone "Inizia l'esplorazione", intestazione autore.
+- 8 simulazioni nello stile EML con finestra a passi; "Avvia esperimento" EML in 6 passi; 4 ambienti interattivi (campo terrestre, energia di bordo, levitazione/Maglev, RMN).
+- Finale "Dallo spazio alla Terra" (Obiettivi 3/7/9, Art. 32) con voce.
+- Voce narrante ElevenLabs (Thomas A.) ~52 clip con sottotitoli; crediti completi nel sito.
+- QA: test notturno (Opus navigazione, Sonnet scienza) + test di conferma; correzioni in v0.9.4 e v0.9.5.
 
 ## Prossimo passo preciso
-Se il bot Telegram è configurato, provarlo con `node scripts/notify.mjs "Test"`. Poi lavorare in **plan mode**. Leggere `CLAUDE.md` e il pptx `L'induzione elettromagnetica 5LSA.pptx`. Lanciare il subagent `researcher` per verificare Street View della ISS (panorami disponibili, embed, API, policy) e le API di Higgsfield ed ElevenLabs. Verificare che Blender si avvii da terminale e che le chiavi in `.env` funzionino con una prova minima (nessuna generazione costosa). Poi presentare all'autore **un piano di una pagina** con il calendario adattato alla realtà tecnica e aspettare l'approvazione prima di scrivere codice.
-
-## Prossimi passi dopo
-1. Scaffold del progetto con `.gitignore` che esclude `.env`.
-2. Prototipo: schermata iniziale, 1-2 ambienti, hotspot, prima versione dell'EML.
-3. Martedì: produzione degli asset (Blender, Higgsfield, ElevenLabs, audio ambient).
-4. Mercoledì: sviluppo completo del sito.
-5. Giovedì: test, relazione scritta, pubblicazione su Vercel.
+1. L'autore crea l'account Vercel e lo collega a GitHub → pubblicazione e prova del link.
+2. Relazione scritta (content-writer, `docs/relazione/`), con fonti e crediti.
+3. Ridurre il peso iniziale (chunk JS 367 KB gzip, panorami 4-6 MB, font Google) e prova su tablet.
+4. QA finale giovedì, poi v1.0.0.
 
 ## Bloccato / serve l'autore
-- Account **Vercel** non ancora creato: va creato e collegato a GitHub prima della pubblicazione.
-- File `.env` con le chiavi Higgsfield ed ElevenLabs da mettere nella cartella di lavoro (modello in `.env.example`).
-- Bot Telegram: l'autore deve crearlo con @BotFather, mettere `TELEGRAM_BOT_TOKEN` nel `.env`, scrivere /start al bot, ottenere il chat id con `node scripts/notify.mjs --find-chat-id` e metterlo in `TELEGRAM_CHAT_ID`.
-- Verificare che il comando `blender` funzioni da terminale.
-- Approvazione del piano di una pagina prima di partire con lo sviluppo.
+- Account Vercel.
+- Verificare la licenza ESA dei panorami (su Flickr risultano "All rights reserved"; uso educativo con credito).
+- Due frasi del finale da confermare con fonte (FDA 2008 per la TMS, OMS copertura universale).
+- Cancellare `_duplicati/` e `.env.local`.
 
-## File e cartelle importanti
-- `CLAUDE.md`: regole e decisioni (leggere per primo).
-- `TASKS.md`: lista dei lavori.
-- `docs/STATE.md`, `docs/DECISIONS.md`, `docs/SESSION-LOG.md`, `docs/costi.md`: stato e storico.
-- `.claude/agents/`: definizione dei subagent.
-- `.claude/skills/close-session/SKILL.md`: skill di chiusura sessione.
-- `L'induzione elettromagnetica 5LSA.pptx`: teoria da seguire (da copiare nella cartella di lavoro se non c'è).
+## Costi
+Higgsfield ~21,6 $ (vedi `docs/costi.md`); ElevenLabs dentro il piano Starter.
 
-## Come avviare il progetto
-Non ancora applicabile: il codice non esiste. Aggiornare questa sezione appena c'è lo scaffold.
+## Come avviare
+`npm install` → `npm run dev` (porta 5173) · `npm run build` per la build.
 
 ## Stato dei subagent
-Nessun subagent è ancora stato lanciato.
-
-## Rischi aperti
-- Tempo: versione completa (6-8 ambienti, render Blender) in circa 3 giorni. Mitigazione: sviluppo per priorità e regola di taglio (`CLAUDE.md` sezione 18).
-- Street View degli interni ISS potrebbe non essere incorporabile o collegabile liberamente. Mitigazione: panorami collegati a mano (decisione già presa).
-- Budget API limitato (circa 20-30 €). Mitigazione: prove brevi, conferma dell'autore sopra circa 5 €.
-- Blender non ancora verificato da terminale.
-- Vercel non ancora pronto.
+Nessuno attivo. Molti worktree vecchi in `.claude/worktrees/` da ripulire.

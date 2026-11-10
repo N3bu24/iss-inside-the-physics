@@ -5,6 +5,13 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.9.5] — 2026-11-10
+### Corretto (test di conferma)
+- Fonti delle schede senza "pptx": riga "Teoria: L'induzione elettromagnetica, slide N".
+- Finale a 1280: "Ricomincia dall'inizio" non copre più la lista; etichetta "Verso il finale".
+- EML passo 5 e grafici delle simulazioni non coperti a 720 px.
+- Voce di finale-trasformatore (ora tutte e 4 le schede del finale hanno la voce).
+
 ## [0.9.4] — 2026-11-10
 ### Corretto (test della notte)
 - Finale "Dallo spazio alla Terra" completo: 4 punti (Obiettivi 3/7/9, Art. 32) con le voci registrate.
