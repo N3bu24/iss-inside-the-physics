@@ -1,15 +1,10 @@
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { OrbitControls, useProgress } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
-import katex from 'katex'
-import 'katex/dist/katex.min.css'
-import { Play, X } from 'lucide-react'
-import Badge from '../components/Badge'
-import Stile from './Stile'
+import { X } from 'lucide-react'
 import Marcatore, { type CategoriaSim } from './Marcatore'
-import FinestraSequenza from './FinestraSequenza'
-import Voce from './Voce'
+import LayoutSimulazione from './Layout'
 import OffsetVista from './OffsetVista'
 import type { Passo } from './contenuto'
 
@@ -98,132 +93,68 @@ export type PropsShell = {
 }
 
 /**
- * Guscio comune delle simulazioni: scena 3D a tutto schermo, pannello di spiegazione, hotspot 3D,
- * pulsante "Avvia" con finestra a passi, controlli, badge, chiudi (Esc), voce narrante, intestazione.
+ * Guscio comune delle simulazioni a scena 3D: Canvas a tutto schermo, hotspot 3D e la struttura
+ * comune (colonna di testo, barra dei comandi, Esci, voce, badge) di `LayoutSimulazione`.
  */
 export default function SimulazioneShell(p: PropsShell) {
-  const [seq, setSeq] = useState<number | null>(null)
   const [hs, setHs] = useState<string | null>(null)
   const els = useRef<Record<string, HTMLElement | null>>({})
-  const { active: inCaricamento } = useProgress()
-  const seqRef = useRef(seq)
-  seqRef.current = seq
-  const passi = p.passi ?? []
-  const passo = seq !== null ? (passi[seq] ?? null) : null
-  const { onPasso, onClose } = p
-
-  const vai = useCallback(
-    (i: number | null) => {
-      setSeq(i)
-      onPasso?.(i, i === null ? undefined : passi[i])
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onPasso, p.passi],
-  )
-
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return
-      if (seqRef.current !== null) vai(null)
-      else onClose()
-    }
-    window.addEventListener('keydown', k)
-    return () => window.removeEventListener('keydown', k)
-  }, [onClose, vai])
-
   const o = p.orbit ?? {}
   const hsAttivo = p.hotspot?.find((h) => h.id === hs)
-  const formulaHtml = p.formula ? katex.renderToString(p.formula, { displayMode: true, throwOnError: false }) : ''
+
+  const extra = hsAttivo ? (
+    <div className="slide-in rounded-lg border-l-2 border-orange-300/70 bg-white/5 px-3 py-2 text-white/90">
+      <div className="mb-1 flex items-center justify-between font-medium text-white">
+        {hsAttivo.titolo}
+        <button onClick={() => setHs(null)} aria-label="Chiudi il dettaglio" className="text-white/50 hover:text-white">
+          <X size={14} />
+        </button>
+      </div>
+      {hsAttivo.testo}
+    </div>
+  ) : (
+    <p key={p.didascalia} className="slide-in rounded-lg border-l-2 border-cyan-300/70 bg-white/5 px-3 py-2 text-white/90">
+      {p.didascalia}
+    </p>
+  )
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-[#05070f] text-white" role="dialog" aria-label={p.titolo}>
-      <Stile />
-      <div className="absolute inset-0">
-        <Canvas camera={{ position: p.camera?.position ?? [0, 3, 12], fov: p.camera?.fov ?? 45 }} dpr={[1, 1.5]}>
-          <color attach="background" args={['#05070f']} />
-          <Suspense fallback={null}>{p.children}</Suspense>
-          <Proietta hs={p.hotspot ?? []} els={els} />
-          <OrbitControls makeDefault enablePan={false} target={o.target ?? [0, 0, 0]} minDistance={o.minDistance} maxDistance={o.maxDistance} maxPolarAngle={o.maxPolarAngle} />
-          <CameraRig passo={passo} />
-          <OffsetVista attivo={seq !== null} sinistraPx={190} />
-        </Canvas>
-      </div>
-
-      {/* hotspot: elementi DOM posizionati proiettando il punto 3D (niente radici React aggiuntive) */}
-      <div className="pointer-events-none absolute inset-0 z-[5] overflow-hidden">
-        {p.hotspot?.map((h) => (
-          <div key={h.id} ref={(e) => { els.current[h.id] = e }} className="pointer-events-auto absolute left-0 top-0" style={{ display: 'none' }}>
-            <Marcatore categoria={h.categoria} titolo={h.titolo} attivo={hs === h.id} onClick={() => setHs(hs === h.id ? null : h.id)} />
+    <LayoutSimulazione
+      id={p.id}
+      titolo={p.titolo}
+      intro={p.intro}
+      formula={p.formula}
+      formulaNota={p.formulaNota}
+      agenda={p.agenda}
+      slide={p.slide}
+      extra={extra}
+      passi={p.passi}
+      onPasso={p.onPasso}
+      onClose={p.onClose}
+      controlli={p.controlli}
+      scope={p.scope}
+      scena={({ seq, passo, sinistraPx }) => (
+        <>
+          <div className="absolute inset-0">
+            <Canvas camera={{ position: p.camera?.position ?? [0, 3, 12], fov: p.camera?.fov ?? 45 }} dpr={[1, 1.5]}>
+              <color attach="background" args={['#05070f']} />
+              <Suspense fallback={null}>{p.children}</Suspense>
+              <Proietta hs={p.hotspot ?? []} els={els} />
+              <OrbitControls makeDefault enablePan={false} target={o.target ?? [0, 0, 0]} minDistance={o.minDistance} maxDistance={o.maxDistance} maxPolarAngle={o.maxPolarAngle} />
+              <CameraRig passo={passo} />
+              <OffsetVista sinistraPx={sinistraPx} />
+            </Canvas>
           </div>
-        ))}
-      </div>
-
-      {inCaricamento && (
-        <div className="pointer-events-none absolute inset-0 z-[6] grid place-items-center text-xs uppercase tracking-[0.35em] text-white/45">Caricamento della simulazione…</div>
-      )}
-
-      {/* barra superiore */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-5 pt-14 pb-0">
-        <span />
-        <div data-sim-ui className="flex items-center gap-3">
-          <Voce id={p.id} />
-          <Badge tipo="simulazione" />
-          <button onClick={p.onClose} className="glass pointer-events-auto flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs text-white hover:bg-white/15" aria-label="Chiudi (Esc)">
-            <X size={14} /> Chiudi · Esc
-          </button>
-        </div>
-      </div>
-
-      {/* pannello di spiegazione */}
-      <aside data-sim-ui className="glass sim-scroll absolute bottom-28 left-5 top-28 z-10 flex w-[360px] flex-col gap-3 rounded-2xl p-5 text-[13px] leading-relaxed">
-        <h2 className="text-xl font-semibold leading-tight">{p.titolo}</h2>
-        <p className="text-white/75">{p.intro}</p>
-        {hsAttivo ? (
-          <div className="slide-in rounded-lg border-l-2 border-orange-300/70 bg-white/5 px-3 py-2 text-white/90">
-            <div className="mb-1 flex items-center justify-between font-medium text-white">
-              {hsAttivo.titolo}
-              <button onClick={() => setHs(null)} aria-label="Chiudi il dettaglio" className="text-white/50 hover:text-white">
-                <X size={14} />
-              </button>
-            </div>
-            {hsAttivo.testo}
+          {/* hotspot: elementi DOM posizionati proiettando il punto 3D (nascosti durante i passi: la colonna racconta già) */}
+          <div className="pointer-events-none absolute inset-0 z-[5] overflow-hidden" style={{ display: seq !== null ? 'none' : undefined }}>
+            {p.hotspot?.map((h) => (
+              <div key={h.id} ref={(e) => { els.current[h.id] = e }} className="pointer-events-auto absolute left-0 top-0" style={{ display: 'none' }}>
+                <Marcatore categoria={h.categoria} titolo={h.titolo} attivo={hs === h.id} onClick={() => setHs(hs === h.id ? null : h.id)} />
+              </div>
+            ))}
           </div>
-        ) : (
-          <p key={p.didascalia} className="slide-in rounded-lg border-l-2 border-cyan-300/70 bg-white/5 px-3 py-2 text-white/90">
-            {p.didascalia}
-          </p>
-        )}
-        {p.formula && (
-          <details className="rounded-lg bg-white/5 px-3 py-2">
-            <summary className="cursor-pointer select-none text-xs uppercase tracking-wider text-cyan-200/80">La formula</summary>
-            <div className="sim-formula py-1 text-white" dangerouslySetInnerHTML={{ __html: formulaHtml }} />
-            {p.formulaNota && <p className="text-xs text-white/60">{p.formulaNota}</p>}
-          </details>
-        )}
-        <div className="mt-auto space-y-1 border-t border-white/10 pt-3 text-[11px] text-white/55">
-          {p.agenda && <p>{p.agenda}</p>}
-          {p.slide && <p>Teoria: {p.slide}</p>}
-        </div>
-      </aside>
-
-      {p.scope && (
-        <div data-sim-ui className="sim-scope absolute right-5 top-28 origin-top-right transition-transform duration-300" style={{ transform: seq !== null ? 'scale(.62)' : undefined }}>
-          {p.scope}
-        </div>
+        </>
       )}
-
-      {/* zona in basso, a destra del pannello: finestra a passi (se aperta) sopra i controlli, mai sovrapposti */}
-      <div className="pointer-events-none absolute bottom-5 left-[400px] right-5 z-30 flex flex-col items-center gap-3">
-        {seq !== null && passo && <FinestraSequenza inFlusso titolo={p.titolo} passi={passi} indice={seq} onIndice={vai} onChiudi={() => vai(null)} />}
-        <div data-sim-ui className={"pointer-events-auto flex max-w-full flex-wrap items-center justify-center gap-x-8 gap-y-2 rounded-2xl glass px-6 py-3" + (seq !== null ? " [@media(max-height:800px)]:hidden" : "")}>
-          {p.controlli}
-          {passi.length > 0 && seq === null && (
-            <button className="sim-avvia" onClick={() => vai(0)}>
-              <Play size={18} fill="currentColor" /> Avvia
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
+    />
   )
 }

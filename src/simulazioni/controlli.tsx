@@ -113,7 +113,7 @@ export function Pulsante({ children, onClick, attivo }: { children: ReactNode; o
     <button
       onClick={onClick}
       className={
-        'rounded-full border px-5 py-2.5 text-sm font-medium backdrop-blur transition ' +
+        'rounded-full border px-4 py-1.5 text-[13px] font-medium backdrop-blur transition ' +
         (attivo
           ? 'border-cyan-300/80 bg-cyan-300/20 text-cyan-100 shadow-[0_0_24px_rgba(53,224,255,.35)]'
           : 'border-white/25 bg-white/5 text-white hover:border-white/50 hover:bg-white/10')

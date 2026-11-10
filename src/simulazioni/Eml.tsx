@@ -1,23 +1,52 @@
-import { Suspense, lazy, useEffect } from 'react'
-import { X } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import LayoutSimulazione from './Layout'
+import { Cursore, Pulsante } from './controlli'
+import { passiSimulazione } from './passi'
+import { metaSimulazione } from './contenuto'
+import { EmlCanvas } from '../components/EmlScene'
 
-const EmlScene = lazy(() => import('../components/EmlScene'))
-
-/** Simulazione "eml": la scena 3D dell'EML a tutto schermo con la sequenza "Avvia esperimento" già aperta. */
+/**
+ * Simulazione "eml": la scena 3D dell'EML con la stessa struttura delle altre simulazioni
+ * (colonna di testo, voce, Esci, "Come si usa") e la sequenza di 6 passi.
+ * Funziona anche aperta sopra il nodo EML: la scena ha una copia propria del modello.
+ */
 export default function SimulazioneEml({ onClose }: { onClose: () => void }) {
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
-    window.addEventListener('keydown', k)
-    return () => window.removeEventListener('keydown', k)
-  }, [onClose])
+  const passi = useMemo(() => passiSimulazione('eml'), [])
+  const [potenza, setPotenza] = useState<number | null>(null)
+  const [campo, setCampo] = useState(true)
+  const meta = metaSimulazione('eml')
+
   return (
-    <div className="fixed inset-0 z-50 bg-[#05070f] text-white" role="dialog" aria-label="Esperimento EML">
-      <Suspense fallback={<div className="grid h-full place-items-center text-xs uppercase tracking-[0.35em] text-white/45">Caricamento…</div>}>
-        <EmlScene hotspot={[]} attivo={null} fenomeno={null} calore={null} onHotspot={() => {}} avviaSubito />
-      </Suspense>
-      <button onClick={onClose} className="glass absolute right-5 top-16 z-50 flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs hover:bg-white/15" aria-label="Chiudi (Esc)">
-        <X size={14} /> Chiudi · Esc
-      </button>
-    </div>
+    <LayoutSimulazione
+      id="eml"
+      titolo="L'esperimento nell'EML"
+      intro="Dentro il laboratorio Columbus, l'Electromagnetic Levitator tiene sospeso un campione metallico con un campo magnetico alternato, lo scalda con le correnti indotte fino a fonderlo e ne misura le proprietà senza alcun contenitore. Premi «Avvia esperimento» per seguire le sei fasi."
+      agenda={meta.agenda}
+      slide={meta.slide}
+      passi={passi}
+      onClose={onClose}
+      etichettaAvvia="Avvia esperimento"
+      controlli={
+        <>
+          <Cursore
+            etichetta="Potenza di riscaldamento"
+            valore={potenza ?? 0.5}
+            min={0}
+            max={1}
+            calore
+            onChange={setPotenza}
+            testo={potenza === null ? 'automatica' : `${Math.round(potenza * 100)} %`}
+            sinistra="spento"
+            destra="fuso"
+          />
+          <Pulsante onClick={() => setCampo(!campo)} attivo={campo}>
+            Linee di campo
+          </Pulsante>
+        </>
+      }
+      scena={({ passo, sinistraPx }) => (
+        <EmlCanvas hotspot={[]} attivo={null} fenomeno={null} calore={potenza} mostraCampo={campo} onHotspot={() => {}} passo={passo} sinistraPx={sinistraPx} />
+      )}
+    />
   )
 }

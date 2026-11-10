@@ -9,7 +9,7 @@ const EmlScene = lazy(() => import('../components/EmlScene'))
 
 function Demo() {
   const [aperto, setAperto] = useState<string | null>(new URLSearchParams(location.search).get('a'))
-  const A = aperto && aperto !== 'eml' ? componenteSimulazione(aperto) : null
+  const A = aperto && aperto !== 'eml-nodo' ? componenteSimulazione(aperto) : null
   return (
     <div className="flex h-full flex-col items-center justify-center gap-3 bg-[#05070f] text-white">
       <h1 className="mb-4 text-2xl font-semibold">Simulazioni · prova</h1>
@@ -18,10 +18,10 @@ function Demo() {
           {a.titolo}
         </button>
       ))}
-      <button className="btn-ghost w-96" onClick={() => setAperto('eml')}>
+      <button className="btn-ghost w-96" onClick={() => setAperto('eml-nodo')}>
         Scena EML (Avvia esperimento)
       </button>
-      {aperto === 'eml' && (
+      {aperto === 'eml-nodo' && (
         <div className="fixed inset-0 z-50 bg-[#05070f]">
           <Suspense fallback={<div className="grid h-full place-items-center">Caricamento…</div>}>
             <EmlScene hotspot={[]} attivo={null} fenomeno={new URLSearchParams(location.search).get('f')} calore={Number(new URLSearchParams(location.search).get('h') ?? 'NaN') || null} onHotspot={() => {}} />

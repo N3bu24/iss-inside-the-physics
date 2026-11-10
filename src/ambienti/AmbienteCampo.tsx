@@ -168,7 +168,7 @@ function ISS({ vel, incl, tr, frame }: { vel: number; incl: number; tr: Trace; f
         <sphereGeometry args={[ISS_L * 0.018, 8, 8]} />
         <meshBasicMaterial toneMapped={false} />
       </instancedMesh>
-      <Etichetta p={[0, 0, 0]} fisso size={0.026}>ISS (ingrandita)</Etichetta>
+      <Etichetta p={[0, 0, 0]} fisso size={0.026}>ISS</Etichetta>
     </group>
   )
 }

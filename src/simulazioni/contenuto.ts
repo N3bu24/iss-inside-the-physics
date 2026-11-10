@@ -90,3 +90,56 @@ export function passiDi(id: string, provvisori: Passo[], stati?: string[]): Pass
     }
   })
 }
+
+// ---------------------------------------------------------------------------------------------
+// Guida "Come si usa" di ogni simulazione.
+// Fonte preferita: campo `guida` di content/simulazioni.json; ripiego: campo `controlli`
+// (della stessa simulazione, oppure di content/ambienti.json per i 4 ambienti).
+// ---------------------------------------------------------------------------------------------
+
+export type GuidaSim = {
+  come_si_usa: string
+  comandi: { nome: string; cosa_fa: string }[]
+  cosa_dimostra: string
+}
+
+const moduliAmbienti = import.meta.glob('/content/ambienti.json', { eager: true, import: 'default' }) as Record<string, unknown>
+
+function listaDa(raw: unknown): Record<string, unknown>[] {
+  if (!raw) return []
+  if (Array.isArray(raw)) return raw as Record<string, unknown>[]
+  const o = raw as Record<string, unknown>
+  if (Array.isArray(o.simulazioni)) return o.simulazioni as Record<string, unknown>[]
+  if (Array.isArray(o.ambienti)) return o.ambienti as Record<string, unknown>[]
+  return Object.values(o).filter((v) => v && typeof v === 'object') as Record<string, unknown>[]
+}
+
+function comandoDaStringa(s: string): { nome: string; cosa_fa: string } {
+  const i = s.indexOf(':')
+  return i > 0 && i < 60 ? { nome: s.slice(0, i).trim(), cosa_fa: s.slice(i + 1).trim() } : { nome: '', cosa_fa: s }
+}
+
+const COME_SI_USA_BASE =
+  "Ruota la scena trascinando con il mouse e avvicinati con la rotellina. Premi «Avvia» per seguire i passi uno dopo l'altro; in qualunque momento puoi usare i comandi in basso."
+
+export function guidaSimulazione(id: string): GuidaSim | null {
+  try {
+    const sim = listaDa(pulisciDati(Object.values(moduli)[0] as unknown)).find((v) => v?.id === id)
+    const amb = listaDa(pulisciDati(Object.values(moduliAmbienti)[0] as unknown)).find((v) => v?.id === id)
+    const g = sim?.guida as Partial<GuidaSim> | undefined
+    if (g && (g.come_si_usa || g.comandi?.length || g.cosa_dimostra)) {
+      return {
+        come_si_usa: g.come_si_usa ?? COME_SI_USA_BASE,
+        comandi: Array.isArray(g.comandi) ? g.comandi.filter((c) => c && (c.nome || c.cosa_fa)) : [],
+        cosa_dimostra: g.cosa_dimostra ?? '',
+      }
+    }
+    const grezzi = [sim?.controlli, amb?.controlli].find((c) => Array.isArray(c) && c.length) as unknown[] | undefined
+    const comandi = (grezzi ?? []).filter((c): c is string => typeof c === 'string').map(comandoDaStringa)
+    const cosa = (typeof sim?.agenda === 'string' && sim.agenda) || (typeof amb?.collegamento_agenda === 'string' && amb.collegamento_agenda) || ''
+    if (!comandi.length && !cosa) return null
+    return { come_si_usa: COME_SI_USA_BASE, comandi, cosa_dimostra: cosa }
+  } catch {
+    return null
+  }
+}

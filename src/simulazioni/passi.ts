@@ -74,7 +74,7 @@ const CAMPO: Passo[] = [
     stato: 'insieme',
     testo:
       "La Terra è un enorme magnete a dipolo e le sue linee di campo avvolgono l'orbita della Stazione, a circa 400 km di quota. La ISS è ingrandita per essere visibile: in scala reale sarebbe un puntino.",
-    cosaSiVede: 'Il globo, le linee di campo in azzurro e l\'etichetta "ISS (ingrandita)".',
+    cosaSiVede: 'Il globo, le linee di campo in azzurro e l\'etichetta "ISS".',
   },
   {
     titolo: 'Stazione ferma: nessuna fem',
