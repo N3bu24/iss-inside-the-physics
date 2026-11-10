@@ -254,7 +254,7 @@ function IssIcona() {
           <meshStandardMaterial color="#16337f" emissive="#0a1d52" emissiveIntensity={0.6} />
         </mesh>
       ))}
-      <Etichetta p={[0, 0, 0]} fisso size={0.024}>ISS (ingrandita)</Etichetta>
+      <Etichetta p={[0, 0, 0]} fisso size={0.024}>ISS</Etichetta>
     </group>
   )
 }

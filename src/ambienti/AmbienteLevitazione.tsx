@@ -298,7 +298,7 @@ export default function AmbienteLevitazione({ onClose }: { onClose: () => void }
       onPasso={onPasso}
       orbit={{ target: [0, 0.8, 0], maxPolarAngle: Math.PI * 0.55, minDistance: 5, maxDistance: 20 }}
       didascalia={did}
-      camera={{ position: [0, 4.2, 11.5], fov: 45 }}
+      camera={{ position: [0, 3.6, 9.5], fov: 45 }}
       controlli={
         <>
           <Cursore

@@ -1,5 +1,6 @@
-import { Component, lazy, Suspense, useEffect, type ComponentType, type LazyExoticComponent, type ReactNode } from 'react'
+import { Component, lazy, Suspense, type ComponentType, type LazyExoticComponent, type ReactNode } from 'react'
 import type { AmbienteId } from '../data/stazione'
+import { useEscape } from '../simulazioni/useEscape'
 
 type Props = { onClose: () => void }
 
@@ -13,7 +14,7 @@ function Fallback({ onClose }: Props) {
       <div className="glass max-w-md rounded-2xl p-8 text-center">
         <h2 className="text-xl font-semibold">Ambiente in arrivo</h2>
         <p className="mt-2 text-sm text-white/65">Questo ambiente interattivo non è ancora disponibile. Torna presto: intanto continua a esplorare la stazione.</p>
-        <button className="btn-ghost mt-6 !py-2" onClick={onClose}>Torna alla stazione</button>
+        <button className="btn-ghost mt-6 !py-2" onClick={onClose}>Chiudi</button>
       </div>
     </div>
   )
@@ -35,17 +36,15 @@ function componentePer(id: AmbienteId) {
 class Barriera extends Component<{ onClose: () => void; children: ReactNode }, { errore: boolean }> {
   state = { errore: false }
   static getDerivedStateFromError() { return { errore: true } }
+  componentDidCatch(e: unknown) { console.error('[Ambiente] errore di caricamento o di rendering:', e) }
   render() { return this.state.errore ? <Fallback onClose={this.props.onClose} /> : this.props.children }
 }
 
 /** Ambiente interattivo a schermo intero, caricato solo al bisogno. */
 export default function AmbienteOverlay({ id, onClose }: { id: AmbienteId; onClose: () => void }) {
   const Comp = componentePer(id)
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', k)
-    return () => window.removeEventListener('keydown', k)
-  }, [onClose])
+  // ripiego: l'Esc degli ambienti (LayoutSimulazione) ha priorità più alta; qui serve solo se l'ambiente non è montato
+  useEscape(() => { onClose(); return true }, 0)
   return (
     <div className="fade-in absolute inset-0 z-[55] bg-[#05070f]">
       <Barriera onClose={onClose}>
