@@ -70,6 +70,7 @@ export default function FinestraSequenza(p: {
       className={'sim-win glass pointer-events-auto z-40 flex flex-col overflow-hidden rounded-2xl text-white ' + (p.inFlusso ? 'sim-flusso w-full max-w-[760px]' : 'absolute bottom-5 left-1/2 w-[46%] min-w-[500px] max-w-[760px]')}
       role="dialog"
       data-sim-ui
+      style={{ background: 'rgba(7,12,26,.9)' }}
       aria-label={p.titolo}
     >
       <Stile />
