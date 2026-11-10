@@ -3,6 +3,7 @@
     "id": "harmony",
     "nome": "Harmony",
     "sottotitolo": "Il nodo che collega i laboratori",
+    "badge": "Foto reale",
     "voce": "Benvenuto a bordo. Siamo in Harmony, un nodo: un incrocio di portelli da cui si raggiunge Columbus, Kibo e Destiny. Guarda i cavi sul soffitto, lo schermo delle comunicazioni e il laptop con la Terra: sono i primi indizi di una fisica che qui lavora ovunque. Tocca i punti luminosi.",
     "scheda": {
       "titolo": "Harmony (Node 2)",
@@ -18,6 +19,7 @@
     "id": "columbus",
     "nome": "Columbus",
     "sottotitolo": "Il laboratorio europeo dell'ESA",
+    "badge": "Foto reale",
     "voce": "Questo è Columbus, il laboratorio europeo, portato in orbita nel febbraio duemilaotto. I rack lungo le pareti sono armadi standard, ognuno con il suo strumento. In uno di questi lavora l'EML, che fonde i metalli senza toccarli: cliccalo per entrare nella scena tridimensionale. Guarda anche i laptop e i cavi intrecciati.",
     "scheda": {
       "titolo": "Columbus, il laboratorio dell'ESA",
@@ -33,6 +35,7 @@
     "id": "eml",
     "nome": "EML, Electromagnetic Levitator",
     "sottotitolo": "Fondere metalli senza toccarli",
+    "badge": "Modello 3D",
     "voce": "Eccoci dentro l'EML. Una bobina in rame, percorsa da corrente alternata, crea un campo magnetico che cambia nel tempo. Nel campione nascono correnti che lo sostengono e lo scaldano, senza contatto. Esplora i componenti con i punti luminosi, poi premi Avvia.",
     "scheda": {
       "titolo": "Come funziona l'EML",
@@ -50,6 +53,7 @@
     "id": "kibo",
     "nome": "Kibo",
     "sottotitolo": "Il laboratorio giapponese della JAXA",
+    "badge": "Foto reale",
     "voce": "Questo è Kibo, il modulo giapponese, il cui nome significa speranza. Anche qui un campione può levitare, ma con forze elettriche e non magnetiche, e si studiano anche vetri e ossidi. La postazione con il joystick comanda bracci mossi da motori, alternatori usati al contrario.",
     "scheda": {
       "titolo": "Kibo e la fornace ELF",
@@ -65,6 +69,7 @@
     "id": "destiny",
     "nome": "Destiny",
     "sottotitolo": "Il laboratorio americano della NASA",
+    "badge": "Foto reale",
     "voce": "Siamo in Destiny, il laboratorio principale del segmento americano, in orbita dal duemilauno. Qui l'energia dei pannelli arriva ai rack dopo essere stata trasformata. Guarda il pannello con gli interruttori, i cavi in corrente continua e i convertitori. Puoi provare la simulazione sull'autoinduzione, con un interruttore e una bobina.",
     "scheda": {
       "titolo": "Destiny e la rete di bordo",
@@ -81,6 +86,7 @@
     "id": "unity",
     "nome": "Unity",
     "sottotitolo": "Il primo nodo americano",
+    "badge": "Foto reale",
     "voce": "Questo è Unity, il primo nodo americano, collegato a Zarya nel dicembre del millenovecentonovantotto. Da qui si va a Destiny, a Tranquility e all'airlock Quest, da cui gli astronauti escono nello spazio. Osserva il portello verso Zarya, quello dell'airlock e le ventole: ognuno nasconde un pezzo di elettromagnetismo.",
     "scheda": {
       "titolo": "Unity (Node 1)",
@@ -95,7 +101,8 @@
   {
     "id": "tranquility",
     "nome": "Tranquility",
-    "sottotitolo": "Il nodo sopra la Cupola",
+    "sottotitolo": "Il nodo della Cupola",
+    "badge": "Foto reale",
     "voce": "Questo è Tranquility, il nodo che ospita i sistemi per la vita a bordo. Qui c'è l'attrezzo ARED con cui gli astronauti si allenano ogni giorno contro la perdita di muscoli e ossa. Sul pavimento si apre il portello della Cupola, la finestra sulla Terra. Nel percorso, la salute porta alla simulazione sulla risonanza magnetica.",
     "scheda": {
       "titolo": "Tranquility (Node 3)",
@@ -111,6 +118,7 @@
     "id": "cupola",
     "nome": "Cupola",
     "sottotitolo": "Sette finestre sulla Terra",
+    "badge": "Foto reale",
     "voce": "Dalla Cupola vediamo la Terra scorrere a circa sette virgola sette chilometri al secondo, con un'orbita ogni novanta minuti. Ci muoviamo dentro il suo campo magnetico, e questo è un esperimento di Faraday in grande. Fuori si vedono i pannelli solari e, a volte, le aurore. Cerca i punti luminosi e prova le simulazioni.",
     "scheda": {
       "titolo": "La Cupola",
@@ -127,13 +135,14 @@
     "id": "amb-campo",
     "nome": "La ISS nel campo magnetico terrestre",
     "sottotitolo": "Una tensione indotta dal moto",
+    "badge": "Simulazione concettuale",
     "voce": "Qui la stazione diventa un conduttore che attraversa il campo magnetico terrestre. Premi Avvia per seguire i passaggi: dal flusso che cambia alla tensione indotta, fino ai plasma contactor. Poi gioca con velocità, campo e lunghezza e osserva i volt.",
     "scheda": {
       "titolo": "Fem di moto sulla ISS",
       "punti": [
         "Una struttura conduttrice di lunghezza l che si muove con velocità v in un campo B vede nascere una fem indotta.",
         "Con circa 30 microtesla, 100 metri e 7,7 km/s si arriva a circa 23 volt: lo stesso ordine di grandezza citato dalla NASA, fino a circa 30 volt su 100 metri.",
-        "I plasma contactor emettono plasma di xeno e scaricano la struttura, tenendola entro ±40 volt dal potenziale dell'ambiente."
+        "I plasma contactor emettono plasma di xeno e scaricano la struttura, tenendo il suo potenziale entro ±40 volt rispetto all'ambiente: è un limite diverso dalla fem di moto, che nasce dal movimento nel campo."
       ],
       "formula": "$\\varepsilon = B\\,l\\,v$",
       "slide_pptx": [2, 7, 8, 9]
@@ -143,6 +152,7 @@
     "id": "amb-energia",
     "nome": "Energia di bordo",
     "sottotitolo": "Dal pannello solare al rack",
+    "badge": "Simulazione concettuale",
     "voce": "In questo ambiente segui l'energia dal pannello solare fino al rack. Premi Avvia: vedrai un alternatore, un trasformatore e una linea che si scalda. Poi scegli la sorgente e la tensione, e confronta la ISS con una rete a terra.",
     "scheda": {
       "titolo": "Trasformare e distribuire energia",
@@ -160,13 +170,14 @@
     "id": "amb-levitazione",
     "nome": "Levitazione: dall'EML al Maglev",
     "sottotitolo": "Lenz e correnti parassite all'opera",
+    "badge": "Simulazione concettuale",
     "voce": "Un magnete in moto vicino a un metallo vi induce correnti che lo respingono. Questa è la legge di Lenz, ed è anche il segreto del treno Maglev. Premi Avvia per vedere la lastra di rame, il campione dell'EML e il treno. È il ponte tra lo spazio e le infrastrutture della Terra, Obiettivo nove.",
     "scheda": {
       "titolo": "Levitare con la legge di Lenz",
       "punti": [
         "Quando il flusso attraverso un conduttore varia, nascono correnti che generano un campo opposto alla variazione.",
         "Nell'EML la bobina fa variare il flusso nel campione, e le correnti parassite lo respingono verso il centro.",
-        "Nel Maglev giapponese, il moto dei magneti del treno induce correnti nelle bobine della guida: oltre una certa velocità, attorno ai 150 km/h, il treno si solleva. Il record è di 603 km/h, nel 2015.",
+        "Nel Maglev giapponese, il moto dei magneti del treno induce correnti nelle bobine della guida: oltre una certa velocità il treno si solleva di circa 10 centimetri. Il record è di 603 km/h, nel 2015.",
         "Obiettivo 9: infrastrutture innovative, senza attrito di contatto e senza emissioni locali."
       ],
       "formula": "$\\varepsilon = -\\dfrac{d\\Phi_B}{dt}$",
@@ -177,6 +188,7 @@
     "id": "amb-rmn",
     "nome": "Salute: RMN e medicina spaziale",
     "sottotitolo": "Spin, radiofrequenza e segnale indotto",
+    "badge": "Simulazione concettuale",
     "voce": "Nel corpo umano i nuclei di idrogeno si comportano come piccoli magneti. Premi Avvia: un campo intenso li allinea, un impulso radio li inclina, e il segnale che emettono si rileva per induzione. È la fisica della risonanza magnetica, al servizio del diritto alla salute, Articolo trentadue.",
     "scheda": {
       "titolo": "Risonanza magnetica nucleare",
@@ -194,6 +206,7 @@
     "id": "amb-motore",
     "nome": "Motori e alternatori",
     "sottotitolo": "Lo stesso principio, in due versi",
+    "badge": "Simulazione concettuale",
     "voce": "Una spira in un campo magnetico può produrre corrente, se la fai girare, o girare, se le dai corrente. Premi Avvia: prima ruoti la spira e ottieni un alternatore, poi inverti il verso e ottieni un motore, come quelli dei bracci robotici e delle ventole della stazione.",
     "scheda": {
       "titolo": "Motore e alternatore",
@@ -209,6 +222,7 @@
     "id": "amb-autoinduzione",
     "nome": "Autoinduzione: interruttore e bobina",
     "sottotitolo": "La corrente non sale subito",
+    "badge": "Simulazione concettuale",
     "voce": "Chiudi l'interruttore e guarda: la corrente non sale di colpo. La bobina si oppone con una fem autoindotta, e nel suo campo si accumula energia. Premi Avvia per seguire la curva, poi cambia induttanza e resistenza.",
     "scheda": {
       "titolo": "Circuito RL",
@@ -224,6 +238,7 @@
     "id": "amb-aurora",
     "nome": "Aurora: la forza di Lorentz",
     "sottotitolo": "Particelle cariche lungo le linee del campo",
+    "badge": "Simulazione concettuale",
     "voce": "Le particelle cariche del vento solare non vanno dritte: il campo magnetico terrestre le curva. Premi Avvia per vederle spiraleggiare lungo le linee del campo fino ai poli, dove incontrano l'atmosfera e la accendono di verde. Poi cambia energia e carica.",
     "scheda": {
       "titolo": "Forza di Lorentz e aurore",
@@ -233,6 +248,25 @@
       ],
       "formula": "$\\vec F = q\\,\\vec v\\times\\vec B$",
       "slide_pptx": []
+    }
+  },
+  {
+    "id": "finale",
+    "nome": "Dallo spazio alla Terra",
+    "sottotitolo": "Innovazione, infrastrutture, salute",
+    "badge": "Foto reale",
+    "voce": "Lo spazio è meno lontano di quanto sembri. Lo stesso principio che sostiene un campione in Columbus può sostenere un treno. In Giappone si sperimentano treni a levitazione magnetica, i Maglev. Quando il treno corre, i suoi magneti fanno variare il flusso nelle bobine della guida. Vi nascono correnti indotte, e la legge di Lenz fa il resto: il campo indotto respinge. A velocità sufficiente il treno si solleva di alcuni centimetri e scivola senza attrito di contatto.",
+    "audio": "/audio/finale-01.mp3",
+    "scheda": {
+      "titolo": "Dallo spazio alla Terra",
+      "punti": [
+        "La fisica che tiene sospeso un campione nell'EML è la stessa che solleva un treno Maglev: correnti indotte e legge di Lenz. È il cuore dell'Obiettivo 9, imprese, innovazione e infrastrutture.",
+        "Alternatori e trasformatori portano l'energia dalle centrali alle città riducendo le perdite per effetto Joule: è l'Obiettivo 7, energia pulita e accessibile.",
+        "Risonanza magnetica, stimolazione magnetica transcranica e ricarica wireless degli impianti usano l'induzione per la salute: Obiettivo 3 e Articolo 32 della Costituzione.",
+        "Tocca i punti luminosi per seguire il filo che unisce la ricerca in orbita alla vita quotidiana."
+      ],
+      "formula": "$\\varepsilon = -\\dfrac{d\\Phi_B}{dt}$",
+      "slide_pptx": [4, 8, 9, 18, 20, 23]
     }
   }
 ]
