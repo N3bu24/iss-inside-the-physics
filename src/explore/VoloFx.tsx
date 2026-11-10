@@ -2,7 +2,7 @@ import { useImperativeHandle, useRef, type Ref } from 'react'
 
 export interface FxApi {
   /** tutti i valori in 0..1 */
-  imposta(v: { vignetta?: number; scie?: number; copertura?: number; video?: number }): void
+  imposta(v: { vignetta?: number; scie?: number; copertura?: number; video?: number; coperturaColore?: string | null }): void
   /** contenitore dove inserire l'eventuale <video> di volo */
   videoHost(): HTMLDivElement | null
 }
@@ -12,6 +12,8 @@ export interface FxApi {
  * copertura per la dissolvenza e contenitore del video di volo a schermo intero.
  * Si pilota con l'API imperativa (a ogni frame, senza passare da React).
  */
+const COPERTURA = 'radial-gradient(circle at center, #16233d 0%, #03060e 75%)'
+
 export default function VoloFx({ ref }: { ref?: Ref<FxApi> }) {
   const vig = useRef<HTMLDivElement>(null)
   const scie = useRef<HTMLDivElement>(null)
@@ -19,7 +21,8 @@ export default function VoloFx({ ref }: { ref?: Ref<FxApi> }) {
   const vid = useRef<HTMLDivElement>(null)
 
   useImperativeHandle(ref, () => ({
-    imposta: ({ vignetta, scie: s, copertura, video }) => {
+    imposta: ({ vignetta, scie: s, copertura, video, coperturaColore }) => {
+      if (coperturaColore !== undefined && cop.current) cop.current.style.background = coperturaColore ?? COPERTURA
       if (vignetta !== undefined && vig.current) vig.current.style.opacity = String(vignetta)
       if (s !== undefined && scie.current) {
         scie.current.style.opacity = String(Math.min(1, s) * 0.55)
@@ -43,7 +46,7 @@ export default function VoloFx({ ref }: { ref?: Ref<FxApi> }) {
           maskImage: 'radial-gradient(circle at center, transparent 22%, #000 72%)',
         }}
       />
-      <div ref={cop} className="absolute inset-0 opacity-0" style={{ background: 'radial-gradient(circle at center, #16233d 0%, #03060e 75%)' }} />
+      <div ref={cop} className="absolute inset-0 opacity-0" style={{ background: COPERTURA }} />
       <div ref={vid} className="absolute inset-0 opacity-0" />
     </div>
   )

@@ -119,7 +119,7 @@ export default function Indice({ onClose, onVai, onSimulazione, sospeso = false 
                         </ul>
                       )}
                       {luogo.voce && <p className="testo-corpo mt-3 border-l-2 border-white/15 pl-4 text-[15px] italic leading-relaxed text-white/65">{luogo.voce}</p>}
-                      <div className="mt-3 flex items-center gap-3"><Badge tipo={luogo.badge} />{luogo.fonte && <span className="text-[11px] text-white/40">Fonte: {luogo.fonte}</span>}</div>
+                      <div className="mt-3 flex flex-wrap items-center gap-3"><Badge tipo={luogo.badge} />{luogo.badgeExtra && <Badge tipo={luogo.badgeExtra} />}{luogo.nota && <span className="text-[11px] text-white/45">{luogo.nota}</span>}{luogo.fonte && <span className="text-[11px] text-white/40">Fonte: {luogo.fonte}</span>}</div>
                     </article>
                   ))}
                 </div>

@@ -29,10 +29,11 @@ export default function SchedaLuogo({ luogo, iniziaChiusa = false }: { luogo: Lu
               </li>
             ))}
           </ul>
-          <div className="mt-4 flex items-center justify-between gap-2">
-            <Badge tipo={luogo.badge} />
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
+            <span className="flex flex-wrap gap-1.5"><Badge tipo={luogo.badge} />{luogo.badgeExtra && <Badge tipo={luogo.badgeExtra} />}</span>
             {luogo.fonte && <span className="truncate text-[11px] text-white/40">Fonte: {luogo.fonte}</span>}
           </div>
+          {luogo.nota && <p className="mt-2 text-[11px] leading-snug text-white/45">{luogo.nota}</p>}
         </div>
       )}
     </div>

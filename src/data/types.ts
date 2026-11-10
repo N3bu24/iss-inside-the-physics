@@ -149,4 +149,7 @@ export interface Luogo {
   badge: Provenienza
   fonte?: string
   slide_pptx?: number[]
+  /** seconda provenienza (es. modello 3D + simulazione concettuale) e nota di provenienza */
+  badgeExtra?: Provenienza
+  nota?: string
 }
