@@ -39,6 +39,8 @@ interface Props {
   marcatori: Marcatore[]
   /** nasconde i marcatori (durante il volo) */
   nascosti: boolean
+  /** una scheda e` aperta a destra: gli indicatori di bordo restano a sinistra di essa */
+  schedaAperta?: boolean
   onPosizione: (yaw: number, pitch: number) => void
   onPronto: () => void
 }
@@ -69,13 +71,15 @@ export function zoomPerVideoFov(hfov: number, aspettoViewport: number) {
  * frecce disattivate come rotazione (le gestisce Esplora: ↑ avanti, ↓ indietro).
  * I marcatori sono elementi React proiettati sullo schermo a ogni frame.
  */
-export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, onPosizione, onPronto }: Props) {
+export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, schedaAperta = false, onPosizione, onPronto }: Props) {
   const radice = useRef<HTMLDivElement>(null)
   const strato = useRef<HTMLDivElement>(null)
   const viewer = useRef<Viewer | null>(null)
   const els = useRef(new Map<string, HTMLElement>())
   const lista = useRef<Marcatore[]>(marcatori)
   lista.current = marcatori
+  const scheda = useRef(schedaAperta)
+  scheda.current = schedaAperta
   const cb = useRef({ onPosizione, onPronto })
   cb.current = { onPosizione, onPronto }
 
@@ -143,7 +147,7 @@ export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, o
       el.style.transform = `translate(${pos[i].x}px, ${pos[i].y}px) translate(-50%, -50%)`
     })
     // indicatori sul bordo: rettangolo che evita intestazione, colonna a sinistra, minimappa e comandi in basso
-    const x0 = Math.min(MARGINE.sx, W * 0.3), x1 = W - MARGINE.dx, y0b = MARGINE.su, y1 = Math.max(y0b + 60, H - MARGINE.giu)
+    const x0 = Math.min(MARGINE.sx, W * 0.3), x1 = W - (scheda.current ? 540 : MARGINE.dx), y0b = MARGINE.su, y1 = Math.max(y0b + 60, H - MARGINE.giu)
     const cx = (x0 + x1) / 2, cyb = (y0b + y1) / 2, hw = (x1 - x0) / 2, hh = (y1 - y0b) / 2
     const ind: { p: P; el: HTMLElement; x: number; y: number }[] = []
     for (const p of pts) {
@@ -173,7 +177,7 @@ export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, o
     }
   }
 
-  useLayoutEffect(proietta, [marcatori])
+  useLayoutEffect(proietta, [marcatori, schedaAperta])
 
   useImperativeHandle(ref, () => ({
     posizione: () => {
