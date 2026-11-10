@@ -1,3 +1,37 @@
 [
-  { "id": "zvezda", "nome": "Zvezda", "ruolo": "", "nota": "", "fonte": "" }
+  {
+    "id": "zvezda",
+    "nome": "Zvezda",
+    "ruolo": "Modulo di servizio russo",
+    "nota": "Lanciato nel luglio 2000, è stato il primo grande contributo interamente russo alla stazione. Ospita alloggi per l'equipaggio, sistemi di supporto vitale e controllo del volo, e ha un portello di attracco per Soyuz e Progress. Ha anche propri pannelli solari, che producono e distribuiscono energia elettrica.",
+    "fonte": "NASA — International Space Station: Zvezda Service Module"
+  },
+  {
+    "id": "zarya",
+    "nome": "Zarya",
+    "ruolo": "Primo modulo della stazione",
+    "nota": "Lanciato nel novembre 1998, è stato il primo elemento della ISS, detto anche Functional Cargo Block. È stato costruito in Russia con fondi statunitensi. Nei primi tempi ha dato alla stazione guida e propulsione, prima che arrivassero gli altri moduli.",
+    "fonte": "NASA — International Space Station: Zarya Module"
+  },
+  {
+    "id": "pma1",
+    "nome": "PMA-1",
+    "ruolo": "Adattatore tra Unity e Zarya",
+    "nota": "Il Pressurized Mating Adapter 1 è un breve tunnel pressurizzato, lanciato insieme a Unity nel dicembre 1998. Collega il modulo Unity, della parte statunitense, a Zarya, e quindi la stazione americana a quella russa.",
+    "fonte": "NASA — International Space Station: Pressurized Mating Adapters"
+  },
+  {
+    "id": "pma2",
+    "nome": "PMA-2",
+    "ruolo": "Adattatore di attracco di Harmony",
+    "nota": "Anche il Pressurized Mating Adapter 2 è stato lanciato insieme a Unity. Dal 2007 si trova sul portello frontale di Harmony. Serve da porta di attracco: oggi, con un adattatore internazionale, accoglie le capsule che portano gli equipaggi.",
+    "fonte": "NASA — International Space Station: Pressurized Mating Adapters; International Docking Adapter"
+  },
+  {
+    "id": "quest",
+    "nome": "Quest",
+    "ruolo": "Camera di equilibrio per le passeggiate",
+    "nota": "Il Quest Joint Airlock, lanciato con lo Space Shuttle nel luglio 2001, è la via principale per le passeggiate spaziali con le tute statunitensi. Ha due compartimenti: uno per preparare e riparare le tute, l'altro da cui gli astronauti escono nello spazio.",
+    "fonte": "NASA — International Space Station: Quest Joint Airlock"
+  }
 ]
