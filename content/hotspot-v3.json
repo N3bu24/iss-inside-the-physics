@@ -998,7 +998,7 @@
     ],
     "badge": "Simulazione concettuale",
     "fonte": "Central Japan Railway Company (JR Central), Superconducting Maglev; teoria slide 4-11 (Obiettivo 9, Maglev)",
-    "oggetto_reale": "Punto sul paesaggio terrestre della tappa finale (video NASA della Terra); la scheda rimanda alla simulazione sulla levitazione.",
+    "oggetto_reale": "Punto di interesse nell'interno della capsula di rientro (ricostruzione 3D); la scheda rimanda alla simulazione sulla levitazione.",
     "yaw_stimato": -60,
     "pitch_stimato": 0
   },
@@ -1035,7 +1035,7 @@
     ],
     "badge": "Simulazione concettuale",
     "fonte": "Teoria slide 9, 11, 18 (correnti parassite, Lenz, alternatore e motore); Airbus Defence and Space e DLR per le misure sull'EML (Obiettivo 9)",
-    "oggetto_reale": "Punto sul paesaggio terrestre della tappa finale (video NASA della Terra); la scheda rimanda alla simulazione sui motori.",
+    "oggetto_reale": "Punto di interesse nell'interno della capsula di rientro (ricostruzione 3D); la scheda rimanda alla simulazione sui motori.",
     "yaw_stimato": -20,
     "pitch_stimato": 0
   },
@@ -1072,7 +1072,7 @@
     ],
     "badge": "Simulazione concettuale",
     "fonte": "Teoria slide 18-23 (alternatore, trasformatore, centrali, trasporto; Obiettivo 7); NASA (ISS electrical power system)",
-    "oggetto_reale": "Punto sul paesaggio terrestre della tappa finale (video NASA della Terra); la scheda rimanda alla simulazione sull'energia di bordo.",
+    "oggetto_reale": "Punto di interesse nell'interno della capsula di rientro (ricostruzione 3D); la scheda rimanda alla simulazione sull'energia di bordo.",
     "yaw_stimato": 20,
     "pitch_stimato": 0
   },
@@ -1109,7 +1109,7 @@
     ],
     "badge": "Simulazione concettuale",
     "fonte": "Costituzione della Repubblica Italiana, art. 32; Agenda 2030 ONU, Obiettivo 3; teoria slide 5, 8, 12; Roberts et al., New England Journal of Medicine, 2017; FDA (autorizzazione NeuroStar, 2008)",
-    "oggetto_reale": "Punto sul paesaggio terrestre della tappa finale (video NASA della Terra); la scheda rimanda alla simulazione sulla risonanza magnetica.",
+    "oggetto_reale": "Punto di interesse nell'interno della capsula di rientro (ricostruzione 3D); la scheda rimanda alla simulazione sulla risonanza magnetica.",
     "yaw_stimato": 60,
     "pitch_stimato": 0
   }

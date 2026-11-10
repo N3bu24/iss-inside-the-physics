@@ -1,3 +1,21 @@
 [
-  { "nome": "React", "categoria": "Sito", "uso": "" }
+  { "nome": "React", "categoria": "Sito", "uso": "Libreria per costruire l'interfaccia e i componenti del sito." },
+  { "nome": "TypeScript", "categoria": "Sito", "uso": "Linguaggio del codice, con controllo dei tipi per ridurre gli errori." },
+  { "nome": "Tailwind CSS", "categoria": "Sito", "uso": "Stile grafico dell'interfaccia: pannelli traslucidi, tipografia, layout." },
+  { "nome": "KaTeX", "categoria": "Sito", "uso": "Composizione delle formule nei pannelli espandibili." },
+  { "nome": "lucide", "categoria": "Sito", "uso": "Set di icone dell'interfaccia." },
+  { "nome": "Photo Sphere Viewer", "categoria": "Immagini e panorami", "uso": "Visualizzazione e navigazione dei panorami a 360° dei moduli." },
+  { "nome": "ESA Space Station 360", "categoria": "Immagini e panorami", "uso": "Fonte dei panorami interni della ISS." },
+  { "nome": "NASA", "categoria": "Immagini e panorami", "uso": "Fonte di fotografie e filmati reali della ISS e della Terra." },
+  { "nome": "Three.js", "categoria": "3D e simulazioni", "uso": "Motore 3D nel browser per le simulazioni interattive." },
+  { "nome": "React Three Fiber e drei", "categoria": "3D e simulazioni", "uso": "Integrazione di Three.js in React e componenti 3D di supporto." },
+  { "nome": "Blender", "categoria": "3D e simulazioni", "uso": "Modello 3D dell'EML, render dei fenomeni fisici e interno della capsula di rientro." },
+  { "nome": "Higgsfield (Seedance 2.0 e Kling 3.0)", "categoria": "Video", "uso": "Voli tra i moduli e ricostruzioni video generate con IA." },
+  { "nome": "FFmpeg", "categoria": "Video", "uso": "Montaggio e compressione di video e audio." },
+  { "nome": "ElevenLabs", "categoria": "Audio", "uso": "Voce narrante «Thomas A.» ed effetti sonori del sottofondo." },
+  { "nome": "Vite", "categoria": "Sviluppo e pubblicazione", "uso": "Strumento di sviluppo e compilazione del sito." },
+  { "nome": "Claude Code (Anthropic)", "categoria": "Sviluppo e pubblicazione", "uso": "Sviluppo assistito da IA, con orchestrazione di agenti specializzati." },
+  { "nome": "Git e GitHub", "categoria": "Sviluppo e pubblicazione", "uso": "Versioni del progetto e archivio del codice." },
+  { "nome": "Vercel", "categoria": "Sviluppo e pubblicazione", "uso": "Pubblicazione online del sito." },
+  { "nome": "Telegram Bot API", "categoria": "Sviluppo e pubblicazione", "uso": "Notifiche di avanzamento durante lo sviluppo." }
 ]

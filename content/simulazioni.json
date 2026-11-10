@@ -57,7 +57,17 @@
     ],
     "voce": "Questa è la scena dell'EML. Premi Avvia e seguirai un esperimento in sei passi. Prima il campione viene portato nella bobina. Poi il campo di quadrupolo lo sospende, perché le correnti parassite respingono la bobina. Il campo di dipolo lo scalda per effetto Joule, fino a fonderlo. Poi la goccia oscilla e si misura, infine si raffredda e solidifica.",
     "slide_pptx": [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 19],
-    "agenda": "Obiettivo 9: la ricerca sui materiali senza contenitore dà dati per l'industria di leghe, turbine e componenti; la stessa fisica di Lenz sostiene i treni Maglev."
+    "agenda": "Obiettivo 9: la ricerca sui materiali senza contenitore dà dati per l'industria di leghe, turbine e componenti; la stessa fisica di Lenz sostiene i treni Maglev.",
+    "guida": {
+      "come_si_usa": "Premi «Avvia esperimento» per iniziare la sequenza in sei passi. Trascina per ruotare la visuale e usa la rotella per avvicinarti alla camera di processo. «Esci» o il tasto Esc chiudono la simulazione.",
+      "comandi": [
+        { "nome": "Avvia esperimento", "cosa_fa": "Apre la sequenza dell'esperimento, dal carico del campione fino alla solidificazione." },
+        { "nome": "Avanti", "cosa_fa": "Passa al passo successivo." },
+        { "nome": "Indietro", "cosa_fa": "Torna al passo precedente." },
+        { "nome": "Automatico", "cosa_fa": "Fa scorrere i passi da soli, senza dover premere nulla." }
+      ],
+      "cosa_dimostra": "Rende visibile ciò che nell'EML non si vede a occhio nudo: le correnti indotte che sostengono il campione, il calore per effetto Joule che lo fonde, la solidificazione senza contenitore. È la legge di Faraday-Neumann-Lenz al lavoro, ed è il cuore dell'intero percorso."
+    }
   },
   {
     "id": "campo",
@@ -110,7 +120,16 @@
     ],
     "voce": "Qui la stazione è un conduttore che si muove dentro il campo magnetico della Terra. Premi Avvia e segui i passaggi: il nastro che si allunga dietro la struttura è la superficie spazzata, e il flusso che cambia fa nascere la tensione. Poi gioca con velocità, campo e lunghezza e guarda i volt cambiare. Con i valori predefiniti si arriva a circa ventitré volt.",
     "slide_pptx": [2, 7, 8, 9, 10],
-    "agenda": "Infrastrutture complesse come la ISS vanno progettate anche contro effetti fisici invisibili: è una forma di resilienza (Obiettivo 9)."
+    "agenda": "Infrastrutture complesse come la ISS vanno progettate anche contro effetti fisici invisibili: è una forma di resilienza (Obiettivo 9).",
+    "guida": {
+      "come_si_usa": "Premi «Avvia» per aprire la spiegazione a passi, con «Avanti», «Indietro» e «Automatico». Trascina per ruotare la visuale e usa la rotella per avvicinarti. «Esci» o il tasto Esc chiudono: il primo Esc chiude i passi, il secondo la simulazione.",
+      "comandi": [
+        { "nome": "Velocità orbitale", "cosa_fa": "Cambia la velocità con cui la ISS percorre l'orbita, anche oltre quella reale, per vedere come reagisce la tensione indotta." },
+        { "nome": "Inclinazione orbita", "cosa_fa": "Inclina il piano dell'orbita fino a renderla polare, cambiando il modo in cui la stazione taglia le linee del campo." },
+        { "nome": "Segui la ISS / Vista d'insieme", "cosa_fa": "Alterna l'inquadratura che accompagna la stazione e la vista sull'intero pianeta." }
+      ],
+      "cosa_dimostra": "Mostra che un conduttore in moto in un campo magnetico, come la ISS nel campo terrestre, è sede di una fem indotta: è il primo esperimento di Faraday in scala planetaria. La stazione è disegnata molto più grande del reale, solo per essere visibile."
+    }
   },
   {
     "id": "energia",
@@ -163,7 +182,15 @@
     ],
     "voce": "In questa simulazione segui l'energia dal pannello solare fino al rack. Premi Avvia: vedrai prima la corrente continua dei pannelli, poi un alternatore che produce un'onda sinusoidale e un trasformatore che cambia la tensione. Poi scopri perché le linee elettriche usano alte tensioni: il cavo che si scalda è il calore perso per effetto Joule.",
     "slide_pptx": [3, 5, 18, 19, 20, 21, 22, 23],
-    "agenda": "Obiettivo 7: energia pulita e accessibile. Quasi tutte le fonti rinnovabili, tranne il fotovoltaico, trasformano energia cinetica in elettrica con un alternatore."
+    "agenda": "Obiettivo 7: energia pulita e accessibile. Quasi tutte le fonti rinnovabili, tranne il fotovoltaico, trasformano energia cinetica in elettrica con un alternatore.",
+    "guida": {
+      "come_si_usa": "Premi «Avvia» per aprire la spiegazione a passi, con «Avanti», «Indietro» e «Automatico». Trascina per ruotare la visuale e usa la rotella per avvicinarti. «Esci» o il tasto Esc chiudono: il primo Esc chiude i passi, il secondo la simulazione.",
+      "comandi": [
+        { "nome": "Rapporto spire", "cosa_fa": "Cambia il rapporto tra le spire del primario e del secondario del trasformatore, e con esso la tensione in uscita." },
+        { "nome": "Ferma la rotazione / Riavvia", "cosa_fa": "Blocca o fa ripartire la rotazione dell'alternatore." }
+      ],
+      "cosa_dimostra": "Segue l'energia dalla produzione al consumo: un flusso magnetico che varia nell'alternatore genera corrente, e il trasformatore, per mutua induzione, la porta a tensioni adatte al trasporto. Fa capire perché alzare la tensione riduce le perdite per effetto Joule."
+    }
   },
   {
     "id": "levitazione",
@@ -216,7 +243,15 @@
     ],
     "voce": "Qui vedi la legge di Lenz in tre versioni. Premi Avvia: un magnete in moto sopra una lastra di rame induce correnti che lo respingono. Poi lo stesso principio sostiene il campione nell'EML e solleva un treno Maglev. Alla fine vedrai l'ELF di Kibo, che usa forze elettriche: la levitazione ha più strade.",
     "slide_pptx": [4, 8, 9, 11],
-    "agenda": "Obiettivo 9: infrastrutture innovative, senza attrito di contatto; la ricerca sui materiali in orbita porta innovazione nell'industria."
+    "agenda": "Obiettivo 9: infrastrutture innovative, senza attrito di contatto; la ricerca sui materiali in orbita porta innovazione nell'industria.",
+    "guida": {
+      "come_si_usa": "Premi «Avvia» per aprire la spiegazione a passi, con «Avanti», «Indietro» e «Automatico». Trascina per ruotare la visuale e usa la rotella per avvicinarti. «Esci» o il tasto Esc chiudono: il primo Esc chiude i passi, il secondo la simulazione.",
+      "comandi": [
+        { "nome": "Velocità del carrello", "cosa_fa": "Aumenta la velocità del carrello sulla guida: sotto una certa soglia resta appoggiato, oltre si solleva." },
+        { "nome": "Confronta con l'EML", "cosa_fa": "Affianca alla scena del Maglev quella del campione levitato nella bobina dell'EML." }
+      ],
+      "cosa_dimostra": "Rende visibile che la levitazione per induzione è la stessa fisica a scale diverse: correnti indotte che, per la legge di Lenz, respingono ciò che le ha create. Sostiene un campione nell'EML e può sollevare un treno."
+    }
   },
   {
     "id": "rmn",
@@ -268,7 +303,15 @@
     ],
     "voce": "Qui entri in una risonanza magnetica. Premi Avvia e segui cinque passi: un campo intenso allinea i nuclei di idrogeno, un impulso radio li inclina, e mentre precedono inducono un segnale nella bobina, secondo Faraday-Neumann. Muovi il cursore del campo e guarda come cambia la frequenza. Tessuti diversi producono segnali diversi: è così che nasce l'immagine.",
     "slide_pptx": [8, 12, 13, 14, 15, 16, 17],
-    "agenda": "Obiettivo 3 e Articolo 32: la RMN diagnostica i tessuti molli senza radiazioni ionizzanti; il diritto alla salute è individuale e collettivo."
+    "agenda": "Obiettivo 3 e Articolo 32: la RMN diagnostica i tessuti molli senza radiazioni ionizzanti; il diritto alla salute è individuale e collettivo.",
+    "guida": {
+      "come_si_usa": "Premi «Avvia» per aprire la spiegazione a passi, con «Avanti», «Indietro» e «Automatico». Trascina per ruotare la visuale e usa la rotella per avvicinarti. «Esci» o il tasto Esc chiudono: il primo Esc chiude i passi, il secondo la simulazione.",
+      "comandi": [
+        { "nome": "Impulso RF", "cosa_fa": "Invia un impulso a radiofrequenza: gli spin si inclinano e, tornando all'equilibrio, producono il segnale." },
+        { "nome": "Campo B₀", "cosa_fa": "Cambia l'intensità del campo del magnete e, con essa, la velocità di precessione degli spin." }
+      ],
+      "cosa_dimostra": "Mostra come nasce il segnale di una risonanza magnetica: i nuclei che precedono variano il flusso in una bobina e vi inducono una fem, secondo Faraday-Neumann. È l'induzione al servizio della diagnosi, senza radiazioni ionizzanti."
+    }
   },
   {
     "id": "motore",
@@ -321,7 +364,16 @@
     ],
     "voce": "Qui vedi che motore e alternatore sono la stessa macchina usata in due versi. Premi Avvia: prima giri la spira con la manovella e produci corrente. Poi la alimenti con una batteria, e la forza di Lorentz la fa girare. Osserva la fem opposta che nasce mentre il motore gira: è la legge di Lenz. È ciò che muove le ventole e i bracci della stazione.",
     "slide_pptx": [3, 18],
-    "agenda": "Obiettivo 9: motori e generatori sono alla base di industria e trasporti; sistemi efficienti riducono energia e rumore."
+    "agenda": "Obiettivo 9: motori e generatori sono alla base di industria e trasporti; sistemi efficienti riducono energia e rumore.",
+    "guida": {
+      "come_si_usa": "Premi «Avvia» per aprire la spiegazione a passi, con «Avanti», «Indietro» e «Automatico». Trascina per ruotare la visuale e usa la rotella per avvicinarti. «Esci» o il tasto Esc chiudono: il primo Esc chiude i passi, il secondo la simulazione.",
+      "comandi": [
+        { "nome": "Alternatore", "cosa_fa": "Mette la spira in rotazione da fuori: il flusso varia e nasce una corrente alternata." },
+        { "nome": "Motore", "cosa_fa": "Alimenta la spira con una batteria: la forza di Lorentz la fa girare." },
+        { "nome": "Velocità", "cosa_fa": "Cambia la velocità di rotazione e, con essa, l'ampiezza e la frequenza dell'onda." }
+      ],
+      "cosa_dimostra": "Fa vedere che alternatore e motore sono la stessa macchina usata in due versi: nell'uno il moto produce corrente, nell'altro la corrente produce moto. Anche nel motore compare una fem indotta che si oppone, come vuole la legge di Lenz."
+    }
   },
   {
     "id": "autoinduzione",
@@ -373,7 +425,16 @@
     ],
     "voce": "Questo è un circuito con un interruttore e una bobina. Premi Avvia e chiudi l'interruttore: la corrente non sale subito, perché la bobina si oppone con una fem autoindotta. Guarda la curva e il tempo caratteristico L diviso R. L'area sotto la curva è l'energia accumulata nel campo magnetico: la stessa idea che troviamo nella bobina dell'EML.",
     "slide_pptx": [12, 13, 14, 15, 16, 17, 19],
-    "agenda": "Obiettivo 9: capire le perdite e i transitori è il primo passo per progettare impianti elettrici sicuri."
+    "agenda": "Obiettivo 9: capire le perdite e i transitori è il primo passo per progettare impianti elettrici sicuri.",
+    "guida": {
+      "come_si_usa": "Premi «Avvia» per aprire la spiegazione a passi, con «Avanti», «Indietro» e «Automatico». Trascina per ruotare la visuale e usa la rotella per avvicinarti. «Esci» o il tasto Esc chiudono: il primo Esc chiude i passi, il secondo la simulazione.",
+      "comandi": [
+        { "nome": "Chiudi/Apri l'interruttore", "cosa_fa": "Chiude o apre il circuito e fa partire la crescita della corrente o il suo crollo." },
+        { "nome": "Induttanza L", "cosa_fa": "Cambia l'induttanza della bobina: con L più grande la corrente sale più lentamente." },
+        { "nome": "Resistenza R", "cosa_fa": "Cambia la resistenza del circuito: modifica il valore finale della corrente e la rapidità della salita." }
+      ],
+      "cosa_dimostra": "Rende visibile l'autoinduzione: la bobina si oppone alle variazioni di corrente con una fem indotta, e la corrente cresce in modo graduale. L'energia che si accumula nel campo magnetico è la stessa idea che sta nella bobina dell'EML."
+    }
   },
   {
     "id": "aurora",
@@ -425,6 +486,15 @@
     ],
     "voce": "Qui vedi perché esistono le aurore. Premi Avvia e osserva una particella carica entrare in un campo magnetico: non va dritta, curva per la forza di Lorentz, e spiraleggia lungo le linee del campo. Le linee portano ai poli, e lì le particelle accendono l'atmosfera. Puoi cambiare il campo e la particella per vedere come cambia la spirale.",
     "slide_pptx": [],
-    "agenda": "La forza di Lorentz è anche quella che fa funzionare i motori: dallo spazio ai trasporti elettrici, tema dell'Obiettivo 9."
+    "agenda": "La forza di Lorentz è anche quella che fa funzionare i motori: dallo spazio ai trasporti elettrici, tema dell'Obiettivo 9.",
+    "guida": {
+      "come_si_usa": "Premi «Avvia» per aprire la spiegazione a passi, con «Avanti», «Indietro» e «Automatico». Trascina per ruotare la visuale e usa la rotella per avvicinarti. «Esci» o il tasto Esc chiudono: il primo Esc chiude i passi, il secondo la simulazione.",
+      "comandi": [
+        { "nome": "Campo B", "cosa_fa": "Cambia l'intensità del campo magnetico: più è forte, più stretta è la spirale della particella." },
+        { "nome": "Protone", "cosa_fa": "Lancia una particella con carica positiva, che curva in un verso." },
+        { "nome": "Elettrone", "cosa_fa": "Lancia una particella con carica negativa, che curva nel verso opposto." }
+      ],
+      "cosa_dimostra": "Mostra la forza di Lorentz su una carica in moto: curva la traiettoria senza cambiarne la velocità e guida le particelle del vento solare lungo le linee del campo terrestre, fino ad accendere le aurore. La ISS è disegnata molto più grande del reale, solo per essere visibile."
+    }
   }
 ]

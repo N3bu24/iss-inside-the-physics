@@ -1,7 +1,11 @@
 {
-  "titolo": "",
-  "sottotitolo": "",
-  "paragrafi": [],
-  "copione_voce": "",
-  "nota_provenienza": ""
+  "titolo": "Dallo spazio alla Terra",
+  "sottotitolo": "Il rientro: le idee nate in orbita tornano a casa",
+  "paragrafi": [
+    "Ogni missione finisce con un ritorno. Una capsula lascia la stazione e scende verso l'atmosfera, e con lei tornano a casa i campioni, i dati e le idee nate in orbita. Qui il rientro non è una fine: è il passaggio in cui la ricerca spaziale diventa vita quotidiana.",
+    "Fuori dagli oblò l'aria si accende. Davanti alla capsula, che viaggia a velocità altissima, l'aria viene compressa e riscaldata fino a ionizzarsi: si forma un plasma luminoso. La visuale vibra, il rombo cresce, poi tutto si calma man mano che l'atmosfera frena la discesa.",
+    "Quando le nubi si aprono, la fisica di Faraday, Neumann e Lenz è già al lavoro sotto di noi: nei treni a levitazione magnetica, nei motori, nelle linee elettriche, nelle macchine per la diagnosi. Qui trovi i punti luminosi che portano dall'EML al diritto alla salute."
+  ],
+  "copione_voce": "Il rientro è il ritorno a casa. Fuori dall'oblò l'aria si scalda e si accende: è plasma. La capsula vibra, poi rallenta. Quello che abbiamo imparato in orbita scende con noi: treni che levitano, motori, energia, medicina. La fisica di Faraday non è rimasta lassù. È già sulla Terra, e lavora ogni giorno.",
+  "nota_provenienza": "Ricostruzione 3D e simulazione concettuale realizzate per questo progetto: non sono riprese reali."
 }
