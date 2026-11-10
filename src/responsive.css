@@ -16,3 +16,48 @@
 /* ===== ESPLORAZIONE (web-developer B) ===== */
 
 /* ===== SIMULAZIONI (web-developer A) ===== */
+
+/* comandi delle simulazioni: area di tocco alta, barra scorrevole in orizzontale senza barra visibile */
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  input.amb-range { height: 38px; touch-action: none; }
+  input.amb-range::-webkit-slider-thumb { width: 26px; height: 26px; margin-top: -11.5px; }
+  input.amb-range::-moz-range-thumb { width: 22px; height: 22px; }
+  .sim-riga { scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+  .sim-riga::-webkit-scrollbar { display: none; }
+  .sim-riga > * { flex-shrink: 0; }
+  button.sim-avvia { min-height: 44px; }
+}
+
+/* telefono: marcatori 3D piu' piccoli (40 px) ma toccabili */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px) {
+  button.sim-hs { width: 40px; height: 40px; }
+  button.sim-hs svg { width: 20px; height: 20px; }
+  button.sim-hs::after { inset: -5px; }
+}
+
+/* pannello dei 5 fenomeni nel nodo EML: fila scorrevole sopra «Avvia esperimento» (verticale; telefono anche in orizzontale) */
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  @media (orientation: portrait) {
+    .fen-panel { top: auto; left: 8px; right: 8px; bottom: 144px; width: auto; max-width: none; max-height: 46dvh; padding: 10px 12px; }
+    .fen-panel > div:first-child { font-size: 9.5px; }
+    .fen-lista { display: flex; flex-direction: row; gap: 6px; margin-top: 6px; overflow-x: auto; scrollbar-width: none; }
+    .fen-lista::-webkit-scrollbar { display: none; }
+    .fen-voce { flex: 0 0 auto; }
+    .fen-voce > button { width: auto; white-space: nowrap; background: rgba(255,255,255,.06); padding-left: 10px; padding-right: 14px; }
+    .fen-hint { display: none; }
+    .fen-dett { margin-top: 8px; padding-top: 8px; max-height: 32dvh; flex: none; }
+  }
+}
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px) {
+  @media (orientation: landscape) {
+    .fen-panel { top: auto; left: 8px; right: 224px; bottom: 76px; width: auto; max-width: none; max-height: 52dvh; padding: 8px 10px; }
+    .fen-panel > div:first-child { display: none; }
+    .fen-lista { display: flex; flex-direction: row; gap: 6px; overflow-x: auto; scrollbar-width: none; margin-top: 0; }
+    .fen-lista::-webkit-scrollbar { display: none; }
+    .fen-voce { flex: 0 0 auto; }
+    .fen-voce > button { width: auto; white-space: nowrap; background: rgba(255,255,255,.06); padding-left: 10px; padding-right: 14px; }
+    .fen-hint { display: none; }
+    .fen-dett { margin-top: 6px; padding-top: 6px; max-height: 24dvh; flex: none; }
+    .eml-avvia { left: auto; right: 12px; translate: none; }
+  }
+}

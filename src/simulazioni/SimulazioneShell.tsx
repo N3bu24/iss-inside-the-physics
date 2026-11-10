@@ -6,6 +6,8 @@ import { X } from 'lucide-react'
 import Marcatore, { type CategoriaSim } from './Marcatore'
 import LayoutSimulazione from './Layout'
 import OffsetVista from './OffsetVista'
+import CameraCompatta from './CameraCompatta'
+import { fattoreCamera, useLayoutSim } from './compatto'
 import type { Passo } from './contenuto'
 
 export type HotspotSim = { id: string; categoria: CategoriaSim; titolo: string; testo: string; pos: [number, number, number] }
@@ -40,7 +42,7 @@ function Proietta({ hs, els }: { hs: HotspotSim[]; els: React.RefObject<Record<s
 }
 
 /** Sposta la camera (con easing) quando il passo attivo ha una `camera`; poi lascia i comandi all'utente. */
-function CameraRig({ passo }: { passo: Passo | null }) {
+function CameraRig({ passo, fattore = 1 }: { passo: Passo | null; fattore?: number }) {
   const { camera, controls } = useThree()
   const tween = useRef<{ t: number; p0: THREE.Vector3; t0: THREE.Vector3; p1: THREE.Vector3; t1: THREE.Vector3 } | null>(null)
   useEffect(() => {
@@ -49,13 +51,12 @@ function CameraRig({ passo }: { passo: Passo | null }) {
       tween.current = null
       return
     }
-    tween.current = {
-      t: 0,
-      p0: camera.position.clone(),
-      t0: c.target.clone(),
-      p1: new THREE.Vector3(...passo.camera.pos),
-      t1: new THREE.Vector3(...passo.camera.target),
-    }
+    const t1 = new THREE.Vector3(...passo.camera.target)
+    const p1 = new THREE.Vector3(...passo.camera.pos)
+    // telefono/tablet: la camera del passo si allontana dal bersaglio del fattore (sul desktop fattore = 1: invariato)
+    if (fattore !== 1) p1.sub(t1).multiplyScalar(fattore).add(t1)
+    tween.current = { t: 0, p0: camera.position.clone(), t0: c.target.clone(), p1, t1 }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [passo, camera, controls])
   useFrame((_, dt) => {
     const tw = tween.current
@@ -100,6 +101,7 @@ export default function SimulazioneShell(p: PropsShell) {
   const [hs, setHs] = useState<string | null>(null)
   const els = useRef<Record<string, HTMLElement | null>>({})
   const o = p.orbit ?? {}
+  const info = useLayoutSim()
   const hsAttivo = p.hotspot?.find((h) => h.id === hs)
 
   const extra = hsAttivo ? (
@@ -133,7 +135,9 @@ export default function SimulazioneShell(p: PropsShell) {
       onClose={p.onClose}
       controlli={p.controlli}
       scope={p.scope}
-      scena={({ seq, passo, sinistraPx }) => (
+      scena={({ seq, passo, sinistraPx, sopraPx, compatto }) => {
+        const k = compatto ? fattoreCamera(info, sinistraPx, sopraPx) : 1
+        return (
         <>
           <div className="absolute inset-0">
             <Canvas camera={{ position: p.camera?.position ?? [0, 3, 12], fov: p.camera?.fov ?? 45 }} dpr={[1, 1.5]}>
@@ -141,8 +145,9 @@ export default function SimulazioneShell(p: PropsShell) {
               <Suspense fallback={null}>{p.children}</Suspense>
               <Proietta hs={p.hotspot ?? []} els={els} />
               <OrbitControls makeDefault enablePan={false} target={o.target ?? [0, 0, 0]} minDistance={o.minDistance} maxDistance={o.maxDistance} maxPolarAngle={o.maxPolarAngle} />
-              <CameraRig passo={passo} />
-              <OffsetVista sinistraPx={sinistraPx} />
+              <CameraRig passo={passo} fattore={k} />
+              {compatto && <CameraCompatta fattore={k} />}
+              <OffsetVista sinistraPx={sinistraPx} sopraPx={sopraPx} />
             </Canvas>
           </div>
           {/* hotspot: elementi DOM posizionati proiettando il punto 3D (nascosti durante i passi: la colonna racconta già) */}
@@ -154,7 +159,8 @@ export default function SimulazioneShell(p: PropsShell) {
             ))}
           </div>
         </>
-      )}
+        )
+      }}
     />
   )
 }

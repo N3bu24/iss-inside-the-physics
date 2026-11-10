@@ -23,14 +23,14 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
   const col = (c: string) => (c === 'heat' ? '#ff8a2a' : '#35e0ff')
 
   return (
-    <aside className="glass slide-in absolute right-4 top-[15.5rem] bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5" style={{ background: "rgba(7,12,26,.9)" }}>
+    <aside className="fen-panel glass slide-in absolute right-4 top-[15.5rem] bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5" style={{ background: "rgba(7,12,26,.9)" }}>
       <div className="text-[10px] uppercase tracking-[0.2em] text-white/45">Cosa succede nel campione</div>
-      <ol className="mt-3 space-y-1">
+      <ol className="fen-lista mt-3 space-y-1">
         {fenomeni.map((x, i) => (
-          <li key={x.id}>
+          <li key={x.id} className="fen-voce">
             <button
               onClick={() => onSelect(attivo === x.id ? null : x.id)}
-              className={`flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition ${attivo === x.id ? 'bg-white/10 text-white' : 'text-white/65 hover:bg-white/5'}`}
+              className={`flex w-full items-center gap-3 compatto:min-h-[44px] rounded-xl px-3 py-2 text-left text-sm transition ${attivo === x.id ? 'bg-white/10 text-white' : 'text-white/65 hover:bg-white/5'}`}
             >
               <span className="flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-semibold text-black" style={{ background: col(x.colore) }}>{i + 1}</span>
               {x.titolo}
@@ -39,7 +39,7 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
         ))}
       </ol>
       {f ? (
-        <div key={f.id} className="fade-in mt-4 scroll-sottile flex-1 overflow-y-auto border-t border-white/10 pt-4">
+        <div key={f.id} className="fen-dett fade-in mt-4 scroll-sottile flex-1 overflow-y-auto border-t border-white/10 pt-4">
           <div className="aspect-video overflow-hidden rounded-xl border border-white/10 bg-black/40">
             {hasVideo ? (
               <video src={videoUrl(f.id)} controls autoPlay loop muted playsInline preload="metadata" className="h-full w-full object-cover" />
@@ -63,7 +63,7 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
           )}
         </div>
       ) : (
-        <p className="mt-4 border-t border-white/10 pt-4 text-sm text-white/50">
+        <p className="fen-hint mt-4 border-t border-white/10 pt-4 text-sm text-white/50">
           Scegli un fenomeno per vederlo nel modello. Trascina per ruotare, scorri per avvicinarti, tocca i punti luminosi per i dettagli.
         </p>
       )}

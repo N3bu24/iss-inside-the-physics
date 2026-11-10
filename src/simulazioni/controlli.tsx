@@ -83,9 +83,9 @@ export function Cursore(p: {
   calore?: boolean
 }) {
   return (
-    <div className="w-[260px]">
-      <div className="mb-0.5 flex items-baseline justify-between text-xs">
-        <span className="uppercase tracking-wider text-white/55">{p.etichetta}</span>
+    <div className="w-[260px] tel:w-[212px] tab:w-[240px] compatto:shrink-0">
+      <div className="mb-0.5 flex items-baseline justify-between text-xs compatto:gap-2 compatto:whitespace-nowrap compatto:text-[11px]">
+        <span className="uppercase tracking-wider compatto:tracking-[0.04em] text-white/55">{p.etichetta}</span>
         <span className="font-medium text-white">{p.testo}</span>
       </div>
       <input
@@ -99,7 +99,7 @@ export function Cursore(p: {
         aria-label={p.etichetta}
       />
       {(p.sinistra || p.destra) && (
-        <div className="flex justify-between text-[10px] text-white/40">
+        <div className="flex justify-between text-[10px] text-white/40 tel:hidden">
           <span>{p.sinistra}</span>
           <span>{p.destra}</span>
         </div>
@@ -113,7 +113,7 @@ export function Pulsante({ children, onClick, attivo }: { children: ReactNode; o
     <button
       onClick={onClick}
       className={
-        'rounded-full border px-4 py-1.5 text-[13px] font-medium backdrop-blur transition ' +
+        'rounded-full border px-4 py-1.5 compatto:min-h-[44px] compatto:shrink-0 compatto:whitespace-nowrap text-[13px] font-medium backdrop-blur transition ' +
         (attivo
           ? 'border-cyan-300/80 bg-cyan-300/20 text-cyan-100 shadow-[0_0_24px_rgba(53,224,255,.35)]'
           : 'border-white/25 bg-white/5 text-white hover:border-white/50 hover:bg-white/10')

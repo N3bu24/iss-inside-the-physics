@@ -44,8 +44,8 @@ export default function SimulazioneEml({ onClose }: { onClose: () => void }) {
           </Pulsante>
         </>
       }
-      scena={({ passo, sinistraPx }) => (
-        <EmlCanvas hotspot={[]} attivo={null} fenomeno={null} calore={potenza} mostraCampo={campo} onHotspot={() => {}} passo={passo} sinistraPx={sinistraPx} />
+      scena={({ passo, sinistraPx, sopraPx }) => (
+        <EmlCanvas hotspot={[]} attivo={null} fenomeno={null} calore={potenza} mostraCampo={campo} onHotspot={() => {}} passo={passo} sinistraPx={sinistraPx} sopraPx={sopraPx} />
       )}
     />
   )
