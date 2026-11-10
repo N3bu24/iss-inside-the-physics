@@ -62,9 +62,11 @@ function preparaVideo(url: string): Promise<HTMLVideoElement | null> {
     const v = document.createElement('video')
     v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = url
     v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%'
-    v.addEventListener('loadeddata', () => ok(v), { once: true })
+    // pronto quando si puo` riprodurre tutto senza fermarsi; se la rete e` lenta, dopo 3 s basta il primo fotogramma
+    v.addEventListener('canplaythrough', () => ok(v), { once: true })
+    v.addEventListener('loadeddata', () => setTimeout(() => ok(v), 3000), { once: true })
     v.onerror = () => ok(null)
-    setTimeout(() => ok(v.readyState >= 2 ? v : null), 7000)
+    setTimeout(() => ok(v.readyState >= 2 ? v : null), 8000)
     v.load()
   })
 }
