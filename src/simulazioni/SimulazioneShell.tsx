@@ -215,7 +215,7 @@ export default function SimulazioneShell(p: PropsShell) {
       {/* zona in basso, a destra del pannello: finestra a passi (se aperta) sopra i controlli, mai sovrapposti */}
       <div className="pointer-events-none absolute bottom-5 left-[400px] right-5 z-30 flex flex-col items-center gap-3">
         {seq !== null && passo && <FinestraSequenza inFlusso titolo={p.titolo} passi={passi} indice={seq} onIndice={vai} onChiudi={() => vai(null)} />}
-        <div data-sim-ui className="pointer-events-auto flex max-w-full flex-wrap items-center justify-center gap-x-8 gap-y-2 rounded-2xl glass px-6 py-3">
+        <div data-sim-ui className={"pointer-events-auto flex max-w-full flex-wrap items-center justify-center gap-x-8 gap-y-2 rounded-2xl glass px-6 py-3" + (seq !== null ? " [@media(max-height:800px)]:hidden" : "")}>
           {p.controlli}
           {passi.length > 0 && seq === null && (
             <button className="sim-avvia" onClick={() => vai(0)}>

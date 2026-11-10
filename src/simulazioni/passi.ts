@@ -21,8 +21,8 @@ const EML: Passo[] = [
     distanza: 4.2,
     video: V + 'campo-variabile.mp4',
     testo:
-      "Le bobine di rame portano una corrente alternata a circa 140 kHz e generano un campo quadrupolare, nullo al centro. Le correnti indotte nel campione spingono verso il punto in cui il campo si annulla: il campione galleggia senza contatto.",
-    cosaSiVede: 'Le linee di campo e il campione sospeso al centro delle due bobine.',
+      "La bobina di rame, con avvolgimenti sovrapposti per il posizionamento e per il riscaldamento, porta una corrente alternata a circa 140 kHz e genera un campo quadrupolare, nullo al centro. Le correnti indotte nel campione spingono verso il punto in cui il campo si annulla: il campione galleggia senza contatto.",
+    cosaSiVede: 'Le linee di campo e il campione sospeso al centro della bobina.',
     formula: '\\varepsilon=-\\frac{d\\Phi_B}{dt}',
   },
   {
