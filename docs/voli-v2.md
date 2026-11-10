@@ -22,3 +22,6 @@ Causa dell'errore originale: il panorama di Tranquility e' ruotato di ~90 gradi 
 I voli non rifatti restano con il video vecchio (Kling). Per finirli: ricaricare il saldo e lanciare
 `bash scripts/media/voli-v2-batch.sh "harmony__destiny|nodo|0|destiny|0"` (una riga per volo, vedi script), poi sheet.py e web-encode.py.
 Costo: ~60 crediti/volo stimati da preflight MCP (saldo API non consultabile).
+
+## 10/11 - Voli Kling a 24 fps
+I 5 voli Kling (harmony__destiny, harmony__kibo, kibo__harmony, tranquility__unity, unity__destiny) erano a 30 fps (151 frame, un duplicato ogni 5). Ricodificati dagli originali nativi a 24 fps (121 frame, 5.04 s, 1280x720, crf 25). Voli Seedance gia a 24 fps nativi: non toccati. Nessun credito speso.
