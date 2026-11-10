@@ -53,7 +53,7 @@ export default function IntroScreen({ audioOn, onAudio, onStart, onIndice, onImp
         <div className="intro-a mt-12 flex flex-wrap justify-center gap-4 tel:mt-8 tel:landscape:mt-4">
           <button className="btn-primary !px-10 !py-4 text-lg tel:min-h-14 tel:!px-8 tel:text-base" onClick={onStart}>Inizia l'esplorazione</button>
         </div>
-        <p className="intro-a absolute bottom-6 px-6 text-xs text-white/35 tel:bottom-4 tel:text-[10.5px]">Consigliato su desktop o tablet · con audio per la voce narrante</p>
+        <p className="intro-a absolute bottom-6 px-6 text-xs text-white/35 tel:bottom-8 tel:text-[10.5px]">Consigliato su desktop o tablet · con audio per la voce narrante</p>
       </div>
     </div>
   )

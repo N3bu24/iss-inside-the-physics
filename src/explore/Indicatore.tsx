@@ -13,7 +13,7 @@ export default function Indicatore({ precedente, laterale = false, compatto = fa
   if (!avanti && !precedente) return null
   if (compatto) {
     return (
-      <div className={'pointer-events-none flex flex-col gap-1.5 text-sm ' + (laterale ? 'items-start' : 'items-center')}>
+      <div className={'pointer-events-none flex flex-col gap-1.5 text-sm landscape:flex-row landscape:flex-wrap landscape:justify-center ' + (laterale ? 'items-start' : 'items-center')}>
         {avanti && (
           <button key={avanti} onClick={onAvanti} className="fade-in pointer-events-auto flex min-h-11 items-center gap-2 rounded-full border border-cyan-300/60 bg-[rgba(4,8,20,.88)] px-4 text-white shadow-lg active:bg-cyan-300/20">
             <ArrowUp size={16} className="text-cyan-200" />{testoAvanti(avanti)}

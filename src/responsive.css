@@ -45,7 +45,7 @@
   .scroll-sottile { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
 
   /* mappa a schermo intero */
-  .mappa-piena { position: absolute; inset: 0; z-index: 62; display: flex; flex-direction: column; background: rgba(4, 7, 15, .97); padding-top: 1.6rem; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .mappa-piena { position: absolute; inset: 0; z-index: 62; display: flex; flex-direction: column; background: #04070f; padding-top: 1.6rem; padding-bottom: env(safe-area-inset-bottom, 0px); }
 
   @media (orientation: landscape) {
     .foglio {

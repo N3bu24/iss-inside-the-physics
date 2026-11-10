@@ -23,12 +23,9 @@ interface Props {
 }
 
 const Posiz = ({ x, y, children }: { x: number; y: number; children: React.ReactNode }) => {
-  const compatto = useCompatto()
-  // telefono e tablet: le icone restano sempre dentro lo schermo, lontano dall'intestazione, dalla miniatura e dalla barra inferiore
-  const stile = compatto
-    ? { left: `clamp(40px, ${x * 100}%, calc(100% - 40px))`, top: `clamp(84px, ${y * 100}%, calc(100% - var(--barra-spazio) - 52px))` }
-    : { left: `${x * 100}%`, top: `${y * 100}%` }
-  return <div className="absolute z-10" style={{ ...stile, transform: 'translate(-50%,-50%)' }}>{children}</div>
+  // telefono e tablet: le icone non stanno sulle coordinate dell'immagine ma in una griglia ordinata (vedi sotto), una cella ciascuna
+  if (useCompatto()) return <div className="flex justify-center pb-10">{children}</div>
+  return <div className="absolute z-10" style={{ left: `${x * 100}%`, top: `${y * 100}%`, transform: 'translate(-50%,-50%)' }}>{children}</div>
 }
 
 function PortelloImmagine({ p, onPortello, nomeNodo }: { p: Portello; onPortello: (p: Portello) => void; nomeNodo: (id: NodoId) => string }) {
@@ -44,6 +41,18 @@ function PortelloImmagine({ p, onPortello, nomeNodo }: { p: Portello; onPortello
 export default function ImmagineNodo({ nodo, hotspot, portelli, porte, onHotspot, onPortello, onAmbiente, nomeNodo, uscendo }: Props) {
   const cupola = nodo.tipo === 'cupola'
   const [videoOk, setVideoOk] = useState(true)
+  const compatto = useCompatto()
+  const marcatori = (
+    <>
+      {hotspot.map((h) => h.pos?.tipo === 'immagine' && (
+        <Posiz key={h.id} x={h.pos.x} y={h.pos.y}><HotspotMarker tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} onClick={() => onHotspot(h.id)} /></Posiz>
+      ))}
+      {porte.filter((p) => p.x !== undefined).map((p) => (
+        <Posiz key={p.ambiente} x={p.x!} y={p.y!}><HotspotMarker tipo="ambiente" ambiente={p.ambiente} titolo={p.titolo} onClick={() => onAmbiente(p.ambiente)} /></Posiz>
+      ))}
+      {portelli.filter((p) => p.x !== undefined).map((p) => <PortelloImmagine key={p.verso} p={p} onPortello={onPortello} nomeNodo={nomeNodo} />)}
+    </>
+  )
   return (
     <div
       className="absolute inset-0 z-20 overflow-hidden bg-[#02030a]"
@@ -60,13 +69,9 @@ export default function ImmagineNodo({ nodo, hotspot, portelli, porte, onHotspot
       )}
       {!cupola && <div className="absolute inset-0 bg-black/45" />}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(2,3,10,.55)_100%)]" />
-      {hotspot.map((h) => h.pos?.tipo === 'immagine' && (
-        <Posiz key={h.id} x={h.pos.x} y={h.pos.y}><HotspotMarker tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} onClick={() => onHotspot(h.id)} /></Posiz>
-      ))}
-      {porte.filter((p) => p.x !== undefined).map((p) => (
-        <Posiz key={p.ambiente} x={p.x!} y={p.y!}><HotspotMarker tipo="ambiente" ambiente={p.ambiente} titolo={p.titolo} onClick={() => onAmbiente(p.ambiente)} /></Posiz>
-      ))}
-      {portelli.filter((p) => p.x !== undefined).map((p) => <PortelloImmagine key={p.verso} p={p} onPortello={onPortello} nomeNodo={nomeNodo} />)}
+      {compatto ? (
+        <div className="absolute inset-x-3 top-[5.2rem] z-10 grid grid-cols-[repeat(auto-fit,minmax(7.5rem,1fr))] content-start justify-items-center gap-x-2 gap-y-2 overflow-y-auto landscape:top-[3.4rem]" style={{ bottom: 'calc(var(--barra-spazio) + 11rem)' }}>{marcatori}</div>
+      ) : marcatori}
     </div>
   )
 }

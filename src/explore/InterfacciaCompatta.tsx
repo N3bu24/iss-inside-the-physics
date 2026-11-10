@@ -93,14 +93,14 @@ export default function InterfacciaCompatta(p: Props) {
         </div>
 
         {p.scheda && <HotspotCard scheda={p.scheda} audioOn={p.audioOn} onClose={p.onChiudiScheda} onSimulazione={p.onSimulazione} />}
-        {gesti && !p.scheda && <LegendaGesti onChiudi={chiudiGesti} />}
+        {gesti && !p.scheda && !luogoAperto && <LegendaGesti onChiudi={chiudiGesti} />}
         <BarraCompatta
           luogoAperto={luogoAperto} daVedere={daVedere} onLuogo={() => setLuogoAperto(!luogoAperto)} onMappa={() => setMappaPiena(true)} onAvanti={p.onAvanti}
           audioOn={p.audioOn} onAudio={p.onAudio} onIndice={p.onIndice} onImpostazioni={p.onImpostazioni} onHome={p.onHome} onCrediti={p.onCrediti}
           onComandi={mostraGesti} trans={trans} onTrans={() => setTrans(true)}
         />
         {luogoAperto && (
-          <Foglio titolo={p.luogo.nome} sottotitolo={p.luogo.sottotitolo} onClose={() => setLuogoAperto(false)}>
+          <Foglio titolo="Questo luogo" onClose={() => setLuogoAperto(false)}>
             <SchedaLuogo key={p.nodo.id} luogo={p.luogo} sempreAperta />
             <div className="mt-2"><ListaPunti key={`l-${p.nodo.id}`} punti={p.voci} onScegli={(id) => { setLuogoAperto(false); p.onScegliPunto(id) }} /></div>
             {p.nodo.credito && <p className="credito-linea mt-3 px-2">{p.nodo.credito}</p>}
