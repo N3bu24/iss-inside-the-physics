@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>ISS — Inside the Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: Inter, sans-serif; }
+  .page { width: 210mm; height: 297mm; overflow: hidden; position: relative; page-break-after: always; }
+
+  /* ---------- PAGINA 1 ---------- */
+  .p1 { background: #050a14; color: #e8eef7; }
+  .hero { position: relative; height: 112mm; background: url(intro.jpg) center 38%/cover; }
+  .hero::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(5,10,20,.55) 0%, rgba(5,10,20,.05) 35%, rgba(5,10,20,.35) 65%, #050a14 100%); }
+  .top { position: absolute; top: 11mm; left: 14mm; right: 14mm; display: flex; justify-content: space-between;
+    font: 500 7.5pt/1 "JetBrains Mono", monospace; letter-spacing: .18em; text-transform: uppercase; color: rgba(232,238,247,.75); z-index: 2; }
+  .title { position: absolute; left: 14mm; bottom: 4mm; z-index: 2; }
+  .kicker { font: 500 8pt "JetBrains Mono", monospace; letter-spacing: .25em; color: #5fd4f4; text-transform: uppercase; margin-bottom: 4mm; }
+  h1 { font: 700 40pt/0.95 "Space Grotesk", sans-serif; letter-spacing: -.02em; }
+  h1 span { color: #5fd4f4; }
+  .sub { margin-top: 4mm; font: 300 12pt/1.4 Inter; color: #c5d1e2; max-width: 150mm; }
+
+  .body1 { padding: 6mm 14mm 0; }
+  .lead { font: 400 9.8pt/1.56 Inter; color: #cfd9e8; columns: 2; column-gap: 9mm; }
+  .lead p + p { margin-top: 3mm; }
+  .lead b { color: #fff; font-weight: 600; }
+  .lead .cy { color: #5fd4f4; font-weight: 500; }
+  .lead .or { color: #ff9a4d; font-weight: 500; }
+
+  .tiles { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 3mm; margin-top: 6mm; height: 40mm; }
+  .tile { position: relative; border-radius: 3mm; overflow: hidden; background-size: cover; background-position: center; }
+  .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(5,10,20,.9)); }
+  .tile .cap { position: absolute; left: 3.5mm; bottom: 3mm; z-index: 2; font: 600 8.5pt "Space Grotesk"; }
+  .tile .cap small { display: block; font: 400 6.5pt "JetBrains Mono"; letter-spacing: .12em; text-transform: uppercase; color: #8fa3bd; margin-top: 1mm; }
+
+  .stops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 6mm; }
+  .stop { border-top: 0.4mm solid #22344f; padding-top: 3mm; }
+  .stop .n { font: 500 7pt "JetBrains Mono"; color: #5fd4f4; letter-spacing: .15em; }
+  .stop.hot .n { color: #ff9a4d; }
+  .stop h3 { font: 600 10pt/1.2 "Space Grotesk"; margin: 1.5mm 0 1.2mm; color: #fff; }
+  .stop p { font: 400 7.8pt/1.45 Inter; color: #93a5bd; }
+
+  .foot1 { position: absolute; left: 14mm; right: 14mm; bottom: 10mm; display: flex; justify-content: space-between; align-items: flex-end;
+    border-top: 0.3mm solid #1a2940; padding-top: 4mm; }
+  .foot1 .who { font: 500 9pt "Space Grotesk"; }
+  .foot1 .who small { display: block; font: 400 7pt Inter; color: #7f93ad; margin-top: 1mm; }
+  .foot1 .cta { font: 500 8pt "JetBrains Mono"; color: #5fd4f4; letter-spacing: .08em; text-align: right; }
+  .foot1 .cta small { display: block; color: #7f93ad; font-size: 6.6pt; margin-top: 1mm; letter-spacing: .04em; }
+
+  /* ---------- PAGINA 2 (tecnica, sobria) ---------- */
+  .p2 { background: #fff; color: #1d2430; padding: 11mm 14mm; font-size: 7.9pt; line-height: 1.38; }
+  .p2 h2 { font: 700 15pt "Space Grotesk"; letter-spacing: -.01em; }
+  .p2 .meta { font: 400 7.6pt "JetBrains Mono"; color: #6a7585; margin: 1mm 0 5mm; }
+  .p2 h4 { font: 600 8.6pt "Space Grotesk"; text-transform: uppercase; letter-spacing: .08em; color: #0b4f6c;
+    border-bottom: 0.3mm solid #d5dbe3; padding-bottom: 1mm; margin: 3.6mm 0 1.6mm; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { text-align: left; vertical-align: top; padding: 0.6mm 1.5mm 0.6mm 0; border-bottom: 0.2mm solid #eceff3; }
+  th { font-weight: 600; color: #4a5566; font-size: 7.4pt; }
+  td:first-child { white-space: nowrap; font-weight: 500; }
+  pre { font: 400 7.1pt/1.42 "JetBrains Mono"; background: #f4f6f9; padding: 2.5mm 3mm; border-radius: 1.5mm; white-space: pre; }
+  ul { padding-left: 4mm; } li { margin: 0.6mm 0; }
+  .mono { font-family: "JetBrains Mono"; font-size: 7.4pt; }
+  .small { font-size: 7.2pt; color: #4a5566; }
+  .badges span { display: inline-block; border: 0.25mm solid #b9c3cf; border-radius: 1mm; padding: 0.3mm 1.6mm; margin: 0 1mm 1mm 0; font-size: 7.2pt; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGINA 1 ================= -->
+<section class="page p1">
+  <div class="hero">
+    <div class="top"><span>Fisica · Educazione civica</span><span>5ALSA · a.s. 2026/27</span></div>
+    <div class="title">
+      <div class="kicker">Una visita a 400 km di quota</div>
+      <h1>ISS<br><span>Inside the Physics</span></h1>
+      <p class="sub">Un viaggio dentro la Stazione Spaziale Internazionale, fino all'esperimento che fonde il metallo senza toccarlo.</p>
+    </div>
+  </div>
+
+  <div class="body1">
+    <div class="lead">
+      <p>Sulla Stazione Spaziale Internazionale c'è un forno senza pareti. Un piccolo campione di metallo galleggia al centro di una bobina, viene sollevato, scaldato fino a fondere e lasciato raffreddare, <b>senza mai toccare nulla</b>. Si chiama <b>EML, Electromagnetic Levitator</b>, e funziona grazie a una legge che si studia in quinta: l'<span class="cy">induzione elettromagnetica</span>.</p>
+      <p>Questo sito non è una presentazione. È una <b>visita</b>: si entra nella stazione, ci si muove tra i moduli veri fotografati dagli astronauti e si arriva nel laboratorio europeo Columbus. Lì la fisica smette di essere una formula e diventa qualcosa da <span class="or">guardare</span>.</p>
+      <p>Il percorso si può seguire come un documentario oppure abbandonare in qualsiasi momento per esplorare liberamente. Una voce accompagna ogni ambiente, i dettagli si aprono solo se si vuole.</p>
+      <p>E alla fine il viaggio torna sulla Terra, perché la stessa fisica che tiene sospesa una goccia di metallo in orbita <b>muove treni, porta energia nelle città e cura le persone</b>.</p>
+    </div>
+
+    <div class="tiles">
+      <div class="tile" style="background-image:url(columbus.jpg)"><div class="cap">Gli ambienti reali<small>Panorami ESA a 360°</small></div></div>
+      <div class="tile" style="background-image:url(eml.jpg)"><div class="cap">L'EML ricostruito<small>Modello 3D</small></div></div>
+      <div class="tile" style="background-image:url(joule.jpg)"><div class="cap">L'invisibile, visibile<small>Simulazione</small></div></div>
+    </div>
+
+    <div class="stops">
+      <div class="stop"><div class="n">01 · ENTRARE</div><h3>La stazione</h3><p>Moduli reali da esplorare a 360°, con i voli che li collegano.</p></div>
+      <div class="stop"><div class="n">02 · OSSERVARE</div><h3>La Cupola</h3><p>La finestra più grande mai portata in orbita.</p></div>
+      <div class="stop hot"><div class="n">03 · CAPIRE</div><h3>L'esperimento</h3><p>Che cosa succede davvero dentro l'EML. Da vedere, non da leggere.</p></div>
+      <div class="stop"><div class="n">04 · TORNARE</div><h3>Dallo spazio alla Terra</h3><p>Agenda 2030 e diritto alla salute, attraverso la stessa fisica.</p></div>
+    </div>
+  </div>
+
+  <div class="foot1">
+    <div class="who">Alessandro Bettinelli<small>Classe 5ALSA · Fisica ed Educazione civica · Obiettivo 9 dell'Agenda 2030</small></div>
+    <div class="cta">Mettete le cuffie, attivate l'audio.<small>Circa 15 minuti · computer consigliato · indirizzo del sito: [LINK DEL SITO]</small></div>
+  </div>
+</section>
+
+<!-- ================= PAGINA 2 ================= -->
+<section class="page p2">
+  <h2>Scheda tecnica</h2>
+  <div class="meta">ISS — Inside the Physics · versione 0.9.5 · repository privato GitHub iss-inside-the-physics · sito statico (hosting Vercel)</div>
+
+  <div class="cols">
+    <div>
+      <h4>Come visitarlo</h4>
+      <ul>
+        <li>Computer o portatile con Chrome, Edge o Firefox aggiornati; tablet accettabile, smartphone non supportato.</li>
+        <li>Audio consigliato (voce narrante e sottotitoli). Si può spegnere in qualsiasi momento.</li>
+        <li>Comandi: trascinamento per guardarsi intorno, rotella per lo zoom, frecce ↑/↓ per passare al modulo successivo/precedente. Legenda sempre disponibile.</li>
+        <li>Primo caricamento: circa 100 MB di media in totale, caricati solo quando servono.</li>
+      </ul>
+
+      <h4>Il sito in numeri</h4>
+      <table>
+        <tr><td>Ambienti a 360°</td><td>6 moduli (Columbus, Harmony, Destiny, Unity, Kibo, Tranquility) + Cupola</td></tr>
+        <tr><td>Voli tra i moduli</td><td>10 video IA (5 s, 1280×720, 24 fps)</td></tr>
+        <tr><td>Punti di interesse</td><td>28 nei moduli + 4 nel finale</td></tr>
+        <tr><td>Simulazioni</td><td>8 simulazioni + 4 ambienti interattivi 3D</td></tr>
+        <tr><td>Fenomeni EML</td><td>5 render Blender (campo variabile, correnti indotte, Joule, fusione, solidificazione)</td></tr>
+        <tr><td>Voce narrante</td><td>circa 52 clip in italiano, con sottotitoli</td></tr>
+        <tr><td>Codice</td><td>66 file TypeScript/TSX, circa 6.600 righe</td></tr>
+      </table>
+
+      <h4>Tecnologie</h4>
+      <table>
+        <tr><td>Interfaccia</td><td>React 19, TypeScript, Vite 8, Tailwind CSS 4</td></tr>
+        <tr><td>Panorami</td><td>Photo Sphere Viewer 5 (marker, virtual tour)</td></tr>
+        <tr><td>3D</td><td>Three.js, React Three Fiber, Drei; modelli glTF compressi Draco</td></tr>
+        <tr><td>Formule / animazioni</td><td>KaTeX, GSAP</td></tr>
+        <tr><td>Modellazione</td><td>Blender 5.2 (modello EML e render dei fenomeni)</td></tr>
+        <tr><td>Contenuti IA</td><td>Higgsfield (Seedance 2.0, Kling 3.0) per i voli; ElevenLabs per la voce</td></tr>
+        <tr><td>Sviluppo</td><td>assistito da Claude Code (Anthropic); hosting Vercel</td></tr>
+      </table>
+
+    </div>
+
+    <div>
+      <h4>Struttura del codice</h4>
+<pre>src/
+├─ App.tsx            flusso: intro → esplorazione → finale
+├─ explore/           panorami, voli, indicatori, legenda
+├─ components/        scena EML, schede, badge, audio, crediti
+├─ simulazioni/       le 8 simulazioni a passi
+├─ ambienti/          4 ambienti interattivi (campo, RMN, …)
+├─ ui/                mini-mappa, tappe suggerite, pannelli
+├─ data/              grafo dei moduli, posizioni, crediti
+└─ lib/               utilità per media e risorse
+content/              testi in JSON (schede, copioni voce)
+public/               panorami, voli, audio, video, modelli
+assets/blender/       sorgenti Blender dell'EML</pre>
+      <p class="small" style="margin-top:2mm">I testi stanno separati dal codice (<span class="mono">content/*.json</span>), quindi si possono correggere senza toccare i componenti. Panorami, scena 3D e formule vengono caricati solo quando servono.</p>
+
+      <h4>Crediti</h4>
+      <table>
+        <tr><th>Contenuto</th><th>Fonte e licenza</th></tr>
+        <tr><td>Panorami dei 6 moduli</td><td>ESA/NASA – S. Cristoforetti, «Space Station 360» (Flickr ESA), uso educativo con credito</td></tr>
+        <tr><td>ISS dall'esterno</td><td>NASA, iss066e080762 – pubblico dominio</td></tr>
+        <tr><td>Vista dalla Cupola</td><td>NASA, iss025e011750 – pubblico dominio</td></tr>
+        <tr><td>Video della Terra</td><td>NASA Johnson / NASA SVS 30771</td></tr>
+        <tr><td>Terra Blue Marble</td><td>NASA Earth Observatory – pubblico dominio</td></tr>
+        <tr><td>Modello 3D della ISS</td><td>NASA 3D Resources, uso libero con credito</td></tr>
+        <tr><td>Foto delle schede</td><td>NASA (pubblico dominio); GIF solidificazione ESA/DLR</td></tr>
+        <tr><td>Modello e render EML</td><td>realizzati per il progetto in Blender (modello concettuale)</td></tr>
+        <tr><td>Voli tra i moduli</td><td>ricostruzione IA Higgsfield da viste dei panorami ESA</td></tr>
+        <tr><td>Voce narrante</td><td>sintesi vocale ElevenLabs (voce IA)</td></tr>
+      </table>
+
+      <h4>Fonti scientifiche</h4>
+      <p class="small">Teoria del corso «L'induzione elettromagnetica 5LSA»; ESA e DLR (Electromagnetic Levitator, laboratorio Columbus); NASA (ISS, materiali in microgravità); consegna di Fisica ed Educazione civica (Agenda 2030, Obiettivi 3, 7, 9; Art. 32 della Costituzione). Elenco completo nei crediti del sito.</p>
+      <h4>Provenienza dei contenuti</h4>
+      <p class="badges"><span>Foto reale</span><span>Ricostruzione IA</span><span>Modello 3D</span><span>Simulazione concettuale</span></p>
+      <p class="small">Ogni contenuto porta un badge che ne dichiara l'origine. I voli e la voce sono generati con IA e non sono riprese o persone reali. Nessuna chiave API è presente nel sito: tutti i media sono stati prodotti durante lo sviluppo.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>
