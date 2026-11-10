@@ -74,3 +74,9 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - Problema 10/11: crediti Higgsfield esauriti dai voli Seedance 1080p (~3,40 $/volo, 8× Kling). Rifacimenti futuri solo dei voli difettosi e previa conferma.
 - Taglio 10/11: audio ambient (ronzio della stazione) non prodotto; priorità più bassa della pubblicazione. Si fa solo se avanza tempo.
 - Taglio 9/11: video IA dell'intro e volo IA verso la Cupola sostituiti da foto e video NASA reali (decisione dell'autore).
+
+### 10/11 mattina (orchestratore)
+- [x] Relazione PDF di 2 pagine (presentazione + scheda tecnica) e README su GitHub
+- [x] QA voli Kling: tutti accettabili (3,5-4/5)
+- [x] Rifatti con Seedance 3 voli (kibo→harmony, tranquility→unity, unity→destiny), v0.9.6, ~10,2 $
+- Rimandata su richiesta dell'autore: pubblicazione Vercel (repo già importato; serve la verifica dell'identità via email)
