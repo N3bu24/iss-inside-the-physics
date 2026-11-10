@@ -1,0 +1,47 @@
+{
+  "risoluzione": [
+    4096,
+    2048
+  ],
+  "convenzione": "lon 0 = centro immagine (pannello strumenti), positivo verso destra; lat positivo verso l'alto; gradi",
+  "oblo": [
+    {
+      "lon": -78,
+      "lat": 8,
+      "raggio": 11.0
+    },
+    {
+      "lon": 78,
+      "lat": 8,
+      "raggio": 11.0
+    },
+    {
+      "lon": 180,
+      "lat": 26,
+      "raggio": 8.0
+    }
+  ],
+  "icone": [
+    {
+      "lon": 0,
+      "lat": 30
+    },
+    {
+      "lon": -48,
+      "lat": 8
+    },
+    {
+      "lon": 48,
+      "lat": 8
+    },
+    {
+      "lon": -112,
+      "lat": 12
+    },
+    {
+      "lon": 112,
+      "lat": 12
+    }
+  ],
+  "note": "oblo con alfa 0 nel PNG; nel jpg riempiti di nero"
+}
