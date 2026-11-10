@@ -22,7 +22,7 @@
     "collegamento_agenda": "Gli stessi principi che qui producono una tensione indesiderata sono quelli di ogni conduttore in moto in un campo. Ricordano che infrastrutture complesse, come la stazione, vanno progettate in modo resiliente anche contro effetti fisici invisibili (Obiettivo 9).",
     "slide_pptx": [2, 7, 8, 9, 10],
     "fonti": [
-      "NASA NTRS, plasma contactor ISS (documenti 20090028688 e 19980201237): requisito di ±40 V rispetto al plasma; fem di moto fino a circa 30 V su un traliccio di 100 m; budget di circa ±20 V",
+      "NASA NTRS, plasma contactor ISS (documenti 20090028688 e 19980201237): requisito di ±40 V rispetto al plasma; fem di moto fino a circa 30 V su un traliccio di 100 m; budget di fem di moto di circa ±20 V (grandezza diversa dal requisito di ±40 V sul potenziale della struttura)",
       "NASA, ISS facts: velocità orbitale e inclinazione 51,6 gradi",
       "Campo magnetico a 400 km: 25-45 microtesla lungo l'orbita, 30 microtesla come valore tipico (modello IGRF, NOAA NCEI)",
       "Teoria pptx 5LSA, slide 2, 7, 8, 9"
