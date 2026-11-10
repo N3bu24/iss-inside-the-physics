@@ -99,12 +99,15 @@ Ondata 1 (in parallelo):
 - [x] P1 Icone: bollino simulazione, stessa icona per la stessa simulazione, portelli a rombo (web B)
 - [x] P1 Mini-mappa: meno alone, viaggio rapido, note sui moduli chiusi (web B + content)
 - [x] P2 Waveform accanto al pulsante audio (web B)
-- [ ] P2 Indice di tutti i contenuti (web B) — unito in main, da provare nel QA
-- [ ] P2 Impostazioni + crediti con strumenti usati (web B + content) — unito in main, da provare nel QA
+- [x] P2 Indice di tutti i contenuti (web B)
+- [x] P2 Impostazioni + crediti con strumenti usati (web B + content)
 - [x] P2 Testi: guide, moduli chiusi, capsula, strumenti (content)
-- [ ] P2 Panorama 360 dell'interno della capsula di rientro (blender) — v1 consegnata ma troppo chiara e uniforme; v2 in render
+- [x] P2 Panorama 360 dell'interno della capsula di rientro (blender, v2)
 - [x] P2 Rombo del rientro, loop (media, ElevenLabs SFX)
 Ondata 2:
-- [ ] P2 Finale nella capsula: panorama, plasma animato, tremolio, cambio di sottofondo; voce delle simulazioni nell'audio globale (web C)
+- [x] P2 Finale nella capsula: panorama, plasma animato, tremolio, cambio di sottofondo; voce delle simulazioni nell'audio globale (web C, completato dall'orchestratore)
 Ondata 3:
 - [ ] QA delle 17 voci (qa-reviewer Sonnet), correzioni, v0.11.0, push, nuovo zip
+
+- Problema 10/11 pomeriggio: il web-developer del finale (Sonnet) si è fermato per il limite d'uso di 5 ore (sblocco 18:10). Il lavoro salvato nel suo worktree è stato completato dall'orchestratore. Il QA automatico va su Haiku per lo stesso motivo.
+- Correzione 10/11: la waveform col solo sottofondo era quasi piatta (segnale ~-36 dB); ora la scala è in decibel.

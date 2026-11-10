@@ -40,7 +40,10 @@ export default function Waveform({ attivo, className = '' }: { attivo: boolean; 
         for (let i = 0; i < BARRE; i++) {
           let m = 0
           for (let k = 0; k < per; k++) m = Math.max(m, Math.abs(buf[i * per + k] - 128))
-          const v = Math.min(1, (m / 128) * 3.2)
+          // scala in decibel: il sottofondo (molto piu' basso della voce) resta visibile e la voce non satura.
+          // -54 dBFS -> 0, -4 dBFS -> 1; il ronzio della stazione (~-36 dB) disegna barre basse ma vive.
+          const db = m > 0 ? 20 * Math.log10(m / 128) : -100
+          const v = Math.min(1, Math.max(0, (db + 54) / 50))
           liv[i] += (v - liv[i]) * 0.5
         }
       } else for (let i = 0; i < BARRE; i++) liv[i] *= 0.7
