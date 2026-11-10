@@ -13,10 +13,10 @@ export default function NotaModulo({ id, onClose }: { id: string; onClose: () =>
     return () => window.removeEventListener('keydown', k)
   }, [onClose])
   return (
-    <aside role="dialog" aria-label={`Nota su ${nome}`} className="glass pannello-opaco fade-in absolute right-[17.5rem] top-4 z-[32] flex max-h-[60vh] w-[22rem] max-w-[60vw] flex-col overflow-hidden rounded-2xl" style={{ background: 'rgba(7,12,26,.95)' }}>
+    <aside role="dialog" aria-label={`Nota su ${nome}`} className="glass pannello-opaco fade-in absolute right-[17.5rem] top-4 z-[32] flex max-h-[60vh] w-[24rem] max-w-[60vw] flex-col overflow-hidden rounded-2xl" style={{ background: 'rgba(7,12,26,.95)' }}>
       <header className="flex shrink-0 items-start gap-3 border-b border-white/10 px-5 pb-3 pt-4">
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.16em] text-white/50"><Lock size={12} /> Non visitabile in questa esperienza</div>
+          <div className="flex items-center gap-1.5 whitespace-nowrap text-[10.5px] uppercase tracking-[0.1em] text-white/50"><Lock size={12} className="shrink-0" /> Non visitabile in questa esperienza</div>
           <h2 className="mt-1 text-xl font-semibold leading-tight">{nome}</h2>
           {m?.ruolo && <p className="mt-0.5 text-[13px] text-cyan-200">{m.ruolo}</p>}
         </div>

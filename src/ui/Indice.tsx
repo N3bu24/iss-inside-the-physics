@@ -61,7 +61,7 @@ export default function Indice({ onClose, onVai, onSimulazione, sospeso = false 
   const vaiA = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
-    <div className="absolute inset-0 z-[150] flex flex-col bg-[rgba(4,7,16,.97)] pt-10" role="dialog" aria-label="Indice dei contenuti">
+    <div className="absolute inset-0 z-[150] flex flex-col bg-[#04070f] pt-10" role="dialog" aria-label="Indice dei contenuti">
       <header className="flex shrink-0 items-center gap-5 border-b border-white/10 px-8 py-3">
         <h1 className="text-xl font-semibold tracking-tight">Indice dei contenuti</h1>
         <p className="hidden text-[13px] text-white/45 lg:block">Tutto ciò che si può scoprire nella stazione, da leggere anche senza esplorare.</p>

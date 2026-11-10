@@ -37,12 +37,12 @@
 @keyframes romboRespiro { 50% { border-color: color-mix(in srgb, var(--c, #e8ecf5) 55%, transparent); } }
 
 /* ---------- accessibilita: dimensione del testo, alto contrasto, riduzione delle animazioni ---------- */
-html[data-testo="grande"] .testo-corpo { font-size: 1.08em; }
-html[data-testo="molto-grande"] .testo-corpo { font-size: 1.2em; }
-html[data-testo="grande"] .testo-ui { font-size: 1.1em; }
-html[data-testo="molto-grande"] .testo-ui { font-size: 1.22em; }
-html[data-testo="grande"] .sottotitolo { font-size: 19px !important; }
-html[data-testo="molto-grande"] .sottotitolo { font-size: 22px !important; }
+html[data-testo="grande"] .testo-corpo { zoom: 1.12; }
+html[data-testo="molto-grande"] .testo-corpo { zoom: 1.26; }
+html[data-testo="grande"] .testo-ui { zoom: 1.08; }
+html[data-testo="molto-grande"] .testo-ui { zoom: 1.16; }
+html[data-testo="grande"] .sottotitolo { zoom: 1.18; }
+html[data-testo="molto-grande"] .sottotitolo { zoom: 1.36; }
 
 html[data-contrasto="alto"] .glass { background: rgba(4, 8, 20, .94); border-color: rgba(255, 255, 255, .35); }
 html[data-contrasto="alto"] .pannello-opaco { background: rgb(4, 8, 20) !important; border-color: rgba(255, 255, 255, .45); }
