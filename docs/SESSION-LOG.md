@@ -57,3 +57,19 @@ Diario cronologico delle sessioni. **Si aggiunge solo in fondo.**
 **Chiesto all'autore / risposte:** Vercel → rimandato; voli da rifare → 3-5; chiudere la scheda Chrome per liberare memoria → sì; sottofondo → sì, con le specifiche dell'autore. Ancora senza risposta: volo harmony→destiny, licenza ESA, cancellazione di `_duplicati/` e `.env.local`.
 
 **Spesa API:** Higgsfield +10,2 $ (totale ~31,8 $); ElevenLabs dentro il piano Starter.
+
+## 10/11/2026, ~14:00-22:10 (circa 8 ore)
+**Fatto**
+- Piano e realizzazione delle 17 modifiche dell'autore (v0.11.0) con 5 subagent in parallelo (web A e B, content, blender, media), poi finale nella capsula di rientro (web C, completato dall'orchestratore dopo il limite di Sonnet).
+- Verifiche in Chrome di EML, Esc a livelli, viaggio rapido, waveform (corretta in scala decibel), impostazioni, note dei moduli; QA automatico Haiku OK.
+- v1.0.0: README e relazione PDF con il link, release GitHub con zip, descrizione e argomenti della repo; Vercel già collegato e funzionante.
+- Repo resa pubblica dopo aver tolto il pptx dalla storia e anonimizzato l'email dei commit (backup della storia fatto prima).
+- Interfaccia per telefono e tablet: base comune dell'orchestratore, web A (simulazioni) e web B (esplorazione), correzione del nodo EML; desktop verificato identico con confronto automatico; tavole di 10 risoluzioni su Telegram; pubblicato.
+
+**File principali toccati:** `src/**` (molti file nuovi: `explore/CapsulaRientro.tsx`, `explore/InterfacciaCompatta.tsx`, `ui/Indice.tsx`, `ui/Impostazioni.tsx`, `ui/BarraCompatta.tsx`, `ui/Foglio.tsx`, `simulazioni/LayoutCompatto.tsx`, `simulazioni/Sheet.tsx`, `lib/dispositivo.ts`, `lib/useEscape.ts`, `lib/slot.ts`, `responsive.css`), `content/{simulazioni,moduli-chiusi,capsula,strumenti}.json`, `public/panorami/capsula*`, `public/audio/ambient/rientro.mp3`, `assets/blender/capsula/`, `scripts/qa/`, `README.md`, `docs/relazione/`, `CHANGELOG.md`, `.gitignore`.
+
+**Problemi incontrati:** limite d'uso di 5 ore di Sonnet (web C fermato a metà); due interruzioni dei lavori in background per memoria bassa del PC; EA app non chiudibile senza amministratore; la riscrittura della storia aveva cancellato il pptx anche dalla cartella (ripristinato subito); il primo commit dopo la riscrittura aveva ancora l'email scolastica (corretto).
+
+**Chiesto all'autore / risposte:** guasto EML → «simulazione in arrivo» o schermo vuoto; sfondo del finale → render con visuale libera, fiamme animate, tremolio e suono che cambia (scelta del mezzo lasciata all'orchestratore); pubblicazione e repo pubblica → sì; pptx → toglierlo dalla storia; email → sostituirla; chiusura dei programmi secondari → autorizzata (anche forzare EA); responsive con desktop invariato e schermate su Telegram → fatto; aggiornamenti Telegram a ogni progresso → sì.
+
+**Spesa API:** ElevenLabs Sound Effects 50 caratteri (piano Starter, 0 € extra); nessuna spesa Higgsfield.

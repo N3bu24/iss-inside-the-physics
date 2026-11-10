@@ -32,3 +32,5 @@ Prezzi verificati il 10/11 con l'endpoint gratuito `POST /estimate/{modello}` de
 
 **Totale alla chiusura (10/11, 13:15):** Higgsfield circa **31,8 $ ≈ 29 €**; ElevenLabs 0 € extra (piano Starter, saldo circa 13.193/40.000 caratteri). **Budget residuo:** circa 1 € sul massimo di 30 €. Nessuna generazione dopo il sottofondo.
 | 10/11/2026 | ElevenLabs Sound Effects | Rombo del rientro per il finale nella capsula: 1 prova da 5 s + 2 generazioni da 22 s, loop da 40 s; sibilo e crepitio aggiunti con ffmpeg (gratis) | 49 s, 50 caratteri | 0 € (piano Starter, saldo 13.243/40.000) | `public/audio/ambient/rientro.mp3` (sorgenti in `assets/audio/ambient/sorgenti/`) | Nessuna spesa Higgsfield |
+
+**Totale alla chiusura (10/11, 22:10):** Higgsfield circa **31,8 $ ≈ 29 €** (nessuna nuova generazione nel pomeriggio e in serata); ElevenLabs 0 € extra (piano Starter, saldo circa 13.243/40.000 caratteri). **Budget residuo:** circa 1 € sul massimo di 30 €.

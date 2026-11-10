@@ -49,13 +49,13 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 
 ## Giovedì 12 — Test, relazione, pubblicazione
 
-- [ ] P1 Test di navigazione su desktop (a metà: QA fino a v0.10.0 fatti; manca il test finale sul link Vercel)
+- [x] P1 Test di navigazione su desktop (QA fino a v0.11 + confronto automatico del layout dopo il responsive)
 - [x] P1 Verifica della correttezza scientifica dei testi (test notturno Sonnet; restano FDA 2008 e OMS da confermare)
-- [ ] P1 Verifica fonti e crediti (a metà: crediti completi; licenza panorami ESA da chiarire)
+- [x] P1 Verifica fonti e crediti (crediti completi, fonti dei moduli chiusi verificate; resta aperta la scelta sulla licenza dei panorami ESA)
 - [x] P1 Pubblicazione su Vercel e controllo del link pubblico (https://iss-inside-the-physics.vercel.app)
 - [x] P1 Relazione scritta di accompagnamento (PDF di 2 pagine con il link del sito)
 - [x] P2 Prestazioni alleggerite (v0.10.0)
-- [ ] P2 Prova su tablet
+- [ ] P2 Prova su tablet (a metà: verificata in emulazione a 4 risoluzioni tablet; manca la prova su un dispositivo reale)
 - [x] P2 Verifica che il sito sia comprensibile senza spiegazioni esterne (test Opus di navigazione)
 - [ ] Dalle 17: **stop nuove funzionalità**, solo correzioni
 
@@ -70,7 +70,7 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - [x] Test notturno: Opus (navigazione, voli: tutti corretti) + Sonnet (scienza, fonti, sicurezza)
 - [x] Correzioni: finale completo, EML senza sovrapposizioni, badge, crediti, finestra a passi a 720 (v0.9.4)
 - [x] Test di conferma e ultime correzioni: fonti senza "pptx", finale a 1280, etichette, voce finale-trasformatore (v0.9.5)
-- [ ] Vercel (serve l'account dell'autore), relazione scritta, peso del bundle, prova tablet
+- [x] Vercel, relazione scritta, peso del bundle (fatti il 10/11); prova tablet solo in emulazione
 - Problema 10/11: crediti Higgsfield esauriti dai voli Seedance 1080p (~3,40 $/volo, 8× Kling). Rifacimenti futuri solo dei voli difettosi e previa conferma.
 - Taglio 10/11: audio ambient (ronzio della stazione) non prodotto; priorità più bassa della pubblicazione. Si fa solo se avanza tempo.
 - Taglio 9/11: video IA dell'intro e volo IA verso la Cupola sostituiti da foto e video NASA reali (decisione dell'autore).
@@ -107,7 +107,7 @@ Ondata 1 (in parallelo):
 Ondata 2:
 - [x] P2 Finale nella capsula: panorama, plasma animato, tremolio, cambio di sottofondo; voce delle simulazioni nell'audio globale (web C, completato dall'orchestratore)
 Ondata 3:
-- [ ] QA delle 17 voci (qa-reviewer Sonnet), correzioni, v0.11.0, push, nuovo zip
+- [x] QA delle 17 voci (verifica in Chrome dell'orchestratore + QA automatico Haiku, Sonnet bloccato dal limite), correzioni, v0.11.0, push; zip nuovo con la release 1.0.0
 
 - Problema 10/11 pomeriggio: il web-developer del finale (Sonnet) si è fermato per il limite d'uso di 5 ore (sblocco 18:10). Il lavoro salvato nel suo worktree è stato completato dall'orchestratore. Il QA automatico va su Haiku per lo stesso motivo.
 - Correzione 10/11: la waveform col solo sottofondo era quasi piatta (segnale ~-36 dB); ora la scala è in decibel.
