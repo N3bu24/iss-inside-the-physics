@@ -1,0 +1,7 @@
+# Rientro: 2 sorgenti da 22 s -> crossfade 2 s -> loop di 40 s (coda 2 s fusa in testa, senza stacco)
+# poi filtro banda 35 Hz - 11 kHz e guadagno -1,8 dB (da -24,2 LUFS misurati a circa -26 LUFS)
+[0:a][1:a]acrossfade=d=2:c1=tri:c2=tri[ab];
+[ab]asplit=2[x1][x2];
+[x1]atrim=40:42,asetpts=PTS-STARTPTS[tail];
+[x2]atrim=0:40,asetpts=PTS-STARTPTS[body];
+[tail][body]acrossfade=d=2:c1=tri:c2=tri,highpass=f=35,lowpass=f=11000,volume=-1.8dB[out]
