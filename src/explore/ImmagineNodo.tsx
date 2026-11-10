@@ -29,7 +29,7 @@ function PortelloImmagine({ p, onPortello, nomeNodo }: { p: Portello; onPortello
   const att = useVista((v) => v.portello === p.verso)
   return (
     <Posiz x={p.x!} y={p.y!}>
-      <HotspotMarker tipo="portello" attivo={att} titolo={p.verso === 'finale' ? 'Verso il finale: Dallo spazio alla Terra' : `Verso ${nomeNodo(p.verso)}`} onClick={() => onPortello(p)} />
+      <HotspotMarker tipo="portello" attivo={att} titolo={p.verso === 'finale' ? 'Verso il finale' : `Verso ${nomeNodo(p.verso).split(/\s*[—,]\s*/)[0]}`} onClick={() => onPortello(p)} />
     </Posiz>
   )
 }
@@ -55,10 +55,10 @@ export default function ImmagineNodo({ nodo, hotspot, portelli, porte, onHotspot
       {!cupola && <div className="absolute inset-0 bg-black/45" />}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(2,3,10,.55)_100%)]" />
       {hotspot.map((h) => h.pos?.tipo === 'immagine' && (
-        <Posiz key={h.id} x={h.pos.x} y={h.pos.y}><HotspotMarker tipo={h.categoria} titolo={h.titolo} onClick={() => onHotspot(h.id)} /></Posiz>
+        <Posiz key={h.id} x={h.pos.x} y={h.pos.y}><HotspotMarker tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} onClick={() => onHotspot(h.id)} /></Posiz>
       ))}
       {porte.filter((p) => p.x !== undefined).map((p) => (
-        <Posiz key={p.ambiente} x={p.x!} y={p.y!}><HotspotMarker tipo="ambiente" titolo={p.titolo} onClick={() => onAmbiente(p.ambiente)} /></Posiz>
+        <Posiz key={p.ambiente} x={p.x!} y={p.y!}><HotspotMarker tipo="ambiente" ambiente={p.ambiente} titolo={p.titolo} onClick={() => onAmbiente(p.ambiente)} /></Posiz>
       ))}
       {portelli.filter((p) => p.x !== undefined).map((p) => <PortelloImmagine key={p.verso} p={p} onPortello={onPortello} nomeNodo={nomeNodo} />)}
     </div>

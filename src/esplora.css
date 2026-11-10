@@ -1,0 +1,71 @@
+/* Stili dell'interfaccia di esplorazione (v0.11): bollino, portello a rombo, impostazioni, indice, waveform, accessibilita. */
+
+/* ---------- bollino della simulazione sui marcatori ---------- */
+.bollino-sim {
+  position: absolute; right: -7px; top: -7px; display: grid; place-items: center; border-radius: 9999px;
+  background: #05080f; border: 2px solid var(--c, #35e0ff); box-shadow: 0 0 0 1.5px rgba(0, 0, 0, .7), 0 2px 6px rgba(0, 0, 0, .8);
+  pointer-events: none; z-index: 2;
+}
+.bollino-sim svg { filter: none !important; }
+.bollino-in-riga .bollino-sim { position: static; }
+.hs2-tip-sim { display: none; font-style: normal; color: rgba(255, 255, 255, .7); }
+.hs2:hover .hs2-tip-sim, .hs2:focus-visible .hs2-tip-sim { display: inline; }
+
+/* ---------- portello a rombo: per muoversi tra i moduli (il tondo e per i contenuti) ---------- */
+.hs-rombo {
+  position: relative; width: 56px; height: 56px; display: grid; place-items: center; cursor: pointer; background: none; border: 0; padding: 0; color: #fff;
+}
+.hs-rombo-forma {
+  position: relative; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 9px; transform: rotate(45deg);
+  border: 2.5px solid var(--c, #e8ecf5); background: rgba(5, 8, 18, .28);
+  box-shadow: 0 0 0 1.5px rgba(0, 0, 0, .45), 0 0 14px color-mix(in srgb, var(--c, #e8ecf5) 40%, transparent);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease; animation: romboRespiro 3.2s ease-in-out infinite;
+}
+.hs-rombo-icona { transform: rotate(-45deg); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .9)); }
+.hs-rombo:hover .hs-rombo-forma, .hs-rombo:focus-visible .hs-rombo-forma, .hs-rombo.attivo .hs-rombo-forma {
+  transform: rotate(45deg) scale(1.12); background: rgba(5, 8, 18, .55); box-shadow: 0 0 0 1.5px rgba(0, 0, 0, .5), 0 0 24px var(--c, #e8ecf5);
+}
+.hs-rombo:focus-visible { outline: none; }
+.hs-rombo-et {
+  position: absolute; top: calc(100% + 2px); left: 50%; transform: translateX(-50%); white-space: nowrap; max-width: 190px; overflow: hidden; text-overflow: ellipsis;
+  padding: 3px 10px; border-radius: 9999px; font-size: 12px; font-weight: 500; color: #fff; pointer-events: none;
+  background: rgba(4, 8, 20, .82); border: 1px solid rgba(255, 255, 255, .22);
+}
+.hs-rombo.chiuso { opacity: .65; cursor: help; }
+.hs-rombo.chiuso .hs-rombo-forma { border-style: dashed; animation: none; box-shadow: none; }
+.hs-rombo.chiuso .hs-rombo-et { color: rgba(255, 255, 255, .7); }
+@keyframes romboRespiro { 50% { border-color: color-mix(in srgb, var(--c, #e8ecf5) 55%, transparent); } }
+
+/* ---------- accessibilita: dimensione del testo, alto contrasto, riduzione delle animazioni ---------- */
+html[data-testo="grande"] .testo-corpo { font-size: 1.08em; }
+html[data-testo="molto-grande"] .testo-corpo { font-size: 1.2em; }
+html[data-testo="grande"] .testo-ui { font-size: 1.1em; }
+html[data-testo="molto-grande"] .testo-ui { font-size: 1.22em; }
+html[data-testo="grande"] .sottotitolo { font-size: 19px !important; }
+html[data-testo="molto-grande"] .sottotitolo { font-size: 22px !important; }
+
+html[data-contrasto="alto"] .glass { background: rgba(4, 8, 20, .94); border-color: rgba(255, 255, 255, .35); }
+html[data-contrasto="alto"] .pannello-opaco { background: rgb(4, 8, 20) !important; border-color: rgba(255, 255, 255, .45); }
+html[data-contrasto="alto"] .text-white\/40, html[data-contrasto="alto"] .text-white\/45, html[data-contrasto="alto"] .text-white\/50,
+html[data-contrasto="alto"] .text-white\/55, html[data-contrasto="alto"] .text-white\/60, html[data-contrasto="alto"] .text-white\/65 { color: rgba(255, 255, 255, .88) !important; }
+html[data-contrasto="alto"] .text-white\/70, html[data-contrasto="alto"] .text-white\/80 { color: #fff !important; }
+html[data-contrasto="alto"] .hs2, html[data-contrasto="alto"] .ind-bordo, html[data-contrasto="alto"] .hs-rombo-forma { border-color: #fff; }
+html[data-contrasto="alto"] .credito-linea { color: rgba(255, 255, 255, .9); }
+
+html[data-riduci="1"] .kenburns, html[data-riduci="1"] .zoom-lento { animation: none !important; }
+html[data-riduci="1"] .hs2::after { animation: none !important; display: none; }
+html[data-riduci="1"] .hs-rombo-forma { animation: none !important; }
+html[data-riduci="1"] .fade-in, html[data-riduci="1"] .slide-in { animation-duration: .01s !important; }
+html[data-riduci="1"] * { transition-duration: .01s !important; }
+@media (prefers-reduced-motion: reduce) {
+  .kenburns, .zoom-lento { animation: none !important; }
+  .hs2::after, .hs-rombo-forma { animation: none !important; }
+  .fade-in, .slide-in { animation-duration: .01s !important; }
+}
+
+/* ---------- viaggio rapido: dissolvenza brevissima ---------- */
+.salto-fade { position: absolute; inset: 0; z-index: 36; background: #05070f; pointer-events: none; opacity: 0; transition: opacity 110ms ease; }
+.salto-fade.on { opacity: 1; }
+
+/* ---------- indice ---------- */
+.indice-sez { scroll-margin-top: 1rem; }

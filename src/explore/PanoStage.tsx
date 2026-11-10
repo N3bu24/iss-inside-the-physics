@@ -135,9 +135,10 @@ export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, s
     for (const i of ordine) {
       const el = vis[i].el as HTMLElement
       let w = misure.current.get(el)
-      if (w === undefined) { w = el.querySelector<HTMLElement>('.hs2-tip')?.offsetWidth ?? 0; if (w) misure.current.set(el, w) }
+      if (w === undefined) { w = el.querySelector<HTMLElement>('.hs2-tip, .hs-rombo-et')?.offsetWidth ?? 0; if (w) misure.current.set(el, w) }
       const r: R = { x0: pos[i].x - w / 2 - 4, x1: pos[i].x + w / 2 + 4, y0: pos[i].y + 36, y1: pos[i].y + 68 }
-      const libera = w > 0 && !dischi.some((o, k) => k !== i && tocca(r, o)) && !etichette.some((e) => tocca(r, e))
+      const fissa = !!el.querySelector('.hs-rombo-et') // l'etichetta del portello e` sempre visibile
+      const libera = fissa || (w > 0 && !dischi.some((o, k) => k !== i && tocca(r, o)) && !etichette.some((e) => tocca(r, e)))
       if (libera) etichette.push(r)
       el.dataset.label = libera ? '1' : '0'
     }

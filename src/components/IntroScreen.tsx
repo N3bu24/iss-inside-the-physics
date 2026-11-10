@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import { BookOpen, Settings } from 'lucide-react'
 import StarField from './StarField'
 import AudioToggle from './AudioToggle'
 import { assetExists } from '../lib/assets'
 
 const VIDEO_SFONDO = '/video/intro-bg.mp4' // segnaposto: se esiste viene usato come sfondo
 
-interface Props { audioOn: boolean; onAudio: () => void; onStart: () => void }
+interface Props { audioOn: boolean; onAudio: () => void; onStart: () => void; onIndice: () => void; onImpostazioni: () => void }
 
-export default function IntroScreen({ audioOn, onAudio, onStart }: Props) {
+export default function IntroScreen({ audioOn, onAudio, onStart, onIndice, onImpostazioni }: Props) {
   const root = useRef<HTMLDivElement>(null)
   const [video, setVideo] = useState(false)
   const [foto, setFoto] = useState(false)
@@ -36,7 +37,11 @@ export default function IntroScreen({ audioOn, onAudio, onStart }: Props) {
       )}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(2,3,10,.85)_100%)]" />
       <span className="credito-linea absolute bottom-1 right-4">Foto: NASA</span>
-      <AudioToggle on={audioOn} onToggle={onAudio} className="absolute right-5 top-9" />
+      <div className="absolute right-5 top-9 z-10 flex items-center gap-2">
+        <button onClick={onIndice} title="Indice di tutti i contenuti" aria-label="Indice di tutti i contenuti" className="glass flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs text-white/80 transition hover:text-white"><BookOpen size={16} /> Indice</button>
+        <button onClick={onImpostazioni} title="Impostazioni" aria-label="Impostazioni" className="glass rounded-full p-2.5 text-white/70 transition hover:text-white"><Settings size={16} /></button>
+        <AudioToggle on={audioOn} onToggle={onAudio} />
+      </div>
       <div className="relative flex h-full flex-col items-center justify-center px-6 text-center">
         <p className="intro-a mb-5 text-xs uppercase tracking-[0.45em] text-cyan-200/80">Un'esperienza immersiva</p>
         <h1 className="intro-a text-5xl font-light tracking-tight md:text-7xl">
