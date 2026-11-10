@@ -52,8 +52,8 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - [ ] P1 Test di navigazione su desktop (a metà: QA fino a v0.10.0 fatti; manca il test finale sul link Vercel)
 - [x] P1 Verifica della correttezza scientifica dei testi (test notturno Sonnet; restano FDA 2008 e OMS da confermare)
 - [ ] P1 Verifica fonti e crediti (a metà: crediti completi; licenza panorami ESA da chiarire)
-- [ ] P1 Pubblicazione su Vercel e controllo del link pubblico (rimandata dall'autore il 10/11; repo già importato, serve la verifica d'identità via email fatta dall'autore)
-- [ ] P1 Relazione scritta di accompagnamento (a metà: PDF di 2 pagine `docs/relazione/ISS-Inside-the-Physics-relazione.pdf` + README fatti; manca solo il link Vercel al posto di `[LINK DEL SITO]` in PDF, README e `relazione-finale.md`)
+- [x] P1 Pubblicazione su Vercel e controllo del link pubblico (https://iss-inside-the-physics.vercel.app)
+- [x] P1 Relazione scritta di accompagnamento (PDF di 2 pagine con il link del sito)
 - [x] P2 Prestazioni alleggerite (v0.10.0)
 - [ ] P2 Prova su tablet
 - [x] P2 Verifica che il sito sia comprensibile senza spiegazioni esterne (test Opus di navigazione)
@@ -111,3 +111,7 @@ Ondata 3:
 
 - Problema 10/11 pomeriggio: il web-developer del finale (Sonnet) si è fermato per il limite d'uso di 5 ore (sblocco 18:10). Il lavoro salvato nel suo worktree è stato completato dall'orchestratore. Il QA automatico va su Haiku per lo stesso motivo.
 - Correzione 10/11: la waveform col solo sottofondo era quasi piatta (segnale ~-36 dB); ora la scala è in decibel.
+
+### 10/11 sera (orchestratore)
+- [x] v1.0.0: tag, release GitHub con zip per l'uso in locale, README e relazione aggiornati
+- [x] Repo resa pubblica su richiesta dell'autore; prima: pptx del professore tolto da tutta la storia (resta solo in locale, *.pptx in .gitignore), email dei commit sostituita con l'indirizzo noreply di GitHub, 21 branch secondari già uniti cancellati dal remoto. Backup completo della storia precedente nello scratchpad della sessione.
