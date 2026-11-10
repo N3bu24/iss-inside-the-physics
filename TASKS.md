@@ -29,7 +29,7 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - [x] P1 Voce narrante sezioni EML (ElevenLabs, Thomas A.)
 - [x] P2 Video Higgsfield: 10 voli tra i moduli (5 Seedance + 5 Kling). Intro con foto NASA, senza video IA
 - [x] P2 Voci degli ambienti principali (voce v3, ~52 clip)
-- [ ] P2 Audio ambient spaziale con ronzio della stazione (non fatto: si può tagliare)
+- [x] P2 Audio ambient spaziale con ronzio della stazione (v0.10.0)
 - [x] P2 Raccolta di foto reali ESA/NASA/DLR con crediti e licenze (`public/panorami/CREDITI.md`, `src/data/crediti.ts`)
 - [x] P3 Voci e clip degli ambienti secondari
 - [x] Aggiornare `docs/costi.md` dopo ogni generazione
@@ -54,7 +54,7 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - [ ] P1 Verifica fonti e crediti (a metà: crediti completi; licenza panorami ESA da chiarire)
 - [ ] P1 Pubblicazione su Vercel e controllo del link pubblico (bloccato: serve l'account dell'autore)
 - [ ] P1 Relazione scritta di accompagnamento (a metà: bozza completa in `docs/relazione/relazione-finale.md`, manca il link Vercel; FDA 2008 verificata, frase OMS riformulata)
-- [ ] P2 Prestazioni: chunk 367 KB gzip, panorami 4-6 MB, video Terra 8,8 MB da alleggerire
+- [x] P2 Prestazioni alleggerite (v0.10.0)
 - [ ] P2 Prova su tablet
 - [x] P2 Verifica che il sito sia comprensibile senza spiegazioni esterne (test Opus di navigazione)
 - [ ] Dalle 17: **stop nuove funzionalità**, solo correzioni
@@ -80,3 +80,6 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - [x] QA voli Kling: tutti accettabili (3,5-4/5)
 - [x] Rifatti con Seedance 3 voli (kibo→harmony, tranquility→unity, unity→destiny), v0.9.6, ~10,2 $
 - Rimandata su richiesta dell'autore: pubblicazione Vercel (repo già importato; serve la verifica dell'identità via email)
+- [x] Pulizia codice, peso (panorami 29→12 MB, video Terra 8,8→3,9 MB, chunk 372→100 KB gzip), worktree vecchi rimossi (v0.10.0)
+- [x] P2 Audio ambient della stazione con ducking sotto la voce (ElevenLabs SFX, 0 € extra)
+- [x] QA rapido Sonnet v0.10.0: OK, nessun problema bloccante (`docs/qa/qa-rapido-v0.10.0.md`)
