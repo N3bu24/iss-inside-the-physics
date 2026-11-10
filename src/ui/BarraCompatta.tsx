@@ -28,7 +28,7 @@ function Tasto({ icona, etichetta, attivo, onClick, pressed, extra }: { icona: R
       className={`relative flex h-full min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl text-[10.5px] leading-none active:bg-white/10 ${attivo ? 'text-cyan-200' : 'text-white/80'}`}
     >
       <span className="flex items-center gap-1.5">{icona}{extra}</span>
-      <span className="tel:landscape:hidden">{etichetta}</span>
+      <span className="barra-etichetta">{etichetta}</span>
     </button>
   )
 }

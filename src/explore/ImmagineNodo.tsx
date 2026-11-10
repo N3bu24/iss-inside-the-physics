@@ -70,7 +70,7 @@ export default function ImmagineNodo({ nodo, hotspot, portelli, porte, onHotspot
       {!cupola && <div className="absolute inset-0 bg-black/45" />}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(2,3,10,.55)_100%)]" />
       {compatto ? (
-        <div className="absolute inset-x-3 top-[5.2rem] z-10 grid grid-cols-[repeat(auto-fit,minmax(7.5rem,1fr))] content-start justify-items-center gap-x-2 gap-y-2 overflow-y-auto landscape:top-[3.4rem]" style={{ bottom: 'calc(var(--barra-spazio) + 11rem)' }}>{marcatori}</div>
+        <div className="scroll-sottile absolute inset-x-3 top-[8.8rem] z-10 grid grid-cols-[repeat(auto-fit,minmax(7.5rem,1fr))] content-start justify-items-center gap-x-2 gap-y-2 overflow-y-auto pt-3 landscape:right-40 landscape:top-[3.2rem]" style={{ bottom: 'calc(var(--barra-spazio) + var(--colonna-h))' }}>{marcatori}</div>
       ) : marcatori}
     </div>
   )

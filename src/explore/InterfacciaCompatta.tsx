@@ -93,7 +93,7 @@ export default function InterfacciaCompatta(p: Props) {
         </div>
 
         {p.scheda && <HotspotCard scheda={p.scheda} audioOn={p.audioOn} onClose={p.onChiudiScheda} onSimulazione={p.onSimulazione} />}
-        {gesti && !p.scheda && !luogoAperto && <LegendaGesti onChiudi={chiudiGesti} />}
+        {gesti && !p.scheda && !luogoAperto && !trans && <LegendaGesti onChiudi={chiudiGesti} />}
         <BarraCompatta
           luogoAperto={luogoAperto} daVedere={daVedere} onLuogo={() => setLuogoAperto(!luogoAperto)} onMappa={() => setMappaPiena(true)} onAvanti={p.onAvanti}
           audioOn={p.audioOn} onAudio={p.onAudio} onIndice={p.onIndice} onImpostazioni={p.onImpostazioni} onHome={p.onHome} onCrediti={p.onCrediti}

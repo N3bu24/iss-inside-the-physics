@@ -47,10 +47,10 @@ export default function IntroScreen({ audioOn, onAudio, onStart, onIndice, onImp
         <h1 className="intro-a text-5xl font-light tracking-tight md:text-7xl tel:text-[2rem] tel:leading-tight">
           ISS <span className="text-white/40">—</span> <span className="font-semibold">Inside the Physics</span>
         </h1>
-        <p className="intro-a mt-6 max-w-xl text-lg font-light leading-relaxed text-white/65 tel:mt-4 tel:text-[15px] tel:landscape:mt-2 tel:landscape:text-sm">
+        <p className="intro-a mt-6 max-w-xl text-lg font-light leading-relaxed text-white/65 tel:mt-4 tel:text-[15px] intro-p-orizz">
           Dentro la Stazione Spaziale Internazionale, fino all'EML: il levitatore elettromagnetico dove l'induzione fa fondere un metallo nel vuoto.
         </p>
-        <div className="intro-a mt-12 flex flex-wrap justify-center gap-4 tel:mt-8 tel:landscape:mt-4">
+        <div className="intro-a mt-12 flex flex-wrap justify-center gap-4 tel:mt-8 intro-btn-orizz">
           <button className="btn-primary !px-10 !py-4 text-lg tel:min-h-14 tel:!px-8 tel:text-base" onClick={onStart}>Inizia l'esplorazione</button>
         </div>
         <p className="intro-a absolute bottom-6 px-6 text-xs text-white/35 tel:bottom-8 tel:text-[10.5px]">Consigliato su desktop o tablet · con audio per la voce narrante</p>

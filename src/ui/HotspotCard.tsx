@@ -51,7 +51,7 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
     return (
       <aside key={scheda.id} role="dialog" aria-label={scheda.titolo} className="foglio glass slide-in pannello-opaco" style={{ background: 'rgba(7,12,26,.96)' }}>
         <Maniglia onClose={onClose} />
-        <header className="flex shrink-0 items-start gap-3 border-b border-white/10 px-4 pb-2.5 pt-1 landscape:pt-3">
+        <header className="fg-testata flex shrink-0 items-start gap-3 border-b border-white/10 px-4 pb-2.5 pt-1 landscape:pt-3">
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em]" style={{ color: colore }}><Icon size={14} /> {etichetta}</div>
             <h2 className="mt-1 text-xl font-semibold leading-tight">{scheda.titolo}</h2>
@@ -59,7 +59,7 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
           <button onClick={onClose} aria-label="Chiudi la scheda" className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-white/80 active:bg-white/15"><X size={22} /></button>
         </header>
         <div className="scroll-sottile min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 py-3"><CorpoScheda scheda={scheda} colore={colore} /></div>
-        <footer className="shrink-0 space-y-2.5 border-t border-white/10 px-4 pb-3 pt-2.5">
+        <footer className="fg-piede shrink-0 space-y-2.5 border-t border-white/10 px-4 pb-3 pt-2.5">
           {sim && scheda.simulazione && onSimulazione && (
             <button onClick={() => onSimulazione(scheda.simulazione!)} className="btn-primary flex min-h-12 w-full items-center justify-center gap-2 !py-2.5 text-[15px]">
               <sim.Icon size={18} /> Avvia simulazione · {sim.titolo}

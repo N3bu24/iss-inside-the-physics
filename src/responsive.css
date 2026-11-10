@@ -47,7 +47,10 @@
   /* mappa a schermo intero */
   .mappa-piena { position: absolute; inset: 0; z-index: 62; display: flex; flex-direction: column; background: #04070f; padding-top: 1.6rem; padding-bottom: env(safe-area-inset-bottom, 0px); }
 
+  :root { --colonna-h: 11rem; } /* altezza della colonna di sottotitoli/indicazioni sopra la barra */
+
   @media (orientation: landscape) {
+    :root { --colonna-h: 8rem; }
     .foglio {
       left: auto; right: .5rem; top: 1.7rem; bottom: var(--barra-spazio); margin: 0; width: min(26rem, 46vw); max-width: none; max-height: none;
       border-radius: 1rem; padding-bottom: 0;
@@ -58,6 +61,19 @@
 
 @media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px) {
   :root { --barra-h: 54px; }
+}
+
+/* telefono in orizzontale (altezza ~390): tutto più basso e compatto. Non si usano varianti Tailwind impilate (tel:landscape:) perché con le soglie a lista non si generano bene. */
+@media (max-width: 767px) and (max-height: 500px), (hover: none) and (pointer: coarse) and (max-height: 500px) {
+  :root { --barra-h: 48px; }
+  .barra-etichetta { display: none; }
+  .intro-p-orizz { margin-top: .5rem; font-size: .875rem; line-height: 1.4; }
+  .intro-btn-orizz { margin-top: 1rem; }
+  .fg-testata { padding-bottom: .3rem; }
+  .fg-testata h2 { font-size: 1.05rem; }
+  .fg-piede { padding: .4rem 1rem; }
+  .fg-piede > * + * { margin-top: .4rem; }
+  .fg-piede .btn-primary { min-height: 2.5rem; padding-block: .35rem; font-size: .875rem; }
 }
 
 /* ===== SIMULAZIONI (web-developer A) ===== */
