@@ -90,7 +90,8 @@ const browser = await puppeteer.launch({
 })
 const stati = (arg('stati', Object.keys(STATI).join(','))).split(',')
 const errori = []
-for (const v of RISOLUZIONI.filter((r) => GRUPPO === 'tutti' || r.gruppo === GRUPPO)) {
+const RIS = arg('ris', '')
+for (const v of RISOLUZIONI.filter((r) => (GRUPPO === 'tutti' || r.gruppo === GRUPPO) && (!RIS || r.id === RIS))) {
   const dir = path.join(OUT, v.id)
   fs.mkdirSync(dir, { recursive: true })
   for (const s of stati) {

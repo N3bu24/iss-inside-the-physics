@@ -115,3 +115,12 @@ Ondata 3:
 ### 10/11 sera (orchestratore)
 - [x] v1.0.0: tag, release GitHub con zip per l'uso in locale, README e relazione aggiornati
 - [x] Repo resa pubblica su richiesta dell'autore; prima: pptx del professore tolto da tutta la storia (resta solo in locale, *.pptx in .gitignore), email dei commit sostituita con l'indirizzo noreply di GitHub, 21 branch secondari già uniti cancellati dal remoto. Backup completo della storia precedente nello scratchpad della sessione.
+
+### 10/11 sera — Interfaccia per telefono e tablet
+- [x] Base comune (soglie, varianti, rilevamento dispositivo) e script di schermate/confronto
+- [x] web A: simulazioni e scena EML; web B: esplorazione, mappa, schede, indice, impostazioni
+- [x] Nodo EML su telefono: comandi impilati (orchestratore)
+- [x] Desktop invariato: 30/33 situazioni a 0 differenze; scarti solo per il tremolio della capsula e il caricamento delle formule
+- [x] Pubblicato su Vercel
+- Problema 10/11: due interruzioni di Claude Code per memoria bassa del PC durante le schermate (Chrome headless con WebGL); risolto chiudendo programmi secondari (autorizzato dall'autore) e lavorando una risoluzione alla volta.
+- Da rifinire: sul tablet orizzontale la scheda del punto copre la miniatura della mappa; nel telefono verticale il circuito dell'autoinduzione è un po' tagliato a sinistra.
