@@ -37,23 +37,23 @@ export default function IntroScreen({ audioOn, onAudio, onStart, onIndice, onImp
       )}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(2,3,10,.85)_100%)]" />
       <span className="credito-linea absolute bottom-1 right-4">Foto: NASA</span>
-      <div className="absolute right-5 top-9 z-10 flex items-center gap-2">
-        <button onClick={onIndice} title="Indice di tutti i contenuti" aria-label="Indice di tutti i contenuti" className="glass flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs text-white/80 transition hover:text-white"><BookOpen size={16} /> Indice</button>
-        <button onClick={onImpostazioni} title="Impostazioni" aria-label="Impostazioni" className="glass rounded-full p-2.5 text-white/70 transition hover:text-white"><Settings size={16} /></button>
+      <div className="absolute right-5 top-9 z-10 flex items-center gap-2 compatto:right-3 compatto:top-8">
+        <button onClick={onIndice} title="Indice di tutti i contenuti" aria-label="Indice di tutti i contenuti" className="glass flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs text-white/80 transition hover:text-white compatto:min-h-11 tel:!px-3"><BookOpen size={16} /> <span className="tel:hidden">Indice</span></button>
+        <button onClick={onImpostazioni} title="Impostazioni" aria-label="Impostazioni" className="glass rounded-full p-2.5 text-white/70 transition hover:text-white compatto:p-3"><Settings size={16} /></button>
         <AudioToggle on={audioOn} onToggle={onAudio} />
       </div>
-      <div className="relative flex h-full flex-col items-center justify-center px-6 text-center">
-        <p className="intro-a mb-5 text-xs uppercase tracking-[0.45em] text-cyan-200/80">Un'esperienza immersiva</p>
-        <h1 className="intro-a text-5xl font-light tracking-tight md:text-7xl">
+      <div className="relative flex h-full flex-col items-center justify-center px-6 text-center tel:px-5 tel:pb-10 tel:pt-12">
+        <p className="intro-a mb-5 text-xs uppercase tracking-[0.45em] text-cyan-200/80 tel:mb-3 tel:text-[10.5px] tel:tracking-[0.3em]">Un'esperienza immersiva</p>
+        <h1 className="intro-a text-5xl font-light tracking-tight md:text-7xl tel:text-[2rem] tel:leading-tight">
           ISS <span className="text-white/40">—</span> <span className="font-semibold">Inside the Physics</span>
         </h1>
-        <p className="intro-a mt-6 max-w-xl text-lg font-light leading-relaxed text-white/65">
+        <p className="intro-a mt-6 max-w-xl text-lg font-light leading-relaxed text-white/65 tel:mt-4 tel:text-[15px] tel:landscape:mt-2 tel:landscape:text-sm">
           Dentro la Stazione Spaziale Internazionale, fino all'EML: il levitatore elettromagnetico dove l'induzione fa fondere un metallo nel vuoto.
         </p>
-        <div className="intro-a mt-12 flex flex-wrap justify-center gap-4">
-          <button className="btn-primary !px-10 !py-4 text-lg" onClick={onStart}>Inizia l'esplorazione</button>
+        <div className="intro-a mt-12 flex flex-wrap justify-center gap-4 tel:mt-8 tel:landscape:mt-4">
+          <button className="btn-primary !px-10 !py-4 text-lg tel:min-h-14 tel:!px-8 tel:text-base" onClick={onStart}>Inizia l'esplorazione</button>
         </div>
-        <p className="intro-a absolute bottom-6 text-xs text-white/35">Consigliato su desktop o tablet · con audio per la voce narrante</p>
+        <p className="intro-a absolute bottom-6 px-6 text-xs text-white/35 tel:bottom-4 tel:text-[10.5px]">Consigliato su desktop o tablet · con audio per la voce narrante</p>
       </div>
     </div>
   )

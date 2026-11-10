@@ -3,6 +3,7 @@ import type { Nodo, PortaAmbiente, Portello, AmbienteId, NodoId } from '../data/
 import type { HotspotPosizionato } from '../data/contenuti'
 import HotspotMarker from '../ui/Hotspot'
 import { useVista } from './vista'
+import { useCompatto } from '../lib/dispositivo'
 
 const VIDEO_TERRA = '/video/terra-cupola.mp4'
 
@@ -21,9 +22,14 @@ interface Props {
   uscendo?: boolean
 }
 
-const Posiz = ({ x, y, children }: { x: number; y: number; children: React.ReactNode }) => (
-  <div className="absolute z-10" style={{ left: `${x * 100}%`, top: `${y * 100}%`, transform: 'translate(-50%,-50%)' }}>{children}</div>
-)
+const Posiz = ({ x, y, children }: { x: number; y: number; children: React.ReactNode }) => {
+  const compatto = useCompatto()
+  // telefono e tablet: le icone restano sempre dentro lo schermo, lontano dall'intestazione, dalla miniatura e dalla barra inferiore
+  const stile = compatto
+    ? { left: `clamp(40px, ${x * 100}%, calc(100% - 40px))`, top: `clamp(84px, ${y * 100}%, calc(100% - var(--barra-spazio) - 52px))` }
+    : { left: `${x * 100}%`, top: `${y * 100}%` }
+  return <div className="absolute z-10" style={{ ...stile, transform: 'translate(-50%,-50%)' }}>{children}</div>
+}
 
 function PortelloImmagine({ p, onPortello, nomeNodo }: { p: Portello; onPortello: (p: Portello) => void; nomeNodo: (id: NodoId) => string }) {
   const att = useVista((v) => v.portello === p.verso)

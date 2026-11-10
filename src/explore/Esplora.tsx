@@ -28,6 +28,8 @@ import ImmagineNodo from './ImmagineNodo'
 import type { CapsulaApi } from './CapsulaRientro'
 import Legenda from './Legenda'
 import Indicatore from './Indicatore'
+import InterfacciaCompatta from './InterfacciaCompatta'
+import { useCompatto } from '../lib/dispositivo'
 import { attendi, distanzaAngolare, inQuad, outCubic, portelloInquadrato, rad, tween } from './geometria'
 import { useVista, vista } from './vista'
 
@@ -130,6 +132,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
   st.current = { nodoId, storia, ambiente, simulazione, attivo, bloccato }
 
   const saltaVoli = usePreferenza('saltaVoli')
+  const compatto = useCompatto()
   const nodo = nodi[nodoId]
   const luogo = useMemo(() => luogoDi(nodoId), [nodoId])
   const hotspot = useMemo(() => hotspotDi(nodoId), [nodoId])
@@ -548,7 +551,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
           </Suspense>
           {!scheda && !sequenzaEml && <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />}
           {!scheda && !sequenzaEml && nodo.porte?.map((a) => (
-            <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30"><HotspotMarker tipo="ambiente" ambiente={a.ambiente} titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
+            <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30 compatto:bottom-[calc(var(--barra-spazio)+1rem)] compatto:right-4"><HotspotMarker tipo="ambiente" ambiente={a.ambiente} titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
           ))}
         </div>
       )}
@@ -568,7 +571,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
       )}
       {fantasma && <ImmagineNodo key={`f-${fantasma.id}`} uscendo nodo={fantasma} hotspot={[]} portelli={[]} porte={[]} onHotspot={() => {}} onPortello={() => {}} onAmbiente={() => {}} nomeNodo={(id) => nodi[id].nome} />}
 
-      {attivo && (
+      {attivo && !compatto && (
         <>
           <div className={`transition-opacity duration-300 ${volando ? 'pointer-events-none opacity-0' : 'opacity-100'}`}>
             <div className="absolute left-4 top-[4.75rem] z-30 flex max-h-[calc(100vh-12rem)] flex-col gap-3">
@@ -602,10 +605,21 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
           <Crediti credito={nodo.credito} onApri={onCrediti} />
         </>
       )}
+      {attivo && compatto && (
+        <InterfacciaCompatta
+          nodo={nodo} nodoId={nodoId} luogo={luogo} voci={voci} scheda={scheda} precedente={precedente} visitati={visitati}
+          volando={volando} occupato={volando || saltando} saltaVoli={saltaVoli} nascondi={volando}
+          suggerimento={suggerimento} nota={nota} audioOn={audioOn} onAudio={onAudio} onHome={onHome} onIndice={onIndice}
+          onImpostazioni={onImpostazioni} onCrediti={onCrediti} onNota={setNota}
+          onVai={vai} onVaiA={(n) => { void vaiA(n) }} onSaltaA={(n) => { void saltaA(n) }}
+          onAvanti={avanti} onIndietro={indietro} onScegliPunto={(id) => vaiAlPunto(id, true)}
+          onChiudiScheda={() => setApri(null)} onSimulazione={setSimulazione}
+        />
+      )}
 
       <VoloFx ref={fx} />
       {voloIA && (
-        <div className="fade-in pointer-events-none absolute bottom-5 left-4 z-[36] flex flex-col gap-1.5">
+        <div className="fade-in pointer-events-none absolute bottom-5 left-4 z-[36] flex flex-col gap-1.5 compatto:bottom-[calc(var(--barra-spazio)+.3rem)] compatto:left-2">
           <Badge tipo="ia" />
           <span className="credito-linea">{CREDITO_VOLO}</span>
         </div>

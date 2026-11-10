@@ -3,12 +3,26 @@ import { Lock, X } from 'lucide-react'
 import { moduloChiusoPerId } from '../data/extra'
 import { moduliMappa } from '../data/mappa'
 import { PRIORITA_PANNELLO, useEscape } from '../lib/useEscape'
+import { useCompatto } from '../lib/dispositivo'
+import Foglio from './Foglio'
 
 /** Nota breve su un modulo non percorribile (mappa o lucchetto nel panorama). Testi da content/moduli-chiusi.json; se mancano resta il solo nome. */
 export default function NotaModulo({ id, onClose }: { id: string; onClose: () => void }) {
   const m = moduloChiusoPerId(id)
   const nome = m?.nome || moduliMappa.find((x) => x.id === id)?.nome || id
   useEscape(() => { onClose(); return true }, PRIORITA_PANNELLO)
+  const compatto = useCompatto()
+  if (compatto) {
+    return (
+      <Foglio titolo={nome} sottotitolo={m?.ruolo} onClose={onClose} sopra>
+        <div className="px-1">
+          <div className="mb-2 flex items-center gap-1.5 text-[11px] uppercase tracking-[0.1em] text-white/50"><Lock size={12} className="shrink-0" /> Non visitabile in questa esperienza</div>
+          {m?.nota && <p className="testo-corpo text-[15px] leading-relaxed text-white/85">{m.nota}</p>}
+          {m?.fonte && <p className="mt-3 text-[11px] leading-snug text-white/45">Fonte: {m.fonte}</p>}
+        </div>
+      </Foglio>
+    )
+  }
   return (
     <aside role="dialog" aria-label={`Nota su ${nome}`} className="glass pannello-opaco fade-in absolute right-[17.5rem] top-4 z-[32] flex max-h-[60vh] w-[24rem] max-w-[60vw] flex-col overflow-hidden rounded-2xl" style={{ background: 'rgba(7,12,26,.95)' }}>
       <header className="flex shrink-0 items-start gap-3 border-b border-white/10 px-5 pb-3 pt-4">

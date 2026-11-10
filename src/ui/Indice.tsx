@@ -57,20 +57,30 @@ export default function Indice({ onClose, onVai, onSimulazione, sospeso = false 
   const vaiA = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
-    <div className="absolute inset-0 z-[150] flex flex-col bg-[#04070f] pt-10" role="dialog" aria-label="Indice dei contenuti">
-      <header className="flex shrink-0 items-center gap-5 border-b border-white/10 px-8 py-3">
-        <h1 className="text-xl font-semibold tracking-tight">Indice dei contenuti</h1>
+    <div className="absolute inset-0 z-[150] flex flex-col bg-[#04070f] pt-10 compatto:pt-6" role="dialog" aria-label="Indice dei contenuti">
+      <header className="flex shrink-0 items-center gap-5 border-b border-white/10 px-8 py-3 compatto:px-4 compatto:gap-x-3 tel:flex-wrap tel:gap-y-2">
+        <h1 className="text-xl font-semibold tracking-tight tel:flex-1 tel:text-lg">Indice dei contenuti</h1>
         <p className="hidden text-[13px] text-white/45 lg:block">Tutto ciò che si può scoprire nella stazione, da leggere anche senza esplorare.</p>
-        <label className="relative ml-auto w-72 max-w-[40vw]">
+        <label className="relative ml-auto w-72 max-w-[40vw] tel:order-last tel:ml-0 tel:w-full tel:max-w-none">
           <Search size={15} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-white/45" />
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Cerca (es. Lenz, Joule, Columbus)" aria-label="Cerca nei contenuti"
-            className="w-full rounded-full border border-white/15 bg-white/5 py-2 pl-9 pr-3 text-sm text-white placeholder:text-white/35 focus:border-cyan-300/60 focus:outline-none" />
+            className="w-full rounded-full border border-white/15 bg-white/5 py-2 pl-9 pr-3 text-sm text-white placeholder:text-white/35 focus:border-cyan-300/60 focus:outline-none compatto:min-h-11 compatto:text-base" />
         </label>
-        <button onClick={onClose} aria-label="Chiudi l'indice" title="Chiudi (Esc)" className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white"><X size={20} /></button>
+        <button onClick={onClose} aria-label="Chiudi l'indice" title="Chiudi (Esc)" className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white compatto:h-11 compatto:w-11"><X size={20} /></button>
       </header>
 
+      {/* telefono: sommario come fila di chip (al posto della colonna laterale) */}
+      <nav aria-label="Sezioni dell'indice" className="scroll-sottile hidden shrink-0 gap-2 overflow-x-auto border-b border-white/10 px-4 py-2 tel:flex">
+        {[
+          [luoghiF.length > 0, 'ix-ambienti', 'Ambienti'], [puntiF.length > 0, 'ix-punti', 'Punti di interesse'],
+          [simsF.length > 0, 'ix-sim', 'Simulazioni'], [chiusiF.length > 0, 'ix-chiusi', 'Moduli non visitabili'],
+        ].filter(([ok]) => ok).map(([, id, nome]) => (
+          <button key={id as string} onClick={() => vaiA(id as string)} className="min-h-10 shrink-0 whitespace-nowrap rounded-full border border-white/20 px-4 text-[13.5px] text-white/85 active:bg-white/10">{nome as string}</button>
+        ))}
+      </nav>
+
       <div className="flex min-h-0 flex-1">
-        <nav aria-label="Sommario" className="scroll-sottile hidden w-64 shrink-0 overflow-y-auto border-r border-white/10 px-6 py-6 text-[13.5px] md:block">
+        <nav aria-label="Sommario" className="scroll-sottile hidden w-64 shrink-0 overflow-y-auto border-r border-white/10 px-6 py-6 text-[13.5px] md:block tel:hidden compatto:w-52 compatto:px-4">
           <ul className="space-y-1">
             {luoghiF.length > 0 && <li><button onClick={() => vaiA('ix-ambienti')} className="w-full py-1 text-left text-white/85 hover:text-cyan-200">Ambienti</button></li>}
             {puntiF.length > 0 && (
@@ -93,7 +103,7 @@ export default function Indice({ onClose, onVai, onSimulazione, sospeso = false 
           </ul>
         </nav>
 
-        <div ref={corpo} className="scroll-sottile min-w-0 flex-1 overflow-y-auto px-8 py-8">
+        <div ref={corpo} className="scroll-sottile min-w-0 flex-1 overflow-y-auto px-8 py-8 compatto:px-4 compatto:py-5">
           <div className="mx-auto max-w-[780px]">
             {nessuno && <p className="py-20 text-center text-white/50">Nessun risultato per «{q}».</p>}
 
@@ -132,7 +142,7 @@ export default function Indice({ onClose, onVai, onSimulazione, sospeso = false 
                         const { Icon, colore, etichetta } = CATEGORIE[h.categoria]
                         const sim = h.simulazione ? iconaSim(h.simulazione) : null
                         return (
-                          <article key={h.id} className="rounded-2xl border border-white/10 bg-white/[.03] p-6">
+                          <article key={h.id} className="rounded-2xl border border-white/10 bg-white/[.03] p-6 compatto:p-4">
                             <div className="flex items-start gap-4">
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em]" style={{ color: colore }}><Icon size={14} /> {etichetta}</div>

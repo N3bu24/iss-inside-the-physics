@@ -285,7 +285,21 @@ export default function CapsulaRientro({ ref, hotspot, portelli, pausa, visti, o
 
   // trascinamento (mouse e touch) con inerzia: stessi gesti dei panorami
   const giu = useRef<{ id: number; x: number; y: number; t: number } | null>(null)
+  // pizzico a due dita (solo touch): zoom del campo visivo come la rotella
+  const tocchi = useRef(new Map<number, { x: number; y: number }>())
+  const pizzico = useRef<{ d0: number; fov0: number } | null>(null)
+  const distanzaTocchi = () => { const [a, b] = [...tocchi.current.values()]; return Math.hypot(a.x - b.x, a.y - b.y) || 1 }
   const onDown = (e: React.PointerEvent) => {
+    if (e.pointerType === 'touch') {
+      tocchi.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      e.currentTarget.setPointerCapture(e.pointerId)
+      if (tocchi.current.size === 2) {
+        pizzico.current = { d0: distanzaTocchi(), fov0: cam.current.fovBersaglio }
+        giu.current = null; cam.current.trascina = false; cam.current.vyaw = cam.current.vpitch = 0
+        return
+      }
+      if (tocchi.current.size > 2) return
+    }
     if (e.button !== 0 && e.pointerType === 'mouse') return
     const c = cam.current
     c.anim?.ok(); c.anim = null
@@ -295,6 +309,13 @@ export default function CapsulaRientro({ ref, hotspot, portelli, pausa, visti, o
     setAfferra(true)
   }
   const onMove = (e: React.PointerEvent) => {
+    if (e.pointerType === 'touch' && tocchi.current.has(e.pointerId)) {
+      tocchi.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (pizzico.current && tocchi.current.size === 2) {
+        cam.current.fovBersaglio = Math.max(FOV_MIN, Math.min(FOV_MAX, pizzico.current.fov0 * pizzico.current.d0 / distanzaTocchi()))
+        return
+      }
+    }
     const g = giu.current
     if (!g || g.id !== e.pointerId) return
     const c = cam.current
@@ -309,6 +330,10 @@ export default function CapsulaRientro({ ref, hotspot, portelli, pausa, visti, o
     g.x = e.clientX; g.y = e.clientY; g.t = ora
   }
   const onUp = (e: React.PointerEvent) => {
+    if (e.pointerType === 'touch') {
+      tocchi.current.delete(e.pointerId)
+      if (pizzico.current) { if (tocchi.current.size < 2) pizzico.current = null; if (giu.current?.id !== e.pointerId) return }
+    }
     if (giu.current?.id !== e.pointerId) return
     giu.current = null
     cam.current.trascina = false

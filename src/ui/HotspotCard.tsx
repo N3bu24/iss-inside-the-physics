@@ -8,6 +8,8 @@ import Badge from '../components/Badge'
 import CorpoScheda from '../components/CorpoScheda'
 import { CATEGORIE } from './Hotspot'
 import { PRIORITA_PANNELLO, useEscape } from '../lib/useEscape'
+import { useCompatto } from '../lib/dispositivo'
+import { Maniglia } from './Foglio'
 
 function Voce({ id, audioOn }: { id: string; audioOn: boolean }) {
   const [esiste, setEsiste] = useState(false)
@@ -24,7 +26,7 @@ function Voce({ id, audioOn }: { id: string; audioOn: boolean }) {
           if (a.current) collegaVoce(a.current)
           a.current?.play().catch(() => {}); setSuona(true)
         }}
-        className="flex items-center gap-1.5 rounded-full border border-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/10"
+        className="flex items-center gap-1.5 rounded-full border border-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/10 compatto:min-h-11 compatto:px-4 compatto:text-sm"
       >
         {suona ? <Pause size={12} /> : <Play size={12} />} {suona ? 'Pausa' : 'Ascolta'}
       </button>
@@ -42,6 +44,32 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
   const sim = scheda.simulazione ? iconaSim(scheda.simulazione) : null
 
   useEscape(() => { onClose(); return true }, PRIORITA_PANNELLO)
+  const compatto = useCompatto()
+
+  // telefono e tablet: foglio dal basso (in orizzontale pannello laterale) con maniglia, testata fissa, corpo scorrevole, piede fisso
+  if (compatto) {
+    return (
+      <aside key={scheda.id} role="dialog" aria-label={scheda.titolo} className="foglio glass slide-in pannello-opaco" style={{ background: 'rgba(7,12,26,.96)' }}>
+        <Maniglia onClose={onClose} />
+        <header className="flex shrink-0 items-start gap-3 border-b border-white/10 px-4 pb-2.5 pt-1 landscape:pt-3">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em]" style={{ color: colore }}><Icon size={14} /> {etichetta}</div>
+            <h2 className="mt-1 text-xl font-semibold leading-tight">{scheda.titolo}</h2>
+          </div>
+          <button onClick={onClose} aria-label="Chiudi la scheda" className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-white/80 active:bg-white/15"><X size={22} /></button>
+        </header>
+        <div className="scroll-sottile min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 py-3"><CorpoScheda scheda={scheda} colore={colore} /></div>
+        <footer className="shrink-0 space-y-2.5 border-t border-white/10 px-4 pb-3 pt-2.5">
+          {sim && scheda.simulazione && onSimulazione && (
+            <button onClick={() => onSimulazione(scheda.simulazione!)} className="btn-primary flex min-h-12 w-full items-center justify-center gap-2 !py-2.5 text-[15px]">
+              <sim.Icon size={18} /> Avvia simulazione · {sim.titolo}
+            </button>
+          )}
+          <div className="flex flex-wrap items-center gap-2"><Badge tipo={scheda.badge} /><Voce id={scheda.id} audioOn={audioOn} /></div>
+        </footer>
+      </aside>
+    )
+  }
 
   return (
     <aside
