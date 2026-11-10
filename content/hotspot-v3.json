@@ -36,7 +36,7 @@
       23
     ],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 23",
+    "fonte": "Panorama ESA (Harmony)",
     "oggetto_reale": "Fasci di cavi blu e bianchi che corrono in alto sul lato destro del panorama.",
     "yaw_stimato": 58,
     "pitch_stimato": 60
@@ -69,7 +69,7 @@
       8
     ],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 8",
+    "fonte": "Panorama ESA (Harmony)",
     "oggetto_reale": "Schermo luminoso in alto a sinistra, con diagrammi e le scritte 'Ku-Band' e 'S-Band'.",
     "yaw_stimato": -134,
     "pitch_stimato": 75
@@ -103,7 +103,7 @@
       17
     ],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 13-17",
+    "fonte": "Panorama ESA (Harmony)",
     "oggetto_reale": "Pannello blu con attrezzi appesi (chiavi, pinze, impugnature rosse) sul lato sinistro.",
     "yaw_stimato": -93,
     "pitch_stimato": 12
@@ -136,7 +136,7 @@
       2
     ],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Harmony); NASA, ISS facts; NASA NTRS plasma contactor (documenti 20090028688 e 19980201237); IGRF (NOAA NCEI); teoria pptx slide 2",
+    "fonte": "Panorama ESA (Harmony); NASA, ISS facts; NASA NTRS plasma contactor (documenti 20090028688 e 19980201237); IGRF (NOAA NCEI)",
     "oggetto_reale": "Laptop aperto a sinistra, sotto il cartello 'To COL'; lo schermo sembra mostrare un'immagine della Terra.",
     "yaw_stimato": -134,
     "pitch_stimato": 14
@@ -216,7 +216,7 @@
       20
     ],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Columbus); NASA NTRS (ISS electrical power system); teoria pptx slide 5 e 20",
+    "fonte": "Panorama ESA (Columbus); NASA NTRS (ISS electrical power system)",
     "oggetto_reale": "Laptop aperto sul pannello centrale-sinistro, con cavi collegati.",
     "yaw_stimato": -42,
     "pitch_stimato": 6
@@ -245,7 +245,7 @@
       5
     ],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Columbus); teoria pptx slide 5",
+    "fonte": "Panorama ESA (Columbus)",
     "oggetto_reale": "Cavi blu a spirale e fili bianchi vicino al pannello con i laptop, circa al centro-sinistra.",
     "yaw_stimato": -26,
     "pitch_stimato": 17
@@ -321,7 +321,7 @@
       11
     ],
     "badge": "Simulazione concettuale",
-    "fonte": "DLR; teoria pptx slide 8-11",
+    "fonte": "DLR",
     "oggetto_reale": "Campione sferico al centro della bobina, con anelli di corrente animati (render Blender)."
   },
   {
@@ -352,7 +352,7 @@
       9
     ],
     "badge": "Simulazione concettuale",
-    "fonte": "Airbus Defence and Space; ESA (2024); DLR; teoria pptx slide 9",
+    "fonte": "Airbus Defence and Space; ESA (2024); DLR",
     "oggetto_reale": "Campione che diventa incandescente (render Blender)."
   },
   {
@@ -397,7 +397,7 @@
       19
     ],
     "badge": "Modello 3D",
-    "fonte": "Teoria pptx slide 12-19; DLR",
+    "fonte": "DLR",
     "oggetto_reale": "La bobina in rame del modello 3D, con simbolo di induttore sovrapposto."
   },
   {
@@ -432,7 +432,7 @@
       6
     ],
     "badge": "Simulazione concettuale",
-    "fonte": "Teoria pptx 5LSA, slide 2-6",
+    "fonte": "",
     "oggetto_reale": "Quattro piccole animazioni schematiche accanto al modello 3D."
   },
   {
@@ -545,7 +545,7 @@
       18
     ],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Kibo); consegna scolastica (Obiettivo 9, motori); teoria pptx slide 18",
+    "fonte": "Panorama ESA (Kibo); consegna scolastica (Obiettivo 9, motori)",
     "oggetto_reale": "Console con joystick e due piccoli schermi sul lato sinistro del portello.",
     "yaw_stimato": -96,
     "pitch_stimato": 6
@@ -608,7 +608,7 @@
       15
     ],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Destiny); teoria pptx slide 12-15",
+    "fonte": "Panorama ESA (Destiny)",
     "oggetto_reale": "Pannello nero con interruttori e connettori a destra del portello centrale.",
     "yaw_stimato": 37,
     "pitch_stimato": 2
@@ -641,7 +641,7 @@
       20
     ],
     "badge": "Foto reale",
-    "fonte": "NASA NTRS 20020083039 (DDCU, IECEC 2002); teoria pptx slide 20",
+    "fonte": "NASA NTRS 20020083039 (DDCU, IECEC 2002)",
     "oggetto_reale": "Rack a destra con fasci di cavi grigi e verdi e tubi rossi.",
     "yaw_stimato": 106,
     "pitch_stimato": -19
@@ -674,7 +674,7 @@
       21
     ],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS electrical power system); teoria pptx slide 18 e 21",
+    "fonte": "NASA (ISS electrical power system)",
     "oggetto_reale": "Cavi spessi grigio-verdi che scendono sul lato destro del panorama.",
     "yaw_stimato": 80,
     "pitch_stimato": -26
@@ -703,7 +703,7 @@
       22
     ],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS assembly history); teoria pptx slide 22",
+    "fonte": "NASA (ISS assembly history)",
     "oggetto_reale": "Portello centrale con scritta 'To FGB' e cuscinetti rosa.",
     "yaw_stimato": 0,
     "pitch_stimato": 0
@@ -761,7 +761,7 @@
       18
     ],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS life support); teoria pptx slide 18",
+    "fonte": "NASA (ISS life support)",
     "oggetto_reale": "Griglia metallica quadrata a pavimento, a sinistra del portello centrale.",
     "yaw_stimato": -37,
     "pitch_stimato": -33
@@ -834,7 +834,7 @@
       21
     ],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS Environmental Control and Life Support System); teoria pptx slide 21",
+    "fonte": "NASA (ISS Environmental Control and Life Support System)",
     "oggetto_reale": "Nessun rack ECLSS identificabile nel panorama: usare la parete bianca sinistra come ancoraggio.",
     "yaw_stimato": -96,
     "pitch_stimato": 6
@@ -867,7 +867,7 @@
       2
     ],
     "badge": "Foto reale",
-    "fonte": "NASA, ESA (ISS orbit facts); teoria pptx slide 2",
+    "fonte": "NASA, ESA (ISS orbit facts)",
     "oggetto_reale": "Portello circolare con vetro azzurro in basso al centro, scritta 'To CUP'.",
     "yaw_stimato": 0,
     "pitch_stimato": -70
@@ -896,7 +896,7 @@
       2
     ],
     "badge": "Foto reale",
-    "fonte": "NASA, ESA (ISS orbit facts); teoria pptx slide 2",
+    "fonte": "NASA, ESA (ISS orbit facts)",
     "oggetto_reale": "Finestre della Cupola con la Terra; da posizionare su cupola-foto.jpg."
   },
   {
@@ -923,7 +923,7 @@
       22
     ],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS electrical power system); teoria pptx slide 22",
+    "fonte": "NASA (ISS electrical power system)",
     "oggetto_reale": "Pannelli solari dorati visibili all'esterno."
   },
   {
@@ -1063,7 +1063,7 @@
     ],
     "immagini": [],
     "simulazione": "energia",
-    "voce": null,
+    "voce": "Un alternatore trasforma il moto in corrente: il flusso del campo magnetico varia, e nasce una fem indotta. Ma per portare l'energia lontano serve l'alta tensione. Il trasformatore la eleva, la corrente scende, e le perdite per effetto Joule si riducono. È il cuore dell'Obiettivo 7: energia efficiente e accessibile.",
     "slide_pptx": [
       18,
       20,

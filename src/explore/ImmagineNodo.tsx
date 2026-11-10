@@ -29,7 +29,7 @@ function PortelloImmagine({ p, onPortello, nomeNodo }: { p: Portello; onPortello
   const att = useVista((v) => v.portello === p.verso)
   return (
     <Posiz x={p.x!} y={p.y!}>
-      <HotspotMarker tipo="portello" attivo={att} titolo={`Verso ${nomeNodo(p.verso)}`} onClick={() => onPortello(p)} />
+      <HotspotMarker tipo="portello" attivo={att} titolo={p.verso === 'finale' ? 'Verso il finale: Dallo spazio alla Terra' : `Verso ${nomeNodo(p.verso)}`} onClick={() => onPortello(p)} />
     </Posiz>
   )
 }

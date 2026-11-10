@@ -25,7 +25,7 @@
       "NASA NTRS, plasma contactor ISS (documenti 20090028688 e 19980201237): requisito di ±40 V rispetto al plasma; fem di moto fino a circa 30 V su un traliccio di 100 m; budget di fem di moto di circa ±20 V (grandezza diversa dal requisito di ±40 V sul potenziale della struttura)",
       "NASA, ISS facts: velocità orbitale e inclinazione 51,6 gradi",
       "Campo magnetico a 400 km: 25-45 microtesla lungo l'orbita, 30 microtesla come valore tipico (modello IGRF, NOAA NCEI)",
-      "Teoria pptx 5LSA, slide 2, 7, 8, 9"
+      "Teoria di fisica 5LSA, slide 2, 7, 8, 9"
     ],
     "note": "Il valore di 23 V è un massimo teorico per struttura perpendicolare a v e B. La lunghezza di 100 m è l'ordine di grandezza della struttura (apertura circa 109 m). Il segno di ε dipende dall'orientamento."
   },
@@ -54,7 +54,7 @@
     "collegamento_agenda": "Obiettivo 7: energia pulita e accessibile. Quasi tutte le fonti rinnovabili, tranne il fotovoltaico, trasformano energia cinetica in elettrica con un alternatore; i trasformatori la portano dove serve riducendo gli sprechi.",
     "slide_pptx": [3, 5, 18, 19, 20, 21, 22, 23],
     "fonti": [
-      "Teoria pptx 5LSA, slide 18-23",
+      "Teoria di fisica 5LSA, slide 18-23",
       "NASA NTRS 20020083039 (DDCU, IECEC 2002): 160 V primario, 124,5 V nominale secondario, circa 95 per cento di efficienza, trasformatore di isolamento in un convertitore a commutazione",
       "Esempio linea 10 MW, 5 ohm: simulazione concettuale"
     ]
@@ -85,7 +85,7 @@
       "DLR, ESA, Airbus: EML",
       "SCMaglev (JR Central, RTRI): sollevamento attorno ai 150 km/h; record di 603 km/h il 21 aprile 2015",
       "DLR, EML: una sola bobina, 135-155 kHz per il posizionamento e 365-390 kHz per il riscaldamento; temperature fino a 2000-2200 °C; magazzino da 18 campioni",
-      "Consegna scolastica, Obiettivo 9; teoria pptx slide 4, 8, 9, 11"
+      "Consegna scolastica, Obiettivo 9; teoria di fisica 5LSA, slide 4, 8, 9, 11"
     ]
   },
   {
@@ -114,7 +114,7 @@
       "Costante giromagnetica del protone: CODATA (42,577 MHz/T)",
       "Roberts et al., New England Journal of Medicine, 2017: risonanze magnetiche cerebrali di astronauti prima e dopo il volo (NASA, MUSC)",
       "NASA, ESA: ricerca sul corpo umano in orbita",
-      "Teoria pptx 5LSA, slide 8, 12-17"
+      "Teoria di fisica 5LSA, slide 8, 12-17"
     ]
   }
 ]

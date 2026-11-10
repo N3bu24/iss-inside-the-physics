@@ -11,7 +11,7 @@ export default function Indicatore({ precedente, laterale = false }: { precedent
       {avanti && (
         <div key={avanti} className="fade-in flex items-center gap-2 rounded-full border border-white/25 bg-[rgba(4,8,20,.82)] px-4 py-1.5 text-white shadow-lg">
           <span className="kbd"><ArrowUp size={12} /></span>
-          {avanti === 'eml' ? 'entra nell\'EML' : avanti === 'cupola' ? 'scendi nella Cupola' : `verso ${nodi[avanti].nome}`}
+          {avanti === 'eml' ? 'entra nell\'EML' : avanti === 'cupola' ? 'scendi nella Cupola' : avanti === 'finale' ? 'verso il finale' : `verso ${nodi[avanti].nome}`}
         </div>
       )}
       {precedente && (

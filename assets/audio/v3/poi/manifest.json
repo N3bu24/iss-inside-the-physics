@@ -166,5 +166,29 @@
     "file": "cupola-aurora.mp3",
     "durata_s": 16.2,
     "testo": "Le aurore nascono dalla forza di Lorentz. Una particella carica in un campo magnetico non va dritta: spiraleggia lungo le linee del campo, e qui le linee portano ai poli. Nella simulazione puoi lanciare le particelle e vedere dove si accende l'aurora."
+  },
+  {
+    "id": "finale-maglev",
+    "file": "finale-maglev.mp3",
+    "durata_s": 29.8,
+    "testo": "Lo spazio è meno lontano di quanto sembri. Lo stesso principio che sostiene un campione in Columbus può sostenere un treno. In Giappone si sperimentano treni a levitazione magnetica, i Maglev. Quando il treno corre, i suoi magneti fanno variare il flusso nelle bobine della guida. Vi nascono correnti indotte, e la legge di Lenz fa il resto: il campo indotto respinge. A velocità sufficiente il treno si solleva di alcuni centimetri e scivola senza attrito di contatto."
+  },
+  {
+    "id": "finale-obiettivo9",
+    "file": "finale-obiettivo9.mp3",
+    "durata_s": 24,
+    "testo": "È il cuore dell'Obiettivo nove dell'Agenda duemilatrenta: imprese, innovazione, infrastrutture. Capire le correnti parassite significa progettare macchine migliori. Nei forni a induzione servono a fondere i metalli. Nei motori elettrici industriali sono perdite da ridurre. In un treno diventano sostegno e freno. Una stessa fisica, tre usi diversi."
+  },
+  {
+    "id": "finale-trasformatore",
+    "file": "finale-trasformatore.mp3",
+    "durata_s": 21.3,
+    "testo": "Un alternatore trasforma il moto in corrente: il flusso del campo magnetico varia, e nasce una fem indotta. Ma per portare l'energia lontano serve l'alta tensione. Il trasformatore la eleva, la corrente scende, e le perdite per effetto Joule si riducono. È il cuore dell'Obiettivo 7: energia efficiente e accessibile."
+  },
+  {
+    "id": "finale-art32",
+    "file": "finale-art32.mp3",
+    "durata_s": 23.8,
+    "testo": "E poi c'è la salute. L'articolo trentadue della Costituzione tutela la salute come diritto dell'individuo e interesse della collettività. Significa anche sicurezza: materiali più affidabili, macchine più efficienti, luoghi di lavoro meno rischiosi. La ricerca è uno degli strumenti con cui questo diritto diventa concreto. Dalla Terra allo spazio, e ritorno."
   }
 ]

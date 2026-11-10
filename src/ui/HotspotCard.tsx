@@ -107,7 +107,7 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
       <div className="mt-5 flex flex-wrap items-center gap-2"><Badge tipo={scheda.badge} /><Voce id={scheda.id} audioOn={audioOn} /></div>
       <p className="mt-3 text-[11px] leading-snug text-white/45">
         {scheda.fonte && <>Fonte: {scheda.fonte}</>}
-        {scheda.slide_pptx.length > 0 && <>{scheda.fonte ? ' · ' : ''}Teoria: slide {scheda.slide_pptx.join(', ')}</>}
+        {scheda.slide_pptx.length > 0 && <>{scheda.fonte ? ' · ' : ''}Teoria: L'induzione elettromagnetica, slide {scheda.slide_pptx.join(', ')}</>}
       </p>
     </aside>
   )
