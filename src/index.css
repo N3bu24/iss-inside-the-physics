@@ -5,7 +5,7 @@
    va scritta solo con queste varianti, es. `compatto:bottom-0 tel:w-full`. Senza variante = desktop (e base). */
 @custom-variant compatto (@media (max-width: 1023px), (hover: none) and (pointer: coarse));
 @custom-variant tel (@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px));
-@custom-variant tab (@media ((min-width: 768px) and (max-width: 1023px)), ((hover: none) and (pointer: coarse) and (min-height: 501px)));
+@custom-variant tab (@media ((min-width: 768px) and (max-width: 1023px) and (min-height: 501px)), ((hover: none) and (pointer: coarse) and (min-width: 768px) and (min-height: 501px)));
 @import "./responsive.css";
 
 @theme {
