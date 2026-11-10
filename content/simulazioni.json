@@ -9,8 +9,8 @@
       { "nome": "Bobina in rame", "icona_categoria": "eml", "spiegazione": "Un solo avvolgimento con due correnti alternate sovrapposte: quadrupolo (circa 135-155 kHz) per posizionare e dipolo (circa 365-390 kHz) per scaldare." },
       { "nome": "Campione sferico", "icona_categoria": "eml", "spiegazione": "Sfera di lega di alluminio, rame o nichel, di circa 5-8 mm: dentro nascono le correnti parassite." },
       { "nome": "Portacampioni e magazzino", "icona_categoria": "strumento", "spiegazione": "Ogni campione sta in un portacampioni di ceramica e renio; un magazzino ne contiene 18." },
-      { "nome": "Telecamera veloce e pirometro", "icona_categoria": "strumento", "spiegazione": "La telecamera arriva fino a 30 000 fotogrammi al secondo (Airbus); il pirometro misura la temperatura senza contatto." },
-      { "nome": "Gas inerte e vuoto", "icona_categoria": "fisica", "spiegazione": "La camera è sotto vuoto e riempita con gas inerte (argon nelle prove ESA 2021): evita che il metallo caldo si ossidi." },
+      { "nome": "Telecamera veloce e pirometro", "icona_categoria": "strumento", "spiegazione": "La telecamera registra decine di migliaia di fotogrammi al secondo (DLR); il pirometro misura la temperatura senza contatto." },
+      { "nome": "Gas inerte e vuoto", "icona_categoria": "fisica", "spiegazione": "La camera viene svuotata e poi riempita con gas inerte (argon nelle prove ESA 2021): evita che il metallo caldo si ossidi." },
       { "nome": "Generatore in corrente alternata", "icona_categoria": "energia", "spiegazione": "Alimenta la bobina, che è un induttore: la sua autoinduzione limita la crescita della corrente." }
     ],
     "passi": [
