@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import IntroScreen from './components/IntroScreen'
-import Esplora from './explore/Esplora'
 import IntestazioneAutore from './ui/IntestazioneAutore'
+
+/** L'esplorazione (Photo Sphere Viewer, contenuti, hotspot) si carica in un chunk a parte, subito dopo l'intro. */
+const Esplora = lazy(() => import('./explore/Esplora'))
 
 type Fase = 'intro' | 'visita'
 
@@ -19,7 +21,9 @@ export default function App() {
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <Esplora key={giro} attivo={fase === 'visita'} audioOn={audioOn} onAudio={() => setAudioOn(!audioOn)} onHome={home} />
+      <Suspense fallback={null}>
+        <Esplora key={giro} attivo={fase === 'visita'} audioOn={audioOn} onAudio={() => setAudioOn(!audioOn)} onHome={home} />
+      </Suspense>
       {fase === 'intro' && <IntroScreen audioOn={audioOn} onAudio={() => setAudioOn(!audioOn)} onStart={() => setFase('visita')} />}
       <IntestazioneAutore />
     </div>
