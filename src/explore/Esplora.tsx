@@ -526,7 +526,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
   const principale = nodi.harmony
 
   // aggancio per le prove automatiche (solo in sviluppo)
-  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__iss = { vaiA, saltaA, avanti, indietro, vaiAlPunto, pano, st }
+  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__iss = { vaiA, saltaA, avanti, indietro, vaiAlPunto, pano, st, apriScheda, chiudiScheda: () => setApri(null), apriSimulazione: setSimulazione }
 
   return (
     <div className="absolute inset-0 isolate overflow-hidden bg-[#05070f]">

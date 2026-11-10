@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @import "./esplora.css";
 
+/* Varianti responsive (stesse soglie di src/lib/dispositivo.ts). Il desktop NON cambia: ogni regola per telefono/tablet
+   va scritta solo con queste varianti, es. `compatto:bottom-0 tel:w-full`. Senza variante = desktop (e base). */
+@custom-variant compatto (@media (max-width: 1023px), (hover: none) and (pointer: coarse));
+@custom-variant tel (@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px));
+@custom-variant tab (@media ((min-width: 768px) and (max-width: 1023px)), ((hover: none) and (pointer: coarse) and (min-height: 501px)));
+@import "./responsive.css";
+
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
   --color-navy: #0a1230;

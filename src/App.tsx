@@ -49,6 +49,9 @@ export default function App() {
     setRichiesta({ nodo, scheda, n: Date.now() })
   }
 
+  // aggancio per le prove automatiche a più risoluzioni (solo in sviluppo)
+  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__app = { apriIndice, apriImpostazioni, chiudi, avvia: () => { avviaAmbient(); setFase('visita') } }
+
   return (
     <div className="relative h-full w-full overflow-hidden">
       <Suspense fallback={null}>

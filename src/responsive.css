@@ -1,0 +1,18 @@
+/*
+ * Stili SOLO per telefono e tablet. Ogni regola deve stare dentro una di queste media query
+ * (identiche a src/lib/dispositivo.ts): fuori da qui niente, così il desktop resta invariato.
+ *
+ *   COMPATTO (tablet + telefono): @media (max-width: 1023px), (hover: none) and (pointer: coarse)
+ *   TELEFONO:                     @media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px)
+ *
+ * Sezioni: una per area, con il nome del proprietario (esplorazione / simulazioni).
+ */
+
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  /* base comune: niente zoom con doppio tocco sui comandi, aree di tocco ampie */
+  button, [role="button"], a { touch-action: manipulation; }
+}
+
+/* ===== ESPLORAZIONE (web-developer B) ===== */
+
+/* ===== SIMULAZIONI (web-developer A) ===== */
