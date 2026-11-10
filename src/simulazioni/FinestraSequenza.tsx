@@ -70,6 +70,7 @@ export default function FinestraSequenza(p: {
       className={'sim-win glass pointer-events-auto z-40 flex flex-col overflow-hidden rounded-2xl text-white ' + (p.inFlusso ? 'sim-flusso w-full max-w-[760px]' : 'absolute bottom-5 left-1/2 w-[46%] min-w-[500px] max-w-[760px]')}
       role="dialog"
       data-sim-ui
+      style={{ background: 'rgba(7,12,26,.9)' }}
       aria-label={p.titolo}
     >
       <Stile />
@@ -91,13 +92,13 @@ export default function FinestraSequenza(p: {
       </div>
       {!ridotta && (
         <>
-          <div key={indice} className="fade-in sim-scroll flex max-h-[32vh] flex-col gap-3 px-6 py-5">
+          <div key={indice} className="fade-in sim-scroll flex max-h-[32vh] flex-col gap-3 px-6 py-5 [@media(max-height:800px)]:max-h-[38vh] [@media(max-height:800px)]:gap-2 [@media(max-height:800px)]:py-3">
             <h3 className="text-xl font-semibold leading-tight">
               <span className="mr-2 text-cyan-300">{indice + 1}.</span>
               {passo.titolo}
             </h3>
             {passo.video && <Video src={passo.video} />}
-            <p className="text-[14px] leading-relaxed text-white/85">{passo.testo}</p>
+            <p className="text-[14px] leading-relaxed text-white/85 [@media(max-height:800px)]:text-[13px] [@media(max-height:800px)]:leading-snug">{passo.testo}</p>
             {passo.cosaSiVede && (
               <p className="border-l-2 border-cyan-300/60 pl-3 text-[13px] leading-relaxed text-white/65">
                 <span className="text-cyan-200/90">Cosa si vede: </span>
@@ -105,11 +106,11 @@ export default function FinestraSequenza(p: {
               </p>
             )}
             {passo.formula && (
-              <div className="rounded-lg bg-white/5 px-3 py-1">
+              <div className="rounded-lg bg-white/5 px-3 py-1 [@media(max-height:800px)]:py-0">
                 <Formula tex={passo.formula} />
               </div>
             )}
-            <div>
+            <div className="[@media(max-height:800px)]:hidden">
               <Badge tipo="simulazione" />
             </div>
           </div>

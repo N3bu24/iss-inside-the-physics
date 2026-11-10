@@ -6,7 +6,7 @@ import type { Fenomeno } from './types'
  */
 export const fenomeni: (Fenomeno & { hotspot: string })[] = [
   { id: 'campo-variabile', titolo: 'Campo magnetico variabile', colore: 'cyan', hotspot: 'eml-campo-variabile', clip: 'eml-02',
-    testo: 'La corrente alternata nelle bobine genera un campo magnetico che varia nel tempo.',
+    testo: 'La corrente alternata nella bobina genera un campo magnetico che varia nel tempo.',
     latex: 'B(t)=B_0\\sin(\\omega t)' },
   { id: 'correnti-indotte', titolo: 'Correnti indotte', colore: 'cyan', hotspot: 'eml-correnti-indotte', clip: 'eml-03',
     testo: 'Il campo variabile induce correnti parassite nel campione conduttore.',

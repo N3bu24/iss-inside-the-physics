@@ -21,8 +21,8 @@ const EML: Passo[] = [
     distanza: 4.2,
     video: V + 'campo-variabile.mp4',
     testo:
-      "Le bobine di rame portano una corrente alternata a circa 140 kHz e generano un campo quadrupolare, nullo al centro. Le correnti indotte nel campione spingono verso il punto in cui il campo si annulla: il campione galleggia senza contatto.",
-    cosaSiVede: 'Le linee di campo e il campione sospeso al centro delle due bobine.',
+      "La bobina di rame, con avvolgimenti sovrapposti per il posizionamento e per il riscaldamento, porta una corrente alternata a circa 140 kHz e genera un campo quadrupolare, nullo al centro. Le correnti indotte nel campione spingono verso il punto in cui il campo si annulla: il campione galleggia senza contatto.",
+    cosaSiVede: 'Le linee di campo e il campione sospeso al centro della bobina.',
     formula: '\\varepsilon=-\\frac{d\\Phi_B}{dt}',
   },
   {
@@ -54,7 +54,7 @@ const EML: Passo[] = [
     testo:
       "Una piccola perturbazione fa vibrare la goccia: dalla frequenza delle oscillazioni si ricava la tensione superficiale, dallo smorzamento la viscosità. Una telecamera ad alta velocità riprende la forma, un pirometro misura la temperatura dalla luce emessa.",
     cosaSiVede: 'La goccia che pulsa leggermente e le due ottiche puntate su di essa.',
-    formula: '\\omega^{2}=\\frac{8\\,\\gamma}{\\rho\\,R^{3}}',
+    formula: '\\omega^{2}=\\frac{8\\,\\sigma}{\\rho\\,R^{3}}',
   },
   {
     titolo: 'Raffreddamento e solidificazione',

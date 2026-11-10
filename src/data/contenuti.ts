@@ -88,7 +88,7 @@ function normalizzaLuogo(g: Grezzo): Luogo | null {
     id, nome: String(g.nome ?? nodi[id].nome), sottotitolo: String(g.sottotitolo ?? nodi[id].sottotitolo),
     punti: punti.map(String),
     voce: typeof g.voce === 'string' ? g.voce : typeof g.narrazione === 'string' ? g.narrazione : undefined,
-    badge: badgeDa(g.badge ?? 'foto'), fonte: typeof g.fonte === 'string' ? g.fonte : undefined,
+    badge: g.badge ? badgeDa(g.badge) : nodi[id].badge, fonte: typeof g.fonte === 'string' ? g.fonte : undefined,
     slide_pptx: Array.isArray(g.slide_pptx) ? g.slide_pptx.map(Number) : Array.isArray(scheda.slide_pptx) ? scheda.slide_pptx.map(Number) : undefined,
   }
 }

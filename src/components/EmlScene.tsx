@@ -222,12 +222,15 @@ interface Props {
   onHotspot: (id: string) => void
   /** apre subito la sequenza a passi */
   avviaSubito?: boolean
+  /** notifica l'apertura/chiusura della sequenza a passi */
+  onSequenza?: (aperta: boolean) => void
 }
 
-export default function EmlScene({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: caloreEsterno, onHotspot, avviaSubito }: Props) {
+export default function EmlScene({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: caloreEsterno, onHotspot, avviaSubito, onSequenza }: Props) {
   const passi = useMemo(() => PASSI_EML(), [])
   const [seq, setSeq] = useState<number | null>(avviaSubito ? 0 : null)
   const passo = seq !== null ? (passi[seq] ?? null) : null
+  useEffect(() => { onSequenza?.(seq !== null); return () => onSequenza?.(false) }, [seq, onSequenza])
   const sc = passo?.stato ? STATO_SCENA[passo.stato] : undefined
   const fenomeno = sc ? sc.fenomeno : fenomenoEsterno
   const calore: Calore = sc ? sc.calore : caloreEsterno
@@ -271,7 +274,7 @@ export default function EmlScene({ hotspot, attivo, fenomeno: fenomenoEsterno, c
             <FieldLines k={kCampo} forte={fenomeno === 'campo-variabile' || fenomeno === 'posizionamento'} />
           </group>
         )}
-        {ancore && hotspot.filter((h) => h.oggetto3d && ancore[h.oggetto3d]).map((h) => {
+        {ancore && seq === null && hotspot.filter((h) => h.oggetto3d && ancore[h.oggetto3d]).map((h) => {
           const p = ancore[h.oggetto3d!].clone()
           if (h.spostamento3d) p.add(new THREE.Vector3(...h.spostamento3d))
           return <Hotspot3D key={h.id} h={h} pos={p} onSelect={onHotspot} active={attivo === h.id} />
@@ -282,7 +285,7 @@ export default function EmlScene({ hotspot, attivo, fenomeno: fenomenoEsterno, c
       </Canvas>
       <Stile />
       {seq === null && (
-        <div className="absolute bottom-8 left-1/2 z-[25] -translate-x-1/2">
+        <div className="absolute bottom-6 left-1/2 z-[25] -translate-x-1/2">
           <button className="sim-avvia" onClick={() => setSeq(0)}>
             <FlaskConical size={18} /> Avvia esperimento
           </button>

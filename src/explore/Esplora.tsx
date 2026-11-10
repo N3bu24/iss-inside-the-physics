@@ -62,9 +62,11 @@ function preparaVideo(url: string): Promise<HTMLVideoElement | null> {
     const v = document.createElement('video')
     v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = url
     v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%'
-    v.addEventListener('loadeddata', () => ok(v), { once: true })
+    // pronto quando si puo` riprodurre tutto senza fermarsi; se la rete e` lenta, dopo 3 s basta il primo fotogramma
+    v.addEventListener('canplaythrough', () => ok(v), { once: true })
+    v.addEventListener('loadeddata', () => setTimeout(() => ok(v), 3000), { once: true })
     v.onerror = () => ok(null)
-    setTimeout(() => ok(v.readyState >= 2 ? v : null), 7000)
+    setTimeout(() => ok(v.readyState >= 2 ? v : null), 8000)
     v.load()
   })
 }
@@ -94,6 +96,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
   const [fenomeno, setFenomeno] = useState<string | null>(null)
   const [suggerimento, setSuggerimento] = useState<string | null>(null)
   const [fantasma, setFantasma] = useState<Nodo | null>(null)
+  const [sequenzaEml, setSequenzaEml] = useState(false)
 
   const pano = useRef<PanoApi>(null)
   const fx = useRef<FxApi>(null)
@@ -421,6 +424,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
         yaw={principale.yawIniziale} pitch={principale.pitchIniziale}
         marcatori={marcatori}
         nascosti={volando || !attivo || !panoramico}
+        schedaAperta={!!scheda}
         onPosizione={(y, p) => vista.set({ yaw: y, pitch: p, portello: nodi[st.current.nodoId].tipo === 'panorama' ? (portelloInquadrato(st.current.nodoId, y, p)?.verso ?? null) : vista.get().portello })}
         onPronto={() => { pano.current?.orienta(rad(principale.yawIniziale), rad(principale.pitchIniziale), ZOOM_MAX); setPronto(true) }}
       />
@@ -428,10 +432,10 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
       {nodo.tipo === 'eml' && (
         <div className="absolute inset-0 z-20">
           <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center bg-[#05070f] text-sm text-white/40">Caricamento…</div>}>
-            <EmlScene hotspot={hotspotEml} attivo={apri} fenomeno={fenomeno} calore={fenomeno ? caloreFenomeno[fenomeno] : null} onHotspot={apriScheda} />
+            <EmlScene hotspot={hotspotEml} attivo={apri} fenomeno={fenomeno} calore={fenomeno ? caloreFenomeno[fenomeno] : null} onHotspot={apriScheda} onSequenza={setSequenzaEml} />
           </Suspense>
-          <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />
-          {nodo.porte?.map((a) => (
+          {!scheda && !sequenzaEml && <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />}
+          {!scheda && !sequenzaEml && nodo.porte?.map((a) => (
             <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30"><HotspotMarker tipo="ambiente" titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
           ))}
         </div>
@@ -452,7 +456,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
               <ListaPunti key={`l-${nodo.id}`} punti={voci} onScegli={(id) => vaiAlPunto(id, true)} />
             </div>
             {scheda && <HotspotCard scheda={scheda} audioOn={audioOn} onClose={() => setApri(null)} onSimulazione={setSimulazione} />}
-            <Indicatore precedente={precedente} />
+            {!(nodo.tipo === 'eml' && sequenzaEml) && <Indicatore precedente={precedente} laterale={nodo.tipo === 'eml'} />}
             {suggerimento && (
               <div className="fade-in pointer-events-none absolute bottom-[11.5rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
             )}

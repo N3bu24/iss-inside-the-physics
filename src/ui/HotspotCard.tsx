@@ -53,6 +53,7 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
     <aside
       key={scheda.id}
       className="glass slide-in scroll-sottile absolute bottom-24 right-4 top-[15.5rem] z-[31] w-[30rem] max-w-[94vw] overflow-y-auto overflow-x-hidden rounded-2xl p-6"
+      style={{ background: "rgba(7,12,26,.95)" }}
     >
       <button onClick={onClose} aria-label="Chiudi" className="absolute right-3 top-3 rounded-full p-1 text-white/60 hover:bg-white/10 hover:text-white"><X size={18} /></button>
       <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em]" style={{ color: colore }}>
@@ -106,7 +107,7 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
       <div className="mt-5 flex flex-wrap items-center gap-2"><Badge tipo={scheda.badge} /><Voce id={scheda.id} audioOn={audioOn} /></div>
       <p className="mt-3 text-[11px] leading-snug text-white/45">
         {scheda.fonte && <>Fonte: {scheda.fonte}</>}
-        {scheda.slide_pptx.length > 0 && <>{scheda.fonte ? ' · ' : ''}Slide {scheda.slide_pptx.join(', ')} del pptx</>}
+        {scheda.slide_pptx.length > 0 && <>{scheda.fonte ? ' · ' : ''}Teoria: slide {scheda.slide_pptx.join(', ')}</>}
       </p>
     </aside>
   )
