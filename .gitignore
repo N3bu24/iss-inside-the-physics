@@ -23,3 +23,6 @@ assets/voli/v3/
 assets/renders/capsula/*.png
 assets/renders/capsula/*-v1.*
 assets/renders/capsula/capsula-pano.jpg
+
+# materiale del professore: resta solo in locale
+*.pptx
