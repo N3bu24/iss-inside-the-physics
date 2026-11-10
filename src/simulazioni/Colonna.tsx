@@ -86,7 +86,7 @@ export function ColonnaShell({ id, titolo, ridotta, onRidotta, contatore, onChiu
             {ic.titolo}
             {contatore ? <span className="text-white/55"> · {contatore}</span> : null}
           </div>
-          <h2 className="truncate text-[15px] font-semibold leading-tight" title={titolo}>
+          <h2 className="text-[15px] font-semibold leading-tight">
             {titolo}
           </h2>
         </div>

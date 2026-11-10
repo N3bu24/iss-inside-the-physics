@@ -109,7 +109,7 @@ export default function LayoutSimulazione(p: PropsLayout) {
         titolo={p.titolo}
         ridotta={ridotta}
         onRidotta={setRidotta}
-        contatore={inSequenza ? `passo ${seq + 1} di ${passi.length}` : undefined}
+        contatore={inSequenza ? `passo ${seq + 1}/${passi.length}` : undefined}
         onChiudiSequenza={inSequenza ? () => vai(null) : undefined}
       >
         {inSequenza ? (

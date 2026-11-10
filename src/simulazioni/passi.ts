@@ -247,7 +247,7 @@ const AUTOINDUZIONE: Passo[] = [
 const AURORA: Passo[] = [
   P('campo', 'Una carica in un campo', 'La forza di Lorentz curva la traiettoria senza cambiare la velocità.', { pos: [0, 1.5, 9.5], target: [0, 0, 0] }),
   P('spirale', 'Raggio e spirale', "Con una componente lungo il campo la traiettoria è un'elica.", { pos: [5, 2, 8], target: [0, 0, 0] }),
-  P('vento', 'Il vento solare e la Terra', 'Il campo terrestre devia le particelle e le guida verso i poli.', { pos: [2, 5, 21], target: [0, 0, 0] }),
+  P('vento', 'Il vento solare e la Terra', 'Il campo terrestre devia le particelle e le guida verso i poli.', { pos: [2, 5, 17], target: [0, 0, 0] }),
   P('aurora', "Si accende l'aurora", "Le particelle eccitano gli atomi dell'alta atmosfera, che emettono luce.", { pos: [4, 6.2, 6.5], target: [0, 2.9, 0] }),
   P('cupola', 'Dalla Cupola', 'La ISS orbita sopra la regione aurorale.', { pos: [3.4, 5.2, 4.2], target: [0, 3.2, 0] }),
 ]

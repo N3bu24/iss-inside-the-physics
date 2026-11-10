@@ -29,6 +29,7 @@ function Demo() {
           <button className="btn-ghost absolute right-4 top-4 z-50 !py-1.5" onClick={() => setAperto(null)}>Chiudi</button>
         </div>
       )}
+      {aperto === 'eml-nodo' && new URLSearchParams(location.search).get('sopra') === 'eml' && (() => { const Sopra = componenteSimulazione('eml'); return Sopra ? <Suspense fallback={null}><Sopra onClose={() => setAperto(null)} /></Suspense> : null })()}
       {A && (
         <Suspense fallback={<div className="fixed inset-0 z-50 grid place-items-center bg-[#05070f]">Caricamento…</div>}>
           <A onClose={() => setAperto(null)} />

@@ -270,9 +270,9 @@ export default function AmbienteEnergia({ onClose }: { onClose: () => void }) {
       slide={TESTI.energia.slide}
       passi={passi}
       onPasso={onPasso}
-      orbit={{ target: [2.2, 0, 0], maxPolarAngle: Math.PI * 0.62, minDistance: 8, maxDistance: 24 }}
+      orbit={{ target: [2.2, 0, 0], maxPolarAngle: Math.PI * 0.62, minDistance: 8, maxDistance: 32 }}
       didascalia={did}
-      camera={{ position: [2.2, 3.2, 23], fov: 45 }}
+      camera={{ position: [2.2, 3.4, 27], fov: 45 }}
       scope={<Scope titolo="corrente alternata" traces={[trF, trE]} />}
       controlli={
         <>

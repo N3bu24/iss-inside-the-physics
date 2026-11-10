@@ -365,7 +365,7 @@ export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot,
       )}
       {seq !== null && passo && (
         <div className="pointer-events-none absolute inset-0 z-40">
-          <ColonnaShell id="eml" titolo="Esperimento EML" ridotta={ridotta} onRidotta={setRidotta} contatore={`passo ${seq + 1} di ${passi.length}`} onChiudiSequenza={() => setSeq(null)} basso="bottom-24">
+          <ColonnaShell id="eml" titolo="L'esperimento nell'EML" ridotta={ridotta} onRidotta={setRidotta} contatore={`passo ${seq + 1}/${passi.length}`} onChiudiSequenza={() => setSeq(null)} basso="bottom-24">
             <FinestraSequenza passi={passi} indice={seq} onIndice={setSeq} onChiudi={() => setSeq(null)} />
           </ColonnaShell>
         </div>
