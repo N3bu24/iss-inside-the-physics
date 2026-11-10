@@ -24,3 +24,7 @@ Prezzi verificati il 10/11 con l'endpoint gratuito `POST /estimate/{modello}` de
 **Budget:** ~21,6 $ ≈ 20 €, al limite basso del budget di 20-30 €. D'ora in poi eventuali rifacimenti solo con Kling std (0,42 $) o Seedance 720p (~1,51 $), previa conferma dell'autore.
 
 **Budget residuo (chiusura 10/11 mattina):** speso ~21,6 $ ≈ 20 € su un budget di 20-30 € → residuo circa 0-10 €. Nessuna generazione in questa chiusura.
+
+| 10/11/2026 | Higgsfield (Seedance 2.0, 1080p) | 3 voli rifatti su richiesta dell'autore (kibo→harmony, tranquility→unity, unity→destiny), frame di partenza/arrivo verificati prima | 3 clip × 5 s | ~10,2 $ (3,40 $/volo) | `public/voli/` (originali in `assets/voli/originali-v3/`) | Tutti riusciti al primo tentativo; 2 recuperati dall'ID dopo l'arresto dello script per memoria |
+
+**Totale aggiornato (10/11, ore 10:15):** circa **31,8 $** su Higgsfield (≈ 29 €), al limite alto del budget di 20-30 €. Restano Kling solo harmony→destiny e harmony→kibo.

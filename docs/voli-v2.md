@@ -11,11 +11,11 @@ Durata nuovi video: 5,04 s. Esplora.tsx usa onended con timeout 14 s: nessuna du
 | destiny__harmony | destiny 180 | nodo 180 | RIFATTO, ok |
 | destiny__unity | destiny 0 | unity 0 | RIFATTO, ok |
 | harmony__columbus | nodo -150 | columbus -90 | RIFATTO, ok |
-| harmony__destiny | nodo 0 | destiny 0 | NON fatto: crediti esauriti (2 tentativi falliti per saldo) |
-| harmony__kibo | nodo 150 | materiali 0 | NON fatto: crediti esauriti |
-| kibo__harmony | materiali 180 | nodo -30 | NON fatto: crediti esauriti |
-| tranquility__unity | cupola -92 | unity -90 | NON fatto: crediti esauriti |
-| unity__destiny | unity 180 | destiny 180 | NON fatto: crediti esauriti |
+| harmony__destiny | nodo 0 | destiny 0 | Kling, lasciato (QA 3,5/5, scie) |
+| harmony__kibo | nodo 150 | materiali 0 | Kling, lasciato (QA 4/5) |
+| kibo__harmony | materiali 180 | nodo -30 | RIFATTO 10/11 (v3), ok |
+| tranquility__unity | cupola -92 | unity -90 | RIFATTO 10/11 (v3), ok |
+| unity__destiny | unity 180 | destiny 180 | RIFATTO 10/11 (v3), ok |
 
 Valore da applicare in src/data/stazione.ts: arco unity->tranquility `arrivoAvanti: { yaw: 180, pitch: 0 }` (era yaw 20, pitch -30).
 Causa dell'errore originale: il panorama di Tranquility e' ruotato di ~90 gradi in rollio; il portello in Unity (yaw 90) era corretto.

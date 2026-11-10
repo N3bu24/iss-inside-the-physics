@@ -5,6 +5,12 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.9.6] — 2026-11-10
+### Cambiato
+- Voli Kibo→Harmony, Tranquility→Unity e Unity→Destiny rifatti con Seedance 2.0 (1080p → 1280×720, 24 fps); restano Kling solo Harmony→Destiny e Harmony→Kibo.
+- Relazione in PDF di 2 pagine (presentazione + scheda tecnica) e README del repository.
+- Report QA dei voli Kling (`docs/qa/qa-voli-kling-10-11.md`).
+
 ## [0.9.5] — 2026-11-10
 ### Corretto (test di conferma)
 - Fonti delle schede senza "pptx": riga "Teoria: L'induzione elettromagnetica, slide N".
