@@ -124,3 +124,19 @@ Ondata 3:
 - [x] Pubblicato su Vercel
 - Problema 10/11: due interruzioni di Claude Code per memoria bassa del PC durante le schermate (Chrome headless con WebGL); risolto chiudendo programmi secondari (autorizzato dall'autore) e lavorando una risoluzione alla volta.
 - Da rifinire: sul tablet orizzontale la scheda del punto copre la miniatura della mappa; nel telefono verticale il circuito dell'autoinduzione è un po' tagliato a sinistra.
+
+### 11/11 ore 04:00 — v1.1.0: 14 note dell'autore (piano in `docs/piano-v1.1.md`, programmato)
+- [ ] P1 Voci mai sovrapposte (modulo/simulazione) — nota 1
+- [ ] P1 X in alto a destra in tutte le simulazioni, EML compreso — nota 2
+- [ ] P2 Icone dei punti di simulazione: simbolo unico, colori diversi — nota 3
+- [ ] P1 EML: camera guidata a coordinate assolute, inquadrature più larghe — nota 4
+- [ ] P1 EML: ambiente e simulazione uniti in uno solo, niente simulazione-copia senza icone — note 5-6
+- [ ] P2 Mini-mappa mobile: cono di luce rotto — nota 7
+- [ ] P2 Valori discreti sugli elementi (es. temperatura del campione) — nota 8
+- [ ] P2 Cupola: diretta dalla ISS opzionale + planisfero con posizione, data e ora — nota 9
+- [ ] P2 Pulsante per cambiare sezione nelle simulazioni (Aurora...) — nota 10
+- [ ] P1 Tasto muto immediato e affidabile — nota 11
+- [ ] P1 Audio delle simulazioni sempre affidabile — nota 12
+- [ ] P2 Musica calma e sintetica dentro le simulazioni — nota 13
+- [ ] P2 Nome dello strumento accanto al punto luminoso — nota 14
+- [ ] P1 QA su desktop, tablet, telefono; v1.1.0 (tag, release), push, Vercel, resoconto Telegram
