@@ -1,3 +1,5 @@
+import { createPortal as portale } from 'react-dom'
+import { useSlotSopra } from '../lib/slot'
 import { Component, Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Canvas, createPortal, useFrame, useThree } from '@react-three/fiber'
 import { Html, OrbitControls, useGLTF, Environment, Lightformer } from '@react-three/drei'
@@ -360,6 +362,7 @@ export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot,
   const [ridotta, setRidotta] = useState(false)
   const [aperto, setAperto] = useState(true)
   const info = useLayoutSim()
+  const slot = useSlotSopra(info.modo !== 'desktop')
   const passo = seq !== null ? (passi[seq] ?? null) : null
   useEffect(() => { onSequenza?.(seq !== null); return () => onSequenza?.(false) }, [seq, onSequenza])
   // Esc chiude i passi (e solo quelli: se non sono aperti lascia fare agli altri)
@@ -372,18 +375,26 @@ export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot,
     const sheet = info.modo === 'sheet'
     const altSheet = Math.min(altezzaSheet(info, aperto), info.altezza - BARRA_ESPLORA - 120)
     const sinistraPx = !sheet && seq !== null && !ridotta ? (info.larghLato + 16) / 2 : 0
-    const sopraPx = sheet && seq !== null ? (altSheet + BARRA_ESPLORA) / 2 : 0 // nessun comando sopra il pannello nel nodo
+    // a passi aperti la scena sale sopra il pannello; senza passi (in verticale) sale sopra la colonna di comandi e sottotitoli
+    const sopraPx = sheet && seq !== null ? (altSheet + BARRA_ESPLORA) / 2 : sheet ? 120 : 0
     const avvia = () => { setSeq(0); setAperto(true) }
     return (
-      <div className="absolute inset-0">
+      <div className="eml-compatto absolute inset-0">
         <EmlCanvas hotspot={hotspot} attivo={attivo} fenomeno={fenomeno} calore={calore} onHotspot={onHotspot} passo={passo} sinistraPx={sinistraPx} sopraPx={sopraPx} />
-        {seq === null && (
-          <div className="eml-avvia absolute bottom-[80px] left-1/2 z-[25] -translate-x-1/2">
-            <button className="sim-avvia min-h-[52px]" onClick={avvia}>
-              <FlaskConical size={18} /> Avvia esperimento
-            </button>
-          </div>
-        )}
+        {seq === null && (slot
+          ? portale(
+              <button className="sim-avvia min-h-[48px] whitespace-nowrap" onClick={avvia}>
+                <FlaskConical size={18} /> Avvia esperimento
+              </button>,
+              slot,
+            )
+          : (
+            <div className="eml-avvia absolute bottom-[80px] left-1/2 z-[25] -translate-x-1/2">
+              <button className="sim-avvia min-h-[52px] whitespace-nowrap" onClick={avvia}>
+                <FlaskConical size={18} /> Avvia esperimento
+              </button>
+            </div>
+          ))}
         {seq !== null && passo && (
           <div className="pointer-events-none absolute inset-0 z-40">
             {sheet ? (

@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { useSlotSopra } from '../lib/slot'
+import { useLayoutSim } from '../simulazioni/compatto'
 import { fenomeni } from '../data/tour'
 import { assetExists } from '../lib/assets'
 import Badge from './Badge'
@@ -21,9 +24,12 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
     if (f) assetExists(videoUrl(f.id)).then(setHasVideo)
   }, [f])
   const col = (c: string) => (c === 'heat' ? '#ff8a2a' : '#35e0ff')
+  // telefono e tablet in verticale: il pannello entra nella colonna comune sopra i sottotitoli (niente sovrapposizioni)
+  const info = useLayoutSim()
+  const slot = useSlotSopra(info.modo === 'sheet')
 
-  return (
-    <aside className="fen-panel glass slide-in absolute right-4 top-[15.5rem] bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5" style={{ background: "rgba(7,12,26,.9)" }}>
+  const pannello = (
+    <aside className={`fen-panel ${slot ? 'fen-in-slot ' : ''}glass slide-in absolute right-4 top-[15.5rem] bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5`} style={{ background: "rgba(7,12,26,.9)" }}>
       <div className="text-[10px] uppercase tracking-[0.2em] text-white/45">Cosa succede nel campione</div>
       <ol className="fen-lista mt-3 space-y-1">
         {fenomeni.map((x, i) => (
@@ -69,4 +75,5 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
       )}
     </aside>
   )
+  return slot ? createPortal(pannello, slot) : pannello
 }

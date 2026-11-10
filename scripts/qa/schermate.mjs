@@ -50,6 +50,13 @@ const STATI = {
     await attendi(2000)
   },
   'sim-aurora': async (p) => { await avvia(p); await p.evaluate(() => window.__iss.apriSimulazione('aurora')); await attendi(7000) },
+  'sim-autoinduzione-passi': async (p) => {
+    await avvia(p); await p.evaluate(() => window.__iss.apriSimulazione('autoinduzione')); await attendi(7000)
+    await p.evaluate(() => { const b = [...document.querySelectorAll('button')].filter((x) => /^\s*Avvia\b/.test(x.textContent || '')).pop(); b?.click() })
+    await attendi(1500)
+    await p.evaluate(() => { const b = [...document.querySelectorAll('button')].filter((x) => (x.textContent || '').trim().startsWith('Avanti')).pop(); b?.click() })
+    await attendi(2500)
+  },
   capsula: async (p) => { await avvia(p); await p.evaluate(() => window.__iss.saltaA('finale')); await attendi(7000) },
 }
 

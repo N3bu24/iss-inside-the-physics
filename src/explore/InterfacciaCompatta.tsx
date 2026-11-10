@@ -90,6 +90,8 @@ export default function InterfacciaCompatta(p: Props) {
           {p.suggerimento && (
             <div className="fade-in rounded-full border border-white/20 bg-[rgba(4,8,20,.88)] px-4 py-1.5 text-center text-sm text-white/90">{p.suggerimento}</div>
           )}
+          {/* zona comune: qui il nodo EML mette «Avvia esperimento» e i fenomeni (src/lib/slot.ts) */}
+          <div id="slot-sopra-sottotitoli" className="pointer-events-auto flex w-full flex-col items-center gap-2 empty:hidden" />
         </div>
 
         {p.scheda && <HotspotCard scheda={p.scheda} audioOn={p.audioOn} onClose={p.onChiudiScheda} onSimulazione={p.onSimulazione} />}

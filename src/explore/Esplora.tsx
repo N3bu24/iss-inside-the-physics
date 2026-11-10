@@ -551,7 +551,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
           </Suspense>
           {!scheda && !sequenzaEml && <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />}
           {!scheda && !sequenzaEml && nodo.porte?.map((a) => (
-            <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30 compatto:bottom-[calc(var(--barra-spazio)+1rem)] compatto:right-4"><HotspotMarker tipo="ambiente" ambiente={a.ambiente} titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
+            <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30 compatto:top-[7.6rem] compatto:bottom-auto compatto:right-3"><HotspotMarker tipo="ambiente" ambiente={a.ambiente} titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
           ))}
         </div>
       )}

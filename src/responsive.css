@@ -122,3 +122,17 @@
     .eml-avvia { left: auto; right: 12px; translate: none; }
   }
 }
+
+/* nodo EML su telefono/tablet (orchestratore): comandi impilati nella colonna comune, etichette dei punti 3D solo al tocco */
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  .eml-compatto .hs2-tip { display: none; }
+  .fen-panel.fen-in-slot { position: static; inset: auto; width: 100%; max-width: 34rem; max-height: 40dvh; animation: none; }
+}
+@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px) {
+  @media (orientation: landscape) {
+    /* telefono in orizzontale: fenomeni in una colonna stretta a sinistra, «Avvia» nella colonna centrale */
+    .fen-panel { left: 8px; right: auto; top: 3.6rem; bottom: var(--barra-spazio); width: 9.5rem; max-height: none; }
+    .fen-lista { flex-direction: column; overflow-x: hidden; overflow-y: auto; }
+    .fen-voce > button { white-space: normal; font-size: 12px; line-height: 1.2; }
+  }
+}
