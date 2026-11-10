@@ -2,6 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import IntroScreen from './components/IntroScreen'
 import IntestazioneAutore from './ui/IntestazioneAutore'
 import { avviaAmbient, impostaAmbientAttivo } from './lib/ambient'
+import { audioGlobale } from './lib/audioGlobale'
 import { useApplicaPreferenze } from './lib/applicaPreferenze'
 import type { Richiesta } from './explore/Esplora'
 import type { NodoId } from './data/stazione'
@@ -33,7 +34,7 @@ export default function App() {
   useApplicaPreferenze()
 
   // il sottofondo segue il pulsante audio (parte solo dopo "Inizia l'esplorazione", per le regole di autoplay)
-  useEffect(() => { impostaAmbientAttivo(audioOn) }, [audioOn])
+  useEffect(() => { impostaAmbientAttivo(audioOn); audioGlobale.set(audioOn) }, [audioOn])
 
   const home = () => { setFase('intro'); setGiro((x) => x + 1); setRichiesta(null) }
   const apriIndice = useCallback(() => setPannello({ tipo: 'indice' }), [])

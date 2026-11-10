@@ -2,16 +2,13 @@ import { useEffect } from 'react'
 import { Lock, X } from 'lucide-react'
 import { moduloChiusoPerId } from '../data/extra'
 import { moduliMappa } from '../data/mappa'
+import { PRIORITA_PANNELLO, useEscape } from '../lib/useEscape'
 
 /** Nota breve su un modulo non percorribile (mappa o lucchetto nel panorama). Testi da content/moduli-chiusi.json; se mancano resta il solo nome. */
 export default function NotaModulo({ id, onClose }: { id: string; onClose: () => void }) {
   const m = moduloChiusoPerId(id)
   const nome = m?.nome || moduliMappa.find((x) => x.id === id)?.nome || id
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', k)
-    return () => window.removeEventListener('keydown', k)
-  }, [onClose])
+  useEscape(() => { onClose(); return true }, PRIORITA_PANNELLO)
   return (
     <aside role="dialog" aria-label={`Nota su ${nome}`} className="glass pannello-opaco fade-in absolute right-[17.5rem] top-4 z-[32] flex max-h-[60vh] w-[24rem] max-w-[60vw] flex-col overflow-hidden rounded-2xl" style={{ background: 'rgba(7,12,26,.95)' }}>
       <header className="flex shrink-0 items-start gap-3 border-b border-white/10 px-5 pb-3 pt-4">

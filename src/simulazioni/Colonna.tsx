@@ -82,11 +82,11 @@ export function ColonnaShell({ id, titolo, ridotta, onRidotta, contatore, onChiu
           <ic.Icon size={20} />
         </span>
         <div className="min-w-0 flex-1">
-          <div className="text-[10.5px] font-medium uppercase tracking-[0.18em]" style={{ color: ic.colore }}>
-            {ic.titolo}
-            {contatore ? <span className="text-white/55"> · {contatore}</span> : null}
+          <div className="flex items-baseline gap-1.5 whitespace-nowrap text-[10.5px] font-medium uppercase tracking-[0.14em]" style={{ color: ic.colore }}>
+            <span className="truncate">{ic.titolo}</span>
+            {contatore ? <span className="shrink-0 text-white/55">· {contatore}</span> : null}
           </div>
-          <h2 className="text-[15px] font-semibold leading-tight">
+          <h2 className="line-clamp-2 text-[15px] font-semibold leading-tight" title={titolo}>
             {titolo}
           </h2>
         </div>

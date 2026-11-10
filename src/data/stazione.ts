@@ -88,8 +88,8 @@ export const nodi: Record<NodoId, Nodo> = {
     porte: [{ ambiente: 'campo', titolo: 'Il campo magnetico terrestre', breve: "Entra nell'ambiente interattivo sul campo magnetico", x: 0.5, y: 0.5 }],
   },
   finale: {
-    id: 'finale', nome: 'Dallo spazio alla Terra', sottotitolo: 'Innovazione, infrastrutture, salute', tipo: 'finale', panorama: '/video/terra-cupola-poster.jpg',
-    yawIniziale: 0, pitchIniziale: 0, modulo: 'cupola', credito: 'Video: NASA Johnson – ISS View of Planet Earth', badge: 'foto', tinta: '#05070f', slot: [],
+    id: 'finale', nome: 'Dallo spazio alla Terra', sottotitolo: 'Innovazione, infrastrutture, salute', tipo: 'finale', panorama: '/panorami/capsula.jpg',
+    yawIniziale: 42, pitchIniziale: 4, modulo: 'capsula', credito: 'Modello 3D: ricostruzione in Blender (capsula di rientro)', badge: 'modello3d', tinta: '#05070f', slot: [],
   },
 }
 

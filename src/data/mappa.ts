@@ -27,8 +27,9 @@ export const moduliMappa: ModuloMappa[] = [
   { id: 'pma2', nome: 'PMA-2', x: 247, y: 104, w: 11, h: 12, et: { x: 258, y: 124, ancora: 'middle' } },
   { id: 'columbus', nome: 'Columbus', x: 222, y: 126, w: 20, h: 38, nodo: 'columbus', et: { x: 232, y: 176, ancora: 'middle' } },
   { id: 'kibo', nome: 'Kibo', x: 218, y: 48, w: 28, h: 46, nodo: 'kibo', et: { x: 232, y: 40, ancora: 'middle' } },
-  { id: 'tranquility', nome: 'Tranquility', x: 138, y: 68, w: 20, h: 26, nodo: 'tranquility', et: { x: 148, y: 44, ancora: 'middle' } },
+  { id: 'tranquility', nome: 'Tranquility', x: 138, y: 68, w: 20, h: 26, nodo: 'tranquility', et: { x: 134, y: 84, ancora: 'end' } },
   { id: 'cupola', nome: 'Cupola', x: 140, y: 52, w: 16, h: 16, nodo: 'cupola', tondo: true, et: { x: 130, y: 58, ancora: 'end' } },
+  { id: 'capsula', nome: 'Capsula', x: 141, y: 24, w: 14, h: 22, nodo: 'finale', et: { x: 131, y: 38, ancora: 'end' } },
   { id: 'quest', nome: 'Quest', x: 141, y: 126, w: 14, h: 26, et: { x: 148, y: 164, ancora: 'middle' } },
 ]
 

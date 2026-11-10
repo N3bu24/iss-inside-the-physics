@@ -11,6 +11,7 @@ import Badge from '../components/Badge'
 import CorpoScheda from '../components/CorpoScheda'
 import Latex from '../components/Latex'
 import { BollinoSim, CATEGORIE } from './Hotspot'
+import { PRIORITA_PANNELLO, useEscape } from '../lib/useEscape'
 
 interface Props {
   onClose: () => void
@@ -40,12 +41,7 @@ function Sezione({ id, titolo, children }: { id: string; titolo: string; childre
 export default function Indice({ onClose, onVai, onSimulazione, sospeso = false }: Props) {
   const [q, setQ] = useState('')
   const corpo = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (sospeso) return
-    const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', k)
-    return () => window.removeEventListener('keydown', k)
-  }, [onClose, sospeso])
+  useEscape(() => { if (sospeso) return false; onClose(); return true }, PRIORITA_PANNELLO)
 
   const luoghi = useMemo(() => ORDINE.map((id) => ({ id, luogo: luogoDi(id), punti: hotspotDi(id) })), [])
   const sims = useMemo(() => SIMULAZIONI.map((s) => ({ id: s.id, titolo: s.titolo, intro: introSimulazione(s.id).intro, passi: passiSimulazione(s.id), guida: guidaSimulazione(s.id) })), [])
@@ -119,7 +115,7 @@ export default function Indice({ onClose, onVai, onSimulazione, sospeso = false 
                         </ul>
                       )}
                       {luogo.voce && <p className="testo-corpo mt-3 border-l-2 border-white/15 pl-4 text-[15px] italic leading-relaxed text-white/65">{luogo.voce}</p>}
-                      <div className="mt-3 flex items-center gap-3"><Badge tipo={luogo.badge} />{luogo.fonte && <span className="text-[11px] text-white/40">Fonte: {luogo.fonte}</span>}</div>
+                      <div className="mt-3 flex flex-wrap items-center gap-3"><Badge tipo={luogo.badge} />{luogo.badgeExtra && <Badge tipo={luogo.badgeExtra} />}{luogo.nota && <span className="text-[11px] text-white/45">{luogo.nota}</span>}{luogo.fonte && <span className="text-[11px] text-white/40">Fonte: {luogo.fonte}</span>}</div>
                     </article>
                   ))}
                 </div>

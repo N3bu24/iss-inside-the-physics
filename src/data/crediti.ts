@@ -15,15 +15,16 @@ export const crediti: VoceCredito[] = [
   { file: 'cupola-foto.jpg', soggetto: 'Vista dalla Cupola', fonte: 'images.nasa.gov iss025e011750', credito: 'NASA', licenza: PD },
   { file: 'ambienti/terra-bluemarble.jpg', soggetto: 'Terra, mosaico Blue Marble (ambiente del campo magnetico)', fonte: 'Wikimedia Commons: Whole world - land and oceans 12000.jpg', credito: 'NASA Earth Observatory', licenza: PD },
   { file: 'ambienti/iss.glb', soggetto: 'Modello 3D della ISS (ambiente del campo magnetico)', fonte: 'science.nasa.gov/3d-resources/international-space-station-iss-b', credito: 'NASA', licenza: 'NASA 3D Resources, uso libero con credito' },
-  { file: 'video/terra-cupola.mp4', soggetto: 'La Terra dalla ISS (Cupola e finale)', fonte: 'svs.gsfc.nasa.gov/30771', credito: 'NASA Johnson / NASA SVS', licenza: 'Linee guida NASA, uso educativo con credito' },
+  { file: 'video/terra-cupola.mp4', soggetto: 'La Terra dalla ISS (Cupola)', fonte: 'svs.gsfc.nasa.gov/30771', credito: 'NASA Johnson / NASA SVS', licenza: 'Linee guida NASA, uso educativo con credito' },
 ]
 
 export const creditiAltri: { titolo: string; testo: string }[] = [
   { titolo: 'Voli tra i moduli', testo: 'Volo: ricostruzione IA generata con Higgsfield (Seedance 2.0 e Kling 3.0) a partire da viste dei panorami ESA. Non sono riprese reali.' },
   { titolo: 'Foto delle schede', testo: 'Fotografie dei punti di interesse (img/poi): NASA, pubblico dominio con credito. La GIF del campione che solidifica: ESA/DLR, ESA Standard Licence (uso educativo con credito).' },
-  { titolo: 'Video della Cupola e del finale', testo: 'Video: NASA Johnson – ISS View of Planet Earth (NASA SVS).' },
+  { titolo: 'Video della Cupola', testo: 'Video: NASA Johnson – ISS View of Planet Earth (NASA SVS).' },
+  { titolo: 'Capsula di rientro (finale)', testo: 'Modello 3D: ricostruzione in Blender (panorama dell’interno della capsula). Plasma del rientro: simulazione concettuale animata via shader. Non sono riprese reali.' },
   { titolo: 'Voce narrante', testo: 'Sintesi vocale ElevenLabs (voce maschile generata con intelligenza artificiale, non una persona reale).' },
-  { titolo: 'Audio di sottofondo', testo: 'Audio di sottofondo: effetti sonori generati con ElevenLabs (ricostruzione, non registrazione reale della ISS).' },
+  { titolo: 'Audio di sottofondo', testo: 'Audio di sottofondo: effetti sonori generati con ElevenLabs (ricostruzione, non registrazione reale della ISS). Il rombo del rientro: ElevenLabs Sound Effects + sintesi.' },
   { titolo: 'Video e animazioni', testo: 'Simulazione concettuale – render Blender. Non sono riprese reali.' },
   { titolo: "Modello 3D dell'EML", testo: 'Modello concettuale realizzato per questo progetto, a scopo didattico.' },
 ]

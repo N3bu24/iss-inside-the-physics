@@ -7,6 +7,7 @@ import { iconaSim } from '../data/iconeSim'
 import Badge from '../components/Badge'
 import CorpoScheda from '../components/CorpoScheda'
 import { CATEGORIE } from './Hotspot'
+import { PRIORITA_PANNELLO, useEscape } from '../lib/useEscape'
 
 function Voce({ id, audioOn }: { id: string; audioOn: boolean }) {
   const [esiste, setEsiste] = useState(false)
@@ -40,11 +41,7 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
   const { Icon, colore, etichetta } = CATEGORIE[scheda.categoria]
   const sim = scheda.simulazione ? iconaSim(scheda.simulazione) : null
 
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', k)
-    return () => window.removeEventListener('keydown', k)
-  }, [onClose])
+  useEscape(() => { onClose(); return true }, PRIORITA_PANNELLO)
 
   return (
     <aside

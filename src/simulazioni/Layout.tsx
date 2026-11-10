@@ -9,7 +9,7 @@ import Voce from './Voce'
 import FinestraSequenza from './FinestraSequenza'
 import PulsanteEsci from './PulsanteEsci'
 import { ColonnaShell, GuidaBox, INGOMBRO_COLONNA } from './Colonna'
-import { useEscape } from './useEscape'
+import { useEscape } from '../lib/useEscape'
 import type { Passo } from './contenuto'
 
 export type ContestoLayout = {

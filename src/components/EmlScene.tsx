@@ -9,7 +9,7 @@ import { FieldLines, GLB_URL, Placeholder, type Calore } from './EmlPlaceholder'
 import { FlaskConical, RotateCcw } from 'lucide-react'
 import FinestraSequenza from '../simulazioni/FinestraSequenza'
 import { ColonnaShell, INGOMBRO_COLONNA } from '../simulazioni/Colonna'
-import { useEscape } from '../simulazioni/useEscape'
+import { useEscape } from '../lib/useEscape'
 import OffsetVista from '../simulazioni/OffsetVista'
 import Stile from '../simulazioni/Stile'
 import { PASSI_EML } from '../simulazioni/passi'
@@ -203,7 +203,7 @@ export class BarrieraEml extends Component<{ children: ReactNode }, { errore: bo
 function Hotspot3D({ h, pos, onSelect, active }: { h: Hotspot; pos: THREE.Vector3; onSelect: (id: string) => void; active: boolean }) {
   return (
     <Html position={pos} center zIndexRange={[20, 0]}>
-      <HotspotMarker tipo={h.categoria ?? 'eml'} titolo={h.titolo} attivo={active} onClick={() => onSelect(h.id)} />
+      <HotspotMarker tipo={h.categoria ?? 'eml'} titolo={h.titolo} simulazione={h.simulazione} attivo={active} onClick={() => onSelect(h.id)} />
     </Html>
   )
 }

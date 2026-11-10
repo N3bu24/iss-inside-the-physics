@@ -1,4 +1,5 @@
 import hotspotJsonGrezzo from '@content/hotspot-v3.json'
+import capsula from '@content/capsula.json'
 import { pulisciDati } from '../lib/pulisci'
 import { nodi, type NodoId } from './stazione'
 import { posizioni } from './posizioni'
@@ -106,8 +107,21 @@ const luoghiReali = comeLista(pulisciDati(Object.values(luoghiFile)[0]))
 const luoghiNuovi = luoghiReali.some((l) => 'punti' in l || 'scheda' in l) ? luoghiReali.map(normalizzaLuogo).filter((l): l is Luogo => !!l) : []
 const listaLuoghi: Luogo[] = luoghiNuovi // solo content/luoghi-v3.json
 
-export const luogoDi = (id: NodoId): Luogo =>
-  listaLuoghi.find((l) => l.id === id) ?? { id, nome: nodi[id].nome, sottotitolo: nodi[id].sottotitolo, punti: [], badge: nodi[id].badge }
+/** Il finale e' l'interno della capsula di rientro: titolo, sottotitolo e testi vengono da content/capsula.json (la voce resta quella del luogo). */
+function luogoCapsula(base: Luogo): Luogo {
+  const c = capsula as { titolo?: string; sottotitolo?: string; paragrafi?: string[]; nota_provenienza?: string }
+  return {
+    ...base,
+    nome: c.titolo ?? base.nome, sottotitolo: c.sottotitolo ?? base.sottotitolo,
+    punti: c.paragrafi?.length ? c.paragrafi : base.punti,
+    badge: 'modello3d', badgeExtra: 'simulazione', nota: c.nota_provenienza,
+  }
+}
+
+export const luogoDi = (id: NodoId): Luogo => {
+  const l = listaLuoghi.find((x) => x.id === id) ?? { id, nome: nodi[id].nome, sottotitolo: nodi[id].sottotitolo, punti: [], badge: nodi[id].badge }
+  return id === 'finale' ? luogoCapsula(l) : l
+}
 
 export type Posizione =
   | { tipo: 'sfera'; yaw: number; pitch: number }  // gradi

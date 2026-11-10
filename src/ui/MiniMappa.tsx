@@ -3,6 +3,7 @@ import { FastForward, Maximize2, Minimize2, Plane } from 'lucide-react'
 import { nodi, percorsoGuidato, type NodoId } from '../data/stazione'
 import { VIEWBOX, centro, decorazioni, moduliMappa, moduloPerNodo, orientamentoMappa } from '../data/mappa'
 import { useVista } from '../explore/vista'
+import { PRIORITA_PANNELLO, useEscape } from '../lib/useEscape'
 
 interface Props {
   corrente: NodoId
@@ -40,11 +41,10 @@ export default function MiniMappa({ corrente, visitati, onVaiA, onSaltaA, onNota
   useEffect(() => {
     if (!menu) return
     const giu = (e: PointerEvent) => { if (radice.current && !radice.current.contains(e.target as Node)) setMenu(null) }
-    const k = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopPropagation(); setMenu(null) } }
     document.addEventListener('pointerdown', giu)
-    window.addEventListener('keydown', k, true)
-    return () => { document.removeEventListener('pointerdown', giu); window.removeEventListener('keydown', k, true) }
+    return () => { document.removeEventListener('pointerdown', giu) }
   }, [menu])
+  useEscape(() => { if (!menu) return false; setMenu(null); return true }, PRIORITA_PANNELLO)
 
   // percorso guidato: sequenza dei centri dei moduli (senza ripetizioni consecutive)
   const punti = percorsoGuidato

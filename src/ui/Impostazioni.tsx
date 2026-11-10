@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { RotateCcw, X } from 'lucide-react'
 import { preferenze, usePreferenza, type Preferenze } from '../lib/preferenze'
 import { ContenutoCrediti } from '../components/Crediti'
+import { PRIORITA_PANNELLO, useEscape } from '../lib/useEscape'
 
 export type SchedaImpostazioni = 'impostazioni' | 'crediti'
 
@@ -43,11 +44,7 @@ const DIM: { v: Preferenze['dimensioneTesto']; n: string }[] = [{ v: 'normale', 
 export default function Impostazioni({ scheda: iniziale = 'impostazioni', onClose }: { scheda?: SchedaImpostazioni; onClose: () => void }) {
   const [scheda, setScheda] = useState<SchedaImpostazioni>(iniziale)
   const dim = usePreferenza('dimensioneTesto')
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopPropagation(); onClose() } }
-    window.addEventListener('keydown', k)
-    return () => window.removeEventListener('keydown', k)
-  }, [onClose])
+  useEscape(() => { onClose(); return true }, PRIORITA_PANNELLO)
   const tab = (id: SchedaImpostazioni, n: string) => (
     <button key={id} role="tab" aria-selected={scheda === id} onClick={() => setScheda(id)}
       className={`rounded-full px-4 py-1.5 text-sm transition-colors ${scheda === id ? 'bg-cyan-300/20 text-cyan-100 ring-1 ring-cyan-300/50' : 'text-white/65 hover:bg-white/10 hover:text-white'}`}>{n}</button>

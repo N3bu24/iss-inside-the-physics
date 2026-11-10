@@ -34,6 +34,8 @@ export interface Hotspot {
   approfondimentoTitolo?: string
   media?: Media
   badge: Provenienza
+  /** id della simulazione collegata (bollino sul marcatore) */
+  simulazione?: string
 }
 
 export interface Clip {
@@ -149,4 +151,7 @@ export interface Luogo {
   badge: Provenienza
   fonte?: string
   slide_pptx?: number[]
+  /** seconda provenienza (es. modello 3D + simulazione concettuale) e nota di provenienza */
+  badgeExtra?: Provenienza
+  nota?: string
 }

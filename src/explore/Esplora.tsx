@@ -8,6 +8,7 @@ import { nodi, portelli, portelloVerso, rotta, urlVolo, type AmbienteId, type No
 import { hotspotDi, luogoDi } from '../data/contenuti'
 import type { Hotspot } from '../data/types'
 import { assetExists } from '../lib/assets'
+import { impostaSottofondo } from '../lib/ambient'
 import { caloreFenomeno } from '../components/FenomeniPanel'
 import FenomeniPanel from '../components/FenomeniPanel'
 import Crediti from '../components/Crediti'
@@ -24,12 +25,14 @@ import SimulazioneOverlay from '../ui/Simulazioni'
 import PanoStage, { ZOOM_BASE, ZOOM_MAX, type Marcatore, type PanoApi } from './PanoStage'
 import VoloFx, { type FxApi } from './VoloFx'
 import ImmagineNodo from './ImmagineNodo'
+import type { CapsulaApi } from './CapsulaRientro'
 import Legenda from './Legenda'
 import Indicatore from './Indicatore'
 import { attendi, distanzaAngolare, inQuad, outCubic, portelloInquadrato, rad, tween } from './geometria'
 import { useVista, vista } from './vista'
 
 const EmlScene = lazy(() => import('../components/EmlScene'))
+const CapsulaRientro = lazy(() => import('./CapsulaRientro'))
 
 const CREDITO_VOLO = 'Volo: ricostruzione IA (Higgsfield) da panorami ESA'
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x))
@@ -118,6 +121,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
 
   const pano = useRef<PanoApi>(null)
   const fx = useRef<FxApi>(null)
+  const capsula = useRef<CapsulaApi>(null)
   const caricato = useRef<NodoId>('harmony')
   const inVolo = useRef(false)
   const annulla = useRef(false)
@@ -138,7 +142,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
 
   // ---------- effetti visivi ----------
   const blur = (px: number) => { const el = pano.current?.elemento(); if (el) el.style.filter = px > 0.05 ? `blur(${px}px) brightness(${1 - px * 0.04})` : '' }
-  const ripulisci = () => { fx.current?.imposta({ vignetta: 0, scie: 0, copertura: 0, video: 0 }); blur(0) }
+  const ripulisci = () => { fx.current?.imposta({ vignetta: 0, scie: 0, copertura: 0, video: 0, coperturaColore: null }); blur(0) }
 
   /** Zoom-in verso il portello con vignettatura/scie/blur, poi copertura (solo per i passaggi senza video). */
   const entraNelPortello = async (api: PanoApi, ms: number, daPano: boolean) => {
@@ -268,6 +272,19 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
     ripulisci()
   }
 
+  // ---------- Cupola <-> capsula di rientro: dissolvenza al nero/arancione di ~0,8 s (solo un taglio morbido con "salta i voli" o animazioni ridotte) ----------
+  const passaggioCapsula = async (p: Portello, a: Nodo) => {
+    const breve = preferenze.get().saltaVoli || preferenze.get().riduciAnimazioni
+    const ms = breve ? 220 : 800
+    fx.current?.imposta({ coperturaColore: 'radial-gradient(circle at center, #4a1a06 0%, #05030a 78%)' })
+    await tween(ms, (t) => fx.current?.imposta({ copertura: t }), inQuad)
+    const g = sguardoArrivo(p, false)
+    registraArrivo(p, a, g.yaw, g.pitch)
+    await attendi(breve ? 60 : 160)
+    await tween(ms, (t) => fx.current?.imposta({ copertura: 1 - t }), outCubic)
+    ripulisci()
+  }
+
   // ---------- volo tra due nodi ----------
   const attraversa = async (p: Portello, ultimo: boolean) => {
     const api = pano.current
@@ -275,6 +292,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
     const da = nodi[p.da], a = nodi[p.verso]
     if (da.id === 'tranquility' && a.id === 'cupola') return entraCupola(api, p)
     if (da.id === 'cupola' && a.id === 'tranquility') return esciCupola(api, p)
+    if (da.id === 'finale' || a.id === 'finale') return passaggioCapsula(p, a)
 
     if (da.tipo === 'panorama' && a.tipo === 'panorama') {
       const url = await sceltaVideo(p)
@@ -389,7 +407,6 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
       if (!s.attivo || s.ambiente || s.simulazione || s.bloccato) return
       const t = e.target as HTMLElement | null
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return
-      if (e.key === 'Escape') { setApri(null); return }
       const su = e.key === 'ArrowUp' || e.code === 'KeyW'
       const giu = e.key === 'ArrowDown' || e.code === 'KeyS'
       if (!su && !giu) return
@@ -411,7 +428,10 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
     const h = hotspotDi(st.current.nodoId).find((x) => x.id === id)
     if (!h || inVolo.current || ruotando.current) return
     const api = pano.current
-    if (h.pos?.tipo === 'sfera' && nodi[st.current.nodoId].tipo === 'panorama' && api) {
+    if (st.current.nodoId === 'finale') {
+      ruotando.current = true
+      try { await capsula.current?.rotateToPunto(id, 1200) } finally { ruotando.current = false }
+    } else if (h.pos?.tipo === 'sfera' && nodi[st.current.nodoId].tipo === 'panorama' && api) {
       ruotando.current = true
       try { await api.rotateTo(rad(h.pos.yaw), rad(h.pos.pitch), 1200) } finally { ruotando.current = false }
     }
@@ -457,6 +477,10 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
   }, [richiesta, attivo, pronto])
   useEffect(() => { if (pronto && attivo) iniziaIngresso() }, [pronto, attivo]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ---------- sottofondo: rombo del rientro nel finale, stazione altrove (dissolvenza incrociata in lib/ambient) ----------
+  useEffect(() => { impostaSottofondo(nodoId === 'finale' ? 'rientro' : 'stazione') }, [nodoId])
+  useEffect(() => () => impostaSottofondo('stazione'), [])
+
   // ---------- precarico dei vicini ----------
   useEffect(() => {
     if (!attivo) return
@@ -491,7 +515,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
   }, [nodo, hotspot, vai, viste, apriScheda, vaiAlPunto])
 
   const hotspotEml: Hotspot[] = useMemo(() => hotspot.filter((h) => h.pos?.tipo === 'oggetto3d').map((h) => ({
-    id: h.id, titolo: h.titolo, testo: h.breve, badge: h.badge, categoria: h.categoria,
+    id: h.id, titolo: h.titolo, testo: h.breve, badge: h.badge, categoria: h.categoria, simulazione: h.simulazione,
     oggetto3d: h.pos?.tipo === 'oggetto3d' ? h.pos.oggetto : undefined, spostamento3d: h.pos?.tipo === 'oggetto3d' ? h.pos.spostamento : undefined,
   })), [hotspot])
 
@@ -528,11 +552,19 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
           ))}
         </div>
       )}
-      {(nodo.tipo === 'cupola' || nodo.tipo === 'finale') && (
+      {nodo.tipo === 'cupola' && (
         <ImmagineNodo
           key={nodo.id} nodo={nodo} hotspot={hotspot} portelli={portelli[nodo.id]} porte={nodo.porte ?? []}
           onHotspot={apriScheda} onPortello={(p) => vai(p.verso)} onAmbiente={setAmbiente} nomeNodo={(id) => nodi[id].nome}
         />
+      )}
+      {nodo.tipo === 'finale' && (
+        <Suspense fallback={<div className="absolute inset-0 z-20 bg-[#02030a]" />}>
+          <CapsulaRientro
+            ref={capsula} hotspot={hotspot} portelli={portelli.finale} pausa={!attivo || !!ambiente || !!simulazione || bloccato}
+            visti={viste} onHotspot={apriScheda} onPortello={(p) => vai(p.verso)} nomeNodo={(id) => nodi[id].nome}
+          />
+        </Suspense>
       )}
       {fantasma && <ImmagineNodo key={`f-${fantasma.id}`} uscendo nodo={fantasma} hotspot={[]} portelli={[]} porte={[]} onHotspot={() => {}} onPortello={() => {}} onAmbiente={() => {}} nomeNodo={(id) => nodi[id].nome} />}
 
@@ -540,7 +572,8 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
         <>
           <div className={`transition-opacity duration-300 ${volando ? 'pointer-events-none opacity-0' : 'opacity-100'}`}>
             <div className="absolute left-4 top-[4.75rem] z-30 flex max-h-[calc(100vh-12rem)] flex-col gap-3">
-              <SchedaLuogo key={nodo.id} luogo={luogo} iniziaChiusa={nodo.tipo === 'eml'} />
+              {/* a passi dell'EML aperti la colonna dei passi occupa questo spazio: scheda del luogo e lista si nascondono */}
+              {!(nodo.tipo === 'eml' && sequenzaEml) && <SchedaLuogo key={nodo.id} luogo={luogo} iniziaChiusa={nodo.tipo === 'eml'} />}
               {!(nodo.tipo === 'eml' && sequenzaEml) && <ListaPunti key={`l-${nodo.id}`} punti={voci} onScegli={(id) => vaiAlPunto(id, true)} />}
               {nodo.id === 'finale' && (
                 <button onClick={onHome} className="btn-ghost fixed bottom-5 left-[calc(50%+7.5rem)] z-30 !py-2 text-sm">Ricomincia dall'inizio</button>
