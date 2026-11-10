@@ -23,6 +23,7 @@ export const creditiAltri: { titolo: string; testo: string }[] = [
   { titolo: 'Foto delle schede', testo: 'Fotografie dei punti di interesse (img/poi): NASA, pubblico dominio con credito. La GIF del campione che solidifica: ESA/DLR, ESA Standard Licence (uso educativo con credito).' },
   { titolo: 'Video della Cupola e del finale', testo: 'Video: NASA Johnson – ISS View of Planet Earth (NASA SVS).' },
   { titolo: 'Voce narrante', testo: 'Sintesi vocale ElevenLabs (voce maschile generata con intelligenza artificiale, non una persona reale).' },
+  { titolo: 'Audio di sottofondo', testo: 'Audio di sottofondo: effetti sonori generati con ElevenLabs (ricostruzione, non registrazione reale della ISS).' },
   { titolo: 'Video e animazioni', testo: 'Simulazione concettuale – render Blender. Non sono riprese reali.' },
   { titolo: "Modello 3D dell'EML", testo: 'Modello concettuale realizzato per questo progetto, a scopo didattico.' },
 ]

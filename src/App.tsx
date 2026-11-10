@@ -1,6 +1,7 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import IntroScreen from './components/IntroScreen'
 import IntestazioneAutore from './ui/IntestazioneAutore'
+import { avviaAmbient, impostaAmbientAttivo } from './lib/ambient'
 
 /** L'esplorazione (Photo Sphere Viewer, contenuti, hotspot) si carica in un chunk a parte, subito dopo l'intro. */
 const Esplora = lazy(() => import('./explore/Esplora'))
@@ -17,6 +18,9 @@ export default function App() {
   const [audioOn, setAudioOn] = useState(true)
   const [giro, setGiro] = useState(0)
 
+  // il sottofondo segue il pulsante audio (parte solo dopo "Inizia l'esplorazione", per le regole di autoplay)
+  useEffect(() => { impostaAmbientAttivo(audioOn) }, [audioOn])
+
   const home = () => { setFase('intro'); setGiro((x) => x + 1) }
 
   return (
@@ -24,7 +28,7 @@ export default function App() {
       <Suspense fallback={null}>
         <Esplora key={giro} attivo={fase === 'visita'} audioOn={audioOn} onAudio={() => setAudioOn(!audioOn)} onHome={home} />
       </Suspense>
-      {fase === 'intro' && <IntroScreen audioOn={audioOn} onAudio={() => setAudioOn(!audioOn)} onStart={() => setFase('visita')} />}
+      {fase === 'intro' && <IntroScreen audioOn={audioOn} onAudio={() => setAudioOn(!audioOn)} onStart={() => { avviaAmbient(); setFase('visita') }} />}
       <IntestazioneAutore />
     </div>
   )
