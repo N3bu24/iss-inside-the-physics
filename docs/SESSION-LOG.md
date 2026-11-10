@@ -40,3 +40,20 @@ Diario cronologico delle sessioni. **Si aggiunge solo in fondo.**
 **Chiesto all'autore / risposte:** approvazioni su Telegram per voce, lotto voli e voce v3; test spostato alle 2:00 (orario indicativo, voli prima); rigenerare solo gli asset difettosi; usare un po' di Opus nel test; spese Higgsfield nella relazione. Ancora da ricevere: account Vercel.
 
 **Spesa API:** Higgsfield ~21,6 $; ElevenLabs dentro il piano Starter.
+
+## 10/11/2026, ~08:00-13:15 (circa 5 ore)
+**Fatto**
+- Tentativo di pubblicazione su Vercel: repo importato, fermo alla verifica d'identità via email; poi rimandato dall'autore.
+- Relazione PDF di 2 pagine e `README.md` per GitHub.
+- QA dei voli Kling (tutti accettabili); rifatti con Seedance 3 voli dopo la verifica dei fotogrammi (v0.9.6).
+- Pulizia del codice, peso dei media più che dimezzato, worktree rimossi; sottofondo della stazione con ducking (v0.10.0).
+- QA rapido Sonnet v0.10.0: OK.
+- Zip per provare il sito in locale, pubblicato nella release GitHub v0.10.0, con istruzioni su Telegram.
+
+**File principali toccati:** `docs/relazione/`, `README.md`, `docs/readme/`, `public/voli/`, `public/panorami/`, `public/video/terra-cupola.mp4`, `public/audio/ambient/`, `src/lib/ambient.ts`, `src/lib/silenzia.ts`, `src/data/`, `docs/qa/`, `docs/voli-v2.md`, `docs/costi.md`, `CHANGELOG.md`, `TASKS.md`.
+
+**Problemi incontrati:** verifica d'identità di Vercel (codice email, non inserito da Claude); memoria del PC bassa (script Seedance fermato, 2 video recuperati dall'ID; server di prova chiuso dal sistema a test finito); content-writer senza Bash (commit fatto dall'orchestratore); limite di 50 MB di Telegram.
+
+**Chiesto all'autore / risposte:** Vercel → rimandato; voli da rifare → 3-5; chiudere la scheda Chrome per liberare memoria → sì; sottofondo → sì, con le specifiche dell'autore. Ancora senza risposta: volo harmony→destiny, licenza ESA, cancellazione di `_duplicati/` e `.env.local`.
+
+**Spesa API:** Higgsfield +10,2 $ (totale ~31,8 $); ElevenLabs dentro il piano Starter.

@@ -1,63 +1,59 @@
 # STATE — ISS: Inside the Physics
 
-**Ultimo aggiornamento:** martedì 10 novembre 2026, mattina (chiusura sessione dopo test notturno, correzioni e relazione di avanzamento)
-**Fase e giorno:** fase 6 (test e rifinitura) anticipata; martedì 10. Il calendario è in anticipo: lo sviluppo previsto per mercoledì è già fatto.
-**Versione:** v0.9.5 su `main`, con tag, pushata (GitHub privato `N3bu24/iss-inside-the-physics`)
-**Scadenza:** giovedì 12 novembre 2026, sera. Avanzamento stimato ~85%, 7-9 ore di lavoro rimaste.
+**Ultimo aggiornamento:** martedì 10 novembre 2026, 13:15 (chiusura sessione)
+**Fase e giorno:** fase 6 (test e rifinitura); martedì 10. Il calendario è in anticipo: manca soprattutto la pubblicazione.
+**Versione:** v0.10.0 su `main`, con tag, pushata (GitHub privato `N3bu24/iss-inside-the-physics`). Release GitHub v0.10.0 con lo zip per l'uso in locale.
+**Scadenza:** giovedì 12 novembre 2026, sera. Avanzamento stimato ~93%.
 
 ## Fatto
-- **Esplorazione:** 6 panorami ESA reali (`public/panorami/`), Cupola con video NASA della Terra, scena 3D EML, finale. Grafo dei moduli in `src/data/stazione.ts`; ↑/↓ verso i portelli, rotella zoom, trascinamento; legenda comandi.
-- **Voli:** 10 voli IA in `public/voli/` (5 Seedance 2.0, 5 Kling 3.0; 1280×720, 24 fps, 121 fotogrammi). Originali in `assets/voli/originali/` e `assets/voli/originali-v2/` (fuori da git). Test notturno: tutti corretti.
-- **Punti di interesse:** 28 + 4 nel finale (`content/hotspot-v3.json`, `src/data/posizioni.ts`), icone per categoria, indicatori ai bordi, lista laterale, schede con KaTeX e badge di provenienza.
-- **Interfaccia:** mini-mappa SVG, "Tappe suggerite", intro con un solo bottone, intestazione autore, "Ricomincia dall'inizio".
-- **Simulazioni:** 8 nello stile EML, con finestra a passi; "Avvia esperimento" EML in 6 passi; 4 ambienti interattivi (`src/ambienti/`).
-- **Finale** "Dallo spazio alla Terra" (Obiettivi 3/7/9, Art. 32) con 4 schede e voce.
-- **Audio:** ~52 clip ElevenLabs (Thomas A.) in `public/audio/{luoghi,poi,simulazioni}/` con sottotitoli; crediti completi in `src/data/crediti.ts` e `public/panorami/CREDITI.md`.
-- **QA:** report in `docs/qa/` (`qa-notte-10-11-*.md`, `qa-conferma-10-11.md`) con screenshot in `docs/qa/screens/`.
-- **Relazione di avanzamento:** `docs/relazione/avanzamento-10-11.md`, inviata anche su Telegram.
+- **Sito completo:** 6 panorami ESA + Cupola (video NASA), 10 voli IA (`public/voli/`), 28+4 punti di interesse, 8 simulazioni, 4 ambienti interattivi, scena EML 3D con "Avvia esperimento", finale Obiettivi 3/7/9 e Art. 32, mini-mappa, tappe suggerite, badge, crediti.
+- **Voli:** 8 Seedance 2.0 + 2 Kling 3.0 (harmony→destiny, harmony→kibo, lasciati dopo il QA `docs/qa/qa-voli-kling-10-11.md`). Tabella aggiornata in `docs/voli-v2.md`. Originali in `assets/voli/originali*/` (fuori da git).
+- **Audio:** ~52 clip voce + sottofondo della stazione `public/audio/ambient/stazione.mp3` (loop 108 s, -30,5 LUFS), gestito da `src/lib/ambient.ts` (highpass 60 Hz, lowpass 12,5 kHz, ducking al 32% sotto la voce, segue il pulsante audio).
+- **Prestazioni (v0.10.0):** panorami 6144×3072 q70 (29→12 MB), video Terra 3,9 MB, chunk iniziale ~100 KB gzip, `Esplora` caricato con React.lazy, codice morto rimosso.
+- **Relazione:** PDF di 2 pagine `docs/relazione/ISS-Inside-the-Physics-relazione.pdf` (pagina 1 presentazione, pagina 2 scheda tecnica; sorgente in `docs/relazione/pdf-sorgente/relazione.html`, si rigenera con Chrome headless `--print-to-pdf`). Versione lunga in `docs/relazione/relazione-finale.md`. `README.md` per GitHub con immagini in `docs/readme/`.
+- **QA:** ultimo report `docs/qa/qa-rapido-v0.10.0.md`: OK, nessun errore in console né 404.
+- **Uso in locale:** release https://github.com/N3bu24/iss-inside-the-physics/releases/tag/v0.10.0 con `ISS-Inside-the-Physics-v0.10.0.zip` (si estrae e si apre `Avvia ISS.bat`, server PowerShell su localhost:8173). Istruzioni inviate su Telegram.
+- Worktree vecchi ripuliti: `git worktree list` mostra solo la cartella principale.
 
 ## In corso / a metà
-- Nessun lavoro a metà nel codice. Piccoli difetti noti, non bloccanti:
-  - nel finale i sottotitoli toccano l'etichetta "Verso Cupola";
-  - avvisi THREE.Clock in console (solo warning).
+- Nessun lavoro a metà nel codice.
+- Il segnaposto `[LINK DEL SITO]` è ancora in `README.md`, `docs/relazione/relazione-finale.md` e nel PDF (`docs/relazione/pdf-sorgente/relazione.html`): va sostituito quando c'è l'URL Vercel.
 
 ## Prossimo passo preciso
-Chiedere all'autore se ha creato l'account Vercel collegato a GitHub. Se sì: importare il repo `N3bu24/iss-inside-the-physics` su Vercel (framework Vite, build `npm run build`, output `dist`), pubblicare e provare il link. Se no: nel frattempo lanciare il `content-writer` sulla relazione scritta in `docs/relazione/` (fonti e crediti da `src/data/crediti.ts`, `public/panorami/CREDITI.md`, `docs/research/`).
+Chiedere all'autore se vuole pubblicare ora su Vercel. Il progetto è già importato su Vercel (team "Nebula", preset Vite, build `npm run build`, output `dist`): all'ultimo tentativo Vercel chiedeva una verifica d'identità con un codice via email, che **deve inserire l'autore** (Claude non inserisce codici). Dopo la pubblicazione: mandare l'URL su Telegram, sostituire `[LINK DEL SITO]` nei tre file, rigenerare il PDF da `docs/relazione/pdf-sorgente/relazione.html`, commit e push.
 
 ## Prossimi passi dopo
-1. Relazione scritta (`content-writer`, `docs/relazione/`), con fonti e crediti.
-2. Prestazioni (`web-developer`): ridurre chunk iniziale (367 KB gzip), panorami 4-6 MB (WebP/qualità più bassa), video Terra 8,8 MB, font.
-3. Correggere i sottotitoli vicini a "Verso Cupola" nel finale.
-4. Prova su tablet (viewport 1024×768 / touch).
-5. QA finale giovedì sul link Vercel (`qa-reviewer` Sonnet), poi v1.0.0 con tag. Dalle 17 solo correzioni.
-6. Facoltativo se avanza tempo: audio ambient della stazione.
+1. QA finale sul link pubblico (`qa-reviewer` Sonnet): navigazione completa, passi 4-6 dell'EML (non ritestati nel QA rapido), audio e ducking, tempi di caricamento.
+2. Prova su tablet (viewport 1024×768, touch).
+3. Correzioni dal QA, poi v1.0.0 (CHANGELOG, package.json, tag) e push. Dalle 17 di giovedì solo correzioni.
+4. `/close-session` finale.
 
 ## Bloccato / serve l'autore
-- **Account Vercel** collegato a GitHub.
-- Licenza panorami ESA: su Flickr risultano "All rights reserved" (`docs/research/panorami.md`); oggi usati come uso educativo con credito. L'autore decide se basta.
-- Due frasi del finale da confermare con fonte: FDA 2008 per la TMS, OMS sulla copertura universale.
-- Cancellare `_duplicati/` e `.env.local`.
+- **Vercel:** decidere quando pubblicare e fare la verifica d'identità via email.
+- **Volo harmony→destiny** (Kling, il più debole, 3,5/5 con scie): rifarlo con Seedance? Costa circa 3,40 $ e porterebbe il totale sopra il budget. Serve l'ok esplicito.
+- **Licenza panorami ESA:** su Flickr risultano "All rights reserved"; oggi sono usati per uso educativo con credito. Decide l'autore se basta.
+- Cancellare `_duplicati/` e `.env.local`? Serve l'ok.
 
 ## File e cartelle importanti
-- Codice: `src/` (`explore/`, `ui/`, `ambienti/`, `data/`, `lib/`); contenuti: `content/*-v3.json`.
-- Media: `public/panorami/`, `public/voli/`, `public/audio/`, `public/video/fenomeni/`, `public/models/eml.glb`.
+- Codice: `src/` (`explore/`, `components/`, `simulazioni/`, `ambienti/`, `ui/`, `data/`, `lib/`); testi: `content/*.json`.
+- Media: `public/panorami/`, `public/voli/`, `public/audio/` (con `ambient/`), `public/video/`, `public/models/eml.glb`.
+- Sorgenti media fuori da git: `assets/voli/originali*/`, `assets/voli/v3/frame/`, `assets/audio/ambient/` (sorgenti e prompt del sottofondo).
 - Blender: `assets/blender/`; render: `assets/renders/`.
-- Script: `scripts/notify.mjs`, `scripts/send-media.mjs`, `scripts/media/` (voli Higgsfield, `web-encode.py`), `scripts/pano-view.py`. Guida voli: `docs/voli-v2.md`.
+- Script: `scripts/notify.mjs`, `scripts/send-media.mjs`, `scripts/media/` (voli Higgsfield, `volo-resume.mjs <id> <out>` per recuperare un lavoro dall'ID), `scripts/pano-view.py` (si esegue senza `-I`, serve numpy).
+- Relazione e README: `docs/relazione/`, `README.md`, `docs/readme/`.
 - Registri: `docs/costi.md`, `docs/DECISIONS.md`, `docs/SESSION-LOG.md`, `CHANGELOG.md`.
 
 ## Come avviare il progetto
-- `npm install` → `npm run dev` (porta 5173) → http://localhost:5173
-- `npm run build` per la build (output `dist/`), `npm run preview` per provarla.
-- Al momento della chiusura un server dev potrebbe essere ancora attivo sulla 5173; se la porta è occupata, riusarlo o fermarlo per PID (mai taskkill globali).
+- `npm install` → `npm run dev` → http://localhost:5173
+- `npm run build` (output `dist/`), `npm run preview` per provarla.
+- Senza Node: zip della release v0.10.0 → `Avvia ISS.bat` → http://localhost:8173.
+- Nessun server o processo in background attivo alla chiusura.
 
 ## Stato dei subagent
-Nessuno attivo (`.claude/state/agents.json` = `[]`). Ultimi consegnati: QA notte (Opus + Sonnet), web/fix-notte, web/fix-conferma, content (finale), media (voce finale-trasformatore): tutti uniti in `main`. Circa 20 worktree vecchi in `.claude/worktrees/` da ripulire (`git worktree list`, poi `git worktree remove` solo per quelli già uniti).
+Nessuno attivo. Ultimi consegnati e uniti in `main`: content-writer (relazione), media (voli v3, sottofondo), web-developer (pulizia e ambient), qa-reviewer (QA voli Kling e QA rapido v0.10.0).
 
 ## Rischi aperti
-- Vercel: se l'account arriva tardi, la pubblicazione slitta a giovedì pomeriggio (P1, mai da tagliare).
-- Peso dei media: il primo caricamento su rete lenta può essere lungo; da mitigare prima del test finale.
+- **Vercel:** P1, mai da tagliare. Se la pubblicazione slitta a giovedì pomeriggio resta poco margine per il QA sul link pubblico. Piano B: lo zip della release funziona in locale.
+- Peso totale dei media (~100 MB): il primo caricamento su rete lenta può essere lungo.
+- Budget Higgsfield già ~31,8 $ (~29 €), al limite alto: nessuna nuova generazione senza ok esplicito.
 - Licenza ESA dei panorami non del tutto chiarita.
-- Budget Higgsfield già ~21,6 $: ogni nuova generazione solo per difetti trovati e con conferma.
-
-## Costi
-Higgsfield ~21,6 $ (~20 €); ElevenLabs dentro il piano Starter. Dettaglio in `docs/costi.md`.

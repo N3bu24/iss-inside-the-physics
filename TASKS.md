@@ -45,15 +45,15 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - [x] P2 Sottotitoli e trascrizioni, pulsante audio on/off
 - [x] P2 Sezione ricerca sui materiali (Kibo, simulazioni)
 - [x] P3 Ambienti oltre i primi 4-5 (6 moduli + Cupola + 4 ambienti interattivi + 8 simulazioni)
-- [ ] P3 Rifiniture grafiche (a metà: sottotitoli vicini all'etichetta "Verso Cupola" nel finale; avvisi THREE.Clock in console)
+- [x] P3 Rifiniture grafiche (etichetta del finale spostata, avviso THREE.Clock filtrato; v0.10.0)
 
 ## Giovedì 12 — Test, relazione, pubblicazione
 
-- [ ] P1 Test di navigazione su desktop (a metà: 4 cicli QA in Chrome fatti fino a v0.9.5; manca il test finale su Vercel)
+- [ ] P1 Test di navigazione su desktop (a metà: QA fino a v0.10.0 fatti; manca il test finale sul link Vercel)
 - [x] P1 Verifica della correttezza scientifica dei testi (test notturno Sonnet; restano FDA 2008 e OMS da confermare)
 - [ ] P1 Verifica fonti e crediti (a metà: crediti completi; licenza panorami ESA da chiarire)
-- [ ] P1 Pubblicazione su Vercel e controllo del link pubblico (bloccato: serve l'account dell'autore)
-- [ ] P1 Relazione scritta di accompagnamento (a metà: bozza completa in `docs/relazione/relazione-finale.md`, manca il link Vercel; FDA 2008 verificata, frase OMS riformulata)
+- [ ] P1 Pubblicazione su Vercel e controllo del link pubblico (rimandata dall'autore il 10/11; repo già importato, serve la verifica d'identità via email fatta dall'autore)
+- [ ] P1 Relazione scritta di accompagnamento (a metà: PDF di 2 pagine `docs/relazione/ISS-Inside-the-Physics-relazione.pdf` + README fatti; manca solo il link Vercel al posto di `[LINK DEL SITO]` in PDF, README e `relazione-finale.md`)
 - [x] P2 Prestazioni alleggerite (v0.10.0)
 - [ ] P2 Prova su tablet
 - [x] P2 Verifica che il sito sia comprensibile senza spiegazioni esterne (test Opus di navigazione)
@@ -83,3 +83,7 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - [x] Pulizia codice, peso (panorami 29→12 MB, video Terra 8,8→3,9 MB, chunk 372→100 KB gzip), worktree vecchi rimossi (v0.10.0)
 - [x] P2 Audio ambient della stazione con ducking sotto la voce (ElevenLabs SFX, 0 € extra)
 - [x] QA rapido Sonnet v0.10.0: OK, nessun problema bloccante (`docs/qa/qa-rapido-v0.10.0.md`)
+
+### 10/11 pomeriggio (orchestratore, chiusura 13:15)
+- [x] Pacchetto per provare il sito in locale senza installare nulla: zip con `sito/`, `server.ps1`, `Avvia ISS.bat`, `LEGGIMI.txt`, pubblicato come asset della release GitHub v0.10.0 (76 MB). Istruzioni inviate su Telegram.
+- Problema 10/11: Telegram non accetta file sopra 50 MB, quindi lo zip sta nella release GitHub. Il server di prova si è chiuso per memoria bassa dopo che il test era già finito.

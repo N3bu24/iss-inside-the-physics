@@ -128,3 +128,10 @@ Formato: data, decisione, motivo, alternative scartate.
 ## 10/11/2026 mattina — Rigenerazioni e chiusura sessione
 - **Decisione (autore):** con le API a pagamento si rigenerano solo gli asset trovati difettosi dal test, mai tutti per coerenza; oltre 3 asset serve l'ok con `--ask`. **Motivo:** il lotto Seedance 1080p ha consumato più crediti del previsto. **Scartato:** rifare tutti i voli con lo stesso modello.
 - **Decisione (orchestratore):** audio ambient della stazione rimandato a "solo se avanza tempo". **Motivo:** priorità a Vercel, relazione e prestazioni. **Scartato:** generarlo ora.
+
+## 10/11/2026 — Sessione del mattino e primo pomeriggio
+- **Decisione (autore):** pubblicazione su Vercel rimandata. **Motivo:** scelta dell'autore; inoltre Vercel chiede una verifica d'identità via email che deve fare lui. **Scartato:** pubblicare subito.
+- **Decisione (autore):** relazione di 2 pagine in PDF (pagina 1 di presentazione curata che non svela troppo; pagina 2 con la scheda tecnica, più sobria) e README che le unisce. **Sostituisce:** la relazione lunga come consegna principale; `relazione-finale.md` resta come versione estesa.
+- **Decisione (autore):** rifare con Seedance i voli 3-5 (kibo→harmony, tranquility→unity, unity→destiny) dopo aver verificato l'orientamento dei fotogrammi. harmony→destiny e harmony→kibo restano Kling. **Scartato:** rifare tutti i Kling.
+- **Decisione (autore):** sottofondo realistico della stazione (computer, beep, aria) a volume basso, con ducking sotto la voce, highpass e lowpass a ~12,5 kHz. **Sostituisce:** il rinvio "solo se avanza tempo" del mattino. Fatto con ElevenLabs SFX (0 € extra).
+- **Decisione (orchestratore):** lo zip per l'uso in locale sta in una release GitHub e non su Telegram. **Motivo:** limite di 50 MB dei file su Telegram (lo zip pesa 76 MB). Server in PowerShell perché è presente su ogni Windows, senza bisogno di Node. **Scartato:** installer `.exe` (non firmato, Windows lo bloccherebbe).

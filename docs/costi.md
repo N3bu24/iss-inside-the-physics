@@ -29,3 +29,5 @@ Prezzi verificati il 10/11 con l'endpoint gratuito `POST /estimate/{modello}` de
 
 **Totale aggiornato (10/11, ore 10:15):** circa **31,8 $** su Higgsfield (≈ 29 €), al limite alto del budget di 20-30 €. Restano Kling solo harmony→destiny e harmony→kibo.
 | 10/11/2026 | ElevenLabs Sound Effects | Sottofondo stazione: 6 generazioni (aria, elettronica, beep, dettagli + 2 prove) mixate in loop da 108 s | 136 s, 1.360 caratteri | 0 € (piano Starter, saldo 13.193/40.000) | `public/audio/ambient/stazione.mp3` (sorgenti in `assets/audio/ambient/`) | Una prova da 8 s addebitata e persa per cartella mancante |
+
+**Totale alla chiusura (10/11, 13:15):** Higgsfield circa **31,8 $ ≈ 29 €**; ElevenLabs 0 € extra (piano Starter, saldo circa 13.193/40.000 caratteri). **Budget residuo:** circa 1 € sul massimo di 30 €. Nessuna generazione dopo il sottofondo.
