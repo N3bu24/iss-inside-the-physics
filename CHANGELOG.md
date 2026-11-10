@@ -5,6 +5,13 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.10.0] — 2026-11-10
+### Aggiunto
+- Sottofondo della stazione (ventilazione, elettronica, beep sparsi; loop 108 s, -30 LUFS, filtri 60 Hz / 12,5 kHz) con abbassamento automatico durante la voce.
+### Cambiato
+- Panorami ricompressi 6144×3072 (29 → 12 MB), video della Terra 8,8 → 3,9 MB, chunk iniziale 372 → 100 KB gzip, dist 97 → 76 MB.
+- Pulizia: clip audio e dipendenze inutilizzate rimosse, avviso THREE.Clock filtrato, sottotitoli del finale non più sovrapposti all'etichetta del portello.
+
 ## [0.9.6] — 2026-11-10
 ### Cambiato
 - Voli Kibo→Harmony, Tranquility→Unity e Unity→Destiny rifatti con Seedance 2.0 (1080p → 1280×720, 24 fps); restano Kling solo Harmony→Destiny e Harmony→Kibo.
