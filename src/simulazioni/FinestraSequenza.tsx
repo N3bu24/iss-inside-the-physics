@@ -84,23 +84,23 @@ export default function FinestraSequenza(p: { passi: Passo[]; indice: number; on
           ))}
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={() => onIndice(Math.max(0, indice - 1))} disabled={indice === 0} className="btn-ghost flex items-center gap-1 !px-3.5 !py-2 compatto:min-h-[46px] text-sm disabled:opacity-30">
+          <button onClick={() => onIndice(Math.max(0, indice - 1))} disabled={indice === 0} className="btn-ghost flex items-center gap-1 !px-3.5 compatto:!px-3 !py-2 compatto:min-h-[46px] text-sm disabled:opacity-30">
             <ChevronLeft size={16} /> Indietro
           </button>
           <button
             onClick={() => setAuto(!auto)}
-            className={'flex items-center gap-1.5 rounded-full border px-3 py-2 compatto:min-h-[46px] text-xs ' + (auto ? 'border-cyan-300/70 text-cyan-200' : 'border-white/20 text-white/60')}
+            className={'flex items-center gap-1.5 rounded-full border px-3 compatto:px-2.5 py-2 compatto:min-h-[46px] text-xs ' + (auto ? 'border-cyan-300/70 text-cyan-200' : 'border-white/20 text-white/60')}
             aria-pressed={auto}
           >
             {auto ? <Pause size={13} /> : <Play size={13} />} Automatico
           </button>
           <span className="flex-1" />
           {ultimo ? (
-            <button onClick={p.onChiudi} className="btn-primary flex items-center gap-1 !px-5 !py-2 compatto:min-h-[46px] text-sm">
+            <button onClick={p.onChiudi} className="btn-primary flex items-center gap-1 !px-5 compatto:!px-4 compatto:!px-3 !py-2 compatto:min-h-[46px] text-sm">
               Fine
             </button>
           ) : (
-            <button onClick={() => onIndice(indice + 1)} className="btn-primary flex items-center gap-1 !px-4 !py-2 compatto:min-h-[46px] text-sm">
+            <button onClick={() => onIndice(indice + 1)} className="btn-primary flex items-center gap-1 !px-4 compatto:!px-3 !py-2 compatto:min-h-[46px] text-sm">
               Avanti <ChevronRight size={16} />
             </button>
           )}

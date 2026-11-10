@@ -71,7 +71,7 @@ export default function Sheet(p: Props) {
         onPointerUp={su}
         onPointerCancel={() => { y0.current = null }}
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') p.onAperto(!p.aperto) }}
-        onClick={(e) => { if ((e as unknown as { detail: number }).detail === 0) p.onAperto(!p.aperto) }}
+        onClick={(e) => { if (e.detail === 0 && !(e.target as HTMLElement).closest('button')) p.onAperto(!p.aperto) }}
         className="relative shrink-0 cursor-pointer select-none border-b border-white/10 px-3 pb-2 pt-3"
         style={{ touchAction: 'none', minHeight: ALTEZZA_STRISCIA }}
       >

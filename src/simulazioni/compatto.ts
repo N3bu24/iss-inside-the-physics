@@ -63,6 +63,6 @@ export function fattoreCamera(info: InfoLayout, sinistraPx: number, sopraPx: num
   const liberaH = info.modo === 'sheet' ? Math.max(160, sopraPx > 0 ? H - 2 * sopraPx : H - 200) : Math.max(160, H - ALTEZZA_BARRA)
   const liberaW = Math.max(200, info.larghezza - sinistraPx * 2)
   const kV = (0.75 * H) / liberaH
-  const kW = (0.73 * H) / liberaW
+  const kW = H / liberaW
   return Math.min(2.4, Math.max(1, kV, kW))
 }
