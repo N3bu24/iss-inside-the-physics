@@ -10,6 +10,8 @@ import FinestraSequenza from './FinestraSequenza'
 import PulsanteEsci from './PulsanteEsci'
 import { ColonnaShell, GuidaBox, INGOMBRO_COLONNA } from './Colonna'
 import { useEscape } from '../lib/useEscape'
+import LayoutCompatto from './LayoutCompatto'
+import { ALTEZZA_BARRA, altezzaSheet, useLayoutSim } from './compatto'
 import type { Passo } from './contenuto'
 
 export type ContestoLayout = {
@@ -17,6 +19,10 @@ export type ContestoLayout = {
   passo: Passo | null
   /** spostamento orizzontale (px) da dare all'inquadratura per centrare la scena nell'area libera */
   sinistraPx: number
+  /** spostamento verticale (px, verso l'alto) dell'inquadratura per il pannello dal basso (solo telefono/tablet in verticale; sul desktop 0) */
+  sopraPx: number
+  /** vero su telefono e tablet (la scena può adattare camera e dettagli) */
+  compatto: boolean
   vai: (i: number | null) => void
 }
 
@@ -50,6 +56,8 @@ export type PropsLayout = {
 export default function LayoutSimulazione(p: PropsLayout) {
   const [seq, setSeq] = useState<number | null>(null)
   const [ridotta, setRidotta] = useState(false)
+  const [aperto, setAperto] = useState(true)
+  const info = useLayoutSim()
   const { active: inCaricamento } = useProgress()
   const seqRef = useRef(seq)
   seqRef.current = seq
@@ -60,6 +68,7 @@ export default function LayoutSimulazione(p: PropsLayout) {
   const vai = useCallback(
     (i: number | null) => {
       setSeq(i)
+      if (i !== null) setAperto(true)
       onPasso?.(i, i === null ? undefined : passi[i])
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -82,18 +91,63 @@ export default function LayoutSimulazione(p: PropsLayout) {
   }, [])
 
   const formulaHtml = p.formula ? katex.renderToString(p.formula, { displayMode: true, throwOnError: false }) : ''
-  const sinistraPx = ridotta ? 0 : INGOMBRO_COLONNA / 2
   const inSequenza = seq !== null && passo !== null
+  const desktop = info.modo === 'desktop'
+  const altSheet = altezzaSheet(info, aperto)
+  const ingombroLato = info.larghLato + 16
+  const sinistraPx = desktop ? (ridotta ? 0 : INGOMBRO_COLONNA / 2) : info.modo === 'lato' ? (ridotta ? 0 : ingombroLato / 2) : 0
+  const sopraPx = info.modo === 'sheet' ? (altSheet + ALTEZZA_BARRA) / 2 : 0
+
+  const corpoIntro = (
+    <>
+      <p className="text-white/80">{p.intro}</p>
+      {p.extra}
+      <GuidaBox id={p.id} />
+      {p.formula && (
+        <details className="rounded-lg bg-white/5 px-3 py-2">
+          <summary className="cursor-pointer select-none text-xs uppercase tracking-wider text-cyan-200/80">La formula</summary>
+          <div className="sim-formula py-1 text-white" dangerouslySetInnerHTML={{ __html: formulaHtml }} />
+          {p.formulaNota && <p className="text-xs text-white/60">{p.formulaNota}</p>}
+        </details>
+      )}
+      <div className="mt-auto space-y-1 border-t border-white/10 pt-3 text-[11px] text-white/55">
+        {p.agenda && <p>{p.agenda}</p>}
+        {p.slide && <p>Teoria: {p.slide}</p>}
+      </div>
+    </>
+  )
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-[#05070f] text-white" role="dialog" aria-label={p.titolo}>
       <Stile />
-      {p.scena({ seq, passo, sinistraPx, vai })}
+      {p.scena({ seq, passo, sinistraPx, sopraPx, compatto: !desktop, vai })}
 
       {inCaricamento && (
         <div className="pointer-events-none absolute inset-0 z-[6] grid place-items-center text-xs uppercase tracking-[0.35em] text-white/45">Caricamento della simulazione…</div>
       )}
 
+      {!desktop ? (
+        <LayoutCompatto
+          id={p.id}
+          titolo={p.titolo}
+          info={info}
+          onClose={p.onClose}
+          corpoIntro={corpoIntro}
+          passi={passi}
+          seq={seq}
+          vai={vai}
+          aperto={aperto}
+          onAperto={setAperto}
+          altezzaSheet={altSheet}
+          ridotta={ridotta}
+          onRidotta={setRidotta}
+          ingombroLato={ingombroLato}
+          controlli={p.controlli}
+          scope={p.scope}
+          etichettaAvvia={p.etichettaAvvia}
+        />
+      ) : (
+        <>
       {/* barra superiore (sotto l'intestazione dell'autore) */}
       <div className="pointer-events-none absolute inset-x-0 top-[52px] z-40 flex items-center justify-end gap-3 px-5">
         <div data-sim-ui className="flex items-center gap-3">
@@ -115,21 +169,7 @@ export default function LayoutSimulazione(p: PropsLayout) {
         {inSequenza ? (
           <FinestraSequenza passi={passi} indice={seq} onIndice={vai} onChiudi={() => vai(null)} />
         ) : (
-          <div className="sim-scroll flex min-h-0 flex-1 flex-col gap-3 p-4 text-[13px] leading-relaxed">
-            <p className="text-white/80">{p.intro}</p>
-            {p.extra}
-            <GuidaBox id={p.id} />
-            {p.formula && (
-              <details className="rounded-lg bg-white/5 px-3 py-2">
-                <summary className="cursor-pointer select-none text-xs uppercase tracking-wider text-cyan-200/80">La formula</summary>
-                <div className="sim-formula py-1 text-white" dangerouslySetInnerHTML={{ __html: formulaHtml }} />
-                {p.formulaNota && <p className="text-xs text-white/60">{p.formulaNota}</p>}
-              </details>
-            )}
-            <div className="mt-auto space-y-1 border-t border-white/10 pt-3 text-[11px] text-white/55">
-              {p.agenda && <p>{p.agenda}</p>}
-              {p.slide && <p>Teoria: {p.slide}</p>}
-            </div>
+          <div className="sim-scroll flex min-h-0 flex-1 flex-col gap-3 p-4 text-[13px] leading-relaxed">{corpoIntro}
           </div>
         )}
       </ColonnaShell>
@@ -151,6 +191,8 @@ export default function LayoutSimulazione(p: PropsLayout) {
           )}
         </div>
       </div>
+        </>
+      )}
     </div>
   )
 }

@@ -3,9 +3,16 @@
 
 /* Varianti responsive (stesse soglie di src/lib/dispositivo.ts). Il desktop NON cambia: ogni regola per telefono/tablet
    va scritta solo con queste varianti, es. `compatto:bottom-0 tel:w-full`. Senza variante = desktop (e base). */
-@custom-variant compatto (@media (max-width: 1023px), (hover: none) and (pointer: coarse));
-@custom-variant tel (@media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px));
-@custom-variant tab (@media ((min-width: 768px) and (max-width: 1023px) and (min-height: 501px)), ((hover: none) and (pointer: coarse) and (min-width: 768px) and (min-height: 501px)));
+/* NB: la forma a blocco è necessaria; la forma breve `(@media a, b)` con la virgola viene compilata male e vale solo il primo ramo. */
+@custom-variant compatto {
+  @media (max-width: 1023px), (hover: none) and (pointer: coarse) { @slot; }
+}
+@custom-variant tel {
+  @media (max-width: 767px), (hover: none) and (pointer: coarse) and (max-height: 500px) { @slot; }
+}
+@custom-variant tab {
+  @media (min-width: 768px) and (max-width: 1023px) and (min-height: 501px), (min-width: 768px) and (hover: none) and (pointer: coarse) and (min-height: 501px) { @slot; }
+}
 @import "./responsive.css";
 
 @theme {

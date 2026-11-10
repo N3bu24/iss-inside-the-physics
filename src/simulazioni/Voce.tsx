@@ -42,11 +42,11 @@ export default function Voce({ id }: { id: string }) {
   return (
     <button
       onClick={() => setOn(!on)}
-      className="glass pointer-events-auto flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-white hover:bg-white/15"
+      className="glass pointer-events-auto flex items-center gap-2 rounded-full px-3 py-1.5 compatto:min-h-[44px] tel:min-w-[44px] tel:justify-center text-xs text-white hover:bg-white/15"
       aria-pressed={attiva}
       aria-label={attiva ? 'Spegni la voce narrante' : 'Accendi la voce narrante'}
     >
-      {attiva ? <Volume2 size={15} /> : <VolumeX size={15} />} Voce
+      {attiva ? <Volume2 size={15} /> : <VolumeX size={15} />} <span className="tel:hidden">Voce</span>
     </button>
   )
 }

@@ -13,6 +13,9 @@ import { useEscape } from '../lib/useEscape'
 import OffsetVista from '../simulazioni/OffsetVista'
 import Stile from '../simulazioni/Stile'
 import { PASSI_EML } from '../simulazioni/passi'
+import Sheet from '../simulazioni/Sheet'
+import CameraCompatta from '../simulazioni/CameraCompatta'
+import { altezzaSheet, fattoreCamera, useLayoutSim } from '../simulazioni/compatto'
 import type { Passo } from '../simulazioni/contenuto'
 
 /** Posizioni degli oggetti nel segnaposto (stessi nomi del GLB). */
@@ -221,7 +224,7 @@ const STATO_SCENA: Record<string, { fenomeno: string | null; calore: Calore }> =
 const DIREZIONE: Record<string, [number, number, number]> = { camera_radial: [-0.9, 0.2, 0.55], pyrometer: [-0.8, -0.1, 0.8], carousel: [0.3, 0.55, 0.8] }
 
 /** Porta la camera sul componente del passo attivo (con easing); poi lascia i comandi all'utente. */
-function CameraPasso({ passo, ancore }: { passo: Passo | null; ancore: Ancore | null }) {
+function CameraPasso({ passo, ancore, fattore = 1 }: { passo: Passo | null; ancore: Ancore | null; fattore?: number }) {
   const { camera, controls } = useThree()
   const tw = useRef<{ t: number; p0: THREE.Vector3; t0: THREE.Vector3; p1: THREE.Vector3; t1: THREE.Vector3 } | null>(null)
   useEffect(() => {
@@ -229,7 +232,8 @@ function CameraPasso({ passo, ancore }: { passo: Passo | null; ancore: Ancore | 
     if (!passo || !c || !passo.ancora || !ancore?.[passo.ancora]) { tw.current = null; return }
     const a = ancore[passo.ancora]
     const dir = new THREE.Vector3(...(DIREZIONE[passo.ancora] ?? [0.55, 0.3, 0.78])).normalize()
-    tw.current = { t: 0, p0: camera.position.clone(), t0: c.target.clone(), p1: a.clone().addScaledVector(dir, passo.distanza ?? 2.6), t1: a.clone() }
+    tw.current = { t: 0, p0: camera.position.clone(), t0: c.target.clone(), p1: a.clone().addScaledVector(dir, (passo.distanza ?? 2.6) * fattore), t1: a.clone() }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [passo, ancore, camera, controls])
   useFrame((_, dt) => {
     const w = tw.current
@@ -268,12 +272,16 @@ interface PropsCanvas {
   passo: Passo | null
   /** spostamento orizzontale dell'inquadratura per lasciare spazio a una colonna a sinistra */
   sinistraPx?: number
+  /** spostamento verticale (verso l'alto) per un pannello dal basso: solo telefono/tablet in verticale */
+  sopraPx?: number
   /** mostra le linee di campo (default sì) */
   mostraCampo?: boolean
 }
 
 /** Scena 3D dell'EML (Canvas, modello, luci, camera dei passi). Il testo e i comandi stanno fuori. */
-export function EmlCanvas({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: caloreEsterno, onHotspot, passo, sinistraPx = 0, mostraCampo = true }: PropsCanvas) {
+export function EmlCanvas({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: caloreEsterno, onHotspot, passo, sinistraPx = 0, sopraPx = 0, mostraCampo = true }: PropsCanvas) {
+  const info = useLayoutSim()
+  const fattore = fattoreCamera(info, sinistraPx, sopraPx) // 1 sul desktop
   const sc = passo?.stato ? STATO_SCENA[passo.stato] : undefined
   const fenomeno = sc ? sc.fenomeno : fenomenoEsterno
   const calore: Calore = sc ? sc.calore : caloreEsterno
@@ -320,8 +328,9 @@ export function EmlCanvas({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: 
             return <Hotspot3D key={h.id} h={h} pos={p} onSelect={onHotspot} active={attivo === h.id} />
           })}
           <OrbitControls enableDamping minDistance={1.5} maxDistance={14} target={[0, 0, 0]} makeDefault />
-          <CameraPasso passo={passo} ancore={ancore} />
-          <OffsetVista sinistraPx={sinistraPx} />
+          <CameraPasso passo={passo} ancore={ancore} fattore={fattore} />
+          {info.modo !== 'desktop' && <CameraCompatta fattore={fattore} />}
+          <OffsetVista sinistraPx={sinistraPx} sopraPx={sopraPx} />
         </Canvas>
         <Stile />
       </div>
@@ -341,17 +350,65 @@ interface Props {
   onSequenza?: (aperta: boolean) => void
 }
 
+/** Altezza (px) della barra di navigazione dell'esplorazione in basso (telefono/tablet): il pannello dei passi le sta sopra. */
+const BARRA_ESPLORA = 68
+
 /** Scena EML dentro il nodo: hotspot, pulsante "Avvia esperimento" e, a sequenza aperta, la colonna dei passi. */
 export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot, avviaSubito, onSequenza }: Props) {
   const passi = useMemo(() => PASSI_EML(), [])
   const [seq, setSeq] = useState<number | null>(avviaSubito ? 0 : null)
   const [ridotta, setRidotta] = useState(false)
+  const [aperto, setAperto] = useState(true)
+  const info = useLayoutSim()
   const passo = seq !== null ? (passi[seq] ?? null) : null
   useEffect(() => { onSequenza?.(seq !== null); return () => onSequenza?.(false) }, [seq, onSequenza])
   // Esc chiude i passi (e solo quelli: se non sono aperti lascia fare agli altri)
   const seqRef = useRef(seq)
   seqRef.current = seq
   useEscape(() => { if (seqRef.current === null) return false; setSeq(null); return true }, 5)
+
+  if (info.modo !== 'desktop') {
+    // telefono e tablet: pannello dal basso (verticale) o laterale (orizzontale), sopra la barra dell'esplorazione
+    const sheet = info.modo === 'sheet'
+    const altSheet = Math.min(altezzaSheet(info, aperto), info.altezza - BARRA_ESPLORA - 120)
+    const sinistraPx = !sheet && seq !== null && !ridotta ? (info.larghLato + 16) / 2 : 0
+    const sopraPx = sheet && seq !== null ? (altSheet + BARRA_ESPLORA) / 2 : 0 // nessun comando sopra il pannello nel nodo
+    const avvia = () => { setSeq(0); setAperto(true) }
+    return (
+      <div className="absolute inset-0">
+        <EmlCanvas hotspot={hotspot} attivo={attivo} fenomeno={fenomeno} calore={calore} onHotspot={onHotspot} passo={passo} sinistraPx={sinistraPx} sopraPx={sopraPx} />
+        {seq === null && (
+          <div className="eml-avvia absolute bottom-[80px] left-1/2 z-[25] -translate-x-1/2">
+            <button className="sim-avvia min-h-[52px]" onClick={avvia}>
+              <FlaskConical size={18} /> Avvia esperimento
+            </button>
+          </div>
+        )}
+        {seq !== null && passo && (
+          <div className="pointer-events-none absolute inset-0 z-40">
+            {sheet ? (
+              <Sheet
+                id="eml"
+                titolo="L'esperimento nell'EML"
+                aperto={aperto}
+                onAperto={setAperto}
+                altezza={altSheet}
+                bassoPx={BARRA_ESPLORA}
+                contatore={`passo ${seq + 1}/${passi.length}`}
+                onChiudiSequenza={() => setSeq(null)}
+              >
+                <FinestraSequenza passi={passi} indice={seq} onIndice={setSeq} onChiudi={() => setSeq(null)} />
+              </Sheet>
+            ) : (
+              <ColonnaShell id="eml" titolo="L'esperimento nell'EML" ridotta={ridotta} onRidotta={setRidotta} larghezza={info.larghLato} contatore={`passo ${seq + 1}/${passi.length}`} onChiudiSequenza={() => setSeq(null)} basso="" bassoCompatto="compatto:bottom-[72px]">
+                <FinestraSequenza passi={passi} indice={seq} onIndice={setSeq} onChiudi={() => setSeq(null)} />
+              </ColonnaShell>
+            )}
+          </div>
+        )}
+      </div>
+    )
+  }
 
   return (
     <div className="absolute inset-0">

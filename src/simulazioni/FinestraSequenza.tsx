@@ -17,7 +17,7 @@ function Video({ src }: { src: string }) {
   if (errore) return null
   return (
     <div className="overflow-hidden rounded-xl border border-white/10 bg-black/50">
-      <video key={src} src={src} autoPlay loop muted playsInline preload="auto" onError={() => setErrore(true)} className="block aspect-video w-full object-cover" />
+      <video key={src} src={src} autoPlay loop muted playsInline preload="auto" onError={() => setErrore(true)} className="block aspect-video w-full object-cover tel:max-h-[26dvh]" />
     </div>
   )
 }
@@ -50,8 +50,8 @@ export default function FinestraSequenza(p: { passi: Passo[]; indice: number; on
   if (!passo) return null
   return (
     <>
-      <div key={indice} className="fade-in sim-scroll flex min-h-0 flex-1 flex-col gap-3 px-5 py-4">
-        <h3 className="text-xl font-semibold leading-tight">
+      <div key={indice} className="fade-in sim-scroll flex min-h-0 flex-1 flex-col gap-3 px-5 py-4 compatto:px-4 compatto:py-3">
+        <h3 className="text-xl compatto:text-lg font-semibold leading-tight">
           <span className="mr-2 text-cyan-300">{indice + 1}.</span>
           {passo.titolo}
         </h3>
@@ -72,35 +72,35 @@ export default function FinestraSequenza(p: { passi: Passo[]; indice: number; on
           <Badge tipo="simulazione" />
         </div>
       </div>
-      <div className="flex shrink-0 flex-col gap-2.5 border-t border-white/10 px-4 py-3">
+      <div className="flex shrink-0 flex-col gap-2.5 compatto:gap-3 border-t border-white/10 px-4 py-3 compatto:pt-3 compatto:pb-[max(8px,env(safe-area-inset-bottom))]">
         <div className="flex justify-center gap-1.5">
           {passi.map((_, i) => (
             <button
               key={i}
               onClick={() => onIndice(i)}
               aria-label={`Passo ${i + 1}`}
-              className={'h-2 rounded-full transition-all ' + (i === indice ? 'w-7 bg-cyan-300' : 'w-2 bg-white/25 hover:bg-white/50')}
+              className={'h-2 rounded-full transition-all compatto:relative compatto:after:absolute compatto:after:-inset-x-[3px] compatto:after:-inset-y-[10px] compatto:after:content-[""] ' + (i === indice ? 'w-7 bg-cyan-300' : 'w-2 bg-white/25 hover:bg-white/50')}
             />
           ))}
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={() => onIndice(Math.max(0, indice - 1))} disabled={indice === 0} className="btn-ghost flex items-center gap-1 !px-3.5 !py-2 text-sm disabled:opacity-30">
+          <button onClick={() => onIndice(Math.max(0, indice - 1))} disabled={indice === 0} className="btn-ghost flex items-center gap-1 !px-3.5 compatto:!px-3 !py-2 compatto:min-h-[46px] text-sm disabled:opacity-30">
             <ChevronLeft size={16} /> Indietro
           </button>
           <button
             onClick={() => setAuto(!auto)}
-            className={'flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs ' + (auto ? 'border-cyan-300/70 text-cyan-200' : 'border-white/20 text-white/60')}
+            className={'flex items-center gap-1.5 rounded-full border px-3 compatto:px-2.5 py-2 compatto:min-h-[46px] text-xs ' + (auto ? 'border-cyan-300/70 text-cyan-200' : 'border-white/20 text-white/60')}
             aria-pressed={auto}
           >
             {auto ? <Pause size={13} /> : <Play size={13} />} Automatico
           </button>
           <span className="flex-1" />
           {ultimo ? (
-            <button onClick={p.onChiudi} className="btn-primary flex items-center gap-1 !px-5 !py-2 text-sm">
+            <button onClick={p.onChiudi} className="btn-primary flex items-center gap-1 !px-5 compatto:!px-4 compatto:!px-3 !py-2 compatto:min-h-[46px] text-sm">
               Fine
             </button>
           ) : (
-            <button onClick={() => onIndice(indice + 1)} className="btn-primary flex items-center gap-1 !px-4 !py-2 text-sm">
+            <button onClick={() => onIndice(indice + 1)} className="btn-primary flex items-center gap-1 !px-4 compatto:!px-3 !py-2 compatto:min-h-[46px] text-sm">
               Avanti <ChevronRight size={16} />
             </button>
           )}
