@@ -39,3 +39,5 @@ Conflitti attesi su `SimulazioneShell.tsx` / `Layout.tsx` (X di A, audio di B, s
 - Correzioni, poi **v1.1.0** (CHANGELOG, `package.json`, tag, release GitHub; zip rigenerato se il tempo lo permette), push, verifica del sito su Vercel.
 - Aggiornare TASKS.md, STATE.md, DECISIONS.md, SESSION-LOG.md, costi.md.
 - Resoconto finale su Telegram (cosa è fatto, cosa no, link, versione), con qualche schermata.
+- **Richiesta dell'autore:** mandare su Telegram l'mp3 della musica delle simulazioni (`scripts/send-media.mjs`), appena pronta e verificata.
+- **Richiesta dell'autore:** la release v1.1.0 si fa la mattina dell'11/11, a lavoro finito e verificato.
