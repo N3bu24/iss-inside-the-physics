@@ -25,7 +25,7 @@ Alla fine: QA completo (anche altri dispositivi e risoluzioni), push, versioni G
 | Subagent | Branch | Note | File principali |
 |---|---|---|---|
 | researcher (Sonnet) | `research/iss-live` | 9 (solo fonti): stream ufficiale NASA incorporabile (iframe), API posizione ISS https con CORS, licenze; anche come mostrare il planisfero (immagine NASA pubblico dominio) | `docs/research/iss-live.md` |
-| media-producer (Haiku) | `media/musica-sim` | 13: una prova breve, poi UNA traccia in loop (ElevenLabs Music o SFX), costo massimo ~1-2 €, registrare in `docs/costi.md` tramite rapporto | `assets/audio/musica/` |
+| media-producer (Haiku) | `media/musica-sim` | 13: una prova breve, poi UNA traccia in loop (ElevenLabs Music o SFX), dentro il piano Starter già pagato (0 € extra; saldo 10/11 sera: 13.683/40.000 caratteri usati, ~26k liberi; non superare ~3.000 caratteri per la musica), registrare in `docs/costi.md` tramite rapporto | `assets/audio/musica/` |
 | web A (Sonnet) | `web/eml-unico` | 2, 4, 5, 6, 8 (EML) | `src/simulazioni/Eml.tsx`, `src/components/EmlScene.tsx`, `src/ambienti/AmbienteLevitazione.tsx`, `src/simulazioni/passi.ts` |
 | web B (Sonnet) | `web/audio-icone` | 1, 3, 7, 11, 12, 13 (integrazione), 14 | `src/lib/audioGlobale.ts`, `ambient.ts`, `silenzia.ts`, `src/components/AudioToggle.tsx`, `src/simulazioni/Voce.tsx`, `src/ui/Hotspot.tsx`, `src/explore/Indicatore.tsx`, `src/ui/MiniMappa.tsx`, `src/data/iconeSim.ts` |
 | web C (Sonnet) | `web/sezioni-diretta` | 8 (altre simulazioni), 9 (dopo il researcher), 10 | `src/simulazioni/{Aurora,Autoinduzione,Motore}.tsx`, `src/ambienti/*` (escluso Levitazione), `src/ui/Impostazioni.tsx`, `src/lib/preferenze.ts`, scena Cupola |
