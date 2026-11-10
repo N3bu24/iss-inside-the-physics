@@ -44,6 +44,6 @@ export const posizioni: Record<string, Pick<Hotspot, 'yaw' | 'pitch' | 'x' | 'y'
   'finale-correnti-parassite': { x: 0.27, y: 0.4 },
   'finale-motori': { x: 0.17, y: 0.62 },
   'finale-trasformatore': { x: 0.72, y: 0.4 },
-  'finale-obiettivo9': { x: 0.55, y: 0.68 },
+  'finale-obiettivo9': { x: 0.64, y: 0.6 },
   'finale-art32': { x: 0.37, y: 0.58 },
 }
