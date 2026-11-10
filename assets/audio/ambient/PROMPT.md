@@ -30,3 +30,14 @@ Tentativo perso: una prova da 8 s è stata generata ma il salvataggio è fallito
 
 ## Registro
 Vedi `registro-generazioni.md` (creato da `genera-ambient.mjs`).
+
+## Rombo di rientro (nodo finale)
+
+Script: `genera-rientro.mjs` (`--prova` 5 s, `--finale 1|2` 22 s, `--quota`). File finale: `public/audio/ambient/rientro.mp3` (40,00 s loop, stereo 44,1 kHz, 128 kbps, circa 641 KB, -26,5 LUFS integrati, picco -11,3 dBFS). Filtro: `rientro.filtro.txt`.
+
+Prompt (EN, usato per la prova e per entrambe le finali; nella prova il testo era senza la riga "clearly audible roaring airflow..." e la sola nota su "hiss", poi aggiunta dopo l'ascolto):
+"Interior of a space capsule during atmospheric re-entry, deep continuous low rumble, heavy structural vibration of the hull, clearly audible roaring airflow and soft crackling plasma outside the hull, a steady mid-frequency hiss of air at high speed, occasional soft metallic creak, steady and tense but not shrill, no music, no voices, no alarms, no beeps, seamless loop"
+
+Generazioni: prova (5 s, prova/prova-rientro.mp3, -17,3 LUFS, troppo bassa e concentrata sotto 120 Hz); finale 1 (22 s, sorgenti/rientro-finale-1.mp3, -23,9 LUFS); finale 2 (22 s, sorgenti/rientro-finale-2.mp3, -22,8 LUFS). Le finali sono quasi solo rombo grave: sotto 120 Hz circa -22 dB medi, 1 kHz circa -42 dB, sopra 6 kHz circa -83 dB. Il sibilo dell'aria è debole.
+
+Montaggio: finale 1 + finale 2 con crossfade 2 s (42 s), coda di 2 s fusa in testa per ottenere un loop di 40 s. Livelli ai bordi del loop: RMS -26,4 / -26,0 dB (nessuno stacco udibile).
