@@ -5,6 +5,16 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.9.4] — 2026-11-10
+### Corretto (test della notte)
+- Finale "Dallo spazio alla Terra" completo: 4 punti (Obiettivi 3/7/9, Art. 32) con le voci registrate.
+- EML: scheda e pannello non si sovrappongono più; durante "Avvia esperimento" marcatori, porta e pillola nascosti.
+- Badge per tipo di nodo (EML = Modello 3D); schede opache sopra marcatori e indicatori.
+- Finestra a passi compatta sotto 800 px di altezza.
+- Crediti completi nel sito; "due bobine" corretto; niente "pptx" nella UI.
+- Voli: 5 Kling a 24 fps nativi (niente micro-scatti); i voli attendono canplaythrough.
+- Testi: cifre verificate, ±20/±40 V chiariti.
+
 ## [0.9.3] — 2026-11-10
 ### Cambiato
 - 5 voli rifatti con Seedance 2.0 a 1080p (unity→tranquility, columbus→harmony, destiny→harmony, destiny→unity, harmony→columbus); gli altri 5 restano Kling 3.0 (crediti API esauriti).
