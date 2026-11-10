@@ -101,20 +101,20 @@
       <div class="stop"><div class="n">01 · ENTRARE</div><h3>La stazione</h3><p>Moduli reali da esplorare a 360°, con i voli che li collegano.</p></div>
       <div class="stop"><div class="n">02 · OSSERVARE</div><h3>La Cupola</h3><p>La finestra più grande mai portata in orbita.</p></div>
       <div class="stop hot"><div class="n">03 · CAPIRE</div><h3>L'esperimento</h3><p>Che cosa succede davvero dentro l'EML. Da vedere, non da leggere.</p></div>
-      <div class="stop"><div class="n">04 · TORNARE</div><h3>Dallo spazio alla Terra</h3><p>Agenda 2030 e diritto alla salute, attraverso la stessa fisica.</p></div>
+      <div class="stop"><div class="n">04 · TORNARE</div><h3>Dallo spazio alla Terra</h3><p>Il rientro in capsula: Agenda 2030 e diritto alla salute, attraverso la stessa fisica.</p></div>
     </div>
   </div>
 
   <div class="foot1">
     <div class="who">Alessandro Bettinelli<small>Classe 5ALSA · Fisica ed Educazione civica · Obiettivo 9 dell'Agenda 2030</small></div>
-    <div class="cta">Mettete le cuffie, attivate l'audio.<small>Circa 15 minuti · computer consigliato · indirizzo del sito: [LINK DEL SITO]</small></div>
+    <div class="cta">Mettete le cuffie, attivate l'audio.<small>Circa 15 minuti · computer consigliato · indirizzo del sito: iss-inside-the-physics.vercel.app</small></div>
   </div>
 </section>
 
 <!-- ================= PAGINA 2 ================= -->
 <section class="page p2">
   <h2>Scheda tecnica</h2>
-  <div class="meta">ISS — Inside the Physics · versione 0.9.5 · repository privato GitHub iss-inside-the-physics · sito statico (hosting Vercel)</div>
+  <div class="meta">ISS — Inside the Physics · versione 1.0.0 · github.com/N3bu24/iss-inside-the-physics · sito statico (hosting Vercel)</div>
 
   <div class="cols">
     <div>
@@ -128,13 +128,13 @@
 
       <h4>Il sito in numeri</h4>
       <table>
-        <tr><td>Ambienti a 360°</td><td>6 moduli (Columbus, Harmony, Destiny, Unity, Kibo, Tranquility) + Cupola</td></tr>
+        <tr><td>Ambienti a 360°</td><td>6 moduli (Columbus, Harmony, Destiny, Unity, Kibo, Tranquility) + Cupola + capsula di rientro</td></tr>
         <tr><td>Voli tra i moduli</td><td>10 video IA (5 s, 1280×720, 24 fps)</td></tr>
-        <tr><td>Punti di interesse</td><td>28 nei moduli + 4 nel finale</td></tr>
-        <tr><td>Simulazioni</td><td>8 simulazioni + 4 ambienti interattivi 3D</td></tr>
+        <tr><td>Punti di interesse</td><td>28 nei moduli + 4 nella capsula di rientro</td></tr>
+        <tr><td>Simulazioni</td><td>8 simulazioni 3D a passi, con guida «Come si usa»</td></tr>
         <tr><td>Fenomeni EML</td><td>5 render Blender (campo variabile, correnti indotte, Joule, fusione, solidificazione)</td></tr>
-        <tr><td>Voce narrante</td><td>circa 52 clip in italiano, con sottotitoli</td></tr>
-        <tr><td>Codice</td><td>66 file TypeScript/TSX, circa 6.600 righe</td></tr>
+        <tr><td>Audio</td><td>59 clip di voce in italiano con sottotitoli; sottofondo e rombo del rientro</td></tr>
+        <tr><td>Codice</td><td>83 file TypeScript/TSX, circa 8.600 righe</td></tr>
       </table>
 
       <h4>Tecnologie</h4>
@@ -143,8 +143,8 @@
         <tr><td>Panorami</td><td>Photo Sphere Viewer 5 (marker, virtual tour)</td></tr>
         <tr><td>3D</td><td>Three.js, React Three Fiber, Drei; modelli glTF compressi Draco</td></tr>
         <tr><td>Formule / animazioni</td><td>KaTeX, GSAP</td></tr>
-        <tr><td>Modellazione</td><td>Blender 5.2 (modello EML e render dei fenomeni)</td></tr>
-        <tr><td>Contenuti IA</td><td>Higgsfield (Seedance 2.0, Kling 3.0) per i voli; ElevenLabs per la voce</td></tr>
+        <tr><td>Modellazione</td><td>Blender 5.2 (modello EML, fenomeni, interno della capsula)</td></tr>
+        <tr><td>Contenuti IA</td><td>Higgsfield (Seedance 2.0, Kling 3.0) per i voli; ElevenLabs per voce ed effetti sonori</td></tr>
         <tr><td>Sviluppo</td><td>assistito da Claude Code (Anthropic); hosting Vercel</td></tr>
       </table>
 
@@ -163,7 +163,7 @@
 └─ lib/               utilità per media e risorse
 content/              testi in JSON (schede, copioni voce)
 public/               panorami, voli, audio, video, modelli
-assets/blender/       sorgenti Blender dell'EML</pre>
+assets/blender/       sorgenti Blender (EML, capsula)</pre>
       <p class="small" style="margin-top:2mm">I testi stanno separati dal codice (<span class="mono">content/*.json</span>), quindi si possono correggere senza toccare i componenti. Panorami, scena 3D e formule vengono caricati solo quando servono.</p>
 
       <h4>Crediti</h4>
@@ -178,7 +178,8 @@ assets/blender/       sorgenti Blender dell'EML</pre>
         <tr><td>Foto delle schede</td><td>NASA (pubblico dominio); GIF solidificazione ESA/DLR</td></tr>
         <tr><td>Modello e render EML</td><td>realizzati per il progetto in Blender (modello concettuale)</td></tr>
         <tr><td>Voli tra i moduli</td><td>ricostruzione IA Higgsfield da viste dei panorami ESA</td></tr>
-        <tr><td>Voce narrante</td><td>sintesi vocale ElevenLabs (voce IA)</td></tr>
+        <tr><td>Capsula di rientro</td><td>realizzata per il progetto in Blender (ricostruzione)</td></tr>
+        <tr><td>Voce e suoni</td><td>sintesi vocale ed effetti sonori ElevenLabs (IA)</td></tr>
       </table>
 
       <h4>Fonti scientifiche</h4>

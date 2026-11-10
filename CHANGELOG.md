@@ -5,6 +5,12 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [1.0.0] — 2026-11-10
+Versione consegnata, pubblicata su https://iss-inside-the-physics.vercel.app.
+### Cambiato
+- README e relazione PDF di 2 pagine aggiornati alla versione finale (link del sito, capsula di rientro, Indice, Impostazioni, numeri del progetto); sezione Licenze nel README.
+- Comando «Chiudi l'interruttore / Apri l'interruttore» nella guida dell'autoinduzione allineato al pulsante.
+
 ## [0.11.0] — 2026-11-10
 ### Aggiunto
 - Finale «Dallo spazio alla Terra» nell'interno di una capsula di rientro (panorama 360 renderizzato in Blender): visuale libera, plasma animato negli oblò, luce che pulsa, tremolio regolabile e rombo del rientro al posto del sottofondo della stazione.

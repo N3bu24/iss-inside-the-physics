@@ -4,7 +4,7 @@
 
 Alessandro Bettinelli, classe 5ALSA
 Fisica ed Educazione civica, primo quadrimestre, a.s. 2026/27
-Sito: [LINK DEL SITO]
+Sito: https://iss-inside-the-physics.vercel.app
 
 ---
 
