@@ -572,7 +572,8 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
         <>
           <div className={`transition-opacity duration-300 ${volando ? 'pointer-events-none opacity-0' : 'opacity-100'}`}>
             <div className="absolute left-4 top-[4.75rem] z-30 flex max-h-[calc(100vh-12rem)] flex-col gap-3">
-              <SchedaLuogo key={nodo.id} luogo={luogo} iniziaChiusa={nodo.tipo === 'eml'} />
+              {/* a passi dell'EML aperti la colonna dei passi occupa questo spazio: scheda del luogo e lista si nascondono */}
+              {!(nodo.tipo === 'eml' && sequenzaEml) && <SchedaLuogo key={nodo.id} luogo={luogo} iniziaChiusa={nodo.tipo === 'eml'} />}
               {!(nodo.tipo === 'eml' && sequenzaEml) && <ListaPunti key={`l-${nodo.id}`} punti={voci} onScegli={(id) => vaiAlPunto(id, true)} />}
               {nodo.id === 'finale' && (
                 <button onClick={onHome} className="btn-ghost fixed bottom-5 left-[calc(50%+7.5rem)] z-30 !py-2 text-sm">Ricomincia dall'inizio</button>
