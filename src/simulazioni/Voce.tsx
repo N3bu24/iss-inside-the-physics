@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Volume2, VolumeX } from 'lucide-react'
 import { assetExists } from '../lib/assets'
+import { seguiVoce } from '../lib/ambient'
 
 /** Slot voce narrante: se esiste public/audio/simulazioni/<id>.mp3 compare il pulsante on/off. */
 export default function Voce({ id }: { id: string }) {
@@ -21,7 +22,7 @@ export default function Voce({ id }: { id: string }) {
 
   useEffect(() => {
     if (!esiste) return
-    if (!audio.current) audio.current = new Audio(url)
+    if (!audio.current) { audio.current = new Audio(url); seguiVoce(audio.current) }
     const a = audio.current
     if (on) a.play().catch(() => setOn(false))
     else a.pause()

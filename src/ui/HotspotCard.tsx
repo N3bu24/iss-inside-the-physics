@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { X, ChevronDown, Play, Pause, FlaskConical } from 'lucide-react'
-import type { HotspotScheda } from '../data/esempio-hotspot'
+import type { HotspotScheda } from '../data/types'
 import { assetExists } from '../lib/assets'
 import Badge from '../components/Badge'
 import Latex from '../components/Latex'

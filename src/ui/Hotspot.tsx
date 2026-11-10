@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { Atom, Cpu, DoorOpen, Globe, Lock, Magnet, Sparkles, User, Zap, type LucideIcon } from 'lucide-react'
-import type { Categoria } from '../data/esempio-hotspot'
+import type { Categoria } from '../data/types'
 
 export const CATEGORIE: Record<Categoria, { Icon: LucideIcon; colore: string; etichetta: string }> = {
   fisica: { Icon: Magnet, colore: '#35e0ff', etichetta: 'Fisica' },

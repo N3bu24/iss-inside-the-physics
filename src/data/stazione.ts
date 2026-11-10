@@ -144,7 +144,7 @@ export const portelli: Record<NodoId, Portello[]> = (() => {
   }
   // portelli dei nodi non panoramici: posizione sull'immagine
   for (const p of out.cupola) { if (p.verso === 'finale') { p.x = 0.5; p.y = 0.15 } else { p.x = 0.5; p.y = 0.74 } }
-  for (const p of out.finale) { p.x = 0.5; p.y = 0.74 }
+  for (const p of out.finale) { p.x = 0.5; p.y = 0.66 }
   return out
 })()
 

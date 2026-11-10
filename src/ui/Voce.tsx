@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Captions, FileText, RotateCcw } from 'lucide-react'
-import type { Luogo } from '../data/esempio-hotspot'
+import type { Luogo } from '../data/types'
 import { assetExists } from '../lib/assets'
 import AudioToggle from '../components/AudioToggle'
 
