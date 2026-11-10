@@ -22,3 +22,5 @@ Prezzi verificati il 10/11 con l'endpoint gratuito `POST /estimate/{modello}` de
 
 **Totale speso:** circa **21,6 $** su Higgsfield (Kling 11 clip ≈ 4,62 $ + Seedance 5 clip ≈ 17,0 $; prezzi di listino, prima di eventuali sconti). ElevenLabs dentro il piano Starter già pagato.
 **Budget:** ~21,6 $ ≈ 20 €, al limite basso del budget di 20-30 €. D'ora in poi eventuali rifacimenti solo con Kling std (0,42 $) o Seedance 720p (~1,51 $), previa conferma dell'autore.
+
+**Budget residuo (chiusura 10/11 mattina):** speso ~21,6 $ ≈ 20 € su un budget di 20-30 € → residuo circa 0-10 €. Nessuna generazione in questa chiusura.

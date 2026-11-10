@@ -124,3 +124,7 @@ Formato: data, decisione, motivo, alternative scartate.
 ## 10/11/2026 (notte) — Voli v2 e test con Opus
 - Decisione dell'autore: rifare il volo Unity→Tranquility e gli altri voli difettosi con un modello Higgsfield migliore (scelto Seedance 2.0 std 1080p con prima e ultima immagine). L'autore ha detto che il saldo non è un problema: lotto autorizzato senza bottone, sempre con max 2 tentativi per volo.
 - Decisione dell'autore: per il test delle 7:00 un qa-reviewer usa Opus (solo navigazione ed esperienza), in deroga al §19; dopo l'esito, team di correzione in parallelo.
+
+## 10/11/2026 mattina — Rigenerazioni e chiusura sessione
+- **Decisione (autore):** con le API a pagamento si rigenerano solo gli asset trovati difettosi dal test, mai tutti per coerenza; oltre 3 asset serve l'ok con `--ask`. **Motivo:** il lotto Seedance 1080p ha consumato più crediti del previsto. **Scartato:** rifare tutti i voli con lo stesso modello.
+- **Decisione (orchestratore):** audio ambient della stazione rimandato a "solo se avanza tempo". **Motivo:** priorità a Vercel, relazione e prestazioni. **Scartato:** generarlo ora.
