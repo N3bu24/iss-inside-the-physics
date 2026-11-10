@@ -54,7 +54,7 @@ const EML: Passo[] = [
     testo:
       "Una piccola perturbazione fa vibrare la goccia: dalla frequenza delle oscillazioni si ricava la tensione superficiale, dallo smorzamento la viscosità. Una telecamera ad alta velocità riprende la forma, un pirometro misura la temperatura dalla luce emessa.",
     cosaSiVede: 'La goccia che pulsa leggermente e le due ottiche puntate su di essa.',
-    formula: '\\omega^{2}=\\frac{8\\,\\gamma}{\\rho\\,R^{3}}',
+    formula: '\\omega^{2}=\\frac{8\\,\\sigma}{\\rho\\,R^{3}}',
   },
   {
     titolo: 'Raffreddamento e solidificazione',
