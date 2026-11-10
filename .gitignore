@@ -18,3 +18,8 @@ assets/voli/originali-v2/
 assets/voli/v2/
 assets/voli/originali-v3/
 assets/voli/v3/
+
+# capsula di rientro: sorgenti pesanti dei render (la versione per il sito sta in public/panorami/)
+assets/renders/capsula/*.png
+assets/renders/capsula/*-v1.*
+assets/renders/capsula/capsula-pano.jpg

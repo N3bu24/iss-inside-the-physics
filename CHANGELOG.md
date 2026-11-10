@@ -5,6 +5,24 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [0.11.0] — 2026-11-10
+### Aggiunto
+- Finale «Dallo spazio alla Terra» nell'interno di una capsula di rientro (panorama 360 renderizzato in Blender): visuale libera, plasma animato negli oblò, luce che pulsa, tremolio regolabile e rombo del rientro al posto del sottofondo della stazione.
+- Viaggio rapido dalla mini-mappa («Vola fin lì» / «Viaggio rapido») e opzione «Salta i voli».
+- Indice di tutti i contenuti (luoghi, punti di interesse, simulazioni, moduli non visitabili) con «Vai» e «Apri simulazione».
+- Impostazioni (volumi, sottotitoli, dimensione del testo, alto contrasto, riduci animazioni, salta i voli, tremolio) e Crediti con gli strumenti usati.
+- Waveform dell'audio accanto al pulsante audio (voce e sottofondo, scala in decibel).
+- Note sui moduli non percorribili (Zvezda, Zarya, PMA-1, PMA-2, Quest).
+- Riquadro «Come si usa» in ogni simulazione (come si usa, cosa fa ogni comando, cosa dimostra).
+- Bollino della simulazione sui punti di interesse; un'icona unica per ogni simulazione.
+### Cambiato
+- Scheda del punto di interesse con testata e piede fissi: X e «Avvia simulazione» sempre visibili.
+- Simulazioni: dopo «Avvia» i passi stanno nella colonna sinistra e la scena resta libera; pulsante «Esci» grande con tasto Esc; Esc chiude un livello alla volta in tutto il sito.
+- Portelli a rombo, di forma diversa dai punti di interesse; mini-mappa senza alone sul modulo attivo.
+- Etichetta «ISS» senza parentesi nelle simulazioni del campo magnetico e dell'aurora.
+### Corretto
+- Simulazione dell'EML: schermo vuoto o «Simulazione in arrivo» quando si apriva dal nodo EML (modello condiviso tra due scene) o senza rete (illuminazione scaricata da internet).
+
 ## [0.10.0] — 2026-11-10
 ### Aggiunto
 - Sottofondo della stazione (ventilazione, elettronica, beep sparsi; loop 108 s, -30 LUFS, filtri 60 Hz / 12,5 kHz) con abbassamento automatico durante la voce.

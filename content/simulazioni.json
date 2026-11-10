@@ -429,7 +429,7 @@
     "guida": {
       "come_si_usa": "Premi «Avvia» per aprire la spiegazione a passi, con «Avanti», «Indietro» e «Automatico». Trascina per ruotare la visuale e usa la rotella per avvicinarti. «Esci» o il tasto Esc chiudono: il primo Esc chiude i passi, il secondo la simulazione.",
       "comandi": [
-        { "nome": "Chiudi/Apri l'interruttore", "cosa_fa": "Chiude o apre il circuito e fa partire la crescita della corrente o il suo crollo." },
+        { "nome": "Chiudi l'interruttore / Apri l'interruttore", "cosa_fa": "Chiude o apre il circuito e fa partire la crescita della corrente o il suo crollo." },
         { "nome": "Induttanza L", "cosa_fa": "Cambia l'induttanza della bobina: con L più grande la corrente sale più lentamente." },
         { "nome": "Resistenza R", "cosa_fa": "Cambia la resistenza del circuito: modifica il valore finale della corrente e la rapidità della salita." }
       ],
