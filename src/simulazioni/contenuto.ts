@@ -58,7 +58,7 @@ export function slideTesto(n?: number[]): string {
     parti.push(j > i ? `${s[i]}-${s[j]}` : `${s[i]}`)
     i = j + 1
   }
-  return 'Slide ' + parti.join(', ')
+  return "L'induzione elettromagnetica, slide " + parti.join(', ')
 }
 
 /** Collegamento civico e slide di una simulazione, dal file approvato content/simulazioni.json. */

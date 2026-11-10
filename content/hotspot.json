@@ -13,7 +13,7 @@
     "formula": "$P_J = R\\,i^2$",
     "slide_pptx": [23],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 23",
+    "fonte": "Panorama ESA (Harmony)",
     "oggetto_reale": "Fasci di cavi blu e bianchi che corrono in alto sul lato destro del panorama.",
     "yaw_stimato": 58,
     "pitch_stimato": 60
@@ -32,7 +32,7 @@
     "formula": "$\\varepsilon = -\\dfrac{d\\Phi_B}{dt}$",
     "slide_pptx": [8],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 8",
+    "fonte": "Panorama ESA (Harmony)",
     "oggetto_reale": "Schermo luminoso in alto a sinistra, con diagrammi e le scritte 'Ku-Band' e 'S-Band'.",
     "yaw_stimato": -134,
     "pitch_stimato": 75
@@ -51,7 +51,7 @@
     "formula": "$U = \\tfrac{1}{2}\\,L\\,i^2$",
     "slide_pptx": [16, 17],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Harmony); teoria pptx 5LSA, slide 16-17",
+    "fonte": "Panorama ESA (Harmony)",
     "oggetto_reale": "Pannello blu con attrezzi appesi (chiavi, pinze, impugnature rosse) sul lato sinistro.",
     "yaw_stimato": -93,
     "pitch_stimato": 12
@@ -70,7 +70,7 @@
     "formula": "$\\varepsilon = B\\,l\\,v$",
     "slide_pptx": [2],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Harmony); NASA, ISS facts; teoria pptx slide 2",
+    "fonte": "Panorama ESA (Harmony); NASA, ISS facts",
     "oggetto_reale": "Laptop aperto a sinistra, sotto il cartello 'To COL'; lo schermo sembra mostrare un'immagine della Terra [verificare con zoom].",
     "yaw_stimato": -134,
     "pitch_stimato": 14
@@ -108,7 +108,7 @@
     "formula": "$\\dfrac{V_1}{V_2} = \\dfrac{N_1}{N_2}$",
     "slide_pptx": [20],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Columbus); NASA NTRS (ISS electrical power system); teoria pptx slide 20",
+    "fonte": "Panorama ESA (Columbus); NASA NTRS (ISS electrical power system)",
     "oggetto_reale": "Laptop aperto sul pannello centrale-sinistro, con cavi collegati.",
     "yaw_stimato": -42,
     "pitch_stimato": 6
@@ -126,7 +126,7 @@
     ],
     "slide_pptx": [5],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Columbus); teoria pptx slide 5",
+    "fonte": "Panorama ESA (Columbus)",
     "oggetto_reale": "Cavi blu a spirale e fili bianchi vicino al pannello con i laptop, circa al centro-sinistra.",
     "yaw_stimato": -26,
     "pitch_stimato": 17
@@ -163,7 +163,7 @@
     "formula": "$\\varepsilon = -\\dfrac{d\\Phi_B}{dt}, \\quad i = \\dfrac{\\varepsilon}{R}$",
     "slide_pptx": [8, 9, 11],
     "badge": "Simulazione concettuale",
-    "fonte": "DLR; teoria pptx slide 8-11; docs/research/eml.md",
+    "fonte": "DLR; docs/research/eml.md",
     "oggetto_reale": "Campione sferico al centro della bobina, con anelli di corrente animati (render Blender)."
   },
   {
@@ -198,7 +198,7 @@
     "formula": "$\\varepsilon = -L\\,\\dfrac{di}{dt}$",
     "slide_pptx": [12, 13, 14, 15, 16, 17, 19],
     "badge": "Modello 3D",
-    "fonte": "Teoria pptx slide 12-19; DLR",
+    "fonte": "DLR",
     "oggetto_reale": "La bobina in rame del modello 3D, con simbolo di induttore sovrapposto."
   },
   {
@@ -214,7 +214,7 @@
     ],
     "slide_pptx": [2, 3, 4, 5, 6],
     "badge": "Simulazione concettuale",
-    "fonte": "Teoria pptx 5LSA, slide 2-6",
+    "fonte": "",
     "oggetto_reale": "Quattro piccole animazioni schematiche accanto al modello 3D."
   },
   {
@@ -266,7 +266,7 @@
     ],
     "slide_pptx": [18],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Kibo); consegna scolastica (Obiettivo 9, motori); teoria pptx slide 18",
+    "fonte": "Panorama ESA (Kibo); consegna scolastica (Obiettivo 9, motori)",
     "oggetto_reale": "Console con joystick e due piccoli schermi sul lato sinistro del portello [identificazione come postazione del braccio robotico da verificare].",
     "yaw_stimato": -96,
     "pitch_stimato": 6
@@ -304,7 +304,7 @@
     "formula": "$i(t) = \\dfrac{\\varepsilon}{R}\\left(1 - e^{-Rt/L}\\right)$",
     "slide_pptx": [12, 15],
     "badge": "Foto reale",
-    "fonte": "Panorama ESA (Destiny); teoria pptx slide 12-15",
+    "fonte": "Panorama ESA (Destiny)",
     "oggetto_reale": "Pannello nero con interruttori e connettori a destra del portello centrale.",
     "yaw_stimato": 37,
     "pitch_stimato": 2
@@ -323,7 +323,7 @@
     "formula": "$\\dfrac{V_2}{V_1} = \\dfrac{N_2}{N_1}$",
     "slide_pptx": [20],
     "badge": "Foto reale",
-    "fonte": "NASA NTRS (DDCU design, ISS EPS) [da riscontrare]; teoria pptx slide 20",
+    "fonte": "NASA NTRS (DDCU design, ISS EPS) [da riscontrare]",
     "oggetto_reale": "Rack a destra con fasci di cavi grigi e verdi e tubi rossi.",
     "yaw_stimato": 106,
     "pitch_stimato": -19
@@ -341,7 +341,7 @@
     ],
     "slide_pptx": [21],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS electrical power system); teoria pptx slide 21",
+    "fonte": "NASA (ISS electrical power system)",
     "oggetto_reale": "Cavi spessi grigio-verdi che scendono sul lato destro del panorama.",
     "yaw_stimato": 80,
     "pitch_stimato": -26
@@ -397,7 +397,7 @@
     ],
     "slide_pptx": [18],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS life support); teoria pptx slide 18",
+    "fonte": "NASA (ISS life support)",
     "oggetto_reale": "Griglia metallica quadrata a pavimento, a sinistra del portello centrale.",
     "yaw_stimato": -37,
     "pitch_stimato": -33
@@ -452,7 +452,7 @@
     ],
     "slide_pptx": [2],
     "badge": "Foto reale",
-    "fonte": "NASA, ESA (ISS orbit facts); teoria pptx slide 2",
+    "fonte": "NASA, ESA (ISS orbit facts)",
     "oggetto_reale": "Portello circolare con vetro azzurro in basso al centro, scritta 'To CUP'.",
     "yaw_stimato": 0,
     "pitch_stimato": -70
@@ -488,7 +488,7 @@
     ],
     "slide_pptx": [22],
     "badge": "Foto reale",
-    "fonte": "NASA (ISS electrical power system); teoria pptx slide 22",
+    "fonte": "NASA (ISS electrical power system)",
     "oggetto_reale": "Pannelli solari dorati visibili all'esterno [verificare su cupola-foto.jpg]."
   },
   {

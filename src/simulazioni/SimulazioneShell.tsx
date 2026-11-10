@@ -207,7 +207,7 @@ export default function SimulazioneShell(p: PropsShell) {
       </aside>
 
       {p.scope && (
-        <div data-sim-ui className="absolute right-5 top-28 origin-top-right transition-transform duration-300" style={{ transform: seq !== null ? 'scale(.62)' : undefined }}>
+        <div data-sim-ui className="sim-scope absolute right-5 top-28 origin-top-right transition-transform duration-300" style={{ transform: seq !== null ? 'scale(.62)' : undefined }}>
           {p.scope}
         </div>
       )}

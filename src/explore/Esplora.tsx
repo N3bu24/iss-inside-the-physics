@@ -47,7 +47,7 @@ interface Props {
 
 function PortelloMarker({ p, onGo }: { p: Portello; onGo: () => void }) {
   const att = useVista((v) => v.portello === p.verso)
-  const etichetta = p.verso === 'cupola' ? 'Scendi nella Cupola' : p.verso === 'eml' ? "Entra nell'EML" : `Verso ${nodi[p.verso].nome}`
+  const etichetta = p.verso === 'cupola' ? 'Scendi nella Cupola' : p.verso === 'eml' ? "Entra nell'EML" : p.verso === 'finale' ? 'Verso il finale: Dallo spazio alla Terra' : `Verso ${nodi[p.verso].nome}`
   return <HotspotMarker tipo="portello" attivo={att} titolo={etichetta} onClick={onGo} />
 }
 
@@ -453,15 +453,15 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
           <div className={`transition-opacity duration-300 ${volando ? 'pointer-events-none opacity-0' : 'opacity-100'}`}>
             <div className="absolute left-4 top-[4.75rem] z-30 flex max-h-[calc(100vh-12rem)] flex-col gap-3">
               <SchedaLuogo key={nodo.id} luogo={luogo} iniziaChiusa={nodo.tipo === 'eml'} />
-              <ListaPunti key={`l-${nodo.id}`} punti={voci} onScegli={(id) => vaiAlPunto(id, true)} />
+              {!(nodo.tipo === 'eml' && sequenzaEml) && <ListaPunti key={`l-${nodo.id}`} punti={voci} onScegli={(id) => vaiAlPunto(id, true)} />}
+              {nodo.id === 'finale' && (
+                <button onClick={onHome} className="btn-ghost fixed bottom-5 left-[calc(50%+7.5rem)] z-30 !py-2 text-sm">Ricomincia dall'inizio</button>
+              )}
             </div>
             {scheda && <HotspotCard scheda={scheda} audioOn={audioOn} onClose={() => setApri(null)} onSimulazione={setSimulazione} />}
             {!(nodo.tipo === 'eml' && sequenzaEml) && <Indicatore precedente={precedente} laterale={nodo.tipo === 'eml'} />}
             {suggerimento && (
               <div className="fade-in pointer-events-none absolute bottom-[11.5rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
-            )}
-            {nodo.id === 'finale' && (
-              <button onClick={onHome} className="btn-ghost absolute bottom-[8.5rem] left-5 z-30 !py-2 text-sm">Ricomincia dall'inizio</button>
             )}
           </div>
           <MiniMappa corrente={nodoId} visitati={visitati} onVaiA={(n) => vaiA(n)} occupato={volando} />
