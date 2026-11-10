@@ -139,4 +139,5 @@ Ondata 3:
 - [ ] P1 Audio delle simulazioni sempre affidabile — nota 12
 - [ ] P2 Musica calma e sintetica dentro le simulazioni — nota 13
 - [ ] P2 Nome dello strumento accanto al punto luminoso — nota 14
+- [ ] P3 Numero di versione discreto nell'interfaccia, letto da package.json — nota 15
 - [ ] P1 QA su desktop, tablet, telefono; v1.1.0 (tag, release), push, Vercel, resoconto Telegram

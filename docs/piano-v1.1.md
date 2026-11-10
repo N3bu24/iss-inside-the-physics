@@ -17,6 +17,7 @@ Regole sempre valide: CLAUDE.md (§18 crediti, §19 subagent, §21 Telegram e gi
 11. **Tasto muto:** a volte non funziona o risponde con molto ritardo.
 12. **Audio delle simulazioni:** a volte parte, a volte no.
 13. **Musica delle simulazioni:** dentro le simulazioni, al posto del sottofondo della stazione, una musica sottile e calma con suoni sintetici che suggerisce curiosità (dissolvenza incrociata in entrata/uscita).
+15. **Numero di versione nell'interfaccia (aggiunta dell'autore):** mostrare la versione (es. «v1.1.0») in un punto poco visibile, piccola e a bassa opacità (es. angolo in basso, ~30-40%), letta da `package.json` a build time (Vite `define`, niente valori scritti a mano), anche su telefono/tablet senza coprire nulla.
 14. **Nomi degli strumenti:** mettere il nome (es. ARED) vicino al punto luminoso di ogni strumento che ha un punto di interesse.
 
 Alla fine: QA completo (anche altri dispositivi e risoluzioni), push, versioni GitHub (tag + release), resoconto su Telegram.
@@ -27,7 +28,7 @@ Alla fine: QA completo (anche altri dispositivi e risoluzioni), push, versioni G
 | researcher (Sonnet) | `research/iss-live` | 9 (solo fonti): stream ufficiale NASA incorporabile (iframe), API posizione ISS https con CORS, licenze; anche come mostrare il planisfero (immagine NASA pubblico dominio) | `docs/research/iss-live.md` |
 | media-producer (Haiku) | `media/musica-sim` | 13: una prova breve, poi UNA traccia in loop (ElevenLabs Music o SFX), dentro il piano Starter già pagato (0 € extra; saldo 10/11 sera: 13.683/40.000 caratteri usati, ~26k liberi; non superare ~3.000 caratteri per la musica), registrare in `docs/costi.md` tramite rapporto | `assets/audio/musica/` |
 | web A (Sonnet) | `web/eml-unico` | 2, 4, 5, 6, 8 (EML) | `src/simulazioni/Eml.tsx`, `src/components/EmlScene.tsx`, `src/ambienti/AmbienteLevitazione.tsx`, `src/simulazioni/passi.ts` |
-| web B (Sonnet) | `web/audio-icone` | 1, 3, 7, 11, 12, 13 (integrazione), 14 | `src/lib/audioGlobale.ts`, `ambient.ts`, `silenzia.ts`, `src/components/AudioToggle.tsx`, `src/simulazioni/Voce.tsx`, `src/ui/Hotspot.tsx`, `src/explore/Indicatore.tsx`, `src/ui/MiniMappa.tsx`, `src/data/iconeSim.ts` |
+| web B (Sonnet) | `web/audio-icone` | 1, 3, 7, 11, 12, 13 (integrazione), 14, 15 | `src/lib/audioGlobale.ts`, `ambient.ts`, `silenzia.ts`, `src/components/AudioToggle.tsx`, `src/simulazioni/Voce.tsx`, `src/ui/Hotspot.tsx`, `src/explore/Indicatore.tsx`, `src/ui/MiniMappa.tsx`, `src/data/iconeSim.ts` |
 | web C (Sonnet) | `web/sezioni-diretta` | 8 (altre simulazioni), 9 (dopo il researcher), 10 | `src/simulazioni/{Aurora,Autoinduzione,Motore}.tsx`, `src/ambienti/*` (escluso Levitazione), `src/ui/Impostazioni.tsx`, `src/lib/preferenze.ts`, scena Cupola |
 | content-writer (Sonnet) | `content/v1.1` | testi brevi: nomi degli strumenti (14), scritta e didascalie della diretta (9), etichette dei valori (8), nomi delle sezioni (10) | `content/*.json` |
 
