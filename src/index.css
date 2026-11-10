@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./esplora.css";
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;

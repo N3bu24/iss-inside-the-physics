@@ -1,8 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Captions, FileText, RotateCcw } from 'lucide-react'
 import type { Luogo } from '../data/types'
 import { assetExists } from '../lib/assets'
+import { collegaVoce } from '../lib/ambient'
+import { preferenze, usePreferenza } from '../lib/preferenze'
 import AudioToggle from '../components/AudioToggle'
+import Waveform from '../components/Waveform'
 
 const urlAudio = (id: string) => `/audio/luoghi/${id}.mp3`
 const ascoltati = new Set<string>()
@@ -48,13 +51,13 @@ export function cuesDi(testo: string, durata: number): Cue[] {
  * Una sola clip breve per luogo (public/audio/luoghi/<id>.mp3), riprodotta una volta per visita; se il file non esiste tace.
  * Sottotitoli (dal testo `voce` del luogo) e trascrizione sempre disponibili. Va montato con key={luogo.id}.
  */
-export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false }: { luogo: Luogo; audioOn: boolean; onAudio: () => void; schedaAperta?: boolean }) {
+export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false, extra }: { luogo: Luogo; audioOn: boolean; onAudio: () => void; schedaAperta?: boolean; extra?: ReactNode }) {
   const audio = useRef<HTMLAudioElement>(null)
+  const cc = usePreferenza('sottotitoli')
   const [esiste, setEsiste] = useState(false)
   const [suona, setSuona] = useState(false)
   const [t, setT] = useState(0)
   const [dur, setDur] = useState(0)
-  const [cc, setCc] = useState(true)
   const [trans, setTrans] = useState(false)
   const [giro, setGiro] = useState(0)
 
@@ -76,14 +79,15 @@ export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false }: 
       {esiste && suona && (
         <audio
           key={giro} ref={audio} src={urlAudio(luogo.id)} autoPlay muted={!audioOn} preload="auto"
-          onLoadedMetadata={() => setDur(audio.current?.duration ?? 0)}
+          onPlay={() => { if (audio.current) collegaVoce(audio.current) }}
+          onLoadedMetadata={() => { setDur(audio.current?.duration ?? 0); if (audio.current) collegaVoce(audio.current) }}
           onTimeUpdate={() => setT(audio.current?.currentTime ?? 0)}
           onEnded={() => setSuona(false)}
         />
       )}
       {cc && corrente && (
         <div className="pointer-events-none absolute bottom-[5.6rem] left-[23rem] z-30 flex justify-center" style={{ right: schedaAperta ? '31.5rem' : '23rem' }}>
-          <div className="fade-in max-w-[760px] rounded-lg bg-black/80 px-5 py-2.5 text-center text-[16px] font-medium leading-snug text-white shadow-lg">{corrente}</div>
+          <div className="sottotitolo fade-in max-w-[760px] rounded-lg bg-black/80 px-5 py-2.5 text-center text-[16px] font-medium leading-snug text-white shadow-lg">{corrente}</div>
         </div>
       )}
       {trans && (
@@ -98,7 +102,9 @@ export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false }: 
         </div>
       )}
       <div className="absolute bottom-5 right-4 z-30 flex items-center gap-2">
-        <button onClick={() => setCc(!cc)} aria-pressed={cc} title="Sottotitoli" className={`glass rounded-full p-2.5 ${cc ? 'text-cyan-200' : 'text-white/50'}`}><Captions size={16} /></button>
+        {extra}
+        <Waveform attivo={audioOn} />
+        <button onClick={() => preferenze.set({ sottotitoli: !cc })} aria-pressed={cc} title="Sottotitoli" className={`glass rounded-full p-2.5 ${cc ? 'text-cyan-200' : 'text-white/50'}`}><Captions size={16} /></button>
         <button onClick={() => setTrans(!trans)} aria-pressed={trans} title="Trascrizione" className={`glass rounded-full p-2.5 ${trans ? 'text-cyan-200' : 'text-white/70'}`}><FileText size={16} /></button>
         <AudioToggle on={audioOn} onToggle={onAudio} />
       </div>

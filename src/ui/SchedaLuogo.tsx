@@ -24,7 +24,7 @@ export default function SchedaLuogo({ luogo, iniziaChiusa = false }: { luogo: Lu
           <p className="text-sm text-white/65">{luogo.sottotitolo}</p>
           <ul className="mt-3 space-y-2">
             {luogo.punti.map((p, i) => (
-              <li key={i} className="flex gap-2.5 text-[14px] leading-snug text-white/85">
+              <li key={i} className="testo-corpo flex gap-2.5 text-[14px] leading-snug text-white/85">
                 <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />{p}
               </li>
             ))}

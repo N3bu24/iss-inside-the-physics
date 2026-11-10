@@ -1,5 +1,9 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Home } from 'lucide-react'
+import { BookOpen, Home, Settings } from 'lucide-react'
+import { preferenze, usePreferenza } from '../lib/preferenze'
+import { moduloChiusoPerEtichetta } from '../data/extra'
+import { moduliMappa } from '../data/mappa'
+import NotaModulo from '../ui/NotaModulo'
 import { nodi, portelli, portelloVerso, rotta, urlVolo, type AmbienteId, type Nodo, type NodoId, type Portello } from '../data/stazione'
 import { hotspotDi, luogoDi } from '../data/contenuti'
 import type { Hotspot } from '../data/types'
@@ -37,17 +41,28 @@ const HFOV_SPINTA = 77
 /** punto di vista sul nadir di Tranquility (portello "To CUP") */
 const NADIR = { yaw: 0, pitch: -70 }
 
+/** Richiesta dall'esterno (Indice): viaggio rapido fino a `nodo` e, se c'è, apertura della scheda `scheda`. `n` distingue richieste uguali. */
+export interface Richiesta { nodo: NodoId; scheda?: string; n: number }
+
 interface Props {
   /** la visita è in corso (l'introduzione non copre più la scena) */
   attivo: boolean
   audioOn: boolean
   onAudio: () => void
   onHome: () => void
+  onIndice: () => void
+  onImpostazioni: () => void
+  /** apre il pannello sulla scheda Crediti */
+  onCrediti: () => void
+  /** un pannello a tutto schermo (indice, impostazioni) è aperto: i tasti di navigazione sono sospesi */
+  bloccato?: boolean
+  richiesta?: Richiesta | null
+  onRichiestaFatta?: (n: number) => void
 }
 
 function PortelloMarker({ p, onGo }: { p: Portello; onGo: () => void }) {
   const att = useVista((v) => v.portello === p.verso)
-  const etichetta = p.verso === 'cupola' ? 'Scendi nella Cupola' : p.verso === 'eml' ? "Entra nell'EML" : p.verso === 'finale' ? 'Verso il finale: Dallo spazio alla Terra' : `Verso ${nodi[p.verso].nome}`
+  const etichetta = p.verso === 'cupola' ? 'Scendi nella Cupola' : p.verso === 'eml' ? "Entra nell'EML" : p.verso === 'finale' ? 'Verso il finale' : `Verso ${nodi[p.verso].nome.split(/\s*[—,]\s*/)[0]}`
   return <HotspotMarker tipo="portello" attivo={att} titolo={etichetta} onClick={onGo} />
 }
 
@@ -82,7 +97,7 @@ function preparaVideo(url: string): Promise<HTMLVideoElement | null> {
  * ↓ = vola verso il modulo precedente usando il video IN AVANTI dell'arco inverso.
  * Cupola: zoom progressivo nel panorama verso il nadir + dissolvenza nel video NASA della Terra (nessun video di volo).
  */
-export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
+export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, onImpostazioni, onCrediti, bloccato = false, richiesta = null, onRichiestaFatta }: Props) {
   const [nodoId, setNodoId] = useState<NodoId>('harmony')
   const [storia, setStoria] = useState<NodoId[]>([])
   const [visitati, setVisitati] = useState<Set<NodoId>>(() => new Set(['harmony']))
@@ -97,6 +112,9 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
   const [suggerimento, setSuggerimento] = useState<string | null>(null)
   const [fantasma, setFantasma] = useState<Nodo | null>(null)
   const [sequenzaEml, setSequenzaEml] = useState(false)
+  const [nota, setNota] = useState<string | null>(null)
+  const [saltoFade, setSaltoFade] = useState(false)
+  const [saltando, setSaltando] = useState(false)
 
   const pano = useRef<PanoApi>(null)
   const fx = useRef<FxApi>(null)
@@ -104,9 +122,10 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
   const inVolo = useRef(false)
   const annulla = useRef(false)
   const entrato = useRef(false)
-  const st = useRef({ nodoId, storia, ambiente, simulazione, attivo })
-  st.current = { nodoId, storia, ambiente, simulazione, attivo }
+  const st = useRef({ nodoId, storia, ambiente, simulazione, attivo, bloccato })
+  st.current = { nodoId, storia, ambiente, simulazione, attivo, bloccato }
 
+  const saltaVoli = usePreferenza('saltaVoli')
   const nodo = nodi[nodoId]
   const luogo = useMemo(() => luogoDi(nodoId), [nodoId])
   const hotspot = useMemo(() => hotspotDi(nodoId), [nodoId])
@@ -147,9 +166,15 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
 
   /** Registra l'arrivo in `a`: stato React, storia, vista (per l'indicatore ↑/↓). */
   const registraArrivo = (p: Portello, a: Nodo, yaw: number, pitch: number) => {
+    registraStoria(a, aggiornaStoria(st.current.storia, p.da, a.id), yaw, pitch)
+  }
+
+  /** Un passo nel grafo da `da` ad `a`: tornando al nodo in cima alla storia lo si toglie, altrimenti `da` vi si aggiunge. */
+  const aggiornaStoria = (storia: NodoId[], da: NodoId, a: NodoId): NodoId[] =>
+    storia[storia.length - 1] === a ? storia.slice(0, -1) : [...storia, da]
+
+  const registraStoria = (a: Nodo, nuovaStoria: NodoId[], yaw: number, pitch: number) => {
     const s = st.current
-    const top = s.storia[s.storia.length - 1]
-    const nuovaStoria = top === a.id ? s.storia.slice(0, -1) : [...s.storia, p.da]
     st.current = { ...s, nodoId: a.id, storia: nuovaStoria }
     setStoria(nuovaStoria); setNodoId(a.id); setFenomeno(null)
     setVisitati((v) => new Set(v).add(a.id))
@@ -299,6 +324,45 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  /**
+   * Viaggio rapido: salto diretto a `meta`, senza voli ne` animazioni, solo una dissolvenza brevissima (~250 ms).
+   * Storia, visitati e sguardo d'arrivo restano coerenti: la storia segue il percorso piu` breve nel grafo come se lo si fosse
+   * percorso (cosi ↓ "torna a" riporta al modulo precedente sul percorso), e lo sguardo e` quello dell'ultimo portello attraversato.
+   * Funziona da/verso i nodi non panoramici (EML, Cupola, finale). Solo `meta` risulta visitato (gli intermedi non sono stati visti).
+   */
+  const saltaA = useCallback(async (meta: NodoId) => {
+    const s = st.current
+    if (inVolo.current || meta === s.nodoId) return
+    const r = rotta(s.nodoId, meta)
+    const api = pano.current
+    if (!r || r.length < 2 || !api) return
+    inVolo.current = true; annulla.current = false
+    setApri(null); setNota(null); setSaltando(true); setSaltoFade(true)
+    try {
+      await attendi(115)
+      let storiaNuova = s.storia
+      for (let i = 0; i < r.length - 1; i++) storiaNuova = aggiornaStoria(storiaNuova, r[i], r[i + 1])
+      const ultimo = portelloVerso(r[r.length - 2], meta)!
+      const a = nodi[meta]
+      const g = sguardoArrivo(ultimo, nodi[ultimo.da].tipo === 'panorama')
+      if (a.tipo === 'panorama') await mostraPanorama(api, a, g.yaw, g.pitch, ZOOM_BASE)
+      setSequenzaEml(false); setVoloIA(false); setFantasma(null)
+      fx.current?.videoHost()?.replaceChildren()
+      ripulisci()
+      registraStoria(a, storiaNuova, a.tipo === 'panorama' ? g.yaw : 0, a.tipo === 'panorama' ? g.pitch : 0)
+      await attendi(50)
+      setSaltoFade(false)
+      await attendi(120)
+    } finally {
+      inVolo.current = false
+      setSaltando(false); setSaltoFade(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  /** Spostamento scelto dall'utente: viaggio rapido se la preferenza "salta i voli" e` attiva, altrimenti volo con i video. */
+  const vai = useCallback((meta: NodoId) => { if (preferenze.get().saltaVoli) void saltaA(meta); else void vaiA(meta) }, [saltaA, vaiA])
+
   // ---------- comandi ----------
   const avanti = useCallback(() => {
     const s = st.current
@@ -308,21 +372,21 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
       const pos = pano.current?.posizione()
       if (pos) p = portelloInquadrato(n.id, pos.yaw, pos.pitch)
     } else p = portelloAvantiImmagine(n.id, s.storia[s.storia.length - 1] ?? null)
-    if (p) vaiA(p.verso)
-    else suggerisci(n.tipo === 'panorama' ? 'Guarda un portello (il cerchio con la porta) e premi ↑' : 'Da qui si torna indietro con ↓')
-  }, [vaiA, suggerisci])
+    if (p) vai(p.verso)
+    else suggerisci(n.tipo === 'panorama' ? 'Guarda un portello (il rombo con le frecce) e premi ↑' : 'Da qui si torna indietro con ↓')
+  }, [vai, suggerisci])
 
   /** ↓ = vola verso il modulo precedente, guardando avanti (video in avanti dell'arco inverso). */
   const indietro = useCallback(() => {
     const top = st.current.storia[st.current.storia.length - 1]
-    if (top) vaiA(top)
+    if (top) vai(top)
     else suggerisci('Sei al punto di partenza: avanza con ↑ verso un portello')
-  }, [vaiA, suggerisci])
+  }, [vai, suggerisci])
 
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       const s = st.current
-      if (!s.attivo || s.ambiente || s.simulazione) return
+      if (!s.attivo || s.ambiente || s.simulazione || s.bloccato) return
       const t = e.target as HTMLElement | null
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return
       if (e.key === 'Escape') { setApri(null); return }
@@ -370,6 +434,27 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
     ])
     ripulisci()
   }
+  // richiesta dall'Indice (anche dall'introduzione): niente ingresso lento, si va dritti alla destinazione
+  useEffect(() => {
+    if (!richiesta || !attivo || !pronto) return
+    const api = pano.current
+    if (!api) return
+    entrato.current = true
+    onRichiestaFatta?.(richiesta.n)
+    ;(async () => {
+      fx.current?.imposta({ copertura: 0, vignetta: 0, scie: 0, video: 0 })
+      if (richiesta.nodo === st.current.nodoId) await api.zoomTo(ZOOM_BASE, 700, 'outCubic')
+      else await saltaA(richiesta.nodo)
+      if (richiesta.scheda) {
+        const h = hotspotDi(richiesta.nodo).find((x) => x.id === richiesta.scheda)
+        if (h) {
+          if (h.pos?.tipo === 'sfera' && nodi[richiesta.nodo].tipo === 'panorama') api.orienta(rad(h.pos.yaw), rad(h.pos.pitch), ZOOM_BASE)
+          setApri(h.id); segnaVisto(h.id)
+        }
+      }
+    })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [richiesta, attivo, pronto])
   useEffect(() => { if (pronto && attivo) iniziaIngresso() }, [pronto, attivo]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // ---------- precarico dei vicini ----------
@@ -392,29 +477,32 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
     for (const h of hotspot) if (h.pos?.tipo === 'sfera') {
       out.push({
         key: `h:${h.id}`, yaw: h.pos.yaw, pitch: h.pos.pitch,
-        nodo: <HotspotMarker tipo={h.categoria} titolo={h.titolo} visto={viste.has(h.id)} onClick={() => apriScheda(h.id)} />,
-        bordo: <IndicatoreBordo tipo={h.categoria} titolo={h.titolo} onClick={() => vaiAlPunto(h.id, false)} />,
+        nodo: <HotspotMarker tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} visto={viste.has(h.id)} onClick={() => apriScheda(h.id)} />,
+        bordo: <IndicatoreBordo tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} onClick={() => vaiAlPunto(h.id, false)} />,
       })
     }
-    for (const p of portelli[nodo.id]) out.push({ key: `p:${p.verso}`, yaw: p.yaw, pitch: p.pitch, nodo: <PortelloMarker p={p} onGo={() => vaiA(p.verso)} /> })
-    for (const c of nodo.chiusi ?? []) out.push({ key: `c:${c.etichetta}`, yaw: c.yaw, pitch: c.pitch, nodo: <HotspotMarker tipo="chiuso" titolo={`${c.etichetta}: non percorribile`} /> })
-    for (const a of nodo.porte ?? []) if (a.yaw !== undefined) out.push({ key: `a:${a.ambiente}`, yaw: a.yaw, pitch: a.pitch ?? 0, nodo: <HotspotMarker tipo="ambiente" titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /> })
+    for (const p of portelli[nodo.id]) out.push({ key: `p:${p.verso}`, yaw: p.yaw, pitch: p.pitch, nodo: <PortelloMarker p={p} onGo={() => vai(p.verso)} /> })
+    for (const c of nodo.chiusi ?? []) {
+      const idModulo = moduloChiusoPerEtichetta(c.etichetta)?.id ?? moduliMappa.find((m) => !m.nodo && c.etichetta.toLowerCase().includes(m.nome.toLowerCase()))?.id
+      out.push({ key: `c:${c.etichetta}`, yaw: c.yaw, pitch: c.pitch, nodo: <HotspotMarker tipo="chiuso" titolo={c.etichetta.split(/\s*\(/)[0]} onClick={idModulo ? () => setNota(idModulo) : undefined} /> })
+    }
+    for (const a of nodo.porte ?? []) if (a.yaw !== undefined) out.push({ key: `a:${a.ambiente}`, yaw: a.yaw, pitch: a.pitch ?? 0, nodo: <HotspotMarker tipo="ambiente" ambiente={a.ambiente} titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /> })
     return out
-  }, [nodo, hotspot, vaiA, viste, apriScheda, vaiAlPunto])
+  }, [nodo, hotspot, vai, viste, apriScheda, vaiAlPunto])
 
   const hotspotEml: Hotspot[] = useMemo(() => hotspot.filter((h) => h.pos?.tipo === 'oggetto3d').map((h) => ({
     id: h.id, titolo: h.titolo, testo: h.breve, badge: h.badge, categoria: h.categoria,
     oggetto3d: h.pos?.tipo === 'oggetto3d' ? h.pos.oggetto : undefined, spostamento3d: h.pos?.tipo === 'oggetto3d' ? h.pos.spostamento : undefined,
   })), [hotspot])
 
-  const voci = useMemo(() => hotspot.map((h) => ({ id: h.id, titolo: h.titolo, categoria: h.categoria, visto: viste.has(h.id) })), [hotspot, viste])
+  const voci = useMemo(() => hotspot.map((h) => ({ id: h.id, titolo: h.titolo, categoria: h.categoria, visto: viste.has(h.id), simulazione: h.simulazione })), [hotspot, viste])
   const scheda = hotspot.find((h) => h.id === apri) ?? null
   useEffect(() => { if (apri) segnaVisto(apri) }, [apri, segnaVisto])
   const panoramico = nodo.tipo === 'panorama'
   const principale = nodi.harmony
 
   // aggancio per le prove automatiche (solo in sviluppo)
-  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__iss = { vaiA, avanti, indietro, vaiAlPunto, pano, st }
+  if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__iss = { vaiA, saltaA, avanti, indietro, vaiAlPunto, pano, st }
 
   return (
     <div className="absolute inset-0 isolate overflow-hidden bg-[#05070f]">
@@ -436,14 +524,14 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
           </Suspense>
           {!scheda && !sequenzaEml && <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />}
           {!scheda && !sequenzaEml && nodo.porte?.map((a) => (
-            <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30"><HotspotMarker tipo="ambiente" titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
+            <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30"><HotspotMarker tipo="ambiente" ambiente={a.ambiente} titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
           ))}
         </div>
       )}
       {(nodo.tipo === 'cupola' || nodo.tipo === 'finale') && (
         <ImmagineNodo
           key={nodo.id} nodo={nodo} hotspot={hotspot} portelli={portelli[nodo.id]} porte={nodo.porte ?? []}
-          onHotspot={apriScheda} onPortello={(p) => vaiA(p.verso)} onAmbiente={setAmbiente} nomeNodo={(id) => nodi[id].nome}
+          onHotspot={apriScheda} onPortello={(p) => vai(p.verso)} onAmbiente={setAmbiente} nomeNodo={(id) => nodi[id].nome}
         />
       )}
       {fantasma && <ImmagineNodo key={`f-${fantasma.id}`} uscendo nodo={fantasma} hotspot={[]} portelli={[]} porte={[]} onHotspot={() => {}} onPortello={() => {}} onAmbiente={() => {}} nomeNodo={(id) => nodi[id].nome} />}
@@ -464,14 +552,21 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
               <div className="fade-in pointer-events-none absolute bottom-[11.5rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
             )}
           </div>
-          <MiniMappa corrente={nodoId} visitati={visitati} onVaiA={(n) => vaiA(n)} occupato={volando} />
-          <TappeBar corrente={nodoId} visitati={visitati} occupato={volando} onVai={(n) => vaiA(n)} />
+          <MiniMappa corrente={nodoId} visitati={visitati} onVaiA={(n) => { void vaiA(n) }} onSaltaA={(n) => { void saltaA(n) }} onNota={setNota} saltaVoli={saltaVoli} occupato={volando || saltando} />
+          {nota && <NotaModulo key={nota} id={nota} onClose={() => setNota(null)} />}
+          <TappeBar corrente={nodoId} visitati={visitati} occupato={volando || saltando} onVai={vai} />
           <Legenda />
-          <Voce key={nodo.id} luogo={luogo} audioOn={audioOn} onAudio={onAudio} schedaAperta={!!scheda} />
-          <button onClick={onHome} title="Torna all'introduzione" aria-label="Torna all'introduzione" className="glass absolute bottom-5 right-[17.5rem] z-30 hidden rounded-full p-2.5 text-white/70 hover:text-white xl:block">
-            <Home size={16} />
-          </button>
-          <Crediti credito={nodo.credito} />
+          <Voce
+            key={nodo.id} luogo={luogo} audioOn={audioOn} onAudio={onAudio} schedaAperta={!!scheda}
+            extra={(
+              <>
+                <button onClick={onIndice} title="Indice di tutti i contenuti" aria-label="Indice di tutti i contenuti" className="glass flex items-center gap-1.5 rounded-full px-3 py-2.5 text-xs text-white/80 hover:text-white"><BookOpen size={16} /><span className="hidden 2xl:inline">Indice</span></button>
+                <button onClick={onImpostazioni} title="Impostazioni" aria-label="Impostazioni" className="glass rounded-full p-2.5 text-white/70 hover:text-white"><Settings size={16} /></button>
+                <button onClick={onHome} title="Torna all'introduzione" aria-label="Torna all'introduzione" className="glass hidden rounded-full p-2.5 text-white/70 hover:text-white xl:block"><Home size={16} /></button>
+              </>
+            )}
+          />
+          <Crediti credito={nodo.credito} onApri={onCrediti} />
         </>
       )}
 
@@ -482,7 +577,8 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome }: Props) {
           <span className="credito-linea">{CREDITO_VOLO}</span>
         </div>
       )}
-      {volando && <div className="absolute inset-0 z-[38] cursor-progress" />}
+      <div className={`salto-fade ${saltoFade ? 'on' : ''}`} aria-hidden />
+      {(volando || saltando) && <div className="absolute inset-0 z-[38] cursor-progress" />}
       {ambiente && <AmbienteOverlay id={ambiente} onClose={() => setAmbiente(null)} />}
       {simulazione && <SimulazioneOverlay id={simulazione} onClose={() => setSimulazione(null)} />}
       {!pronto && <div className="absolute inset-0 z-[39] flex items-center justify-center bg-[#05070f] text-xs uppercase tracking-[0.35em] text-white/40">Caricamento della stazione…</div>}

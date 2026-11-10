@@ -1,4 +1,5 @@
 import { assetExists } from './assets'
+import { preferenze } from './preferenze'
 
 /**
  * Audio di sottofondo della stazione (public/audio/ambient/stazione.mp3), in loop, con abbassamento automatico (ducking)
@@ -24,6 +25,9 @@ let gain: GainNode | null = null
 let avviato = false
 let attivo = true
 let entrata: AudioNode | null = null
+let analisi: AnalyserNode | null = null
+let gainVoce: GainNode | null = null
+const collegate = new WeakMap<HTMLMediaElement, MediaElementAudioSourceNode>()
 
 /** elementi audio che stanno parlando (DOM catturati dagli eventi globali + Audio creati a mano) */
 const inUso = new Set<HTMLMediaElement>()
@@ -39,7 +43,7 @@ function aggiorna() {
 function applica(tau?: number) {
   if (!ctx || !gain) return
   const duck = inUso.size > 0
-  const target = attivo ? GAIN_BASE * (duck ? FATTORE_DUCK : 1) : 0
+  const target = attivo ? GAIN_BASE * preferenze.get().volumeSottofondo * (duck ? FATTORE_DUCK : 1) : 0
   const t = tau ?? (!attivo ? TAU_USCITA : duck ? TAU_DUCK_GIU : TAU_DUCK_SU)
   gain.gain.cancelScheduledValues(ctx.currentTime)
   gain.gain.setTargetAtTime(target, ctx.currentTime, t)
@@ -104,7 +108,12 @@ export function avviaAmbient() {
     const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 60
     const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 12500
     gain = ctx.createGain(); gain.gain.value = 0
-    hp.connect(lp); lp.connect(gain); gain.connect(ctx.destination)
+    // tutto cio` che va alle casse passa dall'analizzatore (visualizzatore accanto al pulsante audio)
+    analisi = ctx.createAnalyser(); analisi.fftSize = 512; analisi.smoothingTimeConstant = 0.78
+    analisi.connect(ctx.destination)
+    gainVoce = ctx.createGain(); gainVoce.gain.value = preferenze.get().volumeVoce
+    gainVoce.connect(analisi)
+    hp.connect(lp); lp.connect(gain); gain.connect(analisi)
     // la sorgente si collega all'ingresso della catena (highpass)
     entrata = hp
     void ctx.resume()
@@ -113,7 +122,7 @@ export function avviaAmbient() {
     for (const el of document.querySelectorAll('audio')) registra(el)
     applica(TAU_ENTRATA)
   } catch {
-    ctx = null; gain = null
+    ctx = null; gain = null; analisi = null; gainVoce = null
   }
 }
 
@@ -124,3 +133,30 @@ export function impostaAmbientAttivo(on: boolean) {
   if (on) void ctx.resume()
   applica(on ? TAU_ENTRATA : TAU_USCITA)
 }
+
+/** Analizzatore finale (voce + sottofondo) o null se l'audio non e` ancora partito. */
+export function analizzatore(): AnalyserNode | null { return analisi }
+
+/**
+ * Instrada un elemento audio nel grafo (cosi la voce passa dall'analizzatore e dal volume della voce).
+ * Una sola volta per elemento. Se il contesto non c'e` o non sta girando, l'elemento resta com'e` e suona normalmente.
+ */
+export function collegaVoce(el: HTMLMediaElement): void {
+  try {
+    if (collegate.has(el) || !ctx || !gainVoce || ctx.state !== 'running') {
+      if (!collegate.has(el)) el.volume = Math.min(1, Math.max(0, preferenze.get().volumeVoce))
+      return
+    }
+    const src = ctx.createMediaElementSource(el)
+    src.connect(gainVoce)
+    collegate.set(el, src)
+  } catch {
+    // gia` collegato altrove o non supportato: l'elemento prosegue normalmente
+  }
+}
+
+// le preferenze di volume sono reattive
+preferenze.ascolta(() => {
+  if (gainVoce && ctx) gainVoce.gain.setTargetAtTime(preferenze.get().volumeVoce, ctx.currentTime, 0.05)
+  applica(0.1)
+})
