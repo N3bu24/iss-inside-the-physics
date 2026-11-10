@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ChevronUp, MapPin } from 'lucide-react'
-import type { Luogo } from '../data/esempio-hotspot'
+import type { Luogo } from '../data/types'
 import Badge from '../components/Badge'
 
 const viste = new Set<string>()

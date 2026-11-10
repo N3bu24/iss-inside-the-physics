@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Check, ChevronUp, ListChecks } from 'lucide-react'
-import type { Categoria } from '../data/esempio-hotspot'
+import type { Categoria } from '../data/types'
 import { stileTipo } from './Hotspot'
 
 export interface VocePunto { id: string; titolo: string; categoria: Categoria; visto: boolean }

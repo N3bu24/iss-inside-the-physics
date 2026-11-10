@@ -1,3 +1,4 @@
+import type { NodoId } from './stazione'
 export type Provenienza = 'foto' | 'ia' | 'modello3d' | 'simulazione'
 export type TipoTappa = 'panorama' | 'scena3d' | 'documentario' | 'immagine'
 
@@ -107,4 +108,45 @@ export interface Fenomeno {
   /** id della clip di voce associata */
   clip?: string
   colore: 'cyan' | 'heat'
+}
+
+/** Schede dei contenuti (hotspot e luoghi) come le legge il sito da content/*-v3.json. */
+export interface FormulaScheda { latex: string; spiegazione?: string }
+export interface ImmagineScheda { src: string; didascalia?: string; credito?: string }
+
+export interface HotspotScheda {
+  id: string
+  luogo: NodoId
+  categoria: Categoria
+  titolo: string
+  breve: string
+  punti: string[]
+  formula?: string
+  /** formato esteso (opzionale, compatibile con i campi sopra) */
+  paragrafi?: string[]
+  formule?: FormulaScheda[]
+  immagini?: ImmagineScheda[]
+  /** id di una simulazione da aprire con "Avvia simulazione" */
+  simulazione?: string
+  /** testo della voce (audio in public/audio/poi/<id>.mp3) */
+  voce?: string
+  slide_pptx: number[]
+  badge: Provenienza
+  fonte: string
+  yaw?: number; pitch?: number
+  x?: number; y?: number
+  oggetto3d?: string
+  spostamento3d?: [number, number, number]
+}
+
+export interface Luogo {
+  id: NodoId
+  nome: string
+  sottotitolo: string
+  punti: string[]
+  /** testo della voce breve (sottotitoli); l'audio è public/audio/luoghi/<id>.mp3 */
+  voce?: string
+  badge: Provenienza
+  fonte?: string
+  slide_pptx?: number[]
 }

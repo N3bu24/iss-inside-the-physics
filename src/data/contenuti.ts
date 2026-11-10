@@ -2,12 +2,12 @@ import hotspotJsonGrezzo from '@content/hotspot-v3.json'
 import { pulisciDati } from '../lib/pulisci'
 import { nodi, type NodoId } from './stazione'
 import { posizioni } from './posizioni'
-import { type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './esempio-hotspot'
+import { type Categoria, type FormulaScheda, type HotspotScheda, type ImmagineScheda, type Luogo } from './types'
 import type { Provenienza } from './types'
 
 /**
  * Loader dei contenuti. Usa content/hotspot-v3.json (e content/luoghi-v3.json, se c'è) solo quando sono nel nuovo formato
- * (campo `categoria`); altrimenti ricade sui dati di esempio di esempio-hotspot.ts.
+ * (campo `categoria`); altrimenti viene ignorato.
  */
 
 const BADGE: Record<string, Provenienza> = {
@@ -152,4 +152,4 @@ export function hotspotDi(luogo: NodoId): HotspotPosizionato[] {
 }
 
 export const schedaPerId = (id: string) => listaHotspot.find((h) => h.id === id) ?? null
-export const fonteContenuti = nuovoFormato ? 'content/hotspot-v3.json' : 'esempio-hotspot.ts'
+export const fonteContenuti = nuovoFormato ? 'content/hotspot-v3.json' : 'nessuno'
