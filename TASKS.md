@@ -90,20 +90,20 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 
 ### 10/11 pomeriggio — v0.11.0: 17 modifiche dell'autore (piano approvato)
 Ondata 1 (in parallelo):
-- [ ] P1 EML rotto: scena clonata per istanza, niente HDR da internet, barriera d'errore, EML dentro la shell (web A, `web/sim-eml`)
-- [ ] P1 Simulazioni: nuovo layout dopo "Avvia" (passi nella colonna sinistra, scena libera) (web A)
-- [ ] P1 Pulsante "Esci" grande con tasto Esc; Esc chiude prima i passi (web A)
-- [ ] P2 Riquadro "Come si usa" in ogni simulazione (web A + content)
-- [ ] P2 Etichetta "ISS" senza parentesi (web A)
-- [ ] P1 Scheda: X e "Avvia simulazione" sempre visibili (web B, `web/ui-esplora`)
-- [ ] P1 Icone: bollino simulazione, stessa icona per la stessa simulazione, portelli a rombo (web B)
-- [ ] P1 Mini-mappa: meno alone, viaggio rapido, note sui moduli chiusi (web B + content)
-- [ ] P2 Waveform accanto al pulsante audio (web B)
-- [ ] P2 Indice di tutti i contenuti (web B)
-- [ ] P2 Impostazioni + crediti con strumenti usati (web B + content)
-- [ ] P2 Testi: guide, moduli chiusi, capsula, strumenti (content)
-- [ ] P2 Panorama 360 dell'interno della capsula di rientro (blender)
-- [ ] P2 Rombo del rientro, loop (media, ElevenLabs SFX)
+- [x] P1 EML rotto: scena clonata per istanza, niente HDR da internet, barriera d'errore, EML dentro la shell (web A, `web/sim-eml`)
+- [x] P1 Simulazioni: nuovo layout dopo "Avvia" (passi nella colonna sinistra, scena libera) (web A)
+- [x] P1 Pulsante "Esci" grande con tasto Esc; Esc chiude prima i passi (web A)
+- [x] P2 Riquadro "Come si usa" in ogni simulazione (web A + content)
+- [x] P2 Etichetta "ISS" senza parentesi (web A)
+- [x] P1 Scheda: X e "Avvia simulazione" sempre visibili (web B, `web/ui-esplora`)
+- [x] P1 Icone: bollino simulazione, stessa icona per la stessa simulazione, portelli a rombo (web B)
+- [x] P1 Mini-mappa: meno alone, viaggio rapido, note sui moduli chiusi (web B + content)
+- [x] P2 Waveform accanto al pulsante audio (web B)
+- [ ] P2 Indice di tutti i contenuti (web B) — unito in main, da provare nel QA
+- [ ] P2 Impostazioni + crediti con strumenti usati (web B + content) — unito in main, da provare nel QA
+- [x] P2 Testi: guide, moduli chiusi, capsula, strumenti (content)
+- [ ] P2 Panorama 360 dell'interno della capsula di rientro (blender) — v1 consegnata ma troppo chiara e uniforme; v2 in render
+- [x] P2 Rombo del rientro, loop (media, ElevenLabs SFX)
 Ondata 2:
 - [ ] P2 Finale nella capsula: panorama, plasma animato, tremolio, cambio di sottofondo; voce delle simulazioni nell'audio globale (web C)
 Ondata 3:
