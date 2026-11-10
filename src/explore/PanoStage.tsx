@@ -1,6 +1,7 @@
 import { useEffect, useImperativeHandle, useLayoutEffect, useRef, type ReactNode, type Ref } from 'react'
 import { Viewer, type AnimateOptions } from '@photo-sphere-viewer/core'
 import { rad } from './geometria'
+import { dispositivo } from '../lib/dispositivo'
 
 export interface Marcatore {
   key: string
@@ -148,7 +149,15 @@ export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, s
       el.style.transform = `translate(${pos[i].x}px, ${pos[i].y}px) translate(-50%, -50%)`
     })
     // indicatori sul bordo: rettangolo che evita intestazione, colonna a sinistra, minimappa e comandi in basso
-    const x0 = Math.min(MARGINE.sx, W * 0.3), x1 = W - (scheda.current ? 540 : MARGINE.dx), y0b = MARGINE.su, y1 = Math.max(y0b + 60, H - MARGINE.giu)
+    let x0 = Math.min(MARGINE.sx, W * 0.3), x1 = W - (scheda.current ? 540 : MARGINE.dx), y0b = MARGINE.su, y1 = Math.max(y0b + 60, H - MARGINE.giu)
+    // telefono e tablet: margini propri (miniatura della mappa in alto a destra, barra inferiore, scheda come foglio); il desktop non cambia
+    const compatto = dispositivo.get() !== 'desktop'
+    if (compatto) {
+      const orizz = W > H
+      const barra = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--barra-h')) || 58) + 30
+      x0 = 28; x1 = W - (scheda.current && orizz ? Math.min(416, W * 0.46) + 36 : 28); y0b = 74
+      y1 = scheda.current && !orizz ? Math.max(y0b + 40, H * 0.2) : Math.max(y0b + 50, H - barra - 36)
+    }
     const cx = (x0 + x1) / 2, cyb = (y0b + y1) / 2, hw = (x1 - x0) / 2, hh = (y1 - y0b) / 2
     const ind: { p: P; el: HTMLElement; x: number; y: number }[] = []
     for (const p of pts) {
@@ -169,7 +178,7 @@ export default function PanoStage({ ref, url, yaw, pitch, marcatori, nascosti, s
         const s = (50 - d) / 2 / d
         ind[i].x -= ddx * s; ind[i].y -= ddy * s; ind[j].x += ddx * s; ind[j].y += ddy * s
       }
-      for (const q of ind) { q.x = Math.min(x1, Math.max(x0, q.x)); q.y = Math.min(y1, Math.max(y0b, q.y)); if (q.x > W - 290 && q.y < 270) q.y = 270 }
+      for (const q of ind) { q.x = Math.min(x1, Math.max(x0, q.x)); q.y = Math.min(y1, Math.max(y0b, q.y)); if (compatto) { if (q.x > W - 170 && q.y < 128) q.y = 128 } else if (q.x > W - 290 && q.y < 270) q.y = 270 }
     }
     for (const q of ind) {
       q.el.style.opacity = '1'; q.el.style.visibility = 'visible'

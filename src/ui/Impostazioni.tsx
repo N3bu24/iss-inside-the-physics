@@ -10,10 +10,10 @@ function Cursore({ etichetta, chiave }: { etichetta: string; chiave: 'volumeVoce
   const v = usePreferenza(chiave)
   return (
     <label className="flex items-center gap-4 py-2.5">
-      <span className="w-44 shrink-0 text-[14px] text-white/85">{etichetta}</span>
+      <span className="w-44 shrink-0 text-[14px] text-white/85 tel:w-24 tel:text-[13px]">{etichetta}</span>
       <input
         type="range" min={0} max={1} step={0.05} value={v} onChange={(e) => preferenze.set({ [chiave]: Number(e.target.value) })}
-        aria-label={etichetta} className="h-1.5 min-w-0 flex-1 cursor-pointer accent-cyan-300"
+        aria-label={etichetta} className="h-1.5 min-w-0 flex-1 cursor-pointer accent-cyan-300 compatto:h-6"
       />
       <span className="w-10 text-right text-xs tabular-nums text-white/55">{Math.round(v * 100)}%</span>
     </label>
@@ -47,17 +47,17 @@ export default function Impostazioni({ scheda: iniziale = 'impostazioni', onClos
   useEscape(() => { onClose(); return true }, PRIORITA_PANNELLO)
   const tab = (id: SchedaImpostazioni, n: string) => (
     <button key={id} role="tab" aria-selected={scheda === id} onClick={() => setScheda(id)}
-      className={`rounded-full px-4 py-1.5 text-sm transition-colors ${scheda === id ? 'bg-cyan-300/20 text-cyan-100 ring-1 ring-cyan-300/50' : 'text-white/65 hover:bg-white/10 hover:text-white'}`}>{n}</button>
+      className={`rounded-full px-4 py-1.5 text-sm transition-colors compatto:min-h-11 compatto:px-5 ${scheda === id ? 'bg-cyan-300/20 text-cyan-100 ring-1 ring-cyan-300/50' : 'text-white/65 hover:bg-white/10 hover:text-white'}`}>{n}</button>
   )
   return (
-    <div className="absolute inset-0 z-[150] flex items-center justify-center bg-black/55 p-6" onClick={onClose}>
+    <div className="absolute inset-0 z-[150] flex items-center justify-center bg-black/55 p-6 tel:p-0" onClick={onClose}>
       <aside role="dialog" aria-label="Impostazioni e crediti" onClick={(e) => e.stopPropagation()}
-        className="glass pannello-opaco fade-in flex max-h-[85vh] w-[min(720px,94vw)] flex-col overflow-hidden rounded-2xl" style={{ background: 'rgba(7,12,26,.96)' }}>
-        <header className="flex shrink-0 items-center gap-3 border-b border-white/10 px-6 py-3.5">
+        className="glass pannello-opaco fade-in flex max-h-[85vh] w-[min(720px,94vw)] flex-col overflow-hidden rounded-2xl tel:h-full tel:max-h-full tel:w-full tel:rounded-none" style={{ background: 'rgba(7,12,26,.96)' }}>
+        <header className="flex shrink-0 items-center gap-3 border-b border-white/10 px-6 py-3.5 tel:px-4 tel:pt-7">
           <div role="tablist" className="flex flex-1 items-center gap-2">{tab('impostazioni', 'Impostazioni')}{tab('crediti', 'Crediti')}</div>
-          <button onClick={onClose} aria-label="Chiudi" title="Chiudi (Esc)" className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white"><X size={20} /></button>
+          <button onClick={onClose} aria-label="Chiudi" title="Chiudi (Esc)" className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white compatto:h-11 compatto:w-11"><X size={20} /></button>
         </header>
-        <div className="scroll-sottile min-h-0 flex-1 overflow-y-auto px-6 py-4">
+        <div className="scroll-sottile min-h-0 flex-1 overflow-y-auto px-6 py-4 tel:px-4">
           {scheda === 'impostazioni' ? (
             <div className="divide-y divide-white/10 testo-ui">
               <div>
@@ -68,12 +68,12 @@ export default function Impostazioni({ scheda: iniziale = 'impostazioni', onClos
               </div>
               <div className="pt-3">
                 <div className="pb-1 text-[11px] uppercase tracking-[0.16em] text-white/45">Lettura e comfort</div>
-                <div className="flex items-center gap-4 py-2.5">
-                  <span className="w-44 shrink-0 text-[14px] text-white/85">Dimensione del testo</span>
+                <div className="flex items-center gap-4 py-2.5 tel:flex-wrap tel:gap-y-2">
+                  <span className="w-44 shrink-0 text-[14px] text-white/85 tel:w-full">Dimensione del testo</span>
                   <div role="radiogroup" aria-label="Dimensione del testo" className="flex flex-1 gap-1.5">
                     {DIM.map((d) => (
                       <button key={d.v} role="radio" aria-checked={dim === d.v} onClick={() => preferenze.set({ dimensioneTesto: d.v })}
-                        className={`flex-1 rounded-lg border px-2 py-1.5 text-[13px] ${dim === d.v ? 'border-cyan-300/60 bg-cyan-300/15 text-cyan-100' : 'border-white/15 text-white/70 hover:bg-white/10'}`}>{d.n}</button>
+                        className={`flex-1 rounded-lg border px-2 py-1.5 text-[13px] compatto:min-h-11 ${dim === d.v ? 'border-cyan-300/60 bg-cyan-300/15 text-cyan-100' : 'border-white/15 text-white/70 hover:bg-white/10'}`}>{d.n}</button>
                     ))}
                   </div>
                 </div>

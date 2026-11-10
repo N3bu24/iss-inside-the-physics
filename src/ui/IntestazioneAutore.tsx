@@ -7,7 +7,7 @@
 export default function IntestazioneAutore({ className = '' }: { className?: string }) {
   return (
     <div
-      className={`pointer-events-none fixed left-1/2 top-2 z-[200] -translate-x-1/2 whitespace-nowrap text-[12.5px] font-medium tracking-wide text-white/70 ${className}`}
+      className={`pointer-events-none fixed left-1/2 top-2 z-[200] -translate-x-1/2 whitespace-nowrap text-[12.5px] font-medium tracking-wide text-white/70 compatto:top-1 tel:text-[10.5px] ${className}`}
       style={{ textShadow: '0 0 4px rgba(0,0,0,.95), 0 1px 8px rgba(0,0,0,.9)' }}
     >
       ISS — Inside the Physics <span className="mx-1 text-white/40">·</span> Alessandro Bettinelli

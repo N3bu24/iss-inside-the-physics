@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 import { Captions, FileText, RotateCcw } from 'lucide-react'
 import type { Luogo } from '../data/types'
 import { assetExists } from '../lib/assets'
@@ -6,6 +7,7 @@ import { collegaVoce } from '../lib/ambient'
 import { preferenze, usePreferenza } from '../lib/preferenze'
 import AudioToggle from '../components/AudioToggle'
 import Waveform from '../components/Waveform'
+import Foglio from './Foglio'
 
 const urlAudio = (id: string) => `/audio/luoghi/${id}.mp3`
 const ascoltati = new Set<string>()
@@ -51,14 +53,20 @@ export function cuesDi(testo: string, durata: number): Cue[] {
  * Una sola clip breve per luogo (public/audio/luoghi/<id>.mp3), riprodotta una volta per visita; se il file non esiste tace.
  * Sottotitoli (dal testo `voce` del luogo) e trascrizione sempre disponibili. Va montato con key={luogo.id}.
  */
-export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false, extra }: { luogo: Luogo; audioOn: boolean; onAudio: () => void; schedaAperta?: boolean; extra?: ReactNode }) {
+export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false, extra, compatto = false, zonaSott = null, trans: transEst, onTrans }: {
+  luogo: Luogo; audioOn: boolean; onAudio: () => void; schedaAperta?: boolean; extra?: ReactNode
+  /** telefono/tablet: niente gruppo di pulsanti (c'e' la barra inferiore); sottotitoli nella zona `zonaSott`, trascrizione come foglio (stato dal genitore) */
+  compatto?: boolean; zonaSott?: HTMLElement | null; trans?: boolean; onTrans?: (aperta: boolean) => void
+}) {
   const audio = useRef<HTMLAudioElement>(null)
   const cc = usePreferenza('sottotitoli')
   const [esiste, setEsiste] = useState(false)
   const [suona, setSuona] = useState(false)
   const [t, setT] = useState(0)
   const [dur, setDur] = useState(0)
-  const [trans, setTrans] = useState(false)
+  const [transInt, setTransInt] = useState(false)
+  const trans = transEst ?? transInt
+  const setTrans = (b: boolean) => { setTransInt(b); onTrans?.(b) }
   const [giro, setGiro] = useState(0)
 
   useEffect(() => {
@@ -71,20 +79,49 @@ export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false, ex
     return () => { vivo = false }
   }, [luogo.id])
 
+  const riascolta = esiste && (
+    <button onClick={() => { setT(0); setDur(0); setSuona(true); setGiro(giro + 1) }} className="mt-3 flex min-h-11 items-center gap-1.5 text-sm text-cyan-200">
+      <RotateCcw size={14} /> Riascolta
+    </button>
+  )
+
   const cues = useMemo(() => (luogo.voce && dur ? cuesDi(luogo.voce, dur) : []), [luogo.voce, dur])
   const corrente = suona ? (cues.find((c) => t >= c.start && t < c.end)?.text ?? '') : ''
 
+  const audioEl = esiste && suona && (
+    <audio
+      key={giro} ref={audio} src={urlAudio(luogo.id)} autoPlay muted={!audioOn} preload="auto"
+      onPlay={() => { if (audio.current) collegaVoce(audio.current) }}
+      onLoadedMetadata={() => { setDur(audio.current?.duration ?? 0); if (audio.current) collegaVoce(audio.current) }}
+      onTimeUpdate={() => setT(audio.current?.currentTime ?? 0)}
+      onEnded={() => setSuona(false)}
+    />
+  )
+
+  // telefono e tablet: sottotitoli a tutta larghezza nella zona sopra la barra, trascrizione come foglio
+  if (compatto) {
+    return (
+      <>
+        {audioEl}
+        {cc && corrente && zonaSott && createPortal(
+          <div className="sottotitolo fade-in w-full rounded-lg bg-black/80 px-3.5 py-2 text-center text-[15px] font-medium leading-snug text-white shadow-lg">{corrente}</div>,
+          zonaSott,
+        )}
+        {trans && (
+          <Foglio titolo={luogo.nome} sottotitolo="Trascrizione della voce narrante" onClose={() => setTrans(false)}>
+            <div className="testo-corpo px-1 text-[15px] leading-relaxed text-white/85">
+              <p>{luogo.voce ?? 'Per questo luogo non c\'è una voce: leggi la scheda e tocca i punti luminosi.'}</p>
+              {riascolta}
+            </div>
+          </Foglio>
+        )}
+      </>
+    )
+  }
+
   return (
     <>
-      {esiste && suona && (
-        <audio
-          key={giro} ref={audio} src={urlAudio(luogo.id)} autoPlay muted={!audioOn} preload="auto"
-          onPlay={() => { if (audio.current) collegaVoce(audio.current) }}
-          onLoadedMetadata={() => { setDur(audio.current?.duration ?? 0); if (audio.current) collegaVoce(audio.current) }}
-          onTimeUpdate={() => setT(audio.current?.currentTime ?? 0)}
-          onEnded={() => setSuona(false)}
-        />
-      )}
+      {audioEl}
       {cc && corrente && (
         <div className="pointer-events-none absolute bottom-[5.6rem] left-[23rem] z-30 flex justify-center" style={{ right: schedaAperta ? '31.5rem' : '23rem' }}>
           <div className="sottotitolo fade-in max-w-[760px] rounded-lg bg-black/80 px-5 py-2.5 text-center text-[16px] font-medium leading-snug text-white shadow-lg">{corrente}</div>
