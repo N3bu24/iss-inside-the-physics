@@ -407,7 +407,6 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
       if (!s.attivo || s.ambiente || s.simulazione || s.bloccato) return
       const t = e.target as HTMLElement | null
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return
-      if (e.key === 'Escape') { setApri(null); return }
       const su = e.key === 'ArrowUp' || e.code === 'KeyW'
       const giu = e.key === 'ArrowDown' || e.code === 'KeyS'
       if (!su && !giu) return
@@ -516,7 +515,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
   }, [nodo, hotspot, vai, viste, apriScheda, vaiAlPunto])
 
   const hotspotEml: Hotspot[] = useMemo(() => hotspot.filter((h) => h.pos?.tipo === 'oggetto3d').map((h) => ({
-    id: h.id, titolo: h.titolo, testo: h.breve, badge: h.badge, categoria: h.categoria,
+    id: h.id, titolo: h.titolo, testo: h.breve, badge: h.badge, categoria: h.categoria, simulazione: h.simulazione,
     oggetto3d: h.pos?.tipo === 'oggetto3d' ? h.pos.oggetto : undefined, spostamento3d: h.pos?.tipo === 'oggetto3d' ? h.pos.spostamento : undefined,
   })), [hotspot])
 

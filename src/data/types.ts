@@ -34,6 +34,8 @@ export interface Hotspot {
   approfondimentoTitolo?: string
   media?: Media
   badge: Provenienza
+  /** id della simulazione collegata (bollino sul marcatore) */
+  simulazione?: string
 }
 
 export interface Clip {

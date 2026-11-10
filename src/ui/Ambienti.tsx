@@ -1,6 +1,6 @@
 import { Component, lazy, Suspense, type ComponentType, type LazyExoticComponent, type ReactNode } from 'react'
 import type { AmbienteId } from '../data/stazione'
-import { useEscape } from '../simulazioni/useEscape'
+import { useEscape } from '../lib/useEscape'
 
 type Props = { onClose: () => void }
 

@@ -1,6 +1,6 @@
 import { Component, Suspense, type ReactNode } from 'react'
 import { componenteSimulazione } from '../simulazioni'
-import { useEscape } from '../simulazioni/useEscape'
+import { useEscape } from '../lib/useEscape'
 
 type Props = { onClose: () => void }
 

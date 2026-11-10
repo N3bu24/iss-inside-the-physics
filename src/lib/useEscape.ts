@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-// Gestore unico del tasto Esc per le simulazioni: un solo ascoltatore sulla finestra (fase di cattura)
+// Gestore unico del tasto Esc per tutto il sito: un solo ascoltatore sulla finestra (fase di cattura)
 // chiama, tra i gestori registrati, quello con priorità più alta (a parità, l'ultimo montato).
 // Un gestore restituisce true se ha "consumato" Esc: allora l'evento non arriva agli altri
 // ascoltatori dell'app (scheda sottostante, ecc.). Se restituisce false si passa al successivo.
@@ -20,6 +20,10 @@ function suTasto(e: KeyboardEvent) {
     }
   }
 }
+
+/** Priorità dei pannelli dell'esplorazione (scheda, nota, menu, Indice, Impostazioni): sotto le simulazioni (10),
+ *  sopra i passi del nodo EML (5); tra pannelli vince l'ultimo aperto. */
+export const PRIORITA_PANNELLO = 6
 
 export function useEscape(gestore: () => boolean, priorita = 0) {
   const rif = useRef(gestore)
