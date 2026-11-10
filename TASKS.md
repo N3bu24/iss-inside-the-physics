@@ -53,7 +53,7 @@ Legenda priorità: **P1** = non si taglia mai, **P2** = importante, **P3** = si 
 - [x] P1 Verifica della correttezza scientifica dei testi (test notturno Sonnet; restano FDA 2008 e OMS da confermare)
 - [ ] P1 Verifica fonti e crediti (a metà: crediti completi; licenza panorami ESA da chiarire)
 - [ ] P1 Pubblicazione su Vercel e controllo del link pubblico (bloccato: serve l'account dell'autore)
-- [ ] P1 Relazione scritta di accompagnamento (con fonti e crediti) → `content-writer`, `docs/relazione/`
+- [ ] P1 Relazione scritta di accompagnamento (a metà: bozza completa in `docs/relazione/relazione-finale.md`, manca il link Vercel; FDA 2008 verificata, frase OMS riformulata)
 - [ ] P2 Prestazioni: chunk 367 KB gzip, panorami 4-6 MB, video Terra 8,8 MB da alleggerire
 - [ ] P2 Prova su tablet
 - [x] P2 Verifica che il sito sia comprensibile senza spiegazioni esterne (test Opus di navigazione)
