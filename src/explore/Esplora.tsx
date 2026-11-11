@@ -1,5 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BookOpen, Home, Settings } from 'lucide-react'
+import PulsanteEsci from '../simulazioni/PulsanteEsci'
+import { useEscape } from '../lib/useEscape'
 import { preferenze, usePreferenza } from '../lib/preferenze'
 import { moduloChiusoPerEtichetta } from '../data/extra'
 import { moduliMappa } from '../data/mappa'
@@ -117,6 +119,8 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
   const [suggerimento, setSuggerimento] = useState<string | null>(null)
   const [fantasma, setFantasma] = useState<Nodo | null>(null)
   const [sequenzaEml, setSequenzaEml] = useState(false)
+  /** contatore: ogni incremento fa partire i passi guidati nel nodo EML (dalla scheda di un punto) */
+  const [avviaEml, setAvviaEml] = useState(0)
   const [nota, setNota] = useState<string | null>(null)
   const [saltoFade, setSaltoFade] = useState(false)
   const [saltando, setSaltando] = useState(false)
@@ -384,6 +388,23 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
   /** Spostamento scelto dall'utente: viaggio rapido se la preferenza "salta i voli" e` attiva, altrimenti volo con i video. */
   const vai = useCallback((meta: NodoId) => { if (preferenze.get().saltaVoli) void saltaA(meta); else void vaiA(meta) }, [saltaA, vaiA])
 
+  /** "Avvia" dalla scheda di un punto: l'EML è un'unica esperienza (niente simulazione-copia). Dentro il nodo parte il percorso a passi, da fuori si entra nell'EML. */
+  const apriSim = useCallback((id: string) => {
+    if (id !== 'eml') { setSimulazione(id); return }
+    setApri(null)
+    if (st.current.nodoId === 'eml') setAvviaEml((n) => n + 1)
+    else vai('eml')
+  }, [vai])
+
+  /** Uscita dal nodo EML (X in alto a destra, Esc): si torna al modulo da cui si è arrivati, di norma Columbus. */
+  const esciDaEml = useCallback(() => { vai(st.current.storia[st.current.storia.length - 1] ?? 'columbus') }, [vai])
+  useEscape(() => {
+    const s = st.current
+    if (s.nodoId !== 'eml' || !s.attivo || s.ambiente || s.simulazione || s.bloccato) return false
+    esciDaEml()
+    return true
+  }, 4)
+
   // ---------- comandi ----------
   const avanti = useCallback(() => {
     const s = st.current
@@ -547,8 +568,14 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
       {nodo.tipo === 'eml' && (
         <div className="absolute inset-0 z-20">
           <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center bg-[#05070f] text-sm text-white/40">Caricamento…</div>}>
-            <EmlScene hotspot={hotspotEml} attivo={apri} fenomeno={fenomeno} calore={fenomeno ? caloreFenomeno[fenomeno] : null} onHotspot={apriScheda} onSequenza={setSequenzaEml} />
+            <EmlScene hotspot={hotspotEml} attivo={apri} fenomeno={fenomeno} calore={fenomeno ? caloreFenomeno[fenomeno] : null} onHotspot={apriScheda} onSequenza={setSequenzaEml} avvia={avviaEml} />
           </Suspense>
+          {/* uscita: sempre visibile in alto a destra, identica a quella delle simulazioni; la mini-mappa le sta sotto */}
+          {attivo && (
+            <div data-sim-ui className="pointer-events-none absolute right-4 top-4 z-[36] compatto:right-[7.8rem] compatto:top-7 tab:right-[9.8rem]">
+              <PulsanteEsci onClick={esciDaEml} />
+            </div>
+          )}
           {!scheda && !sequenzaEml && <FenomeniPanel attivo={fenomeno} onSelect={setFenomeno} />}
           {!scheda && !sequenzaEml && nodo.porte?.map((a) => (
             <div key={a.ambiente} className="absolute bottom-[13rem] right-[26.5rem] z-30 compatto:top-[7.6rem] compatto:bottom-auto compatto:right-3"><HotspotMarker tipo="ambiente" ambiente={a.ambiente} titolo={a.titolo} onClick={() => setAmbiente(a.ambiente)} /></div>
@@ -582,13 +609,15 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
                 <button onClick={onHome} className="btn-ghost fixed bottom-5 left-[calc(50%+7.5rem)] z-30 !py-2 text-sm">Ricomincia dall'inizio</button>
               )}
             </div>
-            {scheda && <HotspotCard scheda={scheda} audioOn={audioOn} onClose={() => setApri(null)} onSimulazione={setSimulazione} />}
+            {scheda && <HotspotCard scheda={scheda} audioOn={audioOn} onClose={() => setApri(null)} onSimulazione={apriSim} />}
             {!(nodo.tipo === 'eml' && sequenzaEml) && <Indicatore precedente={precedente} laterale={nodo.tipo === 'eml'} />}
             {suggerimento && (
               <div className="fade-in pointer-events-none absolute bottom-[11.5rem] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-[rgba(4,8,20,.85)] px-4 py-1.5 text-sm text-white/85">{suggerimento}</div>
             )}
           </div>
+          <div className={nodo.tipo === 'eml' ? 'pointer-events-none absolute inset-0 z-30 translate-y-[3.75rem] [&>*]:pointer-events-auto' : 'contents'}>
           <MiniMappa corrente={nodoId} visitati={visitati} onVaiA={(n) => { void vaiA(n) }} onSaltaA={(n) => { void saltaA(n) }} onNota={setNota} saltaVoli={saltaVoli} occupato={volando || saltando} />
+          </div>
           {nota && <NotaModulo key={nota} id={nota} onClose={() => setNota(null)} />}
           <TappeBar corrente={nodoId} visitati={visitati} occupato={volando || saltando} onVai={vai} />
           <Legenda />
@@ -613,7 +642,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
           onImpostazioni={onImpostazioni} onCrediti={onCrediti} onNota={setNota}
           onVai={vai} onVaiA={(n) => { void vaiA(n) }} onSaltaA={(n) => { void saltaA(n) }}
           onAvanti={avanti} onIndietro={indietro} onScegliPunto={(id) => vaiAlPunto(id, true)}
-          onChiudiScheda={() => setApri(null)} onSimulazione={setSimulazione}
+          onChiudiScheda={() => setApri(null)} onSimulazione={apriSim}
         />
       )}
 

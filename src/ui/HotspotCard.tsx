@@ -62,7 +62,7 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
         <footer className="fg-piede shrink-0 space-y-2.5 border-t border-white/10 px-4 pb-3 pt-2.5">
           {sim && scheda.simulazione && onSimulazione && (
             <button onClick={() => onSimulazione(scheda.simulazione!)} className="btn-primary flex min-h-12 w-full items-center justify-center gap-2 !py-2.5 text-[15px]">
-              <sim.Icon size={18} /> Avvia simulazione · {sim.titolo}
+              <sim.Icon size={18} /> {scheda.simulazione === 'eml' ? (scheda.luogo === 'eml' ? 'Avvia esperimento' : "Entra nell'EML") : `Avvia simulazione · ${sim.titolo}`}
             </button>
           )}
           <div className="flex flex-wrap items-center gap-2"><Badge tipo={scheda.badge} /><Voce id={scheda.id} audioOn={audioOn} /></div>
@@ -96,7 +96,7 @@ export default function HotspotCard({ scheda, audioOn = true, onClose, onSimulaz
       <footer className="shrink-0 space-y-3 border-t border-white/10 px-6 pb-4 pt-3">
         {sim && scheda.simulazione && onSimulazione && (
           <button onClick={() => onSimulazione(scheda.simulazione!)} className="btn-primary flex w-full items-center justify-center gap-2 !py-2.5 text-[15px]">
-            <sim.Icon size={18} /> Avvia simulazione · {sim.titolo}
+            <sim.Icon size={18} /> {scheda.simulazione === 'eml' ? (scheda.luogo === 'eml' ? 'Avvia esperimento' : "Entra nell'EML") : `Avvia simulazione · ${sim.titolo}`}
           </button>
         )}
         <div className="flex flex-wrap items-center gap-2"><Badge tipo={scheda.badge} /><Voce id={scheda.id} audioOn={audioOn} /></div>

@@ -19,6 +19,14 @@ import Sheet from '../simulazioni/Sheet'
 import CameraCompatta from '../simulazioni/CameraCompatta'
 import { altezzaSheet, fattoreCamera, useLayoutSim } from '../simulazioni/compatto'
 import type { Passo } from '../simulazioni/contenuto'
+import ValoriEml from './ValoriEml'
+
+/** Solo sviluppo: espone camera e ancore per tarare le pose dei passi. */
+function HookDev({ ancore }: { ancore: Ancore | null }) {
+  const { camera, controls } = useThree()
+  ;(window as unknown as Record<string, unknown>).__eml = { camera, controls, ancore }
+  return null
+}
 
 /** Posizioni degli oggetti nel segnaposto (stessi nomi del GLB). */
 const ANCORE_SEGNAPOSTO: Record<string, [number, number, number]> = {
@@ -222,26 +230,39 @@ const STATO_SCENA: Record<string, { fenomeno: string | null; calore: Calore }> =
   misure: { fenomeno: 'oscillazione', calore: 1 },
   raffreddamento: { fenomeno: 'solidificazione', calore: 0.3 },
 }
-/** Da quale direzione si guarda ciascun componente. */
-const DIREZIONE: Record<string, [number, number, number]> = { camera_radial: [-0.9, 0.2, 0.55], pyrometer: [-0.8, -0.1, 0.8], carousel: [0.3, 0.55, 0.8] }
+/** Posa di ripiego se un passo non ne ha una (vista d'insieme della camera di processo). */
+const POSA_INSIEME = { pos: [4.6, 2.0, 6.6] as [number, number, number], target: [0, -0.1, 0.1] as [number, number, number] }
 
-/** Porta la camera sul componente del passo attivo (con easing); poi lascia i comandi all'utente. */
-function CameraPasso({ passo, ancore, fattore = 1 }: { passo: Passo | null; ancore: Ancore | null; fattore?: number }) {
+/**
+ * Porta la camera sulla POSA ASSOLUTA del passo attivo (posizione + target nel sistema del modello), partendo dalla posa
+ * ATTUALE (anche se l'utente l'ha spostata) con un'interpolazione dolce; poi lascia i comandi all'utente.
+ * Se l'utente prende i comandi durante il movimento, l'interpolazione si ferma. Su telefono/tablet la distanza dal target
+ * è moltiplicata per `fattore` (1 sul desktop).
+ */
+function CameraPasso({ passo, fattore = 1 }: { passo: Passo | null; fattore?: number }) {
   const { camera, controls } = useThree()
   const tw = useRef<{ t: number; p0: THREE.Vector3; t0: THREE.Vector3; p1: THREE.Vector3; t1: THREE.Vector3 } | null>(null)
+  const fattoreRef = useRef(fattore)
+  fattoreRef.current = fattore
   useEffect(() => {
     const c = controls as unknown as { target: THREE.Vector3 } | null
-    if (!passo || !c || !passo.ancora || !ancore?.[passo.ancora]) { tw.current = null; return }
-    const a = ancore[passo.ancora]
-    const dir = new THREE.Vector3(...(DIREZIONE[passo.ancora] ?? [0.55, 0.3, 0.78])).normalize()
-    tw.current = { t: 0, p0: camera.position.clone(), t0: c.target.clone(), p1: a.clone().addScaledVector(dir, (passo.distanza ?? 2.6) * fattore), t1: a.clone() }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [passo, ancore, camera, controls])
+    if (!passo || !c) { tw.current = null; return }
+    const posa = passo.camera ?? POSA_INSIEME
+    const t1 = new THREE.Vector3(...posa.target)
+    const p1 = new THREE.Vector3(...posa.pos).sub(t1).multiplyScalar(fattoreRef.current).add(t1)
+    tw.current = { t: 0, p0: camera.position.clone(), t0: c.target.clone(), p1, t1 }
+  }, [passo, camera, controls])
+  useEffect(() => {
+    const c = controls as unknown as { addEventListener?: (n: string, f: () => void) => void; removeEventListener?: (n: string, f: () => void) => void } | null
+    const stop = () => { tw.current = null }
+    c?.addEventListener?.('start', stop)
+    return () => c?.removeEventListener?.('start', stop)
+  }, [controls])
   useFrame((_, dt) => {
     const w = tw.current
     const c = controls as unknown as { target: THREE.Vector3; update: () => void } | null
     if (!w || !c) return
-    w.t = Math.min(1, w.t + dt / 1.5)
+    w.t = Math.min(1, w.t + dt / 1.8)
     const k = w.t * w.t * (3 - 2 * w.t)
     camera.position.lerpVectors(w.p0, w.p1, k)
     c.target.lerpVectors(w.t0, w.t1, k)
@@ -330,7 +351,9 @@ export function EmlCanvas({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: 
             return <Hotspot3D key={h.id} h={h} pos={p} onSelect={onHotspot} active={attivo === h.id} />
           })}
           <OrbitControls enableDamping minDistance={1.5} maxDistance={14} target={[0, 0, 0]} makeDefault />
-          <CameraPasso passo={passo} ancore={ancore} fattore={fattore} />
+          <CameraPasso passo={passo} fattore={fattore} />
+          <ValoriEml ancore={ancore} fenomeno={fenomeno} calore={calore} visibile={passo !== null || fenomeno !== null} />
+          {import.meta.env.DEV && <HookDev ancore={ancore} />}
           {info.modo !== 'desktop' && <CameraCompatta fattore={fattore} />}
           <OffsetVista sinistraPx={sinistraPx} sopraPx={sopraPx} />
         </Canvas>
@@ -350,13 +373,15 @@ interface Props {
   avviaSubito?: boolean
   /** notifica l'apertura/chiusura della sequenza a passi */
   onSequenza?: (aperta: boolean) => void
+  /** contatore: a ogni incremento parte la sequenza a passi (es. dal pulsante nella scheda di un punto) */
+  avvia?: number
 }
 
 /** Altezza (px) della barra di navigazione dell'esplorazione in basso (telefono/tablet): il pannello dei passi le sta sopra. */
 const BARRA_ESPLORA = 68
 
 /** Scena EML dentro il nodo: hotspot, pulsante "Avvia esperimento" e, a sequenza aperta, la colonna dei passi. */
-export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot, avviaSubito, onSequenza }: Props) {
+export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot, avviaSubito, onSequenza, avvia: avviaToken = 0 }: Props) {
   const passi = useMemo(() => PASSI_EML(), [])
   const [seq, setSeq] = useState<number | null>(avviaSubito ? 0 : null)
   const [ridotta, setRidotta] = useState(false)
@@ -364,6 +389,7 @@ export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot,
   const info = useLayoutSim()
   const slot = useSlotSopra(info.modo !== 'desktop')
   const passo = seq !== null ? (passi[seq] ?? null) : null
+  useEffect(() => { if (avviaToken > 0) { setSeq(0); setAperto(true) } }, [avviaToken])
   useEffect(() => { onSequenza?.(seq !== null); return () => onSequenza?.(false) }, [seq, onSequenza])
   // Esc chiude i passi (e solo quelli: se non sono aperti lascia fare agli altri)
   const seqRef = useRef(seq)

@@ -13,7 +13,6 @@ export type VoceSimulazione = { id: string; titolo: string; load: Carica; Compon
  * <SimulazioneShell/>), scrivi i passi provvisori in passi.ts e aggiungi UNA riga in `DEFINIZIONI`.
  */
 const DEFINIZIONI: { id: string; titolo: string; load: Carica }[] = [
-  { id: 'eml', titolo: "L'esperimento nell'EML", load: () => import('./Eml') },
   { id: 'campo', titolo: 'La ISS nel campo magnetico terrestre', load: () => import('../ambienti/AmbienteCampo') },
   { id: 'energia', titolo: "L'energia di bordo: alternatore e trasformatore", load: () => import('../ambienti/AmbienteEnergia') },
   { id: 'levitazione', titolo: "Dall'EML al Maglev", load: () => import('../ambienti/AmbienteLevitazione') },
