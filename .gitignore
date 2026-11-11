@@ -26,3 +26,6 @@ assets/renders/capsula/capsula-pano.jpg
 
 # materiale del professore: resta solo in locale
 *.pptx
+
+# schermate del QA (pesanti, restano in locale)
+docs/qa/**/*.png
