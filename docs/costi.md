@@ -35,3 +35,5 @@ Prezzi verificati il 10/11 con l'endpoint gratuito `POST /estimate/{modello}` de
 
 **Totale alla chiusura (10/11, 22:10):** Higgsfield circa **31,8 $ ≈ 29 €** (nessuna nuova generazione nel pomeriggio e in serata); ElevenLabs 0 € extra (piano Starter, saldo circa 13.243/40.000 caratteri). **Budget residuo:** circa 1 € sul massimo di 30 €.
 | 11/11/2026 | ElevenLabs Music (music_v1) | Musica delle simulazioni: 1 prova da 10 s + 1 traccia da 90 s, loop finale da 86 s a -20 LUFS | 100 s di musica; saldo caratteri invariato (13.683/40.000) | 0 € extra (piano Starter; consumo Music non esposto dall'API: verificare sulla dashboard) | `public/audio/ambient/simulazioni.mp3` (sorgenti in `assets/audio/musica/`) | Nessuna spesa Higgsfield |
+
+**Totale alla chiusura (11/11, mattina):** Higgsfield circa **31,8 $ ≈ 29 €** (nessuna generazione); ElevenLabs 0 € extra (piano Starter; caratteri 13.683/40.000; consumo della Music da verificare sulla dashboard). **Budget residuo:** circa 1 € sul massimo di 30 €.
