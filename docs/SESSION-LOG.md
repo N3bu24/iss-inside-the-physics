@@ -73,3 +73,10 @@ Diario cronologico delle sessioni. **Si aggiunge solo in fondo.**
 **Chiesto all'autore / risposte:** guasto EML → «simulazione in arrivo» o schermo vuoto; sfondo del finale → render con visuale libera, fiamme animate, tremolio e suono che cambia (scelta del mezzo lasciata all'orchestratore); pubblicazione e repo pubblica → sì; pptx → toglierlo dalla storia; email → sostituirla; chiusura dei programmi secondari → autorizzata (anche forzare EA); responsive con desktop invariato e schermate su Telegram → fatto; aggiornamenti Telegram a ogni progresso → sì.
 
 **Spesa API:** ElevenLabs Sound Effects 50 caratteri (piano Starter, 0 € extra); nessuna spesa Higgsfield.
+
+## 11/11/2026, 4:00 → mattina — v1.1.0 / v1.1.1 (lavoro programmato)
+- Avvio automatico alle 4:00 (CronCreate). Ondata 1 in parallelo: researcher (diretta NASA, API posizione), media-producer (musica ElevenLabs Music), content-writer (`content/v11.json`), web A (EML unico), web B (audio, icone, mini-mappa, nomi, versione), web C (sezioni, valori, Cupola in diretta).
+- Ondata 2: merge, QA Sonnet (0 bloccanti, 12 rifiniture), correzioni, verifica dell'orchestratore su più risoluzioni, rifiniture mobile, v1.1.0 (tag, release).
+- Problema: deploy Vercel fallito dal merge di web B (`@types/node` assente in un ambiente pulito; in locale c'era per caso). Corretto in v1.1.1, verificato con un clone pulito; sito online con la 1.1.1.
+- Problema: le schermate del QA (40 MB) erano finite in un commit; tolte dalla repo, `docs/qa/**/*.png` ignorato.
+- mp3 della musica e resoconto inviati su Telegram.

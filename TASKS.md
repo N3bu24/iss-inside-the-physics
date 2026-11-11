@@ -140,6 +140,6 @@ Ondata 3:
 - [x] P2 Musica calma e sintetica dentro le simulazioni — nota 13
 - [x] P2 Nome dello strumento accanto al punto luminoso — nota 14
 - [x] P3 Numero di versione discreto nell'interfaccia, letto da package.json — nota 15
-- [ ] P1 QA su desktop, tablet, telefono (QA Sonnet: 0 bloccanti, 12 rifiniture corrette); v1.1.0 (tag, release), push, Vercel, resoconto Telegram
+- [x] P1 QA su desktop, tablet, telefono (QA Sonnet: 0 bloccanti, 12 rifiniture corrette); v1.1.0 + v1.1.1 (build Vercel), push, sito verificato, resoconto Telegram
 - Nota 11/11: il QA ha trovato 12 problemi non bloccanti (sovrapposizioni, banner della diretta, valori di Motore/Energia/Aurora poco plausibili), tutti corretti salvo P-11 (posizione di «Esci» su tablet/telefono, accettata). Schermate del QA tolte dalla repo (40 MB, restano in locale; `docs/qa/**/*.png` in `.gitignore`).
 - Nota 11/11: la musica delle simulazioni (ElevenLabs Music) non scala i caratteri del piano; consumo reale da verificare sulla dashboard.
