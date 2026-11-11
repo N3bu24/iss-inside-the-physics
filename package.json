@@ -1,7 +1,7 @@
 {
   "name": "iss-inside-the-physics",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.5",
     "@types/katex": "^0.16.8",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/three": "^0.187.0",
