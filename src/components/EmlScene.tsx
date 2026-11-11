@@ -217,7 +217,7 @@ export class BarrieraEml extends Component<{ children: ReactNode }, { errore: bo
 function Hotspot3D({ h, pos, onSelect, active }: { h: Hotspot; pos: THREE.Vector3; onSelect: (id: string) => void; active: boolean }) {
   return (
     <Html position={pos} center zIndexRange={[20, 0]}>
-      <HotspotMarker tipo={h.categoria ?? 'eml'} titolo={h.titolo} simulazione={h.simulazione} attivo={active} onClick={() => onSelect(h.id)} />
+      <HotspotMarker tipo={h.categoria ?? 'eml'} titolo={h.titolo} simulazione={h.simulazione === 'eml' ? undefined : h.simulazione} attivo={active} onClick={() => onSelect(h.id)} />
     </Html>
   )
 }

@@ -29,7 +29,7 @@ export default function FenomeniPanel({ attivo, onSelect }: { attivo: string | n
   const slot = useSlotSopra(info.modo === 'sheet')
 
   const pannello = (
-    <aside className={`fen-panel ${slot ? 'fen-in-slot ' : ''}glass slide-in absolute right-4 top-[15.5rem] bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5`} style={{ background: "rgba(7,12,26,.9)" }}>
+    <aside className={`fen-panel ${slot ? 'fen-in-slot ' : ''}glass slide-in absolute right-4 top-[19.5rem] bottom-24 z-30 flex w-[22rem] max-w-[90vw] flex-col rounded-2xl p-5`} style={{ background: "rgba(7,12,26,.9)" }}>
       <div className="text-[10px] uppercase tracking-[0.2em] text-white/45">Cosa succede nel campione</div>
       <ol className="fen-lista mt-3 space-y-1">
         {fenomeni.map((x, i) => (

@@ -550,7 +550,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
     oggetto3d: h.pos?.tipo === 'oggetto3d' ? h.pos.oggetto : undefined, spostamento3d: h.pos?.tipo === 'oggetto3d' ? h.pos.spostamento : undefined,
   })), [hotspot])
 
-  const voci = useMemo(() => hotspot.map((h) => ({ id: h.id, titolo: h.titolo, categoria: h.categoria, visto: viste.has(h.id), simulazione: h.simulazione })), [hotspot, viste])
+  const voci = useMemo(() => hotspot.map((h) => ({ id: h.id, titolo: h.titolo, categoria: h.categoria, visto: viste.has(h.id), simulazione: nodoId === 'eml' && h.simulazione === 'eml' ? undefined : h.simulazione })), [hotspot, viste, nodoId])
   const scheda = hotspot.find((h) => h.id === apri) ?? null
   useEffect(() => { if (apri) segnaVisto(apri) }, [apri, segnaVisto])
   const panoramico = nodo.tipo === 'panorama'
