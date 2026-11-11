@@ -15,7 +15,7 @@ let corrente: { el: HTMLMediaElement; ferma: () => void } | null = null
 /** tutte le voci conosciute, per applicare il muto istantaneo */
 const note = new Set<HTMLMediaElement>()
 
-const DISSOLVENZA_MS = 250
+const DISSOLVENZA_MS = 120
 
 export const audioGlobale = {
   get: () => on,
