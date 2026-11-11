@@ -1,16 +1,82 @@
 {
   "_nota": "Testi brevi per la v1.1.0. Scritto dal content-writer; il codice legge questi campi con un ripiego se mancano.",
-  "strumenti": {},
-  "diretta": {
-    "etichetta": "",
-    "nota": "",
-    "credito": "",
-    "mappaTitolo": "",
-    "nonDisponibile": "",
-    "impostazioneTitolo": "",
-    "impostazioneDescrizione": ""
+  "strumenti": {
+    "columbus-rack": "EML",
+    "columbus-rack-eml": "EML",
+    "eml-modello": "EML",
+    "eml-bobina": "Bobina",
+    "eml-campo-variabile": "Bobina",
+    "eml-campione": "Campione",
+    "eml-correnti-indotte": "Campione",
+    "eml-joule": "Campione",
+    "eml-fusione": "Telecamera",
+    "eml-solidificazione": "Pirometro",
+    "eml-autoinduzione": "Bobina",
+    "eml-induttore": "Bobina",
+    "eml-quattro-esperimenti": "Carosello",
+    "kibo-elf": "ELF",
+    "kibo-joystick": "Joystick",
+    "tranquility-ared": "ARED",
+    "tranquility-eclss": "ECLSS",
+    "unity-airlock": "Quest",
+    "unity-ventole": "Ventole",
+    "destiny-alimentazione": "Alimentazione",
+    "cupola-pannelli": "Pannelli solari",
+    "harmony-laptop": "Laptop",
+    "columbus-laptop": "Laptop"
   },
-  "valori": {},
-  "sezioni": {},
-  "musica": { "creditoTitolo": "", "creditoTesto": "" }
+  "diretta": {
+    "etichetta": "In diretta dalla ISS",
+    "nota": "Riprese reali della NASA, trasmesse in tempo reale dalle telecamere della Stazione. Durante la notte orbitale l'immagine può essere nera, e il collegamento può interrompersi.",
+    "credito": "Video: NASA, diretta dalla ISS",
+    "mappaTitolo": "Dove si trova ora la ISS",
+    "nonDisponibile": "La diretta non è disponibile in questo momento. Per ora vedi il video registrato.",
+    "impostazioneTitolo": "Vista dalla Cupola in diretta",
+    "impostazioneDescrizione": "Nella Cupola mostra la diretta dalla ISS al posto del video registrato, quando è disponibile."
+  },
+  "valori": {
+    "eml": {
+      "temperatura": "Temperatura campione",
+      "frequenza": "Frequenza bobina"
+    },
+    "campo": {
+      "velocita": "Velocità orbitale",
+      "fem": "Fem indotta"
+    },
+    "energia": {
+      "tensione": "Tensione",
+      "corrente": "Corrente",
+      "perdite": "Perdite per effetto Joule"
+    },
+    "levitazione": {
+      "velocita": "Velocità del carrello",
+      "quota": "Altezza dalla guida"
+    },
+    "rmn": {
+      "frequenza": "Frequenza di Larmor",
+      "segnale": "Segnale FID"
+    },
+    "motore": {
+      "giri": "Velocità di rotazione",
+      "fem": "Fem"
+    },
+    "autoinduzione": {
+      "corrente": "Corrente",
+      "energia": "Energia nel campo"
+    },
+    "aurora": {
+      "raggio": "Raggio dell'elica",
+      "campo": "Campo magnetico"
+    }
+  },
+  "sezioni": {
+    "aurora": ["Particella nel campo", "La Terra e la ISS"],
+    "motore": ["Alternatore", "Motore", "Sulla Stazione"],
+    "energia": ["Alternatore", "Trasformatore"],
+    "levitazione": ["Carrello Maglev", "Confronto con l'EML"]
+  },
+  "musica": {
+    "creditoTitolo": "Musica delle simulazioni",
+    "creditoTesto": "Le musiche che accompagnano le simulazioni sono state generate con ElevenLabs. Sono composizioni sintetiche, non registrazioni NASA o ESA."
+  }
 }
