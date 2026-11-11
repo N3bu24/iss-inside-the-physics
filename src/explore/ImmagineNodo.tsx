@@ -4,6 +4,11 @@ import type { HotspotPosizionato } from '../data/contenuti'
 import HotspotMarker from '../ui/Hotspot'
 import { useVista } from './vista'
 import { useCompatto } from '../lib/dispositivo'
+import { usePreferenza } from '../lib/preferenze'
+import { URL_CANALE_LIVE, URL_EMBED_STREAM, CREDITO_STREAM } from '../data/diretta'
+import { testoDiretta } from '../lib/contenutoV11'
+import Badge from '../components/Badge'
+import MappaIss from './MappaIss'
 
 const VIDEO_TERRA = '/video/terra-cupola.mp4'
 
@@ -41,6 +46,9 @@ function PortelloImmagine({ p, onPortello, nomeNodo }: { p: Portello; onPortello
 export default function ImmagineNodo({ nodo, hotspot, portelli, porte, onHotspot, onPortello, onAmbiente, nomeNodo, uscendo }: Props) {
   const cupola = nodo.tipo === 'cupola'
   const [videoOk, setVideoOk] = useState(true)
+  const prefDiretta = usePreferenza('cupolaDiretta')
+  const [tornaVideo, setTornaVideo] = useState(false)
+  const diretta = cupola && prefDiretta && !tornaVideo && !uscendo
   const compatto = useCompatto()
   const marcatori = (
     <>
@@ -58,7 +66,15 @@ export default function ImmagineNodo({ nodo, hotspot, portelli, porte, onHotspot
       className="absolute inset-0 z-20 overflow-hidden bg-[#02030a]"
       style={{ animation: uscendo ? 'esceFade .8s ease both' : cupola ? 'entraFade 1s ease both' : 'entraZoom 1.4s cubic-bezier(.2,.8,.2,1) both', pointerEvents: uscendo ? 'none' : undefined }}
     >
-      {cupola && videoOk ? (
+      {diretta ? (
+        <iframe
+          src={URL_EMBED_STREAM}
+          title="Diretta dalla ISS (NASA)"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          referrerPolicy="strict-origin-when-cross-origin"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[max(100%,56.25vw)] w-[max(100%,177.78vh)] -translate-x-1/2 -translate-y-1/2 border-0"
+        />
+      ) : cupola && videoOk ? (
         <div className="zoom-lento absolute inset-0">
           <video src={VIDEO_TERRA} poster="/video/terra-cupola-poster.jpg" autoPlay loop muted playsInline onError={() => setVideoOk(false)} className="absolute inset-0 h-full w-full object-cover" />
         </div>
@@ -68,6 +84,26 @@ export default function ImmagineNodo({ nodo, hotspot, portelli, porte, onHotspot
         </div>
       )}
       {!cupola && <div className="absolute inset-0 bg-black/45" />}
+      {diretta && (
+        <>
+          <div className="pointer-events-auto absolute left-1/2 top-[4.6rem] z-30 flex max-w-[92vw] -translate-x-1/2 flex-col items-center gap-1.5 compatto:top-[7.2rem]">
+            <div className="glass flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full px-4 py-1.5 text-[12px] text-white/85">
+              <span className="flex items-center gap-2 font-semibold uppercase tracking-[0.14em] text-white">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]" />
+                {testoDiretta('etichetta', 'In diretta dalla ISS')}
+              </span>
+              <Badge tipo="diretta" />
+              <span className="text-white/55">{testoDiretta('credito', CREDITO_STREAM)}</span>
+            </div>
+            <div className="glass flex flex-wrap items-center justify-center gap-x-3 gap-y-0.5 rounded-full px-3 py-1 text-[11px] text-white/70">
+              <span className="max-w-[60ch] text-center">{testoDiretta('nota', 'Può essere buio o a schermo scuro: la ISS orbita attorno alla Terra ogni 90 minuti.')}</span>
+              <a href={URL_CANALE_LIVE} target="_blank" rel="noreferrer" className="text-cyan-200 underline-offset-2 hover:underline">Apri su YouTube</a>
+              <button onClick={() => setTornaVideo(true)} className="text-cyan-200 underline-offset-2 hover:underline">Torna al video registrato</button>
+            </div>
+          </div>
+          <MappaIss className="absolute bottom-[6.5rem] right-4 z-30 w-[min(270px,44vw)] compatto:bottom-auto compatto:top-[12rem] compatto:w-[min(190px,40vw)]" />
+        </>
+      )}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(2,3,10,.55)_100%)]" />
       {compatto ? (
         <div className="scroll-sottile absolute inset-x-3 top-[8.8rem] z-10 grid grid-cols-[repeat(auto-fit,minmax(7.5rem,1fr))] content-start justify-items-center gap-x-2 gap-y-2 overflow-y-auto pt-3 landscape:right-40 landscape:top-[3.2rem]" style={{ bottom: 'calc(var(--barra-spazio) + var(--colonna-h))' }}>{marcatori}</div>

@@ -3,6 +3,7 @@ import { RotateCcw, X } from 'lucide-react'
 import { preferenze, usePreferenza, type Preferenze } from '../lib/preferenze'
 import { ContenutoCrediti } from '../components/Crediti'
 import { PRIORITA_PANNELLO, useEscape } from '../lib/useEscape'
+import { testoDiretta } from '../lib/contenutoV11'
 
 export type SchedaImpostazioni = 'impostazioni' | 'crediti'
 
@@ -20,7 +21,7 @@ function Cursore({ etichetta, chiave }: { etichetta: string; chiave: 'volumeVoce
   )
 }
 
-function Interruttore({ etichetta, aiuto, chiave }: { etichetta: string; aiuto?: string; chiave: 'sottotitoli' | 'altoContrasto' | 'riduciAnimazioni' | 'saltaVoli' | 'tremolioCapsula' }) {
+function Interruttore({ etichetta, aiuto, chiave }: { etichetta: string; aiuto?: string; chiave: 'sottotitoli' | 'altoContrasto' | 'riduciAnimazioni' | 'saltaVoli' | 'tremolioCapsula' | 'cupolaDiretta' }) {
   const v = usePreferenza(chiave)
   return (
     <div className="flex items-center gap-4 py-2.5">
@@ -84,6 +85,11 @@ export default function Impostazioni({ scheda: iniziale = 'impostazioni', onClos
                 <div className="pb-1 text-[11px] uppercase tracking-[0.16em] text-white/45">Esplorazione</div>
                 <Interruttore etichetta="Salta i voli tra i moduli" aiuto="Ogni spostamento è un viaggio rapido: si arriva subito, senza video." chiave="saltaVoli" />
                 <Interruttore etichetta="Tremolio nella capsula di rientro" aiuto="Leggera vibrazione della visuale durante la discesa." chiave="tremolioCapsula" />
+                <Interruttore
+                  etichetta={testoDiretta('impostazioneTitolo', 'Cupola: vista in diretta dalla ISS')}
+                  aiuto={testoDiretta('impostazioneDescrizione', 'Nella Cupola, al posto del video registrato, la diretta ufficiale NASA della Terra dalla ISS (serve la connessione). Se non è disponibile, torna al video.')}
+                  chiave="cupolaDiretta"
+                />
               </div>
               <div className="pt-4">
                 <button onClick={() => preferenze.reset()} className="flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 hover:bg-white/10"><RotateCcw size={14} /> Ripristina predefinite</button>
