@@ -1,3 +1,5 @@
+import { testoMusica } from '../lib/contenutoV11'
+
 /** Elenco completo dei crediti (da public/panorami/CREDITI.md + voce narrante + render). */
 export interface VoceCredito { file: string; soggetto: string; fonte: string; credito: string; licenza: string }
 
@@ -24,6 +26,7 @@ export const creditiAltri: { titolo: string; testo: string }[] = [
   { titolo: 'Video della Cupola', testo: 'Video: NASA Johnson – ISS View of Planet Earth (NASA SVS).' },
   { titolo: 'Diretta dalla ISS (opzionale)', testo: 'Diretta: NASA, "Live High-Definition Views from the International Space Station" (stream ufficiale NASA su YouTube), attivabile dalle Impostazioni. Posizione della ISS: API pubblica wheretheiss.at. Mappa: NASA Earth Observatory (Blue Marble Next Generation, pubblico dominio).' },
   { titolo: 'Capsula di rientro (finale)', testo: 'Modello 3D: ricostruzione in Blender (panorama dell’interno della capsula). Plasma del rientro: simulazione concettuale animata via shader. Non sono riprese reali.' },
+  { titolo: testoMusica('creditoTitolo', 'Musica delle simulazioni'), testo: testoMusica('creditoTesto', 'Musica di sottofondo delle simulazioni: tracce sintetiche generate con ElevenLabs (ricostruzione, non registrazione).') },
   { titolo: 'Voce narrante', testo: 'Sintesi vocale ElevenLabs (voce maschile generata con intelligenza artificiale, non una persona reale).' },
   { titolo: 'Audio di sottofondo', testo: 'Audio di sottofondo: effetti sonori generati con ElevenLabs (ricostruzione, non registrazione reale della ISS). Il rombo del rientro: ElevenLabs Sound Effects + sintesi.' },
   { titolo: 'Video e animazioni', testo: 'Simulazione concettuale – render Blender. Non sono riprese reali.' },

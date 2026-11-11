@@ -72,7 +72,7 @@ function Planisfero({ pos, traccia }: { pos: Punto | null; traccia: Punto[] }) {
         {pos && (
           <g transform={`translate(${x(pos.lon)} ${y(pos.lat)})`}>
             <circle r={7} fill="#35e0ff" fillOpacity={0.25}><animate attributeName="r" values="4;9;4" dur="2.2s" repeatCount="indefinite" /></circle>
-            <circle r={2.6} fill="#fff" stroke="#35e0ff" strokeWidth={1.2} vectorEffect="non-scaling-stroke" />
+            <circle r={3.4} fill="#fff" stroke="#35e0ff" strokeWidth={1.2} vectorEffect="non-scaling-stroke" />
           </g>
         )}
       </svg>
@@ -86,9 +86,9 @@ function Orologio({ pos, errore }: { pos: Punto | null; errore: boolean }) {
   const h = ora.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
   const coord = pos ? `${Math.abs(pos.lat).toFixed(1)}° ${pos.lat >= 0 ? 'N' : 'S'} · ${Math.abs(pos.lon).toFixed(1)}° ${pos.lon >= 0 ? 'E' : 'O'}` : errore ? 'posizione non disponibile' : 'posizione in arrivo…'
   return (
-    <div className="mt-1.5 flex items-baseline justify-between gap-2 text-[11px] leading-tight text-white/70">
-      <span className="tabular-nums">{d} · <span className="text-white/90">{h}</span></span>
-      <span className="tabular-nums text-cyan-200/80">{coord}</span>
+    <div className="mt-1.5 flex items-baseline justify-between gap-2 text-[11px] leading-tight text-white/70 compatto:flex-col compatto:items-start compatto:gap-0 compatto:text-[10px]">
+      <span className="whitespace-nowrap tabular-nums">{d} · <span className="text-white/90">{h}</span></span>
+      <span className="whitespace-nowrap tabular-nums text-cyan-200/80">{coord}</span>
     </div>
   )
 }

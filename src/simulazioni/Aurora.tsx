@@ -99,7 +99,7 @@ function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
         </group>
       ))}
       <Etichetta p={[4.3, 3.4, -4.2]}>B uscente</Etichetta>
-      <Valore sim="aurora" chiave="campo" ripiego="Campo" p={[4.3, 3.0, -4.2]} valore={() => `${num(ctl.current.B * 10, 0)} mT`} />
+      <Valore sim="aurora" chiave="campo" ripiego="Campo" sotto p={[4.3, 3.25, -4.2]} valore={() => `${num(ctl.current.B * 10, 0)} mT`} />
 
     </group>
   )
