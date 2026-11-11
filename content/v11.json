@@ -1,0 +1,16 @@
+{
+  "_nota": "Testi brevi per la v1.1.0. Scritto dal content-writer; il codice legge questi campi con un ripiego se mancano.",
+  "strumenti": {},
+  "diretta": {
+    "etichetta": "",
+    "nota": "",
+    "credito": "",
+    "mappaTitolo": "",
+    "nonDisponibile": "",
+    "impostazioneTitolo": "",
+    "impostazioneDescrizione": ""
+  },
+  "valori": {},
+  "sezioni": {},
+  "musica": { "creditoTitolo": "", "creditoTesto": "" }
+}
