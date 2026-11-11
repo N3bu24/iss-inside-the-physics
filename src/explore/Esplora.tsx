@@ -504,7 +504,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
     for (const h of hotspot) if (h.pos?.tipo === 'sfera') {
       out.push({
         key: `h:${h.id}`, yaw: h.pos.yaw, pitch: h.pos.pitch,
-        nodo: <HotspotMarker tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} visto={viste.has(h.id)} onClick={() => apriScheda(h.id)} />,
+        nodo: <HotspotMarker tipo={h.categoria} idPunto={h.id} titolo={h.titolo} simulazione={h.simulazione} visto={viste.has(h.id)} onClick={() => apriScheda(h.id)} />,
         bordo: <IndicatoreBordo tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} onClick={() => vaiAlPunto(h.id, false)} />,
       })
     }

@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import { Atom, ChevronsUp, Cpu, Globe, Lock, Magnet, User, Zap, type LucideIcon } from 'lucide-react'
 import type { Categoria } from '../data/types'
 import { iconaSim } from '../data/iconeSim'
+import { nomeBreve } from '../data/nomiBrevi'
 
 export const CATEGORIE: Record<Categoria, { Icon: LucideIcon; colore: string; etichetta: string }> = {
   fisica: { Icon: Magnet, colore: '#35e0ff', etichetta: 'Fisica' },
@@ -20,7 +21,9 @@ const ALTRI: Record<'portello' | 'chiuso', { Icon: LucideIcon; colore: string }>
 }
 
 /** Icona e colore di un marcatore. Le porte degli ambienti (`ambiente`) prendono icona e colore della simulazione omonima (`idAmbiente`). */
-export function stileTipo(tipo: TipoMarcatore, idAmbiente?: string): { Icon: LucideIcon; colore: string } {
+export function stileTipo(tipo: TipoMarcatore, idAmbiente?: string, simulazione?: string): { Icon: LucideIcon; colore: string } {
+  // punto con simulazione: simbolo unico (Play) nel colore della simulazione
+  if (simulazione && tipo !== 'portello' && tipo !== 'chiuso') { const s = iconaSim(simulazione); return { Icon: s.Icon, colore: s.colore } }
   if (tipo === 'ambiente') { const s = iconaSim(idAmbiente); return { Icon: s.Icon, colore: s.colore } }
   return tipo in CATEGORIE ? CATEGORIE[tipo as Categoria] : ALTRI[tipo as 'portello' | 'chiuso']
 }
@@ -38,6 +41,8 @@ interface Props {
   simulazione?: string
   /** solo per tipo="ambiente": id dell'ambiente (= id della simulazione omonima) */
   ambiente?: string
+  /** id del punto: se ha un nome breve (content/v11.json) e` quello l'etichetta accanto al punto; il titolo completo compare al passaggio */
+  idPunto?: string
 }
 
 /** Bollino tondo con l'icona della simulazione (stessa icona ovunque, vedi data/iconeSim.ts). */
@@ -56,8 +61,9 @@ export function BollinoSim({ simulazione, size = 22 }: { simulazione: string; si
  * - tondo grande (64 px, icona della simulazione) = porta di un ambiente interattivo;
  * - rombo solo contorno con doppia freccia = portello per muoversi tra i moduli (tratteggiato e col lucchetto se chiuso).
  */
-export default function HotspotMarker({ tipo, titolo, onClick, attivo, visto, className = '', simulazione, ambiente }: Props) {
-  const { Icon, colore } = stileTipo(tipo, ambiente)
+export default function HotspotMarker({ tipo, titolo, onClick, attivo, visto, className = '', simulazione, ambiente, idPunto }: Props) {
+  const nome = nomeBreve(idPunto)
+  const { Icon, colore } = stileTipo(tipo, ambiente, simulazione)
   if (tipo === 'portello' || tipo === 'chiuso') {
     const chiuso = tipo === 'chiuso'
     return (
@@ -86,19 +92,17 @@ export default function HotspotMarker({ tipo, titolo, onClick, attivo, visto, cl
       style={{ '--c': colore } as CSSProperties}
     >
       <Icon size={tipo === 'ambiente' ? 32 : 30} strokeWidth={2.2} color="#fff" />
-      {tipo !== 'ambiente' && simulazione && <BollinoSim simulazione={simulazione} />}
-      <span className="hs2-tip">{titolo}{suggerimento && <i className="hs2-tip-sim"> · {suggerimento}</i>}</span>
+      <span className="hs2-tip">{nome ?? titolo}{nome && nome !== titolo && <i className="hs2-tip-sim"> · {titolo}</i>}{suggerimento && <i className="hs2-tip-sim"> · {suggerimento}</i>}</span>
     </button>
   )
 }
 
 /** Indicatore sul bordo dello schermo per un punto fuori dal campo visivo: icona della categoria + freccia verso il punto (--a impostato dal contenitore). */
 export function IndicatoreBordo({ tipo, titolo, onClick, simulazione }: { tipo: TipoMarcatore; titolo: string; onClick: () => void; simulazione?: string }) {
-  const { Icon, colore } = stileTipo(tipo)
+  const { Icon, colore } = stileTipo(tipo, undefined, simulazione)
   return (
     <button type="button" onClick={onClick} title={`${titolo}: guarda qui`} aria-label={`Guarda verso ${titolo}`} className="ind-bordo" style={{ '--c': colore } as CSSProperties}>
       <Icon size={18} strokeWidth={2.2} color="#fff" />
-      {simulazione && <span className="bollino-in-riga absolute -right-1.5 -top-1.5 flex"><BollinoSim simulazione={simulazione} size={16} /></span>}
       <i className="ind-freccia" />
     </button>
   )

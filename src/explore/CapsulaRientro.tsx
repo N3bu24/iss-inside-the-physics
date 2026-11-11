@@ -233,7 +233,7 @@ export default function CapsulaRientro({ ref, hotspot, portelli, pausa, visti, o
     const out: Punto[] = []
     hotspot.forEach((h, i) => {
       const s = ic[1 + (i % Math.max(1, ic.length - 1))]
-      out.push({ key: `h:${h.id}`, lon: s.lon, lat: s.lat, nodo: <HotspotMarker tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} visto={visti.has(h.id)} onClick={() => onHotspot(h.id)} /> })
+      out.push({ key: `h:${h.id}`, lon: s.lon, lat: s.lat, nodo: <HotspotMarker tipo={h.categoria} idPunto={h.id} titolo={h.titolo} simulazione={h.simulazione} visto={visti.has(h.id)} onClick={() => onHotspot(h.id)} /> })
     })
     portelli.forEach((p, i) => {
       const s = ic[i % ic.length]

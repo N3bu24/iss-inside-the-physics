@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowDown, ArrowUp, ChevronDown, ChevronsUp, Hand, Keyboard, Mouse, X, ZoomIn } from 'lucide-react'
+import { ArrowDown, ArrowUp, ChevronDown, ChevronsUp, Hand, Keyboard, Mouse, Play, X, ZoomIn } from 'lucide-react'
 
 /** Gesti per i dispositivi touch (telefono e tablet): scheda al centro, si chiude con un tocco o da sola dopo qualche secondo. */
 export function LegendaGesti({ onChiudi }: { onChiudi: () => void }) {
@@ -37,6 +37,7 @@ export default function Legenda() {
         <li className="flex items-center gap-2"><span className="kbd"><ArrowUp size={12} /></span><span className="kbd"><ArrowDown size={12} /></span>Avanti / indietro</li>
         <li className="flex items-center gap-2"><Mouse size={18} className="text-white/60" />Rotella: zoom</li>
         <li className="flex items-center gap-2"><Hand size={18} className="text-white/60" />Trascina: guarda intorno</li>
+        <li className="flex items-center gap-2"><span className="grid h-[18px] w-[18px] shrink-0 place-items-center rounded-full border-2 border-cyan-300"><Play size={8} color="#fff" fill="#fff" /></span>Punto con simulazione</li>
       </ul>
     </div>
   )
