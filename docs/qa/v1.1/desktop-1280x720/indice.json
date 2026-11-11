@@ -1,0 +1,3256 @@
+{
+ "scrollW": 1280,
+ "scrollH": 720,
+ "W": 1280,
+ "H": 720,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "Verso Destiny",
+   "x": 612,
+   "y": 353,
+   "w": 56,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 629,
+   "y": 370,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Cavi lungo il soffitto",
+   "x": 890,
+   "y": 92,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 901,
+   "y": 103,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il display delle comunicazi",
+   "x": 732,
+   "y": 92,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 743,
+   "y": 103,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Attrezzi: energia da conser",
+   "x": 364,
+   "y": 232,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 375,
+   "y": 243,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il laptop con la Terra",
+   "x": 364,
+   "y": 158,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 375,
+   "y": 169,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "div",
+   "testo": "HarmonyIl nodo che collega i laboratoriU",
+   "x": 16,
+   "y": 76,
+   "w": 336,
+   "h": 293
+  },
+  {
+   "tag": "button",
+   "testo": "Harmony",
+   "x": 17,
+   "y": 77,
+   "w": 334,
+   "h": 47
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 37,
+   "y": 92,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 313,
+   "y": 91,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "div",
+   "testo": "Punti di interesse0/4Cavi lungo il soffi",
+   "x": 16,
+   "y": 381,
+   "w": 336,
+   "h": 216
+  },
+  {
+   "tag": "button",
+   "testo": "Punti di interesse0/4",
+   "x": 17,
+   "y": 382,
+   "w": 334,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 33,
+   "y": 394,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 319,
+   "y": 394,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Cavi lungo il soffitto",
+   "x": 25,
+   "y": 422,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 435,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Il display delle comunicazioni",
+   "x": 25,
+   "y": 464,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 477,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Attrezzi: energia da conservare",
+   "x": 25,
+   "y": 506,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 519,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Il laptop con la Terra",
+   "x": 25,
+   "y": 548,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 561,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "div",
+   "testo": "La stazioneHarmonyZvezda: non visitabile",
+   "x": 1024,
+   "y": 16,
+   "w": 240,
+   "h": 230
+  },
+  {
+   "tag": "button",
+   "testo": "Ingrandisci la mappa",
+   "x": 1229,
+   "y": 29,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1233,
+   "y": 33,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 1037,
+   "y": 55,
+   "w": 214,
+   "h": 159
+  },
+  {
+   "tag": "nav",
+   "testo": "Tappe suggerite",
+   "x": 343,
+   "y": 32,
+   "w": 593,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Harmony",
+   "x": 352,
+   "y": 37,
+   "w": 67,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Columbus",
+   "x": 429,
+   "y": 37,
+   "w": 71,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "EML",
+   "x": 510,
+   "y": 37,
+   "w": 40,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Kibo",
+   "x": 560,
+   "y": 37,
+   "w": 41,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Destiny",
+   "x": 611,
+   "y": 37,
+   "w": 57,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Unity",
+   "x": 677,
+   "y": 37,
+   "w": 45,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Tranquility",
+   "x": 732,
+   "y": 37,
+   "w": 73,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Cupola",
+   "x": 815,
+   "y": 37,
+   "w": 54,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Finale",
+   "x": 879,
+   "y": 37,
+   "w": 48,
+   "h": 20
+  },
+  {
+   "tag": "div",
+   "testo": "Avanti / indietroRotella: zoomTrascina: ",
+   "x": 16,
+   "y": 584,
+   "w": 216,
+   "h": 116
+  },
+  {
+   "tag": "button",
+   "testo": "Comprimi i comandi",
+   "x": 209,
+   "y": 593,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 209,
+   "y": 593,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 37,
+   "y": 600,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 69,
+   "y": 600,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 31,
+   "y": 623,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 31,
+   "y": 647,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 36,
+   "y": 676,
+   "w": 8,
+   "h": 8
+  },
+  {
+   "tag": "button",
+   "testo": "Indice di tutti i contenuti",
+   "x": 825,
+   "y": 662,
+   "w": 42,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 838,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Impostazioni",
+   "x": 875,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 886,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Torna all'introduzione",
+   "x": 921,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 932,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "",
+   "x": 1047,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1058,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "",
+   "x": 1093,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Audio attivo",
+   "x": 1139,
+   "y": 664,
+   "w": 125,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1156,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Crediti",
+   "x": 1228,
+   "y": 702,
+   "w": 36,
+   "h": 14
+  },
+  {
+   "tag": "div",
+   "testo": "Indice dei contenuti",
+   "x": 0,
+   "y": 0,
+   "w": 1280,
+   "h": 720
+  },
+  {
+   "tag": "header",
+   "testo": "Indice dei contenutiTutto ciò che si può",
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 65
+  },
+  {
+   "tag": "h1",
+   "testo": "Indice dei contenuti",
+   "x": 32,
+   "y": 58,
+   "w": 180,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 912,
+   "y": 65,
+   "w": 15,
+   "h": 15
+  },
+  {
+   "tag": "input",
+   "testo": "Cerca nei contenuti",
+   "x": 900,
+   "y": 53,
+   "w": 288,
+   "h": 38
+  },
+  {
+   "tag": "button",
+   "testo": "Chiudi l'indice",
+   "x": 1208,
+   "y": 52,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1218,
+   "y": 62,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "nav",
+   "testo": "Sommario",
+   "x": 0,
+   "y": 105,
+   "w": 256,
+   "h": 615
+  },
+  {
+   "tag": "button",
+   "testo": "Ambienti",
+   "x": 24,
+   "y": 129,
+   "w": 207,
+   "h": 28
+  },
+  {
+   "tag": "button",
+   "testo": "Punti di interesse",
+   "x": 24,
+   "y": 161,
+   "w": 207,
+   "h": 28
+  },
+  {
+   "tag": "button",
+   "testo": "Harmony",
+   "x": 49,
+   "y": 190,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Columbus",
+   "x": 49,
+   "y": 214,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "EML, Electromagnetic Levitator",
+   "x": 49,
+   "y": 238,
+   "w": 182,
+   "h": 45
+  },
+  {
+   "tag": "button",
+   "testo": "Kibo",
+   "x": 49,
+   "y": 283,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Destiny",
+   "x": 49,
+   "y": 307,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Unity",
+   "x": 49,
+   "y": 331,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Tranquility",
+   "x": 49,
+   "y": 355,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Cupola",
+   "x": 49,
+   "y": 380,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Dallo spazio alla Terra",
+   "x": 49,
+   "y": 404,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazioni",
+   "x": 24,
+   "y": 432,
+   "w": 207,
+   "h": 28
+  },
+  {
+   "tag": "button",
+   "testo": "Campo magnetico",
+   "x": 49,
+   "y": 460,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 49,
+   "y": 466,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Energia",
+   "x": 49,
+   "y": 485,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 49,
+   "y": 491,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Levitazione",
+   "x": 49,
+   "y": 509,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 49,
+   "y": 515,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Risonanza",
+   "x": 49,
+   "y": 533,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 49,
+   "y": 539,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Motore",
+   "x": 49,
+   "y": 557,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 49,
+   "y": 563,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Autoinduzione",
+   "x": 49,
+   "y": 582,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 49,
+   "y": 588,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Aurora",
+   "x": 49,
+   "y": 606,
+   "w": 182,
+   "h": 24
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 49,
+   "y": 612,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Moduli non visitabili",
+   "x": 24,
+   "y": 634,
+   "w": 207,
+   "h": 28
+  },
+  {
+   "tag": "h2",
+   "testo": "Ambienti",
+   "x": 378,
+   "y": 137,
+   "w": 780,
+   "h": 27
+  },
+  {
+   "tag": "h3",
+   "testo": "Harmony",
+   "x": 378,
+   "y": 188,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 192,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 202,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Columbus",
+   "x": 378,
+   "y": 520,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 524,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 534,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "EML, Electromagnetic Levitator",
+   "x": 378,
+   "y": 852,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 856,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 866,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Kibo",
+   "x": 378,
+   "y": 1241,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 1245,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 1255,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Destiny",
+   "x": 378,
+   "y": 1549,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 1553,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 1563,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Unity",
+   "x": 378,
+   "y": 1881,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 1885,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 1895,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Tranquility",
+   "x": 378,
+   "y": 2189,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 2193,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 2203,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Cupola",
+   "x": 378,
+   "y": 2497,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 2501,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 2510,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Dallo spazio alla Terra",
+   "x": 378,
+   "y": 2804,
+   "w": 695,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1089,
+   "y": 2808,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 2818,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h2",
+   "testo": "Punti di interesse",
+   "x": 378,
+   "y": 3360,
+   "w": 780,
+   "h": 27
+  },
+  {
+   "tag": "h3",
+   "testo": "Harmony",
+   "x": 378,
+   "y": 3411,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 3485,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 3484,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 3493,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 3934,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 3946,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Energia",
+   "x": 504,
+   "y": 4240,
+   "w": 177,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 4249,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 4357,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 4356,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 4365,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 4821,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 4833,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 5236,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 5235,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 5244,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 5611,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 5623,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Autoinduzione",
+   "x": 504,
+   "y": 5926,
+   "w": 218,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 5936,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 6044,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 6042,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 6052,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 6487,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 6499,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Campo magnetico",
+   "x": 504,
+   "y": 6815,
+   "w": 240,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 6824,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "h3",
+   "testo": "Columbus",
+   "x": 378,
+   "y": 6918,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 6992,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 6991,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 7000,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formula",
+   "x": 404,
+   "y": 7532,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 7544,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Esperimento EML",
+   "x": 504,
+   "y": 7753,
+   "w": 236,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 7762,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 7870,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 7869,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 7879,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 8293,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 8305,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Energia",
+   "x": 504,
+   "y": 8608,
+   "w": 177,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 8618,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 8725,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 8724,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 8734,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formula",
+   "x": 404,
+   "y": 9101,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 9113,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "h3",
+   "testo": "EML, Electromagnetic Levitator",
+   "x": 378,
+   "y": 9417,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 9491,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 9490,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 9500,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 9938,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 9950,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 728,
+   "y": 10007,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 756,
+   "y": 10007,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Esperimento EML",
+   "x": 512,
+   "y": 10229,
+   "w": 236,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 529,
+   "y": 10239,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 10347,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 10345,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 10355,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 10743,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 10755,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Esperimento EML",
+   "x": 584,
+   "y": 11066,
+   "w": 236,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 602,
+   "y": 11075,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 11183,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 11182,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 11192,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 11582,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 11594,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Esperimento EML",
+   "x": 584,
+   "y": 11879,
+   "w": 236,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 602,
+   "y": 11889,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 11997,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 11995,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 12005,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 12372,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 12384,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Autoinduzione",
+   "x": 512,
+   "y": 12851,
+   "w": 218,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 529,
+   "y": 12860,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 12968,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 12967,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 12977,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 13364,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 13376,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 728,
+   "y": 13433,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 756,
+   "y": 13433,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Levitazione",
+   "x": 584,
+   "y": 13679,
+   "w": 200,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 602,
+   "y": 13688,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 13796,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 13795,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 13804,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 14238,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 14250,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Esperimento EML",
+   "x": 504,
+   "y": 14591,
+   "w": 236,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 14600,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "h3",
+   "testo": "Kibo",
+   "x": 378,
+   "y": 14694,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 14768,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 14767,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 14776,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 15167,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 15179,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 738,
+   "y": 15236,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 792,
+   "y": 15236,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Levitazione",
+   "x": 504,
+   "y": 15479,
+   "w": 200,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 15488,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 15596,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 15595,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 15604,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 16015,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 16027,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Motore",
+   "x": 504,
+   "y": 16312,
+   "w": 175,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 16321,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 16429,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 16428,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 16438,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formula",
+   "x": 404,
+   "y": 16872,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 16884,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Levitazione",
+   "x": 504,
+   "y": 17103,
+   "w": 200,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 17113,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "h3",
+   "testo": "Destiny",
+   "x": 378,
+   "y": 17206,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 17280,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 17279,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 17289,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 17679,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 17691,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Autoinduzione",
+   "x": 504,
+   "y": 17985,
+   "w": 218,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 17995,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 18102,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 18101,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 18111,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 18525,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 18537,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Energia",
+   "x": 504,
+   "y": 18841,
+   "w": 177,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 18850,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 18958,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 18957,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 18967,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 19310,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 19322,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Energia",
+   "x": 504,
+   "y": 19607,
+   "w": 177,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 19617,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "h3",
+   "testo": "Unity",
+   "x": 378,
+   "y": 19710,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 19784,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 19783,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 19793,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formula",
+   "x": 404,
+   "y": 20160,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 20172,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Energia",
+   "x": 504,
+   "y": 20365,
+   "w": 177,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 20374,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 20482,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 20481,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 20491,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formula",
+   "x": 404,
+   "y": 20858,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 20870,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Campo magnetico",
+   "x": 504,
+   "y": 21045,
+   "w": 240,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 21054,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 21162,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 21161,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 21171,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formula",
+   "x": 404,
+   "y": 21561,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 21573,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Motore",
+   "x": 504,
+   "y": 21766,
+   "w": 175,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 21776,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "h3",
+   "testo": "Tranquility",
+   "x": 378,
+   "y": 21869,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 21944,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 21942,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 21952,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 22433,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 22445,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Risonanza",
+   "x": 504,
+   "y": 22772,
+   "w": 194,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 22781,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 22889,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 22888,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 22897,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 23308,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 23320,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 23696,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 23695,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 23705,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 24072,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 24084,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Campo magnetico",
+   "x": 504,
+   "y": 24366,
+   "w": 240,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 24375,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "h3",
+   "testo": "Cupola",
+   "x": 378,
+   "y": 24469,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 24543,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 24542,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 24551,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formula",
+   "x": 404,
+   "y": 24942,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 24954,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Campo magnetico",
+   "x": 504,
+   "y": 25147,
+   "w": 240,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 25157,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 25264,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 25263,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 25273,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formula",
+   "x": 404,
+   "y": 25663,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 25675,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Energia",
+   "x": 504,
+   "y": 25869,
+   "w": 177,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 25878,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 25986,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 25985,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 25994,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 26412,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 26424,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 721,
+   "y": 26481,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 771,
+   "y": 26486,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 809,
+   "y": 26481,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Aurora",
+   "x": 504,
+   "y": 26689,
+   "w": 172,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 521,
+   "y": 26699,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "h3",
+   "testo": "Dallo spazio alla Terra",
+   "x": 378,
+   "y": 26792,
+   "w": 780,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 26866,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 26865,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 26875,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 27439,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 27451,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Levitazione",
+   "x": 584,
+   "y": 27796,
+   "w": 200,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 602,
+   "y": 27805,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 27913,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 27912,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 27921,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 28533,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 28545,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Motore",
+   "x": 584,
+   "y": 28885,
+   "w": 175,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 602,
+   "y": 28894,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 29002,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 29001,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 29010,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 29578,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 29590,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Energia",
+   "x": 584,
+   "y": 29935,
+   "w": 177,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 602,
+   "y": 29944,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 403,
+   "y": 30052,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Vai",
+   "x": 1064,
+   "y": 30051,
+   "w": 69,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 30060,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 404,
+   "y": 30790,
+   "w": 728,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1100,
+   "y": 30802,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Simulazione: Risonanza",
+   "x": 584,
+   "y": 31146,
+   "w": 194,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 602,
+   "y": 31156,
+   "w": 11,
+   "h": 11
+  },
+  {
+   "tag": "h2",
+   "testo": "Simulazioni",
+   "x": 378,
+   "y": 31257,
+   "w": 780,
+   "h": 27
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 391,
+   "y": 31321,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "h3",
+   "testo": "La ISS nel campo magnetico terrestre",
+   "x": 442,
+   "y": 31325,
+   "w": 548,
+   "h": 25
+  },
+  {
+   "tag": "button",
+   "testo": "Apri simulazione",
+   "x": 1006,
+   "y": 31308,
+   "w": 152,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 31318,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 391,
+   "y": 32658,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "h3",
+   "testo": "L'energia di bordo: alternatore e trasfo",
+   "x": 442,
+   "y": 32661,
+   "w": 548,
+   "h": 25
+  },
+  {
+   "tag": "button",
+   "testo": "Apri simulazione",
+   "x": 1006,
+   "y": 32645,
+   "w": 152,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 32655,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 391,
+   "y": 34204,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "h3",
+   "testo": "Dall'EML al Maglev",
+   "x": 442,
+   "y": 34207,
+   "w": 548,
+   "h": 25
+  },
+  {
+   "tag": "button",
+   "testo": "Apri simulazione",
+   "x": 1006,
+   "y": 34191,
+   "w": 152,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 34200,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 758,
+   "y": 35437,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 812,
+   "y": 35437,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 391,
+   "y": 35545,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "h3",
+   "testo": "Risonanza magnetica e medicina spaziale",
+   "x": 442,
+   "y": 35549,
+   "w": 548,
+   "h": 25
+  },
+  {
+   "tag": "button",
+   "testo": "Apri simulazione",
+   "x": 1006,
+   "y": 35532,
+   "w": 152,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 35542,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 391,
+   "y": 36886,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "h3",
+   "testo": "Motori e alternatori: lo stesso principi",
+   "x": 442,
+   "y": 36889,
+   "w": 548,
+   "h": 25
+  },
+  {
+   "tag": "button",
+   "testo": "Apri simulazione",
+   "x": 1006,
+   "y": 36873,
+   "w": 152,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 36882,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 391,
+   "y": 38220,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "h3",
+   "testo": "Autoinduzione: interruttore e bobina",
+   "x": 442,
+   "y": 38223,
+   "w": 548,
+   "h": 25
+  },
+  {
+   "tag": "button",
+   "testo": "Apri simulazione",
+   "x": 1006,
+   "y": 38207,
+   "w": 152,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 38217,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 391,
+   "y": 39680,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "h3",
+   "testo": "Aurora: la forza di Lorentz",
+   "x": 442,
+   "y": 39684,
+   "w": 548,
+   "h": 25
+  },
+  {
+   "tag": "button",
+   "testo": "Apri simulazione",
+   "x": 1006,
+   "y": 39667,
+   "w": 152,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1129,
+   "y": 39677,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 741,
+   "y": 40272,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 791,
+   "y": 40277,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 829,
+   "y": 40272,
+   "w": 9,
+   "h": 14
+  },
+  {
+   "tag": "h2",
+   "testo": "Moduli non visitabili",
+   "x": 378,
+   "y": 40935,
+   "w": 780,
+   "h": 27
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 378,
+   "y": 40993,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Zvezda",
+   "x": 402,
+   "y": 40986,
+   "w": 64,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 378,
+   "y": 41145,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Zarya",
+   "x": 402,
+   "y": 41138,
+   "w": 50,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 378,
+   "y": 41297,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "PMA-1",
+   "x": 402,
+   "y": 41290,
+   "w": 57,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 378,
+   "y": 41424,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "PMA-2",
+   "x": 402,
+   "y": 41417,
+   "w": 60,
+   "h": 28
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 378,
+   "y": 41575,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h3",
+   "testo": "Quest",
+   "x": 402,
+   "y": 41568,
+   "w": 52,
+   "h": 28
+  }
+ ]
+}

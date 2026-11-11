@@ -1,0 +1,472 @@
+{
+ "scrollW": 1280,
+ "scrollH": 720,
+ "W": 1280,
+ "H": 720,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "Correnti parassite: tre usi, una fisica ",
+   "x": 666,
+   "y": 295,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 680,
+   "y": 309,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Torna a Cupola",
+   "x": 173,
+   "y": -11,
+   "w": 56,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 190,
+   "y": 6,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "div",
+   "testo": "Dallo spazio alla TerraIl rientro: le id",
+   "x": 16,
+   "y": 76,
+   "w": 336,
+   "h": 293
+  },
+  {
+   "tag": "button",
+   "testo": "Dallo spazio alla Terra",
+   "x": 17,
+   "y": 77,
+   "w": 334,
+   "h": 47
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 37,
+   "y": 92,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 313,
+   "y": 91,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "div",
+   "testo": "Punti di interesse0/4Dal campione al tre",
+   "x": 16,
+   "y": 381,
+   "w": 336,
+   "h": 216
+  },
+  {
+   "tag": "button",
+   "testo": "Punti di interesse0/4",
+   "x": 17,
+   "y": 382,
+   "w": 334,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 33,
+   "y": 394,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 319,
+   "y": 394,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Dal campione al treno",
+   "x": 25,
+   "y": 422,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 435,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Correnti parassite: tre usi, una fisica",
+   "x": 25,
+   "y": 464,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 477,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Dalla centrale alla città",
+   "x": 25,
+   "y": 506,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 519,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "La salute, un diritto",
+   "x": 25,
+   "y": 548,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 561,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Ricomincia dall'inizio",
+   "x": 760,
+   "y": 662,
+   "w": 197,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 589,
+   "y": 681,
+   "w": 10,
+   "h": 10
+  },
+  {
+   "tag": "div",
+   "testo": "La stazioneDallo spazio alla TerraZvezda",
+   "x": 1024,
+   "y": 16,
+   "w": 240,
+   "h": 236
+  },
+  {
+   "tag": "button",
+   "testo": "Ingrandisci la mappa",
+   "x": 1229,
+   "y": 32,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1233,
+   "y": 36,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 1037,
+   "y": 61,
+   "w": 214,
+   "h": 159
+  },
+  {
+   "tag": "nav",
+   "testo": "Tappe suggerite",
+   "x": 336,
+   "y": 32,
+   "w": 609,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Harmony",
+   "x": 345,
+   "y": 37,
+   "w": 82,
+   "h": 20
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 353,
+   "y": 41,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Columbus",
+   "x": 436,
+   "y": 37,
+   "w": 71,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "EML",
+   "x": 517,
+   "y": 37,
+   "w": 40,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Kibo",
+   "x": 567,
+   "y": 37,
+   "w": 41,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Destiny",
+   "x": 617,
+   "y": 37,
+   "w": 57,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Unity",
+   "x": 684,
+   "y": 37,
+   "w": 45,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Tranquility",
+   "x": 739,
+   "y": 37,
+   "w": 73,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Cupola",
+   "x": 822,
+   "y": 37,
+   "w": 54,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Finale",
+   "x": 886,
+   "y": 37,
+   "w": 49,
+   "h": 20
+  },
+  {
+   "tag": "div",
+   "testo": "Avanti / indietroRotella: zoomTrascina: ",
+   "x": 16,
+   "y": 584,
+   "w": 216,
+   "h": 116
+  },
+  {
+   "tag": "button",
+   "testo": "Comprimi i comandi",
+   "x": 209,
+   "y": 593,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 209,
+   "y": 593,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 37,
+   "y": 600,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 69,
+   "y": 600,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 31,
+   "y": 623,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 31,
+   "y": 647,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 36,
+   "y": 676,
+   "w": 8,
+   "h": 8
+  },
+  {
+   "tag": "button",
+   "testo": "Indice di tutti i contenuti",
+   "x": 825,
+   "y": 662,
+   "w": 42,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 838,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Impostazioni",
+   "x": 875,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 886,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Torna all'introduzione",
+   "x": 921,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 932,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "",
+   "x": 1047,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1058,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "",
+   "x": 1093,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Audio attivo",
+   "x": 1139,
+   "y": 664,
+   "w": 125,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1156,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Crediti",
+   "x": 1228,
+   "y": 702,
+   "w": 36,
+   "h": 14
+  }
+ ]
+}

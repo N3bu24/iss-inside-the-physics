@@ -1,0 +1,672 @@
+{
+ "scrollW": 1280,
+ "scrollH": 720,
+ "W": 1280,
+ "H": 720,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "La bobina in rame (Simulazione: Esperime",
+   "x": 498,
+   "y": 188,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 512,
+   "y": 202,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Correnti parassite e legge di Lenz (Simu",
+   "x": 681,
+   "y": 224,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 695,
+   "y": 238,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Il calore dall'interno (Simulazione: Esp",
+   "x": 584,
+   "y": 299,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 598,
+   "y": 313,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "La bobina è un induttore (Simulazione: A",
+   "x": 704,
+   "y": 479,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 718,
+   "y": 493,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Da Faraday all'EML (Simulazione: Levitaz",
+   "x": 532,
+   "y": 453,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 546,
+   "y": 467,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "La goccia di metallo (Simulazione: Esper",
+   "x": 623,
+   "y": 53,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 637,
+   "y": 67,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Avvia esperimento",
+   "x": 527,
+   "y": 646,
+   "w": 225,
+   "h": 50
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 555,
+   "y": 662,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "div",
+   "testo": "EsciEsc",
+   "x": 1119,
+   "y": 16,
+   "w": 145,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Esci dalla simulazione",
+   "x": 1119,
+   "y": 16,
+   "w": 145,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1141,
+   "y": 29,
+   "w": 19,
+   "h": 19
+  },
+  {
+   "tag": "kbd",
+   "testo": "Esc",
+   "x": 1210,
+   "y": 29,
+   "w": 32,
+   "h": 19
+  },
+  {
+   "tag": "aside",
+   "testo": "Cosa succede nel campione1Campo magnetic",
+   "x": 912,
+   "y": 248,
+   "w": 352,
+   "h": 376
+  },
+  {
+   "tag": "button",
+   "testo": "1Campo magnetico variabile",
+   "x": 933,
+   "y": 296,
+   "w": 310,
+   "h": 40
+  },
+  {
+   "tag": "button",
+   "testo": "2Correnti indotte",
+   "x": 933,
+   "y": 340,
+   "w": 310,
+   "h": 40
+  },
+  {
+   "tag": "button",
+   "testo": "3Riscaldamento per effetto Joule",
+   "x": 933,
+   "y": 384,
+   "w": 310,
+   "h": 40
+  },
+  {
+   "tag": "button",
+   "testo": "4Fusione",
+   "x": 933,
+   "y": 428,
+   "w": 310,
+   "h": 40
+  },
+  {
+   "tag": "button",
+   "testo": "5Solidificazione",
+   "x": 933,
+   "y": 472,
+   "w": 310,
+   "h": 40
+  },
+  {
+   "tag": "button",
+   "testo": "Levitazione magnetica (Simulazione: Levi",
+   "x": 792,
+   "y": 448,
+   "w": 64,
+   "h": 64
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 808,
+   "y": 464,
+   "w": 32,
+   "h": 32
+  },
+  {
+   "tag": "div",
+   "testo": "EML, Electromagnetic LevitatorFondere me",
+   "x": 16,
+   "y": 76,
+   "w": 336,
+   "h": 87
+  },
+  {
+   "tag": "button",
+   "testo": "EML, Electromagnetic LevitatorFondere me",
+   "x": 17,
+   "y": 77,
+   "w": 334,
+   "h": 85
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 37,
+   "y": 112,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 313,
+   "y": 111,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "div",
+   "testo": "Punti di interesse0/6La bobina in rameCo",
+   "x": 16,
+   "y": 175,
+   "w": 336,
+   "h": 300
+  },
+  {
+   "tag": "button",
+   "testo": "Punti di interesse0/6",
+   "x": 17,
+   "y": 176,
+   "w": 334,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 33,
+   "y": 188,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 319,
+   "y": 188,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "La bobina in rame",
+   "x": 25,
+   "y": 216,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 229,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Correnti parassite e legge di Lenz",
+   "x": 25,
+   "y": 258,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 271,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Il calore dall'interno",
+   "x": 25,
+   "y": 300,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 313,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "La bobina è un induttore",
+   "x": 25,
+   "y": 342,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 355,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Da Faraday all'EML",
+   "x": 25,
+   "y": 384,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 397,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "La goccia di metallo",
+   "x": 25,
+   "y": 426,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 439,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 315,
+   "y": 681,
+   "w": 10,
+   "h": 10
+  },
+  {
+   "tag": "div",
+   "testo": "La stazioneEMLZvezda: non visitabile (cl",
+   "x": 1024,
+   "y": 76,
+   "w": 240,
+   "h": 230
+  },
+  {
+   "tag": "button",
+   "testo": "Ingrandisci la mappa",
+   "x": 1229,
+   "y": 89,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1233,
+   "y": 93,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 1037,
+   "y": 115,
+   "w": 214,
+   "h": 159
+  },
+  {
+   "tag": "nav",
+   "testo": "Tappe suggerite",
+   "x": 336,
+   "y": 32,
+   "w": 608,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Harmony",
+   "x": 345,
+   "y": 37,
+   "w": 82,
+   "h": 20
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 353,
+   "y": 41,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "button",
+   "testo": "Columbus",
+   "x": 436,
+   "y": 37,
+   "w": 71,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "EML",
+   "x": 517,
+   "y": 37,
+   "w": 40,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Kibo",
+   "x": 567,
+   "y": 37,
+   "w": 41,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Destiny",
+   "x": 618,
+   "y": 37,
+   "w": 57,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Unity",
+   "x": 685,
+   "y": 37,
+   "w": 45,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Tranquility",
+   "x": 739,
+   "y": 37,
+   "w": 73,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Cupola",
+   "x": 822,
+   "y": 37,
+   "w": 54,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Finale",
+   "x": 887,
+   "y": 37,
+   "w": 48,
+   "h": 20
+  },
+  {
+   "tag": "div",
+   "testo": "Avanti / indietroRotella: zoomTrascina: ",
+   "x": 16,
+   "y": 584,
+   "w": 216,
+   "h": 116
+  },
+  {
+   "tag": "button",
+   "testo": "Comprimi i comandi",
+   "x": 209,
+   "y": 593,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 209,
+   "y": 593,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 37,
+   "y": 600,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 69,
+   "y": 600,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 31,
+   "y": 623,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 31,
+   "y": 647,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 36,
+   "y": 676,
+   "w": 8,
+   "h": 8
+  },
+  {
+   "tag": "button",
+   "testo": "Indice di tutti i contenuti",
+   "x": 825,
+   "y": 662,
+   "w": 42,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 838,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Impostazioni",
+   "x": 875,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 886,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Torna all'introduzione",
+   "x": 921,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 932,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "",
+   "x": 1047,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1058,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "",
+   "x": 1093,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Audio attivo",
+   "x": 1139,
+   "y": 664,
+   "w": 125,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1156,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Crediti",
+   "x": 1228,
+   "y": 702,
+   "w": 36,
+   "h": 14
+  }
+ ]
+}

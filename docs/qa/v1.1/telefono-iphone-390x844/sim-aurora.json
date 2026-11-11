@@ -1,0 +1,424 @@
+{
+ "scrollW": 390,
+ "scrollH": 844,
+ "W": 390,
+ "H": 844,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "Verso Destiny",
+   "x": 169,
+   "y": 420,
+   "w": 52,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 184,
+   "y": 435,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Cavi lungo il soffitto",
+   "x": 337,
+   "y": 108,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 348,
+   "y": 119,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il display delle comunicazi",
+   "x": 113,
+   "y": 54,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 124,
+   "y": 65,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Attrezzi: energia da conser",
+   "x": 8,
+   "y": 353,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 364,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il laptop con la Terra",
+   "x": 8,
+   "y": 303,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 314,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Scheda del luogo: Harmony",
+   "x": 8,
+   "y": 28,
+   "w": 104,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 37,
+   "w": 15,
+   "h": 15
+  },
+  {
+   "tag": "nav",
+   "testo": "Comandi dell'esplorazione",
+   "x": 8,
+   "y": 784,
+   "w": 374,
+   "h": 54
+  },
+  {
+   "tag": "button",
+   "testo": "Luogo",
+   "x": 15,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 28,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Mappa",
+   "x": 87,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 112,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Avanti verso il portello inquadrato",
+   "x": 164,
+   "y": 788,
+   "w": 62,
+   "h": 46
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 182,
+   "y": 798,
+   "w": 26,
+   "h": 26
+  },
+  {
+   "tag": "button",
+   "testo": "Audio",
+   "x": 232,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 256,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Altro",
+   "x": 305,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 329,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "div",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 276,
+   "y": 28,
+   "w": 106,
+   "h": 82
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 283,
+   "y": 35,
+   "w": 92,
+   "h": 68
+  },
+  {
+   "tag": "button",
+   "testo": "Apri la mappa della stazione",
+   "x": 277,
+   "y": 29,
+   "w": 104,
+   "h": 80
+  },
+  {
+   "tag": "div",
+   "testo": "Aurora: la forza di Lorentz",
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 844
+  },
+  {
+   "tag": "div",
+   "testo": "Particella nel campoLa Terra e la ISS",
+   "x": 0,
+   "y": 92,
+   "w": 390,
+   "h": 42
+  },
+  {
+   "tag": "div",
+   "testo": "Scene della simulazione",
+   "x": 56,
+   "y": 92,
+   "w": 278,
+   "h": 42
+  },
+  {
+   "tag": "button",
+   "testo": "Particella nel campo",
+   "x": 61,
+   "y": 97,
+   "w": 144,
+   "h": 32
+  },
+  {
+   "tag": "button",
+   "testo": "La Terra e la ISS",
+   "x": 209,
+   "y": 97,
+   "w": 120,
+   "h": 32
+  },
+  {
+   "tag": "button",
+   "testo": "Particella carica",
+   "x": 45,
+   "y": 71,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 55,
+   "y": 81,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "div",
+   "testo": "VoceEsciEsc",
+   "x": 235,
+   "y": 40,
+   "w": 143,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Spegni la voce narrante",
+   "x": 235,
+   "y": 40,
+   "w": 44,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 250,
+   "y": 55,
+   "w": 15,
+   "h": 15
+  },
+  {
+   "tag": "button",
+   "testo": "Esci dalla simulazione",
+   "x": 287,
+   "y": 40,
+   "w": 91,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 305,
+   "y": 53,
+   "w": 19,
+   "h": 19
+  },
+  {
+   "tag": "aside",
+   "testo": ".sim-scroll{overflow-y:auto;overflow-x:h",
+   "x": 0,
+   "y": 490,
+   "w": 390,
+   "h": 354
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 23,
+   "y": 522,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "h2",
+   "testo": "Aurora: la forza di Lorentz",
+   "x": 63,
+   "y": 522,
+   "w": 173,
+   "h": 35
+  },
+  {
+   "tag": "button",
+   "testo": "AvviaAvvia",
+   "x": 246,
+   "y": 510,
+   "w": 93,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 262,
+   "y": 524,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 353,
+   "y": 522,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "h3",
+   "testo": "Come si usa",
+   "x": 32,
+   "y": 789,
+   "w": 326,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 123,
+   "y": 1255,
+   "w": 7,
+   "h": 10
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 160,
+   "y": 1258,
+   "w": 7,
+   "h": 10
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 186,
+   "y": 1255,
+   "w": 7,
+   "h": 10
+  },
+  {
+   "tag": "div",
+   "testo": "Campo B1,0 ×spirale largastrettaProtoneE",
+   "x": 8,
+   "y": 411,
+   "w": 374,
+   "h": 71
+  },
+  {
+   "tag": "input",
+   "testo": "Campo B",
+   "x": 25,
+   "y": 433,
+   "w": 212,
+   "h": 38
+  },
+  {
+   "tag": "button",
+   "testo": "Protone",
+   "x": 261,
+   "y": 425,
+   "w": 83,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Elettrone",
+   "x": 368,
+   "y": 425,
+   "w": 90,
+   "h": 44
+  }
+ ]
+}

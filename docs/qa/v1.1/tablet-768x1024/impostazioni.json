@@ -1,0 +1,416 @@
+{
+ "scrollW": 768,
+ "scrollH": 1024,
+ "W": 768,
+ "H": 1024,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "Verso Destiny",
+   "x": 358,
+   "y": 515,
+   "w": 52,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 373,
+   "y": 530,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Cavi lungo il soffitto",
+   "x": 570,
+   "y": 54,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 581,
+   "y": 65,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il display delle comunicazi",
+   "x": 285,
+   "y": 54,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 296,
+   "y": 65,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Attrezzi: energia da conser",
+   "x": 8,
+   "y": 390,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 401,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il laptop con la Terra",
+   "x": 8,
+   "y": 326,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 337,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Scheda del luogo: Harmony",
+   "x": 8,
+   "y": 28,
+   "w": 104,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 37,
+   "w": 15,
+   "h": 15
+  },
+  {
+   "tag": "div",
+   "testo": "Come muoversiTrascina per guardarti atto",
+   "x": 224,
+   "y": 225,
+   "w": 320,
+   "h": 146
+  },
+  {
+   "tag": "button",
+   "testo": "Chiudi i suggerimenti",
+   "x": 499,
+   "y": 230,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 510,
+   "y": 241,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 241,
+   "y": 261,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 241,
+   "y": 289,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 241,
+   "y": 328,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "nav",
+   "testo": "Comandi dell'esplorazione",
+   "x": 112,
+   "y": 960,
+   "w": 544,
+   "h": 58
+  },
+  {
+   "tag": "button",
+   "testo": "Luogo",
+   "x": 119,
+   "y": 961,
+   "w": 104,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 149,
+   "y": 971,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Mappa",
+   "x": 225,
+   "y": 961,
+   "w": 104,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 267,
+   "y": 971,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Avanti verso il portello inquadrato",
+   "x": 351,
+   "y": 964,
+   "w": 66,
+   "h": 50
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 371,
+   "y": 976,
+   "w": 26,
+   "h": 26
+  },
+  {
+   "tag": "button",
+   "testo": "Audio",
+   "x": 438,
+   "y": 961,
+   "w": 104,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 452,
+   "y": 971,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Altro",
+   "x": 545,
+   "y": 961,
+   "w": 104,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 586,
+   "y": 971,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "div",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 616,
+   "y": 28,
+   "w": 144,
+   "h": 111
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 623,
+   "y": 35,
+   "w": 130,
+   "h": 97
+  },
+  {
+   "tag": "button",
+   "testo": "Apri la mappa della stazione",
+   "x": 617,
+   "y": 29,
+   "w": 142,
+   "h": 109
+  },
+  {
+   "tag": "aside",
+   "testo": "Impostazioni e crediti",
+   "x": 24,
+   "y": 139,
+   "w": 720,
+   "h": 747
+  },
+  {
+   "tag": "header",
+   "testo": "ImpostazioniCrediti",
+   "x": 25,
+   "y": 140,
+   "w": 718,
+   "h": 73
+  },
+  {
+   "tag": "button",
+   "testo": "Impostazioni",
+   "x": 49,
+   "y": 154,
+   "w": 124,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Crediti",
+   "x": 181,
+   "y": 154,
+   "w": 83,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Chiudi",
+   "x": 675,
+   "y": 154,
+   "w": 44,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 687,
+   "y": 166,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "input",
+   "testo": "Volume della voce",
+   "x": 241,
+   "y": 259,
+   "w": 422,
+   "h": 24
+  },
+  {
+   "tag": "input",
+   "testo": "Volume del sottofondo",
+   "x": 241,
+   "y": 303,
+   "w": 422,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Sottotitoli",
+   "x": 675,
+   "y": 354,
+   "w": 44,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Normale",
+   "x": 241,
+   "y": 438,
+   "w": 155,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Grande",
+   "x": 402,
+   "y": 438,
+   "w": 155,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Molto grande",
+   "x": 564,
+   "y": 438,
+   "w": 155,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Alto contrasto",
+   "x": 675,
+   "y": 509,
+   "w": 44,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Riduci le animazioni",
+   "x": 675,
+   "y": 567,
+   "w": 44,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Salta i voli tra i moduli",
+   "x": 675,
+   "y": 658,
+   "w": 44,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Tremolio nella capsula di rientro",
+   "x": 675,
+   "y": 715,
+   "w": 44,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Vista dalla Cupola in diretta",
+   "x": 675,
+   "y": 773,
+   "w": 44,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Ripristina predefinite",
+   "x": 49,
+   "y": 830,
+   "w": 193,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 66,
+   "y": 842,
+   "w": 14,
+   "h": 14
+  }
+ ]
+}

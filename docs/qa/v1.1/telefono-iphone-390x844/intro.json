@@ -1,0 +1,152 @@
+{
+ "scrollW": 390,
+ "scrollH": 844,
+ "W": 390,
+ "H": 844,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "Verso Destiny",
+   "x": 169,
+   "y": 500,
+   "w": 52,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 184,
+   "y": 515,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Cavi lungo il soffitto",
+   "x": 337,
+   "y": 108,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 348,
+   "y": 119,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il display delle comunicazi",
+   "x": 113,
+   "y": 54,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 124,
+   "y": 65,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Attrezzi: energia da conser",
+   "x": 8,
+   "y": 353,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 364,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il laptop con la Terra",
+   "x": 8,
+   "y": 303,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 314,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Indice di tutti i contenuti",
+   "x": 236,
+   "y": 32,
+   "w": 42,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 249,
+   "y": 46,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Impostazioni",
+   "x": 286,
+   "y": 33,
+   "w": 42,
+   "h": 42
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 299,
+   "y": 46,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Audio attivo",
+   "x": 336,
+   "y": 32,
+   "w": 42,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 349,
+   "y": 46,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "h1",
+   "testo": "ISS — Inside the Physics",
+   "x": 20,
+   "y": 310,
+   "w": 350,
+   "h": 80
+  },
+  {
+   "tag": "button",
+   "testo": "Inizia l'esplorazione",
+   "x": 86,
+   "y": 512,
+   "w": 218,
+   "h": 56
+  }
+ ]
+}

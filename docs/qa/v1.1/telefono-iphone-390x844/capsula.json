@@ -1,0 +1,176 @@
+{
+ "scrollW": 390,
+ "scrollH": 844,
+ "W": 390,
+ "H": 844,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "Correnti parassite: tre usi, una fisica ",
+   "x": 228,
+   "y": 354,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 245,
+   "y": 371,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Scheda del luogo: Dallo spazio alla Terr",
+   "x": 8,
+   "y": 28,
+   "w": 183,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 37,
+   "w": 15,
+   "h": 15
+  },
+  {
+   "tag": "button",
+   "testo": "torna a Cupola",
+   "x": 127,
+   "y": 670,
+   "w": 135,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 142,
+   "y": 683,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Ricomincia dall'inizio",
+   "x": 105,
+   "y": 618,
+   "w": 180,
+   "h": 44
+  },
+  {
+   "tag": "nav",
+   "testo": "Comandi dell'esplorazione",
+   "x": 8,
+   "y": 784,
+   "w": 374,
+   "h": 54
+  },
+  {
+   "tag": "button",
+   "testo": "Luogo",
+   "x": 15,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 28,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Mappa",
+   "x": 87,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 112,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Avanti verso il portello inquadrato",
+   "x": 164,
+   "y": 788,
+   "w": 62,
+   "h": 46
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 182,
+   "y": 798,
+   "w": 26,
+   "h": 26
+  },
+  {
+   "tag": "button",
+   "testo": "Audio",
+   "x": 232,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 256,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Altro",
+   "x": 305,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 329,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "div",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 276,
+   "y": 28,
+   "w": 106,
+   "h": 82
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 283,
+   "y": 35,
+   "w": 92,
+   "h": 68
+  },
+  {
+   "tag": "button",
+   "testo": "Apri la mappa della stazione",
+   "x": 277,
+   "y": 29,
+   "w": 104,
+   "h": 80
+  }
+ ]
+}

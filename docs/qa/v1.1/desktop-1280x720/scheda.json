@@ -1,0 +1,600 @@
+{
+ "scrollW": 1280,
+ "scrollH": 720,
+ "W": 1280,
+ "H": 720,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "Verso Destiny",
+   "x": 612,
+   "y": 353,
+   "w": 56,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 629,
+   "y": 370,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Cavi lungo il soffitto",
+   "x": 656,
+   "y": 92,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 667,
+   "y": 103,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il display delle comunicazi",
+   "x": 498,
+   "y": 92,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 509,
+   "y": 103,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Attrezzi: energia da conser",
+   "x": 364,
+   "y": 292,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 375,
+   "y": 303,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Guarda verso Il laptop con la Terra",
+   "x": 364,
+   "y": 242,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 375,
+   "y": 253,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "div",
+   "testo": "HarmonyIl nodo che collega i laboratoriU",
+   "x": 16,
+   "y": 76,
+   "w": 336,
+   "h": 293
+  },
+  {
+   "tag": "button",
+   "testo": "Harmony",
+   "x": 17,
+   "y": 77,
+   "w": 334,
+   "h": 47
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 37,
+   "y": 92,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 313,
+   "y": 91,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "div",
+   "testo": "Punti di interesse1/4Cavi lungo il soffi",
+   "x": 16,
+   "y": 381,
+   "w": 336,
+   "h": 216
+  },
+  {
+   "tag": "button",
+   "testo": "Punti di interesse1/4",
+   "x": 17,
+   "y": 382,
+   "w": 334,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 33,
+   "y": 394,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 319,
+   "y": 394,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Cavi lungo il soffitto",
+   "x": 25,
+   "y": 422,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 435,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 321,
+   "y": 435,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Il display delle comunicazioni",
+   "x": 25,
+   "y": 464,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 477,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Attrezzi: energia da conservare",
+   "x": 25,
+   "y": 506,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 519,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "button",
+   "testo": "Il laptop con la Terra",
+   "x": 25,
+   "y": 548,
+   "w": 318,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 40,
+   "y": 561,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "aside",
+   "testo": "EnergiaCavi lungo il soffittoPiù alta è ",
+   "x": 784,
+   "y": 248,
+   "w": 480,
+   "h": 376
+  },
+  {
+   "tag": "header",
+   "testo": "EnergiaCavi lungo il soffitto",
+   "x": 785,
+   "y": 249,
+   "w": 478,
+   "h": 86
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 809,
+   "y": 270,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "h2",
+   "testo": "Cavi lungo il soffitto",
+   "x": 809,
+   "y": 292,
+   "w": 378,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Chiudi la scheda",
+   "x": 1199,
+   "y": 269,
+   "w": 40,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1209,
+   "y": 279,
+   "w": 20,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Formule",
+   "x": 810,
+   "y": 1207,
+   "w": 428,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1206,
+   "y": 1219,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Avvia simulazione · Energia",
+   "x": 809,
+   "y": 523,
+   "w": 430,
+   "h": 43
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 912,
+   "y": 535,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "button",
+   "testo": "Ascolta",
+   "x": 906,
+   "y": 577,
+   "w": 86,
+   "h": 30
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 919,
+   "y": 586,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "div",
+   "testo": "La stazioneHarmonyZvezda: non visitabile",
+   "x": 1024,
+   "y": 16,
+   "w": 240,
+   "h": 230
+  },
+  {
+   "tag": "button",
+   "testo": "Ingrandisci la mappa",
+   "x": 1229,
+   "y": 29,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1233,
+   "y": 33,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 1037,
+   "y": 55,
+   "w": 214,
+   "h": 159
+  },
+  {
+   "tag": "nav",
+   "testo": "Tappe suggerite",
+   "x": 343,
+   "y": 32,
+   "w": 593,
+   "h": 30
+  },
+  {
+   "tag": "button",
+   "testo": "Harmony",
+   "x": 352,
+   "y": 37,
+   "w": 67,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Columbus",
+   "x": 429,
+   "y": 37,
+   "w": 71,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "EML",
+   "x": 510,
+   "y": 37,
+   "w": 40,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Kibo",
+   "x": 560,
+   "y": 37,
+   "w": 41,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Destiny",
+   "x": 611,
+   "y": 37,
+   "w": 57,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Unity",
+   "x": 677,
+   "y": 37,
+   "w": 45,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Tranquility",
+   "x": 732,
+   "y": 37,
+   "w": 73,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Cupola",
+   "x": 815,
+   "y": 37,
+   "w": 54,
+   "h": 20
+  },
+  {
+   "tag": "button",
+   "testo": "Finale",
+   "x": 879,
+   "y": 37,
+   "w": 48,
+   "h": 20
+  },
+  {
+   "tag": "div",
+   "testo": "Avanti / indietroRotella: zoomTrascina: ",
+   "x": 16,
+   "y": 584,
+   "w": 216,
+   "h": 116
+  },
+  {
+   "tag": "button",
+   "testo": "Comprimi i comandi",
+   "x": 209,
+   "y": 593,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 209,
+   "y": 593,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 37,
+   "y": 600,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 69,
+   "y": 600,
+   "w": 12,
+   "h": 12
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 31,
+   "y": 623,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 31,
+   "y": 647,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 36,
+   "y": 676,
+   "w": 8,
+   "h": 8
+  },
+  {
+   "tag": "button",
+   "testo": "Indice di tutti i contenuti",
+   "x": 825,
+   "y": 662,
+   "w": 42,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 838,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Impostazioni",
+   "x": 875,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 886,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Torna all'introduzione",
+   "x": 921,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 932,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "",
+   "x": 1047,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1058,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "",
+   "x": 1093,
+   "y": 662,
+   "w": 38,
+   "h": 38
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1104,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Audio attivo",
+   "x": 1139,
+   "y": 664,
+   "w": 125,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 1156,
+   "y": 673,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "Crediti",
+   "x": 1228,
+   "y": 702,
+   "w": 36,
+   "h": 14
+  }
+ ]
+}

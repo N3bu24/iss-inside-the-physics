@@ -1,0 +1,23 @@
+import puppeteer from 'puppeteer-core'
+const attendi = (ms) => new Promise((r) => setTimeout(r, ms))
+const b = await puppeteer.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: 'new', args: ['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist','--mute-audio'] })
+const p = await b.newPage(); await p.setViewport({ width: 1280, height: 720 })
+await p.goto('http://localhost:5173/', { waitUntil: 'networkidle2' })
+await p.waitForFunction(() => window.__app); await p.evaluate(() => window.__app.avvia())
+await p.waitForFunction(() => window.__iss, { timeout: 60000 }); await attendi(3000)
+await p.evaluate(() => window.__iss.saltaA('eml'))
+await p.waitForFunction(() => window.__eml?.ancore && Object.keys(window.__eml.ancore).length > 3, { timeout: 60000 }); await attendi(2500)
+const cam = () => p.evaluate(() => { const c = window.__eml.camera, t = window.__eml.controls.target; return [c.position.x,c.position.y,c.position.z,t.x,t.y,t.z].map(n=>+n.toFixed(2)).join(',') })
+const clic = (re) => p.evaluate((s) => { const r=new RegExp(s); const bt=[...document.querySelectorAll('button')].filter(x=>r.test((x.textContent||'').trim())).pop(); bt?.click(); return !!bt }, re.source)
+await clic(/Avvia esperimento/); await attendi(4000)
+console.log('passo1', await cam())
+// l'utente sposta la camera: zoom forte + rotazione
+await p.evaluate(() => { const c=window.__eml.controls; c.object.position.set(0.4,0.1,1.2); c.target.set(0.3,0,0.2); c.update() }); await attendi(500)
+console.log('spostata', await cam())
+await clic(/^Avanti/); await attendi(3500); console.log('passo2 dopo spostamento', await cam())
+await p.screenshot({ path: 'docs/qa/v1.1/eml/dopo-spostamento-passo2.png' })
+await p.evaluate(() => { const c=window.__eml.controls; c.object.position.set(-9,6,-9); c.target.set(2,-1,0); c.update() }); await attendi(500)
+await clic(/Indietro/); await attendi(3500); console.log('passo1 dopo spostamento lontano', await cam())
+await p.screenshot({ path: 'docs/qa/v1.1/eml/dopo-spostamento-passo1.png' })
+// ultimo passo 6 + esc
+await b.close()

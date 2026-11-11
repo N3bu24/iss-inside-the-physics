@@ -1,0 +1,264 @@
+{
+ "scrollW": 768,
+ "scrollH": 1024,
+ "W": 768,
+ "H": 1024,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "La Terra in movimento (Simulazione: Camp",
+   "x": 54,
+   "y": 153,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 71,
+   "y": 170,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Le ali solari (Simulazione: Energia)",
+   "x": 205,
+   "y": 153,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 222,
+   "y": 170,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Aurore dall'alto (Simulazione: Aurora)",
+   "x": 355,
+   "y": 153,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 372,
+   "y": 170,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Il campo magnetico terrestre (Simulazion",
+   "x": 502,
+   "y": 153,
+   "w": 64,
+   "h": 64
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 522,
+   "y": 173,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Verso Tranquility",
+   "x": 659,
+   "y": 153,
+   "w": 52,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 674,
+   "y": 168,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Verso il finale",
+   "x": 57,
+   "y": 265,
+   "w": 52,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 71,
+   "y": 278,
+   "w": 25,
+   "h": 25
+  },
+  {
+   "tag": "button",
+   "testo": "Scheda del luogo: Cupola",
+   "x": 8,
+   "y": 28,
+   "w": 91,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 37,
+   "w": 15,
+   "h": 15
+  },
+  {
+   "tag": "button",
+   "testo": "verso il finale",
+   "x": 311,
+   "y": 796,
+   "w": 146,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 328,
+   "y": 810,
+   "w": 16,
+   "h": 16
+  },
+  {
+   "tag": "button",
+   "testo": "torna a Tranquility",
+   "x": 307,
+   "y": 846,
+   "w": 155,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 322,
+   "y": 859,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "nav",
+   "testo": "Comandi dell'esplorazione",
+   "x": 112,
+   "y": 960,
+   "w": 544,
+   "h": 58
+  },
+  {
+   "tag": "button",
+   "testo": "Luogo",
+   "x": 119,
+   "y": 961,
+   "w": 104,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 149,
+   "y": 971,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Mappa",
+   "x": 225,
+   "y": 961,
+   "w": 104,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 267,
+   "y": 971,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Avanti verso il portello inquadrato",
+   "x": 351,
+   "y": 964,
+   "w": 66,
+   "h": 50
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 371,
+   "y": 976,
+   "w": 26,
+   "h": 26
+  },
+  {
+   "tag": "button",
+   "testo": "Audio",
+   "x": 438,
+   "y": 961,
+   "w": 104,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 452,
+   "y": 971,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Altro",
+   "x": 545,
+   "y": 961,
+   "w": 104,
+   "h": 56
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 586,
+   "y": 971,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "div",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 616,
+   "y": 28,
+   "w": 144,
+   "h": 111
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 623,
+   "y": 35,
+   "w": 130,
+   "h": 97
+  },
+  {
+   "tag": "button",
+   "testo": "Apri la mappa della stazione",
+   "x": 617,
+   "y": 29,
+   "w": 142,
+   "h": 109
+  }
+ ]
+}

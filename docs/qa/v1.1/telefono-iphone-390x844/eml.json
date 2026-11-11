@@ -1,0 +1,352 @@
+{
+ "scrollW": 390,
+ "scrollH": 844,
+ "W": 390,
+ "H": 844,
+ "el": [
+  {
+   "tag": "button",
+   "testo": "La bobina in rame (Simulazione: Esperime",
+   "x": 105,
+   "y": 196,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 122,
+   "y": 213,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Correnti parassite e legge di Lenz (Simu",
+   "x": 200,
+   "y": 220,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 217,
+   "y": 237,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Il calore dall'interno (Simulazione: Esp",
+   "x": 151,
+   "y": 256,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 168,
+   "y": 273,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "La bobina è un induttore (Simulazione: A",
+   "x": 213,
+   "y": 349,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 230,
+   "y": 366,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Da Faraday all'EML (Simulazione: Levitaz",
+   "x": 121,
+   "y": 342,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 138,
+   "y": 359,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "La goccia di metallo (Simulazione: Esper",
+   "x": 172,
+   "y": 131,
+   "w": 58,
+   "h": 58
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 189,
+   "y": 148,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "div",
+   "testo": "EsciEsc",
+   "x": 174,
+   "y": 28,
+   "w": 91,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Esci dalla simulazione",
+   "x": 174,
+   "y": 28,
+   "w": 91,
+   "h": 44
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 192,
+   "y": 41,
+   "w": 19,
+   "h": 19
+  },
+  {
+   "tag": "button",
+   "testo": "Levitazione magnetica (Simulazione: Levi",
+   "x": 314,
+   "y": 122,
+   "w": 64,
+   "h": 64
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 334,
+   "y": 142,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "tag": "button",
+   "testo": "Scheda del luogo: EML",
+   "x": 8,
+   "y": 28,
+   "w": 74,
+   "h": 34
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 19,
+   "y": 37,
+   "w": 15,
+   "h": 15
+  },
+  {
+   "tag": "button",
+   "testo": "torna a Columbus",
+   "x": 119,
+   "y": 670,
+   "w": 152,
+   "h": 40
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 134,
+   "y": 683,
+   "w": 14,
+   "h": 14
+  },
+  {
+   "tag": "aside",
+   "testo": "Cosa succede nel campione1Campo magnetic",
+   "x": 8,
+   "y": 515,
+   "w": 374,
+   "h": 90
+  },
+  {
+   "tag": "button",
+   "testo": "1Campo magnetico variabile",
+   "x": 21,
+   "y": 546,
+   "w": 241,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "2Correnti indotte",
+   "x": 268,
+   "y": 546,
+   "w": 163,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "3Riscaldamento per effetto Joule",
+   "x": 437,
+   "y": 546,
+   "w": 270,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "4Fusione",
+   "x": 713,
+   "y": 546,
+   "w": 112,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "5Solidificazione",
+   "x": 831,
+   "y": 546,
+   "w": 157,
+   "h": 44
+  },
+  {
+   "tag": "button",
+   "testo": "Avvia esperimento",
+   "x": 82,
+   "y": 613,
+   "w": 225,
+   "h": 50
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 110,
+   "y": 629,
+   "w": 18,
+   "h": 18
+  },
+  {
+   "tag": "nav",
+   "testo": "Comandi dell'esplorazione",
+   "x": 8,
+   "y": 784,
+   "w": 374,
+   "h": 54
+  },
+  {
+   "tag": "button",
+   "testo": "Luogo",
+   "x": 15,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 28,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Mappa",
+   "x": 87,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 112,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Avanti verso il portello inquadrato",
+   "x": 164,
+   "y": 788,
+   "w": 62,
+   "h": 46
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 182,
+   "y": 798,
+   "w": 26,
+   "h": 26
+  },
+  {
+   "tag": "button",
+   "testo": "Audio",
+   "x": 232,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 256,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "button",
+   "testo": "Altro",
+   "x": 305,
+   "y": 785,
+   "w": 70,
+   "h": 52
+  },
+  {
+   "tag": "svg",
+   "testo": "",
+   "x": 329,
+   "y": 793,
+   "w": 22,
+   "h": 22
+  },
+  {
+   "tag": "div",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 276,
+   "y": 28,
+   "w": 106,
+   "h": 82
+  },
+  {
+   "tag": "svg",
+   "testo": "Zvezda: non visitabile (clicca per saper",
+   "x": 283,
+   "y": 35,
+   "w": 92,
+   "h": 68
+  },
+  {
+   "tag": "button",
+   "testo": "Apri la mappa della stazione",
+   "x": 277,
+   "y": 29,
+   "w": 104,
+   "h": 80
+  }
+ ]
+}
