@@ -17,6 +17,10 @@ const HEAT = '#ff8a2a'
 
 type Stato = { ratio: number; ruota: boolean }
 
+/** Quota di potenza persa in linea. P_persa = R I^2 con I = P/V e V = 230 V x ratio: rapporto perdite/potenza utile x = x0 / ratio^2.
+ *  Con x0 = 0,67 (linea di riferimento a 230 V) la quota persa e' x/(1+x): 40 % a ratio 1, ~2 % a ratio 6, mai 100 %. */
+const quotaPerdite = (ratio: number) => { const x = 0.67 / (ratio * ratio); return x / (1 + x) }
+
 function Alternatore({ st, trE, trF }: { st: React.RefObject<Stato>; trE: Trace; trF: Trace }) {
   const loop = useRef<THREE.Group>(null)
   const piano = useRef<THREE.MeshBasicMaterial>(null)
@@ -223,7 +227,7 @@ function Linea({ st }: { st: React.RefObject<Stato> }) {
         <meshBasicMaterial color={HEAT} toneMapped={false} transparent opacity={0.8} />
       </instancedMesh>
       <Etichetta p={[5.6, 2.6, 0]}>Linea di trasmissione</Etichetta>
-      <Valore sim="energia" chiave="perdite" ripiego="Perdite Joule" colore="orange" p={[5.6, 3.1, 0]} valore={() => `${num(100 / (st.current.ratio * st.current.ratio), 0)} %`} />
+      <Valore sim="energia" chiave="perdite" ripiego="Perdite Joule" colore="orange" p={[5.6, 3.1, 0]} valore={() => `${num(100 * quotaPerdite(st.current.ratio), 0)} %`} />
       {/* citta */}
       <group position={[9.9, -0.9, 0]}>
         {[

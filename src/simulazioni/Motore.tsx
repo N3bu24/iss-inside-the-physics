@@ -236,7 +236,7 @@ function Applicazioni({ st }: { st: React.RefObject<Stato> }) {
 }
 
 const HOTSPOT: HotspotSim[] = [
-  { id: 'spira', categoria: 'strumento', titolo: 'Spira in rame', pos: [0, 1.9, 0], testo: 'Il conduttore che ruota nel campo magnetico: il flusso cambia con l\'angolo e nasce una fem.' },
+  { id: 'spira', categoria: 'strumento', titolo: 'Spira in rame', pos: [0, 1.9, 0], testo: 'Il conduttore che ruota nel campo magnetico: il flusso cambia con l\'angolo e nasce una fem. Disegnata come una sola spira; il valore mostrato è quello di una bobina di 150 spire (B = 0,5 T, S = 0,04 m²).' },
   { id: 'magneti', categoria: 'fisica', titolo: 'Magneti', pos: [-2.6, -2.1, 0], testo: 'Creano il campo B, diretto dal polo nord (rosso) al polo sud (blu).' },
   { id: 'collettore', categoria: 'strumento', titolo: 'Collettore e spazzole', pos: [0.9, -2.1, 0.6], testo: 'I due semianelli invertono il verso della corrente a ogni mezzo giro, così la coppia spinge sempre nello stesso senso.' },
   { id: 'applicazioni', categoria: 'vita', titolo: 'Braccio robotico e ventola', pos: [0, -3.4, -2.2], testo: 'A bordo i giunti del braccio e le ventole di Unity sono mossi da motori elettrici.' },
@@ -275,7 +275,7 @@ export default function Motore({ onClose }: { onClose: () => void }) {
       titolo="Motori e alternatori: lo stesso principio"
       intro="Una spira in un campo magnetico può produrre corrente se la si fa girare (alternatore) oppure girare se le si fornisce corrente (motore). È la stessa macchina usata nei due versi."
       formula={String.raw`\varepsilon(t)=N\,B\,S\,\omega\sin(\omega t)`}
-      formulaNota="N: spire, B: campo, S: superficie, ω: velocità angolare. Nel motore la fem indotta si oppone alla corrente della batteria (legge di Lenz)."
+      formulaNota="Valori della scena: N = 150, B = 0,5 T, S = 0,04 m², quindi N·B·S = 3 Wb e fem massima = 3 Wb × ω. N: spire, B: campo, S: superficie, ω: velocità angolare. Nel motore la fem indotta si oppone alla corrente della batteria (legge di Lenz)."
       agenda={metaSimulazione('motore').agenda}
       slide={metaSimulazione('motore').slide}
       didascalia={did}
