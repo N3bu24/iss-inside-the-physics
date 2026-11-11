@@ -9,6 +9,7 @@ import { metaSimulazione, type Passo } from './contenuto'
 import type { HotspotSim } from './SimulazioneShell'
 import Etichetta from '../ambienti/Etichetta'
 import { helixGeometry } from '../ambienti/geo'
+import Valore, { num } from './Valore'
 
 const EPS = 10 // V
 const DT = 0.04 // passo di registrazione, s
@@ -189,6 +190,8 @@ function Circuito({ sim, onToggle }: { sim: React.RefObject<Sim>; onToggle: () =
         </group>
       </group>
       <Etichetta p={[2.5, 0.9, 0.3]}>Bobina L</Etichetta>
+      <Valore sim="autoinduzione" chiave="corrente" ripiego="Corrente" p={[2.5, 0.5, 0.3]} valore={() => `${num(sim.current.i, 1)} A`} />
+      <Valore sim="autoinduzione" chiave="energia" ripiego="Energia nel campo" colore="orange" p={[2.5, 0.0, 0.3]} valore={() => `${num(0.5 * sim.current.L * sim.current.i ** 2, 1)} J`} />
       {/* lampadina in parallelo alla bobina */}
       <group position={[3, 3.7, 0]}>
         <mesh>

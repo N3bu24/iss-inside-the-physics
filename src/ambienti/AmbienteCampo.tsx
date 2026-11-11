@@ -8,6 +8,7 @@ import { passiSimulazione } from '../simulazioni/passi'
 import type { Passo } from '../simulazioni/contenuto'
 import { TESTI } from './testi'
 import Etichetta from './Etichetta'
+import Valore, { num } from '../simulazioni/Valore'
 import TerraNasa from '../simulazioni/TerraNasa'
 
 const R_E = 2
@@ -169,6 +170,8 @@ function ISS({ vel, incl, tr, frame }: { vel: number; incl: number; tr: Trace; f
         <meshBasicMaterial toneMapped={false} />
       </instancedMesh>
       <Etichetta p={[0, 0, 0]} fisso size={0.026}>ISS</Etichetta>
+      <Valore sim="campo" chiave="velocita" ripiego="Velocità" sotto p={[0, 0, 0]} valore={() => `${num(vel * 7.7, 1)} km/s`} />
+      <Valore sim="campo" chiave="fem" ripiego="fem" colore="orange" p={[0, 0, ISS_L * 0.58]} valore={() => `${num((tr.data[(tr.head - 1 + tr.data.length) % tr.data.length] / 1.6) * 23, 0)} V`} />
     </group>
   )
 }

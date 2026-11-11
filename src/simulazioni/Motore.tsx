@@ -8,12 +8,13 @@ import { passiSimulazione } from './passi'
 import { metaSimulazione, type Passo } from './contenuto'
 import type { HotspotSim } from './SimulazioneShell'
 import Etichetta from '../ambienti/Etichetta'
+import Valore, { num } from './Valore'
 
 const A = 1.0 // semilarghezza della spira
 const H = 1.2 // semialtezza
 const OMEGA_MAX = 4 // rad/s a velocita' 1
 
-type Stato = { motore: boolean; vel: number }
+type Stato = { motore: boolean; vel: number; th: number }
 
 /** Spira + collettore: ruotano insieme attorno all'asse y. */
 function Spira({ st, trE, trB, lampada }: { st: React.RefObject<Stato>; trE: Trace; trB: Trace; lampada: React.RefObject<THREE.MeshStandardMaterial | null> }) {
@@ -27,6 +28,7 @@ function Spira({ st, trE, trB, lampada }: { st: React.RefObject<Stato>; trE: Tra
     const w = vel * OMEGA_MAX
     th.current += w * dt
     g.current!.rotation.y = th.current
+    st.current.th = th.current
     const s = Math.sin(th.current)
     if (motore) {
       trE.push(0.8) // tensione della batteria
@@ -243,7 +245,7 @@ const HOTSPOT: HotspotSim[] = [
 export default function Motore({ onClose }: { onClose: () => void }) {
   const [motore, setMotore] = useState(false)
   const [vel, setVel] = useState(0.5)
-  const st = useRef<Stato>({ motore, vel })
+  const st = useRef<Stato>({ motore, vel, th: 0 })
   st.current.motore = motore
   st.current.vel = vel
   const trE = useMemo(() => new Trace('#35e0ff', 'tensione / fem'), [])
@@ -298,6 +300,15 @@ export default function Motore({ onClose }: { onClose: () => void }) {
       <Spira st={st} trE={trE} trB={trB} lampada={lampada} />
       <Sorgente st={st} />
       <Lampadina mat={lampada} />
+      <Valore sim="motore" chiave="giri" ripiego="Giri" p={[0, 1.55, 0]} valore={() => `${Math.round(st.current.vel * OMEGA_MAX * 9.55)} giri/min`} />
+      <Valore
+        sim="motore"
+        chiave="fem"
+        ripiego={motore ? 'Corrente' : 'fem'}
+        colore={motore ? 'orange' : 'cyan'}
+        p={[5, 0.9, 0]}
+        valore={() => (st.current.motore ? `${num(Math.max(0.5, 12 - 10 * st.current.vel) / 2, 1)} A` : `${num(12 * st.current.vel * Math.sin(st.current.th), 1)} V`)}
+      />
       <Applicazioni st={st} />
     </SimulazioneShell>
   )

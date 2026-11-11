@@ -9,12 +9,17 @@ import { metaSimulazione, type Passo } from './contenuto'
 import type { HotspotSim } from './SimulazioneShell'
 import TerraNasa from './TerraNasa'
 import Etichetta from '../ambienti/Etichetta'
+import Valore, { num } from './Valore'
+import { nomiSezioni } from '../lib/contenutoV11'
 
 const R = 3 // raggio della Terra (unita' scena)
 const SOLE = new THREE.Vector3(-1, 0.25, 0.4).normalize() // il Sole e' a sinistra
 const Y = new THREE.Vector3(0, 1, 0)
 
 type Ctl = { B: number; sign: number; intensita: number; elica: boolean; impatti: number }
+
+/** Raggio della traiettoria in millimetri (elettrone con v ~ 10^6 m/s in B = 10 mT x slider: r = mv/qB; il protone e' mostrato con lo stesso ordine di grandezza didattico). */
+const raggioMm = (c: Ctl) => 0.57 / c.B * (c.sign > 0 ? 1.75 : 1)
 
 /* ---------- Demo: carica in un campo uniforme (B uscente dallo schermo) ---------- */
 function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
@@ -77,6 +82,7 @@ function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
       <mesh ref={part}>
         <sphereGeometry args={[0.17, 16, 12]} />
         <meshBasicMaterial ref={mat} color="#ffd23c" toneMapped={false} />
+        <Valore sim="aurora" chiave="raggio" ripiego="Raggio" p={[0, 0.3, 0]} valore={() => `${num(raggioMm(ctl.current), 2)} mm`} />
       </mesh>
       <primitive object={frecciaV} />
       <primitive object={frecciaF} />
@@ -93,6 +99,7 @@ function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
         </group>
       ))}
       <Etichetta p={[4.3, 3.4, -4.2]}>B uscente</Etichetta>
+      <Valore sim="aurora" chiave="campo" ripiego="Campo" p={[4.3, 3.0, -4.2]} valore={() => `${num(ctl.current.B * 10, 0)} mT`} />
 
     </group>
   )
@@ -255,6 +262,7 @@ function IssIcona() {
         </mesh>
       ))}
       <Etichetta p={[0, 0, 0]} fisso size={0.024}>ISS</Etichetta>
+      <Valore sim="aurora" chiave="quota" ripiego="Quota" p={[0, 0, 0]} sotto valore={() => '400 km · 7,7 km/s'} />
     </group>
   )
 }
@@ -280,6 +288,15 @@ export default function Aurora({ onClose }: { onClose: () => void }) {
   ctl.current.intensita = stato === 'aurora' || stato === 'cupola' ? 1 : 0.45
   const passi = useMemo(() => passiSimulazione('aurora'), [])
   const sole = SOLE
+  const sezioni = useMemo(() => {
+    const n = nomiSezioni('aurora', ['Particella nel campo', 'La Terra e la ISS'])
+    return [{ id: 'carica', nome: n[0] }, { id: 'terra', nome: n[1] }]
+  }, [])
+  const cambiaSezione = (id: string) => { setStato(id === 'carica' ? 'campo' : 'vento'); if (id === 'carica') setB(1) }
+  const passoDiSezione = (id: string) => {
+    const i = passi.findIndex((q) => (id === 'carica' ? q.stato === 'campo' || q.stato === 'spirale' : q.stato !== 'campo' && q.stato !== 'spirale'))
+    return i >= 0 ? i : undefined
+  }
   const onPasso = (i: number | null, p?: Passo) => {
     if (i === null || !p) return
     setStato(p.stato ?? 'campo')
@@ -306,6 +323,10 @@ export default function Aurora({ onClose }: { onClose: () => void }) {
       didascalia={did}
       passi={passi}
       onPasso={onPasso}
+      sezioni={sezioni}
+      sezione={demo ? 'carica' : 'terra'}
+      onSezione={cambiaSezione}
+      passoDiSezione={passoDiSezione}
       hotspot={demo ? HOT_DEMO : HOT_TERRA}
       camera={{ position: [0, 1.5, 9.5], fov: 45 }}
       orbit={{ minDistance: 3, maxDistance: 26 }}
@@ -331,6 +352,7 @@ export default function Aurora({ onClose }: { onClose: () => void }) {
         <Tendaggio nord={false} ctl={ctl} />
         <IssIcona />
         <Etichetta p={[-11, 2, 0]} size={0.42}>Vento solare</Etichetta>
+        <Valore sim="aurora" chiave="campo" ripiego="Campo" p={[12, 0, 0]} valore={() => `0,5 µT`} />
       </group>
     </SimulazioneShell>
   )

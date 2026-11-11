@@ -10,6 +10,8 @@ import CameraCompatta from './CameraCompatta'
 import { fattoreCamera, useLayoutSim } from './compatto'
 import type { Passo } from './contenuto'
 
+export type SezioneSim = { id: string; nome: string }
+
 export type HotspotSim = { id: string; categoria: CategoriaSim; titolo: string; testo: string; pos: [number, number, number] }
 
 export type OrbitaSim = { target?: [number, number, number]; minDistance?: number; maxDistance?: number; maxPolarAngle?: number }
@@ -90,6 +92,12 @@ export type PropsShell = {
   hotspot?: HotspotSim[]
   camera?: { position: [number, number, number]; fov?: number }
   orbit?: OrbitaSim
+  /** scene diverse della stessa simulazione: pillole discrete per passare da una all'altra senza avviare i passi */
+  sezioni?: SezioneSim[]
+  sezione?: string
+  onSezione?: (id: string) => void
+  /** se i passi sono in corso: indice del primo passo della sezione (il cambio resta coerente con i passi) */
+  passoDiSezione?: (id: string) => number | undefined
   children: ReactNode
 }
 
@@ -135,7 +143,7 @@ export default function SimulazioneShell(p: PropsShell) {
       onClose={p.onClose}
       controlli={p.controlli}
       scope={p.scope}
-      scena={({ seq, passo, sinistraPx, sopraPx, compatto }) => {
+      scena={({ seq, passo, sinistraPx, sopraPx, compatto, vai }) => {
         const k = compatto ? fattoreCamera(info, sinistraPx, sopraPx) : 1
         return (
         <>
@@ -150,6 +158,35 @@ export default function SimulazioneShell(p: PropsShell) {
               <OffsetVista sinistraPx={sinistraPx} sopraPx={sopraPx} />
             </Canvas>
           </div>
+          {p.sezioni && p.sezioni.length > 1 && (
+            <div
+              data-sim-ui
+              className="pointer-events-none absolute inset-x-0 z-[41] flex justify-center"
+              style={{ top: compatto ? 'calc(env(safe-area-inset-top, 0px) + 92px)' : 112, paddingLeft: sinistraPx * 2 }}
+            >
+              <div role="tablist" aria-label="Scene della simulazione" className="glass pointer-events-auto flex gap-1 rounded-full p-1">
+                {p.sezioni.map((z) => {
+                  const att = p.sezione === z.id
+                  return (
+                    <button
+                      key={z.id}
+                      role="tab"
+                      aria-selected={att}
+                      onClick={() => {
+                        if (att) return
+                        const i = seq !== null ? p.passoDiSezione?.(z.id) : undefined
+                        if (i !== undefined) vai(i)
+                        else p.onSezione?.(z.id)
+                      }}
+                      className={'min-h-[32px] rounded-full px-3.5 text-[12px] font-medium transition ' + (att ? 'bg-cyan-300/20 text-cyan-100 ring-1 ring-cyan-300/50' : 'text-white/65 hover:text-white')}
+                    >
+                      {z.nome}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
           {/* hotspot: elementi DOM posizionati proiettando il punto 3D (nascosti durante i passi: la colonna racconta già) */}
           <div className="pointer-events-none absolute inset-0 z-[5] overflow-hidden" style={{ display: seq !== null ? 'none' : undefined }}>
             {p.hotspot?.map((h) => (

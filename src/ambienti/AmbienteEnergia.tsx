@@ -8,6 +8,7 @@ import { passiSimulazione } from '../simulazioni/passi'
 import type { Passo } from '../simulazioni/contenuto'
 import { TESTI } from './testi'
 import Etichetta from './Etichetta'
+import Valore, { num } from '../simulazioni/Valore'
 import { helixGeometry } from './geo'
 
 const OMEGA = 2.4 // rad/s rotazione spira
@@ -151,6 +152,7 @@ function Trasformatore({ st }: { st: React.RefObject<Stato> }) {
       <Etichetta p={[0, -2.2, 0]}>Trasformatore</Etichetta>
       <Etichetta p={[-1.3, 1.9, 0]}>N₁</Etichetta>
       <Etichetta p={[1.3, 1.9, 0]}>N₂</Etichetta>
+      <Valore sim="energia" chiave="tensione" ripiego="Tensione" p={[1.3, 2.3, 0]} valore={() => `${Math.round(230 * st.current.ratio)} V`} />
     </group>
   )
 }
@@ -221,6 +223,7 @@ function Linea({ st }: { st: React.RefObject<Stato> }) {
         <meshBasicMaterial color={HEAT} toneMapped={false} transparent opacity={0.8} />
       </instancedMesh>
       <Etichetta p={[5.6, 2.6, 0]}>Linea di trasmissione</Etichetta>
+      <Valore sim="energia" chiave="perdite" ripiego="Perdite Joule" colore="orange" p={[5.6, 3.1, 0]} valore={() => `${num(100 / (st.current.ratio * st.current.ratio), 0)} %`} />
       {/* citta */}
       <group position={[9.9, -0.9, 0]}>
         {[

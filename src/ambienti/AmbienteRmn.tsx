@@ -8,6 +8,7 @@ import { passiSimulazione } from '../simulazioni/passi'
 import type { Passo } from '../simulazioni/contenuto'
 import { TESTI } from './testi'
 import Etichetta from './Etichetta'
+import Valore, { num } from '../simulazioni/Valore'
 
 const CYAN = '#35e0ff'
 const ALPHA0 = 0.2 // inclinazione "termica" a riposo
@@ -238,6 +239,8 @@ export default function AmbienteRmn({ onClose }: { onClose: () => void }) {
       <directionalLight position={[4, 6, 6]} intensity={1.6} />
       <Stars radius={60} depth={30} count={600} factor={3} fade speed={0} />
       <Magnete />
+      <Valore sim="rmn" chiave="campo" ripiego="B₀" sotto p={[0, 3.7, 0]} valore={() => `${num(ctl.current.b0 * 1.5, 1)} T`} />
+      <Valore sim="rmn" chiave="frequenza" ripiego="Frequenza" sotto p={[2.8, 1.7, 0]} valore={() => `${num(ctl.current.b0 * 63.9, 1)} MHz`} />
       <Spins ctl={ctl} trS={trS} trM={trM} setLabel={setLabel} />
     </SimulazioneShell>
   )
