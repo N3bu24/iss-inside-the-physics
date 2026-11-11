@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Maximize2, X } from 'lucide-react'
 import { CREDITO_MAPPA, IMMAGINE_PLANISFERO, INTERVALLO_POSIZIONE_MS, PUNTI_TRACCIA, URL_POSIZIONE_ISS } from '../data/diretta'
 import { testoDiretta } from '../lib/contenutoV11'
@@ -82,12 +83,13 @@ function Planisfero({ pos, traccia }: { pos: Punto | null; traccia: Punto[] }) {
 
 function Orologio({ pos, errore }: { pos: Punto | null; errore: boolean }) {
   const ora = useOra()
-  const d = ora.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })
+  const d = ora.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' })
   const h = ora.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+  const utc = ora.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'UTC' })
   const coord = pos ? `${Math.abs(pos.lat).toFixed(1)}° ${pos.lat >= 0 ? 'N' : 'S'} · ${Math.abs(pos.lon).toFixed(1)}° ${pos.lon >= 0 ? 'E' : 'O'}` : errore ? 'posizione non disponibile' : 'posizione in arrivo…'
   return (
-    <div className="mt-1.5 flex items-baseline justify-between gap-2 text-[11px] leading-tight text-white/70 compatto:flex-col compatto:items-start compatto:gap-0 compatto:text-[10px]">
-      <span className="whitespace-nowrap tabular-nums">{d} · <span className="text-white/90">{h}</span></span>
+    <div className="mt-1.5 flex flex-col items-start gap-0 text-[11px] leading-tight text-white/70 compatto:text-[10px]">
+      <span className="whitespace-nowrap tabular-nums">{d} <span className="text-white/90">{h}</span> <span className="text-white/50">(UTC {utc})</span></span>
       <span className="whitespace-nowrap tabular-nums text-cyan-200/80">{coord}</span>
     </div>
   )
@@ -95,8 +97,8 @@ function Orologio({ pos, errore }: { pos: Punto | null; errore: boolean }) {
 
 function Ingrandita({ pos, traccia, errore, onChiudi }: { pos: Punto | null; traccia: Punto[]; errore: boolean; onChiudi: () => void }) {
   useEscape(() => { onChiudi(); return true }, PRIORITA_PANNELLO)
-  return (
-    <div className="absolute inset-0 z-[60] grid place-items-center bg-black/60 p-4" onClick={onChiudi}>
+  return createPortal(
+    <div className="fixed inset-0 z-[350] grid place-items-center bg-black/70 p-4" onClick={onChiudi}>
       <div className="glass w-[min(900px,94vw)] rounded-2xl p-4" onClick={(e) => e.stopPropagation()} role="dialog" aria-label="Dove si trova la ISS">
         <div className="mb-2 flex items-center justify-between">
           <div className="text-[13px] font-medium text-white/90">{testoDiretta('mappaTitolo', 'Dove si trova la ISS adesso')}</div>
@@ -106,7 +108,8 @@ function Ingrandita({ pos, traccia, errore, onChiudi }: { pos: Punto | null; tra
         <Orologio pos={pos} errore={errore} />
         <div className="mt-1 text-[10px] text-white/40">{CREDITO_MAPPA}</div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }
 
