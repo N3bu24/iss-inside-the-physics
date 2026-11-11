@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { FastForward, Maximize2, Minimize2, Plane, X } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useCompatto } from '../lib/dispositivo'
@@ -32,6 +32,7 @@ const APERTURA = 38 // metà apertura del cono in gradi
 
 /** Pianta SVG della ISS: moduli esplorabili evidenziati, cono di sguardo, moduli visitati, percorso guidato tratteggiato. */
 export default function MiniMappa({ corrente, visitati, onVaiA, onSaltaA, onNota, saltaVoli, occupato, tappe, piena = false, onPiena }: Props) {
+  const idBase = "mm" + useId().replace(/[^a-zA-Z0-9]/g, "")
   const [grande, setGrande] = useState(false)
   const [menu, setMenu] = useState<{ nodo: NodoId; nome: string } | null>(null)
   const [sopra, setSopra] = useState<string | null>(null)
@@ -74,10 +75,10 @@ export default function MiniMappa({ corrente, visitati, onVaiA, onSaltaA, onNota
     setMenu({ nodo: m.nodo, nome: m.nome })
   }
 
-  const pianta = (cn: string) => (
+  const pianta = (cn: string, k: string) => (
       <svg viewBox={`0 0 ${VIEWBOX.w} ${VIEWBOX.h}`} className={cn}>
         <defs>
-          <radialGradient id="mm-cono" cx="0" cy="0" r={RAGGIO_CONO} gradientUnits="userSpaceOnUse">
+          <radialGradient id={`${idBase}-cono-${k}`} cx="0" cy="0" r={RAGGIO_CONO} gradientUnits="userSpaceOnUse">
             <stop offset="0" stopColor="#6aeaff" stopOpacity="0.95" />
             <stop offset="1" stopColor="#35e0ff" stopOpacity="0.22" />
           </radialGradient>
@@ -119,7 +120,7 @@ export default function MiniMappa({ corrente, visitati, onVaiA, onSaltaA, onNota
         {/* cono di visuale sopra ai moduli: e` la cosa che si legge */}
         {angolo !== null && (
           <g transform={`translate(${c.x} ${c.y}) rotate(${angolo})`} style={{ pointerEvents: 'none' }}>
-            <path d={cono} fill="url(#mm-cono)" />
+            <path d={cono} fill={`url(#${idBase}-cono-${k})`} />
             <path d={bordiCono} fill="none" stroke="rgba(190,245,255,.55)" strokeWidth=".8" strokeLinejoin="round" />
           </g>
         )}
@@ -154,7 +155,7 @@ export default function MiniMappa({ corrente, visitati, onVaiA, onSaltaA, onNota
     return (
       <>
         <div className="glass absolute right-2 top-7 z-30 w-[6.6rem] rounded-xl p-1.5 tab:w-[9rem]">
-          {pianta("w-full select-none")}
+          {pianta("w-full select-none", "a")}
           <button onClick={() => onPiena?.(true)} aria-label="Apri la mappa della stazione" className="absolute inset-0 rounded-xl" />
         </div>
         {piena && (
@@ -168,7 +169,7 @@ export default function MiniMappa({ corrente, visitati, onVaiA, onSaltaA, onNota
             </header>
             <div className="scroll-sottile flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-4 pb-4 landscape:flex-row landscape:items-start">
               <div className="min-w-0 landscape:w-[55%] landscape:shrink-0">
-                {pianta("mx-auto max-h-[52dvh] w-full select-none landscape:max-h-[72dvh]")}
+                {pianta("mx-auto max-h-[52dvh] w-full select-none landscape:max-h-[72dvh]", "b")}
                 {legenda}
                 <p className="mt-2 text-[12.5px] text-white/60">Tocca un modulo per andarci. I moduli tratteggiati non sono visitabili: tocca per saperne di più.</p>
               </div>
@@ -191,7 +192,7 @@ export default function MiniMappa({ corrente, visitati, onVaiA, onSaltaA, onNota
           {grande ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
         </button>
       </div>
-      {pianta("w-full select-none")}
+      {pianta("w-full select-none", "c")}
       {legenda}
 
       {menuEl("glass fade-in absolute inset-x-0 top-full z-10 mt-2 rounded-2xl p-2")}

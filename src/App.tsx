@@ -69,6 +69,7 @@ export default function App() {
         {simulazione && <div className="absolute inset-0 z-[160]"><SimulazioneOverlay id={simulazione} onClose={() => setSimulazione(null)} /></div>}
       </Suspense>
       <IntestazioneAutore />
+      <div aria-hidden className="pointer-events-none absolute bottom-[3px] left-1/2 z-[300] -translate-x-1/2 select-none text-[10px] tracking-wider text-white/35">v{__APP_VERSION__}</div>
     </div>
   )
 }

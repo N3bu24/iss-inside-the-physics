@@ -45,7 +45,7 @@ export default function ImmagineNodo({ nodo, hotspot, portelli, porte, onHotspot
   const marcatori = (
     <>
       {hotspot.map((h) => h.pos?.tipo === 'immagine' && (
-        <Posiz key={h.id} x={h.pos.x} y={h.pos.y}><HotspotMarker tipo={h.categoria} titolo={h.titolo} simulazione={h.simulazione} onClick={() => onHotspot(h.id)} /></Posiz>
+        <Posiz key={h.id} x={h.pos.x} y={h.pos.y}><HotspotMarker tipo={h.categoria} idPunto={h.id} titolo={h.titolo} simulazione={h.simulazione} onClick={() => onHotspot(h.id)} /></Posiz>
       ))}
       {porte.filter((p) => p.x !== undefined).map((p) => (
         <Posiz key={p.ambiente} x={p.x!} y={p.y!}><HotspotMarker tipo="ambiente" ambiente={p.ambiente} titolo={p.titolo} onClick={() => onAmbiente(p.ambiente)} /></Posiz>
