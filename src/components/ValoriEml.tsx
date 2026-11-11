@@ -82,7 +82,7 @@ export default function ValoriEml({ ancore, fenomeno, calore, visibile }: Props)
   if (!visibile || !ancore?.sample) return null
   const pc = ancore.sample.clone().add(new THREE.Vector3(0, 0.85, 0))
   const pb = ancore.sample.clone().add(new THREE.Vector3(1.2, -0.3, 0.4))
-  const stile = 'glass pointer-events-none select-none whitespace-nowrap rounded-full px-2.5 py-1 text-[11px] leading-tight text-white/75 compatto:text-[10px]'
+  const stile = 'valore-eml glass pointer-events-none select-none whitespace-nowrap rounded-full px-2.5 py-1 text-[11px] leading-tight text-white/75 compatto:text-[10px]'
   return (
     <>
       <Html position={pc} center zIndexRange={[18, 0]} style={{ pointerEvents: 'none' }}>

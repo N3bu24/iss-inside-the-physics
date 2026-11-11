@@ -236,7 +236,7 @@ function Applicazioni({ st }: { st: React.RefObject<Stato> }) {
 }
 
 const HOTSPOT: HotspotSim[] = [
-  { id: 'spira', categoria: 'strumento', titolo: 'Spira in rame', pos: [0, 1.9, 0], testo: 'Il conduttore che ruota nel campo magnetico: il flusso cambia con l\'angolo e nasce una fem. Disegnata come una sola spira; il valore mostrato è quello di una bobina di 150 spire (B = 0,5 T, S = 0,04 m²).' },
+  { id: 'spira', categoria: 'strumento', titolo: 'Spira in rame', pos: [0, 2.7, 0], testo: 'Il conduttore che ruota nel campo magnetico: il flusso cambia con l\'angolo e nasce una fem. Disegnata come una sola spira; il valore mostrato è quello di una bobina di 150 spire (B = 0,5 T, S = 0,04 m²).' },
   { id: 'magneti', categoria: 'fisica', titolo: 'Magneti', pos: [-2.6, -2.1, 0], testo: 'Creano il campo B, diretto dal polo nord (rosso) al polo sud (blu).' },
   { id: 'collettore', categoria: 'strumento', titolo: 'Collettore e spazzole', pos: [0.9, -2.1, 0.6], testo: 'I due semianelli invertono il verso della corrente a ogni mezzo giro, così la coppia spinge sempre nello stesso senso.' },
   { id: 'applicazioni', categoria: 'vita', titolo: 'Braccio robotico e ventola', pos: [0, -3.4, -2.2], testo: 'A bordo i giunti del braccio e le ventole di Unity sono mossi da motori elettrici.' },
@@ -306,7 +306,7 @@ export default function Motore({ onClose }: { onClose: () => void }) {
         chiave="fem"
         ripiego={motore ? 'Corrente' : 'fem'}
         colore={motore ? 'orange' : 'cyan'}
-        p={[5, 0.9, 0]}
+        p={[5, 0.45, 0]}
         valore={() => (st.current.motore ? `${num(Math.max(0.5, 12 - 10 * st.current.vel) / 2, 1)} A` : `${num(12 * st.current.vel * Math.sin(st.current.th), 1)} V`)}
       />
       <Applicazioni st={st} />

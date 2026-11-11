@@ -100,8 +100,8 @@ function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
           </mesh>
         </group>
       ))}
-      <Etichetta p={[4.3, 3.4, -4.2]}>B uscente</Etichetta>
-      <Valore sim="aurora" chiave="campo" ripiego="Campo" sotto p={[4.3, 3.25, -4.2]} valore={() => `${num(ctl.current.B * 50, 0)} µT`} />
+      <Etichetta p={[2.6, -3.55, -4.2]}>B uscente</Etichetta>
+      <Valore sim="aurora" chiave="campo" ripiego="Campo" sotto p={[2.6, -3.7, -4.2]} valore={() => `${num(ctl.current.B * 50, 0)} µT`} />
 
     </group>
   )
