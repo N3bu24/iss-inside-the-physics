@@ -404,7 +404,7 @@ export default function EmlScene({ hotspot, attivo, fenomeno, calore, onHotspot,
     const altSheet = Math.min(altezzaSheet(info, aperto), info.altezza - BARRA_ESPLORA - 120)
     const sinistraPx = !sheet && seq !== null && !ridotta ? (info.larghLato + 16) / 2 : 0
     // a passi aperti la scena sale sopra il pannello; senza passi (in verticale) sale sopra la colonna di comandi e sottotitoli
-    const sopraPx = sheet && seq !== null ? (altSheet + BARRA_ESPLORA) / 2 : sheet ? 120 : 0
+    const sopraPx = sheet && seq !== null ? (altSheet + BARRA_ESPLORA) / 2 : sheet ? 120 : info.altezza < 500 && seq === null ? 105 : 0
     const avvia = () => { setSeq(0); setAperto(true) }
     return (
       <div className="eml-compatto absolute inset-0">
