@@ -1,7 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import IntroScreen from './components/IntroScreen'
 import IntestazioneAutore from './ui/IntestazioneAutore'
-import { avviaAmbient, impostaAmbientAttivo } from './lib/ambient'
+import { avviaAmbient } from './lib/ambient'
 import { audioGlobale } from './lib/audioGlobale'
 import { useApplicaPreferenze } from './lib/applicaPreferenze'
 import type { Richiesta } from './explore/Esplora'
@@ -34,7 +34,8 @@ export default function App() {
   useApplicaPreferenze()
 
   // il sottofondo segue il pulsante audio (parte solo dopo "Inizia l'esplorazione", per le regole di autoplay)
-  useEffect(() => { impostaAmbientAttivo(audioOn); audioGlobale.set(audioOn) }, [audioOn])
+  // (il muto e` applicato subito da audioGlobale.set, senza attendere il rendering: qui si aggiorna solo l'interfaccia)
+  useEffect(() => audioGlobale.ascolta(() => setAudioOn(audioGlobale.get())), [])
 
   const home = () => { setFase('intro'); setGiro((x) => x + 1); setRichiesta(null) }
   const apriIndice = useCallback(() => setPannello({ tipo: 'indice' }), [])
@@ -56,12 +57,12 @@ export default function App() {
     <div className="relative h-full w-full overflow-hidden">
       <Suspense fallback={null}>
         <Esplora
-          key={giro} attivo={fase === 'visita'} audioOn={audioOn} onAudio={() => setAudioOn(!audioOn)} onHome={home}
+          key={giro} attivo={fase === 'visita'} audioOn={audioOn} onAudio={audioGlobale.toggle} onHome={home}
           onIndice={apriIndice} onImpostazioni={apriImpostazioni} onCrediti={apriCrediti}
           bloccato={!!pannello} richiesta={richiesta} onRichiestaFatta={(n) => setRichiesta((r) => (r && r.n === n ? null : r))}
         />
       </Suspense>
-      {fase === 'intro' && <IntroScreen audioOn={audioOn} onAudio={() => setAudioOn(!audioOn)} onStart={() => { avviaAmbient(); setFase('visita') }} onIndice={apriIndice} onImpostazioni={apriImpostazioni} />}
+      {fase === 'intro' && <IntroScreen audioOn={audioOn} onAudio={audioGlobale.toggle} onStart={() => { avviaAmbient(); setFase('visita') }} onIndice={apriIndice} onImpostazioni={apriImpostazioni} />}
       <Suspense fallback={null}>
         {pannello?.tipo === 'indice' && <Indice onClose={chiudi} onVai={vaiDaIndice} onSimulazione={setSimulazione} sospeso={!!simulazione} />}
         {pannello?.tipo === 'impostazioni' && <Impostazioni scheda={pannello.scheda} onClose={chiudi} />}

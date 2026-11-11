@@ -4,6 +4,7 @@ import { Captions, FileText, RotateCcw } from 'lucide-react'
 import type { Luogo } from '../data/types'
 import { assetExists } from '../lib/assets'
 import { collegaVoce } from '../lib/ambient'
+import { annunciaVoce, congedaVoce } from '../lib/audioGlobale'
 import { preferenze, usePreferenza } from '../lib/preferenze'
 import AudioToggle from '../components/AudioToggle'
 import Waveform from '../components/Waveform'
@@ -91,10 +92,10 @@ export default function Voce({ luogo, audioOn, onAudio, schedaAperta = false, ex
   const audioEl = esiste && suona && (
     <audio
       key={giro} ref={audio} src={urlAudio(luogo.id)} autoPlay muted={!audioOn} preload="auto"
-      onPlay={() => { if (audio.current) collegaVoce(audio.current) }}
+      onPlay={() => { if (audio.current) { collegaVoce(audio.current); annunciaVoce(audio.current, () => setSuona(false)) } }}
       onLoadedMetadata={() => { setDur(audio.current?.duration ?? 0); if (audio.current) collegaVoce(audio.current) }}
       onTimeUpdate={() => setT(audio.current?.currentTime ?? 0)}
-      onEnded={() => setSuona(false)}
+      onEnded={() => { if (audio.current) congedaVoce(audio.current); setSuona(false) }}
     />
   )
 

@@ -9,7 +9,7 @@ import { preferenze } from './preferenze'
  * Parte solo dopo un gesto dell'utente (`avviaAmbient`, chiamata dal pulsante "Inizia l'esplorazione").
  */
 
-export type Sottofondo = 'stazione' | 'rientro'
+export type Sottofondo = 'stazione' | 'rientro' | 'simulazioni'
 /**
  * Tracce di sottofondo. `gainDb` compensa il livello di registrazione: il rombo del rientro e` a -29,4 LUFS, quasi come la stazione
  * (-30,5), ma deve risultare nettamente piu` presente: +5 dB. Passano entrambe da `entrata`, quindi da ducking, volume e analizzatore.
@@ -17,6 +17,7 @@ export type Sottofondo = 'stazione' | 'rientro'
 const TRACCE: Record<Sottofondo, { url: string; gainDb: number }> = {
   stazione: { url: '/audio/ambient/stazione.mp3', gainDb: 0 },
   rientro: { url: '/audio/ambient/rientro.mp3', gainDb: 5 },
+  simulazioni: { url: '/audio/ambient/simulazioni.mp3', gainDb: 0 },
 }
 /** durata della dissolvenza incrociata (s): setTargetAtTime con tau = DURATA / 3 */
 const DISSOLVENZA = 1.5
@@ -27,8 +28,9 @@ const FATTORE_DUCK = 0.32
 /** costanti di tempo (s) di setTargetAtTime: la rampa completa dura circa 3 volte questo valore */
 const TAU_DUCK_GIU = 0.2   // ~0,6 s
 const TAU_DUCK_SU = 0.5    // ~1,5 s
-const TAU_ENTRATA = 1.0    // ~3 s
-const TAU_USCITA = 0.15    // ~0,5 s
+const TAU_AVVIO = 1.0     // ~3 s (prima entrata del sottofondo)
+const TAU_ENTRATA = 0.35   // ~1 s (riaccensione dell'audio: deve essere pronta)
+const TAU_USCITA = 0.08    // ~0,25 s (muto: immediato)
 
 let ctx: AudioContext | null = null
 let gain: GainNode | null = null
@@ -92,13 +94,16 @@ export function seguiVoce(el: HTMLMediaElement) {
 const nodiTraccia: Partial<Record<Sottofondo, GainNode>> = {}
 const inCaricamento = new Set<Sottofondo>()
 let desiderato: Sottofondo = 'stazione'
+/** dentro una simulazione: se la musica esiste sostituisce il sottofondo, altrimenti resta quello di prima */
+let inSim = false
+const effettivo = (): Sottofondo => (inSim && nodiTraccia.simulazioni ? 'simulazioni' : desiderato)
 
 /** Porta il livello di ogni traccia caricata al valore voluto: la desiderata sale, le altre scendono (dissolvenza incrociata). */
 function applicaTracce(tau = DISSOLVENZA / 3) {
   if (!ctx) return
   for (const k of Object.keys(nodiTraccia) as Sottofondo[]) {
     const g = nodiTraccia[k]!
-    const t = k === desiderato ? Math.pow(10, TRACCE[k].gainDb / 20) : 0
+    const t = k === effettivo() ? Math.pow(10, TRACCE[k].gainDb / 20) : 0
     g.gain.cancelScheduledValues(ctx.currentTime)
     g.gain.setTargetAtTime(t, ctx.currentTime, tau)
   }
@@ -142,6 +147,16 @@ export function impostaSottofondo(nome: Sottofondo) {
 async function caricaSorgente() {
   await caricaTraccia('stazione')
   if (desiderato !== 'stazione') await caricaTraccia(desiderato)
+  if (inSim) await caricaTraccia('simulazioni')
+}
+
+/** Chiamata dalle simulazioni: dissolvenza incrociata verso la musica calma (se il file esiste) e ritorno all'uscita. */
+export function impostaInSimulazione(dentro: boolean) {
+  if (inSim === dentro) return
+  inSim = dentro
+  if (!ctx) return
+  if (dentro) void caricaTraccia('simulazioni')
+  applicaTracce()
 }
 
 /** Da chiamare dentro un gesto dell'utente. Crea la catena audio e fa partire il sottofondo con dissolvenza di ~3 s. */
@@ -168,7 +183,7 @@ export function avviaAmbient() {
     void caricaSorgente()
     ascoltaGlobale()
     for (const el of document.querySelectorAll('audio')) registra(el)
-    applica(TAU_ENTRATA)
+    applica(TAU_AVVIO)
   } catch {
     ctx = null; gain = null; analisi = null; gainVoce = null; for (const k of Object.keys(nodiTraccia) as Sottofondo[]) delete nodiTraccia[k]
   }

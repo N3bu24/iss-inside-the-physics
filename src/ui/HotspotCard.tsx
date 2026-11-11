@@ -3,6 +3,7 @@ import { X, Play, Pause } from 'lucide-react'
 import type { HotspotScheda } from '../data/types'
 import { assetExists } from '../lib/assets'
 import { collegaVoce } from '../lib/ambient'
+import { annunciaVoce, congedaVoce } from '../lib/audioGlobale'
 import { iconaSim } from '../data/iconeSim'
 import Badge from '../components/Badge'
 import CorpoScheda from '../components/CorpoScheda'
@@ -19,7 +20,7 @@ function Voce({ id, audioOn }: { id: string; audioOn: boolean }) {
   if (!esiste) return null
   return (
     <>
-      <audio ref={a} src={`/audio/poi/${id}.mp3`} muted={!audioOn} onEnded={() => setSuona(false)} onPause={() => setSuona(false)} preload="none" />
+      <audio ref={a} src={`/audio/poi/${id}.mp3`} muted={!audioOn} onPlay={() => { if (a.current) { collegaVoce(a.current); annunciaVoce(a.current, () => setSuona(false)) } }} onEnded={() => { if (a.current) congedaVoce(a.current); setSuona(false) }} onPause={() => setSuona(false)} preload="none" />
       <button
         onClick={() => {
           if (suona) { a.current?.pause(); return }
