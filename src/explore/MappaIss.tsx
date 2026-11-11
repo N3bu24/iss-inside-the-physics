@@ -89,7 +89,7 @@ function Orologio({ pos, errore }: { pos: Punto | null; errore: boolean }) {
   const coord = pos ? `${Math.abs(pos.lat).toFixed(1)}° ${pos.lat >= 0 ? 'N' : 'S'} · ${Math.abs(pos.lon).toFixed(1)}° ${pos.lon >= 0 ? 'E' : 'O'}` : errore ? 'posizione non disponibile' : 'posizione in arrivo…'
   return (
     <div className="mt-1.5 flex flex-col items-start gap-0 text-[11px] leading-tight text-white/70 compatto:text-[10px]">
-      <span className="whitespace-nowrap tabular-nums">{d} <span className="text-white/90">{h}</span> <span className="text-white/50">(UTC {utc})</span></span>
+      <span className="whitespace-nowrap tabular-nums">{d} <span className="text-white/90">{h}</span> <span className="text-white/50 compatto:block">(UTC {utc})</span></span>
       <span className="whitespace-nowrap tabular-nums text-cyan-200/80">{coord}</span>
     </div>
   )
