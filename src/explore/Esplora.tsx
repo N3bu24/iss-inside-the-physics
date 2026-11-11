@@ -30,6 +30,7 @@ import Legenda from './Legenda'
 import Indicatore from './Indicatore'
 import InterfacciaCompatta from './InterfacciaCompatta'
 import { useCompatto } from '../lib/dispositivo'
+import { CREDITO_MAPPA, CREDITO_STREAM } from '../data/diretta'
 import { attendi, distanzaAngolare, inQuad, outCubic, portelloInquadrato, rad, tween } from './geometria'
 import { useVista, vista } from './vista'
 
@@ -134,7 +135,12 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
   const saltaVoli = usePreferenza('saltaVoli')
   const compatto = useCompatto()
   const nodo = nodi[nodoId]
-  const luogo = useMemo(() => luogoDi(nodoId), [nodoId])
+  // Cupola con la diretta accesa (Impostazioni): badge e credito della ripresa in diretta invece del video registrato
+  const direttaCupola = usePreferenza('cupolaDiretta') && nodi[nodoId].tipo === 'cupola'
+  const luogo = useMemo(() => {
+    const l = luogoDi(nodoId)
+    return direttaCupola ? { ...l, badge: 'diretta' as typeof l.badge } : l
+  }, [nodoId, direttaCupola])
   const hotspot = useMemo(() => hotspotDi(nodoId), [nodoId])
   const precedente = storia[storia.length - 1] ?? null
 
@@ -602,7 +608,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
               </>
             )}
           />
-          <Crediti credito={nodo.credito} onApri={onCrediti} />
+          <Crediti credito={direttaCupola ? `${CREDITO_STREAM} · ${CREDITO_MAPPA}` : nodo.credito} onApri={onCrediti} />
         </>
       )}
       {attivo && compatto && (
