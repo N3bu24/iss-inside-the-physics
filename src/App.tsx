@@ -2,7 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import IntroScreen from './components/IntroScreen'
 import IntestazioneAutore from './ui/IntestazioneAutore'
 import { avviaAmbient } from './lib/ambient'
-import { audioGlobale } from './lib/audioGlobale'
+import { audioGlobale, fermaVoce } from './lib/audioGlobale'
 import { useApplicaPreferenze } from './lib/applicaPreferenze'
 import type { Richiesta } from './explore/Esplora'
 import type { NodoId } from './data/stazione'
@@ -64,12 +64,12 @@ export default function App() {
       </Suspense>
       {fase === 'intro' && <IntroScreen audioOn={audioOn} onAudio={audioGlobale.toggle} onStart={() => { avviaAmbient(); setFase('visita') }} onIndice={apriIndice} onImpostazioni={apriImpostazioni} />}
       <Suspense fallback={null}>
-        {pannello?.tipo === 'indice' && <Indice onClose={chiudi} onVai={vaiDaIndice} onSimulazione={setSimulazione} sospeso={!!simulazione} />}
+        {pannello?.tipo === 'indice' && <Indice onClose={chiudi} onVai={vaiDaIndice} onSimulazione={(id) => { fermaVoce(); setSimulazione(id) }} sospeso={!!simulazione} />}
         {pannello?.tipo === 'impostazioni' && <Impostazioni scheda={pannello.scheda} onClose={chiudi} />}
         {simulazione && <div className="absolute inset-0 z-[160]"><SimulazioneOverlay id={simulazione} onClose={() => setSimulazione(null)} /></div>}
       </Suspense>
       <IntestazioneAutore />
-      <div aria-hidden className="pointer-events-none absolute bottom-[3px] left-1/2 z-[300] -translate-x-1/2 select-none text-[10px] tracking-wider text-white/35">v{__APP_VERSION__}</div>
+      <div aria-hidden className="pointer-events-none absolute bottom-[3px] left-1/2 z-[300] -translate-x-1/2 select-none compatto:hidden text-[10px] tracking-wider text-white/35">v{__APP_VERSION__}</div>
     </div>
   )
 }
