@@ -20,6 +20,7 @@ import CameraCompatta from '../simulazioni/CameraCompatta'
 import { altezzaSheet, fattoreCamera, useLayoutSim } from '../simulazioni/compatto'
 import type { Passo } from '../simulazioni/contenuto'
 import ValoriEml from './ValoriEml'
+import EmlAnticollisione from './EmlAnticollisione'
 
 /** Solo sviluppo: espone camera e ancore per tarare le pose dei passi. */
 function HookDev({ ancore }: { ancore: Ancore | null }) {
@@ -352,6 +353,7 @@ export function EmlCanvas({ hotspot, attivo, fenomeno: fenomenoEsterno, calore: 
           })}
           <OrbitControls enableDamping minDistance={1.5} maxDistance={14} target={[0, 0, 0]} makeDefault />
           <CameraPasso passo={passo} fattore={fattore} />
+          <EmlAnticollisione />
           <ValoriEml ancore={ancore} fenomeno={fenomeno} calore={calore} visibile={passo !== null || fenomeno !== null} />
           {import.meta.env.DEV && <HookDev ancore={ancore} />}
           {info.modo !== 'desktop' && <CameraCompatta fattore={fattore} />}

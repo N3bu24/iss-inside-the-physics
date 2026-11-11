@@ -233,7 +233,7 @@ function Circuito({ sim, onToggle }: { sim: React.RefObject<Sim>; onToggle: () =
 const HOTSPOT: HotspotSim[] = [
   { id: 'interruttore', categoria: 'fisica', titolo: 'Interruttore', pos: [-1.5, -2, 0.6], testo: 'Alla chiusura la corrente non sale subito: la bobina si oppone con una fem autoindotta.' },
   { id: 'bobina', categoria: 'fisica', titolo: 'Bobina', pos: [2, 2.9, 0.6], testo: 'Induttore con L = μ₀N²S/l: la fem autoindotta si oppone alla variazione di corrente.' },
-  { id: 'resistore', categoria: 'energia', titolo: 'Resistore', pos: [-2.2, 3, 0.6], testo: 'Fissa il valore finale ε/R e la costante di tempo τ = L/R.' },
+  { id: 'resistore', categoria: 'energia', titolo: 'Resistore', pos: [-2.2, 3.7, 0.6], testo: 'Fissa il valore finale ε/R e la costante di tempo τ = L/R.' },
 ]
 
 export default function Autoinduzione({ onClose }: { onClose: () => void }) {

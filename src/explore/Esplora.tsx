@@ -29,6 +29,7 @@ import VoloFx, { type FxApi } from './VoloFx'
 import ImmagineNodo from './ImmagineNodo'
 import type { CapsulaApi } from './CapsulaRientro'
 import Legenda from './Legenda'
+import { fermaVoce } from '../lib/audioGlobale'
 import Indicatore from './Indicatore'
 import InterfacciaCompatta from './InterfacciaCompatta'
 import { useCompatto } from '../lib/dispositivo'
@@ -396,7 +397,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
 
   /** "Avvia" dalla scheda di un punto: l'EML è un'unica esperienza (niente simulazione-copia). Dentro il nodo parte il percorso a passi, da fuori si entra nell'EML. */
   const apriSim = useCallback((id: string) => {
-    if (id !== 'eml') { setSimulazione(id); return }
+    if (id !== 'eml') { fermaVoce(); setSimulazione(id); return }
     setApri(null)
     if (st.current.nodoId === 'eml') setAvviaEml((n) => n + 1)
     else vai('eml')
@@ -626,7 +627,7 @@ export default function Esplora({ attivo, audioOn, onAudio, onHome, onIndice, on
           </div>
           {nota && <NotaModulo key={nota} id={nota} onClose={() => setNota(null)} />}
           <TappeBar corrente={nodoId} visitati={visitati} occupato={volando || saltando} onVai={vai} />
-          <Legenda />
+          {!(nodo.tipo === 'eml' && sequenzaEml) && <Legenda />}
           <Voce
             key={nodo.id} luogo={luogo} audioOn={audioOn} onAudio={onAudio} schedaAperta={!!scheda}
             extra={(

@@ -18,8 +18,10 @@ const Y = new THREE.Vector3(0, 1, 0)
 
 type Ctl = { B: number; sign: number; intensita: number; elica: boolean; impatti: number }
 
-/** Raggio della traiettoria in millimetri (elettrone con v ~ 10^6 m/s in B = 10 mT x slider: r = mv/qB; il protone e' mostrato con lo stesso ordine di grandezza didattico). */
-const raggioMm = (c: Ctl) => 0.57 / c.B * (c.sign > 0 ? 1.75 : 1)
+/** Raggio di Larmor r = m v / (q B), con B = 50 µT x slider (campo terrestre in quota) e particelle da 1 keV (tipiche dell'aurora):
+ *  elettrone v = sqrt(2E/m) = 1,9e7 m/s -> r = 2,1 m; protone v = 4,4e5 m/s -> r = 92 m (a 50 µT). Scala come 1/B. */
+const raggioM = (c: Ctl) => (c.sign > 0 ? 92 : 2.1) / c.B
+const testoRaggio = (c: Ctl) => { const r = raggioM(c); return r >= 10 ? `${Math.round(r)} m` : `${num(r, 1)} m` }
 
 /* ---------- Demo: carica in un campo uniforme (B uscente dallo schermo) ---------- */
 function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
@@ -82,7 +84,7 @@ function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
       <mesh ref={part}>
         <sphereGeometry args={[0.17, 16, 12]} />
         <meshBasicMaterial ref={mat} color="#ffd23c" toneMapped={false} />
-        <Valore sim="aurora" chiave="raggio" ripiego="Raggio" p={[0, 0.3, 0]} valore={() => `${num(raggioMm(ctl.current), 2)} mm`} />
+        <Valore sim="aurora" chiave="raggio" ripiego="Raggio" p={[0, 0.3, 0]} valore={() => testoRaggio(ctl.current)} />
       </mesh>
       <primitive object={frecciaV} />
       <primitive object={frecciaF} />
@@ -98,8 +100,8 @@ function Demo({ ctl }: { ctl: React.RefObject<Ctl> }) {
           </mesh>
         </group>
       ))}
-      <Etichetta p={[4.3, 3.4, -4.2]}>B uscente</Etichetta>
-      <Valore sim="aurora" chiave="campo" ripiego="Campo" sotto p={[4.3, 3.25, -4.2]} valore={() => `${num(ctl.current.B * 10, 0)} mT`} />
+      <Etichetta p={[2.6, -3.55, -4.2]}>B uscente</Etichetta>
+      <Valore sim="aurora" chiave="campo" ripiego="Campo" sotto p={[2.6, -3.7, -4.2]} valore={() => `${num(ctl.current.B * 50, 0)} µT`} />
 
     </group>
   )
