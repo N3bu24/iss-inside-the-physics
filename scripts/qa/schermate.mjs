@@ -57,6 +57,12 @@ const STATI = {
     await p.evaluate(() => { const b = [...document.querySelectorAll('button')].filter((x) => (x.textContent || '').trim().startsWith('Avanti')).pop(); b?.click() })
     await attendi(2500)
   },
+  'cupola-diretta': async (p) => {
+    await p.evaluate(() => localStorage.setItem('iss-preferenze-v1', JSON.stringify({ cupolaDiretta: true })))
+    await p.reload({ waitUntil: 'networkidle2' }); await avvia(p)
+    await p.evaluate(() => window.__iss.saltaA('cupola')); await attendi(9000)
+  },
+  'cupola-video': async (p) => { await avvia(p); await p.evaluate(() => window.__iss.saltaA('cupola')); await attendi(7000) },
   capsula: async (p) => { await avvia(p); await p.evaluate(() => window.__iss.saltaA('finale')); await attendi(7000) },
 }
 

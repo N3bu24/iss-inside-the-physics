@@ -1,5 +1,5 @@
 import type { NodoId } from './stazione'
-export type Provenienza = 'foto' | 'ia' | 'modello3d' | 'simulazione'
+export type Provenienza = 'foto' | 'ia' | 'modello3d' | 'simulazione' | 'diretta'
 export type TipoTappa = 'panorama' | 'scena3d' | 'documentario' | 'immagine'
 
 export interface Media {

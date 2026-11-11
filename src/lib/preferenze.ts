@@ -22,6 +22,8 @@ export interface Preferenze {
   saltaVoli: boolean
   /** tremolio della visuale nella capsula di rientro */
   tremolioCapsula: boolean
+  /** Cupola: al posto del video registrato, la diretta ufficiale NASA dalla ISS (predefinito: spenta) */
+  cupolaDiretta: boolean
 }
 
 export const PREDEFINITE: Preferenze = {
@@ -33,6 +35,7 @@ export const PREDEFINITE: Preferenze = {
   riduciAnimazioni: false,
   saltaVoli: false,
   tremolioCapsula: true,
+  cupolaDiretta: false,
 }
 
 const CHIAVE = 'iss-preferenze-v1'

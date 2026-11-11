@@ -5,6 +5,7 @@ const INFO: Record<Provenienza, { label: string; dot: string }> = {
   ia: { label: 'Ricostruzione IA', dot: '#b58cff' },
   modello3d: { label: 'Modello 3D', dot: '#35e0ff' },
   simulazione: { label: 'Simulazione concettuale', dot: '#ff8a2a' },
+  diretta: { label: 'Ripresa reale in diretta', dot: '#ff4d4d' },
 }
 
 export default function Badge({ tipo, className = '' }: { tipo: Provenienza; className?: string }) {
