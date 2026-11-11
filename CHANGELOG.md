@@ -5,6 +5,26 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [1.1.0] — 2026-11-11
+Interfaccia per telefono e tablet e 15 modifiche dell'autore dopo la prova del sito.
+### Aggiunto
+- Interfaccia per telefono e tablet (barra inferiore, pannelli dal basso, simulazioni e nodo EML adattati); desktop invariato.
+- Cupola in diretta (opzione nelle Impostazioni): diretta ufficiale NASA della Terra dalla ISS, scritta «In diretta dalla ISS», mini-mappa del planisfero ingrandibile con la posizione attuale della ISS, traccia recente, data e ora; ritorno al video registrato.
+- Musica calma e sintetica dentro le simulazioni (ElevenLabs Music) con dissolvenza incrociata al posto del sottofondo della stazione.
+- Piccoli valori sugli elementi delle simulazioni: temperatura del campione e frequenza della bobina nell'EML, campo, corrente, energia, giri, tensione nelle altre.
+- Pulsante per passare tra le sezioni della simulazione dell'aurora senza avviare la guida.
+- Nome breve dello strumento accanto ai punti luminosi (es. ARED).
+- Numero di versione discreto nell'interfaccia.
+### Cambiato
+- EML unico: ambiente e simulazione uniti in una sola esperienza (la simulazione-copia è stata eliminata); X di uscita in alto a destra; i passi guidati portano la camera a pose assolute con inquadrature più larghe.
+- Punti con simulazione: un simbolo unico (▶) distinto per colore, diverso dai punti di interesse normali.
+### Corretto
+- Voci sovrapposte: una sola voce narrante alla volta.
+- Tasto muto lento o inefficace: ora immediato su tutte le sorgenti.
+- Voce delle simulazioni che a volte non partiva (con «Tocca per ascoltare» se il browser blocca l'audio).
+- Cono di luce della mini-mappa ridotto a due linee grigie su telefono.
+- Rifiniture dal QA v1.1 (sovrapposizioni, diretta della Cupola, valori fisici).
+
 ## [1.0.0] — 2026-11-10
 Versione consegnata, pubblicata su https://iss-inside-the-physics.vercel.app.
 ### Cambiato

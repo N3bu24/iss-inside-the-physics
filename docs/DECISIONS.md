@@ -153,3 +153,13 @@ Formato: data, decisione, motivo, alternative scartate.
 - **Decisione (autore):** pubblicare su Vercel, release 1.0.0 e repository GitHub pubblico. **Motivo:** consegna e condivisione del progetto.
 - **Decisione (autore):** prima di renderla pubblica, togliere dalla storia git il pptx del professore e sostituire l'email scolastica dei commit con l'indirizzo noreply di GitHub; riscrittura con `git filter-branch` e push forzato, branch secondari (già uniti) cancellati dal remoto. **Scartato:** pubblicare con slide ed email; tenere la repo privata.
 - **Decisione (orchestratore):** `*.pptx` in `.gitignore`; `user.email` della repo = indirizzo noreply. Sezione Licenze nel README (codice e testi dell'autore; media di terzi con le loro licenze, panorami ESA non riutilizzabili senza permesso).
+
+## 11/11/2026 notte — v1.1.0 (15 note dell'autore)
+- **Decisione (autore):** l'EML è un'esperienza unica: eliminata la simulazione 'eml' separata; i punti dentro l'EML aprono la scheda o avviano i passi nella stessa scena. **Scartato:** tenere ambiente e simulazione separati.
+- **Decisione (orchestratore):** passi guidati dell'EML con pose assolute della camera (`passi.ts`, interpolazione dalla posa attuale). **Motivo:** l'utente può aver spostato la vista.
+- **Decisione (autore/orchestratore):** punti con simulazione = simbolo unico ▶ con colore per simulazione (`src/data/iconeSim.ts`); dentro l'EML i punti usano l'icona normale (l'EML è la simulazione stessa).
+- **Decisione (autore):** Cupola in diretta opzionale (spenta per default): embed youtube-nocookie della diretta ufficiale NASA (ID in `src/data/diretta.ts`, cambia se NASA riavvia lo stream: link al canale e ritorno al video come ripiego), posizione da `api.wheretheiss.at` (HTTPS, CORS verificato), planisfero Blue Marble. **Scartato:** open-notify (solo HTTP); `embed/live_stream?channel=` (il canale NASA ha più dirette).
+- **Decisione (autore):** musica calma e sintetica nelle simulazioni (ElevenLabs Music, dentro il piano Starter) con dissolvenza incrociata.
+- **Decisione (orchestratore):** una sola voce narrante alla volta, gestita in `src/lib/audioGlobale.ts`; muto applicato subito senza passare da React.
+- **Decisione (orchestratore):** numero di versione letto da `package.json` (`__APP_VERSION__`), visibile su desktop in basso al centro al 35% e nelle Impostazioni; nascosto su telefono/tablet per non coprire la barra.
+- **Decisione (orchestratore):** schermate del QA non più nella repo (pesanti); restano in locale.
