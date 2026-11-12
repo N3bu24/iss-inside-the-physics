@@ -14,7 +14,7 @@
 
   /* ---------- PAGINA 1 ---------- */
   .p1 { background: #050a14; color: #e8eef7; }
-  .hero { position: relative; height: 112mm; background: url(intro.jpg) center 38%/cover; }
+  .hero { position: relative; height: 100mm; background: url(intro.jpg) center 38%/cover; }
   .hero::after { content: ""; position: absolute; inset: 0;
     background: linear-gradient(180deg, rgba(5,10,20,.55) 0%, rgba(5,10,20,.05) 35%, rgba(5,10,20,.35) 65%, #050a14 100%); }
   .top { position: absolute; top: 11mm; left: 14mm; right: 14mm; display: flex; justify-content: space-between;
@@ -26,19 +26,19 @@
   .sub { margin-top: 4mm; font: 300 12pt/1.4 Inter; color: #c5d1e2; max-width: 150mm; }
 
   .body1 { padding: 6mm 14mm 0; }
-  .lead { font: 400 9.8pt/1.56 Inter; color: #cfd9e8; columns: 2; column-gap: 9mm; }
+  .lead { font: 400 9.4pt/1.5 Inter; color: #cfd9e8; columns: 2; column-gap: 9mm; }
   .lead p + p { margin-top: 3mm; }
   .lead b { color: #fff; font-weight: 600; }
   .lead .cy { color: #5fd4f4; font-weight: 500; }
   .lead .or { color: #ff9a4d; font-weight: 500; }
 
-  .tiles { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 3mm; margin-top: 6mm; height: 40mm; }
+  .tiles { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 3mm; margin-top: 5mm; height: 30mm; }
   .tile { position: relative; border-radius: 3mm; overflow: hidden; background-size: cover; background-position: center; }
   .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(5,10,20,.9)); }
   .tile .cap { position: absolute; left: 3.5mm; bottom: 3mm; z-index: 2; font: 600 8.5pt "Space Grotesk"; }
   .tile .cap small { display: block; font: 400 6.5pt "JetBrains Mono"; letter-spacing: .12em; text-transform: uppercase; color: #8fa3bd; margin-top: 1mm; }
 
-  .stops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 6mm; }
+  .stops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 5mm; }
   .stop { border-top: 0.4mm solid #22344f; padding-top: 3mm; }
   .stop .n { font: 500 7pt "JetBrains Mono"; color: #5fd4f4; letter-spacing: .15em; }
   .stop.hot .n { color: #ff9a4d; }
@@ -52,6 +52,14 @@
   .foot1 .cta { font: 500 8pt "JetBrains Mono"; color: #5fd4f4; letter-spacing: .08em; text-align: right; }
   .foot1 .cta small { display: block; color: #7f93ad; font-size: 6.6pt; margin-top: 1mm; letter-spacing: .04em; }
 
+  .link { position: relative; margin-top: 6mm; display: flex; align-items: center; gap: 7mm;
+    background: linear-gradient(100deg, #0e3b57 0%, #0a2238 70%); border: 0.4mm solid #5fd4f4; border-radius: 4mm; padding: 5mm 6mm;
+    color: #fff; text-decoration: none; box-shadow: 0 0 10mm rgba(95,212,244,.25); }
+  .link .qr { width: 27mm; height: 27mm; background: #fff; border-radius: 2mm; padding: 2mm; flex: none; }
+  .link .qr img { width: 100%; height: 100%; display: block; }
+  .link .lbl { font: 500 8pt "JetBrains Mono"; letter-spacing: .22em; text-transform: uppercase; color: #5fd4f4; }
+  .link .url { font: 700 22pt/1.1 "Space Grotesk"; letter-spacing: -.01em; margin-top: 2mm; color: #fff; }
+  .link .note { font: 400 8.2pt/1.4 Inter; color: #b6c5d8; margin-top: 2mm; }
   /* ---------- PAGINA 2 (tecnica, sobria) ---------- */
   .p2 { background: #fff; color: #1d2430; padding: 11mm 14mm; font-size: 7.9pt; line-height: 1.38; }
   .p2 h2 { font: 700 15pt "Space Grotesk"; letter-spacing: -.01em; }
@@ -103,24 +111,32 @@
       <div class="stop hot"><div class="n">03 · CAPIRE</div><h3>L'esperimento</h3><p>Che cosa succede davvero dentro l'EML. Da vedere, non da leggere.</p></div>
       <div class="stop"><div class="n">04 · TORNARE</div><h3>Dallo spazio alla Terra</h3><p>Il rientro in capsula: Agenda 2030 e diritto alla salute, attraverso la stessa fisica.</p></div>
     </div>
+  <a class="link" href="https://iss-inside-the-physics.vercel.app">
+    <div class="qr"><img src="qr-sito.svg" alt="Codice QR del sito"></div>
+    <div>
+      <div class="lbl">Il sito · apri il link o inquadra il codice</div>
+      <div class="url">iss-inside-the-physics.vercel.app</div>
+      <div class="note">Mettete le cuffie, attivate l'audio. Circa 15 minuti · computer consigliato, funziona anche su tablet e telefono.</div>
+    </div>
+  </a>
   </div>
-
   <div class="foot1">
     <div class="who">Alessandro Bettinelli<small>Classe 5ALSA · Fisica ed Educazione civica · Obiettivo 9 dell'Agenda 2030</small></div>
-    <div class="cta">Mettete le cuffie, attivate l'audio.<small>Circa 15 minuti · computer consigliato · indirizzo del sito: iss-inside-the-physics.vercel.app</small></div>
+    <div class="cta">Versione 1.2.0<small>Codice: github.com/N3bu24/iss-inside-the-physics</small></div>
   </div>
 </section>
 
 <!-- ================= PAGINA 2 ================= -->
 <section class="page p2">
   <h2>Scheda tecnica</h2>
-  <div class="meta">ISS — Inside the Physics · versione 1.0.0 · github.com/N3bu24/iss-inside-the-physics · sito statico (hosting Vercel)</div>
+  <div class="meta">ISS — Inside the Physics · versione 1.2.0 · sito: iss-inside-the-physics.vercel.app · codice: github.com/N3bu24/iss-inside-the-physics · sito statico (hosting Vercel)</div>
 
   <div class="cols">
     <div>
       <h4>Come visitarlo</h4>
       <ul>
-        <li>Computer o portatile con Chrome, Edge o Firefox aggiornati; tablet accettabile, smartphone non supportato.</li>
+        <li>Computer o portatile con Chrome, Edge o Firefox aggiornati; interfaccia adattata anche a tablet e telefono.</li>
+        <li>Cupola: video registrato oppure, dalle Impostazioni, la diretta NASA della Terra con la posizione attuale della ISS.</li>
         <li>Audio consigliato (voce narrante e sottotitoli). Si può spegnere in qualsiasi momento.</li>
         <li>Comandi: trascinamento per guardarsi intorno, rotella per lo zoom, frecce ↑/↓ per passare al modulo successivo/precedente. Legenda sempre disponibile.</li>
         <li>Primo caricamento: circa 100 MB di media in totale, caricati solo quando servono.</li>
@@ -133,8 +149,8 @@
         <tr><td>Punti di interesse</td><td>28 nei moduli + 4 nella capsula di rientro</td></tr>
         <tr><td>Simulazioni</td><td>8 simulazioni 3D a passi, con guida «Come si usa»</td></tr>
         <tr><td>Fenomeni EML</td><td>5 render Blender (campo variabile, correnti indotte, Joule, fusione, solidificazione)</td></tr>
-        <tr><td>Audio</td><td>59 clip di voce in italiano con sottotitoli; sottofondo e rombo del rientro</td></tr>
-        <tr><td>Codice</td><td>83 file TypeScript/TSX, circa 8.600 righe</td></tr>
+        <tr><td>Audio</td><td>59 clip di voce in italiano con sottotitoli; sottofondo, musica delle simulazioni e rombo del rientro</td></tr>
+        <tr><td>Codice</td><td>99 file TypeScript/TSX, circa 10.500 righe</td></tr>
       </table>
 
       <h4>Tecnologie</h4>

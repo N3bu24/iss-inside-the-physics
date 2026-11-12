@@ -1,4 +1,4 @@
-import { crediti, creditiAltri } from '../data/crediti'
+import { crediti, creditiAltri, URL_REPO } from '../data/crediti'
 import { strumenti } from '../data/extra'
 
 /** Riga di credito discreta (basso a destra) + link "Crediti" che apre il pannello Impostazioni sulla scheda Crediti. */
@@ -37,6 +37,11 @@ export function ContenutoCrediti() {
           </li>
         ))}
       </ul>
+      <p className="mt-6 text-sm text-white/55">Codice sorgente</p>
+      <div className="mt-3 border-t border-white/10 pt-3 text-sm">
+        <a href={URL_REPO} target="_blank" rel="noopener noreferrer" className="font-medium text-cyan-200/90 underline decoration-cyan-200/30 underline-offset-2 hover:text-cyan-100">github.com/N3bu24/iss-inside-the-physics</a>
+        <div className="text-white/65">Codice del sito, relazione in PDF e storico delle versioni.</div>
+      </div>
       {gruppi.size > 0 && (
         <>
           <p className="mt-6 text-sm text-white/55">Strumenti usati</p>

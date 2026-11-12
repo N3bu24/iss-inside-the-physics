@@ -163,3 +163,8 @@ Formato: data, decisione, motivo, alternative scartate.
 - **Decisione (orchestratore):** una sola voce narrante alla volta, gestita in `src/lib/audioGlobale.ts`; muto applicato subito senza passare da React.
 - **Decisione (orchestratore):** numero di versione letto da `package.json` (`__APP_VERSION__`), visibile su desktop in basso al centro al 35% e nelle Impostazioni; nascosto su telefono/tablet per non coprire la barra.
 - **Decisione (orchestratore):** schermate del QA non più nella repo (pesanti); restano in locale.
+
+## 12/11 sera — consegna
+- **Decisione (autore):** volo harmony→destiny lasciato com'è (Kling); zip per l'uso in locale rigenerato per la versione finale; `.env.local` lasciato; panorami ESA tenuti con la licenza ESA Standard e credito.
+- **Decisione (autore):** link al repository GitHub nel sito, secondario: «Codice su GitHub» in piccolo nella schermata iniziale e voce «Codice sorgente» nei Crediti. **Scartato:** pulsanti nell'interfaccia di esplorazione.
+- **Decisione (orchestratore):** versione consegnata 1.2.0 (MINOR: nuovo link e zip aggiornato). Relazione PDF con il link al sito in un riquadro grande e codice QR (`docs/relazione/pdf-sorgente/qr-sito.svg`).

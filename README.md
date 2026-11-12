@@ -5,7 +5,9 @@
 **Una visita a 400 km di quota.** Un viaggio dentro la Stazione Spaziale Internazionale, fino all'esperimento che fonde il metallo senza toccarlo.
 
 Alessandro Bettinelli · classe 5ALSA · Fisica ed Educazione civica · a.s. 2026/27
-Sito: **[iss-inside-the-physics.vercel.app](https://iss-inside-the-physics.vercel.app)** · Relazione in PDF: [`docs/relazione/ISS-Inside-the-Physics-relazione.pdf`](docs/relazione/ISS-Inside-the-Physics-relazione.pdf)
+## 🌍 [iss-inside-the-physics.vercel.app](https://iss-inside-the-physics.vercel.app)
+
+Relazione in PDF: [`docs/relazione/ISS-Inside-the-Physics-relazione.pdf`](docs/relazione/ISS-Inside-the-Physics-relazione.pdf)
 
 ---
 
@@ -31,9 +33,10 @@ Il percorso si può seguire come un documentario oppure abbandonare in qualsiasi
 ## Scheda tecnica
 
 ### Come visitarlo
-- Computer o portatile con Chrome, Edge o Firefox aggiornati; tablet accettabile, smartphone non supportato.
+- Computer o portatile con Chrome, Edge o Firefox aggiornati (esperienza migliore); interfaccia adattata anche per tablet e telefono.
 - Audio consigliato (voce narrante e sottotitoli), disattivabile in qualsiasi momento.
 - Comandi: trascinamento per guardarsi intorno, rotella per lo zoom, frecce ↑/↓ per il modulo successivo/precedente. Legenda sempre disponibile.
+- Cupola: video registrato oppure, dalle Impostazioni, la diretta NASA della Terra dalla ISS con la posizione attuale della stazione.
 - Mini-mappa con viaggio rapido verso ogni modulo; **Indice** con tutti i testi (anche senza esplorare); **Impostazioni** per volumi, sottotitoli, dimensione del testo, contrasto e animazioni.
 - Circa 100 MB di media in totale, caricati solo quando servono.
 
@@ -46,7 +49,7 @@ Il percorso si può seguire come un documentario oppure abbandonare in qualsiasi
 | Simulazioni | 8 simulazioni 3D a passi, ciascuna con guida «Come si usa» |
 | Fenomeni EML | 5 render Blender (campo variabile, correnti indotte, Joule, fusione, solidificazione) |
 | Audio | 59 clip di voce narrante in italiano con sottotitoli; sottofondo della stazione e rombo del rientro |
-| Codice | 83 file TypeScript/TSX, circa 8.600 righe |
+| Codice | 99 file TypeScript/TSX, circa 10.500 righe |
 
 ### Tecnologie
 | Area | Strumenti |
@@ -83,6 +86,7 @@ npm install
 npm run dev      # http://localhost:5173
 npm run build    # output in dist/
 ```
+Serve Node.js 20 o successivo. Ogni push su `main` viene pubblicato automaticamente da Vercel.
 Il sito è statico: nessuna chiave API è usata a runtime. Le chiavi servite per generare i media restano in `.env`, escluso dal repository.
 
 ### Provenienza dei contenuti
@@ -109,7 +113,7 @@ Elenco completo in `src/data/crediti.ts` e `public/panorami/CREDITI.md`.
 Teoria del corso «L'induzione elettromagnetica 5LSA»; ESA e DLR (Electromagnetic Levitator, laboratorio Columbus); NASA (ISS, materiali in microgravità); consegna di Fisica ed Educazione civica (Agenda 2030, Obiettivi 3, 7, 9; Art. 32 della Costituzione).
 
 ### Versioni
-Storico completo in [`CHANGELOG.md`](CHANGELOG.md). La versione consegnata è la **1.0.0**, pubblicata su [iss-inside-the-physics.vercel.app](https://iss-inside-the-physics.vercel.app).
+Storico completo in [`CHANGELOG.md`](CHANGELOG.md). La versione consegnata è la **1.2.0**, pubblicata su [iss-inside-the-physics.vercel.app](https://iss-inside-the-physics.vercel.app). Nella [release più recente](https://github.com/N3bu24/iss-inside-the-physics/releases/latest) c'è anche uno zip per vedere il sito in locale senza installare nulla (`Avvia ISS.bat`, Windows).
 
 ### Licenze
 Codice e testi originali: © 2026 Alessandro Bettinelli, progetto scolastico. Le immagini, i video e i modelli di terzi restano dei rispettivi autori e sono usati a scopo educativo con le licenze indicate nei crediti (in particolare i panorami ESA non possono essere riutilizzati senza il permesso di ESA).

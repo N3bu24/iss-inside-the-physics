@@ -130,7 +130,7 @@ Ondata 3:
 - [x] P1 X in alto a destra in tutte le simulazioni, EML compreso — nota 2
 - [x] P2 Icone dei punti di simulazione: simbolo unico, colori diversi — nota 3
 - [x] P1 EML: camera guidata a coordinate assolute, inquadrature più larghe — nota 4
-- [ ] P1 EML: ambiente e simulazione uniti in uno solo, niente simulazione-copia senza icone — note 5-6
+- [x] P1 EML: ambiente e simulazione uniti in uno solo, niente simulazione-copia senza icone — note 5-6 (fatto nella v1.1.0, spunta mancante corretta il 12/11)
 - [x] P2 Mini-mappa mobile: cono di luce rotto — nota 7
 - [x] P2 Valori discreti sugli elementi (es. temperatura del campione) — nota 8
 - [x] P2 Cupola: diretta dalla ISS opzionale + planisfero con posizione, data e ora — nota 9
@@ -143,3 +143,11 @@ Ondata 3:
 - [x] P1 QA su desktop, tablet, telefono (QA Sonnet: 0 bloccanti, 12 rifiniture corrette); v1.1.0 + v1.1.1 (build Vercel), push, sito verificato, resoconto Telegram
 - Nota 11/11: il QA ha trovato 12 problemi non bloccanti (sovrapposizioni, banner della diretta, valori di Motore/Energia/Aurora poco plausibili), tutti corretti salvo P-11 (posizione di «Esci» su tablet/telefono, accettata). Schermate del QA tolte dalla repo (40 MB, restano in locale; `docs/qa/**/*.png` in `.gitignore`).
 - Nota 11/11: la musica delle simulazioni (ElevenLabs Music) non scala i caratteri del piano; consumo reale da verificare sulla dashboard.
+
+### 12/11 sera — consegna (v1.2.0)
+- [x] P1 Approvazioni arretrate: volo harmony→destiny lasciato com'è, zip locale rigenerato, `.env.local` lasciato, panorami ESA tenuti (licenza ESA Standard con credito)
+- [x] P1 Link discreto al codice su GitHub (schermata iniziale in basso a sinistra + scheda Crediti)
+- [x] P1 README aggiornato (link al sito in evidenza, telefono/tablet, Cupola in diretta, zip nella release)
+- [x] P1 Relazione PDF aggiornata alla 1.2.0: link al sito in un riquadro grande con codice QR cliccabile; GitHub in piccolo
+- [x] P1 Release v1.2.0 con zip per l'uso in locale e PDF; branch: solo `main`
+- [x] P1 PDF inviato all'autore su Telegram

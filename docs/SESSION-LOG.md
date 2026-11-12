@@ -80,3 +80,8 @@ Diario cronologico delle sessioni. **Si aggiunge solo in fondo.**
 - Problema: deploy Vercel fallito dal merge di web B (`@types/node` assente in un ambiente pulito; in locale c'era per caso). Corretto in v1.1.1, verificato con un clone pulito; sito online con la 1.1.1.
 - Problema: le schermate del QA (40 MB) erano finite in un commit; tolte dalla repo, `docs/qa/**/*.png` ignorato.
 - mp3 della musica e resoconto inviati su Telegram.
+
+## 12/11/2026 sera — consegna, v1.2.0
+- Approvazioni arretrate chieste e ottenute (volo, zip, `.env.local`, licenza ESA).
+- Link GitHub discreto nel sito; README e relazione PDF aggiornati (link grande + QR); zip locale 1.2.0; release v1.2.0; PDF inviato su Telegram.
+- Script della musica (`assets/audio/musica/*.mjs`) aggiunti alla repo; sorgenti audio e schermate del QA v1.1 restano in locale (`.gitignore`).

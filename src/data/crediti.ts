@@ -32,3 +32,6 @@ export const creditiAltri: { titolo: string; testo: string }[] = [
   { titolo: 'Video e animazioni', testo: 'Simulazione concettuale – render Blender. Non sono riprese reali.' },
   { titolo: "Modello 3D dell'EML", testo: 'Modello concettuale realizzato per questo progetto, a scopo didattico.' },
 ]
+
+/** Repository pubblico del progetto (codice, relazione, storico delle versioni). */
+export const URL_REPO = 'https://github.com/N3bu24/iss-inside-the-physics'

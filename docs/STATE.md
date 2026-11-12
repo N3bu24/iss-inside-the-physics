@@ -1,11 +1,14 @@
 # STATE — ISS: Inside the Physics
 
-**Ultimo aggiornamento:** mercoledì 11 novembre 2026, mattina, chiusura sessione (lavoro programmato delle 4:00 concluso)
-**Fase e giorno:** fase 6 (test e rifinitura), mercoledì 11. Il progetto è **consegnabile**: online la **v1.1.1**.
-**Versione:** tag `v1.1.1` su `main` (release GitHub v1.1.0 con le note + v1.1.1 di correzione della build). La v1.0.0 resta con lo zip per l'uso in locale (lo zip non è stato rigenerato per la 1.1).
-**Sito:** https://iss-inside-the-physics.vercel.app (verificato: serve la 1.1.1, musica e planisfero presenti).
+**Ultimo aggiornamento:** giovedì 12 novembre 2026, sera (consegna)
+**Fase e giorno:** fase 6 conclusa: **versione consegnata 1.2.0**.
+**Versione:** tag `v1.2.0` su `main`; release GitHub v1.2.0 con zip per l'uso in locale e relazione PDF.
+**Sito:** https://iss-inside-the-physics.vercel.app
 **Repository:** https://github.com/N3bu24/iss-inside-the-physics, pubblico, solo il branch `main`.
-**Scadenza:** giovedì 12 novembre 2026, sera.
+
+## Fatto (12/11 sera)
+- Approvazioni arretrate chiuse (volo harmony→destiny lasciato, zip rigenerato, `.env.local` lasciato, licenza ESA tenuta).
+- Link discreto «Codice su GitHub» nella schermata iniziale e nei Crediti; README e relazione PDF aggiornati (link grande + QR); release v1.2.0; PDF inviato su Telegram.
 
 ## Fatto (11/11, 4:00 → mattina)
 - v1.1.0: le 15 note dell'autore (piano in `docs/piano-v1.1.md`): voce unica (`src/lib/audioGlobale.ts`), muto immediato, voce delle simulazioni affidabile, musica nelle simulazioni (`public/audio/ambient/simulazioni.mp3`), simbolo ▶ colorato per i punti con simulazione, cono della mini-mappa riparato, nomi brevi degli strumenti (`content/v11.json`, `src/data/nomiBrevi.ts`), versione nell'interfaccia (`__APP_VERSION__`), EML unico (simulazione 'eml' eliminata, X, pose assolute in `src/simulazioni/passi.ts`, `ValoriEml.tsx`, `EmlAnticollisione.tsx`), sezioni di Aurora, valori nelle simulazioni (`src/simulazioni/Valore.tsx`), Cupola in diretta (`src/data/diretta.ts`, `src/explore/MappaIss.tsx`, opzione nelle Impostazioni).
@@ -16,7 +19,7 @@
 - Nessun lavoro a metà nel codice; nessun subagent attivo.
 
 ## Prossimo passo preciso
-Raccogliere il parere dell'autore sulla v1.1.1 (in particolare: musica delle simulazioni, Cupola in diretta, inquadrature dell'EML, telefono reale). Poi correggere solo ciò che segnala. Giovedì dalle 17 solo correzioni; `/close-session` finale.
+Progetto consegnato. Solo correzioni se l'autore o il professore segnalano problemi (versioni PATCH 1.2.x); `/close-session` finale.
 
 ## Prossimi passi dopo
 1. Correggere ciò che l'autore segnala (desktop prima; telefono/tablet solo nelle varianti `compatto:`/`tel:`/`tab:`), poi QA rapido una risoluzione alla volta e versione PATCH (1.1.2…).
@@ -28,8 +31,6 @@ Raccogliere il parere dell'autore sulla v1.1.1 (in particolare: musica delle sim
 - ID della diretta NASA (`ID_STREAM_NASA` in `src/data/diretta.ts`): cambia se NASA riavvia lo stream; se la diretta non parte, aggiornarlo (pagina del canale NASA /live).
 - Consumo reale di ElevenLabs Music da verificare sulla dashboard (i caratteri non sono cambiati).
 - Rifiniture minori: telefono orizzontale, nell'EML un marcatore sfiora l'intestazione; nella Cupola su telefono orizzontale etichette lunghe vicine; posizione di «Esci» su tablet/telefono (P-11).
-- Zip per l'uso in locale non rigenerato per la 1.1 (se serve, rifarlo e allegarlo alla release v1.1.1).
-- Ancora senza risposta: volo harmony→destiny, cancellazione di `_duplicati/` e `.env.local`, licenza dei panorami ESA, eventuale cambio dell'indirizzo Vercel.
 
 ## File e cartelle importanti
 - Codice: `src/` (`explore/`, `ui/`, `components/`, `simulazioni/`, `ambienti/`, `data/`, `lib/`), stili `src/index.css`, `src/esplora.css`, `src/responsive.css`. Testi: `content/*.json`.

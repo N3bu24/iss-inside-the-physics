@@ -29,3 +29,6 @@ assets/renders/capsula/capsula-pano.jpg
 
 # schermate del QA (pesanti, restano in locale)
 docs/qa/**/*.png
+docs/qa/v1.1/*/
+docs/qa/v1.1/errori.txt
+assets/audio/musica/sorgenti/

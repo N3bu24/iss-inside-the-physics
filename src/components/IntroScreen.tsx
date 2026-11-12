@@ -4,6 +4,7 @@ import { BookOpen, Settings } from 'lucide-react'
 import StarField from './StarField'
 import AudioToggle from './AudioToggle'
 import { assetExists } from '../lib/assets'
+import { URL_REPO } from '../data/crediti'
 
 const VIDEO_SFONDO = '/video/intro-bg.mp4' // segnaposto: se esiste viene usato come sfondo
 
@@ -37,6 +38,7 @@ export default function IntroScreen({ audioOn, onAudio, onStart, onIndice, onImp
       )}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(2,3,10,.85)_100%)]" />
       <span className="credito-linea absolute bottom-1 right-4">Foto: NASA</span>
+      <a href={URL_REPO} target="_blank" rel="noopener noreferrer" className="credito-linea absolute bottom-1 left-4 z-10 underline decoration-white/30 underline-offset-2 hover:text-white">Codice su GitHub</a>
       <div className="absolute right-5 top-9 z-10 flex items-center gap-2 compatto:right-3 compatto:top-8">
         <button onClick={onIndice} title="Indice di tutti i contenuti" aria-label="Indice di tutti i contenuti" className="glass flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs text-white/80 transition hover:text-white compatto:min-h-11 tel:!px-3"><BookOpen size={16} /> <span className="tel:hidden">Indice</span></button>
         <button onClick={onImpostazioni} title="Impostazioni" aria-label="Impostazioni" className="glass rounded-full p-2.5 text-white/70 transition hover:text-white compatto:p-3"><Settings size={16} /></button>

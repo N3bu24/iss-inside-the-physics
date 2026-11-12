@@ -5,6 +5,14 @@ Versioni secondo [SemVer](https://semver.org/lang/it/): `0.MINOR.PATCH` fino all
 - **PATCH**: correzioni e piccoli aggiornamenti.
 - **1.0.0**: versione consegnata e pubblicata su Vercel (giovedì 12/11).
 
+## [1.2.0] — 2026-11-12
+Versione consegnata.
+### Aggiunto
+- Link discreto al codice su GitHub nella schermata iniziale (in basso a sinistra) e nella scheda Crediti delle Impostazioni.
+- Zip per l'uso in locale aggiornato alla versione finale, allegato alla release.
+### Cambiato
+- README aggiornato (link al sito in evidenza, telefono e tablet, Cupola in diretta, release con zip).
+
 ## [1.1.1] — 2026-11-11
 ### Corretto
 - Pubblicazione su Vercel: la build falliva in un ambiente pulito perché mancava `@types/node` tra le dipendenze (serve a `vite.config.ts` per leggere la versione). Nessun cambiamento nel sito rispetto alla 1.1.0.
